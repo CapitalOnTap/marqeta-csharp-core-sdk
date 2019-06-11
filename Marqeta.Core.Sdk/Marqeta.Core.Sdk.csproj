@@ -13,4 +13,13 @@
     <Folder Include="Requests\" />
   </ItemGroup>
 
+  <!--
+    TODO - Replace hard reference with NuGet package
+  -->
+  <ItemGroup>
+    <Reference Include="Marqeta.Core.Abstractions">
+      <HintPath>..\..\marqeta-csharp-core-abstractions\Marqeta.Core.Abstractions\bin\Debug\netstandard2.0\Marqeta.Core.Abstractions.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
 </Project>

@@ -2,7 +2,7 @@
 
 namespace Marqeta.Core.Sdk.Responses
 {
-    internal abstract class FilteringPaginationBaseResponse<T>
+    public class PaginatedResponse<T>
     {
         [JsonProperty("count")]
         public int Count { get; set; }

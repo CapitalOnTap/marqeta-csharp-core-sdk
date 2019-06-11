@@ -9,7 +9,7 @@ namespace Marqeta.Core.Sdk
     {
         internal IRestClient RestClient;
 
-        public MccGroupService MccGroups { get; }
+        public MccGroupService MccGroups { get; private set; }
 
         public MarqetaClient(string baseUrl, string userName, string password)
         {

@@ -1,4 +1,6 @@
-﻿using Marqeta.Core.Sdk.Responses;
+﻿using Marqeta.Core.Abstractions.MccGroups;
+using Marqeta.Core.Sdk.Responses;
+using Newtonsoft.Json;
 using RestSharp;
 
 namespace Marqeta.Core.Sdk.Services
@@ -12,11 +14,11 @@ namespace Marqeta.Core.Sdk.Services
             MarqetaClient = marqetaClient;
         }
 
-        public object[] List()
+        public PaginatedResponse<MccGroup> List()
         {
             var request = new RestRequest("mccgroups");
             var response = MarqetaClient.RestClient.Execute(request);
-            return null;
+            return JsonConvert.DeserializeObject<PaginatedResponse<MccGroup>>(response.Content);
         }
     }
 }
