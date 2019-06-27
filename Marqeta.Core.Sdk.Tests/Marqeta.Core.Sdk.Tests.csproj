@@ -10,6 +10,7 @@
     <PackageReference Include="DeepEqual" Version="2.0.0" />
     <PackageReference Include="Microsoft.Extensions.Configuration" Version="2.2.0" />
     <PackageReference Include="Microsoft.Extensions.Configuration.UserSecrets" Version="2.2.0" />
+    <PackageReference Include="Microsoft.Rest.ClientRuntime" Version="2.3.20" />
     <PackageReference Include="xunit" Version="2.4.1" />
     <PackageReference Include="xunit.runner.visualstudio" Version="2.4.1">
       <PrivateAssets>all</PrivateAssets>
@@ -26,7 +27,7 @@
   -->
   <ItemGroup>
     <Reference Include="Marqeta.Core.Abstractions">
-      <HintPath>..\..\marqeta-csharp-core-abstractions\Marqeta.Core.Abstractions\bin\Debug\netstandard2.0\Marqeta.Core.Abstractions.dll</HintPath>
+      <HintPath>..\..\marqeta-csharp-core-abstractions\src\Marqeta.Core.Abstractions\bin\Debug\netstandard2.0\Marqeta.Core.Abstractions.dll</HintPath>
     </Reference>
   </ItemGroup>
 
