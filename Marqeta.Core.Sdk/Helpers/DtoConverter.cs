@@ -2,6 +2,9 @@
 
 namespace Marqeta.Core.Sdk.Helpers
 {
+    /// <summary>
+    /// Helper class to convert between related DTOs that share a lot of the same properties.
+    /// </summary>
     public static class DtoConverter
     {
         /// <summary>
