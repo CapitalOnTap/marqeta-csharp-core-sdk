@@ -1,25 +1,35 @@
 ﻿using System;
-using Marqeta.Core.Sdk.Services;
-using RestSharp;
-using RestSharp.Authenticators;
+using System.Net.Http;
+using System.Text;
 
 namespace Marqeta.Core.Sdk
 {
-    public class MarqetaClient
+    public partial class MarqetaClient
     {
-        internal IRestClient RestClient;
-
-        public MccGroupService MccGroups { get; private set; }
-
+        /// <summary>
+        /// Initializes a new instance of the <see cref="MarqetaClient"/> class.
+        /// </summary>
+        /// <param name="baseUrl"></param>
+        /// <param name="userName"></param>
+        /// <param name="password"></param>
         public MarqetaClient(string baseUrl, string userName, string password)
+        : this(CreateHttpClient(baseUrl,userName,password))
         {
-            RestClient = new RestClient
-            {
-                BaseUrl = new Uri(baseUrl),
-                Authenticator = new HttpBasicAuthenticator(userName, password)
-            };
+        }
 
-            MccGroups = new MccGroupService(this);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="baseUrl"></param>
+        /// <param name="userName"></param>
+        /// <param name="password"></param>
+        /// <returns></returns>
+        protected static HttpClient CreateHttpClient(string baseUrl, string userName, string password)
+        {
+            var httpClient = new HttpClient { BaseAddress = new Uri(baseUrl) };
+            var byteArray = Encoding.ASCII.GetBytes($"{userName}:{password}");
+            httpClient.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Basic", Convert.ToBase64String(byteArray));
+            return httpClient;
         }
     }
 }
