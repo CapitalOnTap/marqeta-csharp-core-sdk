@@ -51,7 +51,7 @@ nswag $nswagArgs
 # 
 # Build solution
 #
-$solutionPath = './Marqeta.Core.Abstractions.sln'
+$solutionPath = './Marqeta.Core.Sdk.sln'
 if ($BuildAfterGeneration) {
     if (Get-Command 'dotnet' -ErrorAction SilentlyContinue) {
         # Build solution
