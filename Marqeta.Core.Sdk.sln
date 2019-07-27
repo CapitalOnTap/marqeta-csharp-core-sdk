@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29001.49
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{C3BAFE9B-D31A-4977-A981-CC67E30D0783}") = "Marqeta.Core.Sdk", "Marqeta.Core.Sdk\Marqeta.Core.Sdk.csproj", "{CF11668E-BFA9-4165-9CD6-E8DAD44D1FBA}"
+EndProject
+Project("{C3BAFE9B-D31A-4977-A981-CC67E30D0783}") = "Marqeta.Core.Sdk.Tests", "Marqeta.Core.Sdk.Tests\Marqeta.Core.Sdk.Tests.csproj", "{AE51C062-57FC-4908-B64E-DDD9976562D9}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CF11668E-BFA9-4165-9CD6-E8DAD44D1FBA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CF11668E-BFA9-4165-9CD6-E8DAD44D1FBA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CF11668E-BFA9-4165-9CD6-E8DAD44D1FBA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CF11668E-BFA9-4165-9CD6-E8DAD44D1FBA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AE51C062-57FC-4908-B64E-DDD9976562D9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AE51C062-57FC-4908-B64E-DDD9976562D9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AE51C062-57FC-4908-B64E-DDD9976562D9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AE51C062-57FC-4908-B64E-DDD9976562D9}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {0571A78D-7FDF-4481-A737-1DEC677A7E38}
+	EndGlobalSection
+EndGlobal
