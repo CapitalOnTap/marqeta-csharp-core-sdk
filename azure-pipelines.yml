@@ -16,9 +16,47 @@ pool:
 
 variables:
   buildConfiguration: 'Release'
+  gitVersionVersion: '4.0.0'
+  nuGetServiceConnectionName: 'nuget.org'
+  githubServiceConnectionName: 'CapitalOnTap'
 
 steps:
-- script: dotnet build --configuration $(buildConfiguration)
+# NB - In the future the GitVersion commands should be replaced with the GitVersion Azure DevOps task. However that task is currently unstable on Linux build agents.
+- task: NuGetCommand@2
+  inputs:
+    command: custom
+    arguments: install GitVersion.CommandLine -Version $(gitVersionVersion) -OutputDirectory $(Build.BinariesDirectory)/tools -ExcludeVersion
+  displayName: "Install GitVersion '$(gitVersionVersion)'"
+
+- script: mono $(Build.BinariesDirectory)/tools/GitVersion.CommandLine/tools/GitVersion.exe /output buildserver /nofetch
+  displayName: 'Run GitVersion'
+
+- script: dotnet build --configuration $(buildConfiguration) /p:Version='$(GitVersion.NuGetVersion)'
   displayName: 'dotnet build $(buildConfiguration)'
-- script: dotnet test --configuration $(buildConfiguration)
-  displayName: 'dotnet test $(buildConfiguration)'
+
+# NB: Temporarily disable tests whilst configuring build
+# - script: dotnet test --configuration $(buildConfiguration) --no-build
+#   displayName: 'dotnet test $(buildConfiguration)'
+
+- script: dotnet pack --configuration $(buildConfiguration) --no-build /p:Version='$(GitVersion.NuGetVersion)' -o '$(build.artifactStagingDirectory)'
+  displayName: 'dotnet pack $(buildConfiguration)'
+
+- task: NuGetCommand@2
+  inputs:
+    command: 'push'
+    nuGetFeedType: external
+    publishFeedCredentials: $(nuGetServiceConnectionName)
+  # We only want to do this if this is a master branch build OR we have set the FORCE_PUSH_NUGET variable.
+  condition: and(succeeded(), or(eq(variables['Build.SourceBranch'], 'refs/heads/master'), eq('true', variables['FORCE_PUSH_NUGET'])))
+  displayName: 'Push NuGet package(s)'
+
+#
+# NB: This is temporarily disabled as it doesn't work with Linux agents
+#
+# - task: KriefMikael.githubtools.GitHubTag.GitHubTag@1
+#   inputs:
+#     githubEndpoint: $(githubServiceConnectionName)
+#     tag: 'v$(GitVersion.NuGetVersion)'
+#   # We only want to do this if this is a master branch build OR we have set the FORCE_PUSH_NUGET variable.
+#   condition: and(succeeded(), or(eq(variables['Build.SourceBranch'], 'refs/heads/master'), eq('true', variables['FORCE_PUSH_NUGET'])))
+#   displayName: "Create tag in GitHub"
