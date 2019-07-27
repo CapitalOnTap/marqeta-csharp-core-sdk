@@ -1,28 +1,11 @@
 <Project Sdk="Microsoft.NET.Sdk">
-
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
   </PropertyGroup>
-
-  <ItemGroup>
-    <Compile Remove="Requests\**" />
-    <EmbeddedResource Remove="Requests\**" />
-    <None Remove="Requests\**" />
-  </ItemGroup>
-
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="8.1.1" />
     <PackageReference Include="Newtonsoft.Json" Version="12.0.2" />
     <PackageReference Include="RestSharp" Version="106.6.9" />
+    <PackageReference Include="Marqeta.Core.Abstractions" Version="0.1.13" />
   </ItemGroup>
-
-  <!--
-    TODO - Replace hard reference with NuGet package
-  -->
-  <ItemGroup>
-    <Reference Include="Marqeta.Core.Abstractions">
-      <HintPath>..\..\marqeta-csharp-core-abstractions\src\Marqeta.Core.Abstractions\bin\Debug\netstandard2.0\Marqeta.Core.Abstractions.dll</HintPath>
-    </Reference>
-  </ItemGroup>
-
 </Project>

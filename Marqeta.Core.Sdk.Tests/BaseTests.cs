@@ -12,7 +12,7 @@ namespace Marqeta.Core.Sdk.Tests
         protected static string UserName = Config["Marqeta:UserName"];
         protected static string Password = Config["Marqeta:Password"];
 
-        public BaseTests(ITestOutputHelper testOutputHelper)
+        protected BaseTests(ITestOutputHelper testOutputHelper)
         {
             TestOutputHelper = testOutputHelper;
         }
