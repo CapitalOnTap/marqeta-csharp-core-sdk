@@ -1,23 +1,27 @@
+# Master branch trigger
 trigger:
   branches:
     include:
     - master
-    - releases/*
-    - azure-pipelines-testing/*
   paths:
     # NB: It's currently shorter to use an include list instead of an exclude list
     include:
-    - Marqeta.Core.Sdk.Tests/
     - Marqeta.Core.Sdk/
     - Marqeta.Core.Sdk.sln
     - GitVersion.yml
     - azure-pipelines.yml
+
+# Pipeline Testing
+trigger:
+  branches:
+    include:
+    - azure-pipelines-testing/*
     
+# PR Trigger
 pr:
   branches:
     include:
     - master
-    - releases/*
 
 pool:
   vmImage: 'ubuntu-latest'
