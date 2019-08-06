@@ -1769,7 +1769,7 @@ namespace Marqeta.Core.Sdk
         /// <param name="sort_by">Sort order</param>
         /// <returns>Success</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<System.Collections.Generic.ICollection<User_card_holder_response>> UsersChildrenAsync(string parent_token, int? count = null, int? start_index = null, string fields = null, string sort_by = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<User_card_holder_response_paginated_response> UsersChildrenAsync(string parent_token, int? count = null, int? start_index = null, string fields = null, string sort_by = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
     
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>Retrieve a specific user</summary>
@@ -1800,7 +1800,7 @@ namespace Marqeta.Core.Sdk
         /// <param name="sort_by">Sort order</param>
         /// <returns>Success</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<Card_holder_model_paginated_response> UsersNotesGetAsync(string token, int? start_index = null, int? count = null, string created_by = null, string created_by_user_role = null, bool? include_private = null, string search_type = null, string fields = null, string sort_by = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<User_card_holder_response_paginated_response> UsersNotesGetAsync(string token, int? start_index = null, int? count = null, string created_by = null, string created_by_user_role = null, bool? include_private = null, string search_type = null, string fields = null, string sort_by = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
     
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>Create a note for cardholder</summary>
@@ -21306,7 +21306,7 @@ namespace Marqeta.Core.Sdk
         /// <param name="sort_by">Sort order</param>
         /// <returns>Success</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public async System.Threading.Tasks.Task<System.Collections.Generic.ICollection<User_card_holder_response>> UsersChildrenAsync(string parent_token, int? count = null, int? start_index = null, string fields = null, string sort_by = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<User_card_holder_response_paginated_response> UsersChildrenAsync(string parent_token, int? count = null, int? start_index = null, string fields = null, string sort_by = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (parent_token == null)
                 throw new System.ArgumentNullException("parent_token");
@@ -21360,7 +21360,7 @@ namespace Marqeta.Core.Sdk
                         var status_ = ((int)response_.StatusCode).ToString();
                         if (status_ == "200") 
                         {
-                            var objectResponse_ = await ReadObjectResponseAsync<System.Collections.Generic.ICollection<User_card_holder_response>>(response_, headers_).ConfigureAwait(false);
+                            var objectResponse_ = await ReadObjectResponseAsync<User_card_holder_response_paginated_response>(response_, headers_).ConfigureAwait(false);
                             return objectResponse_.Object;
                         }
                         else
@@ -21382,7 +21382,7 @@ namespace Marqeta.Core.Sdk
                             throw new ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
                         }
             
-                        return default(System.Collections.Generic.ICollection<User_card_holder_response>);
+                        return default(User_card_holder_response_paginated_response);
                     }
                     finally
                     {
@@ -21581,7 +21581,7 @@ namespace Marqeta.Core.Sdk
         /// <param name="sort_by">Sort order</param>
         /// <returns>Success</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public async System.Threading.Tasks.Task<Card_holder_model_paginated_response> UsersNotesGetAsync(string token, int? start_index = null, int? count = null, string created_by = null, string created_by_user_role = null, bool? include_private = null, string search_type = null, string fields = null, string sort_by = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<User_card_holder_response_paginated_response> UsersNotesGetAsync(string token, int? start_index = null, int? count = null, string created_by = null, string created_by_user_role = null, bool? include_private = null, string search_type = null, string fields = null, string sort_by = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (token == null)
                 throw new System.ArgumentNullException("token");
@@ -21651,7 +21651,7 @@ namespace Marqeta.Core.Sdk
                         var status_ = ((int)response_.StatusCode).ToString();
                         if (status_ == "200") 
                         {
-                            var objectResponse_ = await ReadObjectResponseAsync<Card_holder_model_paginated_response>(response_, headers_).ConfigureAwait(false);
+                            var objectResponse_ = await ReadObjectResponseAsync<User_card_holder_response_paginated_response>(response_, headers_).ConfigureAwait(false);
                             return objectResponse_.Object;
                         }
                         else
@@ -21691,7 +21691,7 @@ namespace Marqeta.Core.Sdk
                             throw new ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
                         }
             
-                        return default(Card_holder_model_paginated_response);
+                        return default(User_card_holder_response_paginated_response);
                     }
                     finally
                     {
