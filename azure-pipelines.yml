@@ -1,23 +1,19 @@
 trigger:
+  batch: true
   branches:
     include:
     - master
-    - releases/*
-    - azure-pipelines-testing/*
   paths:
     # NB: It's currently shorter to use an include list instead of an exclude list
     include:
-    - Marqeta.Core.Sdk.Tests/
     - Marqeta.Core.Sdk/
     - Marqeta.Core.Sdk.sln
     - GitVersion.yml
-    - azure-pipelines.yml
-    
+    - azure-pipelines.yml    
 pr:
   branches:
     include:
     - master
-    - releases/*
 
 pool:
   vmImage: 'ubuntu-latest'
@@ -42,11 +38,17 @@ steps:
 - script: dotnet build --configuration $(buildConfiguration) /p:Version='$(GitVersion.NuGetVersion)'
   displayName: 'dotnet build $(buildConfiguration)'
 
-# NB: Temporarily disable tests whilst configuring build
-# - script: dotnet test --configuration $(buildConfiguration) --no-build
-#   displayName: 'dotnet test $(buildConfiguration)'
+- script: dotnet test --configuration $(buildConfiguration) --no-build --logger "trx;LogFileName=$(Common.TestResultsDirectory)\TestResults.xml"
+  displayName: 'dotnet test $(buildConfiguration)'
+  condition: and(succeeded(), ne('true', variables['SKIP_TESTS']))
 
-- script: dotnet pack --configuration $(buildConfiguration) --no-build /p:Version='$(GitVersion.NuGetVersion)' -o '$(build.artifactStagingDirectory)'
+- task: PublishTestResults@2
+  inputs:
+    testResultsFormat: 'VSTest'
+    testResultsFiles: '$(Common.TestResultsDirectory)/*.xml'
+  condition: and(succeeded(), ne('true', variables['SKIP_TESTS']))
+
+- script: dotnet pack --configuration $(buildConfiguration) --no-build /p:Version='$(GitVersion.NuGetVersion)' -o '$(Build.ArtifactStagingDirectory)'
   displayName: 'dotnet pack $(buildConfiguration)'
 
 - task: NuGetCommand@2

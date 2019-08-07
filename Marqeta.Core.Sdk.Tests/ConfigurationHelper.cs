@@ -8,6 +8,7 @@ namespace Marqeta.Core.Sdk.Tests
         {
             var builder = new ConfigurationBuilder();
             builder.AddUserSecrets<ConfigurationHelper>();
+            builder.AddEnvironmentVariables();
             return builder.Build();
         }
     }

@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿using System.Linq;
+using Microsoft.Extensions.Configuration;
 using Xunit.Abstractions;
 
 namespace Marqeta.Core.Sdk.Tests
