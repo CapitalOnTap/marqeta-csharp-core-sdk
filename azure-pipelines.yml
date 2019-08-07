@@ -42,6 +42,10 @@ steps:
   displayName: 'dotnet test $(buildConfiguration)'
   condition: and(succeeded(), ne('true', variables['SKIP_TESTS']))
 
+- task: PublishTestResults@2
+  inputs:
+    testResultsFormat: 'xUnit'
+
 - script: dotnet pack --configuration $(buildConfiguration) --no-build /p:Version='$(GitVersion.NuGetVersion)' -o '$(build.artifactStagingDirectory)'
   displayName: 'dotnet pack $(buildConfiguration)'
 
