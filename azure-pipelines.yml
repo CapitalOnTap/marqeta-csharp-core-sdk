@@ -46,9 +46,9 @@ steps:
 - script: dotnet build --configuration $(buildConfiguration) /p:Version='$(GitVersion.NuGetVersion)'
   displayName: 'dotnet build $(buildConfiguration)'
 
-# NB: Temporarily disable tests whilst configuring build
-# - script: dotnet test --configuration $(buildConfiguration) --no-build
-#   displayName: 'dotnet test $(buildConfiguration)'
+- script: dotnet test --configuration $(buildConfiguration) --no-build
+  displayName: 'dotnet test $(buildConfiguration)'
+  condition: and(succeeded(), ne('true', variables['SKIP_TESTS']))
 
 - script: dotnet pack --configuration $(buildConfiguration) --no-build /p:Version='$(GitVersion.NuGetVersion)' -o '$(build.artifactStagingDirectory)'
   displayName: 'dotnet pack $(buildConfiguration)'
