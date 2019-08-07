@@ -1,5 +1,5 @@
-# Master branch trigger
 trigger:
+  batch: true
   branches:
     include:
     - master
@@ -9,15 +9,7 @@ trigger:
     - Marqeta.Core.Sdk/
     - Marqeta.Core.Sdk.sln
     - GitVersion.yml
-    - azure-pipelines.yml
-
-# Pipeline Testing
-trigger:
-  branches:
-    include:
-    - azure-pipelines-testing/*
-    
-# PR Trigger
+    - azure-pipelines.yml    
 pr:
   branches:
     include:
