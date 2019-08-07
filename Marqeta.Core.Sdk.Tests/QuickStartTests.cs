@@ -62,7 +62,6 @@ namespace Marqeta.Core.Sdk.Tests
             {
                 User_token = cardHolderResponse.Token,
                 Amount = 1000,
-                //Currency_code = "GBP",
                 Currency_code = "USD",
                 Funding_source_token = programFundingSourceResponse.Token
             };
