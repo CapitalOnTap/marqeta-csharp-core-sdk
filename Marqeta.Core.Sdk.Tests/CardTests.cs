@@ -1,5 +1,6 @@
 ﻿using System.Threading.Tasks;
 using Marqeta.Core.Abstractions;
+using Marqeta.Core.Sdk.Tests.Helpers;
 using Xunit;
 
 // ReSharper disable IdentifierTypo
@@ -11,7 +12,7 @@ namespace Marqeta.Core.Sdk.Tests
         internal static async Task<Card_transition_response> ActivateCard(string cardToken)
         {
             // Get client / fixture
-            var client = GetMarqetaClient();
+            var client = ClientFactory.GetMarqetaClient();
 
             var cardTransitionRequest = new Card_transition_request
             {
@@ -30,7 +31,7 @@ namespace Marqeta.Core.Sdk.Tests
         internal static async Task<Card_response> CreateCard(string userToken, string cardProductToken)
         {
             // Get client / fixture
-            var client = GetMarqetaClient();
+            var client = ClientFactory.GetMarqetaClient();
 
             // Create card
             var cardRequest = new Card_request

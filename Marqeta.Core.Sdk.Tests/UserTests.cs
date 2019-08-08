@@ -1,6 +1,7 @@
 ﻿using System.Linq;
 using System.Threading.Tasks;
 using Marqeta.Core.Abstractions;
+using Marqeta.Core.Sdk.Tests.Helpers;
 using Xunit;
 
 // ReSharper disable IdentifierTypo
@@ -12,7 +13,7 @@ namespace Marqeta.Core.Sdk.Tests
         [Fact]
         public async void UsersGetAsync()
         {
-            var client = GetMarqetaClient();
+            var client = ClientFactory.GetMarqetaClient();
             var response = await client.UsersGetAsync();
             Assert.NotNull(response);
             Assert.True(response.Count > 0);
@@ -21,7 +22,7 @@ namespace Marqeta.Core.Sdk.Tests
         [Fact]
         public async Task<User_card_holder_response> UsersPostAsync()
         {
-            var client = GetMarqetaClient();
+            var client = ClientFactory.GetMarqetaClient();
             var cardHolderModel = new Card_holder_model();
             var response = await client.UsersPostAsync(cardHolderModel);
             Assert.NotNull(response);
@@ -31,7 +32,7 @@ namespace Marqeta.Core.Sdk.Tests
         [Fact]
         public async void UsersPostAsync_CreateChildren()
         {
-            var client = GetMarqetaClient();
+            var client = ClientFactory.GetMarqetaClient();
 
             // Create parent
             var cardHolderModel1 = new Card_holder_model();
@@ -52,7 +53,7 @@ namespace Marqeta.Core.Sdk.Tests
         [Fact]
         public async void UsersChildrenAsync()
         {
-            var client = GetMarqetaClient();
+            var client = ClientFactory.GetMarqetaClient();
 
             // Create parent
             var cardHolderModel1 = new Card_holder_model();

@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using AutoFixture;
 using Marqeta.Core.Abstractions;
+using Marqeta.Core.Sdk.Tests.Helpers;
 using Xunit;
 
 // ReSharper disable IdentifierTypo
@@ -13,7 +14,7 @@ namespace Marqeta.Core.Sdk.Tests
         [Fact]
         public async void CardproductsGetAsync()
         {
-            var client = GetMarqetaClient();
+            var client = ClientFactory.GetMarqetaClient();
             var response = await client.CardproductsGetAsync();
             Assert.NotNull(response);
             Assert.True(response.Count > 0);
@@ -23,7 +24,7 @@ namespace Marqeta.Core.Sdk.Tests
         public async Task<Card_product_response> CardproductsPostAsync()
         {
             // Get client / fixture
-            var client = GetMarqetaClient();
+            var client = ClientFactory.GetMarqetaClient();
             var fixture = new Fixture();
 
             // Create CardProduct

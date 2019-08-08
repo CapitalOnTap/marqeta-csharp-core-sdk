@@ -1,6 +1,7 @@
 ﻿using System.Threading.Tasks;
 using AutoFixture;
 using Marqeta.Core.Abstractions;
+using Marqeta.Core.Sdk.Tests.Helpers;
 using Xunit;
 
 // ReSharper disable IdentifierTypo
@@ -13,7 +14,7 @@ namespace Marqeta.Core.Sdk.Tests
         public async void GpaordersPostAsync()
         {
             // Get client / fixture
-            var client = GetMarqetaClient();
+            var client = ClientFactory.GetMarqetaClient();
             var fixture = new Fixture();
 
             //
@@ -82,7 +83,7 @@ namespace Marqeta.Core.Sdk.Tests
         internal static async Task<Gpa_response> FundUserAccount(string userToken, string fundingSourceToken, double fundingAmount = 1000)
         {
             // Get client / fixture
-            var client = GetMarqetaClient();
+            var client = ClientFactory.GetMarqetaClient();
 
             // Check balance before funding
             var balances1 = await client.BalancesAsync(userToken);

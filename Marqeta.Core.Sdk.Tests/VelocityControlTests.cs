@@ -1,5 +1,6 @@
 ﻿using AutoFixture;
 using Marqeta.Core.Abstractions;
+using Marqeta.Core.Sdk.Tests.Helpers;
 using Xunit;
 
 // ReSharper disable IdentifierTypo
@@ -12,7 +13,7 @@ namespace Marqeta.Core.Sdk.Tests
         public async void ensure_velocity_control_lifetime_is_honoured()
         {
             // Get client / fixture
-            var client = GetMarqetaClient();
+            var client = ClientFactory.GetMarqetaClient();
             var fixture = new Fixture();
 
             //
@@ -109,7 +110,7 @@ namespace Marqeta.Core.Sdk.Tests
         public async void ensure_resetting_velocity_control_allows()
         {
             // Get client / fixture
-            var client = GetMarqetaClient();
+            var client = ClientFactory.GetMarqetaClient();
             var fixture = new Fixture();
 
             //

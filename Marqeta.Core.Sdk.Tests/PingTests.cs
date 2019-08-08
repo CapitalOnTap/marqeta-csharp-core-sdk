@@ -1,5 +1,6 @@
 ﻿using AutoFixture;
 using Marqeta.Core.Abstractions;
+using Marqeta.Core.Sdk.Tests.Helpers;
 using Xunit;
 
 // ReSharper disable IdentifierTypo
@@ -11,7 +12,7 @@ namespace Marqeta.Core.Sdk.Tests
         [Fact]
         public async void PingGetAsync()
         {
-            var client = GetMarqetaClient();
+            var client = ClientFactory.GetMarqetaClient();
             var response = await client.PingGetAsync();
             Assert.NotNull(response);
             Assert.True(response.Success);
@@ -20,7 +21,7 @@ namespace Marqeta.Core.Sdk.Tests
         [Fact]
         public async void PingPostAsync()
         {
-            var client = GetMarqetaClient();
+            var client = ClientFactory.GetMarqetaClient();
             var fixture = new Fixture();
             var echoPingRequest = fixture.Create<Echo_ping_request>();
             var response = await client.PingPostAsync(echoPingRequest);
