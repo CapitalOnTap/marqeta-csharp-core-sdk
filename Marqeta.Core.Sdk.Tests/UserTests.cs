@@ -1,6 +1,7 @@
 ﻿using System.Linq;
 using System.Threading.Tasks;
 using Marqeta.Core.Abstractions;
+using Marqeta.Core.Sdk.Tests.Factories;
 using Marqeta.Core.Sdk.Tests.Helpers;
 using Xunit;
 
@@ -20,13 +21,9 @@ namespace Marqeta.Core.Sdk.Tests
         }
 
         [Fact]
-        public async Task<User_card_holder_response> UsersPostAsync()
+        public async void UsersPostAsync()
         {
-            var client = ClientFactory.GetMarqetaClient();
-            var cardHolderModel = new Card_holder_model();
-            var response = await client.UsersPostAsync(cardHolderModel);
-            Assert.NotNull(response);
-            return response;
+            await UserHelper.CreateUser();
         }
 
         [Fact]

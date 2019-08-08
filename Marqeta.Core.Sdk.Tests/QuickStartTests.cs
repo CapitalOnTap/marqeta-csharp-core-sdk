@@ -1,7 +1,7 @@
 ﻿using System.Linq;
 using AutoFixture;
 using Marqeta.Core.Abstractions;
-using Marqeta.Core.Sdk.Tests.Helpers;
+using Marqeta.Core.Sdk.Tests.Factories;
 using Xunit;
 
 // ReSharper disable IdentifierTypo

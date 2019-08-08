@@ -1,5 +1,6 @@
 ﻿using AutoFixture;
 using Marqeta.Core.Abstractions;
+using Marqeta.Core.Sdk.Tests.Factories;
 using Marqeta.Core.Sdk.Tests.Helpers;
 using Xunit;
 
@@ -20,13 +21,13 @@ namespace Marqeta.Core.Sdk.Tests
             // NB: Responses from other test classes have already had assertions run against them
             //
             // Get card product
-            var cardProductResponse = await new CardProductTests().CardproductsPostAsync();
+            var cardProductResponse = await CardProductHelper.CreateCardProduct();
 
             // Create a program funding source
-            var programFundingSourceResponse = await new ProgramFundingControlTests().FundingsourcesProgramPostAsync();
+            var programFundingSourceResponse = await ProgramFundingHelper.CreateProgramFundingSource();
 
             // Create user account
-            var cardHolderResponse = await new UserTests().UsersPostAsync();
+            var cardHolderResponse = await UserHelper.CreateUser();
 
             // Create card
             var cardRequest = new Card_request
@@ -117,13 +118,13 @@ namespace Marqeta.Core.Sdk.Tests
             // NB: Responses from other test classes have already had assertions run against them
             //
             // Get card product
-            var cardProductResponse = await new CardProductTests().CardproductsPostAsync();
+            var cardProductResponse = await CardProductHelper.CreateCardProduct();
 
             // Create a program funding source
-            var programFundingSourceResponse = await new ProgramFundingControlTests().FundingsourcesProgramPostAsync();
+            var programFundingSourceResponse = await ProgramFundingHelper.CreateProgramFundingSource();
 
             // Create user account
-            var cardHolderResponse = await new UserTests().UsersPostAsync();
+            var cardHolderResponse = await UserHelper.CreateUser();
 
             // Create card
             var cardRequest = new Card_request
