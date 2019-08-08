@@ -1,21 +1,24 @@
-﻿using Xunit;
-using Xunit.Abstractions;
+﻿using Marqeta.Core.Sdk.Tests.Factories;
+using Marqeta.Core.Sdk.Tests.Helpers;
+using Xunit;
 
 namespace Marqeta.Core.Sdk.Tests
 {
     public class CardProductTests : BaseTests
     {
-        public CardProductTests(ITestOutputHelper testOutputHelper) : base(testOutputHelper)
+        [Fact]
+        public async void CardproductsGetAsync()
         {
+            var client = ClientFactory.GetMarqetaClient();
+            var response = await client.CardproductsGetAsync();
+            Assert.NotNull(response);
+            Assert.True(response.Count > 0);
         }
 
         [Fact]
-        public void CardProducts()
+        public async void CardproductsPostAsync()
         {
-            var client = GetMarqetaClient();
-            var response = client.CardproductsGetAsync().Result;
-            Assert.NotNull(response);
-            Assert.True(response.Count > 0);
+            await CardProductHelper.CreateCardProduct();
         }
     }
 }

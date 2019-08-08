@@ -1,20 +1,17 @@
 ﻿using System.Linq;
 using Marqeta.Core.Abstractions;
+using Marqeta.Core.Sdk.Tests.Factories;
+using Marqeta.Core.Sdk.Tests.Helpers;
 using Xunit;
-using Xunit.Abstractions;
 
 namespace Marqeta.Core.Sdk.Tests
 {
     public class UserTests : BaseTests
     {
-        public UserTests(ITestOutputHelper testOutputHelper) : base(testOutputHelper)
-        {
-        }
-
         [Fact]
         public async void UsersGetAsync()
         {
-            var client = GetMarqetaClient();
+            var client = ClientFactory.GetMarqetaClient();
             var response = await client.UsersGetAsync();
             Assert.NotNull(response);
             Assert.True(response.Count > 0);
@@ -23,16 +20,13 @@ namespace Marqeta.Core.Sdk.Tests
         [Fact]
         public async void UsersPostAsync()
         {
-            var client = GetMarqetaClient();
-            var cardHolderModel = new Card_holder_model();
-            var response = await client.UsersPostAsync(cardHolderModel);
-            Assert.NotNull(response);
+            await UserHelper.CreateUser();
         }
 
         [Fact]
         public async void UsersPostAsync_CreateChildren()
         {
-            var client = GetMarqetaClient();
+            var client = ClientFactory.GetMarqetaClient();
 
             // Create parent
             var cardHolderModel1 = new Card_holder_model();
@@ -53,7 +47,7 @@ namespace Marqeta.Core.Sdk.Tests
         [Fact]
         public async void UsersChildrenAsync()
         {
-            var client = GetMarqetaClient();
+            var client = ClientFactory.GetMarqetaClient();
 
             // Create parent
             var cardHolderModel1 = new Card_holder_model();
