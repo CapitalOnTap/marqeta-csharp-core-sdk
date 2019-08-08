@@ -1,47 +1,67 @@
-﻿using System.Linq;
+﻿using System;
 using AutoFixture;
 using Marqeta.Core.Abstractions;
 using Marqeta.Core.Sdk.Tests.Factories;
 using Xunit;
 
-// ReSharper disable IdentifierTypo
-
 namespace Marqeta.Core.Sdk.Tests
 {
     public class QuickStartTests : BaseTests
     {
+        /// <summary>
+        /// Marqeta quick start as described in the documentation
+        /// </summary>
+        /// <remarks>
+        /// Link: https://www.marqeta.com/api/guides/WIlA2isAAMkAsk6F/quick-start--marqeta-api
+        /// NB: We do not use any of the helper classes here as these tests are illustrative
+        /// </remarks>
         [Fact]
-        public void QuickStart()
+        public async void QuickStart()
         {
             // Get client / fixture
             var client = ClientFactory.GetMarqetaClient();
             var fixture = new Fixture();
 
-            // Get the latest card product
-            var cardProductToken = client.CardproductsGetAsync().Result.Data
-                .OrderByDescending(x => x.Last_modified_time).First().Token;
-            Assert.NotEmpty(cardProductToken);
+            //
+            // Step 2: Create objects
+            // https://www.marqeta.com/api/guides/WIlA2isAAMkAsk6F/quick-start--marqeta-api#step_____create_objects
+            //
+
+            // Create card product
+            var cardProductRequest = new Card_product_request
+            {
+                Start_date = DateTimeOffset.Now.Date,
+                Name = fixture.Create<string>(),
+                Config = new Card_product_config
+                {
+                    Fulfillment = new Card_product_fulfillment { Payment_instrument = Card_product_fulfillmentPayment_instrument.VIRTUAL_PAN },
+                    Poi = new Poi { Ecommerce = true },
+                    Card_life_cycle = new Card_life_cycle { Activate_upon_issue = true },
+                }
+            };
+            var cardProductResponse = await client.CardproductsPostAsync(cardProductRequest);
+            Assert.NotNull(cardProductResponse);
 
             // Create a program funding sources
             var programFundingSourceRequest = fixture.Build<Program_funding_source_request>()
                 .Without(pfsr => pfsr.Active)
                 .Without(pfsr => pfsr.Token)
                 .Create();
-            var programFundingSourceResponse = client.FundingsourcesProgramPostAsync(programFundingSourceRequest).Result;
+            var programFundingSourceResponse = await client.FundingsourcesProgramPostAsync(programFundingSourceRequest);
             Assert.NotNull(programFundingSourceResponse);
 
             // Create user account
             var cardHolderModel = new Card_holder_model();
-            var cardHolderResponse = client.UsersPostAsync(cardHolderModel).Result;
+            var cardHolderResponse = await client.UsersPostAsync(cardHolderModel);
             Assert.NotNull(cardHolderResponse);
 
             // Create card
             var cardRequest = new Card_request
             {
                 User_token = cardHolderResponse.Token,
-                Card_product_token = cardProductToken,
+                Card_product_token = cardProductResponse.Token,
             };
-            var cardResponse = client.CardsPostAsync(cardRequest).Result;
+            var cardResponse = await client.CardsPostAsync(cardRequest);
             Assert.NotNull(cardResponse);
 
             // Activate card
@@ -52,8 +72,14 @@ namespace Marqeta.Core.Sdk.Tests
                 Channel = Card_transition_requestChannel.API,
                 Reason_code = Card_transition_requestReason_code._00
             };
-            var cardTransitionResponse = client.CardtransitionsPostAsync(cardTransitionRequest).Result;
+            var cardTransitionResponse = await client.CardtransitionsPostAsync(cardTransitionRequest);
             Assert.NotNull(cardTransitionResponse);
+
+
+            //
+            // Step 3: Fund user account
+            // https://www.marqeta.com/api/guides/WIlA2isAAMkAsk6F/quick-start--marqeta-api#step_____fund_user_account_
+            //
 
             // Fund user account
             var gpaRequest = new Gpa_request
@@ -63,8 +89,13 @@ namespace Marqeta.Core.Sdk.Tests
                 Currency_code = "USD",
                 Funding_source_token = programFundingSourceResponse.Token
             };
-            var gpaResponse = client.GpaordersPostAsync(gpaRequest).Result;
+            var gpaResponse = await client.GpaordersPostAsync(gpaRequest);
             Assert.NotNull(gpaResponse);
+
+            //
+            // Step 4: Transact
+            // https://www.marqeta.com/api/guides/WIlA2isAAMkAsk6F/quick-start--marqeta-api#step_____transact_
+            //
 
             // Transact
             var authRequest = new Auth_request_model
@@ -73,42 +104,57 @@ namespace Marqeta.Core.Sdk.Tests
                 Mid = fixture.Create<string>(),
                 Card_token = cardResponse.Token,
             };
-            var simulateResponse = client.SimulateAuthorizationAsync(authRequest).Result;
+            var simulateResponse = await client.SimulateAuthorizationAsync(authRequest);
             Assert.NotNull(simulateResponse);
         }
 
         [Fact]
-        public void QuickStartWithWebhook()
+        public async void QuickStartWithWebhook()
         {
             // Get client / fixture
             var client = ClientFactory.GetMarqetaClient();
             var fixture = new Fixture();
 
-            // Get the latest card product
-            var cardProductToken = client.CardproductsGetAsync().Result.Data
-                .OrderByDescending(x => x.Last_modified_time).First().Token;
-            Assert.NotEmpty(cardProductToken);
+            //
+            // Step 2: Create objects
+            // https://www.marqeta.com/api/guides/WIlA2isAAMkAsk6F/quick-start--marqeta-api#step_____create_objects
+            //
+
+            // Create card product
+            var cardProductRequest = new Card_product_request
+            {
+                Start_date = DateTimeOffset.Now.Date,
+                Name = fixture.Create<string>(),
+                Config = new Card_product_config
+                {
+                    Fulfillment = new Card_product_fulfillment { Payment_instrument = Card_product_fulfillmentPayment_instrument.VIRTUAL_PAN },
+                    Poi = new Poi { Ecommerce = true },
+                    Card_life_cycle = new Card_life_cycle { Activate_upon_issue = true },
+                }
+            };
+            var cardProductResponse = await client.CardproductsPostAsync(cardProductRequest);
+            Assert.NotNull(cardProductResponse);
 
             // Create a program funding sources
             var programFundingSourceRequest = fixture.Build<Program_funding_source_request>()
                 .Without(pfsr => pfsr.Active)
                 .Without(pfsr => pfsr.Token)
                 .Create();
-            var programFundingSourceResponse = client.FundingsourcesProgramPostAsync(programFundingSourceRequest).Result;
+            var programFundingSourceResponse = await client.FundingsourcesProgramPostAsync(programFundingSourceRequest);
             Assert.NotNull(programFundingSourceResponse);
 
             // Create user account
             var cardHolderModel = new Card_holder_model();
-            var cardHolderResponse = client.UsersPostAsync(cardHolderModel).Result;
+            var cardHolderResponse = await client.UsersPostAsync(cardHolderModel);
             Assert.NotNull(cardHolderResponse);
 
             // Create card
             var cardRequest = new Card_request
             {
                 User_token = cardHolderResponse.Token,
-                Card_product_token = cardProductToken,
+                Card_product_token = cardProductResponse.Token,
             };
-            var cardResponse = client.CardsPostAsync(cardRequest).Result;
+            var cardResponse = await client.CardsPostAsync(cardRequest);
             Assert.NotNull(cardResponse);
 
             // Activate card
@@ -119,20 +165,33 @@ namespace Marqeta.Core.Sdk.Tests
                 Channel = Card_transition_requestChannel.API,
                 Reason_code = Card_transition_requestReason_code._00
             };
-            var cardTransitionResponse = client.CardtransitionsPostAsync(cardTransitionRequest).Result;
+            var cardTransitionResponse = await client.CardtransitionsPostAsync(cardTransitionRequest);
             Assert.NotNull(cardTransitionResponse);
+
+
+            //
+            // Step 3: Fund user account
+            // https://www.marqeta.com/api/guides/WIlA2isAAMkAsk6F/quick-start--marqeta-api#step_____fund_user_account_
+            //
 
             // Fund user account
             var gpaRequest = new Gpa_request
             {
                 User_token = cardHolderResponse.Token,
                 Amount = 1000,
-                //Currency_code = "GBP",
                 Currency_code = "USD",
                 Funding_source_token = programFundingSourceResponse.Token
             };
-            var gpaResponse = client.GpaordersPostAsync(gpaRequest).Result;
+            var gpaResponse = await client.GpaordersPostAsync(gpaRequest);
             Assert.NotNull(gpaResponse);
+
+            //
+            // Step 4: Transact
+            // https://www.marqeta.com/api/guides/WIlA2isAAMkAsk6F/quick-start--marqeta-api#step_____transact_
+            //
+            // Step 5: Add a webhook
+            // https://www.marqeta.com/api/guides/WIlA2isAAMkAsk6F/quick-start--marqeta-api#step_____add_a_webhook
+            //
 
             // Transact
             var authRequest = new Auth_request_model
@@ -147,7 +206,7 @@ namespace Marqeta.Core.Sdk.Tests
                     Password = fixture.Create<string>()
                 }
             };
-            var simulateResponse = client.SimulateAuthorizationAsync(authRequest).Result;
+            var simulateResponse = await client.SimulateAuthorizationAsync(authRequest);
             Assert.NotNull(simulateResponse);
         }
     }

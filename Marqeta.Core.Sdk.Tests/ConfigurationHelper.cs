@@ -1,7 +1,5 @@
 ﻿using Microsoft.Extensions.Configuration;
 
-// ReSharper disable IdentifierTypo
-
 namespace Marqeta.Core.Sdk.Tests
 {
     public class ConfigurationHelper

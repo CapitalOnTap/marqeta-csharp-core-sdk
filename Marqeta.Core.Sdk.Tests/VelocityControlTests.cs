@@ -4,14 +4,12 @@ using Marqeta.Core.Sdk.Tests.Factories;
 using Marqeta.Core.Sdk.Tests.Helpers;
 using Xunit;
 
-// ReSharper disable IdentifierTypo
-
 namespace Marqeta.Core.Sdk.Tests
 {
     public class VelocityControlTests : BaseTests
     {
         [Fact]
-        public async void ensure_velocity_control_lifetime_is_honoured()
+        public async void Ensure_velocity_control_lifetime_is_honoured()
         {
             // Get client / fixture
             var client = ClientFactory.GetMarqetaClient();
@@ -29,26 +27,9 @@ namespace Marqeta.Core.Sdk.Tests
             // Create user account
             var cardHolderResponse = await UserHelper.CreateUser();
 
-            // Create card
-            var cardRequest = new Card_request
-            {
-                User_token = cardHolderResponse.Token,
-                Card_product_token = cardProductResponse.Token,
-            };
-            var cardResponse = await client.CardsPostAsync(cardRequest);
-            Assert.NotNull(cardResponse);
-
-            // Activate card
-            var cardTransitionRequest = new Card_transition_request
-            {
-                Card_token = cardResponse.Token,
-                State = Card_transition_requestState.ACTIVE,
-                Channel = Card_transition_requestChannel.API,
-                Reason_code = Card_transition_requestReason_code._00
-            };
-            var cardTransitionResponse = await client.CardtransitionsPostAsync(cardTransitionRequest);
-            Assert.NotNull(cardTransitionResponse);
-            Assert.Equal(Card_transition_responseState.ACTIVE, cardTransitionResponse.State);
+            // Create / activate card
+            var cardResponse = await CardTests.CreateCard(cardHolderResponse.Token, cardProductResponse.Token);
+            //await CardTests.ActivateCard(cardResponse.Token);
 
             // Fund user account
             const double fundingAmount = 1000;
@@ -108,7 +89,7 @@ namespace Marqeta.Core.Sdk.Tests
         }
 
         [Fact]
-        public async void ensure_resetting_velocity_control_allows()
+        public async void Ensure_resetting_velocity_control_allows()
         {
             // Get client / fixture
             var client = ClientFactory.GetMarqetaClient();

@@ -5,8 +5,6 @@ using Marqeta.Core.Abstractions;
 using Marqeta.Core.Sdk.Tests.Factories;
 using Xunit;
 
-// ReSharper disable IdentifierTypo
-
 namespace Marqeta.Core.Sdk.Tests.Helpers
 {
     public static class CardProductHelper

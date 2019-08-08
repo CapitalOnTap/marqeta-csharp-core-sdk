@@ -1,11 +1,8 @@
 ﻿using System.Linq;
-using System.Threading.Tasks;
 using Marqeta.Core.Abstractions;
 using Marqeta.Core.Sdk.Tests.Factories;
 using Marqeta.Core.Sdk.Tests.Helpers;
 using Xunit;
-
-// ReSharper disable IdentifierTypo
 
 namespace Marqeta.Core.Sdk.Tests
 {

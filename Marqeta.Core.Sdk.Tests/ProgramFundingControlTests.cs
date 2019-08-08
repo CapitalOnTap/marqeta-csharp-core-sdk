@@ -1,8 +1,6 @@
 ﻿using Marqeta.Core.Sdk.Tests.Helpers;
 using Xunit;
 
-// ReSharper disable IdentifierTypo
-
 namespace Marqeta.Core.Sdk.Tests
 {
     public class ProgramFundingControlTests : BaseTests
