@@ -74,20 +74,30 @@ if ($currentSource -eq $Source) {
 Write-Host "Setting NuGet references to '$Source'."
 switch ($Source) {
     'NuGet' {
-        # Remove Local reference
+        # Remove Local reference to Marqeta.Core.Abstractions
         $xml.Project.RemoveChild($localReferenceItemGroup.Node) | Out-Null
 
-        # Add NuGet reference
+        # Remove NuGet reference to Newtonsoft.Json
+        $newtonsoftJsonPackageReference = $xml | Select-Xml -XPath "//ItemGroup/PackageReference[@Include='Newtonsoft.Json']"
+        $packageReferenceItemGroup.Node.RemoveChild($newtonsoftJsonPackageReference.Node) | Out-Null
+
+        # Add NuGet reference for Marqeta.Core.Abstractions
         $latestNuGetVersion = Get-Latest-NuGet-Version('Marqeta.Core.Abstractions')
         $newNode = [xml]"<PackageReference Include=""Marqeta.Core.Abstractions"" Version=""$latestNuGetVersion"" />"
         $newNode = $xml.ImportNode($newNode.PackageReference, $true) 
         $packageReferenceItemGroup.Node.AppendChild($newNode) | Out-Null
     }
     'Local' {
-        # Remove NuGet reference
+        # Remove NuGet reference to Marqeta.Core.Abstractions
         $packageReferenceItemGroup.Node.RemoveChild($packageReference.Node) | Out-Null
 
-        # Add Local reference
+        # Add NuGet reference for Newtonsoft.Json
+        $latestNuGetVersion = Get-Latest-NuGet-Version('Newtonsoft.Json')
+        $newNode = [xml]"<PackageReference Include=""Newtonsoft.Json"" Version=""$latestNuGetVersion"" />"
+        $newNode = $xml.ImportNode($newNode.PackageReference, $true) 
+        $packageReferenceItemGroup.Node.AppendChild($newNode) | Out-Null
+
+        # Add Local reference to Marqeta.Core.Abstractions
         $newNode = [xml]"
         <ItemGroup>
             <Reference Include=""Marqeta.Core.Abstractions"">
