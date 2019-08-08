@@ -1,22 +1,16 @@
-﻿using System.Linq;
-using Microsoft.Extensions.Configuration;
-using Xunit.Abstractions;
+﻿using Microsoft.Extensions.Configuration;
+
+// ReSharper disable IdentifierTypo
 
 namespace Marqeta.Core.Sdk.Tests
 {
     public abstract class BaseTests
     {
-        protected readonly ITestOutputHelper TestOutputHelper;
         protected static IConfigurationRoot Config = new ConfigurationHelper().GetConfiguration();
 
         protected static string BaseUrl = Config["Marqeta:BaseUrl"];
         protected static string UserName = Config["Marqeta:UserName"];
         protected static string Password = Config["Marqeta:Password"];
-
-        protected BaseTests(ITestOutputHelper testOutputHelper)
-        {
-            TestOutputHelper = testOutputHelper;
-        }
 
         public static IMarqetaClient GetMarqetaClient()
         {

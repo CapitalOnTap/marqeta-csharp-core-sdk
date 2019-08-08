@@ -1,16 +1,14 @@
 ﻿using System.Linq;
+using System.Threading.Tasks;
 using Marqeta.Core.Abstractions;
 using Xunit;
-using Xunit.Abstractions;
+
+// ReSharper disable IdentifierTypo
 
 namespace Marqeta.Core.Sdk.Tests
 {
     public class UserTests : BaseTests
     {
-        public UserTests(ITestOutputHelper testOutputHelper) : base(testOutputHelper)
-        {
-        }
-
         [Fact]
         public async void UsersGetAsync()
         {
@@ -21,12 +19,13 @@ namespace Marqeta.Core.Sdk.Tests
         }
 
         [Fact]
-        public async void UsersPostAsync()
+        public async Task<User_card_holder_response> UsersPostAsync()
         {
             var client = GetMarqetaClient();
             var cardHolderModel = new Card_holder_model();
             var response = await client.UsersPostAsync(cardHolderModel);
             Assert.NotNull(response);
+            return response;
         }
 
         [Fact]

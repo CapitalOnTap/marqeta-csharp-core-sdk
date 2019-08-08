@@ -1,16 +1,13 @@
 ﻿using AutoFixture;
 using Marqeta.Core.Abstractions;
 using Xunit;
-using Xunit.Abstractions;
+
+// ReSharper disable IdentifierTypo
 
 namespace Marqeta.Core.Sdk.Tests
 {
     public class PingTests : BaseTests
     {
-        public PingTests(ITestOutputHelper testOutputHelper) : base(testOutputHelper)
-        {
-        }
-        
         [Fact]
         public async void PingGetAsync()
         {

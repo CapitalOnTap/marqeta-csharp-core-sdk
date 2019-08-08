@@ -2,16 +2,13 @@
 using AutoFixture;
 using Marqeta.Core.Abstractions;
 using Xunit;
-using Xunit.Abstractions;
+
+// ReSharper disable IdentifierTypo
 
 namespace Marqeta.Core.Sdk.Tests
 {
     public class QuickStartTests : BaseTests
     {
-        public QuickStartTests(ITestOutputHelper testOutputHelper) : base(testOutputHelper)
-        {
-        }
-        
         [Fact]
         public void QuickStart()
         {
