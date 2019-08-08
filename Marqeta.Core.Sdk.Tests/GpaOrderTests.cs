@@ -34,7 +34,7 @@ namespace Marqeta.Core.Sdk.Tests
 
             // Fund user account
             const double fundingAmount = 1000;
-            await FundUserAccount(cardHolderResponse.Token, programFundingSourceResponse.Token, fundingAmount);
+            await GpaOrderHelper.FundUserAccount(cardHolderResponse.Token, programFundingSourceResponse.Token, fundingAmount);
 
             // Add velocity control
             const double velocityControlAmount = 10;
@@ -77,34 +77,6 @@ namespace Marqeta.Core.Sdk.Tests
             Assert.Equal(Transaction_modelState.DECLINED, simulateResponse2.Transaction.State);
             Assert.Equal("1834", simulateResponse2.Transaction.Response.Code);
             Assert.Equal("Exceeds withdrawal amount limit", simulateResponse2.Transaction.Response.Memo);
-        }
-
-        internal static async Task<Gpa_response> FundUserAccount(string userToken, string fundingSourceToken, double fundingAmount = 1000)
-        {
-            // Get client / fixture
-            var client = ClientFactory.GetMarqetaClient();
-
-            // Check balance before funding
-            var balances1 = await client.BalancesAsync(userToken);
-            Assert.NotNull(balances1);
-
-            // Fund user account
-            var gpaRequest = new Gpa_request
-            {
-                User_token = userToken,
-                Amount = fundingAmount,
-                Currency_code = "USD",
-                Funding_source_token = fundingSourceToken
-            };
-            var gpaResponse = await client.GpaordersPostAsync(gpaRequest);
-            Assert.NotNull(gpaResponse);
-
-            // Ensure funds have been added
-            var balances2 = await client.BalancesAsync(userToken);
-            Assert.NotNull(balances2);
-            Assert.Equal(balances1.Gpa.Available_balance + fundingAmount, balances2.Gpa.Available_balance);
-
-            return gpaResponse;
         }
     }
 }

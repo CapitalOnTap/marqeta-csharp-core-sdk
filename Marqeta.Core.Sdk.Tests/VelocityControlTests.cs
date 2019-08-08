@@ -33,17 +33,7 @@ namespace Marqeta.Core.Sdk.Tests
 
             // Fund user account
             const double fundingAmount = 1000;
-            var gpaRequest = new Gpa_request
-            {
-                User_token = cardHolderResponse.Token,
-                Amount = fundingAmount,
-                Currency_code = "USD",
-                Funding_source_token = programFundingSourceResponse.Token
-            };
-            var gpaResponse = await client.GpaordersPostAsync(gpaRequest);
-            Assert.NotNull(gpaResponse);
-            var balances1 = await client.BalancesAsync(cardHolderResponse.Token);
-            Assert.Equal(fundingAmount, balances1.Gpa.Available_balance);
+            await GpaOrderHelper.FundUserAccount(cardHolderResponse.Token, programFundingSourceResponse.Token, fundingAmount);
 
             // Add velocity control
             const double velocityControlAmount = 10;
@@ -107,40 +97,13 @@ namespace Marqeta.Core.Sdk.Tests
             // Create user account
             var cardHolderResponse = await UserHelper.CreateUser();
 
-            // Create card
-            var cardRequest = new Card_request
-            {
-                User_token = cardHolderResponse.Token,
-                Card_product_token = cardProductResponse.Token,
-            };
-            var cardResponse = await client.CardsPostAsync(cardRequest);
-            Assert.NotNull(cardResponse);
-
-            // Activate card
-            var cardTransitionRequest = new Card_transition_request
-            {
-                Card_token = cardResponse.Token,
-                State = Card_transition_requestState.ACTIVE,
-                Channel = Card_transition_requestChannel.API,
-                Reason_code = Card_transition_requestReason_code._00
-            };
-            var cardTransitionResponse = await client.CardtransitionsPostAsync(cardTransitionRequest);
-            Assert.NotNull(cardTransitionResponse);
-            Assert.Equal(Card_transition_responseState.ACTIVE, cardTransitionResponse.State);
+            // Create / activate card
+            var cardResponse = await CardTests.CreateCard(cardHolderResponse.Token, cardProductResponse.Token);
+            //await CardTests.ActivateCard(cardResponse.Token);
 
             // Fund user account
             const double fundingAmount = 1000;
-            var gpaRequest = new Gpa_request
-            {
-                User_token = cardHolderResponse.Token,
-                Amount = fundingAmount,
-                Currency_code = "USD",
-                Funding_source_token = programFundingSourceResponse.Token
-            };
-            var gpaResponse = await client.GpaordersPostAsync(gpaRequest);
-            Assert.NotNull(gpaResponse);
-            var balances1 = await client.BalancesAsync(cardHolderResponse.Token);
-            Assert.Equal(fundingAmount, balances1.Gpa.Available_balance);
+            await GpaOrderHelper.FundUserAccount(cardHolderResponse.Token, programFundingSourceResponse.Token, fundingAmount);
 
             // Add velocity control
             const double velocityControlAmount = 10;
