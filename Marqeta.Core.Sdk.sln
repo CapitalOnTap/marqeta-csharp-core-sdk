@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29001.49
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{C3BAFE9B-D31A-4977-A981-CC67E30D0783}") = "Marqeta.Core.Sdk", "Marqeta.Core.Sdk\Marqeta.Core.Sdk.csproj", "{CF11668E-BFA9-4165-9CD6-E8DAD44D1FBA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Marqeta.Core.Sdk", "Marqeta.Core.Sdk\Marqeta.Core.Sdk.csproj", "{CF11668E-BFA9-4165-9CD6-E8DAD44D1FBA}"
 EndProject
-Project("{C3BAFE9B-D31A-4977-A981-CC67E30D0783}") = "Marqeta.Core.Sdk.Tests", "Marqeta.Core.Sdk.Tests\Marqeta.Core.Sdk.Tests.csproj", "{AE51C062-57FC-4908-B64E-DDD9976562D9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Marqeta.Core.Sdk.Tests", "Marqeta.Core.Sdk.Tests\Marqeta.Core.Sdk.Tests.csproj", "{AE51C062-57FC-4908-B64E-DDD9976562D9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
