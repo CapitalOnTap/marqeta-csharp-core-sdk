@@ -13,7 +13,7 @@ namespace Marqeta.Core.Sdk
         /// <param name="userName"></param>
         /// <param name="password"></param>
         public MarqetaClient(string baseUrl, string userName, string password)
-        : this(CreateHttpClient(baseUrl,userName,password))
+        : this(baseUrl, CreateHttpClient(baseUrl, userName, password))
         {
         }
 
