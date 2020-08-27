@@ -9,7 +9,7 @@
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="8.1.1" />
     <PackageReference Include="RestSharp" Version="106.11.4" />
-    <PackageReference Include="Marqeta.Core.Abstractions" Version="0.1.52" />
+    <PackageReference Include="Marqeta.Core.Abstractions" Version="0.1.53" />
   </ItemGroup>
 
 </Project>
