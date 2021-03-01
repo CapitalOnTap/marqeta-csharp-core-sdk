@@ -473,7 +473,7 @@ namespace Marqeta.Core.Sdk
         /// <param name="sort_by">Sort order</param>
         /// <returns>Success</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<CardListResponse_paginated_response> CardsUserAsync(string token, int? count = null, int? start_index = null, string fields = null, string sort_by = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CardListResponse> CardsUserAsync(string token, int? count = null, int? start_index = null, string fields = null, string sort_by = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
     
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>Returns a specific card - PAN visible</summary>
@@ -867,7 +867,7 @@ namespace Marqeta.Core.Sdk
         /// <param name="sort_by">Sort order</param>
         /// <returns>Success</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<FeeListResponse_paginated_response> FeesGetAsync(int? count = null, int? start_index = null, string fields = null, string sort_by = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<FeeListResponse> FeesGetAsync(int? count = null, int? start_index = null, string fields = null, string sort_by = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
     
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>Creates a fee</summary>
@@ -1007,7 +1007,7 @@ namespace Marqeta.Core.Sdk
         /// <param name="sort_by">Sort order</param>
         /// <returns>Success</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<ACHListResponse_paginated_response> FundingsourcesProgramAchGetAsync(int? count = null, int? start_index = null, string fields = null, string sort_by = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ACHListResponse> FundingsourcesProgramAchGetAsync(int? count = null, int? start_index = null, string fields = null, string sort_by = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
     
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>Registers an ACH funding source for a program</summary>
@@ -1413,7 +1413,7 @@ namespace Marqeta.Core.Sdk
         /// <param name="body">Type</param>
         /// <returns>Success</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<ProgramReserveTransactionListResponse_paginated_response> ProgramreserveTransactionsGetAsync(int? count = null, int? start_index = null, string sort_by = null, string body = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ProgramReserveTransactionListResponse> ProgramreserveTransactionsGetAsync(int? count = null, int? start_index = null, string sort_by = null, string body = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
     
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>Credits or debits the program reserve account</summary>
@@ -1534,7 +1534,7 @@ namespace Marqeta.Core.Sdk
         /// <param name="sort_by">Sort order</param>
         /// <returns>Success</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<RealTimeFeeGroupListResponse_paginated_response> RealtimefeegroupsGetAsync(int? count = null, int? start_index = null, string fields = null, string sort_by = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<RealTimeFeeGroupListResponse> RealtimefeegroupsGetAsync(int? count = null, int? start_index = null, string fields = null, string sort_by = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
     
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>Creates a real-time fee group</summary>
@@ -1697,7 +1697,7 @@ namespace Marqeta.Core.Sdk
         /// <param name="state">Comma-delimited list of transaction states to display e.g. PENDING | CLEARED | COMPLETION | DECLINED | ERROR | ALL</param>
         /// <returns>Success</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<TransactionModelListResponse_paginated_response> TransactionsGetAsync(int? count = null, int? start_index = null, string fields = null, string sort_by = null, string start_date = null, string end_date = null, string type = null, string user_token = null, string business_token = null, string acting_user_token = null, string card_token = null, string merchant_token = null, string campaign_token = null, string state = null, string version = null, bool? verbose = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<TransactionModelListResponse> TransactionsGetAsync(int? count = null, int? start_index = null, string fields = null, string sort_by = null, string start_date = null, string end_date = null, string type = null, string user_token = null, string business_token = null, string acting_user_token = null, string card_token = null, string merchant_token = null, string campaign_token = null, string state = null, string version = null, bool? verbose = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
     
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>Returns transactions for a specific funding account</summary>
@@ -1712,7 +1712,7 @@ namespace Marqeta.Core.Sdk
         /// <param name="polarity">Type of transactions to retrieve: CREDIT or DEBIT</param>
         /// <returns>Success</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<TransactionModelListResponse_paginated_response> TransactionsFundingsourceAsync(string funding_source_token, int? count = null, int? start_index = null, string fields = null, string sort_by = null, string start_date = null, string end_date = null, string type = null, Polarity? polarity = null, string version = null, bool? verbose = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<TransactionModelListResponse> TransactionsFundingsourceAsync(string funding_source_token, int? count = null, int? start_index = null, string fields = null, string sort_by = null, string start_date = null, string end_date = null, string type = null, Polarity? polarity = null, string version = null, bool? verbose = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
     
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>Returns a transaction</summary>
@@ -1735,7 +1735,7 @@ namespace Marqeta.Core.Sdk
         /// <param name="state">Comma-delimited list of transaction states to display e.g. PENDING | CLEARED | COMPLETION | ALL</param>
         /// <returns>Success</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<TransactionModelListResponse_paginated_response> TransactionsRelatedAsync(string token, int? count = null, int? start_index = null, string fields = null, string sort_by = null, string start_date = null, string end_date = null, string type = null, string state = null, string version = null, bool? verbose = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<TransactionModelListResponse> TransactionsRelatedAsync(string token, int? count = null, int? start_index = null, string fields = null, string sort_by = null, string start_date = null, string end_date = null, string type = null, string state = null, string version = null, bool? verbose = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
     
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>Lists all users</summary>
@@ -1959,7 +1959,7 @@ namespace Marqeta.Core.Sdk
         /// <param name="sort_by">Field by which to sort the returned items. Use any field in the model, or system fields lastModifiedTime or createdTime.</param>
         /// <returns>Success</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<VelocityControlBalanceListResponse_paginated_response> VelocitycontrolsUserAvailableAsync(string user_token, int? count = null, int? start_index = null, string fields = null, string sort_by = null, string force_dto = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<VelocityControlBalanceListResponse> VelocitycontrolsUserAvailableAsync(string user_token, int? count = null, int? start_index = null, string fields = null, string sort_by = null, string force_dto = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
     
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>Returns a specific velocity control</summary>
@@ -1986,7 +1986,7 @@ namespace Marqeta.Core.Sdk
         /// <param name="sort_by">Sort order</param>
         /// <returns>Success</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<WebhookResponseModelListResponse_paginated_response> WebhooksGetAsync(bool? active = null, int? count = null, int? start_index = null, string fields = null, string sort_by = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<WebhookResponseModelListResponse> WebhooksGetAsync(bool? active = null, int? count = null, int? start_index = null, string fields = null, string sort_by = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
     
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>Creates a webhook configuration</summary>
@@ -7245,7 +7245,7 @@ namespace Marqeta.Core.Sdk
         /// <param name="sort_by">Sort order</param>
         /// <returns>Success</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public async System.Threading.Tasks.Task<CardListResponse_paginated_response> CardsUserAsync(string token, int? count = null, int? start_index = null, string fields = null, string sort_by = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CardListResponse> CardsUserAsync(string token, int? count = null, int? start_index = null, string fields = null, string sort_by = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (token == null)
                 throw new System.ArgumentNullException("token");
@@ -7303,7 +7303,7 @@ namespace Marqeta.Core.Sdk
                         var status_ = (int)response_.StatusCode;
                         if (status_ == 200)
                         {
-                            var objectResponse_ = await ReadObjectResponseAsync<CardListResponse_paginated_response>(response_, headers_, cancellationToken).ConfigureAwait(false);
+                            var objectResponse_ = await ReadObjectResponseAsync<CardListResponse>(response_, headers_, cancellationToken).ConfigureAwait(false);
                             if (objectResponse_.Object == null)
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
@@ -11944,7 +11944,7 @@ namespace Marqeta.Core.Sdk
         /// <param name="sort_by">Sort order</param>
         /// <returns>Success</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public async System.Threading.Tasks.Task<FeeListResponse_paginated_response> FeesGetAsync(int? count = null, int? start_index = null, string fields = null, string sort_by = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<FeeListResponse> FeesGetAsync(int? count = null, int? start_index = null, string fields = null, string sort_by = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             var urlBuilder_ = new System.Text.StringBuilder();
             urlBuilder_.Append(BaseUrl != null ? BaseUrl.TrimEnd('/') : "").Append("/fees?");
@@ -11998,7 +11998,7 @@ namespace Marqeta.Core.Sdk
                         var status_ = (int)response_.StatusCode;
                         if (status_ == 200)
                         {
-                            var objectResponse_ = await ReadObjectResponseAsync<FeeListResponse_paginated_response>(response_, headers_, cancellationToken).ConfigureAwait(false);
+                            var objectResponse_ = await ReadObjectResponseAsync<FeeListResponse>(response_, headers_, cancellationToken).ConfigureAwait(false);
                             if (objectResponse_.Object == null)
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
@@ -13763,7 +13763,7 @@ namespace Marqeta.Core.Sdk
         /// <param name="sort_by">Sort order</param>
         /// <returns>Success</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public async System.Threading.Tasks.Task<ACHListResponse_paginated_response> FundingsourcesProgramAchGetAsync(int? count = null, int? start_index = null, string fields = null, string sort_by = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<ACHListResponse> FundingsourcesProgramAchGetAsync(int? count = null, int? start_index = null, string fields = null, string sort_by = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             var urlBuilder_ = new System.Text.StringBuilder();
             urlBuilder_.Append(BaseUrl != null ? BaseUrl.TrimEnd('/') : "").Append("/fundingsources/program/ach?");
@@ -13817,7 +13817,7 @@ namespace Marqeta.Core.Sdk
                         var status_ = (int)response_.StatusCode;
                         if (status_ == 200)
                         {
-                            var objectResponse_ = await ReadObjectResponseAsync<ACHListResponse_paginated_response>(response_, headers_, cancellationToken).ConfigureAwait(false);
+                            var objectResponse_ = await ReadObjectResponseAsync<ACHListResponse>(response_, headers_, cancellationToken).ConfigureAwait(false);
                             if (objectResponse_.Object == null)
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
@@ -18669,7 +18669,7 @@ namespace Marqeta.Core.Sdk
         /// <param name="body">Type</param>
         /// <returns>Success</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public async System.Threading.Tasks.Task<ProgramReserveTransactionListResponse_paginated_response> ProgramreserveTransactionsGetAsync(int? count = null, int? start_index = null, string sort_by = null, string body = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<ProgramReserveTransactionListResponse> ProgramreserveTransactionsGetAsync(int? count = null, int? start_index = null, string sort_by = null, string body = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             var urlBuilder_ = new System.Text.StringBuilder();
             urlBuilder_.Append(BaseUrl != null ? BaseUrl.TrimEnd('/') : "").Append("/programreserve/transactions?");
@@ -18722,7 +18722,7 @@ namespace Marqeta.Core.Sdk
                         var status_ = (int)response_.StatusCode;
                         if (status_ == 200)
                         {
-                            var objectResponse_ = await ReadObjectResponseAsync<ProgramReserveTransactionListResponse_paginated_response>(response_, headers_, cancellationToken).ConfigureAwait(false);
+                            var objectResponse_ = await ReadObjectResponseAsync<ProgramReserveTransactionListResponse>(response_, headers_, cancellationToken).ConfigureAwait(false);
                             if (objectResponse_.Object == null)
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
@@ -20132,7 +20132,7 @@ namespace Marqeta.Core.Sdk
         /// <param name="sort_by">Sort order</param>
         /// <returns>Success</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public async System.Threading.Tasks.Task<RealTimeFeeGroupListResponse_paginated_response> RealtimefeegroupsGetAsync(int? count = null, int? start_index = null, string fields = null, string sort_by = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<RealTimeFeeGroupListResponse> RealtimefeegroupsGetAsync(int? count = null, int? start_index = null, string fields = null, string sort_by = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             var urlBuilder_ = new System.Text.StringBuilder();
             urlBuilder_.Append(BaseUrl != null ? BaseUrl.TrimEnd('/') : "").Append("/realtimefeegroups?");
@@ -20186,7 +20186,7 @@ namespace Marqeta.Core.Sdk
                         var status_ = (int)response_.StatusCode;
                         if (status_ == 200)
                         {
-                            var objectResponse_ = await ReadObjectResponseAsync<RealTimeFeeGroupListResponse_paginated_response>(response_, headers_, cancellationToken).ConfigureAwait(false);
+                            var objectResponse_ = await ReadObjectResponseAsync<RealTimeFeeGroupListResponse>(response_, headers_, cancellationToken).ConfigureAwait(false);
                             if (objectResponse_.Object == null)
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
@@ -22098,7 +22098,7 @@ namespace Marqeta.Core.Sdk
         /// <param name="state">Comma-delimited list of transaction states to display e.g. PENDING | CLEARED | COMPLETION | DECLINED | ERROR | ALL</param>
         /// <returns>Success</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public async System.Threading.Tasks.Task<TransactionModelListResponse_paginated_response> TransactionsGetAsync(int? count = null, int? start_index = null, string fields = null, string sort_by = null, string start_date = null, string end_date = null, string type = null, string user_token = null, string business_token = null, string acting_user_token = null, string card_token = null, string merchant_token = null, string campaign_token = null, string state = null, string version = null, bool? verbose = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<TransactionModelListResponse> TransactionsGetAsync(int? count = null, int? start_index = null, string fields = null, string sort_by = null, string start_date = null, string end_date = null, string type = null, string user_token = null, string business_token = null, string acting_user_token = null, string card_token = null, string merchant_token = null, string campaign_token = null, string state = null, string version = null, bool? verbose = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             var urlBuilder_ = new System.Text.StringBuilder();
             urlBuilder_.Append(BaseUrl != null ? BaseUrl.TrimEnd('/') : "").Append("/transactions?");
@@ -22200,7 +22200,7 @@ namespace Marqeta.Core.Sdk
                         var status_ = (int)response_.StatusCode;
                         if (status_ == 200)
                         {
-                            var objectResponse_ = await ReadObjectResponseAsync<TransactionModelListResponse_paginated_response>(response_, headers_, cancellationToken).ConfigureAwait(false);
+                            var objectResponse_ = await ReadObjectResponseAsync<TransactionModelListResponse>(response_, headers_, cancellationToken).ConfigureAwait(false);
                             if (objectResponse_.Object == null)
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
@@ -22252,7 +22252,7 @@ namespace Marqeta.Core.Sdk
         /// <param name="polarity">Type of transactions to retrieve: CREDIT or DEBIT</param>
         /// <returns>Success</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public async System.Threading.Tasks.Task<TransactionModelListResponse_paginated_response> TransactionsFundingsourceAsync(string funding_source_token, int? count = null, int? start_index = null, string fields = null, string sort_by = null, string start_date = null, string end_date = null, string type = null, Polarity? polarity = null, string version = null, bool? verbose = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<TransactionModelListResponse> TransactionsFundingsourceAsync(string funding_source_token, int? count = null, int? start_index = null, string fields = null, string sort_by = null, string start_date = null, string end_date = null, string type = null, Polarity? polarity = null, string version = null, bool? verbose = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (funding_source_token == null)
                 throw new System.ArgumentNullException("funding_source_token");
@@ -22334,7 +22334,7 @@ namespace Marqeta.Core.Sdk
                         var status_ = (int)response_.StatusCode;
                         if (status_ == 200)
                         {
-                            var objectResponse_ = await ReadObjectResponseAsync<TransactionModelListResponse_paginated_response>(response_, headers_, cancellationToken).ConfigureAwait(false);
+                            var objectResponse_ = await ReadObjectResponseAsync<TransactionModelListResponse>(response_, headers_, cancellationToken).ConfigureAwait(false);
                             if (objectResponse_.Object == null)
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
@@ -22491,7 +22491,7 @@ namespace Marqeta.Core.Sdk
         /// <param name="state">Comma-delimited list of transaction states to display e.g. PENDING | CLEARED | COMPLETION | ALL</param>
         /// <returns>Success</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public async System.Threading.Tasks.Task<TransactionModelListResponse_paginated_response> TransactionsRelatedAsync(string token, int? count = null, int? start_index = null, string fields = null, string sort_by = null, string start_date = null, string end_date = null, string type = null, string state = null, string version = null, bool? verbose = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<TransactionModelListResponse> TransactionsRelatedAsync(string token, int? count = null, int? start_index = null, string fields = null, string sort_by = null, string start_date = null, string end_date = null, string type = null, string state = null, string version = null, bool? verbose = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (token == null)
                 throw new System.ArgumentNullException("token");
@@ -22573,7 +22573,7 @@ namespace Marqeta.Core.Sdk
                         var status_ = (int)response_.StatusCode;
                         if (status_ == 200)
                         {
-                            var objectResponse_ = await ReadObjectResponseAsync<TransactionModelListResponse_paginated_response>(response_, headers_, cancellationToken).ConfigureAwait(false);
+                            var objectResponse_ = await ReadObjectResponseAsync<TransactionModelListResponse>(response_, headers_, cancellationToken).ConfigureAwait(false);
                             if (objectResponse_.Object == null)
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
@@ -25150,7 +25150,7 @@ namespace Marqeta.Core.Sdk
         /// <param name="sort_by">Field by which to sort the returned items. Use any field in the model, or system fields lastModifiedTime or createdTime.</param>
         /// <returns>Success</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public async System.Threading.Tasks.Task<VelocityControlBalanceListResponse_paginated_response> VelocitycontrolsUserAvailableAsync(string user_token, int? count = null, int? start_index = null, string fields = null, string sort_by = null, string force_dto = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<VelocityControlBalanceListResponse> VelocitycontrolsUserAvailableAsync(string user_token, int? count = null, int? start_index = null, string fields = null, string sort_by = null, string force_dto = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (user_token == null)
                 throw new System.ArgumentNullException("user_token");
@@ -25212,7 +25212,7 @@ namespace Marqeta.Core.Sdk
                         var status_ = (int)response_.StatusCode;
                         if (status_ == 200)
                         {
-                            var objectResponse_ = await ReadObjectResponseAsync<VelocityControlBalanceListResponse_paginated_response>(response_, headers_, cancellationToken).ConfigureAwait(false);
+                            var objectResponse_ = await ReadObjectResponseAsync<VelocityControlBalanceListResponse>(response_, headers_, cancellationToken).ConfigureAwait(false);
                             if (objectResponse_.Object == null)
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
@@ -25449,7 +25449,7 @@ namespace Marqeta.Core.Sdk
         /// <param name="sort_by">Sort order</param>
         /// <returns>Success</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public async System.Threading.Tasks.Task<WebhookResponseModelListResponse_paginated_response> WebhooksGetAsync(bool? active = null, int? count = null, int? start_index = null, string fields = null, string sort_by = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<WebhookResponseModelListResponse> WebhooksGetAsync(bool? active = null, int? count = null, int? start_index = null, string fields = null, string sort_by = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             var urlBuilder_ = new System.Text.StringBuilder();
             urlBuilder_.Append(BaseUrl != null ? BaseUrl.TrimEnd('/') : "").Append("/webhooks?");
@@ -25507,7 +25507,7 @@ namespace Marqeta.Core.Sdk
                         var status_ = (int)response_.StatusCode;
                         if (status_ == 200)
                         {
-                            var objectResponse_ = await ReadObjectResponseAsync<WebhookResponseModelListResponse_paginated_response>(response_, headers_, cancellationToken).ConfigureAwait(false);
+                            var objectResponse_ = await ReadObjectResponseAsync<WebhookResponseModelListResponse>(response_, headers_, cancellationToken).ConfigureAwait(false);
                             if (objectResponse_.Object == null)
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
