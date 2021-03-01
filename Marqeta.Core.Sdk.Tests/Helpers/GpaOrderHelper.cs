@@ -13,7 +13,7 @@ namespace Marqeta.Core.Sdk.Tests.Helpers
             var client = ClientFactory.GetMarqetaClient();
 
             // Check balance before funding
-            var balances1 = await client.BalancesAsync(userToken);
+            var balances1 = await client.BalancesGetAsync(userToken);
             Assert.NotNull(balances1);
 
             // Fund user account
@@ -28,7 +28,7 @@ namespace Marqeta.Core.Sdk.Tests.Helpers
             Assert.NotNull(gpaResponse);
 
             // Ensure funds have been added
-            var balances2 = await client.BalancesAsync(userToken);
+            var balances2 = await client.BalancesGetAsync(userToken);
             Assert.NotNull(balances2);
             Assert.Equal(balances1.Gpa.Available_balance + fundingAmount, balances2.Gpa.Available_balance);
 
