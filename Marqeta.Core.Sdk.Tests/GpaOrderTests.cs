@@ -68,7 +68,7 @@ namespace Marqeta.Core.Sdk.Tests
             Assert.NotNull(simulateClearingResponseModel);
             Assert.Equal(Transaction_modelState.COMPLETION, simulateClearingResponseModel.Transaction.State);
 
-            var balance2 = await client.BalancesAsync(cardHolderResponse.Token);
+            var balance2 = await client.BalancesGetAsync(cardHolderResponse.Token);
             Assert.Equal(fundingAmount - authRequest1.Amount, balance2.Gpa.Available_balance);
 
             // Transact 2 - This should be declined
