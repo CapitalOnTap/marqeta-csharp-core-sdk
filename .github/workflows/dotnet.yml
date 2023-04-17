@@ -43,7 +43,7 @@ jobs:
     - name: Restore dependencies
       run: dotnet restore
     - name: Build
-      run: dotnet build --no-restore /p:Version='${{ env.GitVersion_nuGetVersion }}'
+      run: dotnet build --no-restore /p:Version='${{ env.GitVersion_NuGetVersion }}'
     - name: Test
       run: dotnet test --no-build --verbosity normal
   
