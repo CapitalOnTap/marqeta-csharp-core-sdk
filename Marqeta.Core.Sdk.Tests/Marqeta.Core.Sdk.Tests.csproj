@@ -25,13 +25,4 @@
     <ProjectReference Include="..\Marqeta.Core.Sdk\Marqeta.Core.Sdk.csproj" />
   </ItemGroup>
 
-  <!--
-    TODO - Replace hard reference with NuGet package
-  -->
-  <ItemGroup>
-    <Reference Include="Marqeta.Core.Abstractions">
-      <HintPath>..\..\marqeta-csharp-core-abstractions\src\Marqeta.Core.Abstractions\bin\Debug\netstandard2.0\Marqeta.Core.Abstractions.dll</HintPath>
-    </Reference>
-  </ItemGroup>
-
 </Project>
