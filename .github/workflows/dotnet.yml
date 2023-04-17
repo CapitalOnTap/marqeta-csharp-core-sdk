@@ -16,7 +16,7 @@ on:
 env:
   DOTNET_SKIP_FIRST_TIME_EXPERIENCE: 1
   DOTNET_NOLOGO: true
-  NuGetDirectory: ${{ github.workspace}}/nuget
+  NuGetDirectory: ${{ github.workspace }}/nuget
 
 jobs:
   build:
@@ -25,6 +25,15 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
+    - name: Install GitVersion
+      uses: gittools/actions/gitversion/setup@v0
+      with:
+        versionSpec: '5.x'        
+    - name: Determine Version
+      uses: gittools/actions/gitversion/execute@v0
+      with:
+        useConfigFile: true
+        configFilePath: GitVersion.yml
     - name: Setup .NET
       uses: actions/setup-dotnet@v3
       with:
@@ -32,7 +41,7 @@ jobs:
     - name: Restore dependencies
       run: dotnet restore
     - name: Build
-      run: dotnet build --no-restore
+      run: dotnet build --no-restore /p:Version='${{ env.GitVersion_nuGetVersion }}'
     - name: Test
       run: dotnet test --no-build --verbosity normal
   
@@ -48,7 +57,7 @@ jobs:
       with:
         dotnet-version: '3.1.x'
     - name: Pack
-      run: dotnet pack --configuration Release --output ${{ env.NuGetDirectory }}
+      run: dotnet pack --configuration Release --no-build /p:Version='${{ env.GitVersion_nuGetVersion }}' --output ${{ env.NuGetDirectory }}
     - name: Push
       run: dotnet push ${{ env.NuGetDirectory }}/*.nupkg
 
