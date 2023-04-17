@@ -46,6 +46,10 @@ jobs:
       run: dotnet build --no-restore /p:Version='${{ env.GitVersion_NuGetVersion }}'
     - name: Test
       run: dotnet test --no-build --verbosity normal
+      env:
+        Marqeta__BaseUrl: ${{ secrets.MARQETA__BASEURL }}
+        Marqeta__UserName: ${{ secrets.MARQETA__USERNAME }}
+        Marqeta__Password: ${{ secrets.MARQETA__PASSWORD }}
   
   publish: 
     # Publish only when creating a GitHub Release
