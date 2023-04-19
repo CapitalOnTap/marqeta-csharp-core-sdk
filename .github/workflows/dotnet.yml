@@ -52,10 +52,10 @@ jobs:
         Marqeta__UserName: ${{ secrets.MARQETA__USERNAME }}
         Marqeta__Password: ${{ secrets.MARQETA__PASSWORD }}
     - name: Create Tag (master only)
-      if: env.TagRelease
+      if: env.TagRelease == 'true'
       run: git tag ${{ env.GitVersion_SemVer }}
     - name: Push Tag (master only)
-      if: env.TagRelease
+      if: env.TagRelease == 'true'
       run: git push origin ${{ env.GitVersion_SemVer }}
         
   
