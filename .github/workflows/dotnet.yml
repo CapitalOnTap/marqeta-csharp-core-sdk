@@ -23,7 +23,8 @@ jobs:
   BuildAndTest:
 
     runs-on: ubuntu-latest
-
+    outputs: 
+      calculatedVersion: ${{ steps.gitversion.outputs.nuGetVersion }}
     steps:
     - uses: actions/checkout@v3
       with:
@@ -33,6 +34,7 @@ jobs:
       with:
         versionSpec: '5.x'        
     - name: Determine Version
+      id: gitversion
       uses: gittools/actions/gitversion/execute@v0
       with:
         useConfigFile: true
@@ -73,7 +75,7 @@ jobs:
       with:
         dotnet-version: '3.1.x'
     - name: Pack
-      run: dotnet pack --configuration Release /p:Version='${{ env.GitVersion_NuGetVersion }}' --include-symbols --output ${{ env.NuGetDirectory }}
+      run: dotnet pack --configuration Release /p:Version='${{ needs.BuildAndTest.outputs.calculatedVersion }}' --include-symbols --output ${{ env.NuGetDirectory }}
     - name: Push
       run: dotnet push ${{ env.NuGetDirectory }}/*.nupkg
 
