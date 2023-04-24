@@ -40,7 +40,7 @@ namespace Marqeta.Core.Sdk.Tests.MarqetaClientTests
             {
                 Amount_limit = velocityControlAmount,
                 Velocity_window = Velocity_control_requestVelocity_window.LIFETIME,
-                Currency_code = "GBP",
+                Currency_code = "USD",
                 Association = new Spend_control_association { User_token = cardHolderResponse.Token },
             };
             var vcResponse = await client.VelocitycontrolsPostAsync(velocityControlRequest);
@@ -110,7 +110,7 @@ namespace Marqeta.Core.Sdk.Tests.MarqetaClientTests
             {
                 Amount_limit = velocityControlAmount,
                 Velocity_window = Velocity_control_requestVelocity_window.LIFETIME,
-                Currency_code = "GBP",
+                Currency_code = "USD",
                 Association = new Spend_control_association { User_token = cardHolderResponse.Token },
             };
             var vcResponse = await client.VelocitycontrolsPostAsync(velocityControlRequest);

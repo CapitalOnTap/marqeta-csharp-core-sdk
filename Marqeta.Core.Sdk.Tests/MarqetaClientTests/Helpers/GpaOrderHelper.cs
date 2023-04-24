@@ -20,7 +20,7 @@ namespace Marqeta.Core.Sdk.Tests.MarqetaClientTests.Helpers
             {
                 User_token = userToken,
                 Amount = fundingAmount,
-                Currency_code = "GBP",
+                Currency_code = "USD",
                 Funding_source_token = fundingSourceToken
             };
             var gpaResponse = await client.GpaordersPostAsync(gpaRequest);

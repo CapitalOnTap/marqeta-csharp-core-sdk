@@ -85,7 +85,7 @@ namespace Marqeta.Core.Sdk.Tests.MarqetaClientTests
             {
                 User_token = cardHolderResponse.Token,
                 Amount = 1000,
-                Currency_code = "GBP",
+                Currency_code = "USD",
                 Funding_source_token = programFundingSourceResponse.Token
             };
             var gpaResponse = await client.GpaordersPostAsync(gpaRequest);
@@ -178,7 +178,7 @@ namespace Marqeta.Core.Sdk.Tests.MarqetaClientTests
             {
                 User_token = cardHolderResponse.Token,
                 Amount = 1000,
-                Currency_code = "GBP",
+                Currency_code = "USD",
                 Funding_source_token = programFundingSourceResponse.Token
             };
             var gpaResponse = await client.GpaordersPostAsync(gpaRequest);
