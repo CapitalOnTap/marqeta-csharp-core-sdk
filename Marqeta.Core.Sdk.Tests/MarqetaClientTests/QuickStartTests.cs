@@ -31,6 +31,7 @@ namespace Marqeta.Core.Sdk.Tests.MarqetaClientTests
             {
                 Start_date = DateTimeOffset.Now.Date,
                 Name = fixture.Create<string>(),
+                Active = true,
                 Config = new Card_product_config
                 {
                     Fulfillment = new Card_product_fulfillment { Payment_instrument = Card_product_fulfillmentPayment_instrument.VIRTUAL_PAN },
@@ -124,6 +125,7 @@ namespace Marqeta.Core.Sdk.Tests.MarqetaClientTests
             {
                 Start_date = DateTimeOffset.Now.Date,
                 Name = fixture.Create<string>(),
+                Active = true,
                 Config = new Card_product_config
                 {
                     Fulfillment = new Card_product_fulfillment { Payment_instrument = Card_product_fulfillmentPayment_instrument.VIRTUAL_PAN },

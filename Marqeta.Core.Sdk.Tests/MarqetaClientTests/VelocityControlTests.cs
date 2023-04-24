@@ -28,7 +28,6 @@ namespace Marqeta.Core.Sdk.Tests.MarqetaClientTests
 
             // Create / activate card
             var cardResponse = await CardTests.CreateCard(cardHolderResponse.Token, cardProductResponse.Token);
-            //await CardTests.ActivateCard(cardResponse.Token);
 
             // Fund user account
             const double fundingAmount = 1000;
@@ -98,7 +97,6 @@ namespace Marqeta.Core.Sdk.Tests.MarqetaClientTests
 
             // Create / activate card
             var cardResponse = await CardTests.CreateCard(cardHolderResponse.Token, cardProductResponse.Token);
-            //await CardTests.ActivateCard(cardResponse.Token);
 
             // Fund user account
             const double fundingAmount = 1000;
