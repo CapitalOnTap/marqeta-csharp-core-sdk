@@ -1,18 +1,17 @@
 ﻿using System;
 using System.Threading.Tasks;
 using AutoFixture;
-using Marqeta.Core.Abstractions;
-using Marqeta.Core.Sdk.Tests.Factories;
+using Marqeta.Core.Sdk.Tests.MarqetaClientTests.Factories;
 using Xunit;
 
-namespace Marqeta.Core.Sdk.Tests.Helpers
+namespace Marqeta.Core.Sdk.Tests.MarqetaClientTests.Helpers
 {
     public static class CardProductHelper
     {
         internal static async Task<Card_product_response> CreateCardProduct()
         {
             // Get client / fixture
-            var client = ClientFactory.GetMarqetaClient();
+            var client = TestMarqetaClientFactory.Create();
             var fixture = new Fixture();
 
             // Create CardProduct

@@ -1,10 +1,9 @@
 ﻿using AutoFixture;
-using Marqeta.Core.Abstractions;
-using Marqeta.Core.Sdk.Tests.Factories;
-using Marqeta.Core.Sdk.Tests.Helpers;
+using Marqeta.Core.Sdk.Tests.MarqetaClientTests.Factories;
+using Marqeta.Core.Sdk.Tests.MarqetaClientTests.Helpers;
 using Xunit;
 
-namespace Marqeta.Core.Sdk.Tests
+namespace Marqeta.Core.Sdk.Tests.MarqetaClientTests
 {
     public class VelocityControlTests : BaseTests
     {
@@ -12,7 +11,7 @@ namespace Marqeta.Core.Sdk.Tests
         public async void Ensure_velocity_control_lifetime_is_honoured()
         {
             // Get client / fixture
-            var client = ClientFactory.GetMarqetaClient();
+            var client = TestMarqetaClientFactory.Create();
             var fixture = new Fixture();
 
             //
@@ -41,7 +40,7 @@ namespace Marqeta.Core.Sdk.Tests
             {
                 Amount_limit = velocityControlAmount,
                 Velocity_window = Velocity_control_requestVelocity_window.LIFETIME,
-                Currency_code = "USD",
+                Currency_code = "GBP",
                 Association = new Spend_control_association { User_token = cardHolderResponse.Token },
             };
             var vcResponse = await client.VelocitycontrolsPostAsync(velocityControlRequest);
@@ -67,7 +66,7 @@ namespace Marqeta.Core.Sdk.Tests
             Assert.NotNull(simulateClearingResponseModel);
             Assert.Equal(Transaction_modelState.COMPLETION, simulateClearingResponseModel.Transaction.State);
 
-            var balance2 = await client.BalancesGetAsync(cardHolderResponse.Token);
+            var balance2 = await client.BalancesAsync(cardHolderResponse.Token);
             Assert.Equal(fundingAmount - authRequest1.Amount, balance2.Gpa.Available_balance);
 
             // Transact 2 - This should be declined
@@ -82,7 +81,7 @@ namespace Marqeta.Core.Sdk.Tests
         public async void Ensure_resetting_velocity_control_allows()
         {
             // Get client / fixture
-            var client = ClientFactory.GetMarqetaClient();
+            var client = TestMarqetaClientFactory.Create();
             var fixture = new Fixture();
 
             //
@@ -111,7 +110,7 @@ namespace Marqeta.Core.Sdk.Tests
             {
                 Amount_limit = velocityControlAmount,
                 Velocity_window = Velocity_control_requestVelocity_window.LIFETIME,
-                Currency_code = "USD",
+                Currency_code = "GBP",
                 Association = new Spend_control_association { User_token = cardHolderResponse.Token },
             };
             var vcResponse = await client.VelocitycontrolsPostAsync(velocityControlRequest);
@@ -137,7 +136,7 @@ namespace Marqeta.Core.Sdk.Tests
             Assert.NotNull(simulateClearingResponseModel);
             Assert.Equal(Transaction_modelState.COMPLETION, simulateClearingResponseModel.Transaction.State);
 
-            var balance2 = await client.BalancesGetAsync(cardHolderResponse.Token);
+            var balance2 = await client.BalancesAsync(cardHolderResponse.Token);
             Assert.Equal(fundingAmount - authRequest1.Amount, balance2.Gpa.Available_balance);
 
             // Transact 2 - This should be declined

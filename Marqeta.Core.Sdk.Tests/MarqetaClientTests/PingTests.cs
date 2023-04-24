@@ -1,16 +1,15 @@
 ﻿using AutoFixture;
-using Marqeta.Core.Abstractions;
-using Marqeta.Core.Sdk.Tests.Factories;
+using Marqeta.Core.Sdk.Tests.MarqetaClientTests.Factories;
 using Xunit;
 
-namespace Marqeta.Core.Sdk.Tests
+namespace Marqeta.Core.Sdk.Tests.MarqetaClientTests
 {
     public class PingTests : BaseTests
     {
         [Fact]
         public async void PingGetAsync()
         {
-            var client = ClientFactory.GetMarqetaClient();
+            var client = TestMarqetaClientFactory.Create();
             var response = await client.PingGetAsync();
             Assert.NotNull(response);
             Assert.True(response.Success);
@@ -19,7 +18,7 @@ namespace Marqeta.Core.Sdk.Tests
         [Fact]
         public async void PingPostAsync()
         {
-            var client = ClientFactory.GetMarqetaClient();
+            var client = TestMarqetaClientFactory.Create();
             var fixture = new Fixture();
             var echoPingRequest = fixture.Create<Echo_ping_request>();
             var response = await client.PingPostAsync(echoPingRequest);
