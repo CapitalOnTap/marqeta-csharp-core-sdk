@@ -77,4 +77,4 @@ jobs:
     - name: Pack
       run: dotnet pack --configuration Release /p:Version='${{ needs.BuildAndTest.outputs.calculatedVersion }}' --include-symbols --output ${{ env.NuGetDirectory }}
     - name: Push
-      run: dotnet nuget push "${{ env.NuGetDirectory }}/*.nupkg"
+      run: dotnet nuget push "${{ env.NuGetDirectory }}/*.nupkg" --api-key "${{ secrets.NUGETAPIKEY }}" --source https://api.nuget.org/v3/index.json --skip-duplicate
