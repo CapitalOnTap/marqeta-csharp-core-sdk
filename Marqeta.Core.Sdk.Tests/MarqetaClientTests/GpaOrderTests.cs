@@ -1,11 +1,9 @@
-﻿using System.Threading.Tasks;
-using AutoFixture;
-using Marqeta.Core.Abstractions;
-using Marqeta.Core.Sdk.Tests.Factories;
-using Marqeta.Core.Sdk.Tests.Helpers;
+﻿using AutoFixture;
+using Marqeta.Core.Sdk.Tests.MarqetaClientTests.Factories;
+using Marqeta.Core.Sdk.Tests.MarqetaClientTests.Helpers;
 using Xunit;
 
-namespace Marqeta.Core.Sdk.Tests
+namespace Marqeta.Core.Sdk.Tests.MarqetaClientTests
 {
     public class GpaOrderTests : BaseTests
     {
@@ -13,7 +11,7 @@ namespace Marqeta.Core.Sdk.Tests
         public async void GpaordersPostAsync()
         {
             // Get client / fixture
-            var client = ClientFactory.GetMarqetaClient();
+            var client = TestMarqetaClientFactory.Create();
             var fixture = new Fixture();
 
             //
@@ -30,7 +28,6 @@ namespace Marqeta.Core.Sdk.Tests
 
             // Create / activate card
             var cardResponse = await CardTests.CreateCard(cardHolderResponse.Token, cardProductResponse.Token);
-            //await CardTests.ActivateCard(cardResponse.Token);
 
             // Fund user account
             const double fundingAmount = 1000;
@@ -68,7 +65,7 @@ namespace Marqeta.Core.Sdk.Tests
             Assert.NotNull(simulateClearingResponseModel);
             Assert.Equal(Transaction_modelState.COMPLETION, simulateClearingResponseModel.Transaction.State);
 
-            var balance2 = await client.BalancesGetAsync(cardHolderResponse.Token);
+            var balance2 = await client.BalancesAsync(cardHolderResponse.Token);
             Assert.Equal(fundingAmount - authRequest1.Amount, balance2.Gpa.Available_balance);
 
             // Transact 2 - This should be declined

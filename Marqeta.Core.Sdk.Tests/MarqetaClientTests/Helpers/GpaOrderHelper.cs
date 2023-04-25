@@ -1,19 +1,18 @@
 ﻿using System.Threading.Tasks;
-using Marqeta.Core.Abstractions;
-using Marqeta.Core.Sdk.Tests.Factories;
+using Marqeta.Core.Sdk.Tests.MarqetaClientTests.Factories;
 using Xunit;
 
-namespace Marqeta.Core.Sdk.Tests.Helpers
+namespace Marqeta.Core.Sdk.Tests.MarqetaClientTests.Helpers
 {
     public static class GpaOrderHelper
     {
         internal static async Task<Gpa_response> FundUserAccount(string userToken, string fundingSourceToken, double fundingAmount = 1000)
         {
             // Get client / fixture
-            var client = ClientFactory.GetMarqetaClient();
+            var client = TestMarqetaClientFactory.Create();
 
             // Check balance before funding
-            var balances1 = await client.BalancesGetAsync(userToken);
+            var balances1 = await client.BalancesAsync(userToken);
             Assert.NotNull(balances1);
 
             // Fund user account
@@ -28,7 +27,7 @@ namespace Marqeta.Core.Sdk.Tests.Helpers
             Assert.NotNull(gpaResponse);
 
             // Ensure funds have been added
-            var balances2 = await client.BalancesGetAsync(userToken);
+            var balances2 = await client.BalancesAsync(userToken);
             Assert.NotNull(balances2);
             Assert.Equal(balances1.Gpa.Available_balance + fundingAmount, balances2.Gpa.Available_balance);
 

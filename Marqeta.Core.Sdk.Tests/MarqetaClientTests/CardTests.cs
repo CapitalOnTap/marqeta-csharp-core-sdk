@@ -1,16 +1,15 @@
 ﻿using System.Threading.Tasks;
-using Marqeta.Core.Abstractions;
-using Marqeta.Core.Sdk.Tests.Factories;
+using Marqeta.Core.Sdk.Tests.MarqetaClientTests.Factories;
 using Xunit;
 
-namespace Marqeta.Core.Sdk.Tests
+namespace Marqeta.Core.Sdk.Tests.MarqetaClientTests
 {
     public class CardTests : BaseTests
     {
         internal static async Task<Card_transition_response> ActivateCard(string cardToken)
         {
             // Get client / fixture
-            var client = ClientFactory.GetMarqetaClient();
+            var client = TestMarqetaClientFactory.Create();
 
             var cardTransitionRequest = new Card_transition_request
             {
@@ -29,7 +28,7 @@ namespace Marqeta.Core.Sdk.Tests
         internal static async Task<Card_response> CreateCard(string userToken, string cardProductToken)
         {
             // Get client / fixture
-            var client = ClientFactory.GetMarqetaClient();
+            var client = TestMarqetaClientFactory.Create();
 
             // Create card
             var cardRequest = new Card_request

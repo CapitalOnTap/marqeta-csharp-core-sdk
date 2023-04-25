@@ -1,17 +1,16 @@
 ﻿using System.Threading.Tasks;
 using AutoFixture;
-using Marqeta.Core.Abstractions;
-using Marqeta.Core.Sdk.Tests.Factories;
+using Marqeta.Core.Sdk.Tests.MarqetaClientTests.Factories;
 using Xunit;
 
-namespace Marqeta.Core.Sdk.Tests.Helpers
+namespace Marqeta.Core.Sdk.Tests.MarqetaClientTests.Helpers
 {
     public static class ProgramFundingHelper
     {
         internal static async Task<Program_funding_source_response> CreateProgramFundingSource()
         {
             // Get client / fixture
-            var client = ClientFactory.GetMarqetaClient();
+            var client = TestMarqetaClientFactory.Create();
             var fixture = new Fixture();
 
             // Create a program funding sources

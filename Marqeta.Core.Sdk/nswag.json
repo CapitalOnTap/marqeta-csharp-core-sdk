@@ -1,5 +1,5 @@
 ﻿{
-  "runtime": "NetCore22",
+  "runtime": "WinX64",
   "defaultVariables": null,
   "documentGenerator": {
     "fromDocument": {
@@ -28,18 +28,16 @@
       "exposeJsonSerializerSettings": false,
       "clientClassAccessModifier": "public",
       "typeAccessModifier": "public",
-      "generateContractsOutput": false,
-      "contractsNamespace": null,
-      "contractsOutputFilePath": null,
+      "generateContractsOutput": true,
+      "contractsNamespace": "Marqeta.Core.Sdk",
+      "contractsOutputFilePath": "MarqetaContracts.g.cs",
       "parameterDateTimeFormat": "s",
       "generateUpdateJsonSerializerSettingsMethod": true,
       "serializeTypeInformation": false,
       "queryNullValue": "",
       "className": "{controller}MarqetaClient",
       "operationGenerationMode": "SingleClientFromPathSegments",
-      "additionalNamespaceUsages": [
-        "Marqeta.Core.Abstractions"
-      ],
+      "additionalNamespaceUsages": [],
       "additionalContractNamespaceUsages": [],
       "generateOptionalParameters": true,
       "generateJsonMethods": false,
@@ -53,7 +51,7 @@
       "generateResponseClasses": true,
       "responseClass": "SwaggerResponse",
       "namespace": "Marqeta.Core.Sdk",
-      "requiredPropertiesMustBeDefined": true,
+      "requiredPropertiesMustBeDefined": false,
       "dateType": "System.DateTimeOffset",
       "jsonConverters": null,
       "anyType": "object",
@@ -79,14 +77,14 @@
       "inlineNamedDictionaries": false,
       "inlineNamedTuples": true,
       "inlineNamedAny": false,
-      "generateDtoTypes": false,
+      "generateDtoTypes": true,
       "templateDirectory": null,
       "typeNameGeneratorType": null,
       "propertyNameGeneratorType": null,
       "enumNameGeneratorType": null,
       "serviceHost": null,
       "serviceSchemes": null,
-      "output": "Marqeta.Core.Sdk/Generated.cs"
+      "output": "MarqetaClient.g.cs"
     }
   }
 }

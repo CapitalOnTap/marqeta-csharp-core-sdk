@@ -1,10 +1,9 @@
 ﻿using System;
 using AutoFixture;
-using Marqeta.Core.Abstractions;
-using Marqeta.Core.Sdk.Tests.Factories;
+using Marqeta.Core.Sdk.Tests.MarqetaClientTests.Factories;
 using Xunit;
 
-namespace Marqeta.Core.Sdk.Tests
+namespace Marqeta.Core.Sdk.Tests.MarqetaClientTests
 {
     public class QuickStartTests : BaseTests
     {
@@ -19,7 +18,7 @@ namespace Marqeta.Core.Sdk.Tests
         public async void QuickStart()
         {
             // Get client / fixture
-            var client = ClientFactory.GetMarqetaClient();
+            var client = TestMarqetaClientFactory.Create();
             var fixture = new Fixture();
 
             //
@@ -32,6 +31,7 @@ namespace Marqeta.Core.Sdk.Tests
             {
                 Start_date = DateTimeOffset.Now.Date,
                 Name = fixture.Create<string>(),
+                Active = true,
                 Config = new Card_product_config
                 {
                     Fulfillment = new Card_product_fulfillment { Payment_instrument = Card_product_fulfillmentPayment_instrument.VIRTUAL_PAN },
@@ -112,7 +112,7 @@ namespace Marqeta.Core.Sdk.Tests
         public async void QuickStartWithWebhook()
         {
             // Get client / fixture
-            var client = ClientFactory.GetMarqetaClient();
+            var client = TestMarqetaClientFactory.Create();
             var fixture = new Fixture();
 
             //
@@ -125,6 +125,7 @@ namespace Marqeta.Core.Sdk.Tests
             {
                 Start_date = DateTimeOffset.Now.Date,
                 Name = fixture.Create<string>(),
+                Active = true,
                 Config = new Card_product_config
                 {
                     Fulfillment = new Card_product_fulfillment { Payment_instrument = Card_product_fulfillmentPayment_instrument.VIRTUAL_PAN },
