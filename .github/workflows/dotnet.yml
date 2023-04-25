@@ -77,5 +77,4 @@ jobs:
     - name: Pack
       run: dotnet pack --configuration Release /p:Version='${{ needs.BuildAndTest.outputs.calculatedVersion }}' --include-symbols --output ${{ env.NuGetDirectory }}
     - name: Push
-      run: dotnet push ${{ env.NuGetDirectory }}/*.nupkg
-
+      run: dotnet push "${{ env.NuGetDirectory }}/**/*.nupkg"
