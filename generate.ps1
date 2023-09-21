@@ -40,7 +40,7 @@ git clean -xdf src
 
 # Generator arguments
 $nswagArgs = @(
-    'run', '.\nswag.json'
+    'run', '.\Marqeta.Core.Sdk\nswag.json'
     , '/runtime:NetCore22'
 )
 Write-Verbose "Using `$nswagArgs: $($nswagArgs)"
