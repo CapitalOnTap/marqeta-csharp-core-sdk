@@ -21,7 +21,7 @@ env:
 
 jobs:
   build-and-test:
-
+    environment: production
     runs-on: ubuntu-latest
     outputs: 
       calculatedVersion: ${{ steps.gitversion.outputs.majorMinorPatch }}
@@ -68,6 +68,7 @@ jobs:
     if: github.event_name == 'release'
     runs-on: ubuntu-latest
     needs: [ build-and-test ]
+    environment: production
     steps:
     - uses: actions/checkout@v3
     - name: Setup .NET
