@@ -1,4 +1,5 @@
 ﻿using AutoFixture;
+using Marqeta.Core.Sdk.Models;
 using Marqeta.Core.Sdk.Tests.MarqetaClientTests.Factories;
 using Marqeta.Core.Sdk.Tests.MarqetaClientTests.Helpers;
 using Xunit;
@@ -37,12 +38,12 @@ namespace Marqeta.Core.Sdk.Tests.MarqetaClientTests
             const double velocityControlAmount = 10;
             var velocityControlRequest = new Velocity_control_request
             {
-                Amount_limit = velocityControlAmount,
-                Velocity_window = Velocity_control_requestVelocity_window.LIFETIME,
-                Currency_code = "USD",
-                Association = new Spend_control_association { User_token = cardHolderResponse.Token },
+                AmountLimit = velocityControlAmount,
+                VelocityWindow = Velocity_control_request_velocity_window.LIFETIME,
+                CurrencyCode = "USD",
+                Association = new Spend_control_association { UserToken = cardHolderResponse.Token },
             };
-            var vcResponse = await client.VelocitycontrolsPostAsync(velocityControlRequest);
+            var vcResponse = await client.Velocitycontrols.PostAsync(velocityControlRequest);
             Assert.NotNull(vcResponse);
 
             // Transact 1 - This should succeed
@@ -50,28 +51,28 @@ namespace Marqeta.Core.Sdk.Tests.MarqetaClientTests
             {
                 Amount = velocityControlAmount,
                 Mid = fixture.Create<string>(),
-                Card_token = cardResponse.Token,
+                CardToken = cardResponse.Token,
             };
-            var simulateResponse1 = await client.SimulateAuthorizationAsync(authRequest1);
+            var simulateResponse1 = await client.Simulate.Authorization.PostAsync(authRequest1);
             Assert.NotNull(simulateResponse1);
-            Assert.Equal(Transaction_modelState.PENDING, simulateResponse1.Transaction.State);
+            Assert.Equal(Transaction_model_state.PENDING, simulateResponse1.Transaction.State);
 
             var clearingModel = new ClearingModel
             {
                 Amount = authRequest1.Amount,
-                Original_transaction_token = simulateResponse1.Transaction.Token
+                OriginalTransactionToken = simulateResponse1.Transaction.Token
             };
-            var simulateClearingResponseModel = await client.SimulateClearingAsync(clearingModel);
+            var simulateClearingResponseModel = await client.Simulate.Clearing.PostAsync(clearingModel);
             Assert.NotNull(simulateClearingResponseModel);
-            Assert.Equal(Transaction_modelState.COMPLETION, simulateClearingResponseModel.Transaction.State);
+            Assert.Equal(Transaction_model_state.COMPLETION, simulateClearingResponseModel.Transaction.State);
 
-            var balance2 = await client.BalancesAsync(cardHolderResponse.Token);
-            Assert.Equal(fundingAmount - authRequest1.Amount, balance2.Gpa.Available_balance);
+            var balance2 = await client.Balances[cardHolderResponse.Token].GetAsync();
+            Assert.Equal(fundingAmount - authRequest1.Amount, balance2.Gpa.AvailableBalance);
 
             // Transact 2 - This should be declined
-            var simulateResponse2 = await client.SimulateAuthorizationAsync(authRequest1);
+            var simulateResponse2 = await client.Simulate.Authorization.PostAsync(authRequest1);
             Assert.NotNull(simulateResponse2);
-            Assert.Equal(Transaction_modelState.DECLINED, simulateResponse2.Transaction.State);
+            Assert.Equal(Transaction_model_state.DECLINED, simulateResponse2.Transaction.State);
             Assert.Equal("1834", simulateResponse2.Transaction.Response.Code);
             Assert.Equal("Exceeds withdrawal amount limit", simulateResponse2.Transaction.Response.Memo);
         }

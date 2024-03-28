@@ -1,5 +1,6 @@
 ﻿using System.Threading.Tasks;
 using AutoFixture;
+using Marqeta.Core.Sdk.Models;
 using Marqeta.Core.Sdk.Tests.MarqetaClientTests.Factories;
 using Xunit;
 
@@ -15,10 +16,11 @@ namespace Marqeta.Core.Sdk.Tests.MarqetaClientTests.Helpers
 
             // Create a program funding sources
             var programFundingSourceRequest = fixture.Build<Program_funding_source_request>()
+                .Without(pfsr => pfsr.AdditionalData)
                 .Without(pfsr => pfsr.Active)
                 .Without(pfsr => pfsr.Token)
                 .Create();
-            var programFundingSourceResponse = await client.FundingsourcesProgramPostAsync(programFundingSourceRequest);
+            var programFundingSourceResponse = await client.Fundingsources.Program.PostAsync(programFundingSourceRequest);
             Assert.NotNull(programFundingSourceResponse);
 
             // Return for use in other tests

@@ -10,7 +10,7 @@ namespace Marqeta.Core.Sdk.Tests.MarqetaClientTests
         public async void CardproductsGetAsync()
         {
             var client = TestMarqetaClientFactory.Create();
-            var response = await client.CardproductsGetAsync();
+            var response = await client.Cardproducts.GetAsync();
             Assert.NotNull(response);
             Assert.True(response.Count > 0);
         }

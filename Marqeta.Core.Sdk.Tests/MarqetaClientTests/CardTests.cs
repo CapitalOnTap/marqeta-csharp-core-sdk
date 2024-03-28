@@ -1,4 +1,5 @@
 ﻿using System.Threading.Tasks;
+using Marqeta.Core.Sdk.Models;
 using Marqeta.Core.Sdk.Tests.MarqetaClientTests.Factories;
 using Xunit;
 
@@ -13,14 +14,14 @@ namespace Marqeta.Core.Sdk.Tests.MarqetaClientTests
 
             var cardTransitionRequest = new Card_transition_request
             {
-                Card_token = cardToken,
-                State = Card_transition_requestState.ACTIVE,
-                Channel = Card_transition_requestChannel.API,
-                Reason_code = Card_transition_requestReason_code._00
+                CardToken = cardToken,
+                State = Card_transition_request_state.ACTIVE,
+                Channel = Card_transition_request_channel.API,
+                ReasonCode = Card_transition_request_reason_code.ZeroZero
             };
-            var response = await client.CardtransitionsPostAsync(cardTransitionRequest);
+            var response = await client.Cardtransitions.PostAsync(cardTransitionRequest);
             Assert.NotNull(response);
-            Assert.Equal(Card_transition_responseState.ACTIVE, response.State);
+            Assert.Equal(Card_transition_response_state.ACTIVE, response.State);
 
             return response;
         }
@@ -33,12 +34,12 @@ namespace Marqeta.Core.Sdk.Tests.MarqetaClientTests
             // Create card
             var cardRequest = new Card_request
             {
-                User_token = userToken,
-                Card_product_token = cardProductToken,
+                UserToken = userToken,
+                CardProductToken = cardProductToken,
             };
-            var response = await client.CardsPostAsync(cardRequest);
+            var response = await client.Cards.PostAsync(cardRequest);
             Assert.NotNull(response);
-            Assert.Equal(Card_responseState.ACTIVE, response.State);
+            Assert.Equal(Card_response_state.ACTIVE, response.State);
 
             return response;
         }
