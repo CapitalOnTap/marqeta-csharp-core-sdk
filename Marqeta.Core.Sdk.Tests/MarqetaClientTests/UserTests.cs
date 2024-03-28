@@ -1,4 +1,5 @@
 ﻿using System.Linq;
+using Marqeta.Core.Sdk.Models;
 using Marqeta.Core.Sdk.Tests.MarqetaClientTests.Factories;
 using Marqeta.Core.Sdk.Tests.MarqetaClientTests.Helpers;
 using Xunit;
@@ -11,7 +12,7 @@ namespace Marqeta.Core.Sdk.Tests.MarqetaClientTests
         public async void UsersGetAsync()
         {
             var client = TestMarqetaClientFactory.Create();
-            var response = await client.UsersGetAsync();
+            var response = await client.Users.GetAsync();
             Assert.NotNull(response);
             Assert.True(response.Count > 0);
         }
@@ -29,18 +30,18 @@ namespace Marqeta.Core.Sdk.Tests.MarqetaClientTests
 
             // Create parent
             var cardHolderModel1 = new Card_holder_model();
-            var response1 = await client.UsersPostAsync(cardHolderModel1);
+            var response1 = await client.Users.PostAsync(cardHolderModel1);
             Assert.NotNull(response1);
 
             // Create child
             var cardHolderModel2 = new Card_holder_model
             {
-                Parent_token = response1.Token,
-                Uses_parent_account = true,
+                ParentToken = response1.Token,
+                UsesParentAccount = true,
             };
-            var response2 = await client.UsersPostAsync(cardHolderModel2);
+            var response2 = await client.Users.PostAsync(cardHolderModel2);
             Assert.NotNull(response2);
-            Assert.Equal(response1.Token, response2.Parent_token);
+            Assert.Equal(response1.Token, response2.ParentToken);
         }
 
         [Fact]
@@ -50,21 +51,21 @@ namespace Marqeta.Core.Sdk.Tests.MarqetaClientTests
 
             // Create parent
             var cardHolderModel1 = new Card_holder_model();
-            var response1 = await client.UsersPostAsync(cardHolderModel1);
+            var response1 = await client.Users.PostAsync(cardHolderModel1);
             Assert.NotNull(response1);
 
             // Create child
             var cardHolderModel2 = new Card_holder_model
             {
-                Parent_token = response1.Token,
-                Uses_parent_account = true,
+                ParentToken = response1.Token,
+                UsesParentAccount = true,
             };
-            var response2 = await client.UsersPostAsync(cardHolderModel2);
+            var response2 = await client.Users.PostAsync(cardHolderModel2);
             Assert.NotNull(response2);
-            Assert.Equal(response1.Token, response2.Parent_token);
+            Assert.Equal(response1.Token, response2.ParentToken);
 
             // Get children
-            var response3 = await client.UsersChildrenAsync(response1.Token);
+            var response3 = await client.Users[response1.Token].Children.GetAsync();
             Assert.NotNull(response3);
             Assert.True(response3.Count > 0);
             var responseChild = response3.Data.First();
