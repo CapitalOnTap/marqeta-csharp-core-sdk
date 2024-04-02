@@ -218,6 +218,7 @@ module OpenApiHelpers =
             "billpayment.reversal" 
             "fee.charge.pending.refund"
             "transaction.unknown"
+            "address.verification"
         ]
 
         let typeEnum = openApiSchema.Properties["type"].Enum
