@@ -266,5 +266,7 @@ namespace Marqeta.Core.Sdk.Models {
         FeeChargePendingRefund,
         [EnumMember(Value = "transaction.unknown")]
         TransactionUnknown,
+        [EnumMember(Value = "address.verification")]
+        AddressVerification,
     }
 }
