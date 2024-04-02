@@ -1,0 +1,35 @@
+{
+  "descriptionHash": "74A3A5F13225840507E4CB5A3BE9D580CE05F723199D95ABCFFF6B4A7520637F79E6A1DC09B6798875A5DEF687463F6212D5F9A7E7D0EBB8585A2380BAD3E13B",
+  "descriptionLocation": "..\\CoreAPI.yaml",
+  "lockFileVersion": "1.0.0",
+  "kiotaVersion": "1.12.0",
+  "clientClassName": "MarqetaClient",
+  "clientNamespaceName": "Marqeta.Core.Sdk",
+  "language": "CSharp",
+  "usesBackingStore": false,
+  "excludeBackwardCompatible": true,
+  "includeAdditionalData": true,
+  "serializers": [
+    "Microsoft.Kiota.Serialization.Json.JsonSerializationWriterFactory",
+    "Microsoft.Kiota.Serialization.Text.TextSerializationWriterFactory",
+    "Microsoft.Kiota.Serialization.Form.FormSerializationWriterFactory",
+    "Microsoft.Kiota.Serialization.Multipart.MultipartSerializationWriterFactory"
+  ],
+  "deserializers": [
+    "Marqeta.Core.Sdk.Serialization.Text.TextHtmlParseNodeFactory",
+    "Marqeta.Core.Sdk.Serialization.Json.CustomJsonParseNodeFactory",
+    "Microsoft.Kiota.Serialization.Text.TextParseNodeFactory",
+    "Microsoft.Kiota.Serialization.Form.FormParseNodeFactory"
+  ],
+  "structuredMimeTypes": [
+    "application/json",
+    "text/plain;q=0.9",
+    "application/x-www-form-urlencoded;q=0.2",
+    "multipart/form-data;q=0.1"
+  ],
+  "includePatterns": [],
+  "excludePatterns": [
+    "/webhooks/{event_type}/{resource_token}"
+  ],
+  "disabledValidationRules": []
+}

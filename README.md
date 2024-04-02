@@ -10,6 +10,11 @@ Marqeta C# Software Development Kit
 
 For complete reference documentation, see the [Marqeta Core API Reference](https://www.marqeta.com/api/docs/WYDH6igAAL8FnF21/api-introduction).
 
+## Generating SDK
+
+Make sure dotnet SDK is installed first
+
+Run command `dotnet fsi GenerateSdkFromSourceUrl.fsx`
 ## Running tests
 
 To run tests locally, user secrets need to be configured to use your developer public sandbox instance.

@@ -1,24 +1,20 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <RootNamespace>Marqeta.Core.Sdk</RootNamespace>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <LangVersion>8</LangVersion>
+    <LangVersion>latestmajor</LangVersion>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="AutoMapper" Version="8.1.1" />
-    <PackageReference Include="Newtonsoft.Json" Version="13.0.2" />
-    <PackageReference Include="NSwag.MSBuild" Version="13.18.2">
-      <PrivateAssets>all</PrivateAssets>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-    </PackageReference>
-    <PackageReference Include="System.ComponentModel.Annotations" Version="4.7.0" />
-    <PackageReference Include="System.Diagnostics.Tools" Version="4.3.0" />
+    <PackageReference Include="Microsoft.Kiota.Abstractions" Version="1.8.1" />
+    <PackageReference Include="Microsoft.Kiota.Http.HttpClientLibrary" Version="1.3.8" />
+    <PackageReference Include="Microsoft.Kiota.Serialization.Form" Version="1.1.5" />
+    <PackageReference Include="Microsoft.Kiota.Serialization.Json" Version="1.2.0" />
+    <PackageReference Include="Microsoft.Kiota.Serialization.Multipart" Version="1.1.3" />
+    <PackageReference Include="Microsoft.Kiota.Serialization.Text" Version="1.1.4" />
   </ItemGroup>
-
-  <Target Name="NSwag" AfterTargets="Build">
-    <Exec Command="$(NSwagExe) run nswag.json /variables:Configuration=$(Configuration)" />
-  </Target>
 
 </Project>
