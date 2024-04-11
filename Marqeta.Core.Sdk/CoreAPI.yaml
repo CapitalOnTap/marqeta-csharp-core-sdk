@@ -30278,6 +30278,14 @@ components:
           type: string
           description: "Date and time when the user initiated the transaction, in UTC.\nFor example, when a merchant performed the original authorization for a refund."
           format: date-time
+        settlement_indicator:
+          enum:
+            - INTERNATIONAL_SETTLEMENT_SERVICE
+            - NATIONAL_NET_SETTLEMENT_SERVICE
+            - CLEARING_ONLY
+            - VISA_SELECTS_SETTLEMENT_SERVICE
+          type: string
+          description: Indicates which service was used for settlement.
     transaction_options:
       type: object
       properties:
