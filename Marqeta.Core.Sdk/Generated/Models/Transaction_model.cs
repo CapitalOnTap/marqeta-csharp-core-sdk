@@ -540,6 +540,8 @@ namespace Marqeta.Core.Sdk.Models {
 #endif
         /// <summary>Date and time when funds were moved for a transaction, in UTC.For example, in the case of a refund, when funds were credited to the cardholder.</summary>
         public DateTimeOffset? SettlementDate { get; set; }
+        /// <summary>Indicates which service was used for settlement.</summary>
+        public Transaction_model_settlement_indicator? SettlementIndicator { get; set; }
         /// <summary>Indicates which party approved a transaction: the card network using stand-in processing, or Marqeta using Commando Mode.Returned only when a transaction is approved.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -724,6 +726,7 @@ namespace Marqeta.Core.Sdk.Models {
                 {"request_amount", n => { RequestAmount = n.GetDoubleValue(); } },
                 {"response", n => { Response = n.GetObjectValue<Marqeta.Core.Sdk.Models.Response>(Marqeta.Core.Sdk.Models.Response.CreateFromDiscriminatorValue); } },
                 {"settlement_date", n => { SettlementDate = n.GetDateTimeOffsetValue(); } },
+                {"settlement_indicator", n => { SettlementIndicator = n.GetEnumValue<Transaction_model_settlement_indicator>(); } },
                 {"standin_approved_by", n => { StandinApprovedBy = n.GetStringValue(); } },
                 {"standin_by", n => { StandinBy = n.GetStringValue(); } },
                 {"standin_reason", n => { StandinReason = n.GetStringValue(); } },
@@ -822,6 +825,7 @@ namespace Marqeta.Core.Sdk.Models {
             writer.WriteDoubleValue("request_amount", RequestAmount);
             writer.WriteObjectValue<Marqeta.Core.Sdk.Models.Response>("response", Response);
             writer.WriteDateTimeOffsetValue("settlement_date", SettlementDate);
+            writer.WriteEnumValue<Transaction_model_settlement_indicator>("settlement_indicator", SettlementIndicator);
             writer.WriteStringValue("standin_approved_by", StandinApprovedBy);
             writer.WriteStringValue("standin_by", StandinBy);
             writer.WriteStringValue("standin_reason", StandinReason);
