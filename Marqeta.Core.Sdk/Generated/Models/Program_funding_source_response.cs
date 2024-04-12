@@ -6,7 +6,7 @@ using System.Linq;
 using System;
 namespace Marqeta.Core.Sdk.Models {
     public class Program_funding_source_response : IAdditionalDataHolder, IParsable {
-        /// <summary>The account identifier.</summary>
+        /// <summary>Account identifier.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Account { get; set; }

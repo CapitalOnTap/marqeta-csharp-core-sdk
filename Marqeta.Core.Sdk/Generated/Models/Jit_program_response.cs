@@ -11,7 +11,7 @@ namespace Marqeta.Core.Sdk.Models {
     public class Jit_program_response : IAdditionalDataHolder, IParsable {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Contains information about the JIT Funding load event, in which funds are loaded into an account.</summary>
+        /// <summary>Contains information about the JIT Funding load event, in which funds are loaded into an account.This object is returned if your program uses JIT Funding.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public Jit_funding_api? JitFunding { get; set; }

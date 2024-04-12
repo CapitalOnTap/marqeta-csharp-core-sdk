@@ -65,7 +65,7 @@ namespace Marqeta.Core.Sdk.Businesses {
         /// Create a business.The initial status of a newly created business depends on the &lt;&lt;/core-api/kyc-verification, Know Your Customer (KYC) requirements&gt;&gt; of the program or associated &lt;&lt;/core-api/account-holder-groups, account holder group&gt;&gt;.[cols=&quot;1,1,1,2&quot;]|===| KYC Required | Initial Business State | Business Active on Creation | Business Limitations| Always| `UNVERIFIED`| No| Cannot load funds.| Conditionally| `LIMITED`| No| Restricted by rules in `accountholdergroups.pre_kyc_controls`.| Never| `ACTIVE`| Required| None.|===To change or track the history of a business&apos; status, use the `/businesstransitions` endpoint.For more information on status changes, see &lt;&lt;create_business_transition, Create Business Transition&gt;&gt;.For information about configuring the required fields for KYC verification, see &lt;&lt;/core-api/kyc-verification#_perform_kyc, Perform KYC&gt;&gt;.
         /// </summary>
         /// <returns>A <see cref="Business_card_holder_response"/></returns>
-        /// <param name="body">The request body</param>
+        /// <param name="body">Contains information about a business.</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
         /// <exception cref="ApiError">When receiving a 4XX or 5XX status code</exception>
@@ -104,7 +104,7 @@ namespace Marqeta.Core.Sdk.Businesses {
         /// Create a business.The initial status of a newly created business depends on the &lt;&lt;/core-api/kyc-verification, Know Your Customer (KYC) requirements&gt;&gt; of the program or associated &lt;&lt;/core-api/account-holder-groups, account holder group&gt;&gt;.[cols=&quot;1,1,1,2&quot;]|===| KYC Required | Initial Business State | Business Active on Creation | Business Limitations| Always| `UNVERIFIED`| No| Cannot load funds.| Conditionally| `LIMITED`| No| Restricted by rules in `accountholdergroups.pre_kyc_controls`.| Never| `ACTIVE`| Required| None.|===To change or track the history of a business&apos; status, use the `/businesstransitions` endpoint.For more information on status changes, see &lt;&lt;create_business_transition, Create Business Transition&gt;&gt;.For information about configuring the required fields for KYC verification, see &lt;&lt;/core-api/kyc-verification#_perform_kyc, Perform KYC&gt;&gt;.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
-        /// <param name="body">The request body</param>
+        /// <param name="body">Contains information about a business.</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable

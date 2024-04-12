@@ -19,7 +19,7 @@ namespace Marqeta.Core.Sdk.Models {
 #else
         public Avs_information OnFile { get; set; }
 #endif
-        /// <summary>Response codes and memos for address verification, card security verification, and transactions.</summary>
+        /// <summary>Response codes and memos for account name verification, address verification, card security verification, and transactions.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public Marqeta.Core.Sdk.Models.Response? Response { get; set; }

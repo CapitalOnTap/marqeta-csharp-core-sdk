@@ -12,6 +12,8 @@ namespace Marqeta.Core.Sdk.Models {
         public bool? DwtUseCardStatusDuringAuth { get; set; }
         /// <summary>The dwt_verify_atc_during_auth property</summary>
         public bool? DwtVerifyAtcDuringAuth { get; set; }
+        /// <summary>The enable_discretionary_data_during_tar property</summary>
+        public bool? EnableDiscretionaryDataDuringTar { get; set; }
         /// <summary>A value of `true` requires identity verification set-up for all digital wallets at the card product level.</summary>
         public bool? ForceYellowPathForCardProduct { get; set; }
         /// <summary>The in_app_provisioning property</summary>
@@ -69,6 +71,7 @@ namespace Marqeta.Core.Sdk.Models {
             return new Dictionary<string, Action<IParseNode>> {
                 {"dwt_use_card_status_during_auth", n => { DwtUseCardStatusDuringAuth = n.GetBoolValue(); } },
                 {"dwt_verify_atc_during_auth", n => { DwtVerifyAtcDuringAuth = n.GetBoolValue(); } },
+                {"enable_discretionary_data_during_tar", n => { EnableDiscretionaryDataDuringTar = n.GetBoolValue(); } },
                 {"force_yellow_path_for_card_product", n => { ForceYellowPathForCardProduct = n.GetBoolValue(); } },
                 {"in_app_provisioning", n => { InAppProvisioning = n.GetObjectValue<In_app_provisioning>(In_app_provisioning.CreateFromDiscriminatorValue); } },
                 {"manual_entry", n => { ManualEntry = n.GetObjectValue<Manual_entry>(Manual_entry.CreateFromDiscriminatorValue); } },
@@ -84,6 +87,7 @@ namespace Marqeta.Core.Sdk.Models {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
             writer.WriteBoolValue("dwt_use_card_status_during_auth", DwtUseCardStatusDuringAuth);
             writer.WriteBoolValue("dwt_verify_atc_during_auth", DwtVerifyAtcDuringAuth);
+            writer.WriteBoolValue("enable_discretionary_data_during_tar", EnableDiscretionaryDataDuringTar);
             writer.WriteBoolValue("force_yellow_path_for_card_product", ForceYellowPathForCardProduct);
             writer.WriteObjectValue<In_app_provisioning>("in_app_provisioning", InAppProvisioning);
             writer.WriteObjectValue<Manual_entry>("manual_entry", ManualEntry);

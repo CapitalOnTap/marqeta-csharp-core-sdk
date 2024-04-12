@@ -6,49 +6,49 @@ using System.Linq;
 using System;
 namespace Marqeta.Core.Sdk.Models {
     /// <summary>
-    /// Contains address verification data consisting of address data entered by the cardholder, address data held by the Marqeta platform, and an assertion by the Marqeta platform as to whether the two sets of data match.
+    /// Contains the name of the cardholder for account name verification.
     /// </summary>
-    public class Address_verification_model : IAdditionalDataHolder, IParsable {
+    public class Ani_information : IAdditionalDataHolder, IParsable {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Contains address verification information.</summary>
+        /// <summary>First or given name of the cardholder.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public Avs_information? OnFile { get; set; }
+        public string? FirstName { get; set; }
 #nullable restore
 #else
-        public Avs_information OnFile { get; set; }
+        public string FirstName { get; set; }
 #endif
-        /// <summary>Contains address verification information.</summary>
+        /// <summary>Last or family name of the cardholder.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public Avs_information? Request { get; set; }
+        public string? LastName { get; set; }
 #nullable restore
 #else
-        public Avs_information Request { get; set; }
+        public string LastName { get; set; }
 #endif
-        /// <summary>Response codes and memos for account name verification, address verification, card security verification, and transactions.</summary>
+        /// <summary>Middle name of the cardholder.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public Marqeta.Core.Sdk.Models.Response? Response { get; set; }
+        public string? MiddleName { get; set; }
 #nullable restore
 #else
-        public Marqeta.Core.Sdk.Models.Response Response { get; set; }
+        public string MiddleName { get; set; }
 #endif
         /// <summary>
-        /// Instantiates a new <see cref="Address_verification_model"/> and sets the default values.
+        /// Instantiates a new <see cref="Ani_information"/> and sets the default values.
         /// </summary>
-        public Address_verification_model() {
+        public Ani_information() {
             AdditionalData = new Dictionary<string, object>();
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="Address_verification_model"/></returns>
+        /// <returns>A <see cref="Ani_information"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static Address_verification_model CreateFromDiscriminatorValue(IParseNode parseNode) {
+        public static Ani_information CreateFromDiscriminatorValue(IParseNode parseNode) {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-            return new Address_verification_model();
+            return new Ani_information();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -56,9 +56,9 @@ namespace Marqeta.Core.Sdk.Models {
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers() {
             return new Dictionary<string, Action<IParseNode>> {
-                {"on_file", n => { OnFile = n.GetObjectValue<Avs_information>(Avs_information.CreateFromDiscriminatorValue); } },
-                {"request", n => { Request = n.GetObjectValue<Avs_information>(Avs_information.CreateFromDiscriminatorValue); } },
-                {"response", n => { Response = n.GetObjectValue<Marqeta.Core.Sdk.Models.Response>(Marqeta.Core.Sdk.Models.Response.CreateFromDiscriminatorValue); } },
+                {"first_name", n => { FirstName = n.GetStringValue(); } },
+                {"last_name", n => { LastName = n.GetStringValue(); } },
+                {"middle_name", n => { MiddleName = n.GetStringValue(); } },
             };
         }
         /// <summary>
@@ -67,9 +67,9 @@ namespace Marqeta.Core.Sdk.Models {
         /// <param name="writer">Serialization writer to use to serialize this model</param>
         public virtual void Serialize(ISerializationWriter writer) {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<Avs_information>("on_file", OnFile);
-            writer.WriteObjectValue<Avs_information>("request", Request);
-            writer.WriteObjectValue<Marqeta.Core.Sdk.Models.Response>("response", Response);
+            writer.WriteStringValue("first_name", FirstName);
+            writer.WriteStringValue("last_name", LastName);
+            writer.WriteStringValue("middle_name", MiddleName);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

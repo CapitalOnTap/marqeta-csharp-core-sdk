@@ -95,6 +95,14 @@ namespace Marqeta.Core.Sdk.Models {
 #else
         public Token_service_provider TokenServiceProvider { get; set; }
 #endif
+        /// <summary>Contains information about the device used in the transaction to enhance the risk decisioning process.Use this data to improve fraud prevention and dispute resolution.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public Transaction_device? TransactionDevice { get; set; }
+#nullable restore
+#else
+        public Transaction_device TransactionDevice { get; set; }
+#endif
         /// <summary>Contains information about a cardholder.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -144,6 +152,7 @@ namespace Marqeta.Core.Sdk.Models {
                 {"state_reason", n => { StateReason = n.GetStringValue(); } },
                 {"token", n => { Token = n.GetStringValue(); } },
                 {"token_service_provider", n => { TokenServiceProvider = n.GetObjectValue<Token_service_provider>(Token_service_provider.CreateFromDiscriminatorValue); } },
+                {"transaction_device", n => { TransactionDevice = n.GetObjectValue<Transaction_device>(Transaction_device.CreateFromDiscriminatorValue); } },
                 {"user", n => { User = n.GetObjectValue<User_card_holder_response>(User_card_holder_response.CreateFromDiscriminatorValue); } },
                 {"wallet_provider_profile", n => { WalletProviderProfile = n.GetObjectValue<Wallet_provider_profile>(Wallet_provider_profile.CreateFromDiscriminatorValue); } },
             };
@@ -166,6 +175,7 @@ namespace Marqeta.Core.Sdk.Models {
             writer.WriteStringValue("state_reason", StateReason);
             writer.WriteStringValue("token", Token);
             writer.WriteObjectValue<Token_service_provider>("token_service_provider", TokenServiceProvider);
+            writer.WriteObjectValue<Transaction_device>("transaction_device", TransactionDevice);
             writer.WriteObjectValue<User_card_holder_response>("user", User);
             writer.WriteObjectValue<Wallet_provider_profile>("wallet_provider_profile", WalletProviderProfile);
             writer.WriteAdditionalData(AdditionalData);

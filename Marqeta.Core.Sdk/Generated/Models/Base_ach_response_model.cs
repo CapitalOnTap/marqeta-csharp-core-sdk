@@ -36,7 +36,7 @@ namespace Marqeta.Core.Sdk.Models {
 #endif
         /// <summary>Date and time when the resource was created, in UTC.</summary>
         public DateTimeOffset? CreatedTime { get; set; }
-        /// <summary>Date and time when the account was sent for verification, in UTC.This field is returned if it exists in the resource.</summary>
+        /// <summary>Date and time in UTC when either the request for account validation was sent to the third-party partner, or when the funding source was verified by microdeposits.`2022-02-26T20:03:05Z`, for example.This field is returned if it exists in the resource.</summary>
         public DateTimeOffset? DateSentForVerification { get; set; }
         /// <summary>Date and time when the account was verified, in UTC.This field is returned if it exists in the resource.</summary>
         public DateTimeOffset? DateVerified { get; set; }
@@ -68,7 +68,7 @@ namespace Marqeta.Core.Sdk.Models {
 #else
         public string PartnerAccountLinkReferenceToken { get; set; }
 #endif
-        /// <summary>The unique identifier of the funding source.</summary>
+        /// <summary>Unique identifier of the funding source.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Token { get; set; }
@@ -84,7 +84,7 @@ namespace Marqeta.Core.Sdk.Models {
 #else
         public string VerificationNotes { get; set; }
 #endif
-        /// <summary>Allows the ACH funding source to be used regardless of its verification status.This field is returned if it exists in the resource.</summary>
+        /// <summary>Allows the ACH funding source to be used regardless of its verification status.This field is returned if it exists in the resource.*NOTE:* When using `PLAID` to validate a funding source, this field is always set to `true`.</summary>
         public bool? VerificationOverride { get; set; }
         /// <summary>Account verification status.This field is returned if it exists in the resource.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER

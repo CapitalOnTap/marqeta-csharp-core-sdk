@@ -20,7 +20,7 @@ namespace Marqeta.Core.Sdk.Models {
         public DateTimeOffset? CreatedTime { get; set; }
         /// <summary>Time when the KYC verification was last updated.</summary>
         public DateTimeOffset? LastModifiedTime { get; set; }
-        /// <summary>If `true`, the user account holder is designated as having passed a verification check without Marqeta performing the check.This override is used when verification is performed through another mechanism, such as with an alternative KYC provider or directly with the account holder.</summary>
+        /// <summary>If `true`, the user account holder is designated as having passed a verification check without Marqeta performing the check.This override is used when verification is performed through another mechanism, such as an alternative KYC provider or directly with the account holder.</summary>
         public bool? ManualOverride { get; set; }
         /// <summary>Notes pertaining to a manual override.This field is included in the response only when the `manual_override` field is set to `true`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER

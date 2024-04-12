@@ -2,6 +2,7 @@
 using System.Runtime.Serialization;
 using System;
 namespace Marqeta.Core.Sdk.Models {
+    /// <summary>Specifies the type of account from which the transaction was funded.</summary>
     public enum Account_funding_funding_source {
         [EnumMember(Value = "CREDIT")]
         CREDIT,

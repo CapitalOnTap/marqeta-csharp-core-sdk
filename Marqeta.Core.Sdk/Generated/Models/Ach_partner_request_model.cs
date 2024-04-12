@@ -26,7 +26,7 @@ namespace Marqeta.Core.Sdk.Models {
 #endif
         /// <summary>If there are multiple funding sources, this field specifies which source is used by default in funding calls.If there is only one funding source, the system ignores this field and always uses that source.</summary>
         public bool? IsDefaultAccount { get; set; }
-        /// <summary>The name of the partner who validated the account holder.Returned when a third-party partner was used for account validation.</summary>
+        /// <summary>Name of the partner who validated the account holder.Returned when a third-party partner was used for account validation.</summary>
         public Ach_partner_request_model_partner? Partner { get; set; }
         /// <summary>Supplied by the account validation partner, this value is a reference to the account holder&apos;s details, such as the account number and routing number.Returned when a third-party partner was used for account validation.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER

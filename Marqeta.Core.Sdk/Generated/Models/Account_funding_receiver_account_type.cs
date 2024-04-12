@@ -2,6 +2,7 @@
 using System.Runtime.Serialization;
 using System;
 namespace Marqeta.Core.Sdk.Models {
+    /// <summary>Specifies the type of account receiving the funding.</summary>
     public enum Account_funding_receiver_account_type {
         [EnumMember(Value = "OTHER")]
         OTHER,

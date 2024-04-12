@@ -6,7 +6,7 @@ using System.Linq;
 using System;
 namespace Marqeta.Core.Sdk.Models {
     /// <summary>
-    /// Response codes and memos for address verification, card security verification, and transactions.
+    /// Response codes and memos for account name verification, address verification, card security verification, and transactions.
     /// </summary>
     public class Response : IAdditionalDataHolder, IParsable {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -19,7 +19,7 @@ namespace Marqeta.Core.Sdk.Models {
 #else
         public string AdditionalInformation { get; set; }
 #endif
-        /// <summary>Four-digit response code for address verification, card security code verification, or transactions.For address verification responses, the code is an assertion by the Marqeta platform as to whether its address verification data matches that provided by the cardholder:[cols=&quot;2,3,3&quot;]!===! Code ! Address ! Postal Code! 0000! Match! Match! 0001! Match! Unmatched! 0100! Unmatched! Match! 0101! Unmatched! Unmatched! 0200! Data Not Present! Match! 0201! Data Not Present! Unmatched! 0002! Match! Data Not Present! 0102! Unmatched! Data Not Present! 0303! Not Validated! Not Validated!===For card security verification, the code indicates whether the verification check passed and can have these possible values:* 0000 – passed* 0001 – did not passFor a transaction, the code describes the outcome of the attempted transaction.For the full list of transaction codes, see &lt;&lt;/developer-guides/about-transactions#_transaction_response_codes, Transaction response codes&gt;&gt;.</summary>
+        /// <summary>Four-digit response code for address verification, card security code verification, or transactions.For account name verification, the four digits correspond with assertions that the first, middle, last, and full name of the cardholder on the Marqeta platform match the data provided by the cardholder.`0` indicates no validation was performed, `1` indicates the match was unsuccessful (unmatched), `2` indicates the match was partial, and `3` indicates the match was exact.For example:[cols=&quot;2,3,3,3,3&quot;]!===! Code ! First Name ! Middle Name ! Last Name ! Full Name! 0000! Not validated! Not validated! Not validated! Not validated! 1111! Unmatched! Unmatched! Unmatched! Unmatched! 3333! Exact match! Exact match! Exact match! Exact match! 1232! Unmatched! Partial match! Exact match! Partial match!===For address verification responses, the code is an assertion by the Marqeta platform as to whether its address verification data matches that provided by the cardholder:[cols=&quot;2,3,3&quot;]!===! Code ! Address ! Postal Code! 0000! Match! Match! 0001! Match! Unmatched! 0100! Unmatched! Match! 0101! Unmatched! Unmatched! 0200! Data not present! Match! 0201! Data not present! Unmatched! 0002! Match! Data not present! 0102! Unmatched! Data not present! 0303! Not validated! Not validated!===For card security verification, the code indicates whether the verification check passed and can have these possible values:* 0000 – passed* 0001 – did not passFor a transaction, the code describes the outcome of the attempted transaction.For the full list of transaction codes, see &lt;&lt;/developer-guides/about-transactions#_transaction_response_codes, Transaction response codes&gt;&gt;.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Code { get; set; }

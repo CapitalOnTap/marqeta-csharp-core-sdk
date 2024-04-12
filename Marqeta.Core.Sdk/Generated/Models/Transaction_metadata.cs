@@ -23,7 +23,7 @@ namespace Marqeta.Core.Sdk.Models {
         public int? AuthorizationLifeCycle { get; set; }
         /// <summary>Whether the transaction is cross-border, i.e., when the merchant and the cardholder are located in two different countries.</summary>
         public bool? CrossBorderTransaction { get; set; }
-        /// <summary>The is_deferred_authorization property</summary>
+        /// <summary>Indicates an offline authorization made during an interruption of card network connectivity, such as a purchase on a flight.</summary>
         public bool? IsDeferredAuthorization { get; set; }
         /// <summary>Whether the transaction is a lodging or vehicle rental.</summary>
         public bool? IsLodgingAutoRental { get; set; }
