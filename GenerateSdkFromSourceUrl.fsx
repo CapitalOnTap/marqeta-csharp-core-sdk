@@ -38,11 +38,11 @@ module OpenApiHelpers =
     /// <summary>
     ///     The reference Id for our Api Error object
     /// </summary>
-    let private defaultErrorSchemaReferenceId = "ApiError" // This is the Id of the schema object in #/components/schema
+    let private defaultErrorSchemaReferenceId = "ApiError" // This is the id of the schema object in #/components/schema
 
     /// <summary>
-    ///     Takes an OpenApiMediaType and removes it's examples.
-    ///     We do this because the examples don't always match the provided specification
+    ///     Takes an OpenApiMediaType and removes its examples.
+    ///     We do this because the examples don't always match the provided specification,
     ///     and it adds noise to the validation logs.
     /// </summary>
     /// <param name="openApiMediaType">The OpenApiMediaType to remove examples from</param>
@@ -525,36 +525,26 @@ module DotnetCli =
     ///     Base cli command for dotnet commands.
     ///     https://learn.microsoft.com/en-us/dotnet/core/tools/dotnet
     /// </summary>
-    let private dotnetBaseCommand =
+    let dotnetBaseCommand =
         cli {
             Exec "dotnet"
             Output logDebug
         }
         
     /// <summary>
-    ///     Installs the specified dotnet tool globally.
-    ///     https://learn.microsoft.com/en-us/dotnet/core/tools/dotnet-tool-install
+    ///     Restores the tools specified in dotnet tool manifest.
+    ///     https://learn.microsoft.com/en-us/dotnet/core/tools/dotnet-tool-restore
     /// </summary>
-    /// <param name="toolName">The dotnet tool name to install.</param>
-    let installDotnetTool (toolName: string) =
-        Command.execute(dotnetBaseCommand { Arguments $"tool install -g {toolName}" })
-        |> ignore
-    
-    /// <summary>
-    ///     Updates the specified dotnet tool globally.
-    ///     https://learn.microsoft.com/en-us/dotnet/core/tools/dotnet-tool-update
-    /// </summary>
-    /// <param name="toolName">The dotnet tool name to update.</param>
-    let updateDotnetTool (toolName: string) =
-        Command.execute(dotnetBaseCommand { Arguments $"tool update -g {toolName}" })
+    let restoreDotnetTools () =
+        Command.execute(dotnetBaseCommand { Arguments "tool restore" })
         |> ignore
         
     let buildSolution () =
-        Command.execute(dotnetBaseCommand { Arguments $"build" })
+        Command.execute(dotnetBaseCommand { Arguments "build" })
         |> ignore
         
     let testSolution () =
-        Command.execute(dotnetBaseCommand { Arguments $"test" })
+        Command.execute(dotnetBaseCommand { Arguments "test" })
         |> ignore
 
 /// <summary>
@@ -575,7 +565,7 @@ module SdkGenerator =
                                      Exec "git" 
                                      }
         
-        We can then use this baseCommand add add more to it:
+        We can then use this baseCommand to add more to it:
             let gitAddAllFiles = baseGitCommand { 
                                                 Arguments "add -A" 
                                                 }
@@ -597,23 +587,14 @@ module SdkGenerator =
     *)
 
     /// <summary>
-    ///     Installs & updates the specified dotnet tool globally for SDK generation.
-    ///     https://learn.microsoft.com/en-us/dotnet/core/tools/dotnet-tool-install
-    /// </summary>
-    /// <param name="toolName">The dotnet tool name to install.</param>
-    let installAndUpdateSdkGenerator (toolName: string) =
-        installDotnetTool(toolName)
-        updateDotnetTool(toolName)
-
-    /// <summary>
     ///     The base cli command for Kiota.
     ///     https://learn.microsoft.com/en-us/openapi/kiota/using
     ///     https://github.com/microsoft/kiota
     ///     Will print output using the logToConsole function.
     /// </summary>
     let private kiotaBaseCommand =
-        cli {
-            Exec "kiota"
+        dotnetBaseCommand {
+            Arguments "tool run kiota"
             Output logDebug
         }
 
@@ -633,6 +614,7 @@ module SdkGenerator =
                     https://learn.microsoft.com/en-us/openapi/kiota/using#client-generation
                 *)
                 [
+                 kiotaBaseCommand.config.Arguments |> Option.defaultValue ""  // Adds default arguments
                  "generate" // Use the generate command
                  "-l CSharp" // Set the generation langauge as C#
                  $"-c {clientName}" // Set the ClientName for generated SDK
@@ -649,7 +631,7 @@ module SdkGenerator =
                  "--deserializer Microsoft.Kiota.Serialization.Text.TextParseNodeFactory"
                  "--deserializer Microsoft.Kiota.Serialization.Form.FormParseNodeFactory"
                  "--exclude-path /webhooks/{event_type}/{resource_token}" // Excludes this endpoint from generation, clashes with /webhooks/{token}/{event_type}/{resource_token}
-                 ]
+                ]
         }
         |> Command.execute
         |> ignore
@@ -666,10 +648,13 @@ module SdkGenerator =
                 https://learn.microsoft.com/en-us/openapi/kiota/using#client-update
             *)
             Arguments
-                ["update" // Use the update command
+                [
+                 kiotaBaseCommand.config.Arguments |> Option.defaultValue "" // Adds default arguments
+                 "update" // Use the update command
                  $"-o {outputPath}" // Sets the output path
                  "--clean-output" // Clean files from output path
-                 "--clear-cache"] // Clear cache of OpenAPI spec
+                 "--clear-cache" // Clear cache of OpenAPI spec
+                ]
         }
         |> Command.execute
         |> ignore
@@ -750,8 +735,8 @@ let transformOpenApiSpec (generatorConfig: GeneratorConfig, stopwatch:System.Dia
 /// <param name="generatorConfig">Configuration parameters for SDK Generation.</param>
 /// <param name="stopwatch">Stopwatch for timing execution.</param>
 let generateSdk (generatorConfig: GeneratorConfig, stopwatch: System.Diagnostics.Stopwatch) =
-    logOk($"Installing SDK Generation tool {generatorConfig.SdkGeneratorTool} {getElapsedTime(stopwatch)}")
-    installAndUpdateSdkGenerator(generatorConfig.SdkGeneratorTool)
+    logOk($"Restoring dotnet tools from manifest {getElapsedTime(stopwatch)}")
+    restoreDotnetTools()
 
     logOk($"Generating client from {generatorConfig.TransformedOpenApiPath} with ClientName:({generatorConfig.SdkClientName}) ClientNamespace:({generatorConfig.SdkClientNamespace}) OutputPath:({generatorConfig.SdkOutputPath}) {getElapsedTime(stopwatch)}")
     if clientExists generatorConfig.SdkOutputPath then
@@ -774,7 +759,7 @@ let buildAndTestSolution (stopwatch: System.Diagnostics.Stopwatch) =
 
 let projectPath = "Marqeta.Core.Sdk" // The path of the .csproj for SDK (also used for namespace)
 let config = {
-    // The source YAML, references Marqeta github CoreAPI.yaml currently
+    // The source YAML, references Marqeta GitHub CoreAPI.yaml currently
     OpenApiSourceUrl = "https://raw.githubusercontent.com/marqeta/marqeta-openapi/main/yaml/CoreAPI.yaml"
     // The output path to save the source YAML to
     SourceOpenApiOutputPath = $"{projectPath}/SourceCoreAPI.yaml"
