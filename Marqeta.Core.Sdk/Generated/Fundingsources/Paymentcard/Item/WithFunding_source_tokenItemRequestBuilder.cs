@@ -48,7 +48,7 @@ namespace Marqeta.Core.Sdk.Fundingsources.Paymentcard.Item {
             return await RequestAdapter.SendAsync<Payment_card_response_model>(requestInfo, Payment_card_response_model.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Update a payment card funding source.Only the values of parameters specified in the request are modified; all others are left unchanged.
+        /// Update a payment card funding source.
         /// </summary>
         /// <returns>A <see cref="Payment_card_response_model"/></returns>
         /// <param name="body">The request body</param>
@@ -87,7 +87,7 @@ namespace Marqeta.Core.Sdk.Fundingsources.Paymentcard.Item {
             return requestInfo;
         }
         /// <summary>
-        /// Update a payment card funding source.Only the values of parameters specified in the request are modified; all others are left unchanged.
+        /// Update a payment card funding source.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">The request body</param>

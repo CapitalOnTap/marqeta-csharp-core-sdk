@@ -19,7 +19,7 @@ namespace Marqeta.Core.Sdk.Models {
 #else
         public List<string> FraudScoreReasons { get; set; }
 #endif
-        /// <summary>The rules violated by the transaction.</summary>
+        /// <summary>The action recommended based on the fraud score.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? RecommendedAction { get; set; }

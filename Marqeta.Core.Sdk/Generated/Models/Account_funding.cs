@@ -5,14 +5,17 @@ using System.IO;
 using System.Linq;
 using System;
 namespace Marqeta.Core.Sdk.Models {
+    /// <summary>
+    /// Contains details about account funding transactions.Account funding transactions move money into a cardholder&apos;s general purpose account (GPA).
+    /// </summary>
     public class Account_funding : IAdditionalDataHolder, IParsable {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>The funding_source property</summary>
+        /// <summary>Specifies the type of account from which the transaction was funded.</summary>
         public Account_funding_funding_source? FundingSource { get; set; }
-        /// <summary>The receiver_account_type property</summary>
+        /// <summary>Specifies the type of account receiving the funding.</summary>
         public Account_funding_receiver_account_type? ReceiverAccountType { get; set; }
-        /// <summary>The receiver_name property</summary>
+        /// <summary>Specifies the name of the account holder receiving the funding.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? ReceiverName { get; set; }
@@ -20,7 +23,7 @@ namespace Marqeta.Core.Sdk.Models {
 #else
         public string ReceiverName { get; set; }
 #endif
-        /// <summary>The screening_score property</summary>
+        /// <summary>Sanctions screening score to assist with meeting Anti-Money Laundering (AML) obligations.Higher scores indicate that the sender&apos;s data more closely resembles an entry on the regulatory watchlist.A value of 999 means no score was available.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? ScreeningScore { get; set; }
@@ -28,7 +31,7 @@ namespace Marqeta.Core.Sdk.Models {
 #else
         public string ScreeningScore { get; set; }
 #endif
-        /// <summary>The transaction_purpose property</summary>
+        /// <summary>Describes the purpose of the account funding transaction.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? TransactionPurpose { get; set; }
@@ -36,7 +39,7 @@ namespace Marqeta.Core.Sdk.Models {
 #else
         public string TransactionPurpose { get; set; }
 #endif
-        /// <summary>The transaction_type property</summary>
+        /// <summary>Specifies the account funding transaction type.</summary>
         public Account_funding_transaction_type? TransactionType { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="Account_funding"/> and sets the default values.

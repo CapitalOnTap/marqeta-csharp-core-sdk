@@ -48,7 +48,7 @@ namespace Marqeta.Core.Sdk.Fundingsources.Programgateway.Item {
             return await RequestAdapter.SendAsync<Gateway_program_funding_source_response>(requestInfo, Gateway_program_funding_source_response.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Update a program gateway funding source.Only the values of parameters specified in the request are modified; all others are left unchanged.
+        /// Update a program gateway funding source.
         /// </summary>
         /// <returns>A <see cref="Gateway_program_funding_source_response"/></returns>
         /// <param name="body">The request body</param>
@@ -87,7 +87,7 @@ namespace Marqeta.Core.Sdk.Fundingsources.Programgateway.Item {
             return requestInfo;
         }
         /// <summary>
-        /// Update a program gateway funding source.Only the values of parameters specified in the request are modified; all others are left unchanged.
+        /// Update a program gateway funding source.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">The request body</param>

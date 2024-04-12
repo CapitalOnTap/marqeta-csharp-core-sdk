@@ -228,33 +228,9 @@ module OpenApiHelpers =
 
             if not(typeEnum.Contains(enumString)) then
                 typeEnum.Add(enumString)
-    
-    let private applyTransactionModelSettlementIndicatorModifications (openApiSchema: OpenApiSchema) =
-        // We only want to modify the Open API spec until Marqeta officially
-        // add the `settlement_indicator` property to the transaction model.
-        // 
-        // Release notes (2024.3.18.0): 
-        // https://www.marqeta.com/docs/developer-guides/release-notes#_webhooks_for_clearing_transactions_from_the_visa_card_network_now_indicate_settlement_service
-        let enumKey = "settlement_indicator"
-        
-        if not(openApiSchema.Properties.ContainsKey(enumKey)) then
-            let enumValues = List<IOpenApiAny>()
-            enumValues.Add(OpenApiString("INTERNATIONAL_SETTLEMENT_SERVICE"))
-            enumValues.Add(OpenApiString("NATIONAL_NET_SETTLEMENT_SERVICE"))
-            enumValues.Add(OpenApiString("CLEARING_ONLY"))
-            enumValues.Add(OpenApiString("VISA_SELECTS_SETTLEMENT_SERVICE"))
-            
-            let enumSchema = OpenApiSchema()
-            enumSchema.Description <- "Indicates which service was used for settlement."
-            enumSchema.Type <- "string"
-            enumSchema.Enum <- enumValues
-            
-            // Add the created property to the schema properties collection
-            openApiSchema.Properties.Add(enumKey, enumSchema)
 
     let private applyTransactionModelModifications (openApiSchema: OpenApiSchema) =
         applyTransactionModelTypeModifications(openApiSchema)
-        applyTransactionModelSettlementIndicatorModifications(openApiSchema)
 
     /// <summary>
     ///     Takes a schema and applies relevant modifications.

@@ -73,7 +73,7 @@ namespace Marqeta.Core.Sdk.Models {
 #endif
         /// <summary>Unique identifier of the JIT Funding request and response.This field is returned if it exists in the resource.</summary>
         public long? GatewayToken { get; set; }
-        /// <summary>Contains information about the JIT Funding load event, in which funds are loaded into an account.</summary>
+        /// <summary>Contains information about the JIT Funding load event, in which funds are loaded into an account.This object is returned if your program uses JIT Funding.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public Jit_funding_api? JitFunding { get; set; }
@@ -91,7 +91,7 @@ namespace Marqeta.Core.Sdk.Models {
 #else
         public string Memo { get; set; }
 #endif
-        /// <summary>Response codes and memos for address verification, card security verification, and transactions.</summary>
+        /// <summary>Response codes and memos for account name verification, address verification, card security verification, and transactions.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public Marqeta.Core.Sdk.Models.Response? Response { get; set; }

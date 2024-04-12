@@ -44,7 +44,7 @@ namespace Marqeta.Core.Sdk.Models {
 #endif
         /// <summary>Date and time when the resource was created, in UTC.</summary>
         public DateTimeOffset? CreatedTime { get; set; }
-        /// <summary>Date and time when the account was sent for verification, in UTC.This field is returned if it exists in the resource.</summary>
+        /// <summary>Date and time in UTC when either the request for account validation was sent to the third-party partner, or when the funding source was verified by microdeposits.This field is returned if it exists in the resource.</summary>
         public DateTimeOffset? DateSentForVerification { get; set; }
         /// <summary>Date and time when the account was verified, in UTC.This field is returned if it exists in the resource.</summary>
         public DateTimeOffset? DateVerified { get; set; }
@@ -60,7 +60,7 @@ namespace Marqeta.Core.Sdk.Models {
 #else
         public string NameOnAccount { get; set; }
 #endif
-        /// <summary>The partner property</summary>
+        /// <summary>Name of the partner who validated the account holder.Returned when a third-party partner was used for account validation.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Partner { get; set; }
@@ -68,7 +68,7 @@ namespace Marqeta.Core.Sdk.Models {
 #else
         public string Partner { get; set; }
 #endif
-        /// <summary>The partner_account_link_reference_token property</summary>
+        /// <summary>Supplied by the account validation partner, this value is a reference to the account holder&apos;s details, such as the account number and routing number.Returned when a third-party partner was used for account validation.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? PartnerAccountLinkReferenceToken { get; set; }
@@ -100,7 +100,7 @@ namespace Marqeta.Core.Sdk.Models {
 #else
         public string VerificationNotes { get; set; }
 #endif
-        /// <summary>Allows the ACH funding source to be used regardless of its verification status.This field is returned if it exists in the resource.</summary>
+        /// <summary>Allows the ACH funding source to be used regardless of its verification status.This field is returned if it exists in the resource.*NOTE:* When using `PLAID` to validate a funding source, this field is always set to `true`.</summary>
         public bool? VerificationOverride { get; set; }
         /// <summary>Account verification status.This field is returned if it exists in the resource.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER

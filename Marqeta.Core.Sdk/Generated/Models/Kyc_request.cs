@@ -16,7 +16,7 @@ namespace Marqeta.Core.Sdk.Models {
 #else
         public string BusinessToken { get; set; }
 #endif
-        /// <summary>Set to `true` to designate a user account holder as having passed a verification check without Marqeta performing the check through one of its KYC providers.Use this override when you perform verification through another mechanism, such as with an alternative KYC provider or directly with the account holder.You must obtain explicit, written approval from Marqeta before using the `manual_override` field for KYC verification.Consult your Customer Success representative for more information.</summary>
+        /// <summary>Set to `true` to designate a user account holder as having passed a verification check without Marqeta performing the check through one of its KYC providers.Use this override when you perform verification through another mechanism, such as an alternative KYC provider or directly with the account holder.You must obtain explicit, written approval from Marqeta before using the `manual_override` field for KYC verification.This feature is only available to programs that are enabled to perform their own Customer Identification Program (CIP) KYC verification.Consult your Marqeta representative for more information.</summary>
         public bool? ManualOverride { get; set; }
         /// <summary>Notes pertaining to a manual override.This field is returned in the response only when the `manual_override` field is set to `true`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER

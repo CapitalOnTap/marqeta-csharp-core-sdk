@@ -5,7 +5,7 @@ using System.IO;
 using System.Linq;
 using System;
 namespace Marqeta.Core.Sdk.Models {
-    public class DirectDepositTransitionResponse : IAdditionalDataHolder, IParsable {
+    public class DirectDepositResponse : IAdditionalDataHolder, IParsable {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The amount property</summary>
@@ -18,8 +18,6 @@ namespace Marqeta.Core.Sdk.Models {
 #else
         public string BusinessToken { get; set; }
 #endif
-        /// <summary>The channel property</summary>
-        public DirectDepositTransitionResponse_channel? Channel { get; set; }
         /// <summary>The company_discretionary_data property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -62,14 +60,6 @@ namespace Marqeta.Core.Sdk.Models {
 #else
         public string DirectDepositAccountToken { get; set; }
 #endif
-        /// <summary>The direct_deposit_token property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? DirectDepositToken { get; set; }
-#nullable restore
-#else
-        public string DirectDepositToken { get; set; }
-#endif
         /// <summary>The early_direct_deposit property</summary>
         public bool? EarlyDirectDeposit { get; set; }
         /// <summary>The individual_identification_number property</summary>
@@ -98,22 +88,6 @@ namespace Marqeta.Core.Sdk.Models {
 #else
         public string OriginatorStatusCode { get; set; }
 #endif
-        /// <summary>The reason property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? Reason { get; set; }
-#nullable restore
-#else
-        public string Reason { get; set; }
-#endif
-        /// <summary>The reason_code property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? ReasonCode { get; set; }
-#nullable restore
-#else
-        public string ReasonCode { get; set; }
-#endif
         /// <summary>The settlement_date property</summary>
         public DateTimeOffset? SettlementDate { get; set; }
         /// <summary>The standard_entry_class_code property</summary>
@@ -125,7 +99,23 @@ namespace Marqeta.Core.Sdk.Models {
         public string StandardEntryClassCode { get; set; }
 #endif
         /// <summary>The state property</summary>
-        public DirectDepositTransitionResponse_state? State { get; set; }
+        public DirectDepositResponse_state? State { get; set; }
+        /// <summary>The state_reason property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? StateReason { get; set; }
+#nullable restore
+#else
+        public string StateReason { get; set; }
+#endif
+        /// <summary>The state_reason_code property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? StateReasonCode { get; set; }
+#nullable restore
+#else
+        public string StateReasonCode { get; set; }
+#endif
         /// <summary>The token property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -142,22 +132,8 @@ namespace Marqeta.Core.Sdk.Models {
 #else
         public string TraceNumber { get; set; }
 #endif
-        /// <summary>The transaction_token property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? TransactionToken { get; set; }
-#nullable restore
-#else
-        public string TransactionToken { get; set; }
-#endif
         /// <summary>The type property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? Type { get; set; }
-#nullable restore
-#else
-        public string Type { get; set; }
-#endif
+        public DirectDepositResponse_type? Type { get; set; }
         /// <summary>The user_token property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -167,19 +143,19 @@ namespace Marqeta.Core.Sdk.Models {
         public string UserToken { get; set; }
 #endif
         /// <summary>
-        /// Instantiates a new <see cref="DirectDepositTransitionResponse"/> and sets the default values.
+        /// Instantiates a new <see cref="DirectDepositResponse"/> and sets the default values.
         /// </summary>
-        public DirectDepositTransitionResponse() {
+        public DirectDepositResponse() {
             AdditionalData = new Dictionary<string, object>();
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="DirectDepositTransitionResponse"/></returns>
+        /// <returns>A <see cref="DirectDepositResponse"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static DirectDepositTransitionResponse CreateFromDiscriminatorValue(IParseNode parseNode) {
+        public static DirectDepositResponse CreateFromDiscriminatorValue(IParseNode parseNode) {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-            return new DirectDepositTransitionResponse();
+            return new DirectDepositResponse();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -189,28 +165,25 @@ namespace Marqeta.Core.Sdk.Models {
             return new Dictionary<string, Action<IParseNode>> {
                 {"amount", n => { Amount = n.GetDoubleValue(); } },
                 {"business_token", n => { BusinessToken = n.GetStringValue(); } },
-                {"channel", n => { Channel = n.GetEnumValue<DirectDepositTransitionResponse_channel>(); } },
                 {"company_discretionary_data", n => { CompanyDiscretionaryData = n.GetStringValue(); } },
                 {"company_entry_description", n => { CompanyEntryDescription = n.GetStringValue(); } },
                 {"company_identification", n => { CompanyIdentification = n.GetStringValue(); } },
                 {"company_name", n => { CompanyName = n.GetStringValue(); } },
                 {"created_time", n => { CreatedTime = n.GetDateTimeOffsetValue(); } },
                 {"direct_deposit_account_token", n => { DirectDepositAccountToken = n.GetStringValue(); } },
-                {"direct_deposit_token", n => { DirectDepositToken = n.GetStringValue(); } },
                 {"early_direct_deposit", n => { EarlyDirectDeposit = n.GetBoolValue(); } },
                 {"individual_identification_number", n => { IndividualIdentificationNumber = n.GetStringValue(); } },
                 {"individual_name", n => { IndividualName = n.GetStringValue(); } },
                 {"last_modified_time", n => { LastModifiedTime = n.GetDateTimeOffsetValue(); } },
                 {"originator_status_code", n => { OriginatorStatusCode = n.GetStringValue(); } },
-                {"reason", n => { Reason = n.GetStringValue(); } },
-                {"reason_code", n => { ReasonCode = n.GetStringValue(); } },
                 {"settlement_date", n => { SettlementDate = n.GetDateTimeOffsetValue(); } },
                 {"standard_entry_class_code", n => { StandardEntryClassCode = n.GetStringValue(); } },
-                {"state", n => { State = n.GetEnumValue<DirectDepositTransitionResponse_state>(); } },
+                {"state", n => { State = n.GetEnumValue<DirectDepositResponse_state>(); } },
+                {"state_reason", n => { StateReason = n.GetStringValue(); } },
+                {"state_reason_code", n => { StateReasonCode = n.GetStringValue(); } },
                 {"token", n => { Token = n.GetStringValue(); } },
                 {"trace_number", n => { TraceNumber = n.GetStringValue(); } },
-                {"transaction_token", n => { TransactionToken = n.GetStringValue(); } },
-                {"type", n => { Type = n.GetStringValue(); } },
+                {"type", n => { Type = n.GetEnumValue<DirectDepositResponse_type>(); } },
                 {"user_token", n => { UserToken = n.GetStringValue(); } },
             };
         }
@@ -222,28 +195,25 @@ namespace Marqeta.Core.Sdk.Models {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
             writer.WriteDoubleValue("amount", Amount);
             writer.WriteStringValue("business_token", BusinessToken);
-            writer.WriteEnumValue<DirectDepositTransitionResponse_channel>("channel", Channel);
             writer.WriteStringValue("company_discretionary_data", CompanyDiscretionaryData);
             writer.WriteStringValue("company_entry_description", CompanyEntryDescription);
             writer.WriteStringValue("company_identification", CompanyIdentification);
             writer.WriteStringValue("company_name", CompanyName);
             writer.WriteDateTimeOffsetValue("created_time", CreatedTime);
             writer.WriteStringValue("direct_deposit_account_token", DirectDepositAccountToken);
-            writer.WriteStringValue("direct_deposit_token", DirectDepositToken);
             writer.WriteBoolValue("early_direct_deposit", EarlyDirectDeposit);
             writer.WriteStringValue("individual_identification_number", IndividualIdentificationNumber);
             writer.WriteStringValue("individual_name", IndividualName);
             writer.WriteDateTimeOffsetValue("last_modified_time", LastModifiedTime);
             writer.WriteStringValue("originator_status_code", OriginatorStatusCode);
-            writer.WriteStringValue("reason", Reason);
-            writer.WriteStringValue("reason_code", ReasonCode);
             writer.WriteDateTimeOffsetValue("settlement_date", SettlementDate);
             writer.WriteStringValue("standard_entry_class_code", StandardEntryClassCode);
-            writer.WriteEnumValue<DirectDepositTransitionResponse_state>("state", State);
+            writer.WriteEnumValue<DirectDepositResponse_state>("state", State);
+            writer.WriteStringValue("state_reason", StateReason);
+            writer.WriteStringValue("state_reason_code", StateReasonCode);
             writer.WriteStringValue("token", Token);
             writer.WriteStringValue("trace_number", TraceNumber);
-            writer.WriteStringValue("transaction_token", TransactionToken);
-            writer.WriteStringValue("type", Type);
+            writer.WriteEnumValue<DirectDepositResponse_type>("type", Type);
             writer.WriteStringValue("user_token", UserToken);
             writer.WriteAdditionalData(AdditionalData);
         }

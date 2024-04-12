@@ -15,7 +15,7 @@ namespace Marqeta.Core.Sdk.Fundingsources.Paymentcard {
     /// </summary>
     public class PaymentcardRequestBuilder : BaseRequestBuilder {
         /// <summary>Gets an item from the Marqeta.Core.Sdk.fundingsources.paymentcard.item collection</summary>
-        /// <param name="position">U|- Unique identifier of the funding source.Send a `GET` request to `/fundingsources/user/{user_token}` to retrieve existing funding source tokens for a user or to `/fundingsources/business/{business_token}` to retrieve existing funding source tokens for a business.</param>
+        /// <param name="position">Unique identifier of the funding source.Send a `GET` request to `/fundingsources/user/{user_token}` to retrieve existing funding source tokens for a user or to `/fundingsources/business/{business_token}` to retrieve existing funding source tokens for a business.</param>
         /// <returns>A <see cref="WithFunding_source_tokenItemRequestBuilder"/></returns>
         public WithFunding_source_tokenItemRequestBuilder this[string position] { get {
             var urlTplParams = new Dictionary<string, object>(PathParameters);

@@ -84,6 +84,8 @@ namespace Marqeta.Core.Sdk.Models {
         PindebitBalanceinquiry,
         [EnumMember(Value = "pindebit.cashback")]
         PindebitCashback,
+        [EnumMember(Value = "pindebit.checkavs")]
+        PindebitCheckavs,
         [EnumMember(Value = "pindebit")]
         Pindebit,
         [EnumMember(Value = "programreserve.credit")]

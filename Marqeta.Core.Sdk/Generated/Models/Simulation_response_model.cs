@@ -16,7 +16,7 @@ namespace Marqeta.Core.Sdk.Models {
 #else
         public Simulation_response_model_raw_iso8583 RawIso8583 { get; set; }
 #endif
-        /// <summary>The transaction property</summary>
+        /// <summary>Transactions are represented by the `transaction` object.The Marqeta platform creates a separate `transaction` object for each transaction message received from the card network.The attributes of a given `transaction` object depend on the transaction type.This section documents all fields that might be included in a `transaction` object.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public Transaction_model? Transaction { get; set; }

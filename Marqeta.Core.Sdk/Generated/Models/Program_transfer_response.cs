@@ -39,7 +39,7 @@ namespace Marqeta.Core.Sdk.Models {
 #else
         public List<Fee_detail> Fees { get; set; }
 #endif
-        /// <summary>Contains information about the JIT Funding load event, in which funds are loaded into an account.</summary>
+        /// <summary>Contains information about the JIT Funding load event, in which funds are loaded into an account.This object is returned if your program uses JIT Funding.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public Jit_funding_api? JitFunding { get; set; }

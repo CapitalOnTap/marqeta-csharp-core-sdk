@@ -5,14 +5,25 @@ using System.IO;
 using System.Linq;
 using System;
 namespace Marqeta.Core.Sdk.Models {
+    /// <summary>
+    /// Transactions are represented by the `transaction` object.The Marqeta platform creates a separate `transaction` object for each transaction message received from the card network.The attributes of a given `transaction` object depend on the transaction type.This section documents all fields that might be included in a `transaction` object.
+    /// </summary>
     public class Transaction_model : IAdditionalDataHolder, IParsable {
-        /// <summary>The account_funding property</summary>
+        /// <summary>Contains details about account funding transactions.Account funding transactions move money into a cardholder&apos;s general purpose account (GPA).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public Account_funding? AccountFunding { get; set; }
 #nullable restore
 #else
         public Account_funding AccountFunding { get; set; }
+#endif
+        /// <summary>Contains name verification data: the full name entered by the cardholder, name data held by the Marqeta platform, and an assertion by the Marqeta platform as to whether the two sets of data match.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public Account_name_verification_model? AccountNameVerification { get; set; }
+#nullable restore
+#else
+        public Account_name_verification_model AccountNameVerification { get; set; }
 #endif
         /// <summary>Contains information about the merchant&apos;s financial institution.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -174,7 +185,7 @@ namespace Marqeta.Core.Sdk.Models {
 #else
         public User_card_holder_response CardHolderModel { get; set; }
 #endif
-        /// <summary>The card_product_token property</summary>
+        /// <summary>Unique identifier of the card product.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? CardProductToken { get; set; }
@@ -249,6 +260,14 @@ namespace Marqeta.Core.Sdk.Models {
 #nullable restore
 #else
         public Digital_wallet_token DigitalWalletToken { get; set; }
+#endif
+        /// <summary>The digital_wallet_token_transaction_service_provider_info property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public Digital_service_provider? DigitalWalletTokenTransactionServiceProviderInfo { get; set; }
+#nullable restore
+#else
+        public Digital_service_provider DigitalWalletTokenTransactionServiceProviderInfo { get; set; }
 #endif
         /// <summary>Contains information about a direct deposit.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -366,7 +385,7 @@ namespace Marqeta.Core.Sdk.Models {
 #endif
         /// <summary>The international service assessment indicator indicates if an ISA fee is applicable to the transaction.</summary>
         public Transaction_model_isaIndicator? IsaIndicator { get; set; }
-        /// <summary>The is_final_clearing property</summary>
+        /// <summary>Indicates the final clearing event for an authorization.If the final cleared amount is lower than the authorized amount, you must release the hold on the funds per the value in the `amount_to_be_released` field.</summary>
         public bool? IsFinalClearing { get; set; }
         /// <summary>Indicates if the transaction is a pre-authorization.</summary>
         public bool? IsPreauthorization { get; set; }
@@ -388,7 +407,7 @@ namespace Marqeta.Core.Sdk.Models {
 #else
         public string IssuerReceivedTime { get; set; }
 #endif
-        /// <summary>The local_transaction_date property</summary>
+        /// <summary>Indicates the local time of the transaction at the card acceptor&apos;s location.You can use this field to determine the correct time of the transaction when filing a dispute.</summary>
         public DateTimeOffset? LocalTransactionDate { get; set; }
         /// <summary>The merchant property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -398,7 +417,7 @@ namespace Marqeta.Core.Sdk.Models {
 #else
         public Merchant_response_model Merchant { get; set; }
 #endif
-        /// <summary>Unique network identification value formed by combining the Mastercard Banknet Reference Number and the settlement date for recurring payments and other merchant-initiated transactions.</summary>
+        /// <summary>Unique network identification value formed by combining the 6- to 9-character Mastercard Banknet Reference Number and the 4-digit settlement date for recurring payments and other merchant-initiated transactions.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? MerchantInitiatedOriginalTraceId { get; set; }
@@ -530,7 +549,7 @@ namespace Marqeta.Core.Sdk.Models {
 #endif
         /// <summary>Merchant-requested amount, including any fees.</summary>
         public double? RequestAmount { get; set; }
-        /// <summary>Response codes and memos for address verification, card security verification, and transactions.</summary>
+        /// <summary>Response codes and memos for account name verification, address verification, card security verification, and transactions.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public Marqeta.Core.Sdk.Models.Response? Response { get; set; }
@@ -540,8 +559,14 @@ namespace Marqeta.Core.Sdk.Models {
 #endif
         /// <summary>Date and time when funds were moved for a transaction, in UTC.For example, in the case of a refund, when funds were credited to the cardholder.</summary>
         public DateTimeOffset? SettlementDate { get; set; }
-        /// <summary>Indicates which service was used for settlement.</summary>
-        public Transaction_model_settlement_indicator? SettlementIndicator { get; set; }
+        /// <summary>Indicates the settlement service used for the transaction.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? SettlementIndicator { get; set; }
+#nullable restore
+#else
+        public string SettlementIndicator { get; set; }
+#endif
         /// <summary>Indicates which party approved a transaction: the card network using stand-in processing, or Marqeta using Commando Mode.Returned only when a transaction is approved.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -650,6 +675,7 @@ namespace Marqeta.Core.Sdk.Models {
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers() {
             return new Dictionary<string, Action<IParseNode>> {
                 {"account_funding", n => { AccountFunding = n.GetObjectValue<Account_funding>(Account_funding.CreateFromDiscriminatorValue); } },
+                {"account_name_verification", n => { AccountNameVerification = n.GetObjectValue<Account_name_verification_model>(Account_name_verification_model.CreateFromDiscriminatorValue); } },
                 {"acquirer", n => { Acquirer = n.GetObjectValue<Marqeta.Core.Sdk.Models.Acquirer>(Marqeta.Core.Sdk.Models.Acquirer.CreateFromDiscriminatorValue); } },
                 {"acquirer_fee_amount", n => { AcquirerFeeAmount = n.GetDoubleValue(); } },
                 {"acquirer_reference_data", n => { AcquirerReferenceData = n.GetStringValue(); } },
@@ -683,6 +709,7 @@ namespace Marqeta.Core.Sdk.Models {
                 {"currency_conversion", n => { CurrencyConversion = n.GetObjectValue<Currency_conversion>(Currency_conversion.CreateFromDiscriminatorValue); } },
                 {"deferred_settlement_days", n => { DeferredSettlementDays = n.GetStringValue(); } },
                 {"digital_wallet_token", n => { DigitalWalletToken = n.GetObjectValue<Digital_wallet_token>(Digital_wallet_token.CreateFromDiscriminatorValue); } },
+                {"digital_wallet_token_transaction_service_provider_info", n => { DigitalWalletTokenTransactionServiceProviderInfo = n.GetObjectValue<Digital_service_provider>(Digital_service_provider.CreateFromDiscriminatorValue); } },
                 {"direct_deposit", n => { DirectDeposit = n.GetObjectValue<DepositDepositResponse>(DepositDepositResponse.CreateFromDiscriminatorValue); } },
                 {"dispute", n => { Dispute = n.GetObjectValue<DisputeModel>(DisputeModel.CreateFromDiscriminatorValue); } },
                 {"duration", n => { Duration = n.GetIntValue(); } },
@@ -726,7 +753,7 @@ namespace Marqeta.Core.Sdk.Models {
                 {"request_amount", n => { RequestAmount = n.GetDoubleValue(); } },
                 {"response", n => { Response = n.GetObjectValue<Marqeta.Core.Sdk.Models.Response>(Marqeta.Core.Sdk.Models.Response.CreateFromDiscriminatorValue); } },
                 {"settlement_date", n => { SettlementDate = n.GetDateTimeOffsetValue(); } },
-                {"settlement_indicator", n => { SettlementIndicator = n.GetEnumValue<Transaction_model_settlement_indicator>(); } },
+                {"settlement_indicator", n => { SettlementIndicator = n.GetStringValue(); } },
                 {"standin_approved_by", n => { StandinApprovedBy = n.GetStringValue(); } },
                 {"standin_by", n => { StandinBy = n.GetStringValue(); } },
                 {"standin_reason", n => { StandinReason = n.GetStringValue(); } },
@@ -749,6 +776,7 @@ namespace Marqeta.Core.Sdk.Models {
         public virtual void Serialize(ISerializationWriter writer) {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
             writer.WriteObjectValue<Account_funding>("account_funding", AccountFunding);
+            writer.WriteObjectValue<Account_name_verification_model>("account_name_verification", AccountNameVerification);
             writer.WriteObjectValue<Marqeta.Core.Sdk.Models.Acquirer>("acquirer", Acquirer);
             writer.WriteDoubleValue("acquirer_fee_amount", AcquirerFeeAmount);
             writer.WriteStringValue("acquirer_reference_data", AcquirerReferenceData);
@@ -782,6 +810,7 @@ namespace Marqeta.Core.Sdk.Models {
             writer.WriteObjectValue<Currency_conversion>("currency_conversion", CurrencyConversion);
             writer.WriteStringValue("deferred_settlement_days", DeferredSettlementDays);
             writer.WriteObjectValue<Digital_wallet_token>("digital_wallet_token", DigitalWalletToken);
+            writer.WriteObjectValue<Digital_service_provider>("digital_wallet_token_transaction_service_provider_info", DigitalWalletTokenTransactionServiceProviderInfo);
             writer.WriteObjectValue<DepositDepositResponse>("direct_deposit", DirectDeposit);
             writer.WriteObjectValue<DisputeModel>("dispute", Dispute);
             writer.WriteIntValue("duration", Duration);
@@ -825,7 +854,7 @@ namespace Marqeta.Core.Sdk.Models {
             writer.WriteDoubleValue("request_amount", RequestAmount);
             writer.WriteObjectValue<Marqeta.Core.Sdk.Models.Response>("response", Response);
             writer.WriteDateTimeOffsetValue("settlement_date", SettlementDate);
-            writer.WriteEnumValue<Transaction_model_settlement_indicator>("settlement_indicator", SettlementIndicator);
+            writer.WriteStringValue("settlement_indicator", SettlementIndicator);
             writer.WriteStringValue("standin_approved_by", StandinApprovedBy);
             writer.WriteStringValue("standin_by", StandinBy);
             writer.WriteStringValue("standin_reason", StandinReason);

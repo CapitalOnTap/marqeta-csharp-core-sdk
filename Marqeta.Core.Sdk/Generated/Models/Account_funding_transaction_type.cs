@@ -2,6 +2,7 @@
 using System.Runtime.Serialization;
 using System;
 namespace Marqeta.Core.Sdk.Models {
+    /// <summary>Specifies the account funding transaction type.</summary>
     public enum Account_funding_transaction_type {
         [EnumMember(Value = "ACCOUNT_TO_ACCOUNT")]
         ACCOUNT_TO_ACCOUNT,

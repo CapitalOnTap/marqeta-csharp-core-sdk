@@ -76,7 +76,7 @@ namespace Marqeta.Core.Sdk.Models {
 #else
         public string VerificationNotes { get; set; }
 #endif
-        /// <summary>Allows the ACH funding source to be used regardless of its verification status.</summary>
+        /// <summary>Allows the ACH funding source to be used, regardless of its verification status.Set this field to `true` if you can attest that you have verified the account on your own and that it will not be returned by the Federal Reserve.*NOTE:* When using `PLAID` to validate a funding source, this field is always set to `true`.</summary>
         public bool? VerificationOverride { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="Ach_model"/> and sets the default values.

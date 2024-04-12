@@ -28,5 +28,7 @@ namespace Marqeta.Core.Sdk.Models {
         ATM,
         [EnumMember(Value = "TRANSIT")]
         TRANSIT,
+        [EnumMember(Value = "EXTENDED_AUTHORIZATION")]
+        EXTENDED_AUTHORIZATION,
     }
 }

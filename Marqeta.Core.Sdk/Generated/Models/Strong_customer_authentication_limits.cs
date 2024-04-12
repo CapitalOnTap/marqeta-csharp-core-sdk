@@ -11,7 +11,7 @@ namespace Marqeta.Core.Sdk.Models {
     public class Strong_customer_authentication_limits : IAdditionalDataHolder, IParsable {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>The cavv_authentication_amount_incremental_percentage property</summary>
+        /// <summary>If you have enabled CAVV authentication amount validation, the value of this field specifies the maximum allowable variance between the authorization amount and the 3D Secure authentication amount.Expressed as a percentage.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? CavvAuthenticationAmountIncrementalPercentage { get; set; }
@@ -19,7 +19,7 @@ namespace Marqeta.Core.Sdk.Models {
 #else
         public string CavvAuthenticationAmountIncrementalPercentage { get; set; }
 #endif
-        /// <summary>The enable_cavv_authentication_amount_validation property</summary>
+        /// <summary>If set to `true`, Marqeta validates the amount in the authorization transaction against the amount in the 3D Secure authentication attempt.If the authorization amount is greater than the 3D Secure authentication amount, Marqeta rejects the transaction.You can specify an allowable variance for the 3D Secure authentication amount in the `cavv_authentication_amount_incremental_percentage` field.</summary>
         public bool? EnableCavvAuthenticationAmountValidation { get; set; }
         /// <summary>Specifies the cumulative limit of transactions the cardholder can perform before receiving an SCA challenge.A value of `0` in this field means that the cumulative amount spent in contactless POS transactions performed by the cardholder does not impact the decision of whether or not an SCA challenge is served.</summary>
         public double? ScaContactlessCumulativeAmountLimit { get; set; }

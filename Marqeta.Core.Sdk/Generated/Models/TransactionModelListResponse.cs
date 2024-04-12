@@ -10,7 +10,7 @@ namespace Marqeta.Core.Sdk.Models {
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The number of resources to retrieve.This field is returned if there are resources in your returned array.</summary>
         public int? Count { get; set; }
-        /// <summary>An array of transaction objects.Objects are returned as appropriate to your query.</summary>
+        /// <summary>An array of transaction objects.See the &lt;&lt;/core-api/transactions/#transaction_model, Transaction object&gt;&gt; description at the top of this page.Objects are returned as appropriate to your query.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<Transaction_model>? Data { get; set; }

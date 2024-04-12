@@ -5,6 +5,9 @@ using System.IO;
 using System.Linq;
 using System;
 namespace Marqeta.Core.Sdk.Models {
+    /// <summary>
+    /// Contains information about a business.
+    /// </summary>
     public class Business_cardholder : IAdditionalDataHolder, IParsable {
         /// <summary>Existing account holder group token that associates the specified account holder group with the business.Send a `GET` request to `/accountholdergroups` to retrieve account holder group tokens.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -94,7 +97,7 @@ namespace Marqeta.Core.Sdk.Models {
 #else
         public string BusinessType { get; set; }
 #endif
-        /// <summary>Date the business was established.This field is required for KYC verification (US-based accounts only).</summary>
+        /// <summary>Date when the business was established.</summary>
         public DateTimeOffset? DateEstablished { get; set; }
         /// <summary>Data Universal Numbering System (DUNS) number of the business.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER

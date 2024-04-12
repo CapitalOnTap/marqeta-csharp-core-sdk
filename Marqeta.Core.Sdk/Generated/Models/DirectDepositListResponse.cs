@@ -13,10 +13,10 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>The data property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<DepositDepositResponse>? Data { get; set; }
+        public List<DirectDepositResponse>? Data { get; set; }
 #nullable restore
 #else
-        public List<DepositDepositResponse> Data { get; set; }
+        public List<DirectDepositResponse> Data { get; set; }
 #endif
         /// <summary>The end_index property</summary>
         public int? EndIndex { get; set; }
@@ -46,7 +46,7 @@ namespace Marqeta.Core.Sdk.Models {
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers() {
             return new Dictionary<string, Action<IParseNode>> {
                 {"count", n => { Count = n.GetIntValue(); } },
-                {"data", n => { Data = n.GetCollectionOfObjectValues<DepositDepositResponse>(DepositDepositResponse.CreateFromDiscriminatorValue)?.ToList(); } },
+                {"data", n => { Data = n.GetCollectionOfObjectValues<DirectDepositResponse>(DirectDepositResponse.CreateFromDiscriminatorValue)?.ToList(); } },
                 {"end_index", n => { EndIndex = n.GetIntValue(); } },
                 {"is_more", n => { IsMore = n.GetBoolValue(); } },
                 {"start_index", n => { StartIndex = n.GetIntValue(); } },
@@ -59,7 +59,7 @@ namespace Marqeta.Core.Sdk.Models {
         public virtual void Serialize(ISerializationWriter writer) {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
             writer.WriteIntValue("count", Count);
-            writer.WriteCollectionOfObjectValues<DepositDepositResponse>("data", Data);
+            writer.WriteCollectionOfObjectValues<DirectDepositResponse>("data", Data);
             writer.WriteIntValue("end_index", EndIndex);
             writer.WriteBoolValue("is_more", IsMore);
             writer.WriteIntValue("start_index", StartIndex);

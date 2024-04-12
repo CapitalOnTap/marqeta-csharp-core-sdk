@@ -6,7 +6,7 @@ info:
   contact:
     name: Marqeta
     email: support@marqeta.com
-  version: 3.0.13
+  version: 3.0.15
 servers:
   - url: /v3
 paths:
@@ -7221,7 +7221,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/DepositDepositResponse'
+                $ref: '#/components/schemas/DirectDepositResponse'
         default:
           description: Error response
           content:
@@ -7305,7 +7305,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/ApiError'
       security:
-        - ZionAuth: [ ]
+        - zionToken: [ ]
   /feerefunds:
     post:
       tags:
@@ -7346,7 +7346,7 @@ paths:
           schema:
             type: integer
             format: int32
-            default: 5
+            default: 100
         - name: start_index
           in: query
           description: Sort order index of the first resource in the returned array.
@@ -7470,7 +7470,7 @@ paths:
       tags:
         - Account Holder Funding Sources
       summary: Create ACH source
-      description: "Create an ACH funding source for an existing account holder.\nSpecify the account holder of the funding source by passing a user or business token.\n\nWhen adding an ACH funding source, a small amount is deposited in the bank account as a test.\nThe test deposit should be reflected in the account after two to three business days.\nYou must then make an API call to verify the deposit amount in order to activate the ACH account.\nSee <</core-api/account-holder-funding-sources#putFundingsourcesAchFundingsourcetoken, Verify or Update ACH Funding Source>> on this page for more information.\n\nThe response body returns details about the account, including the verification status.\nPossible ACH verification status values include `VERIFICATION_PENDING`, `ACH_VERIFIED`, and `ACH_FAILED`."
+      description: "Create an ACH funding source for an existing account holder.\nSpecify the account holder of the funding source by passing a user or business token.\n\nWhen adding an ACH funding source, a small amount is deposited in the bank account as a test.\nThe test deposit should be reflected in the account after two to three business days.\nYou must then make an API call to verify the deposit amount in order to activate the ACH account.\nSee <</core-api/account-holder-funding-sources#putFundingsourcesAchFundingsourcetoken, Verify or Update ACH Funding Source>> on this page for more information.\n\nThe response body returns details about the account, including the verification status.\nPossible ACH verification status values include `ACH_VERIFIED`, `ACH_FAILED`, and `VERIFICATION_PENDING`."
       operationId: postFundingsourcesAch
       requestBody:
         content:
@@ -7728,7 +7728,7 @@ paths:
       tags:
         - Addresses
       summary: Update address
-      description: "Use this endpoint to update an address.\nOnly values of parameters in the request are modified; all others are left unchanged."
+      description: Use this endpoint to update an address.
       operationId: putFundingsourcesAddressesFundingsourceaddresstoken
       parameters:
         - name: funding_source_address_token
@@ -7831,7 +7831,7 @@ paths:
       parameters:
         - name: funding_source_token
           in: path
-          description: "U|- Unique identifier of the funding source.\nSend a `GET` request to `/fundingsources/user/{user_token}` to retrieve existing funding source tokens for a user or to `/fundingsources/business/{business_token}` to retrieve existing funding source tokens for a business."
+          description: "Unique identifier of the funding source.\n\nSend a `GET` request to `/fundingsources/user/{user_token}` to retrieve existing funding source tokens for a user or to `/fundingsources/business/{business_token}` to retrieve existing funding source tokens for a business."
           required: true
           style: simple
           schema:
@@ -7853,7 +7853,7 @@ paths:
       tags:
         - Account Holder Funding Sources
       summary: Update payment card source
-      description: "Update a payment card funding source.\nOnly the values of parameters specified in the request are modified; all others are left unchanged."
+      description: Update a payment card funding source.
       operationId: putFundingsourcesFundingsourcetoken
       parameters:
         - name: funding_source_token
@@ -8020,7 +8020,7 @@ paths:
       tags:
         - Program Funding Sources
       summary: Update program source
-      description: "Update a program funding source.\nOnly the values of parameters specified in the request are modified; all others are left unchanged."
+      description: Update a program funding source.
       operationId: putFundingsourcesProgramToken
       parameters:
         - name: token
@@ -8138,7 +8138,7 @@ paths:
       tags:
         - Program Gateway Funding Sources
       summary: Update program gateway source
-      description: "Update a program gateway funding source.\nOnly the values of parameters specified in the request are modified; all others are left unchanged."
+      description: Update a program gateway funding source.
       operationId: putFundingsourcesProgramgatewayToken
       parameters:
         - name: token
@@ -8412,7 +8412,7 @@ paths:
       tags:
         - KYC Verification
       summary: Perform KYC verification
-      description: "Use this endpoint to verify the identity of an account holder in the United States, either a user or a business.\nYou can perform KYC verification on an account holder, provided the following are true:\n\n* The KYC status of the account holder is `UNVERIFIED` or `LIMITED`\n* The account holder has not been submitted for KYC verification twice\n\n=== Required fields\n\nIn order to perform KYC verification, the user or business resource on which you perform the check must have the following fields configured with valid values:\n\n[cols=\"1a,1a\"]\n|===\n| User Fields Required for KYC | Business Fields Required for KYC\n\n|\n* `first_name`\n* `last_name`\n* `address1` (cannot be a PO Box)\n* `city`\n* `state`\n* `postal_code`\n* `country`\n* `birth_date`\n* `ssn` (nine digits, no delimiters)\n* `email` (required in some cases)\n* `phone` (required in some cases)\n\n|\n* `business_name_legal` (128 char max)\n* `business_name_dba` (\"Doing Business As\" or fictitious business name; enter the legal business name in this field if your business does not use a fictitious business name)\n* `office_location` (cannot be a PO Box; `state` field must use a <<valid_state_provincial_and_territorial_abbreviations, valid two-letter state, provincial, or territorial abbreviation>>)\n* `identifications` (nine digits, no delimiters)\n* `incorporation.incorporation_type`\n* `incorporation.state_of_incorporation`\n* `date_established`\n* `proprietor_or_officer`\n* `beneficial_owner` (maximum of four beneficial owners)\n* `proprietor_is_beneficial_owner` (required if the business proprietor or officer is also a beneficial owner)\n* `attestation_consent`\n* `attester_name`\n* `attestation_date`\n|===\n\n==== Valid state, provincial, and territorial abbreviations\nThe following list includes all valid two-letter abbreviations for US states, territories, and military (APO/FPO/DPO) addresses.\nIt also includes abbreviations for Canadian provinces and territories.\nState, provincial, and territorial abbreviations are case sensitive, and must be in uppercase as they appear in this list:\n\n* `AL`: Alabama\n* `AK`: Alaska\n* `AB`: Alberta\n* `AS`: American Samoa\n* `AZ`: Arizona\n* `AR`: Arkansas\n* `AE`: Armed Forces\n* `AA`: Armed Forces Americas\n* `AP`: Armed Forces Pacific\n* `BC`: British Columbia\n* `CA`: California\n* `CO`: Colorado\n* `CT`: Connecticut\n* `DE`: Delaware\n* `DC`: District of Columbia\n* `FL`: Florida\n* `GA`: Georgia\n* `GU`: Guam\n* `HI`: Hawaii\n* `ID`: Idaho\n* `IL`: Illinois\n* `IN`: Indiana\n* `IA`: Iowa\n* `KS`: Kansas\n* `KY`: Kentucky\n* `LA`: Louisiana\n* `ME`: Maine\n* `MB`: Manitoba\n* `MD`: Maryland\n* `MA`: Massachusetts\n* `MI`: Michigan\n* `MN`: Minnesota\n* `MS`: Mississippi\n* `MO`: Missouri\n* `MT`: Montana\n* `NE`: Nebraska\n* `NV`: Nevada\n* `NB`: New Brunswick\n* `NH`: New Hampshire\n* `NJ`: New Jersey\n* `NM`: New Mexico\n* `NY`: New York\n* `NF`: Newfoundland\n* `NC`: North Carolina\n* `ND`: North Dakota\n* `NT`: Northwest Territories\n* `NS`: Nova Scotia\n* `NU`: Nunavut\n* `OH`: Ohio\n* `OK`: Oklahoma\n* `ON`: Ontario\n* `OR`: Oregon\n* `PA`: Pennsylvania\n* `PE`: Prince Edward Island\n* `PR`: Puerto Rico\n* `QC`: Quebec\n* `RI`: Rhode Island\n* `SK`: Saskatchewan\n* `SC`: South Carolina\n* `SD`: South Dakota\n* `TN`: Tennessee\n* `TX`: Texas\n* `UT`: Utah\n* `VT`: Vermont\n* `VI`: Virgin Islands\n* `VA`: Virginia\n* `WA`: Washington\n* `WV`: West Virginia\n* `WI`: Wisconsin\n* `WY`: Wyoming\n* `YT`: Yukon Territory"
+      description: "Use this endpoint to verify the identity of an account holder in the United States, either a user or a business.\nYou can perform KYC verification on an account holder, provided the following are true:\n\n* The KYC status of the account holder is `UNVERIFIED` or `LIMITED`\n* The account holder has not been submitted for KYC verification twice\n\n=== Required fields\n\nIn order to perform KYC verification, the user or business resource on which you perform the check must have the following fields configured with valid values:\n\n[cols=\"1a,1a\"]\n|===\n| User Fields Required for KYC | Business Fields Required for KYC\n\n|\n* `first_name` (legal first name only, no prefixes)\n* `last_name` (legal last name only, no suffixes)\n* `address1` (cannot be a PO Box)\n* `city`\n* `state`\n* `postal_code`\n* `country`\n* `birth_date`\n* `ssn` (nine digits, no delimiters)\n* `email` (required in some cases)\n* `phone` (required in some cases)\n\n|\n* `business_name_legal` (128 char max)\n* `business_name_dba` (\"Doing Business As\" or fictitious business name; enter the legal business name in this field if your business does not use a fictitious business name)\n* `office_location` (cannot be a PO Box; `state` field must use a <<valid_state_provincial_and_territorial_abbreviations, valid two-letter state, provincial, or territorial abbreviation>>)\n* `identifications` (nine digits, no delimiters)\n* `incorporation.incorporation_type`\n* `incorporation.state_of_incorporation`\n* `date_established`\n* `proprietor_or_officer`\n* `beneficial_owner` (maximum of four beneficial owners)\n* `proprietor_is_beneficial_owner` (required if the business proprietor or officer is also a beneficial owner)\n* `attestation_consent`\n* `attester_name`\n* `attestation_date`\n|===\n\n==== Valid state, provincial, and territorial abbreviations\nThe following list includes all valid two-letter abbreviations for US states, territories, and military (APO/FPO/DPO) addresses.\nIt also includes abbreviations for Canadian provinces and territories.\nState, provincial, and territorial abbreviations are case sensitive, and must be in uppercase as they appear in this list:\n\n* `AL`: Alabama\n* `AK`: Alaska\n* `AB`: Alberta\n* `AS`: American Samoa\n* `AZ`: Arizona\n* `AR`: Arkansas\n* `AE`: Armed Forces\n* `AA`: Armed Forces Americas\n* `AP`: Armed Forces Pacific\n* `BC`: British Columbia\n* `CA`: California\n* `CO`: Colorado\n* `CT`: Connecticut\n* `DE`: Delaware\n* `DC`: District of Columbia\n* `FL`: Florida\n* `GA`: Georgia\n* `GU`: Guam\n* `HI`: Hawaii\n* `ID`: Idaho\n* `IL`: Illinois\n* `IN`: Indiana\n* `IA`: Iowa\n* `KS`: Kansas\n* `KY`: Kentucky\n* `LA`: Louisiana\n* `ME`: Maine\n* `MB`: Manitoba\n* `MD`: Maryland\n* `MA`: Massachusetts\n* `MI`: Michigan\n* `MN`: Minnesota\n* `MS`: Mississippi\n* `MO`: Missouri\n* `MT`: Montana\n* `NE`: Nebraska\n* `NV`: Nevada\n* `NB`: New Brunswick\n* `NH`: New Hampshire\n* `NJ`: New Jersey\n* `NM`: New Mexico\n* `NY`: New York\n* `NF`: Newfoundland\n* `NC`: North Carolina\n* `ND`: North Dakota\n* `NT`: Northwest Territories\n* `NS`: Nova Scotia\n* `NU`: Nunavut\n* `OH`: Ohio\n* `OK`: Oklahoma\n* `ON`: Ontario\n* `OR`: Oregon\n* `PA`: Pennsylvania\n* `PE`: Prince Edward Island\n* `PR`: Puerto Rico\n* `QC`: Quebec\n* `RI`: Rhode Island\n* `SK`: Saskatchewan\n* `SC`: South Carolina\n* `SD`: South Dakota\n* `TN`: Tennessee\n* `TX`: Texas\n* `UT`: Utah\n* `VT`: Vermont\n* `VI`: Virgin Islands\n* `VA`: Virginia\n* `WA`: Washington\n* `WV`: West Virginia\n* `WI`: Wisconsin\n* `WY`: Wyoming\n* `YT`: Yukon Territory"
       operationId: postKyc
       requestBody:
         content:
@@ -9011,7 +9011,7 @@ paths:
       tags:
         - Peer Transfers
       summary: Create peer transfer
-      description: "Use this endpoint to request a peer transfer (i.e., a movement of funds from the GPA of an account holder to another account belonging to the same account holder).\nAdd the source details to the body of the request in link:http://www.json.org/[JSON, window=\"_blank\"] format.\n\nWhen creating a peer transfer request, you must pass in both a token to identify the fee sender (either `sender_user_token` or `sender_business_token`) and a token to identify the fee recipient (either `recipient_user_token` or `recipient_business_token`).\nThe sender and recipient objects must already exist.\n\n[NOTE]\nThis feature is disabled by default and requires activation by Marqeta.   +\n  +\nThis feature enables you to transfer or reallocate funds where the `sender_*\\_token` and the `recipient_*_token` belong to the same account holder.\nIt does not allow you to transfer or reallocate funds between different account holders.\nContact your Marqeta representative for more information."
+      description: "Use this endpoint to request a peer transfer.\nAdd the source details to the body of the request in link:http://www.json.org/[JSON, window=\"_blank\"] format.\n\nWhen creating a peer transfer request, you must pass in both a token to identify the transfer sender (either `sender_user_token` or `sender_business_token`) and a token to identify the transfer recipient (either `recipient_user_token` or `recipient_business_token`).\nThe sender and recipient objects must already exist.\n\n[NOTE]\nThis feature is disabled by default and requires activation by Marqeta.   +\n  +\nThis feature enables you to transfer or reallocate funds where the `sender_*\\_token` and the `recipient_*_token` belong to the same program.\nIt does not allow you to transfer or reallocate funds between different programs.\nContact your Marqeta representative for more information."
       operationId: postPeertransfers
       requestBody:
         content:
@@ -11930,7 +11930,7 @@ paths:
       tags:
         - Users
       summary: Create user
-      description: "This endpoint enables you to create a user.\nA new user's initial status depends on the <</core-api/kyc-verification, Know Your Customer (KYC) requirements>> of the program or associated <</core-api/account-holder-groups, account holder group>>.\n\n[cols=\"1,1,1,1\"]\n|===\n| KYC Required | Initial User Status | User Active on Creation | User Limitations\n\n| Always\n| `UNVERIFIED`\n| Optional\n| Cannot load funds; cannot activate cards.\n\n| Conditionally\n| `LIMITED`\n| Optional\n| Restricted by rules in `accountholdergroups.pre_kyc_controls`.\n\n| Never\n| `ACTIVE`\n| Required\n| None.\n|===\n\n[NOTE]\nUse the `/usertransitions` endpoints to transition user resources between statuses and to view the history of a user's status.\nDo not set the value of the `user.active` field directly.\nFor more information on status changes, see <</core-api/user-transitions#postUsertransitions, Create User Transition>>.\n\nTo perform KYC verification on users, the user object must have the following fields configured:\n\n* `first_name`\n* `last_name`\n* `address1` (cannot be a PO Box)\n* `city`\n* `state`\n* `postal_code`\n* `country`\n* `birth_date`\n* `identifications`\n* `phone` (required in some cases)\n* `email` (required in some cases)\n\n[NOTE]\nThe `identifications` requirement depends on your program's configuration.\nTo determine if you should provide a full or abbreviated identification number, contact your Marqeta representative.\nKYC verification requires the full Social Security Number (SSN) of the user.\n\nTo create a child user, you must identify the parent user or business and determine whether the child user shares an account with the parent.\n\nThe parent must be an existing user or business.\nOn the child user, set the `parent_token` field to the value of the parent's `token` field.\nIf either the parent or the grandparent is a business, a `business_token` field is added to the user.\nThis field's value is set to the token of either the parent or grandparent (whichever is the business).\n\nThe `uses_parent_account` field determines whether the child shares balances with the parent (`true`) or whether the child balances are independent of the parent (`false`).\nIf you do not specify a value for `uses_parent_account`, it is set to `false` by default (the user does not share the parent's balance) and returned in the response body.\nThis field cannot be updated, so you must decide upon creation whether the child user shares the parent balance.\n\nSharing an account with a parent user affects how the child user interacts with cards as follows:\n\n* A child user cannot spend funds if its parent is not active.\n* An active child user can activate cards, whether the parent is active or not."
+      description: "This endpoint enables you to create a user.\nA new user's initial status depends on the <</core-api/kyc-verification, Know Your Customer (KYC) requirements>> of the program or associated <</core-api/account-holder-groups, account holder group>>.\n\n[cols=\"1,1,1,1\"]\n|===\n| KYC Required | Initial User Status | User Active on Creation | User Limitations\n\n| Always\n| `UNVERIFIED`\n| Optional\n| Cannot load funds; cannot activate cards.\n\n| Conditionally\n| `LIMITED`\n| Optional\n| Restricted by rules in `accountholdergroups.pre_kyc_controls`.\n\n| Never\n| `ACTIVE`\n| Required\n| None.\n|===\n\n[NOTE]\nUse the `/usertransitions` endpoints to transition user resources between statuses and to view the history of a user's status.\nDo not set the value of the `user.active` field directly.\nFor more information on status changes, see <</core-api/user-transitions#postUsertransitions, Create User Transition>>.\n\nTo perform KYC verification on users, the user object must have the following fields configured:\n\n* `first_name` (legal first name only, no prefixes)\n* `last_name` (legal last name only, no suffixes)\n* `address1` (cannot be a PO Box)\n* `city`\n* `state`\n* `postal_code`\n* `country`\n* `birth_date`\n* `identifications`\n* `phone` (required in some cases)\n* `email` (required in some cases)\n\n[NOTE]\nThe `identifications` requirement depends on your program's configuration.\nTo determine if you should provide a full or abbreviated identification number, contact your Marqeta representative.\nKYC verification requires the full Social Security Number (SSN) of the user.\n\nTo create a child user, you must identify the parent user or business and determine whether the child user shares an account with the parent.\n\nThe parent must be an existing user or business.\nOn the child user, set the `parent_token` field to the value of the parent's `token` field.\nIf either the parent or the grandparent is a business, a `business_token` field is added to the user.\nThis field's value is set to the token of either the parent or grandparent (whichever is the business).\n\nThe `uses_parent_account` field determines whether the child shares balances with the parent (`true`) or whether the child balances are independent of the parent (`false`).\nIf you do not specify a value for `uses_parent_account`, it is set to `false` by default (the user does not share the parent's balance) and returned in the response body.\nThis field cannot be updated, so you must decide upon creation whether the child user shares the parent balance.\n\nSharing an account with a parent user affects how the child user interacts with cards as follows:\n\n* A child user cannot spend funds if its parent is not active.\n* An active child user can activate cards, whether the parent is active or not."
       operationId: postUsers
       requestBody:
         content:
@@ -16235,7 +16235,7 @@ components:
         data:
           type: array
           items:
-            $ref: '#/components/schemas/DepositDepositResponse'
+            $ref: '#/components/schemas/DirectDepositResponse'
         end_index:
           type: integer
           format: int32
@@ -16299,6 +16299,65 @@ components:
           enum:
             - CREDIT
             - DEBIT
+          type: string
+    DirectDepositResponse:
+      type: object
+      properties:
+        amount:
+          type: number
+        business_token:
+          type: string
+        company_discretionary_data:
+          type: string
+        company_entry_description:
+          type: string
+        company_identification:
+          type: string
+        company_name:
+          type: string
+        created_time:
+          type: string
+          format: date-time
+        direct_deposit_account_token:
+          type: string
+        early_direct_deposit:
+          type: boolean
+          default: false
+        individual_identification_number:
+          type: string
+        individual_name:
+          type: string
+        last_modified_time:
+          type: string
+          format: date-time
+        originator_status_code:
+          type: string
+        settlement_date:
+          type: string
+          format: date-time
+        standard_entry_class_code:
+          type: string
+        state:
+          enum:
+            - PENDING
+            - APPLIED
+            - REVERSED
+            - REJECTED
+          type: string
+        state_reason:
+          type: string
+        state_reason_code:
+          type: string
+        token:
+          type: string
+        trace_number:
+          type: string
+        type:
+          enum:
+            - CREDIT
+            - DEBIT
+          type: string
+        user_token:
           type: string
     DirectDepositTransitionListResponse:
       type: object
@@ -16374,6 +16433,10 @@ components:
     DirectDepositTransitionResponse:
       type: object
       properties:
+        amount:
+          type: number
+        business_token:
+          type: string
         channel:
           enum:
             - API
@@ -16385,6 +16448,14 @@ components:
             - PROD_SUPPORT
             - UNSUPPORTED
           type: string
+        company_discretionary_data:
+          type: string
+        company_entry_description:
+          type: string
+        company_identification:
+          type: string
+        company_name:
+          type: string
         created_time:
           type: string
           format: date-time
@@ -16392,9 +16463,26 @@ components:
           type: string
         direct_deposit_token:
           type: string
+        early_direct_deposit:
+          type: boolean
+          default: false
+        individual_identification_number:
+          type: string
+        individual_name:
+          type: string
+        last_modified_time:
+          type: string
+          format: date-time
+        originator_status_code:
+          type: string
         reason:
           type: string
         reason_code:
+          type: string
+        settlement_date:
+          type: string
+          format: date-time
+        standard_entry_class_code:
           type: string
         state:
           enum:
@@ -16405,9 +16493,13 @@ components:
           type: string
         token:
           type: string
+        trace_number:
+          type: string
         transaction_token:
           type: string
         type:
+          type: string
+        user_token:
           type: string
     DisputeCategory:
       enum:
@@ -20798,7 +20890,7 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/transaction_model'
-          description: "An array of transaction objects.\n\nObjects are returned as appropriate to your query."
+          description: "An array of transaction objects.\nSee the <</core-api/transactions/#transaction_model, Transaction object>> description at the top of this page.\n\nObjects are returned as appropriate to your query."
         end_index:
           type: integer
           description: "The sort order index of the last resource in the returned array.\n\nThis field is returned if there are resources in your returned array."
@@ -21449,6 +21541,7 @@ components:
             - CHECK
             - ACH
           type: string
+          description: Specifies the type of account from which the transaction was funded.
         receiver_account_type:
           enum:
             - OTHER
@@ -21461,12 +21554,16 @@ components:
             - WALLET_ID
             - SOCIAL_NETWORK_ID
           type: string
+          description: Specifies the type of account receiving the funding.
         receiver_name:
           type: string
+          description: Specifies the name of the account holder receiving the funding.
         screening_score:
           type: string
+          description: "Sanctions screening score to assist with meeting Anti-Money Laundering (AML) obligations.\n\nHigher scores indicate that the sender's data more closely resembles an entry on the regulatory watchlist.\n\nA value of 999 means no score was available."
         transaction_purpose:
           type: string
+          description: Describes the purpose of the account funding transaction.
         transaction_type:
           enum:
             - ACCOUNT_TO_ACCOUNT
@@ -21498,6 +21595,8 @@ components:
             - CASH_DEPOSIT
             - PURCHASE_REPAYMENT
           type: string
+          description: Specifies the account funding transaction type.
+      description: "Contains details about account funding transactions.\nAccount funding transactions move money into a cardholder's general purpose account (GPA)."
     account_holder_group_config:
       type: object
       properties:
@@ -21556,6 +21655,38 @@ components:
           minLength: 1
           type: string
           description: Descriptive name for the account holder group.
+    account_name_verification_model:
+      type: object
+      properties:
+        on_file:
+          $ref: '#/components/schemas/ani_information'
+        request:
+          $ref: '#/components/schemas/ani_information'
+        request_type:
+          enum:
+            - SENDER
+            - RECEIVER
+          type: string
+        response:
+          $ref: '#/components/schemas/response'
+      description: 'Contains name verification data: the full name entered by the cardholder, name data held by the Marqeta platform, and an assertion by the Marqeta platform as to whether the two sets of data match.'
+    account_name_verification_source:
+      type: object
+      properties:
+        first_name:
+          type: string
+          description: First or given name of the cardholder.
+        last_name:
+          type: string
+          description: Last or family name of the cardholder.
+        middle_name:
+          type: string
+          description: Middle name of the cardholder.
+        on_file:
+          $ref: '#/components/schemas/ani_information'
+        response:
+          $ref: '#/components/schemas/response'
+      description: Contains account name verification data used to make JIT Funding decisions.
     ach_model:
       required:
         - account_number
@@ -21610,7 +21741,7 @@ components:
           description: "Free-form text field for holding notes about verification.\nThis field is returned only if `verification_override = true`."
         verification_override:
           type: boolean
-          description: Allows the ACH funding source to be used regardless of its verification status.
+          description: "Allows the ACH funding source to be used, regardless of its verification status.\nSet this field to `true` if you can attest that you have verified the account on your own and that it will not be returned by the Federal Reserve.\n\n*NOTE:* When using `PLAID` to validate a funding source, this field is always set to `true`."
           default: false
     ach_partner_request_model:
       required:
@@ -21633,7 +21764,7 @@ components:
           enum:
             - PLAID
           type: string
-          description: "The name of the partner who validated the account holder.\nReturned when a third-party partner was used for account validation."
+          description: "Name of the partner who validated the account holder.\nReturned when a third-party partner was used for account validation."
         partner_account_link_reference_token:
           type: string
           description: "Supplied by the account validation partner, this value is a reference to the account holder's details, such as the account number and routing number.\nReturned when a third-party partner was used for account validation."
@@ -21678,7 +21809,7 @@ components:
           format: date-time
         date_sent_for_verification:
           type: string
-          description: "Date and time when the account was sent for verification, in UTC.\n\nThis field is returned if it exists in the resource."
+          description: "Date and time in UTC when either the request for account validation was sent to the third-party partner, or when the funding source was verified by microdeposits.\n\nThis field is returned if it exists in the resource."
           format: date-time
         date_verified:
           type: string
@@ -21697,8 +21828,10 @@ components:
           description: Name on the ACH account.
         partner:
           type: string
+          description: "Name of the partner who validated the account holder.\nReturned when a third-party partner was used for account validation."
         partner_account_link_reference_token:
           type: string
+          description: "Supplied by the account validation partner, this value is a reference to the account holder's details, such as the account number and routing number.\nReturned when a third-party partner was used for account validation."
         token:
           type: string
           description: Unique identifier of the funding source.
@@ -21710,7 +21843,7 @@ components:
           description: "Free-form text field for holding notes about verification.\nThis field is returned only if `verification_override = true`."
         verification_override:
           type: boolean
-          description: "Allows the ACH funding source to be used regardless of its verification status.\nThis field is returned if it exists in the resource."
+          description: "Allows the ACH funding source to be used regardless of its verification status.\nThis field is returned if it exists in the resource.\n\n*NOTE:* When using `PLAID` to validate a funding source, this field is always set to `true`."
           default: false
         verification_status:
           type: string
@@ -21829,6 +21962,32 @@ components:
         user_address:
           $ref: '#/components/schemas/AndroidPushTokenRequestAddress'
       description: Contains details about a card tokenization push request.
+    ani_information:
+      type: object
+      properties:
+        first_name:
+          type: string
+          description: First or given name of the cardholder.
+        last_name:
+          type: string
+          description: Last or family name of the cardholder.
+        middle_name:
+          type: string
+          description: Middle name of the cardholder.
+      description: Contains the name of the cardholder for account name verification.
+    ani_information_1:
+      type: object
+      properties:
+        first_name:
+          type: string
+          description: First or given name of the cardholder.
+        last_name:
+          type: string
+          description: Last or family name of the cardholder.
+        middle_name:
+          type: string
+          description: Middle name of the cardholder.
+      description: Contains account name verification data used to make JIT Funding decisions.
     atc_information:
       type: object
       properties:
@@ -22693,7 +22852,7 @@ components:
           description: "Free-form text field for holding notes about verification.\nThis field is returned only if `verification_override = true`."
         verification_override:
           type: boolean
-          description: Allows the ACH funding source to be used regardless of its verification status.
+          description: "Allows the ACH funding source to be used, regardless of its verification status.\nSet this field to `true` if you can attest that you have verified the account on your own and that it will not be returned by the Federal Reserve.\n\n*NOTE:* When using `PLAID` to validate a funding source, this field is always set to `true`."
           default: false
     base_ach_response_model:
       required:
@@ -22725,7 +22884,7 @@ components:
           format: date-time
         date_sent_for_verification:
           type: string
-          description: "Date and time when the account was sent for verification, in UTC.\nThis field is returned if it exists in the resource."
+          description: "Date and time in UTC when either the request for account validation was sent to the third-party partner, or when the funding source was verified by microdeposits.\n`2022-02-26T20:03:05Z`, for example.\n\nThis field is returned if it exists in the resource."
           format: date-time
         date_verified:
           type: string
@@ -22748,13 +22907,13 @@ components:
           type: string
         token:
           type: string
-          description: The unique identifier of the funding source.
+          description: Unique identifier of the funding source.
         verification_notes:
           type: string
           description: "Free-form text field for holding notes about verification.\nThis field is returned only if `verification_override = true`."
         verification_override:
           type: boolean
-          description: "Allows the ACH funding source to be used regardless of its verification status.\nThis field is returned if it exists in the resource."
+          description: "Allows the ACH funding source to be used regardless of its verification status.\nThis field is returned if it exists in the resource.\n\n*NOTE:* When using `PLAID` to validate a funding source, this field is always set to `true`."
           default: false
         verification_status:
           type: string
@@ -23139,7 +23298,7 @@ components:
           description: 'Indicates the type of business, for example business-to-business (B2B) or business-to-consumer (B2C).'
         date_established:
           type: string
-          description: "Date the business was established.\n\nThis field is required for KYC verification (US-based accounts only)."
+          description: Date when the business was established.
           format: date-time
         duns_number:
           maxLength: 255
@@ -23277,7 +23436,7 @@ components:
           description: 'Indicates the type of business, for example B2B (business-to-business) or B2C (business-to-consumer).'
         date_established:
           type: string
-          description: "Date the business was established.\n\nThis field is required for KYC verification (US-based accounts only)."
+          description: Date when the business was established.
           format: date-time
         duns_number:
           maxLength: 255
@@ -23360,6 +23519,7 @@ components:
           minLength: 0
           type: string
           description: URL of the business' website.
+      description: Contains information about a business.
     business_incorporation:
       type: object
       properties:
@@ -23997,7 +24157,7 @@ components:
             - OBERTHUR
             - ALLPAY
           type: string
-          description: "Specifies the fulfillment provider.\n\n*NOTE:* Expedited processing is available for cards that are fulfilled by link:http://perfectplastic.com/[Perfect Plastic Printing, window=\"_blank\"], link:http://www.idemia.com[IDEMIA, window=\"_blank\"], and link:https://www.arroweye.com/[Arroweye Solutions, window=\"_blank\"].\nYou can expedite an order's processing by using the `expedite` field of the <</core-api/cards, card>> or <</core-api/bulk-card-orders, bulkissuance>> object.\nContact your Marqeta representative for information regarding the cost of expedited service."
+          description: "Specifies the fulfillment provider.\n\nYou can work with providers located in North America, Europe, South America, and the Asia-Pacific region.\nFor more information, see <</developer-guides/managing-physical-cards#_fulfillment_providers_by_location, Fulfillment providers by location>>.\n\n*NOTE:* Expedited processing is available for cards that are fulfilled by link:https://www.arroweye.com/[Arroweye Solutions, window=\"_blank\"], link:https://www.gi-de.com/[G+D, window=\"_blank\"], link:http://www.idemia.com[IDEMIA, window=\"_blank\"], and link:http://perfectplastic.com/[Perfect Plastic Printing, window=\"_blank\"].\nYou can expedite an order's processing by using the `expedite` field of the <</core-api/cards, card>> or <</core-api/bulk-card-orders, bulkissuance>> object.\nContact your Marqeta representative for information regarding the cost of expedited service."
           default: PERFECTPLASTIC
         package_id:
           maxLength: 50
@@ -24621,16 +24781,16 @@ components:
           description: "Specifies the status of the 3D Secure authentication:\n\n* `ATTEMPTED`: Indicates that 3D Secure authentication was requested and processed by the card network.\n* `DATA_SHARE_EXEMPTION`: Indicates that 3D Secure authentication was for information only and exempted.\n* `EXEMPTED`: Indicates that 3D Secure authentication was requested but the challenge was exempted.\n* `EXEMPTION_CLAIMED`: Indicates that 3D Secure authentication was exempted because acquirer transaction risk analysis (TRA) was already performed.\n* `SCA_EXEMPTION`: Indicates that 3D Secure authentication was exempted because strong customer authentication (SCA) was already performed.\n* `SUCCESSFUL`: Indicates that 3D Secure authentication was successful.\n* `SUCCESSFUL_NON_PAYMENT`: Indicates that 3D Secure non-payment authentication was successful.\n* `THREEDS_REQUESTER_DATA_SHARE_EXEMPTION`: Status is deprecated and will be removed from a future release of the Marqeta platform.\nAfter June 2023, use `DATA_SHARE_EXEMPTION` instead.\n* `THREEDS_REQUESTER_SCA_EXEMPTION`: Status is deprecated and will be removed in a June 2023 release of the Marqeta platform.\nAfter June 2023, use `SCA_EXEMPTION` instead.\n* `THREEDS_REQUESTER_TRA_EXEMPTION`: Status is deprecated and will be removed in a June 2023 release of the Marqeta platform.\nAfter June 2023, use `EXEMPTION_CLAIMED` instead.\n* `UNAVAILABLE`:\n** For Visa transactions, this status indicates that 3D Secure authentication was requested, but Marqeta's access control server (ACS) was not available.\n** For Mastercard transactions, this status indicates that 3D Secure authentication was not available."
         cavv_authentication_amount:
           type: string
-          description: "Authentication amount from the cardholder authentication verification value (CAVV) used to validate an authorization.\nThis field is returned if it is included in the transaction data from the card network."
+          description: "Authentication amount from the cardholder authentication verification value (CAVV) used to validate an authorization.\nThis field is returned if it is included in the transaction data from the card network.\n\nTo enable this field, contact your Marqeta representative."
         electronic_commerce_indicator:
           type: string
           description: "Status of the 3D Secure or digital wallet token transaction authentication attempt, as provided by a transaction participant.\n\n* `authentication_attempted`: Merchant attempted to authenticate, but either the issuer or the cardholder does not participate in 3D Secure or card tokenization.\n* `authentication_successful`: Cardholder authentication successful.\n* `no_authentication`: Non-authenticated e-commerce transaction."
         issuer_exemption:
           type: string
-          description: "Indicates a 3D Secure authentication exemption from the issuer\nThis field is returned if it is included in the transaction data from the card network."
+          description: "Indicates a 3D Secure authentication exemption from the issuer.\nThis field is returned if it is included in the transaction data from the card network."
         raw_cavv_data:
           type: string
-          description: "Raw cardholder authentication verification value provided by the card network.\nThis field is returned if it is included in the transaction data from the card network."
+          description: "Raw cardholder authentication verification value provided by the card network.\nThis field is returned if it is included in the transaction data from the card network.\n\nTo enable this field, contact your Marqeta representative."
         three_ds_message_version:
           type: string
           description: Specifies the 3D Secure message version used for authentication.
@@ -24851,9 +25011,6 @@ components:
           type: string
           description: Unique identifier of the card whose sensitive information you want to display.
     client_access_token_response:
-      required:
-        - created
-        - expires
       type: object
       properties:
         application:
@@ -25105,6 +25262,17 @@ components:
           type: string
           description: Type of device being provisioned.
       description: Contains information related to the device being provisioned.
+    digital_service_provider:
+      type: object
+      properties:
+        cvm_authentication_indicator:
+          type: string
+        cvm_authentication_method:
+          type: string
+        first_authentication_factor:
+          type: string
+        second_authentication_factor:
+          type: string
     digital_wallet_android_pay_provision_request:
       required:
         - card_token
@@ -25334,6 +25502,8 @@ components:
           description: Unique identifier of the digital wallet token.
         token_service_provider:
           $ref: '#/components/schemas/token_service_provider'
+        transaction_device:
+          $ref: '#/components/schemas/transaction_device'
         user:
           $ref: '#/components/schemas/user_card_holder_response'
         wallet_provider_profile:
@@ -25367,7 +25537,7 @@ components:
       properties:
         cardproduct_preferred_notification_language:
           type: string
-          description: "Language specified in the `config.transaction_controls.notification_language` field of the card product:\n`ces` (Czech), `deu` (German), `eng` (English), `fra` (French), `ita` (Italian), `pol` (Polish), `spa` (Spanish), `swe` (Swedish)\n\nThe ISO maintains the link:https://www.iso.org/iso-3166-country-codes.html[full list of ISO 3166 two- and three-digit numeric country codes, window=\"_blank\"]."
+          description: "Language specified in the `config.transaction_controls.notification_language` field of the card product:\n\n* *ces* – Czech\n* *deu* – German\n* *eng* – English\n* *fra* – French\n* *grc* – Greek\n* *ita* – Italian\n* *nld* – Dutch\n* *pol* – Polish\n* *prt* – Portuguese\n* *rou* – Romanian\n* *spa* – Spanish\n* *swe* – Swedish\n\nBy default, notifications are sent in English.\n\nThe ISO maintains the link:https://www.iso.org/iso-3166-country-codes.html[full list of ISO 3166 two- and three-digit numeric country codes, window=\"_blank\"]."
         issuer_product_config_id:
           type: string
           description: Unique identifier of the product configuration on the Marqeta platform.
@@ -26319,7 +26489,7 @@ components:
           format: date-time
         date_sent_for_verification:
           type: string
-          description: "Date and time when the account was sent for verification, in UTC.\nThis field is returned if it exists in the resource."
+          description: "Date and time in UTC when either the request for account validation was sent to the third-party partner, or when the funding source was verified by microdeposits.\n\nThis field is returned if it exists in the resource."
           format: date-time
         date_verified:
           type: string
@@ -26343,6 +26513,10 @@ components:
           description: "Name on the account.\nThis field is returned if it exists in the resource."
         partner:
           type: string
+          description: "Name of the partner who validated the account holder.\nReturned when a third-party partner was used for account validation."
+        partner_account_link_reference_token:
+          type: string
+          description: "Supplied by the account validation partner, this value is a reference to the account holder's details, such as the account number and routing number.\nReturned when a third-party partner was used for account validation."
         token:
           type: string
           description: "Unique identifier of the funding source.\nThis field is returned if it exists in the resource."
@@ -26357,7 +26531,7 @@ components:
           description: "Free-form text field for holding notes about verification.\nThis field is returned only if `verification_override = true`."
         verification_override:
           type: boolean
-          description: Allows the ACH funding source to be used regardless of its verification status.
+          description: "Allows the ACH funding source to be used regardless of its verification status.\n\n*NOTE:* When using `PLAID` to validate a funding source, this field is always set to `true`."
           default: false
         verification_status:
           type: string
@@ -26882,7 +27056,7 @@ components:
             type: string
         recommended_action:
           type: string
-          description: The rules violated by the transaction.
+          description: The action recommended based on the fraud score.
         risk_level:
           type: string
           description: 'The fraud rating, or level of risk associated with the transaction.'
@@ -26906,6 +27080,16 @@ components:
             $ref: '#/components/schemas/triggered_rule'
           description: 'Provides a list of rules triggered by a fraud event, along with the information on tags and rule characteristics.'
       description: Contains one or more fraud determinations by the card network that apply to either the transaction or the cardholder's account.
+    jit_account_name_verification:
+      type: object
+      properties:
+        gateway:
+          $ref: '#/components/schemas/account_name_verification_source'
+        issuer:
+          $ref: '#/components/schemas/account_name_verification_source'
+        request:
+          $ref: '#/components/schemas/ani_information_1'
+      description: "Contains account name verification data used to make JIT Funding decisions from one of the following objects:\n\n* The `gateway` object contains account name verification data from your JIT Funding gateway.\n* The `issuer` object contains account name verification data from the Marqeta platform.\n* The `request` object contains account name verification data as it appears in a JIT Funding request."
     jit_address_verification:
       type: object
       properties:
@@ -26915,7 +27099,7 @@ components:
           $ref: '#/components/schemas/address_verification_source'
         request:
           $ref: '#/components/schemas/avs_information'
-      description: Contains address verification data used to make JIT funding decisions.
+      description: Contains address verification data used to make JIT Funding decisions.
     jit_funding:
       type: object
       properties:
@@ -26934,6 +27118,8 @@ components:
         - user_token
       type: object
       properties:
+        account_name_verification:
+          $ref: '#/components/schemas/jit_account_name_verification'
         acting_user_token:
           maxLength: 36
           minLength: 0
@@ -26986,6 +27172,8 @@ components:
           items:
             type: string
           description: "Array of tokens referencing the JIT Funding tokens of all previous associated incremental authorization JIT Funding requests.\nUseful for ascertaining the final transaction amount when the original amount was incremented."
+        jit_account_name_verification:
+          $ref: '#/components/schemas/jit_account_name_verification'
         memo:
           maxLength: 99
           minLength: 0
@@ -27065,7 +27253,7 @@ components:
           minLength: 0
           type: string
           description: Holder of the user account that was funded.
-      description: 'Contains information about the JIT Funding load event, in which funds are loaded into an account.'
+      description: "Contains information about the JIT Funding load event, in which funds are loaded into an account.\n\nThis object is returned if your program uses JIT Funding."
     jit_funding_paymentcard_funding_source:
       type: object
       properties:
@@ -27148,7 +27336,7 @@ components:
           description: "Specifies the business account holder on which to perform the identity check.\nDo not pass this field if your request includes the `user_token` field.\n\nSend a `GET` request to `/businesses` to retrieve business tokens."
         manual_override:
           type: boolean
-          description: "Set to `true` to designate a user account holder as having passed a verification check without Marqeta performing the check through one of its KYC providers.\n\nUse this override when you perform verification through another mechanism, such as with an alternative KYC provider or directly with the account holder.\nYou must obtain explicit, written approval from Marqeta before using the `manual_override` field for KYC verification.\nConsult your Customer Success representative for more information."
+          description: "Set to `true` to designate a user account holder as having passed a verification check without Marqeta performing the check through one of its KYC providers.\n\nUse this override when you perform verification through another mechanism, such as an alternative KYC provider or directly with the account holder.\n\nYou must obtain explicit, written approval from Marqeta before using the `manual_override` field for KYC verification.\nThis feature is only available to programs that are enabled to perform their own Customer Identification Program (CIP) KYC verification.\nConsult your Marqeta representative for more information."
           default: false
         notes:
           maxLength: 255
@@ -27189,7 +27377,7 @@ components:
           format: date-time
         manual_override:
           type: boolean
-          description: "If `true`, the user account holder is designated as having passed a verification check without Marqeta performing the check.\n\nThis override is used when verification is performed through another mechanism, such as with an alternative KYC provider or directly with the account holder."
+          description: "If `true`, the user account holder is designated as having passed a verification check without Marqeta performing the check.\n\nThis override is used when verification is performed through another mechanism, such as an alternative KYC provider or directly with the account holder."
           default: false
         notes:
           type: string
@@ -28512,7 +28700,7 @@ components:
       properties:
         account:
           type: string
-          description: The account identifier.
+          description: Account identifier.
         active:
           type: boolean
           description: "Indicates whether the program funding source is active.\nThis field is returned if it exists in the resource."
@@ -28790,6 +28978,8 @@ components:
         dwt_use_card_status_during_auth:
           type: boolean
         dwt_verify_atc_during_auth:
+          type: boolean
+        enable_discretionary_data_during_tar:
           type: boolean
         force_yellow_path_for_card_product:
           type: boolean
@@ -29131,11 +29321,11 @@ components:
           description: "Information about the velocity control applied to the transaction.\n\n*NOTE:* This field is returned only in transaction response objects.\nIt is not returned in address verification or card security verification response objects."
         code:
           type: string
-          description: "Four-digit response code for address verification, card security code verification, or transactions.\n\nFor address verification responses, the code is an assertion by the Marqeta platform as to whether its address verification data matches that provided by the cardholder:\n\n[cols=\"2,3,3\"]\n!===\n! Code ! Address ! Postal Code\n\n! 0000\n! Match\n! Match\n\n! 0001\n! Match\n! Unmatched\n\n! 0100\n! Unmatched\n! Match\n\n! 0101\n! Unmatched\n! Unmatched\n\n! 0200\n! Data Not Present\n! Match\n\n! 0201\n! Data Not Present\n! Unmatched\n\n! 0002\n! Match\n! Data Not Present\n\n! 0102\n! Unmatched\n! Data Not Present\n\n! 0303\n! Not Validated\n! Not Validated\n!===\n\nFor card security verification, the code indicates whether the verification check passed and can have these possible values:\n\n* 0000 – passed\n* 0001 – did not pass\n\nFor a transaction, the code describes the outcome of the attempted transaction.\nFor the full list of transaction codes, see <</developer-guides/about-transactions#_transaction_response_codes, Transaction response codes>>."
+          description: "Four-digit response code for address verification, card security code verification, or transactions.\n\nFor account name verification, the four digits correspond with assertions that the first, middle, last, and full name of the cardholder on the Marqeta platform match the data provided by the cardholder.\n`0` indicates no validation was performed, `1` indicates the match was unsuccessful (unmatched), `2` indicates the match was partial, and `3` indicates the match was exact.\nFor example:\n\n[cols=\"2,3,3,3,3\"]\n!===\n! Code ! First Name ! Middle Name ! Last Name ! Full Name\n\n! 0000\n! Not validated\n! Not validated\n! Not validated\n! Not validated\n\n! 1111\n! Unmatched\n! Unmatched\n! Unmatched\n! Unmatched\n\n! 3333\n! Exact match\n! Exact match\n! Exact match\n! Exact match\n\n! 1232\n! Unmatched\n! Partial match\n! Exact match\n! Partial match\n!===\n\nFor address verification responses, the code is an assertion by the Marqeta platform as to whether its address verification data matches that provided by the cardholder:\n\n[cols=\"2,3,3\"]\n!===\n! Code ! Address ! Postal Code\n\n! 0000\n! Match\n! Match\n\n! 0001\n! Match\n! Unmatched\n\n! 0100\n! Unmatched\n! Match\n\n! 0101\n! Unmatched\n! Unmatched\n\n! 0200\n! Data not present\n! Match\n\n! 0201\n! Data not present\n! Unmatched\n\n! 0002\n! Match\n! Data not present\n\n! 0102\n! Unmatched\n! Data not present\n\n! 0303\n! Not validated\n! Not validated\n!===\n\nFor card security verification, the code indicates whether the verification check passed and can have these possible values:\n\n* 0000 – passed\n* 0001 – did not pass\n\nFor a transaction, the code describes the outcome of the attempted transaction.\nFor the full list of transaction codes, see <</developer-guides/about-transactions#_transaction_response_codes, Transaction response codes>>."
         memo:
           type: string
           description: Additional text that describes the response.
-      description: 'Response codes and memos for address verification, card security verification, and transactions.'
+      description: 'Response codes and memos for account name verification, address verification, card security verification, and transactions.'
     result:
       type: object
       properties:
@@ -29483,8 +29673,10 @@ components:
       properties:
         cavv_authentication_amount_incremental_percentage:
           type: string
+          description: "If you have enabled CAVV authentication amount validation, the value of this field specifies the maximum allowable variance between the authorization amount and the 3D Secure authentication amount.\nExpressed as a percentage."
         enable_cavv_authentication_amount_validation:
           type: boolean
+          description: "If set to `true`, Marqeta validates the amount in the authorization transaction against the amount in the 3D Secure authentication attempt.\nIf the authorization amount is greater than the 3D Secure authentication amount, Marqeta rejects the transaction.\nYou can specify an allowable variance for the 3D Secure authentication amount in the `cavv_authentication_amount_incremental_percentage` field."
         sca_contactless_cumulative_amount_limit:
           type: number
           description: "Specifies the cumulative limit of transactions the cardholder can perform before receiving an SCA challenge.\n\nA value of `0` in this field means that the cumulative amount spent in contactless POS transactions performed by the cardholder does not impact the decision of whether or not an SCA challenge is served."
@@ -29805,6 +29997,22 @@ components:
         strong_customer_authentication_limits:
           $ref: '#/components/schemas/strong_customer_authentication_limits'
       description: Controls transactional characteristics of card usage.
+    transaction_device:
+      type: object
+      properties:
+        binding_id:
+          type: string
+          description: Unique identifier of the data component bound to the credential.
+        ip_address:
+          type: string
+          description: "IP address of the device.\nThe presence of the IP address helps determine if the transaction was initiated from an unusual network, helping establish a pattern of safe device usage that further confirms the authenticity of the consumer who initiated the transaction."
+        location:
+          type: string
+          description: "Geographic coordinates of the device.\nContains the latitude and longitude of the device used when the cardholder was authenticated during checkout.\nThis field helps to determine if the transaction was initiated from an unexpected location."
+        phone_number:
+          type: string
+          description: "Telephone number of the device.\nContains the phone number that was used to authenticate the consumer during checkout, or the consumer's preferred phone number.\nThe presence of the phone number helps establish the consumer's authenticity when matching the phone number provided during checkout to a list of known phone numbers for the consumer."
+      description: "Contains information about the device used in the transaction to enhance the risk decisioning process.\nUse this data to improve fraud prevention and dispute resolution."
     transaction_metadata:
       type: object
       properties:
@@ -29820,6 +30028,7 @@ components:
           default: false
         is_deferred_authorization:
           type: boolean
+          description: 'Indicates an offline authorization made during an interruption of card network connectivity, such as a purchase on a flight.'
         is_lodging_auto_rental:
           type: boolean
           description: Whether the transaction is a lodging or vehicle rental.
@@ -29865,12 +30074,14 @@ components:
             - PHONE_MAIL_ECOMMERCE
             - ATM
             - TRANSIT
+            - EXTENDED_AUTHORIZATION
           type: string
           description: Industry for which the transaction was originated.
         transit:
           $ref: '#/components/schemas/transit'
       description: "Contains merchant-provided metadata related to the transaction, including details about lodging- and transit-related purchases.\n\nMay be returned if the request uses Transaction Model v2 of the Marqeta Core API.\nNot returned for Transaction Model v1 requests."
     transaction_model:
+      title: Transaction object
       required:
         - acting_user_token
         - amount
@@ -29881,6 +30092,8 @@ components:
       properties:
         account_funding:
           $ref: '#/components/schemas/account_funding'
+        account_name_verification:
+          $ref: '#/components/schemas/account_name_verification_model'
         acquirer:
           $ref: '#/components/schemas/acquirer'
         acquirer_fee_amount:
@@ -29939,6 +30152,7 @@ components:
           maxLength: 36
           minLength: 0
           type: string
+          description: Unique identifier of the card product.
         card_security_code_verification:
           $ref: '#/components/schemas/card_security_code_verification'
         card_token:
@@ -29969,6 +30183,8 @@ components:
           type: string
         digital_wallet_token:
           $ref: '#/components/schemas/digital_wallet_token'
+        digital_wallet_token_transaction_service_provider_info:
+          $ref: '#/components/schemas/digital_service_provider'
         direct_deposit:
           $ref: '#/components/schemas/DepositDepositResponse'
         dispute:
@@ -30012,6 +30228,7 @@ components:
           type: string
         is_final_clearing:
           type: boolean
+          description: "Indicates the final clearing event for an authorization.\nIf the final cleared amount is lower than the authorized amount, you must release the hold on the funds per the value in the `amount_to_be_released` field."
         is_preauthorization:
           type: boolean
           description: Indicates if the transaction is a pre-authorization.
@@ -30037,12 +30254,13 @@ components:
           description: 'Date and time when the Marqeta platform received the transaction from the card network, in UTC.'
         local_transaction_date:
           type: string
+          description: "Indicates the local time of the transaction at the card acceptor's location.\nYou can use this field to determine the correct time of the transaction when filing a dispute."
           format: date-time
         merchant:
           $ref: '#/components/schemas/merchant_response_model'
         merchant_initiated_original_trace_id:
           type: string
-          description: Unique network identification value formed by combining the Mastercard Banknet Reference Number and the settlement date for recurring payments and other merchant-initiated transactions.
+          description: Unique network identification value formed by combining the 6- to 9-character Mastercard Banknet Reference Number and the 4-digit settlement date for recurring payments and other merchant-initiated transactions.
         msa_order_unload:
           $ref: '#/components/schemas/msa_returns'
         multi_clearing_sequence_count:
@@ -30095,6 +30313,9 @@ components:
           type: string
           description: "Date and time when funds were moved for a transaction, in UTC.\nFor example, in the case of a refund, when funds were credited to the cardholder."
           format: date-time
+        settlement_indicator:
+          type: string
+          description: Indicates the settlement service used for the transaction.
         standin_approved_by:
           type: string
           description: "Indicates which party approved a transaction: the card network using stand-in processing, or Marqeta using Commando Mode.\nReturned only when a transaction is approved."
@@ -30172,6 +30393,7 @@ components:
             - pindebit.atm.withdrawal
             - pindebit.balanceinquiry
             - pindebit.cashback
+            - pindebit.checkavs
             - pindebit
             - programreserve.credit
             - programreserve.debit
@@ -30278,14 +30500,7 @@ components:
           type: string
           description: "Date and time when the user initiated the transaction, in UTC.\nFor example, when a merchant performed the original authorization for a refund."
           format: date-time
-        settlement_indicator:
-          enum:
-            - INTERNATIONAL_SETTLEMENT_SERVICE
-            - NATIONAL_NET_SETTLEMENT_SERVICE
-            - CLEARING_ONLY
-            - VISA_SELECTS_SETTLEMENT_SERVICE
-          type: string
-          description: Indicates which service was used for settlement.
+      description: "Transactions are represented by the `transaction` object.\nThe Marqeta platform creates a separate `transaction` object for each transaction message received from the card network.\nThe attributes of a given `transaction` object depend on the transaction type.\n\nThis section documents all fields that might be included in a `transaction` object."
     transaction_options:
       type: object
       properties:
@@ -30896,7 +31111,7 @@ components:
             - LIFETIME
             - TRANSACTION
           type: string
-          description: "Defines the time period to which the `amount_limit` and `usage_limit` fields apply:\n\n* *DAY* – one day; days begin at 00:00:00 UTC.\n* *WEEK* – one week; weeks begin Sundays at 00:00:00 UTC.\n* *MONTH* – one month; months begin on the first day of month at 00:00:00 UTC.\n* *QUARTER* - three months; quarters begin on January 1, April 1, July 1, and October 1 at 00:00:00 UTC.\n* *YEAR* - twelve months; years begin on January 1 at 00:00:00 UTC.\n* *LIFETIME* – forever; time period never expires.\n* *TRANSACTION* – a single transaction.\n\n// (2023-05-03): This statement was validated by Processing, as part of a customer inquiry.\n*NOTE:* If set to `DAY`, `WEEK`, or `MONTH`, the velocity control takes effect retroactively from the beginning of the specified period.\nThe amount and usage data already collected within the first period is counted toward the limits.\n\n// (2023-05-03): Commenting this note out, as it is untrue in testing as reported by customers and confirmed by transaction engine team\n//*NOTE:* Editing any of the following fields on a velocity control resets its usage and amount count to 0:\n\n//* `merchant_scope.mcc`\n//* `merchant_scope.mid`\n//* `merchant_scope.mcc_group`\n//* `association.user_token`\n//* `association.card_product_token`"
+          description: "Defines the time period to which the `amount_limit` and `usage_limit` fields apply:\n\n* *DAY* – one day; days begin at 00:00:00 UTC.\n* *WEEK* – one week; weeks begin Sundays at 00:00:00 UTC.\n* *MONTH* – one month; months begin on the first day of month at 00:00:00 UTC.\n* *LIFETIME* – forever; time period never expires.\n* *TRANSACTION* – a single transaction.\n\n// (2023-05-03): This statement was validated by Processing, as part of a customer inquiry.\n*NOTE:* If set to `DAY`, `WEEK`, or `MONTH`, the velocity control takes effect retroactively from the beginning of the specified period.\nThe amount and usage data already collected within the first period is counted toward the limits.\n\n// (2023-05-03): Commenting this note out, as it is untrue in testing as reported by customers and confirmed by transaction engine team\n//*NOTE:* Editing any of the following fields on a velocity control resets its usage and amount count to 0:\n\n//* `merchant_scope.mcc`\n//* `merchant_scope.mid`\n//* `merchant_scope.mcc_group`\n//* `association.user_token`\n//* `association.card_product_token`"
     wallet_provider_card_on_file:
       type: object
       properties:
@@ -31453,7 +31668,7 @@ tags:
   - name: Merchant Groups
     description: "Use the `/merchantgroups` endpoint to create, update, and retrieve groups of merchant identifiers (MIDs).\nYou can use merchant groups for authorization controls and in card product configurations.\nFor example, use a merchant group to create a <</core-api/authorization-controls#_create_a_merchant_mid_exemption, merchant exemption>> for a group of merchants rather than an individual merchant."
   - name: Peer Transfers
-    description: "A peer transfer moves funds from the general purpose account (GPA) of an account holder (a user or business) to another account belonging to the same account holder.\nBoth the sender and recipient accounts must be active."
+    description: "A peer transfer moves funds from the general purpose account (GPA) of an account holder (a user or business) to another account within your program.\nBoth the sender and recipient accounts must be active.\n\n[NOTE]\nThe `/peertransfers` endpoint is only available for specific, pre-approved use cases.\nFor more information about this endpoint, contact your Marqeta representative."
   - name: PINs
     description: 'Use the `/pins` endpoint to create, update, or reveal a personal identification number (PIN) for a card.'
   - name: Program Reserve
@@ -31465,7 +31680,7 @@ tags:
   - name: Digital Wallets Management
     description: "The Marqeta platform facilitates the use of digital wallets for storing tokenized cards and making payments.\nThe API provides endpoints that enable mobile applications to provision tokens into a digital wallet.\nIt also provides endpoints for retrieving digital wallet tokens and for managing their lifecycle through state transitions.\n\nFor an overview of digital wallet tokens, see <</developer-guides/digital-wallets-and-tokenization, Digital Wallets and Tokenization>>."
   - name: Transactions
-    description: "The `/transactions` resource represents the electronic messages that carry information used for payment processing.\nA transaction usually originates when a cardholder attempts to make a payment, either online or at a physical point of sale.\n\nYou can receive information about transactions as they occur by configuring webhooks.\nLearn about configuring webhooks in the <</developer-guides/about-webhooks, About Webhooks>> guide.\nSee the transaction events for which you can set up webhooks in the <</core-api/event-types, Event Types>> API reference page.\n\nYou can also retrieve transactions associated with specific cards, merchants, and account holders using the endpoints described here.\n\nFor an overview of transactions and the `transaction` object, including the complete list of <</developer-guides/about-transactions#_transaction_response_codes, transaction response codes>>, see <</developer-guides/about-transactions, About Transactions>>.\n\n[TIP]\nUse the `/transactions` endpoint to retrieve smaller datasets (up to one page).\nFor best performance when requesting larger datasets, use the <</diva-api/introduction, DiVA API>>."
+    description: "// Conditional snippet for beta or internal content\ninclude::../../maturity-admonition-banner.adoc[]\n\nThe `/transactions` resource represents the electronic messages that carry information used for payment processing.\nA transaction usually originates when a cardholder attempts to make a payment, either online or at a physical point of sale.\n\nYou can receive information about transactions as they occur by configuring webhooks.\nLearn about configuring webhooks in the <</developer-guides/about-webhooks, About Webhooks>> guide.\nSee the transaction events for which you can set up webhooks in the <</core-api/event-types, Event Types>> API reference page.\n\nYou can also retrieve transactions associated with specific cards, merchants, and account holders using the endpoints described here.\n\nFor an overview of transactions and the `transaction` object, including the complete list of <</developer-guides/about-transactions#_transaction_response_codes, transaction response codes>>, see <</developer-guides/about-transactions, About Transactions>>.\n\n[TIP]\nUse the `/transactions` endpoint to retrieve smaller datasets (up to one page).\nFor best performance when requesting larger datasets, use the <</diva-api/introduction, DiVA API>>."
   - name: Users
     description: "The `users` resource represents a person who accesses Marqeta-administered funds via a Marqeta card (whether physical or virtual).\nThis endpoint enables you to create and manage users on the Marqeta platform.\n\nThis resource stores user attributes such as name, address, and date of birth, as well as financial information such as balances.\nBy default, every user automatically has a general purpose account (GPA) that is used for the funding of transfers and is therefore an `account holder`.\nNote that account balances reside at the account holder level — there are no separate `account` or `balance` objects.\n\nYou can use the `/users` endpoint to create parent-child relationships between two users (where one user is the parent and the other is the child) or between a business and a user (where the business is the parent and the user is the child).\nThis relationship provides reporting to the parent about how cards of children are used and enables the parent to monitor and even restrict card usage.\n\n[NOTE]\nA user can simultaneously be a child of a business and a parent of other users if the user is not configured to use a parent's account balances and the user's child is configured to use a parent's account balances.\nFor more information on account holders, see <</developer-guides/about-account-holders, About Account Holders>>."
   - name: User Transitions

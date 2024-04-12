@@ -6,9 +6,17 @@ using System.Linq;
 using System;
 namespace Marqeta.Core.Sdk.Models {
     /// <summary>
-    /// Contains information about the JIT Funding load event, in which funds are loaded into an account.
+    /// Contains information about the JIT Funding load event, in which funds are loaded into an account.This object is returned if your program uses JIT Funding.
     /// </summary>
     public class Jit_funding_api : IAdditionalDataHolder, IParsable {
+        /// <summary>Contains account name verification data used to make JIT Funding decisions from one of the following objects:* The `gateway` object contains account name verification data from your JIT Funding gateway.* The `issuer` object contains account name verification data from the Marqeta platform.* The `request` object contains account name verification data as it appears in a JIT Funding request.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public Jit_account_name_verification? AccountNameVerification { get; set; }
+#nullable restore
+#else
+        public Jit_account_name_verification AccountNameVerification { get; set; }
+#endif
         /// <summary>User who conducted the transaction.Can be a child user configured to share its parent&apos;s account balance.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -19,7 +27,7 @@ namespace Marqeta.Core.Sdk.Models {
 #endif
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Contains address verification data used to make JIT funding decisions.</summary>
+        /// <summary>Contains address verification data used to make JIT Funding decisions.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public Jit_address_verification? AddressVerification { get; set; }
@@ -54,6 +62,14 @@ namespace Marqeta.Core.Sdk.Models {
 #nullable restore
 #else
         public List<string> IncrementalAuthorizationJitFundingTokens { get; set; }
+#endif
+        /// <summary>Contains account name verification data used to make JIT Funding decisions from one of the following objects:* The `gateway` object contains account name verification data from your JIT Funding gateway.* The `issuer` object contains account name verification data from the Marqeta platform.* The `request` object contains account name verification data as it appears in a JIT Funding request.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public Jit_account_name_verification? JitAccountNameVerification { get; set; }
+#nullable restore
+#else
+        public Jit_account_name_verification JitAccountNameVerification { get; set; }
 #endif
         /// <summary>Additional information that describes the JIT Funding transaction.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -118,6 +134,7 @@ namespace Marqeta.Core.Sdk.Models {
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers() {
             return new Dictionary<string, Action<IParseNode>> {
+                {"account_name_verification", n => { AccountNameVerification = n.GetObjectValue<Jit_account_name_verification>(Jit_account_name_verification.CreateFromDiscriminatorValue); } },
                 {"acting_user_token", n => { ActingUserToken = n.GetStringValue(); } },
                 {"address_verification", n => { AddressVerification = n.GetObjectValue<Jit_address_verification>(Jit_address_verification.CreateFromDiscriminatorValue); } },
                 {"amount", n => { Amount = n.GetDoubleValue(); } },
@@ -125,6 +142,7 @@ namespace Marqeta.Core.Sdk.Models {
                 {"business_token", n => { BusinessToken = n.GetStringValue(); } },
                 {"decline_reason", n => { DeclineReason = n.GetEnumValue<Jit_funding_api_decline_reason>(); } },
                 {"incremental_authorization_jit_funding_tokens", n => { IncrementalAuthorizationJitFundingTokens = n.GetCollectionOfPrimitiveValues<string>()?.ToList(); } },
+                {"jit_account_name_verification", n => { JitAccountNameVerification = n.GetObjectValue<Jit_account_name_verification>(Jit_account_name_verification.CreateFromDiscriminatorValue); } },
                 {"memo", n => { Memo = n.GetStringValue(); } },
                 {"method", n => { Method = n.GetEnumValue<Jit_funding_api_method>(); } },
                 {"original_jit_funding_token", n => { OriginalJitFundingToken = n.GetStringValue(); } },
@@ -139,6 +157,7 @@ namespace Marqeta.Core.Sdk.Models {
         /// <param name="writer">Serialization writer to use to serialize this model</param>
         public virtual void Serialize(ISerializationWriter writer) {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
+            writer.WriteObjectValue<Jit_account_name_verification>("account_name_verification", AccountNameVerification);
             writer.WriteStringValue("acting_user_token", ActingUserToken);
             writer.WriteObjectValue<Jit_address_verification>("address_verification", AddressVerification);
             writer.WriteDoubleValue("amount", Amount);
@@ -146,6 +165,7 @@ namespace Marqeta.Core.Sdk.Models {
             writer.WriteStringValue("business_token", BusinessToken);
             writer.WriteEnumValue<Jit_funding_api_decline_reason>("decline_reason", DeclineReason);
             writer.WriteCollectionOfPrimitiveValues<string>("incremental_authorization_jit_funding_tokens", IncrementalAuthorizationJitFundingTokens);
+            writer.WriteObjectValue<Jit_account_name_verification>("jit_account_name_verification", JitAccountNameVerification);
             writer.WriteStringValue("memo", Memo);
             writer.WriteEnumValue<Jit_funding_api_method>("method", Method);
             writer.WriteStringValue("original_jit_funding_token", OriginalJitFundingToken);

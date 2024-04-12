@@ -48,7 +48,7 @@ namespace Marqeta.Core.Sdk.Fundingsources.Addresses.Item {
             return await RequestAdapter.SendAsync<CardholderAddressResponse>(requestInfo, CardholderAddressResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Use this endpoint to update an address.Only values of parameters in the request are modified; all others are left unchanged.
+        /// Use this endpoint to update an address.
         /// </summary>
         /// <returns>A <see cref="CardholderAddressResponse"/></returns>
         /// <param name="body">The request body</param>
@@ -87,7 +87,7 @@ namespace Marqeta.Core.Sdk.Fundingsources.Addresses.Item {
             return requestInfo;
         }
         /// <summary>
-        /// Use this endpoint to update an address.Only values of parameters in the request are modified; all others are left unchanged.
+        /// Use this endpoint to update an address.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">The request body</param>

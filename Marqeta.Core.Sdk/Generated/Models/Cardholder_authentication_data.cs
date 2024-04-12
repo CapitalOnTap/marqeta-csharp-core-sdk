@@ -35,7 +35,7 @@ namespace Marqeta.Core.Sdk.Models {
 #else
         public string AuthenticationStatus { get; set; }
 #endif
-        /// <summary>Authentication amount from the cardholder authentication verification value (CAVV) used to validate an authorization.This field is returned if it is included in the transaction data from the card network.</summary>
+        /// <summary>Authentication amount from the cardholder authentication verification value (CAVV) used to validate an authorization.This field is returned if it is included in the transaction data from the card network.To enable this field, contact your Marqeta representative.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? CavvAuthenticationAmount { get; set; }
@@ -51,7 +51,7 @@ namespace Marqeta.Core.Sdk.Models {
 #else
         public string ElectronicCommerceIndicator { get; set; }
 #endif
-        /// <summary>Indicates a 3D Secure authentication exemption from the issuerThis field is returned if it is included in the transaction data from the card network.</summary>
+        /// <summary>Indicates a 3D Secure authentication exemption from the issuer.This field is returned if it is included in the transaction data from the card network.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? IssuerExemption { get; set; }
@@ -59,7 +59,7 @@ namespace Marqeta.Core.Sdk.Models {
 #else
         public string IssuerExemption { get; set; }
 #endif
-        /// <summary>Raw cardholder authentication verification value provided by the card network.This field is returned if it is included in the transaction data from the card network.</summary>
+        /// <summary>Raw cardholder authentication verification value provided by the card network.This field is returned if it is included in the transaction data from the card network.To enable this field, contact your Marqeta representative.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? RawCavvData { get; set; }

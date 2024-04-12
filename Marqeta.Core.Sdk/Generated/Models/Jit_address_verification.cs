@@ -6,7 +6,7 @@ using System.Linq;
 using System;
 namespace Marqeta.Core.Sdk.Models {
     /// <summary>
-    /// Contains address verification data used to make JIT funding decisions.
+    /// Contains address verification data used to make JIT Funding decisions.
     /// </summary>
     public class Jit_address_verification : IAdditionalDataHolder, IParsable {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
