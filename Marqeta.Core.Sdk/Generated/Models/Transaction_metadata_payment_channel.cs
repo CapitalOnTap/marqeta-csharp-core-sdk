@@ -16,5 +16,7 @@ namespace Marqeta.Core.Sdk.Models {
         PHONE,
         [EnumMember(Value = "MOTO")]
         MOTO,
+        [EnumMember(Value = "EU_MOTO_NON_SECURE")]
+        EU_MOTO_NON_SECURE,
     }
 }

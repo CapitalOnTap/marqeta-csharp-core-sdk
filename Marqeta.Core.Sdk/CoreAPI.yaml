@@ -30056,6 +30056,7 @@ components:
             - MAIL
             - PHONE
             - MOTO
+            - EU_MOTO_NON_SECURE
           type: string
           description: Channel from which the transaction was originated.
         special_purchase_id:
