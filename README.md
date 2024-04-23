@@ -28,24 +28,24 @@ dotnet user-secrets set "Marqeta:Password" "<Access Token>"
 ```
 You can obtain a developer public sandbox by signing up to marqeta as per instructions [here](https://www.marqeta.com/docs/developer-guides/core-api-quick-start#_create_an_account).
 
-## Generating SDK
+## Generating the SDK
 Execute the `dotnet fsi GenerateSdkFromSourceUrl.fsx` command in the root source directory. This will execute the F# script via F# interactive.
 
 ### What does the script do?
-1. Download the latest [CoreAPI.yaml](https://raw.githubusercontent.com/marqeta/marqeta-openapi/main/yaml/CoreAPI.yaml) from [Marqeta OpenAPI repository](https://github.com/marqeta/marqeta-openapi).
-2. Parse it with [OpenAPI.NET](https://github.com/microsoft/OpenAPI.NET).
-3. Save the parsed file to disk, this allows us to keep formatting/ordering consistent as [`Marqeta.Core.SdkSourceCoreAPI.yaml`](Marqeta.Core.Sdk/SourceCoreAPI.yaml).
-4. Apply a variety of modifications to the OpenAPI specification.
-5. Validate the modified specification.
-6. Save the modified specification to disk as [`Marqeta.Core.Sdk/CoreAPI.yaml`](Marqeta.Core.Sdk/CoreAPI.yaml).
-7. Install tools specified in [`.config/dotnet-tools.json`](.config/dotnet-tools.json) (currently only Kiota).
+1. Downloads the latest [CoreAPI.yaml](https://raw.githubusercontent.com/marqeta/marqeta-openapi/main/yaml/CoreAPI.yaml) from [Marqeta OpenAPI repository](https://github.com/marqeta/marqeta-openapi).
+2. Parses it with [OpenAPI.NET](https://github.com/microsoft/OpenAPI.NET).
+3. Saves the parsed file to disk as [`Marqeta.Core.SdkSourceCoreAPI.yaml`](Marqeta.Core.Sdk/SourceCoreAPI.yaml), this allows us to keep formatting and ordering consistent for easier diffs.
+4. Applies a variety of modifications to the OpenAPI specification.
+5. Validates the modified specification.
+6. Saves the modified specification to disk as [`Marqeta.Core.Sdk/CoreAPI.yaml`](Marqeta.Core.Sdk/CoreAPI.yaml).
+7. Installs tools specified in [`.config/dotnet-tools.json`](.config/dotnet-tools.json) (currently only Kiota).
 8. Invokes Kiota to generate a C# client in [`Marqeta.Core.Sdk/Generated`](Marqeta.Core.Sdk/Generated), if a client already exists (denoted by the presence of `kiota-lock.json`), it'll update the existing client.
-9. Build the solution and run all tests.
+9. Builds the solution and run all tests.
 
 ## Making changes
 1. In the [`GenerateSdkFromSourceUrl.fsx`](GenerateSdkFromSourceUrl.fsx) script, make changes in the `OpenApiHelpers` module, there are a lot of examples of modifications in there already, so if you're unsure follow an existing example.
    - There are a lot of functions for different sections, mostly following the hierarchical structure of the OpenAPI specification, with functions for specific schema models (e.g. `#/components/schemas/transaction_model`, `#/components/schemas/card_holder_model`).
-   - Add/modify any comments explaining the changes.
+   - Ensure the changes have relevant comments.
 2. Execute the script to generate the new SDK and validate your changes.
    - These should be visible in the [`Marqeta.Core.Sdk/CoreAPI.yaml`](Marqeta.Core.Sdk/CoreAPI.yaml) diff, and also in the generated code SDK.
 3. Add tests if needed, and validate these pass.
@@ -80,27 +80,27 @@ Execute the `dotnet fsi GenerateSdkFromSourceUrl.fsx` command in the root source
     - Mark properties as `readonly` `false`, some requests have properties set as `readonly` `true` which breaks SDK generation, meaning we can't set these values.
     - Done in the `applySchemaPropertiesModifications` function.
 - `#/components/schemas/mcc_group_model` [docs](https://www.marqeta.com/docs/core-api/mcc-groups)
-    - Changes the property `mcc` from an array of objects to an array of strings.
+    - Change the property `mcc` from an array of objects to an array of strings.
     - Done in the `applyMccGroupModelModifications` function.
 - `#/components/schemas/card_holder_model` [docs](https://www.marqeta.com/docs/core-api/users)
-    - Adds a new missing property `status`, this is an enum that adds the following values: `UNVERIFIED`, `LIMITED`, `ACTIVE`, `SUSPENDED`, `CLOSED`
+    - Add a new missing property `status`, this is an enum that adds the following values: `UNVERIFIED`, `LIMITED`, `ACTIVE`, `SUSPENDED`, `CLOSED`
     - Done in the `applyCardHolderModelModifications` function.
 - `#/components/schemas/transaction_model` [docs](https://www.marqeta.com/docs/core-api/transactions)
-    - Adds missing enum values to the `type` property, the missing values added are: `address.verification`, `authorization.clearing.representment`, `billpayment`, `billpayment.clearing`, `billpayment.reversal`, `fee.charge.pending.refund`, `transaction.unknown`
+    - Add missing enum values to the `type` property, the missing values added are: `address.verification`, `authorization.clearing.representment`, `billpayment`, `billpayment.clearing`, `billpayment.reversal`, `fee.charge.pending.refund`, `transaction.unknown`
     - Done in the `applyTransactionModelTypeModifications` function.
 -  `#/components/schemas/transaction_model/transaction_metadata` [JIT Funding decision: Transaction Metadata docs](https://www.marqeta.com/docs/core-api/transaction-data-for-jit-funding-decisions#_transaction_metadata), [Transaction docs](https://www.marqeta.com/docs/core-api/transactions)
-    - Adds the `EU_MOTO_NON_SECURE` enum to `payment_channel` property, this is because Marqeta keep sending it via webhooks, although this is meant to be an internal enum, and causes transactions to fail deserialization.
+    - Add the `EU_MOTO_NON_SECURE` enum to `payment_channel` property, this is because Marqeta keep sending it via webhooks, although this is meant to be an internal enum, and causes transactions to fail deserialization.
     - Done in the `applyTransactionMetadataPaymentChannelModifications` function.
 - Remove the `#/components/schemas/BadRequestError`, `#/components/schemas/Error`, `#/components/schemas/ForbiddenError`, `#/components/schemas/InternalServerError`, `#/components/schemas/UnauthorizedError` models from the schema. This is because most paths/operations in the OpenAPI specification don't have any error models defined, there's also the fact we don't want an error model per response code, Kiota adds the response status code to the base `ApiException` for us, so we created our own shared `ApiError` (mentioned below).
     - Done in the `removeUnusedErrorSchemas` function.
-- Adds a new `#/components/schemas/ApiError` model, this has the properties `error_code` and `error_message` on it, which bind to the [API error response](https://www.marqeta.com/docs/core-api/errors) typically returned by Marqeta (note their docs don't explicitly mention this format).
+- Add a new `#/components/schemas/ApiError` model, this has the properties `error_code` and `error_message` on it, which bind to the [API error response](https://www.marqeta.com/docs/core-api/errors) typically returned by Marqeta (note their docs don't explicitly mention this format).
   - Done in the `addErrorSchema` function.
 
 ### Changes to the Paths (e.g. `/api/customer`) and Operations (`GET`, `POST`, `PUT`, etc...)
-- Adds/replaces default response on all operations for all paths to be `ApiError`.
+- Adds/replace default response on all operations for all paths to be `ApiError`.
   - This specifies that all unspecified responses are to try to bind to `ApiError`, in practice this means all `4XX` and `5XX` responses, but could include other unhandled response codes.
   - Done in the `addOrReplaceDefaultErrorResponse` function.
-- Removes all existing `4XX` and `5XX` responses on all operations for all paths.
+- Remove all existing `4XX` and `5XX` responses on all operations for all paths.
   - This is because we add a default response of `ApiError` ourselves, most of the `4XX` and `5XX` response specifications are actually empty objects anyway, so won't generate anything to bind to.<br>The only operations that currently have a valid response specification schema are the `POST /feedback/fraud` endpoint, but we remove these and use our own model (they're removed from `#/components/schemas` too as part of schema model modifications mentioned above).
   - Done in the `applyOperationsModifications` function.
 - Remove all examples for every response and request for all paths and operations.
