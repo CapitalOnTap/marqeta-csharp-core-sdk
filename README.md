@@ -13,7 +13,7 @@ Our C# SDK for the [Marqeta Core API](https://www.marqeta.com/docs/core-api), ge
 ### Marqeta API
 For complete reference API documentation, see the [Marqeta Core API Reference](https://www.marqeta.com/docs/core-api/introduction).
 ### Kiota tooling
-For reference on Kiota, from tooling, to using the generated client and it's concepts please visit [the MS docs here](https://learn.microsoft.com/en-us/openapi/kiota/overview), or the [GitHub repository](https://github.com/microsoft/kiota).
+For reference on Kiota, from tooling, to using the generated client and its concepts please visit [the MS docs here](https://learn.microsoft.com/en-us/openapi/kiota/overview), or the [GitHub repository](https://github.com/microsoft/kiota).
 ## Dependencies
 [.NET 6.0 SDK](https://dotnet.microsoft.com/en-us/download/dotnet/6.0)
 
@@ -29,7 +29,7 @@ dotnet user-secrets set "Marqeta:Password" "<Access Token>"
 You can obtain a developer public sandbox by signing up to marqeta as per instructions [here](https://www.marqeta.com/docs/developer-guides/core-api-quick-start#_create_an_account).
 
 ## Generating SDK
-Execute the `dotnet fsi GenerateSdkFromSourceUrl.fsx` command in root source directory. This will execute the F# script via F# interactive.
+Execute the `dotnet fsi GenerateSdkFromSourceUrl.fsx` command in the root source directory. This will execute the F# script via F# interactive.
 
 ### What does the script do?
 1. Download the latest [CoreAPI.yaml](https://raw.githubusercontent.com/marqeta/marqeta-openapi/main/yaml/CoreAPI.yaml) from [Marqeta OpenAPI repository](https://github.com/marqeta/marqeta-openapi).
@@ -39,13 +39,13 @@ Execute the `dotnet fsi GenerateSdkFromSourceUrl.fsx` command in root source dir
 5. Validate the modified specification.
 6. Save the modified specification to disk as [`Marqeta.Core.Sdk/CoreAPI.yaml`](Marqeta.Core.Sdk/CoreAPI.yaml).
 7. Install tools specified in [`.config/dotnet-tools.json`](.config/dotnet-tools.json) (currently only Kiota).
-8. Invokes Kiota to generate a C# client in [`Marqeta.Core.Sdk/Generated`](Marqeta.Core.Sdk/Generated), if a client already exists (denoted by presence of `kiota-lock.json`), it'll update the existing client.
+8. Invokes Kiota to generate a C# client in [`Marqeta.Core.Sdk/Generated`](Marqeta.Core.Sdk/Generated), if a client already exists (denoted by the presence of `kiota-lock.json`), it'll update the existing client.
 9. Build the solution and run all tests.
 
 ## Making changes
 1. In the [`GenerateSdkFromSourceUrl.fsx`](GenerateSdkFromSourceUrl.fsx) script, make changes in the `OpenApiHelpers` module, there are a lot of examples of modifications in there already, so if you're unsure follow an existing example.
    - There are a lot of functions for different sections, mostly following the hierarchical structure of the OpenAPI specification, with functions for specific schema models (e.g. `#/components/schemas/transaction_model`, `#/components/schemas/card_holder_model`).
-   - Add/modify comment explaining the change(s).
+   - Add/modify any comments explaining the changes.
 2. Execute the script to generate the new SDK and validate your changes.
    - These should be visible in the [`Marqeta.Core.Sdk/CoreAPI.yaml`](Marqeta.Core.Sdk/CoreAPI.yaml) diff, and also in the generated code SDK.
 3. Add tests if needed, and validate these pass.
@@ -69,10 +69,10 @@ Execute the `dotnet fsi GenerateSdkFromSourceUrl.fsx` command in root source dir
 > #### Gotchas and known issues
 > 1. Kiota performs [type trimming](https://github.com/microsoft/kiota/issues/2657#issuecomment-1546748712) to remove unused types, so it won't generate models that aren't directly referenced, if models are missing, please manually add a representative model to [`Marqeta.Core.Sdk/Extensions`](Marqeta.Core.Sdk/Extensions)
 > 2. Kiota [doesn't handle different response content types for the same status code](https://github.com/microsoft/kiota/issues/4309#issue-2176126145), Marqeta can return HTML error responses sometimes, this is unstructured data so we can't bind it to a model, out of the box this information is lost, however, we have added a `text/html` parser to manually add this data to our `ApiError` model. This can be found in [`Marqeta.Core.Sdk/Serialization/Text`](Marqeta.Core.Sdk/Serialization/Text).
->    - This change basically makes it so that on calling `GetObjectValue<T>` for the `IParseNode`, will create a new `ApiError` type (if applicable) and set the `ErrorMessage` to the HTML text returned.
+>    - This change makes it so that on calling `GetObjectValue<T>` for the `IParseNode`, will create a new `ApiError` type (if applicable) and set the `ErrorMessage` to the HTML text returned.
 > 3. Kiota doesn't generate enum path parameters (for C#, it was added to other languages), we don't have a workaround yet, so during usage we're converting the enum to it's string representation, one problem is that this causes the enum types not to be generated, the webhook `EventType` for example is not generated, so we've manually added this enum, an issue is raised on the Kiota GitHub repository [here](https://github.com/microsoft/kiota/issues/4340).
 > 4. The [default Kiota JSON deserialization implementation](https://github.com/microsoft/kiota-serialization-json-dotnet) will populate `null` if it can't parse a value, this obviously isn't great for us, we want to have loud shouting errors if we're unable to correctly parse a response rather than `null` values, so we've implemented our own `IParseNode` for JSON in [`Marqeta.Core.Sdk/Serialization/Json`](Marqeta.Core.Sdk/Serialization/Json) (modified version of the [default Kiota JSON deserialization implementation](https://github.com/microsoft/kiota-serialization-json-dotnet)), and there is an issue raised on the Kiota GitHub repository [here](https://github.com/microsoft/kiota-serialization-json-dotnet/issues/202).
-> 5. The generated client doesn't have an interface, this makes unit testing difficult, please refer to [Kiota unit testing docs](https://learn.microsoft.com/en-us/openapi/kiota/testing) for more information.
+> 5. The generated client doesn't have an interface, which makes unit testing difficult, please refer to [Kiota unit testing docs](https://learn.microsoft.com/en-us/openapi/kiota/testing) for more information.
 
 ## Current changes made to OpenAPI specfication
 ### Changes to the schema models (`#/components/schemas`)
@@ -91,14 +91,14 @@ Execute the `dotnet fsi GenerateSdkFromSourceUrl.fsx` command in root source dir
 -  `#/components/schemas/transaction_model/transaction_metadata` [JIT Funding decision: Transaction Metadata docs](https://www.marqeta.com/docs/core-api/transaction-data-for-jit-funding-decisions#_transaction_metadata), [Transaction docs](https://www.marqeta.com/docs/core-api/transactions)
     - Adds the `EU_MOTO_NON_SECURE` enum to `payment_channel` property, this is because Marqeta keep sending it via webhooks, although this is meant to be an internal enum, and causes transactions to fail deserialization.
     - Done in the `applyTransactionMetadataPaymentChannelModifications` function.
-- Remove the `#/components/schemas/BadRequestError`, `#/components/schemas/Error`, `#/components/schemas/ForbiddenError`, `#/components/schemas/InternalServerError`, `#/components/schemas/UnauthorizedError` models from the schema. This is because most paths/operations in the OpenAPI specification don't have any error models defined as well as the fact we don't want an error model per response code, Kiota adds the response status code to the base `ApiException` for us, so we created our own shared `ApiError` (mentioned below).
+- Remove the `#/components/schemas/BadRequestError`, `#/components/schemas/Error`, `#/components/schemas/ForbiddenError`, `#/components/schemas/InternalServerError`, `#/components/schemas/UnauthorizedError` models from the schema. This is because most paths/operations in the OpenAPI specification don't have any error models defined, there's also the fact we don't want an error model per response code, Kiota adds the response status code to the base `ApiException` for us, so we created our own shared `ApiError` (mentioned below).
     - Done in the `removeUnusedErrorSchemas` function.
 - Adds a new `#/components/schemas/ApiError` model, this has the properties `error_code` and `error_message` on it, which bind to the [API error response](https://www.marqeta.com/docs/core-api/errors) typically returned by Marqeta (note their docs don't explicitly mention this format).
   - Done in the `addErrorSchema` function.
 
 ### Changes to the Paths (e.g. `/api/customer`) and Operations (`GET`, `POST`, `PUT`, etc...)
 - Adds/replaces default response on all operations for all paths to be `ApiError`.
-  - This basically specifies that all unspecified responses are to try to bind to `ApiError`, this basically means all `4XX` and `5XX` responses.
+  - This specifies that all unspecified responses are to try to bind to `ApiError`, in practice this means all `4XX` and `5XX` responses, but could include other unhandled response codes.
   - Done in the `addOrReplaceDefaultErrorResponse` function.
 - Removes all existing `4XX` and `5XX` responses on all operations for all paths.
   - This is because we add a default response of `ApiError` ourselves, most of the `4XX` and `5XX` response specifications are actually empty objects anyway, so won't generate anything to bind to.<br>The only operations that currently have a valid response specification schema are the `POST /feedback/fraud` endpoint, but we remove these and use our own model (they're removed from `#/components/schemas` too as part of schema model modifications mentioned above).
@@ -109,7 +109,7 @@ Execute the `dotnet fsi GenerateSdkFromSourceUrl.fsx` command in root source dir
 ## Custom serialization
 As alluded to in the [Gotchas and known issues](#gotchas-and-known-issues) section, we've had to add some custom deserializers to support our needs.
 
-Kiota doesn't use standard deserialization methods, but have instead opted to use a common interface across all langauges supported by its generator, there are some [docs](https://learn.microsoft.com/en-us/openapi/kiota/serialization) on this.
+Kiota doesn't use standard deserialization methods, but have instead opted to use a common interface across all languages supported by its generator, there are some [docs](https://learn.microsoft.com/en-us/openapi/kiota/serialization) on this.
 
 However, the tl;dr is that we need an `IParseNodeFactory` as well as an `IParseNode` for each MIME type we want to deserialize (`application/json` and `text/html`) in our case.
 
@@ -129,15 +129,15 @@ These are added as part of the original `kiota generate` command by adding the f
 > If updating an existing SDK, anything already in the `kiota-lock.json` will be used, so if you need to add a new serializer/deserializer for an update of a client, manually add it there.
 
 ### text/html
-The implementation for `text/html` is borrowed from Kiotas supplied `TextParseNodeFactory` and  `TextParseNode` supplied in `Microsoft.Kiota.Serialization.Text` [GitHub](https://github.com/microsoft/kiota-serialization-text-dotnet/tree/main/src), and can be found in [`Marqeta.Core.Sdk/Serialization/Text`](Marqeta.Core.Sdk/Serialization/Text).
+The implementation for `text/html` is borrowed from the default Kiota `TextParseNodeFactory` and  `TextParseNode` supplied in `Microsoft.Kiota.Serialization.Text` [GitHub](https://github.com/microsoft/kiota-serialization-text-dotnet/tree/main/src), and can be found in [`Marqeta.Core.Sdk/Serialization/Text`](Marqeta.Core.Sdk/Serialization/Text).
 
 We change the `GetObjectValue<T>` to check if the type we're trying to deserialize into is of `ApiError`, if so we just put the contents of the `_text` property on the `IParseNode` into `ApiError.ErrorMessage`.
 
 ### application/json
-The implementation for `application/json` is borrowed from Kiotas supplied `JsonParseNodeFactory` and `JsonParseNode` supplied in `Microsoft.Kiota.Serialization.Json` [GitHub](https://github.com/microsoft/kiota-serialization-json-dotnet/tree/main/src), and can be found in [`Marqeta.Core.Sdk/Serialization/Json`](Marqeta.Core.Sdk/Serialization/Json).
+The implementation for `application/json` is borrowed from default Kiota `JsonParseNodeFactory` and `JsonParseNode` supplied in `Microsoft.Kiota.Serialization.Json` [GitHub](https://github.com/microsoft/kiota-serialization-json-dotnet/tree/main/src), and can be found in [`Marqeta.Core.Sdk/Serialization/Json`](Marqeta.Core.Sdk/Serialization/Json).
 
 The main changes we've made here is to remove the safety around parsing so it will fail loudly, this is because by default Kiota will return null for values it can't parse, this doesn't quite work for us.
 
-So instead we remove all the safety checks and wrap the field assignments in `AssignFieldValues<T>` in a try catch to throw an `JsonException` when we fail to parse.
+So instead we remove all the safety checks and wrap the field assignments in `AssignFieldValues<T>` in a try-catch to throw a `JsonException` when we fail to parse.
 
 We also customised the `JsonSerializerOptions` with `JsonSerializerDefaults.Web` in our `CustomJsonParseNodeFactory` which gets set on the `KiotaJsonSerializationContext`.
