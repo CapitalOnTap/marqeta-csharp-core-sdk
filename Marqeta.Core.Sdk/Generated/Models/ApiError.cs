@@ -28,8 +28,14 @@ namespace Marqeta.Core.Sdk.Models {
 #else
         public string ErrorMessage { get; set; }
 #endif
-        /// <summary>The primary error message.</summary>
-        public override string Message { get => base.Message; }
+        /// <summary>The message property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? MessageEscaped { get; set; }
+#nullable restore
+#else
+        public string MessageEscaped { get; set; }
+#endif
         /// <summary>
         /// Instantiates a new <see cref="ApiError"/> and sets the default values.
         /// </summary>
@@ -57,6 +63,7 @@ namespace Marqeta.Core.Sdk.Models {
             {
                 {"error_code", n => { ErrorCode = n.GetStringValue(); } },
                 {"error_message", n => { ErrorMessage = n.GetStringValue(); } },
+                {"message", n => { MessageEscaped = n.GetStringValue(); } },
             };
         }
         /// <summary>
@@ -68,6 +75,7 @@ namespace Marqeta.Core.Sdk.Models {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("error_code", ErrorCode);
             writer.WriteStringValue("error_message", ErrorMessage);
+            writer.WriteStringValue("message", MessageEscaped);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

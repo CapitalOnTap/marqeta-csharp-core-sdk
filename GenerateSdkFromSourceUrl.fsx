@@ -283,14 +283,12 @@ module OpenApiHelpers =
 
         let errorPropertyKey = "error_code" // The property key for error_code
         let errorMessageProperty = "error_message" // The property key for error_message
-        
-        // Specify which properties of this ApiError schema
-        schema.Required.Add(errorPropertyKey) |> ignore // Adds `error_code` as a required property of the model
-        schema.Required.Add(errorMessageProperty) |> ignore // Adds `error_message` as a required property of the model
+        let messagePropertyKey = "message" // The property key for message
         
         // Adds the properties itself to the ApiError schema, with their own respective schemas which is string
         schema.Properties.Add(errorPropertyKey, stringSchema)
         schema.Properties.Add(errorMessageProperty, stringSchema)
+        schema.Properties.Add(messagePropertyKey, stringSchema)
         
         // Adds our created ApiError schema to the existing collection of schema objects
         openApiSchemas.Add(defaultErrorSchemaReferenceId, schema)

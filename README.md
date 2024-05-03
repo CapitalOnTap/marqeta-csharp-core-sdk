@@ -61,7 +61,7 @@ Execute the `dotnet fsi GenerateSdkFromSourceUrl.fsx` command in the root source
 > Please note that this should only be done as a last resort, and any changes *__MUST__* be added to both the script and documentation in a subsequent PR as soon as possible.
 > 1. Make your change directly to the [`Marqeta.Core.Sdk/CoreAPI.yaml`](Marqeta.Core.Sdk/CoreAPI.yaml) file.
 > 2. Ensure the required dotnet tools are installed locally by executing the `dotnet tool restore` command.
-> 3. Execute the `kiota update` command `dotnet tool run kiota update -o /Generated --clean-output --clear-cache`.
+> 3. Execute the `kiota update` command `dotnet tool run kiota update -o Marqeta.Core.Sdk/Generated --clean-output --clear-cache`.
 > 4. Build the solution and run all tests.
 > 5. Commit and push.
 
@@ -69,7 +69,7 @@ Execute the `dotnet fsi GenerateSdkFromSourceUrl.fsx` command in the root source
 > #### Gotchas and known issues
 > 1. Kiota performs [type trimming](https://github.com/microsoft/kiota/issues/2657#issuecomment-1546748712) to remove unused types, so it won't generate models that aren't directly referenced, if models are missing, please manually add a representative model to [`Marqeta.Core.Sdk/Extensions`](Marqeta.Core.Sdk/Extensions)
 > 2. Kiota [doesn't handle different response content types for the same status code](https://github.com/microsoft/kiota/issues/4309#issue-2176126145), Marqeta can return HTML error responses sometimes, this is unstructured data so we can't bind it to a model, out of the box this information is lost, however, we have added a `text/html` parser to manually add this data to our `ApiError` model. This can be found in [`Marqeta.Core.Sdk/Serialization/Text`](Marqeta.Core.Sdk/Serialization/Text).
->    - This change makes it so that on calling `GetObjectValue<T>` for the `IParseNode`, will create a new `ApiError` type (if applicable) and set the `ErrorMessage` to the HTML text returned.
+>    - This change makes it so that on calling `GetObjectValue<T>` for the `IParseNode`, will create a new `ApiError` type (if applicable) and set the `MessageEscaped` to the HTML text returned.
 > 3. Kiota doesn't generate enum path parameters (for C#, it was added to other languages), we don't have a workaround yet, so during usage we're converting the enum to it's string representation, one problem is that this causes the enum types not to be generated, the webhook `EventType` for example is not generated, so we've manually added this enum, an issue is raised on the Kiota GitHub repository [here](https://github.com/microsoft/kiota/issues/4340).
 > 4. The [default Kiota JSON deserialization implementation](https://github.com/microsoft/kiota-serialization-json-dotnet) will populate `null` if it can't parse a value, this obviously isn't great for us, we want to have loud shouting errors if we're unable to correctly parse a response rather than `null` values, so we've implemented our own `IParseNode` for JSON in [`Marqeta.Core.Sdk/Serialization/Json`](Marqeta.Core.Sdk/Serialization/Json) (modified version of the [default Kiota JSON deserialization implementation](https://github.com/microsoft/kiota-serialization-json-dotnet)), and there is an issue raised on the Kiota GitHub repository [here](https://github.com/microsoft/kiota-serialization-json-dotnet/issues/202).
 > 5. The generated client doesn't have an interface, which makes unit testing difficult, please refer to [Kiota unit testing docs](https://learn.microsoft.com/en-us/openapi/kiota/testing) for more information.
@@ -131,7 +131,7 @@ These are added as part of the original `kiota generate` command by adding the f
 ### text/html
 The implementation for `text/html` is borrowed from the default Kiota `TextParseNodeFactory` and  `TextParseNode` supplied in `Microsoft.Kiota.Serialization.Text` [GitHub](https://github.com/microsoft/kiota-serialization-text-dotnet/tree/main/src), and can be found in [`Marqeta.Core.Sdk/Serialization/Text`](Marqeta.Core.Sdk/Serialization/Text).
 
-We change the `GetObjectValue<T>` to check if the type we're trying to deserialize into is of `ApiError`, if so we just put the contents of the `_text` property on the `IParseNode` into `ApiError.ErrorMessage`.
+We change the `GetObjectValue<T>` to check if the type we're trying to deserialize into is of `ApiError`, if so we just put the contents of the `_text` property on the `IParseNode` into `ApiError.MessageEscaped`.
 
 ### application/json
 The implementation for `application/json` is borrowed from default Kiota `JsonParseNodeFactory` and `JsonParseNode` supplied in `Microsoft.Kiota.Serialization.Json` [GitHub](https://github.com/microsoft/kiota-serialization-json-dotnet/tree/main/src), and can be found in [`Marqeta.Core.Sdk/Serialization/Json`](Marqeta.Core.Sdk/Serialization/Json).
