@@ -758,7 +758,7 @@ let buildAndTestSolution (stopwatch: System.Diagnostics.Stopwatch) =
 let projectPath = "Marqeta.Core.Sdk" // The path of the .csproj for SDK (also used for namespace)
 let config = {
     // The source YAML, references Marqeta GitHub CoreAPI.yaml currently
-    OpenApiSourceUrl = "https://raw.githubusercontent.com/marqeta/marqeta-openapi/main/yaml/CoreAPI-3.0.16.yaml"
+    OpenApiSourceUrl = "https://raw.githubusercontent.com/marqeta/marqeta-openapi/main/yaml/CoreAPI.yaml"
     // The output path to save the source YAML to
     SourceOpenApiOutputPath = $"{projectPath}/SourceCoreAPI.yaml"
     // The output path to save the transformed YAML to

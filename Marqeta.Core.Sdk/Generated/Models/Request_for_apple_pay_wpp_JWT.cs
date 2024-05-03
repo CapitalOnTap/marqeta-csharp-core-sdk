@@ -16,6 +16,14 @@ namespace Marqeta.Core.Sdk.Models {
 #else
         public string CardToken { get; set; }
 #endif
+        /// <summary>Random pseudo-unique value used for troubleshooting between multiple parties.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? ReqSysId { get; set; }
+#nullable restore
+#else
+        public string ReqSysId { get; set; }
+#endif
         /// <summary>
         /// Instantiates a new <see cref="Request_for_apple_pay_wpp_JWT"/> and sets the default values.
         /// </summary>
@@ -38,6 +46,7 @@ namespace Marqeta.Core.Sdk.Models {
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers() {
             return new Dictionary<string, Action<IParseNode>> {
                 {"card_token", n => { CardToken = n.GetStringValue(); } },
+                {"req-sys-id", n => { ReqSysId = n.GetStringValue(); } },
             };
         }
         /// <summary>
@@ -47,6 +56,7 @@ namespace Marqeta.Core.Sdk.Models {
         public virtual void Serialize(ISerializationWriter writer) {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("card_token", CardToken);
+            writer.WriteStringValue("req-sys-id", ReqSysId);
             writer.WriteAdditionalData(AdditionalData);
         }
     }
