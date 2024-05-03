@@ -14,32 +14,40 @@ namespace Marqeta.Core.Sdk.Authcontrols {
     /// <summary>
     /// Builds and executes requests for operations under \authcontrols
     /// </summary>
-    public class AuthcontrolsRequestBuilder : BaseRequestBuilder {
+    public class AuthcontrolsRequestBuilder : BaseRequestBuilder 
+    {
         /// <summary>The exemptmids property</summary>
-        public ExemptmidsRequestBuilder Exemptmids { get =>
-            new ExemptmidsRequestBuilder(PathParameters, RequestAdapter);
+        public ExemptmidsRequestBuilder Exemptmids
+        {
+            get => new ExemptmidsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>Gets an item from the Marqeta.Core.Sdk.authcontrols.item collection</summary>
         /// <param name="position">Existing authorization control token.Send a `GET` request to `/authcontrols` to retrieve authorization control tokens.</param>
         /// <returns>A <see cref="WithTokenItemRequestBuilder"/></returns>
-        public WithTokenItemRequestBuilder this[string position] { get {
-            var urlTplParams = new Dictionary<string, object>(PathParameters);
-            urlTplParams.Add("token", position);
-            return new WithTokenItemRequestBuilder(urlTplParams, RequestAdapter);
-        } }
+        public WithTokenItemRequestBuilder this[string position]
+        {
+            get
+            {
+                var urlTplParams = new Dictionary<string, object>(PathParameters);
+                urlTplParams.Add("token", position);
+                return new WithTokenItemRequestBuilder(urlTplParams, RequestAdapter);
+            }
+        }
         /// <summary>
         /// Instantiates a new <see cref="AuthcontrolsRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public AuthcontrolsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/authcontrols{?card_product*,count*,fields*,sort_by*,start_index*,user*}", pathParameters) {
+        public AuthcontrolsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/authcontrols{?card_product*,count*,fields*,sort_by*,start_index*,user*}", pathParameters)
+        {
         }
         /// <summary>
         /// Instantiates a new <see cref="AuthcontrolsRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public AuthcontrolsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/authcontrols{?card_product*,count*,fields*,sort_by*,start_index*,user*}", rawUrl) {
+        public AuthcontrolsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/authcontrols{?card_product*,count*,fields*,sort_by*,start_index*,user*}", rawUrl)
+        {
         }
         /// <summary>
         /// List all authorization controls associated with a specific user or card product, or list all authorization controls defined in your program.Include either a `user` or a `card_product` query parameter to indicate the user or card product whose associated authorization controls you want to retrieve (do not include both).To list all authorization controls for your program, omit the `user` and `card_product` query parameters from your request.
@@ -50,13 +58,16 @@ namespace Marqeta.Core.Sdk.Authcontrols {
         /// <exception cref="ApiError">When receiving a 4XX or 5XX status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<AuthControlListResponse?> GetAsync(Action<RequestConfiguration<AuthcontrolsRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default) {
+        public async Task<AuthControlListResponse?> GetAsync(Action<RequestConfiguration<AuthcontrolsRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        {
 #nullable restore
 #else
-        public async Task<AuthControlListResponse> GetAsync(Action<RequestConfiguration<AuthcontrolsRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default) {
+        public async Task<AuthControlListResponse> GetAsync(Action<RequestConfiguration<AuthcontrolsRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            var errorMapping = new Dictionary<string, ParsableFactory<IParsable>> {
+            var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
+            {
                 {"XXX", ApiError.CreateFromDiscriminatorValue},
             };
             return await RequestAdapter.SendAsync<AuthControlListResponse>(requestInfo, AuthControlListResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
@@ -71,14 +82,17 @@ namespace Marqeta.Core.Sdk.Authcontrols {
         /// <exception cref="ApiError">When receiving a 4XX or 5XX status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<Auth_control_response?> PostAsync(Auth_control_request body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default) {
+        public async Task<Auth_control_response?> PostAsync(Auth_control_request body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        {
 #nullable restore
 #else
-        public async Task<Auth_control_response> PostAsync(Auth_control_request body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default) {
+        public async Task<Auth_control_response> PostAsync(Auth_control_request body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        {
 #endif
             _ = body ?? throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPostRequestInformation(body, requestConfiguration);
-            var errorMapping = new Dictionary<string, ParsableFactory<IParsable>> {
+            var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
+            {
                 {"XXX", ApiError.CreateFromDiscriminatorValue},
             };
             return await RequestAdapter.SendAsync<Auth_control_response>(requestInfo, Auth_control_response.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
@@ -90,10 +104,12 @@ namespace Marqeta.Core.Sdk.Authcontrols {
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<AuthcontrolsRequestBuilderGetQueryParameters>>? requestConfiguration = default) {
+        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<AuthcontrolsRequestBuilderGetQueryParameters>>? requestConfiguration = default)
+        {
 #nullable restore
 #else
-        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<AuthcontrolsRequestBuilderGetQueryParameters>> requestConfiguration = default) {
+        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<AuthcontrolsRequestBuilderGetQueryParameters>> requestConfiguration = default)
+        {
 #endif
             var requestInfo = new RequestInformation(Method.GET, UrlTemplate, PathParameters);
             requestInfo.Configure(requestConfiguration);
@@ -108,13 +124,15 @@ namespace Marqeta.Core.Sdk.Authcontrols {
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToPostRequestInformation(Auth_control_request body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default) {
+        public RequestInformation ToPostRequestInformation(Auth_control_request body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
+        {
 #nullable restore
 #else
-        public RequestInformation ToPostRequestInformation(Auth_control_request body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default) {
+        public RequestInformation ToPostRequestInformation(Auth_control_request body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
+        {
 #endif
             _ = body ?? throw new ArgumentNullException(nameof(body));
-            var requestInfo = new RequestInformation(Method.POST, "{+baseurl}/authcontrols", PathParameters);
+            var requestInfo = new RequestInformation(Method.POST, UrlTemplate, PathParameters);
             requestInfo.Configure(requestConfiguration);
             requestInfo.Headers.TryAdd("Accept", "application/json");
             requestInfo.SetContentFromParsable(RequestAdapter, "application/json", body);
@@ -125,13 +143,15 @@ namespace Marqeta.Core.Sdk.Authcontrols {
         /// </summary>
         /// <returns>A <see cref="AuthcontrolsRequestBuilder"/></returns>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
-        public AuthcontrolsRequestBuilder WithUrl(string rawUrl) {
+        public AuthcontrolsRequestBuilder WithUrl(string rawUrl)
+        {
             return new AuthcontrolsRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
         /// List all authorization controls associated with a specific user or card product, or list all authorization controls defined in your program.Include either a `user` or a `card_product` query parameter to indicate the user or card product whose associated authorization controls you want to retrieve (do not include both).To list all authorization controls for your program, omit the `user` and `card_product` query parameters from your request.
         /// </summary>
-        public class AuthcontrolsRequestBuilderGetQueryParameters {
+        public class AuthcontrolsRequestBuilderGetQueryParameters 
+        {
             /// <summary>Unique identifier of the card product whose associated authorization controls you want to retrieve.Enter the string &quot;null&quot; to list authorization controls that are not associated with a card product.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable

@@ -14,40 +14,48 @@ namespace Marqeta.Core.Sdk.Policies {
     /// <summary>
     /// Builds and executes requests for operations under \policies
     /// </summary>
-    public class PoliciesRequestBuilder : BaseRequestBuilder {
+    public class PoliciesRequestBuilder : BaseRequestBuilder 
+    {
         /// <summary>The aprs property</summary>
-        public AprsRequestBuilder Aprs { get =>
-            new AprsRequestBuilder(PathParameters, RequestAdapter);
+        public AprsRequestBuilder Aprs
+        {
+            get => new AprsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The documents property</summary>
-        public DocumentsRequestBuilder Documents { get =>
-            new DocumentsRequestBuilder(PathParameters, RequestAdapter);
+        public DocumentsRequestBuilder Documents
+        {
+            get => new DocumentsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The fees property</summary>
-        public FeesRequestBuilder Fees { get =>
-            new FeesRequestBuilder(PathParameters, RequestAdapter);
+        public FeesRequestBuilder Fees
+        {
+            get => new FeesRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The products property</summary>
-        public ProductsRequestBuilder Products { get =>
-            new ProductsRequestBuilder(PathParameters, RequestAdapter);
+        public ProductsRequestBuilder Products
+        {
+            get => new ProductsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The rewards property</summary>
-        public RewardsRequestBuilder Rewards { get =>
-            new RewardsRequestBuilder(PathParameters, RequestAdapter);
+        public RewardsRequestBuilder Rewards
+        {
+            get => new RewardsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>
         /// Instantiates a new <see cref="PoliciesRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public PoliciesRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/policies", pathParameters) {
+        public PoliciesRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/policies", pathParameters)
+        {
         }
         /// <summary>
         /// Instantiates a new <see cref="PoliciesRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public PoliciesRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/policies", rawUrl) {
+        public PoliciesRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/policies", rawUrl)
+        {
         }
     }
 }

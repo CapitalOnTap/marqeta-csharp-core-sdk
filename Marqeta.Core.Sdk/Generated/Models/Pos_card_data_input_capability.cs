@@ -3,32 +3,59 @@ using System.Runtime.Serialization;
 using System;
 namespace Marqeta.Core.Sdk.Models {
     /// <summary>How the terminal accepts card data.</summary>
-    public enum Pos_card_data_input_capability {
+    public enum Pos_card_data_input_capability
+    {
         [EnumMember(Value = "UNKNOWN")]
+        #pragma warning disable CS1591
         UNKNOWN,
+        #pragma warning restore CS1591
         [EnumMember(Value = "NO_TERMINAL")]
+        #pragma warning disable CS1591
         NO_TERMINAL,
+        #pragma warning restore CS1591
         [EnumMember(Value = "MAG_STRIPE")]
+        #pragma warning disable CS1591
         MAG_STRIPE,
+        #pragma warning restore CS1591
         [EnumMember(Value = "MAG_STRIPE_CONTACTLESS")]
+        #pragma warning disable CS1591
         MAG_STRIPE_CONTACTLESS,
+        #pragma warning restore CS1591
         [EnumMember(Value = "MAG_STRIPE_KEY_ENTRY")]
+        #pragma warning disable CS1591
         MAG_STRIPE_KEY_ENTRY,
+        #pragma warning restore CS1591
         [EnumMember(Value = "CHIP")]
+        #pragma warning disable CS1591
         CHIP,
+        #pragma warning restore CS1591
         [EnumMember(Value = "CHIP_CONTACTLESS")]
+        #pragma warning disable CS1591
         CHIP_CONTACTLESS,
+        #pragma warning restore CS1591
         [EnumMember(Value = "CHIP_MAG_STRIPE")]
+        #pragma warning disable CS1591
         CHIP_MAG_STRIPE,
+        #pragma warning restore CS1591
         [EnumMember(Value = "CHIP_MAG_STRIPE_KEY_ENTRY")]
+        #pragma warning disable CS1591
         CHIP_MAG_STRIPE_KEY_ENTRY,
+        #pragma warning restore CS1591
         [EnumMember(Value = "KEY_ENTRY")]
+        #pragma warning disable CS1591
         KEY_ENTRY,
+        #pragma warning restore CS1591
         [EnumMember(Value = "OCR")]
+        #pragma warning disable CS1591
         OCR,
+        #pragma warning restore CS1591
         [EnumMember(Value = "MICR")]
+        #pragma warning disable CS1591
         MICR,
+        #pragma warning restore CS1591
         [EnumMember(Value = "BAR_CODE")]
+        #pragma warning disable CS1591
         BAR_CODE,
+        #pragma warning restore CS1591
     }
 }

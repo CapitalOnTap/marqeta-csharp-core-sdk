@@ -10,28 +10,35 @@ namespace Marqeta.Core.Sdk.Webhooks.Customheaders {
     /// <summary>
     /// Builds and executes requests for operations under \webhooks\customheaders
     /// </summary>
-    public class CustomheadersRequestBuilder : BaseRequestBuilder {
+    public class CustomheadersRequestBuilder : BaseRequestBuilder 
+    {
         /// <summary>Gets an item from the Marqeta.Core.Sdk.webhooks.customheaders.item collection</summary>
         /// <param name="position">Unique identifier of the webhook.</param>
         /// <returns>A <see cref="WithTokenItemRequestBuilder"/></returns>
-        public WithTokenItemRequestBuilder this[string position] { get {
-            var urlTplParams = new Dictionary<string, object>(PathParameters);
-            urlTplParams.Add("token", position);
-            return new WithTokenItemRequestBuilder(urlTplParams, RequestAdapter);
-        } }
+        public WithTokenItemRequestBuilder this[string position]
+        {
+            get
+            {
+                var urlTplParams = new Dictionary<string, object>(PathParameters);
+                urlTplParams.Add("token", position);
+                return new WithTokenItemRequestBuilder(urlTplParams, RequestAdapter);
+            }
+        }
         /// <summary>
         /// Instantiates a new <see cref="CustomheadersRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public CustomheadersRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/webhooks/customheaders", pathParameters) {
+        public CustomheadersRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/webhooks/customheaders", pathParameters)
+        {
         }
         /// <summary>
         /// Instantiates a new <see cref="CustomheadersRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public CustomheadersRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/webhooks/customheaders", rawUrl) {
+        public CustomheadersRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/webhooks/customheaders", rawUrl)
+        {
         }
     }
 }

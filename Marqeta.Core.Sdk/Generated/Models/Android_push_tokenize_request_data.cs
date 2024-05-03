@@ -8,7 +8,8 @@ namespace Marqeta.Core.Sdk.Models {
     /// <summary>
     /// Contains details about a card tokenization push request.
     /// </summary>
-    public class Android_push_tokenize_request_data : IAdditionalDataHolder, IParsable {
+    public class Android_push_tokenize_request_data : IAdditionalDataHolder, IParsable 
+    {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Name of the card as displayed in the digital wallet, typically showing the card brand and last four digits of the primary account number (PAN).`Visa 5678`, for example.</summary>
@@ -62,7 +63,8 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>
         /// Instantiates a new <see cref="Android_push_tokenize_request_data"/> and sets the default values.
         /// </summary>
-        public Android_push_tokenize_request_data() {
+        public Android_push_tokenize_request_data()
+        {
             AdditionalData = new Dictionary<string, object>();
         }
         /// <summary>
@@ -70,7 +72,8 @@ namespace Marqeta.Core.Sdk.Models {
         /// </summary>
         /// <returns>A <see cref="Android_push_tokenize_request_data"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static Android_push_tokenize_request_data CreateFromDiscriminatorValue(IParseNode parseNode) {
+        public static Android_push_tokenize_request_data CreateFromDiscriminatorValue(IParseNode parseNode)
+        {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
             return new Android_push_tokenize_request_data();
         }
@@ -78,8 +81,10 @@ namespace Marqeta.Core.Sdk.Models {
         /// The deserialization information for the current model
         /// </summary>
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
-        public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers() {
-            return new Dictionary<string, Action<IParseNode>> {
+        public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
+        {
+            return new Dictionary<string, Action<IParseNode>>
+            {
                 {"display_name", n => { DisplayName = n.GetStringValue(); } },
                 {"last_digits", n => { LastDigits = n.GetStringValue(); } },
                 {"network", n => { Network = n.GetStringValue(); } },
@@ -92,7 +97,8 @@ namespace Marqeta.Core.Sdk.Models {
         /// Serializes information the current object
         /// </summary>
         /// <param name="writer">Serialization writer to use to serialize this model</param>
-        public virtual void Serialize(ISerializationWriter writer) {
+        public virtual void Serialize(ISerializationWriter writer)
+        {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("display_name", DisplayName);
             writer.WriteStringValue("last_digits", LastDigits);

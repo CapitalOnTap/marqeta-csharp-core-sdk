@@ -2,24 +2,45 @@
 using System.Runtime.Serialization;
 using System;
 namespace Marqeta.Core.Sdk.Models {
-    public enum Original_credit_sender_data_funding_source {
+    #pragma warning disable CS1591
+    public enum Original_credit_sender_data_funding_source
+    #pragma warning restore CS1591
+    {
         [EnumMember(Value = "credit")]
+        #pragma warning disable CS1591
         Credit,
+        #pragma warning restore CS1591
         [EnumMember(Value = "debit")]
+        #pragma warning disable CS1591
         Debit,
+        #pragma warning restore CS1591
         [EnumMember(Value = "prepaid")]
+        #pragma warning disable CS1591
         Prepaid,
+        #pragma warning restore CS1591
         [EnumMember(Value = "deposit_account")]
+        #pragma warning disable CS1591
         Deposit_account,
+        #pragma warning restore CS1591
         [EnumMember(Value = "cash")]
+        #pragma warning disable CS1591
         Cash,
+        #pragma warning restore CS1591
         [EnumMember(Value = "mobile_money_payment")]
+        #pragma warning disable CS1591
         Mobile_money_payment,
+        #pragma warning restore CS1591
         [EnumMember(Value = "non_visa_credit")]
+        #pragma warning disable CS1591
         Non_visa_credit,
+        #pragma warning restore CS1591
         [EnumMember(Value = "check")]
+        #pragma warning disable CS1591
         Check,
+        #pragma warning restore CS1591
         [EnumMember(Value = "ach")]
+        #pragma warning disable CS1591
         Ach,
+        #pragma warning restore CS1591
     }
 }

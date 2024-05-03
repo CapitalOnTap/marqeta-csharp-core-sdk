@@ -8,13 +8,15 @@ namespace Marqeta.Core.Sdk.Models {
     /// <summary>
     /// Customer-defined additional information about the application.
     /// </summary>
-    public class ApplicationsResponse_meta_data : IAdditionalDataHolder, IParsable {
+    public class ApplicationsResponse_meta_data : IAdditionalDataHolder, IParsable 
+    {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="ApplicationsResponse_meta_data"/> and sets the default values.
         /// </summary>
-        public ApplicationsResponse_meta_data() {
+        public ApplicationsResponse_meta_data()
+        {
             AdditionalData = new Dictionary<string, object>();
         }
         /// <summary>
@@ -22,7 +24,8 @@ namespace Marqeta.Core.Sdk.Models {
         /// </summary>
         /// <returns>A <see cref="ApplicationsResponse_meta_data"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static ApplicationsResponse_meta_data CreateFromDiscriminatorValue(IParseNode parseNode) {
+        public static ApplicationsResponse_meta_data CreateFromDiscriminatorValue(IParseNode parseNode)
+        {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
             return new ApplicationsResponse_meta_data();
         }
@@ -30,15 +33,18 @@ namespace Marqeta.Core.Sdk.Models {
         /// The deserialization information for the current model
         /// </summary>
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
-        public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers() {
-            return new Dictionary<string, Action<IParseNode>> {
+        public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
+        {
+            return new Dictionary<string, Action<IParseNode>>
+            {
             };
         }
         /// <summary>
         /// Serializes information the current object
         /// </summary>
         /// <param name="writer">Serialization writer to use to serialize this model</param>
-        public virtual void Serialize(ISerializationWriter writer) {
+        public virtual void Serialize(ISerializationWriter writer)
+        {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
             writer.WriteAdditionalData(AdditionalData);
         }

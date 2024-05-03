@@ -5,7 +5,10 @@ using System.IO;
 using System.Linq;
 using System;
 namespace Marqeta.Core.Sdk.Models {
-    public class Control_token_request : IAdditionalDataHolder, IParsable {
+    #pragma warning disable CS1591
+    public class Control_token_request : IAdditionalDataHolder, IParsable 
+    #pragma warning restore CS1591
+    {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The unique identifier of the card for which you want to generate a control token.</summary>
@@ -21,7 +24,8 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>
         /// Instantiates a new <see cref="Control_token_request"/> and sets the default values.
         /// </summary>
-        public Control_token_request() {
+        public Control_token_request()
+        {
             AdditionalData = new Dictionary<string, object>();
         }
         /// <summary>
@@ -29,7 +33,8 @@ namespace Marqeta.Core.Sdk.Models {
         /// </summary>
         /// <returns>A <see cref="Control_token_request"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static Control_token_request CreateFromDiscriminatorValue(IParseNode parseNode) {
+        public static Control_token_request CreateFromDiscriminatorValue(IParseNode parseNode)
+        {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
             return new Control_token_request();
         }
@@ -37,8 +42,10 @@ namespace Marqeta.Core.Sdk.Models {
         /// The deserialization information for the current model
         /// </summary>
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
-        public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers() {
-            return new Dictionary<string, Action<IParseNode>> {
+        public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
+        {
+            return new Dictionary<string, Action<IParseNode>>
+            {
                 {"card_token", n => { CardToken = n.GetStringValue(); } },
                 {"controltoken_type", n => { ControltokenType = n.GetEnumValue<Control_token_request_controltoken_type>(); } },
             };
@@ -47,7 +54,8 @@ namespace Marqeta.Core.Sdk.Models {
         /// Serializes information the current object
         /// </summary>
         /// <param name="writer">Serialization writer to use to serialize this model</param>
-        public virtual void Serialize(ISerializationWriter writer) {
+        public virtual void Serialize(ISerializationWriter writer)
+        {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("card_token", CardToken);
             writer.WriteEnumValue<Control_token_request_controltoken_type>("controltoken_type", ControltokenType);

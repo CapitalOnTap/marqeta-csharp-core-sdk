@@ -2,14 +2,25 @@
 using System.Runtime.Serialization;
 using System;
 namespace Marqeta.Core.Sdk.Transactions.Fundingsource.Item {
-    public enum GetSort_byQueryParameterType {
+    #pragma warning disable CS1591
+    public enum GetSort_byQueryParameterType
+    #pragma warning restore CS1591
+    {
         [EnumMember(Value = "-created_time")]
+        #pragma warning disable CS1591
         Minus_created_time,
+        #pragma warning restore CS1591
         [EnumMember(Value = "created_time")]
+        #pragma warning disable CS1591
         Created_time,
+        #pragma warning restore CS1591
         [EnumMember(Value = "-user_transaction_time")]
+        #pragma warning disable CS1591
         Minus_user_transaction_time,
+        #pragma warning restore CS1591
         [EnumMember(Value = "user_transaction_time")]
+        #pragma warning disable CS1591
         User_transaction_time,
+        #pragma warning restore CS1591
     }
 }

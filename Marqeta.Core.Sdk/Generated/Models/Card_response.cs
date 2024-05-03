@@ -8,7 +8,8 @@ namespace Marqeta.Core.Sdk.Models {
     /// <summary>
     /// Contains information about the card used in the transaction.
     /// </summary>
-    public class Card_response : IAdditionalDataHolder, IParsable {
+    public class Card_response : IAdditionalDataHolder, IParsable 
+    {
         /// <summary>Defines actions to execute when the card is activated.The fields in this object are mutually exclusive.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -170,7 +171,8 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>
         /// Instantiates a new <see cref="Card_response"/> and sets the default values.
         /// </summary>
-        public Card_response() {
+        public Card_response()
+        {
             AdditionalData = new Dictionary<string, object>();
         }
         /// <summary>
@@ -178,7 +180,8 @@ namespace Marqeta.Core.Sdk.Models {
         /// </summary>
         /// <returns>A <see cref="Card_response"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static Card_response CreateFromDiscriminatorValue(IParseNode parseNode) {
+        public static Card_response CreateFromDiscriminatorValue(IParseNode parseNode)
+        {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
             return new Card_response();
         }
@@ -186,8 +189,10 @@ namespace Marqeta.Core.Sdk.Models {
         /// The deserialization information for the current model
         /// </summary>
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
-        public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers() {
-            return new Dictionary<string, Action<IParseNode>> {
+        public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
+        {
+            return new Dictionary<string, Action<IParseNode>>
+            {
                 {"activation_actions", n => { ActivationActions = n.GetObjectValue<Activation_actions>(Activation_actions.CreateFromDiscriminatorValue); } },
                 {"barcode", n => { Barcode = n.GetStringValue(); } },
                 {"bulk_issuance_token", n => { BulkIssuanceToken = n.GetStringValue(); } },
@@ -221,7 +226,8 @@ namespace Marqeta.Core.Sdk.Models {
         /// Serializes information the current object
         /// </summary>
         /// <param name="writer">Serialization writer to use to serialize this model</param>
-        public virtual void Serialize(ISerializationWriter writer) {
+        public virtual void Serialize(ISerializationWriter writer)
+        {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
             writer.WriteObjectValue<Activation_actions>("activation_actions", ActivationActions);
             writer.WriteStringValue("barcode", Barcode);

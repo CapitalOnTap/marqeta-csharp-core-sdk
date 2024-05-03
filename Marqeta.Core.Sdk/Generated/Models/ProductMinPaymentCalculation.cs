@@ -8,7 +8,8 @@ namespace Marqeta.Core.Sdk.Models {
     /// <summary>
     /// Contains information used to calculate the minimum payment amount.
     /// </summary>
-    public class ProductMinPaymentCalculation : IAdditionalDataHolder, IParsable {
+    public class ProductMinPaymentCalculation : IAdditionalDataHolder, IParsable 
+    {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Whether to include the past due amount when calculating the minimum payment.</summary>
@@ -26,7 +27,8 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>
         /// Instantiates a new <see cref="ProductMinPaymentCalculation"/> and sets the default values.
         /// </summary>
-        public ProductMinPaymentCalculation() {
+        public ProductMinPaymentCalculation()
+        {
             AdditionalData = new Dictionary<string, object>();
         }
         /// <summary>
@@ -34,7 +36,8 @@ namespace Marqeta.Core.Sdk.Models {
         /// </summary>
         /// <returns>A <see cref="ProductMinPaymentCalculation"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static ProductMinPaymentCalculation CreateFromDiscriminatorValue(IParseNode parseNode) {
+        public static ProductMinPaymentCalculation CreateFromDiscriminatorValue(IParseNode parseNode)
+        {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
             return new ProductMinPaymentCalculation();
         }
@@ -42,8 +45,10 @@ namespace Marqeta.Core.Sdk.Models {
         /// The deserialization information for the current model
         /// </summary>
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
-        public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers() {
-            return new Dictionary<string, Action<IParseNode>> {
+        public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
+        {
+            return new Dictionary<string, Action<IParseNode>>
+            {
                 {"include_past_due_amount", n => { IncludePastDueAmount = n.GetBoolValue(); } },
                 {"min_payment_flat_amount", n => { MinPaymentFlatAmount = n.GetDoubleValue(); } },
                 {"min_payment_percentage", n => { MinPaymentPercentage = n.GetObjectValue<ProductMinPaymentPercentage>(ProductMinPaymentPercentage.CreateFromDiscriminatorValue); } },
@@ -53,7 +58,8 @@ namespace Marqeta.Core.Sdk.Models {
         /// Serializes information the current object
         /// </summary>
         /// <param name="writer">Serialization writer to use to serialize this model</param>
-        public virtual void Serialize(ISerializationWriter writer) {
+        public virtual void Serialize(ISerializationWriter writer)
+        {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
             writer.WriteBoolValue("include_past_due_amount", IncludePastDueAmount);
             writer.WriteDoubleValue("min_payment_flat_amount", MinPaymentFlatAmount);

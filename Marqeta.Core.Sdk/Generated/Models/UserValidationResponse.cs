@@ -8,7 +8,8 @@ namespace Marqeta.Core.Sdk.Models {
     /// <summary>
     /// Contains information about the user.
     /// </summary>
-    public class UserValidationResponse : IAdditionalDataHolder, IParsable {
+    public class UserValidationResponse : IAdditionalDataHolder, IParsable 
+    {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Indicates whether the `birth_date` field in the request was validated.</summary>
@@ -22,7 +23,8 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>
         /// Instantiates a new <see cref="UserValidationResponse"/> and sets the default values.
         /// </summary>
-        public UserValidationResponse() {
+        public UserValidationResponse()
+        {
             AdditionalData = new Dictionary<string, object>();
         }
         /// <summary>
@@ -30,7 +32,8 @@ namespace Marqeta.Core.Sdk.Models {
         /// </summary>
         /// <returns>A <see cref="UserValidationResponse"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static UserValidationResponse CreateFromDiscriminatorValue(IParseNode parseNode) {
+        public static UserValidationResponse CreateFromDiscriminatorValue(IParseNode parseNode)
+        {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
             return new UserValidationResponse();
         }
@@ -38,8 +41,10 @@ namespace Marqeta.Core.Sdk.Models {
         /// The deserialization information for the current model
         /// </summary>
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
-        public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers() {
-            return new Dictionary<string, Action<IParseNode>> {
+        public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
+        {
+            return new Dictionary<string, Action<IParseNode>>
+            {
                 {"birth_date", n => { BirthDate = n.GetBoolValue(); } },
                 {"phone", n => { Phone = n.GetBoolValue(); } },
                 {"random_name_line1_postfix", n => { RandomNameLine1Postfix = n.GetBoolValue(); } },
@@ -50,7 +55,8 @@ namespace Marqeta.Core.Sdk.Models {
         /// Serializes information the current object
         /// </summary>
         /// <param name="writer">Serialization writer to use to serialize this model</param>
-        public virtual void Serialize(ISerializationWriter writer) {
+        public virtual void Serialize(ISerializationWriter writer)
+        {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
             writer.WriteBoolValue("birth_date", BirthDate);
             writer.WriteBoolValue("phone", Phone);

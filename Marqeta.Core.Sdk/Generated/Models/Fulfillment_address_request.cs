@@ -8,7 +8,8 @@ namespace Marqeta.Core.Sdk.Models {
     /// <summary>
     /// Specifies a fulfillment shipping or return address.
     /// </summary>
-    public class Fulfillment_address_request : IAdditionalDataHolder, IParsable {
+    public class Fulfillment_address_request : IAdditionalDataHolder, IParsable 
+    {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Number and street of the address.</summary>
@@ -102,7 +103,8 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>
         /// Instantiates a new <see cref="Fulfillment_address_request"/> and sets the default values.
         /// </summary>
-        public Fulfillment_address_request() {
+        public Fulfillment_address_request()
+        {
             AdditionalData = new Dictionary<string, object>();
         }
         /// <summary>
@@ -110,7 +112,8 @@ namespace Marqeta.Core.Sdk.Models {
         /// </summary>
         /// <returns>A <see cref="Fulfillment_address_request"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static Fulfillment_address_request CreateFromDiscriminatorValue(IParseNode parseNode) {
+        public static Fulfillment_address_request CreateFromDiscriminatorValue(IParseNode parseNode)
+        {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
             return new Fulfillment_address_request();
         }
@@ -118,8 +121,10 @@ namespace Marqeta.Core.Sdk.Models {
         /// The deserialization information for the current model
         /// </summary>
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
-        public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers() {
-            return new Dictionary<string, Action<IParseNode>> {
+        public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
+        {
+            return new Dictionary<string, Action<IParseNode>>
+            {
                 {"address1", n => { Address1 = n.GetStringValue(); } },
                 {"address2", n => { Address2 = n.GetStringValue(); } },
                 {"city", n => { City = n.GetStringValue(); } },
@@ -137,7 +142,8 @@ namespace Marqeta.Core.Sdk.Models {
         /// Serializes information the current object
         /// </summary>
         /// <param name="writer">Serialization writer to use to serialize this model</param>
-        public virtual void Serialize(ISerializationWriter writer) {
+        public virtual void Serialize(ISerializationWriter writer)
+        {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("address1", Address1);
             writer.WriteStringValue("address2", Address2);

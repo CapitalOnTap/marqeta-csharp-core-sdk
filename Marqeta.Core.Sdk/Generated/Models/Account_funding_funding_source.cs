@@ -3,24 +3,43 @@ using System.Runtime.Serialization;
 using System;
 namespace Marqeta.Core.Sdk.Models {
     /// <summary>Specifies the type of account from which the transaction was funded.</summary>
-    public enum Account_funding_funding_source {
+    public enum Account_funding_funding_source
+    {
         [EnumMember(Value = "CREDIT")]
+        #pragma warning disable CS1591
         CREDIT,
+        #pragma warning restore CS1591
         [EnumMember(Value = "DEBIT")]
+        #pragma warning disable CS1591
         DEBIT,
+        #pragma warning restore CS1591
         [EnumMember(Value = "PREPAID")]
+        #pragma warning disable CS1591
         PREPAID,
+        #pragma warning restore CS1591
         [EnumMember(Value = "DEPOSIT_ACCOUNT")]
+        #pragma warning disable CS1591
         DEPOSIT_ACCOUNT,
+        #pragma warning restore CS1591
         [EnumMember(Value = "CASH")]
+        #pragma warning disable CS1591
         CASH,
+        #pragma warning restore CS1591
         [EnumMember(Value = "MOBILE_MONEY_ACCOUNT")]
+        #pragma warning disable CS1591
         MOBILE_MONEY_ACCOUNT,
+        #pragma warning restore CS1591
         [EnumMember(Value = "NON_VISA_CREDIT")]
+        #pragma warning disable CS1591
         NON_VISA_CREDIT,
+        #pragma warning restore CS1591
         [EnumMember(Value = "CHECK")]
+        #pragma warning disable CS1591
         CHECK,
+        #pragma warning restore CS1591
         [EnumMember(Value = "ACH")]
+        #pragma warning disable CS1591
         ACH,
+        #pragma warning restore CS1591
     }
 }

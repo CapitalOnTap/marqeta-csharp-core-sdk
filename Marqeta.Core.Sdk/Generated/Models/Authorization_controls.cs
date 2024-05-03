@@ -8,7 +8,8 @@ namespace Marqeta.Core.Sdk.Models {
     /// <summary>
     /// Controls the expiration of authorizations and automatic increases to the authorization amount for MCCs specified in this group.By default, these authorization controls apply program-wide, meaning that they apply to every card in your program.You can, however, exempt cards associated with any particular card product by setting that card product&apos;s `allow_mcc_group_authorization_controls` field to `false`.
     /// </summary>
-    public class Authorization_controls : IAdditionalDataHolder, IParsable {
+    public class Authorization_controls : IAdditionalDataHolder, IParsable 
+    {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Specifies the number of days after which an authorization associated with this group expires.</summary>
@@ -24,7 +25,8 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>
         /// Instantiates a new <see cref="Authorization_controls"/> and sets the default values.
         /// </summary>
-        public Authorization_controls() {
+        public Authorization_controls()
+        {
             AdditionalData = new Dictionary<string, object>();
         }
         /// <summary>
@@ -32,7 +34,8 @@ namespace Marqeta.Core.Sdk.Models {
         /// </summary>
         /// <returns>A <see cref="Authorization_controls"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static Authorization_controls CreateFromDiscriminatorValue(IParseNode parseNode) {
+        public static Authorization_controls CreateFromDiscriminatorValue(IParseNode parseNode)
+        {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
             return new Authorization_controls();
         }
@@ -40,8 +43,10 @@ namespace Marqeta.Core.Sdk.Models {
         /// The deserialization information for the current model
         /// </summary>
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
-        public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers() {
-            return new Dictionary<string, Action<IParseNode>> {
+        public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
+        {
+            return new Dictionary<string, Action<IParseNode>>
+            {
                 {"hold_expiration_days", n => { HoldExpirationDays = n.GetIntValue(); } },
                 {"hold_increase", n => { HoldIncrease = n.GetObjectValue<Hold_increase>(Hold_increase.CreateFromDiscriminatorValue); } },
             };
@@ -50,7 +55,8 @@ namespace Marqeta.Core.Sdk.Models {
         /// Serializes information the current object
         /// </summary>
         /// <param name="writer">Serialization writer to use to serialize this model</param>
-        public virtual void Serialize(ISerializationWriter writer) {
+        public virtual void Serialize(ISerializationWriter writer)
+        {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
             writer.WriteIntValue("hold_expiration_days", HoldExpirationDays);
             writer.WriteObjectValue<Hold_increase>("hold_increase", HoldIncrease);

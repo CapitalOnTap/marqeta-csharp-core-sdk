@@ -10,28 +10,35 @@ namespace Marqeta.Core.Sdk.Digitalwallettokentransitions.Digitalwallettoken {
     /// <summary>
     /// Builds and executes requests for operations under \digitalwallettokentransitions\digitalwallettoken
     /// </summary>
-    public class DigitalwallettokenRequestBuilder : BaseRequestBuilder {
+    public class DigitalwallettokenRequestBuilder : BaseRequestBuilder 
+    {
         /// <summary>Gets an item from the Marqeta.Core.Sdk.digitalwallettokentransitions.digitalwallettoken.item collection</summary>
         /// <param name="position">Unique identifier of the digital wallet token (DWT).</param>
         /// <returns>A <see cref="WithTokenItemRequestBuilder"/></returns>
-        public WithTokenItemRequestBuilder this[string position] { get {
-            var urlTplParams = new Dictionary<string, object>(PathParameters);
-            urlTplParams.Add("token", position);
-            return new WithTokenItemRequestBuilder(urlTplParams, RequestAdapter);
-        } }
+        public WithTokenItemRequestBuilder this[string position]
+        {
+            get
+            {
+                var urlTplParams = new Dictionary<string, object>(PathParameters);
+                urlTplParams.Add("token", position);
+                return new WithTokenItemRequestBuilder(urlTplParams, RequestAdapter);
+            }
+        }
         /// <summary>
         /// Instantiates a new <see cref="DigitalwallettokenRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public DigitalwallettokenRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/digitalwallettokentransitions/digitalwallettoken", pathParameters) {
+        public DigitalwallettokenRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/digitalwallettokentransitions/digitalwallettoken", pathParameters)
+        {
         }
         /// <summary>
         /// Instantiates a new <see cref="DigitalwallettokenRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public DigitalwallettokenRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/digitalwallettokentransitions/digitalwallettoken", rawUrl) {
+        public DigitalwallettokenRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/digitalwallettokentransitions/digitalwallettoken", rawUrl)
+        {
         }
     }
 }

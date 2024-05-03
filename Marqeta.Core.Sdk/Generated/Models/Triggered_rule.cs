@@ -8,7 +8,8 @@ namespace Marqeta.Core.Sdk.Models {
     /// <summary>
     /// Provides a list of rules triggered by a fraud event, along with the information on tags and rule characteristics.
     /// </summary>
-    public class Triggered_rule : IAdditionalDataHolder, IParsable {
+    public class Triggered_rule : IAdditionalDataHolder, IParsable 
+    {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Indicates if the rule triggered an alert.</summary>
@@ -42,7 +43,8 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>
         /// Instantiates a new <see cref="Triggered_rule"/> and sets the default values.
         /// </summary>
-        public Triggered_rule() {
+        public Triggered_rule()
+        {
             AdditionalData = new Dictionary<string, object>();
         }
         /// <summary>
@@ -50,7 +52,8 @@ namespace Marqeta.Core.Sdk.Models {
         /// </summary>
         /// <returns>A <see cref="Triggered_rule"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static Triggered_rule CreateFromDiscriminatorValue(IParseNode parseNode) {
+        public static Triggered_rule CreateFromDiscriminatorValue(IParseNode parseNode)
+        {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
             return new Triggered_rule();
         }
@@ -58,8 +61,10 @@ namespace Marqeta.Core.Sdk.Models {
         /// The deserialization information for the current model
         /// </summary>
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
-        public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers() {
-            return new Dictionary<string, Action<IParseNode>> {
+        public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
+        {
+            return new Dictionary<string, Action<IParseNode>>
+            {
                 {"alert", n => { Alert = n.GetBoolValue(); } },
                 {"entity_type", n => { EntityType = n.GetStringValue(); } },
                 {"rule_name", n => { RuleName = n.GetStringValue(); } },
@@ -71,7 +76,8 @@ namespace Marqeta.Core.Sdk.Models {
         /// Serializes information the current object
         /// </summary>
         /// <param name="writer">Serialization writer to use to serialize this model</param>
-        public virtual void Serialize(ISerializationWriter writer) {
+        public virtual void Serialize(ISerializationWriter writer)
+        {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
             writer.WriteBoolValue("alert", Alert);
             writer.WriteStringValue("entity_type", EntityType);

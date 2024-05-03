@@ -3,10 +3,15 @@ using System.Runtime.Serialization;
 using System;
 namespace Marqeta.Core.Sdk.Models {
     /// <summary>type of fee to be charged</summary>
-    public enum PeriodicFeeSchedule_type {
+    public enum PeriodicFeeSchedule_type
+    {
         [EnumMember(Value = "ANNUAL_FEE")]
+        #pragma warning disable CS1591
         ANNUAL_FEE,
+        #pragma warning restore CS1591
         [EnumMember(Value = "MONTHLY_FEE")]
+        #pragma warning disable CS1591
         MONTHLY_FEE,
+        #pragma warning restore CS1591
     }
 }

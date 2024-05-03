@@ -12,20 +12,23 @@ namespace Marqeta.Core.Sdk.Admin.Item.Retryachpayments {
     /// <summary>
     /// Builds and executes requests for operations under \admin\{short_code}\retryachpayments
     /// </summary>
-    public class RetryachpaymentsRequestBuilder : BaseRequestBuilder {
+    public class RetryachpaymentsRequestBuilder : BaseRequestBuilder 
+    {
         /// <summary>
         /// Instantiates a new <see cref="RetryachpaymentsRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public RetryachpaymentsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/admin/{short_code}/retryachpayments", pathParameters) {
+        public RetryachpaymentsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/admin/{short_code}/retryachpayments", pathParameters)
+        {
         }
         /// <summary>
         /// Instantiates a new <see cref="RetryachpaymentsRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public RetryachpaymentsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/admin/{short_code}/retryachpayments", rawUrl) {
+        public RetryachpaymentsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/admin/{short_code}/retryachpayments", rawUrl)
+        {
         }
         /// <summary>
         /// Create a new ACHO ACH transfer for payment who&apos;s current transfer has failed and is in ERROR state.
@@ -37,14 +40,17 @@ namespace Marqeta.Core.Sdk.Admin.Item.Retryachpayments {
         /// <exception cref="ApiError">When receiving a 4XX or 5XX status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<RetryAchPaymentReq?> PostAsync(RetryAchPaymentReq body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default) {
+        public async Task<RetryAchPaymentReq?> PostAsync(RetryAchPaymentReq body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        {
 #nullable restore
 #else
-        public async Task<RetryAchPaymentReq> PostAsync(RetryAchPaymentReq body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default) {
+        public async Task<RetryAchPaymentReq> PostAsync(RetryAchPaymentReq body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        {
 #endif
             _ = body ?? throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPostRequestInformation(body, requestConfiguration);
-            var errorMapping = new Dictionary<string, ParsableFactory<IParsable>> {
+            var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
+            {
                 {"XXX", ApiError.CreateFromDiscriminatorValue},
             };
             return await RequestAdapter.SendAsync<RetryAchPaymentReq>(requestInfo, RetryAchPaymentReq.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
@@ -57,10 +63,12 @@ namespace Marqeta.Core.Sdk.Admin.Item.Retryachpayments {
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToPostRequestInformation(RetryAchPaymentReq body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default) {
+        public RequestInformation ToPostRequestInformation(RetryAchPaymentReq body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
+        {
 #nullable restore
 #else
-        public RequestInformation ToPostRequestInformation(RetryAchPaymentReq body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default) {
+        public RequestInformation ToPostRequestInformation(RetryAchPaymentReq body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
+        {
 #endif
             _ = body ?? throw new ArgumentNullException(nameof(body));
             var requestInfo = new RequestInformation(Method.POST, UrlTemplate, PathParameters);
@@ -74,7 +82,8 @@ namespace Marqeta.Core.Sdk.Admin.Item.Retryachpayments {
         /// </summary>
         /// <returns>A <see cref="RetryachpaymentsRequestBuilder"/></returns>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
-        public RetryachpaymentsRequestBuilder WithUrl(string rawUrl) {
+        public RetryachpaymentsRequestBuilder WithUrl(string rawUrl)
+        {
             return new RetryachpaymentsRequestBuilder(rawUrl, RequestAdapter);
         }
     }

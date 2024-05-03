@@ -10,24 +10,28 @@ namespace Marqeta.Core.Sdk.Credit {
     /// <summary>
     /// Builds and executes requests for operations under \credit
     /// </summary>
-    public class CreditRequestBuilder : BaseRequestBuilder {
+    public class CreditRequestBuilder : BaseRequestBuilder 
+    {
         /// <summary>The applications property</summary>
-        public ApplicationsRequestBuilder Applications { get =>
-            new ApplicationsRequestBuilder(PathParameters, RequestAdapter);
+        public ApplicationsRequestBuilder Applications
+        {
+            get => new ApplicationsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>
         /// Instantiates a new <see cref="CreditRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public CreditRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/credit", pathParameters) {
+        public CreditRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/credit", pathParameters)
+        {
         }
         /// <summary>
         /// Instantiates a new <see cref="CreditRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public CreditRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/credit", rawUrl) {
+        public CreditRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/credit", rawUrl)
+        {
         }
     }
 }

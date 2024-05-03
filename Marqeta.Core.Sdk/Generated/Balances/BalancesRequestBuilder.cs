@@ -10,28 +10,35 @@ namespace Marqeta.Core.Sdk.Balances {
     /// <summary>
     /// Builds and executes requests for operations under \balances
     /// </summary>
-    public class BalancesRequestBuilder : BaseRequestBuilder {
+    public class BalancesRequestBuilder : BaseRequestBuilder 
+    {
         /// <summary>Gets an item from the Marqeta.Core.Sdk.balances.item collection</summary>
         /// <param name="position">Unique identifier of the user or business for which you want to return GPA balances.</param>
         /// <returns>A <see cref="WithTokenItemRequestBuilder"/></returns>
-        public WithTokenItemRequestBuilder this[string position] { get {
-            var urlTplParams = new Dictionary<string, object>(PathParameters);
-            urlTplParams.Add("token", position);
-            return new WithTokenItemRequestBuilder(urlTplParams, RequestAdapter);
-        } }
+        public WithTokenItemRequestBuilder this[string position]
+        {
+            get
+            {
+                var urlTplParams = new Dictionary<string, object>(PathParameters);
+                urlTplParams.Add("token", position);
+                return new WithTokenItemRequestBuilder(urlTplParams, RequestAdapter);
+            }
+        }
         /// <summary>
         /// Instantiates a new <see cref="BalancesRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public BalancesRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/balances", pathParameters) {
+        public BalancesRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/balances", pathParameters)
+        {
         }
         /// <summary>
         /// Instantiates a new <see cref="BalancesRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public BalancesRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/balances", rawUrl) {
+        public BalancesRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/balances", rawUrl)
+        {
         }
     }
 }

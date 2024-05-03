@@ -8,7 +8,8 @@ namespace Marqeta.Core.Sdk.Models {
     /// <summary>
     /// Contains information about the JIT Funding load event, in which funds are loaded into an account.This object is returned if your program uses JIT Funding.
     /// </summary>
-    public class Jit_funding_api : IAdditionalDataHolder, IParsable {
+    public class Jit_funding_api : IAdditionalDataHolder, IParsable 
+    {
         /// <summary>Contains account name verification data used to make JIT Funding decisions from one of the following objects:* The `gateway` object contains account name verification data from your JIT Funding gateway.* The `issuer` object contains account name verification data from the Marqeta platform.* The `request` object contains account name verification data as it appears in a JIT Funding request.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -116,7 +117,8 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>
         /// Instantiates a new <see cref="Jit_funding_api"/> and sets the default values.
         /// </summary>
-        public Jit_funding_api() {
+        public Jit_funding_api()
+        {
             AdditionalData = new Dictionary<string, object>();
         }
         /// <summary>
@@ -124,7 +126,8 @@ namespace Marqeta.Core.Sdk.Models {
         /// </summary>
         /// <returns>A <see cref="Jit_funding_api"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static Jit_funding_api CreateFromDiscriminatorValue(IParseNode parseNode) {
+        public static Jit_funding_api CreateFromDiscriminatorValue(IParseNode parseNode)
+        {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
             return new Jit_funding_api();
         }
@@ -132,8 +135,10 @@ namespace Marqeta.Core.Sdk.Models {
         /// The deserialization information for the current model
         /// </summary>
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
-        public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers() {
-            return new Dictionary<string, Action<IParseNode>> {
+        public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
+        {
+            return new Dictionary<string, Action<IParseNode>>
+            {
                 {"account_name_verification", n => { AccountNameVerification = n.GetObjectValue<Jit_account_name_verification>(Jit_account_name_verification.CreateFromDiscriminatorValue); } },
                 {"acting_user_token", n => { ActingUserToken = n.GetStringValue(); } },
                 {"address_verification", n => { AddressVerification = n.GetObjectValue<Jit_address_verification>(Jit_address_verification.CreateFromDiscriminatorValue); } },
@@ -155,7 +160,8 @@ namespace Marqeta.Core.Sdk.Models {
         /// Serializes information the current object
         /// </summary>
         /// <param name="writer">Serialization writer to use to serialize this model</param>
-        public virtual void Serialize(ISerializationWriter writer) {
+        public virtual void Serialize(ISerializationWriter writer)
+        {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
             writer.WriteObjectValue<Jit_account_name_verification>("account_name_verification", AccountNameVerification);
             writer.WriteStringValue("acting_user_token", ActingUserToken);

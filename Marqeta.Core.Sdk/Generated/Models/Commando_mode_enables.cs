@@ -8,7 +8,8 @@ namespace Marqeta.Core.Sdk.Models {
     /// <summary>
     /// Defines program behavior when Commando Mode is enabled.
     /// </summary>
-    public class Commando_mode_enables : IAdditionalDataHolder, IParsable {
+    public class Commando_mode_enables : IAdditionalDataHolder, IParsable 
+    {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Unique identifiers of the authorization controls enabled while in Commando Mode.</summary>
@@ -42,7 +43,8 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>
         /// Instantiates a new <see cref="Commando_mode_enables"/> and sets the default values.
         /// </summary>
-        public Commando_mode_enables() {
+        public Commando_mode_enables()
+        {
             AdditionalData = new Dictionary<string, object>();
         }
         /// <summary>
@@ -50,7 +52,8 @@ namespace Marqeta.Core.Sdk.Models {
         /// </summary>
         /// <returns>A <see cref="Commando_mode_enables"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static Commando_mode_enables CreateFromDiscriminatorValue(IParseNode parseNode) {
+        public static Commando_mode_enables CreateFromDiscriminatorValue(IParseNode parseNode)
+        {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
             return new Commando_mode_enables();
         }
@@ -58,8 +61,10 @@ namespace Marqeta.Core.Sdk.Models {
         /// The deserialization information for the current model
         /// </summary>
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
-        public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers() {
-            return new Dictionary<string, Action<IParseNode>> {
+        public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
+        {
+            return new Dictionary<string, Action<IParseNode>>
+            {
                 {"auth_controls", n => { AuthControls = n.GetCollectionOfPrimitiveValues<string>()?.ToList(); } },
                 {"ignore_card_suspended_state", n => { IgnoreCardSuspendedState = n.GetBoolValue(); } },
                 {"program_funding_source", n => { ProgramFundingSource = n.GetStringValue(); } },
@@ -71,7 +76,8 @@ namespace Marqeta.Core.Sdk.Models {
         /// Serializes information the current object
         /// </summary>
         /// <param name="writer">Serialization writer to use to serialize this model</param>
-        public virtual void Serialize(ISerializationWriter writer) {
+        public virtual void Serialize(ISerializationWriter writer)
+        {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
             writer.WriteCollectionOfPrimitiveValues<string>("auth_controls", AuthControls);
             writer.WriteBoolValue("ignore_card_suspended_state", IgnoreCardSuspendedState);

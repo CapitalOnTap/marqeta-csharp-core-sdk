@@ -3,10 +3,15 @@ using System.Runtime.Serialization;
 using System;
 namespace Marqeta.Core.Sdk.Models {
     /// <summary>Time unit of the pay off period.</summary>
-    public enum StatementPaymentWarning_period_type {
+    public enum StatementPaymentWarning_period_type
+    {
         [EnumMember(Value = "MONTH")]
+        #pragma warning disable CS1591
         MONTH,
+        #pragma warning restore CS1591
         [EnumMember(Value = "YEAR")]
+        #pragma warning disable CS1591
         YEAR,
+        #pragma warning restore CS1591
     }
 }

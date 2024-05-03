@@ -12,20 +12,23 @@ namespace Marqeta.Core.Sdk.Businesstransitions.Item {
     /// <summary>
     /// Builds and executes requests for operations under \businesstransitions\{token}
     /// </summary>
-    public class WithTokenItemRequestBuilder : BaseRequestBuilder {
+    public class WithTokenItemRequestBuilder : BaseRequestBuilder 
+    {
         /// <summary>
         /// Instantiates a new <see cref="WithTokenItemRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public WithTokenItemRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/businesstransitions/{token}{?fields*}", pathParameters) {
+        public WithTokenItemRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/businesstransitions/{token}{?fields*}", pathParameters)
+        {
         }
         /// <summary>
         /// Instantiates a new <see cref="WithTokenItemRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public WithTokenItemRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/businesstransitions/{token}{?fields*}", rawUrl) {
+        public WithTokenItemRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/businesstransitions/{token}{?fields*}", rawUrl)
+        {
         }
         /// <summary>
         /// Use this endpoint to retrieve a business transition.
@@ -36,13 +39,16 @@ namespace Marqeta.Core.Sdk.Businesstransitions.Item {
         /// <exception cref="ApiError">When receiving a 4XX or 5XX status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<BusinessTransitionResponse?> GetAsync(Action<RequestConfiguration<WithTokenItemRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default) {
+        public async Task<BusinessTransitionResponse?> GetAsync(Action<RequestConfiguration<WithTokenItemRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        {
 #nullable restore
 #else
-        public async Task<BusinessTransitionResponse> GetAsync(Action<RequestConfiguration<WithTokenItemRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default) {
+        public async Task<BusinessTransitionResponse> GetAsync(Action<RequestConfiguration<WithTokenItemRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            var errorMapping = new Dictionary<string, ParsableFactory<IParsable>> {
+            var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
+            {
                 {"XXX", ApiError.CreateFromDiscriminatorValue},
             };
             return await RequestAdapter.SendAsync<BusinessTransitionResponse>(requestInfo, BusinessTransitionResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
@@ -54,10 +60,12 @@ namespace Marqeta.Core.Sdk.Businesstransitions.Item {
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<WithTokenItemRequestBuilderGetQueryParameters>>? requestConfiguration = default) {
+        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<WithTokenItemRequestBuilderGetQueryParameters>>? requestConfiguration = default)
+        {
 #nullable restore
 #else
-        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<WithTokenItemRequestBuilderGetQueryParameters>> requestConfiguration = default) {
+        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<WithTokenItemRequestBuilderGetQueryParameters>> requestConfiguration = default)
+        {
 #endif
             var requestInfo = new RequestInformation(Method.GET, UrlTemplate, PathParameters);
             requestInfo.Configure(requestConfiguration);
@@ -69,13 +77,15 @@ namespace Marqeta.Core.Sdk.Businesstransitions.Item {
         /// </summary>
         /// <returns>A <see cref="WithTokenItemRequestBuilder"/></returns>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
-        public WithTokenItemRequestBuilder WithUrl(string rawUrl) {
+        public WithTokenItemRequestBuilder WithUrl(string rawUrl)
+        {
             return new WithTokenItemRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
         /// Use this endpoint to retrieve a business transition.
         /// </summary>
-        public class WithTokenItemRequestBuilderGetQueryParameters {
+        public class WithTokenItemRequestBuilderGetQueryParameters 
+        {
             /// <summary>Field on which to sort.Use any field in the resource model, or one of the system fields `lastModifiedTime` or `createdTime`.Prefix the field name with a hyphen (`-`) to sort in descending order.Omit the hyphen to sort in ascending order.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable

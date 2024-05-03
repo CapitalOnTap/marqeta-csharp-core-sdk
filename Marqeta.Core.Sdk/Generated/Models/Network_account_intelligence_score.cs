@@ -8,7 +8,8 @@ namespace Marqeta.Core.Sdk.Models {
     /// <summary>
     /// Account intelligence score information, as provided by the Mastercard network.
     /// </summary>
-    public class Network_account_intelligence_score : IAdditionalDataHolder, IParsable {
+    public class Network_account_intelligence_score : IAdditionalDataHolder, IParsable 
+    {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The name, as provided by the Mastercard network.</summary>
@@ -38,7 +39,8 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>
         /// Instantiates a new <see cref="Network_account_intelligence_score"/> and sets the default values.
         /// </summary>
-        public Network_account_intelligence_score() {
+        public Network_account_intelligence_score()
+        {
             AdditionalData = new Dictionary<string, object>();
         }
         /// <summary>
@@ -46,7 +48,8 @@ namespace Marqeta.Core.Sdk.Models {
         /// </summary>
         /// <returns>A <see cref="Network_account_intelligence_score"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static Network_account_intelligence_score CreateFromDiscriminatorValue(IParseNode parseNode) {
+        public static Network_account_intelligence_score CreateFromDiscriminatorValue(IParseNode parseNode)
+        {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
             return new Network_account_intelligence_score();
         }
@@ -54,8 +57,10 @@ namespace Marqeta.Core.Sdk.Models {
         /// The deserialization information for the current model
         /// </summary>
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
-        public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers() {
-            return new Dictionary<string, Action<IParseNode>> {
+        public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
+        {
+            return new Dictionary<string, Action<IParseNode>>
+            {
                 {"name", n => { Name = n.GetStringValue(); } },
                 {"service_type", n => { ServiceType = n.GetStringValue(); } },
                 {"value", n => { Value = n.GetStringValue(); } },
@@ -65,7 +70,8 @@ namespace Marqeta.Core.Sdk.Models {
         /// Serializes information the current object
         /// </summary>
         /// <param name="writer">Serialization writer to use to serialize this model</param>
-        public virtual void Serialize(ISerializationWriter writer) {
+        public virtual void Serialize(ISerializationWriter writer)
+        {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("name", Name);
             writer.WriteStringValue("service_type", ServiceType);

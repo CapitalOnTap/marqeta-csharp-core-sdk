@@ -8,7 +8,8 @@ namespace Marqeta.Core.Sdk.Models {
     /// <summary>
     /// Contains information on a specific periodic fee in a fee policy.
     /// </summary>
-    public class PolicyFeePeriodic : IAdditionalDataHolder, IParsable {
+    public class PolicyFeePeriodic : IAdditionalDataHolder, IParsable 
+    {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Whether the periodic fee is excluded from interest calculation.</summary>
@@ -20,7 +21,8 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>
         /// Instantiates a new <see cref="PolicyFeePeriodic"/> and sets the default values.
         /// </summary>
-        public PolicyFeePeriodic() {
+        public PolicyFeePeriodic()
+        {
             AdditionalData = new Dictionary<string, object>();
         }
         /// <summary>
@@ -28,7 +30,8 @@ namespace Marqeta.Core.Sdk.Models {
         /// </summary>
         /// <returns>A <see cref="PolicyFeePeriodic"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static PolicyFeePeriodic CreateFromDiscriminatorValue(IParseNode parseNode) {
+        public static PolicyFeePeriodic CreateFromDiscriminatorValue(IParseNode parseNode)
+        {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
             return new PolicyFeePeriodic();
         }
@@ -36,8 +39,10 @@ namespace Marqeta.Core.Sdk.Models {
         /// The deserialization information for the current model
         /// </summary>
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
-        public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers() {
-            return new Dictionary<string, Action<IParseNode>> {
+        public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
+        {
+            return new Dictionary<string, Action<IParseNode>>
+            {
                 {"exclude_from_interest_calc", n => { ExcludeFromInterestCalc = n.GetBoolValue(); } },
                 {"fee_amount", n => { FeeAmount = n.GetDoubleValue(); } },
                 {"number_of_days_post_activation", n => { NumberOfDaysPostActivation = n.GetDoubleValue(); } },
@@ -47,7 +52,8 @@ namespace Marqeta.Core.Sdk.Models {
         /// Serializes information the current object
         /// </summary>
         /// <param name="writer">Serialization writer to use to serialize this model</param>
-        public virtual void Serialize(ISerializationWriter writer) {
+        public virtual void Serialize(ISerializationWriter writer)
+        {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
             writer.WriteBoolValue("exclude_from_interest_calc", ExcludeFromInterestCalc);
             writer.WriteDoubleValue("fee_amount", FeeAmount);

@@ -13,24 +13,28 @@ namespace Marqeta.Core.Sdk.Accounts.Item.Delinquencystate {
     /// <summary>
     /// Builds and executes requests for operations under \accounts\{account_token}\delinquencystate
     /// </summary>
-    public class DelinquencystateRequestBuilder : BaseRequestBuilder {
+    public class DelinquencystateRequestBuilder : BaseRequestBuilder 
+    {
         /// <summary>The transitions property</summary>
-        public TransitionsRequestBuilder Transitions { get =>
-            new TransitionsRequestBuilder(PathParameters, RequestAdapter);
+        public TransitionsRequestBuilder Transitions
+        {
+            get => new TransitionsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>
         /// Instantiates a new <see cref="DelinquencystateRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public DelinquencystateRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/accounts/{account_token}/delinquencystate", pathParameters) {
+        public DelinquencystateRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/accounts/{account_token}/delinquencystate", pathParameters)
+        {
         }
         /// <summary>
         /// Instantiates a new <see cref="DelinquencystateRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public DelinquencystateRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/accounts/{account_token}/delinquencystate", rawUrl) {
+        public DelinquencystateRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/accounts/{account_token}/delinquencystate", rawUrl)
+        {
         }
         /// <summary>
         /// Retrieve details of the current delinquency state of a credit account.An account is delinquent when it is past due on payments and current when it is up to date on payments.
@@ -41,13 +45,16 @@ namespace Marqeta.Core.Sdk.Accounts.Item.Delinquencystate {
         /// <exception cref="ApiError">When receiving a 4XX or 5XX status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<DelinquencyStateResponse?> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default) {
+        public async Task<DelinquencyStateResponse?> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        {
 #nullable restore
 #else
-        public async Task<DelinquencyStateResponse> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default) {
+        public async Task<DelinquencyStateResponse> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            var errorMapping = new Dictionary<string, ParsableFactory<IParsable>> {
+            var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
+            {
                 {"XXX", ApiError.CreateFromDiscriminatorValue},
             };
             return await RequestAdapter.SendAsync<DelinquencyStateResponse>(requestInfo, DelinquencyStateResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
@@ -59,10 +66,12 @@ namespace Marqeta.Core.Sdk.Accounts.Item.Delinquencystate {
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default) {
+        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
+        {
 #nullable restore
 #else
-        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default) {
+        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
+        {
 #endif
             var requestInfo = new RequestInformation(Method.GET, UrlTemplate, PathParameters);
             requestInfo.Configure(requestConfiguration);
@@ -74,7 +83,8 @@ namespace Marqeta.Core.Sdk.Accounts.Item.Delinquencystate {
         /// </summary>
         /// <returns>A <see cref="DelinquencystateRequestBuilder"/></returns>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
-        public DelinquencystateRequestBuilder WithUrl(string rawUrl) {
+        public DelinquencystateRequestBuilder WithUrl(string rawUrl)
+        {
             return new DelinquencystateRequestBuilder(rawUrl, RequestAdapter);
         }
     }

@@ -8,7 +8,8 @@ namespace Marqeta.Core.Sdk.Models {
     /// <summary>
     /// Controls automatic increases to the authorization amount for MCCs specified in this group.
     /// </summary>
-    public class Hold_increase : IAdditionalDataHolder, IParsable {
+    public class Hold_increase : IAdditionalDataHolder, IParsable 
+    {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Controls whether the `value` field represents a fixed amount or a percentage of the authorization amount.</summary>
@@ -18,7 +19,8 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>
         /// Instantiates a new <see cref="Hold_increase"/> and sets the default values.
         /// </summary>
-        public Hold_increase() {
+        public Hold_increase()
+        {
             AdditionalData = new Dictionary<string, object>();
             Type = Hold_increase_type.AMOUNT;
         }
@@ -27,7 +29,8 @@ namespace Marqeta.Core.Sdk.Models {
         /// </summary>
         /// <returns>A <see cref="Hold_increase"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static Hold_increase CreateFromDiscriminatorValue(IParseNode parseNode) {
+        public static Hold_increase CreateFromDiscriminatorValue(IParseNode parseNode)
+        {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
             return new Hold_increase();
         }
@@ -35,8 +38,10 @@ namespace Marqeta.Core.Sdk.Models {
         /// The deserialization information for the current model
         /// </summary>
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
-        public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers() {
-            return new Dictionary<string, Action<IParseNode>> {
+        public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
+        {
+            return new Dictionary<string, Action<IParseNode>>
+            {
                 {"type", n => { Type = n.GetEnumValue<Hold_increase_type>(); } },
                 {"value", n => { Value = n.GetDoubleValue(); } },
             };
@@ -45,7 +50,8 @@ namespace Marqeta.Core.Sdk.Models {
         /// Serializes information the current object
         /// </summary>
         /// <param name="writer">Serialization writer to use to serialize this model</param>
-        public virtual void Serialize(ISerializationWriter writer) {
+        public virtual void Serialize(ISerializationWriter writer)
+        {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
             writer.WriteEnumValue<Hold_increase_type>("type", Type);
             writer.WriteDoubleValue("value", Value);

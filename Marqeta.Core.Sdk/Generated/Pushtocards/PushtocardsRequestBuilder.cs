@@ -11,28 +11,33 @@ namespace Marqeta.Core.Sdk.Pushtocards {
     /// <summary>
     /// Builds and executes requests for operations under \pushtocards
     /// </summary>
-    public class PushtocardsRequestBuilder : BaseRequestBuilder {
+    public class PushtocardsRequestBuilder : BaseRequestBuilder 
+    {
         /// <summary>The disburse property</summary>
-        public DisburseRequestBuilder Disburse { get =>
-            new DisburseRequestBuilder(PathParameters, RequestAdapter);
+        public DisburseRequestBuilder Disburse
+        {
+            get => new DisburseRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The paymentcard property</summary>
-        public PaymentcardRequestBuilder Paymentcard { get =>
-            new PaymentcardRequestBuilder(PathParameters, RequestAdapter);
+        public PaymentcardRequestBuilder Paymentcard
+        {
+            get => new PaymentcardRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>
         /// Instantiates a new <see cref="PushtocardsRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public PushtocardsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/pushtocards", pathParameters) {
+        public PushtocardsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/pushtocards", pathParameters)
+        {
         }
         /// <summary>
         /// Instantiates a new <see cref="PushtocardsRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public PushtocardsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/pushtocards", rawUrl) {
+        public PushtocardsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/pushtocards", rawUrl)
+        {
         }
     }
 }

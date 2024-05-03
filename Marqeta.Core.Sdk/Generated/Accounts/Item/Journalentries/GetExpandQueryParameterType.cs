@@ -2,10 +2,17 @@
 using System.Runtime.Serialization;
 using System;
 namespace Marqeta.Core.Sdk.Accounts.Item.Journalentries {
-    public enum GetExpandQueryParameterType {
+    #pragma warning disable CS1591
+    public enum GetExpandQueryParameterType
+    #pragma warning restore CS1591
+    {
         [EnumMember(Value = "detailObject")]
+        #pragma warning disable CS1591
         DetailObject,
+        #pragma warning restore CS1591
         [EnumMember(Value = "originalCurrency")]
+        #pragma warning disable CS1591
         OriginalCurrency,
+        #pragma warning restore CS1591
     }
 }

@@ -5,7 +5,10 @@ using System.IO;
 using System.Linq;
 using System;
 namespace Marqeta.Core.Sdk.Models {
-    public class Gateway_program_funding_source_response : IAdditionalDataHolder, IParsable {
+    #pragma warning disable CS1591
+    public class Gateway_program_funding_source_response : IAdditionalDataHolder, IParsable 
+    #pragma warning restore CS1591
+    {
         /// <summary>Bank account number.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -85,7 +88,8 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>
         /// Instantiates a new <see cref="Gateway_program_funding_source_response"/> and sets the default values.
         /// </summary>
-        public Gateway_program_funding_source_response() {
+        public Gateway_program_funding_source_response()
+        {
             AdditionalData = new Dictionary<string, object>();
         }
         /// <summary>
@@ -93,7 +97,8 @@ namespace Marqeta.Core.Sdk.Models {
         /// </summary>
         /// <returns>A <see cref="Gateway_program_funding_source_response"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static Gateway_program_funding_source_response CreateFromDiscriminatorValue(IParseNode parseNode) {
+        public static Gateway_program_funding_source_response CreateFromDiscriminatorValue(IParseNode parseNode)
+        {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
             return new Gateway_program_funding_source_response();
         }
@@ -101,8 +106,10 @@ namespace Marqeta.Core.Sdk.Models {
         /// The deserialization information for the current model
         /// </summary>
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
-        public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers() {
-            return new Dictionary<string, Action<IParseNode>> {
+        public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
+        {
+            return new Dictionary<string, Action<IParseNode>>
+            {
                 {"account", n => { Account = n.GetStringValue(); } },
                 {"active", n => { Active = n.GetBoolValue(); } },
                 {"basic_auth_password", n => { BasicAuthPassword = n.GetStringValue(); } },
@@ -122,7 +129,8 @@ namespace Marqeta.Core.Sdk.Models {
         /// Serializes information the current object
         /// </summary>
         /// <param name="writer">Serialization writer to use to serialize this model</param>
-        public virtual void Serialize(ISerializationWriter writer) {
+        public virtual void Serialize(ISerializationWriter writer)
+        {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("account", Account);
             writer.WriteBoolValue("active", Active);

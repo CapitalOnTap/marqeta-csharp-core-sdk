@@ -3,12 +3,19 @@ using System.Runtime.Serialization;
 using System;
 namespace Marqeta.Core.Sdk.Models {
     /// <summary>Name of the card network.</summary>
-    public enum PolicyProductCardProductResponse_network {
+    public enum PolicyProductCardProductResponse_network
+    {
         [EnumMember(Value = "VISA")]
+        #pragma warning disable CS1591
         VISA,
+        #pragma warning restore CS1591
         [EnumMember(Value = "MASTERCARD")]
+        #pragma warning disable CS1591
         MASTERCARD,
+        #pragma warning restore CS1591
         [EnumMember(Value = "SANDBOX")]
+        #pragma warning disable CS1591
         SANDBOX,
+        #pragma warning restore CS1591
     }
 }

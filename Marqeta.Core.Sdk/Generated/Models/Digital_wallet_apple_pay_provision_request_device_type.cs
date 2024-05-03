@@ -3,18 +3,31 @@ using System.Runtime.Serialization;
 using System;
 namespace Marqeta.Core.Sdk.Models {
     /// <summary>Type of device into which the digital wallet token will be provisioned.</summary>
-    public enum Digital_wallet_apple_pay_provision_request_device_type {
+    public enum Digital_wallet_apple_pay_provision_request_device_type
+    {
         [EnumMember(Value = "MOBILE_PHONE")]
+        #pragma warning disable CS1591
         MOBILE_PHONE,
+        #pragma warning restore CS1591
         [EnumMember(Value = "WATCH")]
+        #pragma warning disable CS1591
         WATCH,
+        #pragma warning restore CS1591
         [EnumMember(Value = "TABLET")]
+        #pragma warning disable CS1591
         TABLET,
+        #pragma warning restore CS1591
         [EnumMember(Value = "WEARABLE_DEVICE")]
+        #pragma warning disable CS1591
         WEARABLE_DEVICE,
+        #pragma warning restore CS1591
         [EnumMember(Value = "HOUSEHOLD_DEVICE")]
+        #pragma warning disable CS1591
         HOUSEHOLD_DEVICE,
+        #pragma warning restore CS1591
         [EnumMember(Value = "AUTOMOBILE_DEVICE")]
+        #pragma warning disable CS1591
         AUTOMOBILE_DEVICE,
+        #pragma warning restore CS1591
     }
 }

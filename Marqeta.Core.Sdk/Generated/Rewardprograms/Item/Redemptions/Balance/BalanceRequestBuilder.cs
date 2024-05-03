@@ -12,20 +12,23 @@ namespace Marqeta.Core.Sdk.Rewardprograms.Item.Redemptions.Balance {
     /// <summary>
     /// Builds and executes requests for operations under \rewardprograms\{token}\redemptions\balance
     /// </summary>
-    public class BalanceRequestBuilder : BaseRequestBuilder {
+    public class BalanceRequestBuilder : BaseRequestBuilder 
+    {
         /// <summary>
         /// Instantiates a new <see cref="BalanceRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public BalanceRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/rewardprograms/{token}/redemptions/balance{?end_date*,start_date*,type*}", pathParameters) {
+        public BalanceRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/rewardprograms/{token}/redemptions/balance{?end_date*,start_date*,type*}", pathParameters)
+        {
         }
         /// <summary>
         /// Instantiates a new <see cref="BalanceRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public BalanceRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/rewardprograms/{token}/redemptions/balance{?end_date*,start_date*,type*}", rawUrl) {
+        public BalanceRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/rewardprograms/{token}/redemptions/balance{?end_date*,start_date*,type*}", rawUrl)
+        {
         }
         /// <summary>
         /// Retrieve the balance for reward redemptions within a specified date range.
@@ -36,13 +39,16 @@ namespace Marqeta.Core.Sdk.Rewardprograms.Item.Redemptions.Balance {
         /// <exception cref="ApiError">When receiving a 4XX or 5XX status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<RedemptionsBalanceResponse?> GetAsync(Action<RequestConfiguration<BalanceRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default) {
+        public async Task<RedemptionsBalanceResponse?> GetAsync(Action<RequestConfiguration<BalanceRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        {
 #nullable restore
 #else
-        public async Task<RedemptionsBalanceResponse> GetAsync(Action<RequestConfiguration<BalanceRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default) {
+        public async Task<RedemptionsBalanceResponse> GetAsync(Action<RequestConfiguration<BalanceRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            var errorMapping = new Dictionary<string, ParsableFactory<IParsable>> {
+            var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
+            {
                 {"XXX", ApiError.CreateFromDiscriminatorValue},
             };
             return await RequestAdapter.SendAsync<RedemptionsBalanceResponse>(requestInfo, RedemptionsBalanceResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
@@ -54,10 +60,12 @@ namespace Marqeta.Core.Sdk.Rewardprograms.Item.Redemptions.Balance {
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<BalanceRequestBuilderGetQueryParameters>>? requestConfiguration = default) {
+        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<BalanceRequestBuilderGetQueryParameters>>? requestConfiguration = default)
+        {
 #nullable restore
 #else
-        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<BalanceRequestBuilderGetQueryParameters>> requestConfiguration = default) {
+        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<BalanceRequestBuilderGetQueryParameters>> requestConfiguration = default)
+        {
 #endif
             var requestInfo = new RequestInformation(Method.GET, UrlTemplate, PathParameters);
             requestInfo.Configure(requestConfiguration);
@@ -69,13 +77,15 @@ namespace Marqeta.Core.Sdk.Rewardprograms.Item.Redemptions.Balance {
         /// </summary>
         /// <returns>A <see cref="BalanceRequestBuilder"/></returns>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
-        public BalanceRequestBuilder WithUrl(string rawUrl) {
+        public BalanceRequestBuilder WithUrl(string rawUrl)
+        {
             return new BalanceRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
         /// Retrieve the balance for reward redemptions within a specified date range.
         /// </summary>
-        public class BalanceRequestBuilderGetQueryParameters {
+        public class BalanceRequestBuilderGetQueryParameters 
+        {
             /// <summary>The ending date (or date-time) of a date range from which to return resources, in UTC.</summary>
             [QueryParameter("end_date")]
             public DateTimeOffset? EndDate { get; set; }

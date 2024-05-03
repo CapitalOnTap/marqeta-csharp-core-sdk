@@ -13,28 +13,35 @@ namespace Marqeta.Core.Sdk.Gpaorders.Unloads {
     /// <summary>
     /// Builds and executes requests for operations under \gpaorders\unloads
     /// </summary>
-    public class UnloadsRequestBuilder : BaseRequestBuilder {
+    public class UnloadsRequestBuilder : BaseRequestBuilder 
+    {
         /// <summary>Gets an item from the Marqeta.Core.Sdk.gpaorders.unloads.item collection</summary>
         /// <param name="position">Unique identifier of the GPA unload.</param>
         /// <returns>A <see cref="WithUnload_tokenItemRequestBuilder"/></returns>
-        public WithUnload_tokenItemRequestBuilder this[string position] { get {
-            var urlTplParams = new Dictionary<string, object>(PathParameters);
-            urlTplParams.Add("unload_token", position);
-            return new WithUnload_tokenItemRequestBuilder(urlTplParams, RequestAdapter);
-        } }
+        public WithUnload_tokenItemRequestBuilder this[string position]
+        {
+            get
+            {
+                var urlTplParams = new Dictionary<string, object>(PathParameters);
+                urlTplParams.Add("unload_token", position);
+                return new WithUnload_tokenItemRequestBuilder(urlTplParams, RequestAdapter);
+            }
+        }
         /// <summary>
         /// Instantiates a new <see cref="UnloadsRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public UnloadsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/gpaorders/unloads{?business_token*,count*,fields*,original_order_token*,sort_by*,start_index*,user_token*}", pathParameters) {
+        public UnloadsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/gpaorders/unloads{?business_token*,count*,fields*,original_order_token*,sort_by*,start_index*,user_token*}", pathParameters)
+        {
         }
         /// <summary>
         /// Instantiates a new <see cref="UnloadsRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public UnloadsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/gpaorders/unloads{?business_token*,count*,fields*,original_order_token*,sort_by*,start_index*,user_token*}", rawUrl) {
+        public UnloadsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/gpaorders/unloads{?business_token*,count*,fields*,original_order_token*,sort_by*,start_index*,user_token*}", rawUrl)
+        {
         }
         /// <summary>
         /// Use this endpoint to list all GPA unloads or GPA unloads associated with a specific user or business.This endpoint supports &lt;&lt;/core-api/field-filtering, field filtering&gt;&gt; and &lt;&lt;/core-api/sorting-and-pagination, pagination&gt;&gt;.
@@ -45,13 +52,16 @@ namespace Marqeta.Core.Sdk.Gpaorders.Unloads {
         /// <exception cref="ApiError">When receiving a 4XX or 5XX status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<GPAUnloadListResponse?> GetAsync(Action<RequestConfiguration<UnloadsRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default) {
+        public async Task<GPAUnloadListResponse?> GetAsync(Action<RequestConfiguration<UnloadsRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        {
 #nullable restore
 #else
-        public async Task<GPAUnloadListResponse> GetAsync(Action<RequestConfiguration<UnloadsRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default) {
+        public async Task<GPAUnloadListResponse> GetAsync(Action<RequestConfiguration<UnloadsRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            var errorMapping = new Dictionary<string, ParsableFactory<IParsable>> {
+            var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
+            {
                 {"XXX", ApiError.CreateFromDiscriminatorValue},
             };
             return await RequestAdapter.SendAsync<GPAUnloadListResponse>(requestInfo, GPAUnloadListResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
@@ -66,14 +76,17 @@ namespace Marqeta.Core.Sdk.Gpaorders.Unloads {
         /// <exception cref="ApiError">When receiving a 4XX or 5XX status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<Gpa_returns?> PostAsync(Unload_request_model body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default) {
+        public async Task<Gpa_returns?> PostAsync(Unload_request_model body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        {
 #nullable restore
 #else
-        public async Task<Gpa_returns> PostAsync(Unload_request_model body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default) {
+        public async Task<Gpa_returns> PostAsync(Unload_request_model body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        {
 #endif
             _ = body ?? throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPostRequestInformation(body, requestConfiguration);
-            var errorMapping = new Dictionary<string, ParsableFactory<IParsable>> {
+            var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
+            {
                 {"XXX", ApiError.CreateFromDiscriminatorValue},
             };
             return await RequestAdapter.SendAsync<Gpa_returns>(requestInfo, Gpa_returns.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
@@ -85,10 +98,12 @@ namespace Marqeta.Core.Sdk.Gpaorders.Unloads {
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<UnloadsRequestBuilderGetQueryParameters>>? requestConfiguration = default) {
+        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<UnloadsRequestBuilderGetQueryParameters>>? requestConfiguration = default)
+        {
 #nullable restore
 #else
-        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<UnloadsRequestBuilderGetQueryParameters>> requestConfiguration = default) {
+        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<UnloadsRequestBuilderGetQueryParameters>> requestConfiguration = default)
+        {
 #endif
             var requestInfo = new RequestInformation(Method.GET, UrlTemplate, PathParameters);
             requestInfo.Configure(requestConfiguration);
@@ -103,13 +118,15 @@ namespace Marqeta.Core.Sdk.Gpaorders.Unloads {
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToPostRequestInformation(Unload_request_model body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default) {
+        public RequestInformation ToPostRequestInformation(Unload_request_model body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
+        {
 #nullable restore
 #else
-        public RequestInformation ToPostRequestInformation(Unload_request_model body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default) {
+        public RequestInformation ToPostRequestInformation(Unload_request_model body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
+        {
 #endif
             _ = body ?? throw new ArgumentNullException(nameof(body));
-            var requestInfo = new RequestInformation(Method.POST, "{+baseurl}/gpaorders/unloads", PathParameters);
+            var requestInfo = new RequestInformation(Method.POST, UrlTemplate, PathParameters);
             requestInfo.Configure(requestConfiguration);
             requestInfo.Headers.TryAdd("Accept", "application/json");
             requestInfo.SetContentFromParsable(RequestAdapter, "application/json", body);
@@ -120,13 +137,15 @@ namespace Marqeta.Core.Sdk.Gpaorders.Unloads {
         /// </summary>
         /// <returns>A <see cref="UnloadsRequestBuilder"/></returns>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
-        public UnloadsRequestBuilder WithUrl(string rawUrl) {
+        public UnloadsRequestBuilder WithUrl(string rawUrl)
+        {
             return new UnloadsRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
         /// Use this endpoint to list all GPA unloads or GPA unloads associated with a specific user or business.This endpoint supports &lt;&lt;/core-api/field-filtering, field filtering&gt;&gt; and &lt;&lt;/core-api/sorting-and-pagination, pagination&gt;&gt;.
         /// </summary>
-        public class UnloadsRequestBuilderGetQueryParameters {
+        public class UnloadsRequestBuilderGetQueryParameters 
+        {
             /// <summary>Unique identifier of the business resource.Send a `GET` request to `/businesses` to retrieve business tokens.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable

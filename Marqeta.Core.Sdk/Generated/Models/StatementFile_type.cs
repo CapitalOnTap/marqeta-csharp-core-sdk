@@ -3,8 +3,11 @@ using System.Runtime.Serialization;
 using System;
 namespace Marqeta.Core.Sdk.Models {
     /// <summary>Type of file.</summary>
-    public enum StatementFile_type {
+    public enum StatementFile_type
+    {
         [EnumMember(Value = "STATEMENT_PDF")]
+        #pragma warning disable CS1591
         STATEMENT_PDF,
+        #pragma warning restore CS1591
     }
 }

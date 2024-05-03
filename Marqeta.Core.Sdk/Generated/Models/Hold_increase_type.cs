@@ -3,12 +3,19 @@ using System.Runtime.Serialization;
 using System;
 namespace Marqeta.Core.Sdk.Models {
     /// <summary>Controls whether the `value` field represents a fixed amount or a percentage of the authorization amount.</summary>
-    public enum Hold_increase_type {
+    public enum Hold_increase_type
+    {
         [EnumMember(Value = "AMOUNT")]
+        #pragma warning disable CS1591
         AMOUNT,
+        #pragma warning restore CS1591
         [EnumMember(Value = "PERCENT")]
+        #pragma warning disable CS1591
         PERCENT,
+        #pragma warning restore CS1591
         [EnumMember(Value = "UP_TO_LIMIT")]
+        #pragma warning disable CS1591
         UP_TO_LIMIT,
+        #pragma warning restore CS1591
     }
 }

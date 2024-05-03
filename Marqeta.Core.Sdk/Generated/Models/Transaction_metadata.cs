@@ -8,7 +8,8 @@ namespace Marqeta.Core.Sdk.Models {
     /// <summary>
     /// Contains merchant-provided metadata related to the transaction, including details about lodging- and transit-related purchases.May be returned if the request uses Transaction Model v2 of the Marqeta Core API.Not returned for Transaction Model v1 requests.
     /// </summary>
-    public class Transaction_metadata : IAdditionalDataHolder, IParsable {
+    public class Transaction_metadata : IAdditionalDataHolder, IParsable 
+    {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Contains information about airline-related transactions.</summary>
@@ -56,7 +57,8 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>
         /// Instantiates a new <see cref="Transaction_metadata"/> and sets the default values.
         /// </summary>
-        public Transaction_metadata() {
+        public Transaction_metadata()
+        {
             AdditionalData = new Dictionary<string, object>();
         }
         /// <summary>
@@ -64,7 +66,8 @@ namespace Marqeta.Core.Sdk.Models {
         /// </summary>
         /// <returns>A <see cref="Transaction_metadata"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static Transaction_metadata CreateFromDiscriminatorValue(IParseNode parseNode) {
+        public static Transaction_metadata CreateFromDiscriminatorValue(IParseNode parseNode)
+        {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
             return new Transaction_metadata();
         }
@@ -72,8 +75,10 @@ namespace Marqeta.Core.Sdk.Models {
         /// The deserialization information for the current model
         /// </summary>
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
-        public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers() {
-            return new Dictionary<string, Action<IParseNode>> {
+        public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
+        {
+            return new Dictionary<string, Action<IParseNode>>
+            {
                 {"airline", n => { Airline = n.GetObjectValue<Marqeta.Core.Sdk.Models.Airline>(Marqeta.Core.Sdk.Models.Airline.CreateFromDiscriminatorValue); } },
                 {"authorization_life_cycle", n => { AuthorizationLifeCycle = n.GetIntValue(); } },
                 {"cross_border_transaction", n => { CrossBorderTransaction = n.GetBoolValue(); } },
@@ -92,7 +97,8 @@ namespace Marqeta.Core.Sdk.Models {
         /// Serializes information the current object
         /// </summary>
         /// <param name="writer">Serialization writer to use to serialize this model</param>
-        public virtual void Serialize(ISerializationWriter writer) {
+        public virtual void Serialize(ISerializationWriter writer)
+        {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
             writer.WriteObjectValue<Marqeta.Core.Sdk.Models.Airline>("airline", Airline);
             writer.WriteIntValue("authorization_life_cycle", AuthorizationLifeCycle);

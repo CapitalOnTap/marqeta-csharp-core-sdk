@@ -3,16 +3,27 @@ using System.Runtime.Serialization;
 using System;
 namespace Marqeta.Core.Sdk.Models {
     /// <summary>Status of the dispute.* `ACTIVE` - The dispute is active and awaiting resolution.* `REVERSED` - The dispute has been reversed and is no longer active.* `AH_WON` - The account holder won the dispute.* `AH_LOST` - The account holder lost the dispute.</summary>
-    public enum DisputeStatus {
+    public enum DisputeStatus
+    {
         [EnumMember(Value = "ACTIVE")]
+        #pragma warning disable CS1591
         ACTIVE,
+        #pragma warning restore CS1591
         [EnumMember(Value = "REVERSED")]
+        #pragma warning disable CS1591
         REVERSED,
+        #pragma warning restore CS1591
         [EnumMember(Value = "AH_WON")]
+        #pragma warning disable CS1591
         AH_WON,
+        #pragma warning restore CS1591
         [EnumMember(Value = "AH_LOST")]
+        #pragma warning disable CS1591
         AH_LOST,
+        #pragma warning restore CS1591
         [EnumMember(Value = "REFUNDED")]
+        #pragma warning disable CS1591
         REFUNDED,
+        #pragma warning restore CS1591
     }
 }

@@ -8,7 +8,8 @@ namespace Marqeta.Core.Sdk.Models {
     /// <summary>
     /// Defines the group of merchants to which the velocity control applies.If no fields are populated, the velocity control applies to all merchants.
     /// </summary>
-    public class MerchantScope : IAdditionalDataHolder, IParsable {
+    public class MerchantScope : IAdditionalDataHolder, IParsable 
+    {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Attribute value corresponding to the chosen scope.If &apos;mcc&apos; is chosen, provide the Merchant Category Code (MCC).If &apos;mcc_group&apos; is chosen, provide the token identifying a group of MCCs.</summary>
@@ -24,7 +25,8 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>
         /// Instantiates a new <see cref="MerchantScope"/> and sets the default values.
         /// </summary>
-        public MerchantScope() {
+        public MerchantScope()
+        {
             AdditionalData = new Dictionary<string, object>();
         }
         /// <summary>
@@ -32,7 +34,8 @@ namespace Marqeta.Core.Sdk.Models {
         /// </summary>
         /// <returns>A <see cref="MerchantScope"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static MerchantScope CreateFromDiscriminatorValue(IParseNode parseNode) {
+        public static MerchantScope CreateFromDiscriminatorValue(IParseNode parseNode)
+        {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
             return new MerchantScope();
         }
@@ -40,8 +43,10 @@ namespace Marqeta.Core.Sdk.Models {
         /// The deserialization information for the current model
         /// </summary>
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
-        public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers() {
-            return new Dictionary<string, Action<IParseNode>> {
+        public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
+        {
+            return new Dictionary<string, Action<IParseNode>>
+            {
                 {"attribute", n => { Attribute = n.GetStringValue(); } },
                 {"scope", n => { Scope = n.GetEnumValue<MerchantScope_scope>(); } },
             };
@@ -50,7 +55,8 @@ namespace Marqeta.Core.Sdk.Models {
         /// Serializes information the current object
         /// </summary>
         /// <param name="writer">Serialization writer to use to serialize this model</param>
-        public virtual void Serialize(ISerializationWriter writer) {
+        public virtual void Serialize(ISerializationWriter writer)
+        {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("attribute", Attribute);
             writer.WriteEnumValue<MerchantScope_scope>("scope", Scope);

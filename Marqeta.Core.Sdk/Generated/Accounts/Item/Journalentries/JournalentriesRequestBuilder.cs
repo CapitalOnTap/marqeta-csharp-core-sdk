@@ -13,28 +13,35 @@ namespace Marqeta.Core.Sdk.Accounts.Item.Journalentries {
     /// <summary>
     /// Builds and executes requests for operations under \accounts\{account_token}\journalentries
     /// </summary>
-    public class JournalentriesRequestBuilder : BaseRequestBuilder {
+    public class JournalentriesRequestBuilder : BaseRequestBuilder 
+    {
         /// <summary>Gets an item from the Marqeta.Core.Sdk.accounts.item.journalentries.item collection</summary>
         /// <param name="position">Unique identifier of the journal entry you want to retrieve.Send a `GET` request to `/credit/accounts/{account_token}/journalentries` to retrieve existing journal entry tokens.</param>
         /// <returns>A <see cref="WithJournal_entry_tokenItemRequestBuilder"/></returns>
-        public WithJournal_entry_tokenItemRequestBuilder this[string position] { get {
-            var urlTplParams = new Dictionary<string, object>(PathParameters);
-            urlTplParams.Add("journal_entry_token", position);
-            return new WithJournal_entry_tokenItemRequestBuilder(urlTplParams, RequestAdapter);
-        } }
+        public WithJournal_entry_tokenItemRequestBuilder this[string position]
+        {
+            get
+            {
+                var urlTplParams = new Dictionary<string, object>(PathParameters);
+                urlTplParams.Add("journal_entry_token", position);
+                return new WithJournal_entry_tokenItemRequestBuilder(urlTplParams, RequestAdapter);
+            }
+        }
         /// <summary>
         /// Instantiates a new <see cref="JournalentriesRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public JournalentriesRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/accounts/{account_token}/journalentries{?card_tokens*,count*,end_created_time*,end_date*,end_impact_time*,expand*,groups*,sort_by*,start_created_time*,start_date*,start_impact_time*,start_index*,statuses*,types*,user_tokens*}", pathParameters) {
+        public JournalentriesRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/accounts/{account_token}/journalentries{?card_tokens*,count*,end_created_time*,end_date*,end_impact_time*,expand*,groups*,sort_by*,start_created_time*,start_date*,start_impact_time*,start_index*,statuses*,types*,user_tokens*}", pathParameters)
+        {
         }
         /// <summary>
         /// Instantiates a new <see cref="JournalentriesRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public JournalentriesRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/accounts/{account_token}/journalentries{?card_tokens*,count*,end_created_time*,end_date*,end_impact_time*,expand*,groups*,sort_by*,start_created_time*,start_date*,start_impact_time*,start_index*,statuses*,types*,user_tokens*}", rawUrl) {
+        public JournalentriesRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/accounts/{account_token}/journalentries{?card_tokens*,count*,end_created_time*,end_date*,end_impact_time*,expand*,groups*,sort_by*,start_created_time*,start_date*,start_impact_time*,start_index*,statuses*,types*,user_tokens*}", rawUrl)
+        {
         }
         /// <summary>
         /// Retrieve an array of journal entries on a credit account.This endpoint supports &lt;&lt;/core-api/sorting-and-pagination, sorting and pagination&gt;&gt; and &lt;&lt;/core-api/object-expansion, object expansion&gt;&gt;.
@@ -45,13 +52,16 @@ namespace Marqeta.Core.Sdk.Accounts.Item.Journalentries {
         /// <exception cref="ApiError">When receiving a 4XX or 5XX status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<JournalEntriesPage?> GetAsync(Action<RequestConfiguration<JournalentriesRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default) {
+        public async Task<JournalEntriesPage?> GetAsync(Action<RequestConfiguration<JournalentriesRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        {
 #nullable restore
 #else
-        public async Task<JournalEntriesPage> GetAsync(Action<RequestConfiguration<JournalentriesRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default) {
+        public async Task<JournalEntriesPage> GetAsync(Action<RequestConfiguration<JournalentriesRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            var errorMapping = new Dictionary<string, ParsableFactory<IParsable>> {
+            var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
+            {
                 {"XXX", ApiError.CreateFromDiscriminatorValue},
             };
             return await RequestAdapter.SendAsync<JournalEntriesPage>(requestInfo, JournalEntriesPage.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
@@ -63,10 +73,12 @@ namespace Marqeta.Core.Sdk.Accounts.Item.Journalentries {
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<JournalentriesRequestBuilderGetQueryParameters>>? requestConfiguration = default) {
+        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<JournalentriesRequestBuilderGetQueryParameters>>? requestConfiguration = default)
+        {
 #nullable restore
 #else
-        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<JournalentriesRequestBuilderGetQueryParameters>> requestConfiguration = default) {
+        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<JournalentriesRequestBuilderGetQueryParameters>> requestConfiguration = default)
+        {
 #endif
             var requestInfo = new RequestInformation(Method.GET, UrlTemplate, PathParameters);
             requestInfo.Configure(requestConfiguration);
@@ -78,13 +90,15 @@ namespace Marqeta.Core.Sdk.Accounts.Item.Journalentries {
         /// </summary>
         /// <returns>A <see cref="JournalentriesRequestBuilder"/></returns>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
-        public JournalentriesRequestBuilder WithUrl(string rawUrl) {
+        public JournalentriesRequestBuilder WithUrl(string rawUrl)
+        {
             return new JournalentriesRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
         /// Retrieve an array of journal entries on a credit account.This endpoint supports &lt;&lt;/core-api/sorting-and-pagination, sorting and pagination&gt;&gt; and &lt;&lt;/core-api/object-expansion, object expansion&gt;&gt;.
         /// </summary>
-        public class JournalentriesRequestBuilderGetQueryParameters {
+        public class JournalentriesRequestBuilderGetQueryParameters 
+        {
             /// <summary>Array of card tokens by which to filter journal entries.Returns journal entries associated with the specified card tokens.Send a `GET` request to `/credit/accounts/{account_token}/cards/` to retrieve existing card tokens.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable

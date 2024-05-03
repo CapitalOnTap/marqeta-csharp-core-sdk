@@ -3,30 +3,55 @@ using System.Runtime.Serialization;
 using System;
 namespace Marqeta.Core.Sdk.Models {
     /// <summary>Group to which the journal entry belongs.</summary>
-    public enum JournalEntry_group {
+    public enum JournalEntry_group
+    {
         [EnumMember(Value = "PURCHASE")]
+        #pragma warning disable CS1591
         PURCHASE,
+        #pragma warning restore CS1591
         [EnumMember(Value = "REFUND")]
+        #pragma warning disable CS1591
         REFUND,
+        #pragma warning restore CS1591
         [EnumMember(Value = "DISPUTE")]
+        #pragma warning disable CS1591
         DISPUTE,
+        #pragma warning restore CS1591
         [EnumMember(Value = "ORIGINAL_CREDIT")]
+        #pragma warning disable CS1591
         ORIGINAL_CREDIT,
+        #pragma warning restore CS1591
         [EnumMember(Value = "FEE")]
+        #pragma warning disable CS1591
         FEE,
+        #pragma warning restore CS1591
         [EnumMember(Value = "REWARD")]
+        #pragma warning disable CS1591
         REWARD,
+        #pragma warning restore CS1591
         [EnumMember(Value = "INTEREST")]
+        #pragma warning disable CS1591
         INTEREST,
+        #pragma warning restore CS1591
         [EnumMember(Value = "PAYMENT")]
+        #pragma warning disable CS1591
         PAYMENT,
+        #pragma warning restore CS1591
         [EnumMember(Value = "ADJUSTMENT")]
+        #pragma warning disable CS1591
         ADJUSTMENT,
+        #pragma warning restore CS1591
         [EnumMember(Value = "BALANCE_TRANSFER")]
+        #pragma warning disable CS1591
         BALANCE_TRANSFER,
+        #pragma warning restore CS1591
         [EnumMember(Value = "CASH_ADVANCE")]
+        #pragma warning disable CS1591
         CASH_ADVANCE,
+        #pragma warning restore CS1591
         [EnumMember(Value = "BALANCE_REFUND")]
+        #pragma warning disable CS1591
         BALANCE_REFUND,
+        #pragma warning restore CS1591
     }
 }

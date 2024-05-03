@@ -12,20 +12,23 @@ namespace Marqeta.Core.Sdk.Credit.Applications.Files.Item {
     /// <summary>
     /// Builds and executes requests for operations under \credit\applications\files\{type}
     /// </summary>
-    public class WithTypeItemRequestBuilder : BaseRequestBuilder {
+    public class WithTypeItemRequestBuilder : BaseRequestBuilder 
+    {
         /// <summary>
         /// Instantiates a new <see cref="WithTypeItemRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public WithTypeItemRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/credit/applications/files/{type}{?application_token*,bundle_token*}", pathParameters) {
+        public WithTypeItemRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/credit/applications/files/{type}{?application_token*,bundle_token*}", pathParameters)
+        {
         }
         /// <summary>
         /// Instantiates a new <see cref="WithTypeItemRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public WithTypeItemRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/credit/applications/files/{type}{?application_token*,bundle_token*}", rawUrl) {
+        public WithTypeItemRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/credit/applications/files/{type}{?application_token*,bundle_token*}", rawUrl)
+        {
         }
         /// <summary>
         /// Retrieve a specific type of file on a bundle or application.
@@ -36,13 +39,16 @@ namespace Marqeta.Core.Sdk.Credit.Applications.Files.Item {
         /// <exception cref="ApiError">When receiving a 4XX or 5XX status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<FileResponse?> GetAsync(Action<RequestConfiguration<WithTypeItemRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default) {
+        public async Task<FileResponse?> GetAsync(Action<RequestConfiguration<WithTypeItemRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        {
 #nullable restore
 #else
-        public async Task<FileResponse> GetAsync(Action<RequestConfiguration<WithTypeItemRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default) {
+        public async Task<FileResponse> GetAsync(Action<RequestConfiguration<WithTypeItemRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            var errorMapping = new Dictionary<string, ParsableFactory<IParsable>> {
+            var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
+            {
                 {"XXX", ApiError.CreateFromDiscriminatorValue},
             };
             return await RequestAdapter.SendAsync<FileResponse>(requestInfo, FileResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
@@ -54,10 +60,12 @@ namespace Marqeta.Core.Sdk.Credit.Applications.Files.Item {
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<WithTypeItemRequestBuilderGetQueryParameters>>? requestConfiguration = default) {
+        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<WithTypeItemRequestBuilderGetQueryParameters>>? requestConfiguration = default)
+        {
 #nullable restore
 #else
-        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<WithTypeItemRequestBuilderGetQueryParameters>> requestConfiguration = default) {
+        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<WithTypeItemRequestBuilderGetQueryParameters>> requestConfiguration = default)
+        {
 #endif
             var requestInfo = new RequestInformation(Method.GET, UrlTemplate, PathParameters);
             requestInfo.Configure(requestConfiguration);
@@ -69,13 +77,15 @@ namespace Marqeta.Core.Sdk.Credit.Applications.Files.Item {
         /// </summary>
         /// <returns>A <see cref="WithTypeItemRequestBuilder"/></returns>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
-        public WithTypeItemRequestBuilder WithUrl(string rawUrl) {
+        public WithTypeItemRequestBuilder WithUrl(string rawUrl)
+        {
             return new WithTypeItemRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
         /// Retrieve a specific type of file on a bundle or application.
         /// </summary>
-        public class WithTypeItemRequestBuilderGetQueryParameters {
+        public class WithTypeItemRequestBuilderGetQueryParameters 
+        {
             /// <summary>Unique identifier of the application on which you want to retrieve a file.Required if retrieving one of the following files:* `BENEFITS_DISCLOSURE`* `NOAA`* `TERMS_SCHEDULE`</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable

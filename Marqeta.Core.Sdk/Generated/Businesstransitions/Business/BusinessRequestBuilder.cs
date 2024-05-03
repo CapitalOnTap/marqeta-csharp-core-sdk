@@ -10,28 +10,35 @@ namespace Marqeta.Core.Sdk.Businesstransitions.Business {
     /// <summary>
     /// Builds and executes requests for operations under \businesstransitions\business
     /// </summary>
-    public class BusinessRequestBuilder : BaseRequestBuilder {
+    public class BusinessRequestBuilder : BaseRequestBuilder 
+    {
         /// <summary>Gets an item from the Marqeta.Core.Sdk.businesstransitions.business.item collection</summary>
         /// <param name="position">Unique identifier of the business resource associated with the transitions to retrieve.</param>
         /// <returns>A <see cref="WithBusiness_tokenItemRequestBuilder"/></returns>
-        public WithBusiness_tokenItemRequestBuilder this[string position] { get {
-            var urlTplParams = new Dictionary<string, object>(PathParameters);
-            urlTplParams.Add("business_token", position);
-            return new WithBusiness_tokenItemRequestBuilder(urlTplParams, RequestAdapter);
-        } }
+        public WithBusiness_tokenItemRequestBuilder this[string position]
+        {
+            get
+            {
+                var urlTplParams = new Dictionary<string, object>(PathParameters);
+                urlTplParams.Add("business_token", position);
+                return new WithBusiness_tokenItemRequestBuilder(urlTplParams, RequestAdapter);
+            }
+        }
         /// <summary>
         /// Instantiates a new <see cref="BusinessRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public BusinessRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/businesstransitions/business", pathParameters) {
+        public BusinessRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/businesstransitions/business", pathParameters)
+        {
         }
         /// <summary>
         /// Instantiates a new <see cref="BusinessRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public BusinessRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/businesstransitions/business", rawUrl) {
+        public BusinessRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/businesstransitions/business", rawUrl)
+        {
         }
     }
 }

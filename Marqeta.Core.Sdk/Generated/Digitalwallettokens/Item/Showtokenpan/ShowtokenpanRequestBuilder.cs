@@ -12,20 +12,23 @@ namespace Marqeta.Core.Sdk.Digitalwallettokens.Item.Showtokenpan {
     /// <summary>
     /// Builds and executes requests for operations under \digitalwallettokens\{token}\showtokenpan
     /// </summary>
-    public class ShowtokenpanRequestBuilder : BaseRequestBuilder {
+    public class ShowtokenpanRequestBuilder : BaseRequestBuilder 
+    {
         /// <summary>
         /// Instantiates a new <see cref="ShowtokenpanRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public ShowtokenpanRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/digitalwallettokens/{token}/showtokenpan", pathParameters) {
+        public ShowtokenpanRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/digitalwallettokens/{token}/showtokenpan", pathParameters)
+        {
         }
         /// <summary>
         /// Instantiates a new <see cref="ShowtokenpanRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public ShowtokenpanRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/digitalwallettokens/{token}/showtokenpan", rawUrl) {
+        public ShowtokenpanRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/digitalwallettokens/{token}/showtokenpan", rawUrl)
+        {
         }
         /// <summary>
         /// Use this endpoint to retrieve a digital wallet token with the entire primary account number (PAN) displayed.The PAN returned is of the digital wallet token and not of the card.(For security reasons, the PAN is not fully visible on the digital wallet token returned by `GET` `/digitalwallettokens/{token}`.)[WARNING]Sending a request to this endpoint requires PCI DSS compliance.You must comply with PCI DSS data security requirements if you want to store, transmit, or process sensitive card data such as the cardholder&apos;s primary account number (PAN), personal identification number (PIN), and card expiration date.
@@ -36,13 +39,16 @@ namespace Marqeta.Core.Sdk.Digitalwallettokens.Item.Showtokenpan {
         /// <exception cref="ApiError">When receiving a 4XX or 5XX status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<Digital_wallet_token?> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default) {
+        public async Task<Digital_wallet_token?> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        {
 #nullable restore
 #else
-        public async Task<Digital_wallet_token> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default) {
+        public async Task<Digital_wallet_token> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            var errorMapping = new Dictionary<string, ParsableFactory<IParsable>> {
+            var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
+            {
                 {"XXX", ApiError.CreateFromDiscriminatorValue},
             };
             return await RequestAdapter.SendAsync<Digital_wallet_token>(requestInfo, Digital_wallet_token.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
@@ -54,10 +60,12 @@ namespace Marqeta.Core.Sdk.Digitalwallettokens.Item.Showtokenpan {
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default) {
+        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
+        {
 #nullable restore
 #else
-        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default) {
+        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
+        {
 #endif
             var requestInfo = new RequestInformation(Method.GET, UrlTemplate, PathParameters);
             requestInfo.Configure(requestConfiguration);
@@ -69,7 +77,8 @@ namespace Marqeta.Core.Sdk.Digitalwallettokens.Item.Showtokenpan {
         /// </summary>
         /// <returns>A <see cref="ShowtokenpanRequestBuilder"/></returns>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
-        public ShowtokenpanRequestBuilder WithUrl(string rawUrl) {
+        public ShowtokenpanRequestBuilder WithUrl(string rawUrl)
+        {
             return new ShowtokenpanRequestBuilder(rawUrl, RequestAdapter);
         }
     }

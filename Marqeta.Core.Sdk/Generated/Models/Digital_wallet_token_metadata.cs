@@ -8,7 +8,8 @@ namespace Marqeta.Core.Sdk.Models {
     /// <summary>
     /// Contains additional information about the digital wallet token.
     /// </summary>
-    public class Digital_wallet_token_metadata : IAdditionalDataHolder, IParsable {
+    public class Digital_wallet_token_metadata : IAdditionalDataHolder, IParsable 
+    {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Language specified in the `config.transaction_controls.notification_language` field of the card product:* *ces* – Czech* *deu* – German* *eng* – English* *fra* – French* *grc* – Greek* *ita* – Italian* *nld* – Dutch* *pol* – Polish* *prt* – Portuguese* *rou* – Romanian* *spa* – Spanish* *swe* – SwedishBy default, notifications are sent in English.The ISO maintains the link:https://www.iso.org/iso-3166-country-codes.html[full list of ISO 3166 two- and three-digit numeric country codes, window=&quot;_blank&quot;].</summary>
@@ -30,7 +31,8 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>
         /// Instantiates a new <see cref="Digital_wallet_token_metadata"/> and sets the default values.
         /// </summary>
-        public Digital_wallet_token_metadata() {
+        public Digital_wallet_token_metadata()
+        {
             AdditionalData = new Dictionary<string, object>();
         }
         /// <summary>
@@ -38,7 +40,8 @@ namespace Marqeta.Core.Sdk.Models {
         /// </summary>
         /// <returns>A <see cref="Digital_wallet_token_metadata"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static Digital_wallet_token_metadata CreateFromDiscriminatorValue(IParseNode parseNode) {
+        public static Digital_wallet_token_metadata CreateFromDiscriminatorValue(IParseNode parseNode)
+        {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
             return new Digital_wallet_token_metadata();
         }
@@ -46,8 +49,10 @@ namespace Marqeta.Core.Sdk.Models {
         /// The deserialization information for the current model
         /// </summary>
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
-        public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers() {
-            return new Dictionary<string, Action<IParseNode>> {
+        public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
+        {
+            return new Dictionary<string, Action<IParseNode>>
+            {
                 {"cardproduct_preferred_notification_language", n => { CardproductPreferredNotificationLanguage = n.GetStringValue(); } },
                 {"issuer_product_config_id", n => { IssuerProductConfigId = n.GetStringValue(); } },
             };
@@ -56,7 +61,8 @@ namespace Marqeta.Core.Sdk.Models {
         /// Serializes information the current object
         /// </summary>
         /// <param name="writer">Serialization writer to use to serialize this model</param>
-        public virtual void Serialize(ISerializationWriter writer) {
+        public virtual void Serialize(ISerializationWriter writer)
+        {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("cardproduct_preferred_notification_language", CardproductPreferredNotificationLanguage);
             writer.WriteStringValue("issuer_product_config_id", IssuerProductConfigId);

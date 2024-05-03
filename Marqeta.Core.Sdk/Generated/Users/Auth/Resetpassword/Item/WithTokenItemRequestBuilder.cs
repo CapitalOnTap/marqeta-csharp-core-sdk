@@ -12,20 +12,23 @@ namespace Marqeta.Core.Sdk.Users.Auth.Resetpassword.Item {
     /// <summary>
     /// Builds and executes requests for operations under \users\auth\resetpassword\{token}
     /// </summary>
-    public class WithTokenItemRequestBuilder : BaseRequestBuilder {
+    public class WithTokenItemRequestBuilder : BaseRequestBuilder 
+    {
         /// <summary>
         /// Instantiates a new <see cref="WithTokenItemRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public WithTokenItemRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/users/auth/resetpassword/{token}", pathParameters) {
+        public WithTokenItemRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/users/auth/resetpassword/{token}", pathParameters)
+        {
         }
         /// <summary>
         /// Instantiates a new <see cref="WithTokenItemRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public WithTokenItemRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/users/auth/resetpassword/{token}", rawUrl) {
+        public WithTokenItemRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/users/auth/resetpassword/{token}", rawUrl)
+        {
         }
         /// <summary>
         /// To reset the user&apos;s password, send a `POST` request to the `/users/auth/resetpassword/{token}` endpoint that includes a password reset token generated using the `POST /users/auth/resetpassword` operation.Include the `user_token` and `new_password` in link:http://www.json.org/[JSON, window=&quot;_blank&quot;] format in the body of the request.Include the `password_reset_token` as a path parameter.A successful password reset returns an empty response body with a response code of `204 No Content`.
@@ -36,14 +39,17 @@ namespace Marqeta.Core.Sdk.Users.Auth.Resetpassword.Item {
         /// <exception cref="ApiError">When receiving a 4XX or 5XX status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task PostAsync(Reset_user_password_model body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default) {
+        public async Task PostAsync(Reset_user_password_model body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        {
 #nullable restore
 #else
-        public async Task PostAsync(Reset_user_password_model body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default) {
+        public async Task PostAsync(Reset_user_password_model body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        {
 #endif
             _ = body ?? throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPostRequestInformation(body, requestConfiguration);
-            var errorMapping = new Dictionary<string, ParsableFactory<IParsable>> {
+            var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
+            {
                 {"XXX", ApiError.CreateFromDiscriminatorValue},
             };
             await RequestAdapter.SendNoContentAsync(requestInfo, errorMapping, cancellationToken).ConfigureAwait(false);
@@ -56,10 +62,12 @@ namespace Marqeta.Core.Sdk.Users.Auth.Resetpassword.Item {
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToPostRequestInformation(Reset_user_password_model body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default) {
+        public RequestInformation ToPostRequestInformation(Reset_user_password_model body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
+        {
 #nullable restore
 #else
-        public RequestInformation ToPostRequestInformation(Reset_user_password_model body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default) {
+        public RequestInformation ToPostRequestInformation(Reset_user_password_model body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
+        {
 #endif
             _ = body ?? throw new ArgumentNullException(nameof(body));
             var requestInfo = new RequestInformation(Method.POST, UrlTemplate, PathParameters);
@@ -73,7 +81,8 @@ namespace Marqeta.Core.Sdk.Users.Auth.Resetpassword.Item {
         /// </summary>
         /// <returns>A <see cref="WithTokenItemRequestBuilder"/></returns>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
-        public WithTokenItemRequestBuilder WithUrl(string rawUrl) {
+        public WithTokenItemRequestBuilder WithUrl(string rawUrl)
+        {
             return new WithTokenItemRequestBuilder(rawUrl, RequestAdapter);
         }
     }

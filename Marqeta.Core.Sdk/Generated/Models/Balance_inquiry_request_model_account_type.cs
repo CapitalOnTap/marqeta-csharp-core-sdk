@@ -2,12 +2,21 @@
 using System.Runtime.Serialization;
 using System;
 namespace Marqeta.Core.Sdk.Models {
-    public enum Balance_inquiry_request_model_account_type {
+    #pragma warning disable CS1591
+    public enum Balance_inquiry_request_model_account_type
+    #pragma warning restore CS1591
+    {
         [EnumMember(Value = "checking")]
+        #pragma warning disable CS1591
         Checking,
+        #pragma warning restore CS1591
         [EnumMember(Value = "savings")]
+        #pragma warning disable CS1591
         Savings,
+        #pragma warning restore CS1591
         [EnumMember(Value = "credit")]
+        #pragma warning disable CS1591
         Credit,
+        #pragma warning restore CS1591
     }
 }

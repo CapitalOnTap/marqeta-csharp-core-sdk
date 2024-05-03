@@ -3,10 +3,15 @@ using System.Runtime.Serialization;
 using System;
 namespace Marqeta.Core.Sdk.Models {
     /// <summary>Indicates whether the fee is a credit or a debit.* *C* indicates a credit* *D* indicates a debit</summary>
-    public enum Network_fee_model_credit_debit {
+    public enum Network_fee_model_credit_debit
+    {
         [EnumMember(Value = "C")]
+        #pragma warning disable CS1591
         C,
+        #pragma warning restore CS1591
         [EnumMember(Value = "D")]
+        #pragma warning disable CS1591
         D,
+        #pragma warning restore CS1591
     }
 }

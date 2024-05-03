@@ -8,7 +8,8 @@ namespace Marqeta.Core.Sdk.Models {
     /// <summary>
     /// Contains information on configurations for billing cycle day, payment due day, and fees.
     /// </summary>
-    public class ProductConfig : IAdditionalDataHolder, IParsable {
+    public class ProductConfig : IAdditionalDataHolder, IParsable 
+    {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Day of month the billing cycle starts.</summary>
@@ -41,7 +42,8 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>
         /// Instantiates a new <see cref="ProductConfig"/> and sets the default values.
         /// </summary>
-        public ProductConfig() {
+        public ProductConfig()
+        {
             AdditionalData = new Dictionary<string, object>();
             BillingCycleDayStrategy = ProductConfig_billing_cycle_day_strategy.MANUAL;
             BillingCycleFrequency = ProductConfig_billing_cycle_frequency.MONTHLY;
@@ -51,7 +53,8 @@ namespace Marqeta.Core.Sdk.Models {
         /// </summary>
         /// <returns>A <see cref="ProductConfig"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static ProductConfig CreateFromDiscriminatorValue(IParseNode parseNode) {
+        public static ProductConfig CreateFromDiscriminatorValue(IParseNode parseNode)
+        {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
             return new ProductConfig();
         }
@@ -59,8 +62,10 @@ namespace Marqeta.Core.Sdk.Models {
         /// The deserialization information for the current model
         /// </summary>
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
-        public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers() {
-            return new Dictionary<string, Action<IParseNode>> {
+        public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
+        {
+            return new Dictionary<string, Action<IParseNode>>
+            {
                 {"billing_cycle_day", n => { BillingCycleDay = n.GetIntValue(); } },
                 {"billing_cycle_day_strategy", n => { BillingCycleDayStrategy = n.GetEnumValue<ProductConfig_billing_cycle_day_strategy>(); } },
                 {"billing_cycle_frequency", n => { BillingCycleFrequency = n.GetEnumValue<ProductConfig_billing_cycle_frequency>(); } },
@@ -74,7 +79,8 @@ namespace Marqeta.Core.Sdk.Models {
         /// Serializes information the current object
         /// </summary>
         /// <param name="writer">Serialization writer to use to serialize this model</param>
-        public virtual void Serialize(ISerializationWriter writer) {
+        public virtual void Serialize(ISerializationWriter writer)
+        {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
             writer.WriteIntValue("billing_cycle_day", BillingCycleDay);
             writer.WriteEnumValue<ProductConfig_billing_cycle_day_strategy>("billing_cycle_day_strategy", BillingCycleDayStrategy);

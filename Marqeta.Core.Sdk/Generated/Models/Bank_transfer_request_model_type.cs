@@ -3,10 +3,15 @@ using System.Runtime.Serialization;
 using System;
 namespace Marqeta.Core.Sdk.Models {
     /// <summary>Specifies whether the ACH transfer is a push (credit) or pull (debit).</summary>
-    public enum Bank_transfer_request_model_type {
+    public enum Bank_transfer_request_model_type
+    {
         [EnumMember(Value = "PUSH")]
+        #pragma warning disable CS1591
         PUSH,
+        #pragma warning restore CS1591
         [EnumMember(Value = "PULL")]
+        #pragma warning disable CS1591
         PULL,
+        #pragma warning restore CS1591
     }
 }

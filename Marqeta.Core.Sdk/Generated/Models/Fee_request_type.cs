@@ -3,10 +3,15 @@ using System.Runtime.Serialization;
 using System;
 namespace Marqeta.Core.Sdk.Models {
     /// <summary>Specifies if the fee is a flat fee or a percentage of the transaction amount.</summary>
-    public enum Fee_request_type {
+    public enum Fee_request_type
+    {
         [EnumMember(Value = "FLAT")]
+        #pragma warning disable CS1591
         FLAT,
+        #pragma warning restore CS1591
         [EnumMember(Value = "PERCENTAGE")]
+        #pragma warning disable CS1591
         PERCENTAGE,
+        #pragma warning restore CS1591
     }
 }

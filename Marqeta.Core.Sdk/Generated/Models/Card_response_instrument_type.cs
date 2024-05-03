@@ -3,16 +3,27 @@ using System.Runtime.Serialization;
 using System;
 namespace Marqeta.Core.Sdk.Models {
     /// <summary>Instrument type of the card:* *PHYSICAL_MSR:* A physical card with a magnetic stripe. This is the default physical card type.* *PHYSICAL_ICC:* A physical card with an integrated circuit, or &quot;chip.&quot;* *PHYSICAL_CONTACTLESS:* A physical card that uses radio frequency identification (RFID) or near-field communication (NFC) to enable payment over a secure radio interface.* *PHYSICAL_COMBO:* A physical card with a chip that also supports contactless payments.* *VIRTUAL_PAN:* A virtual card with a primary account number (PAN).</summary>
-    public enum Card_response_instrument_type {
+    public enum Card_response_instrument_type
+    {
         [EnumMember(Value = "PHYSICAL_MSR")]
+        #pragma warning disable CS1591
         PHYSICAL_MSR,
+        #pragma warning restore CS1591
         [EnumMember(Value = "PHYSICAL_ICC")]
+        #pragma warning disable CS1591
         PHYSICAL_ICC,
+        #pragma warning restore CS1591
         [EnumMember(Value = "PHYSICAL_CONTACTLESS")]
+        #pragma warning disable CS1591
         PHYSICAL_CONTACTLESS,
+        #pragma warning restore CS1591
         [EnumMember(Value = "PHYSICAL_COMBO")]
+        #pragma warning disable CS1591
         PHYSICAL_COMBO,
+        #pragma warning restore CS1591
         [EnumMember(Value = "VIRTUAL_PAN")]
+        #pragma warning disable CS1591
         VIRTUAL_PAN,
+        #pragma warning restore CS1591
     }
 }

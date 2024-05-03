@@ -12,20 +12,23 @@ namespace Marqeta.Core.Sdk.Businesses.Item.Ssn {
     /// <summary>
     /// Builds and executes requests for operations under \businesses\{parent_token-id}\ssn
     /// </summary>
-    public class SsnRequestBuilder : BaseRequestBuilder {
+    public class SsnRequestBuilder : BaseRequestBuilder 
+    {
         /// <summary>
         /// Instantiates a new <see cref="SsnRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public SsnRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/businesses/{parent_token%2Did}/ssn{?full_ssn*}", pathParameters) {
+        public SsnRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/businesses/{parent_token%2Did}/ssn{?full_ssn*}", pathParameters)
+        {
         }
         /// <summary>
         /// Instantiates a new <see cref="SsnRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public SsnRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/businesses/{parent_token%2Did}/ssn{?full_ssn*}", rawUrl) {
+        public SsnRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/businesses/{parent_token%2Did}/ssn{?full_ssn*}", rawUrl)
+        {
         }
         /// <summary>
         /// To retrieve the government-issued identification number of a business&apos; proprietor, send a `GET` request to the `/businesses/{token}/ssn` endpoint.Include the `token` path parameter to specify the business whose identification number (SSN, TIN, NIN, SIN) you want to return.You can indicate whether to return the full number or the last four digits only.
@@ -36,13 +39,16 @@ namespace Marqeta.Core.Sdk.Businesses.Item.Ssn {
         /// <exception cref="ApiError">When receiving a 4XX or 5XX status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<Ssn_response_model?> GetAsync(Action<RequestConfiguration<SsnRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default) {
+        public async Task<Ssn_response_model?> GetAsync(Action<RequestConfiguration<SsnRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        {
 #nullable restore
 #else
-        public async Task<Ssn_response_model> GetAsync(Action<RequestConfiguration<SsnRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default) {
+        public async Task<Ssn_response_model> GetAsync(Action<RequestConfiguration<SsnRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            var errorMapping = new Dictionary<string, ParsableFactory<IParsable>> {
+            var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
+            {
                 {"XXX", ApiError.CreateFromDiscriminatorValue},
             };
             return await RequestAdapter.SendAsync<Ssn_response_model>(requestInfo, Ssn_response_model.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
@@ -54,10 +60,12 @@ namespace Marqeta.Core.Sdk.Businesses.Item.Ssn {
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<SsnRequestBuilderGetQueryParameters>>? requestConfiguration = default) {
+        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<SsnRequestBuilderGetQueryParameters>>? requestConfiguration = default)
+        {
 #nullable restore
 #else
-        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<SsnRequestBuilderGetQueryParameters>> requestConfiguration = default) {
+        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<SsnRequestBuilderGetQueryParameters>> requestConfiguration = default)
+        {
 #endif
             var requestInfo = new RequestInformation(Method.GET, UrlTemplate, PathParameters);
             requestInfo.Configure(requestConfiguration);
@@ -69,13 +77,15 @@ namespace Marqeta.Core.Sdk.Businesses.Item.Ssn {
         /// </summary>
         /// <returns>A <see cref="SsnRequestBuilder"/></returns>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
-        public SsnRequestBuilder WithUrl(string rawUrl) {
+        public SsnRequestBuilder WithUrl(string rawUrl)
+        {
             return new SsnRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
         /// To retrieve the government-issued identification number of a business&apos; proprietor, send a `GET` request to the `/businesses/{token}/ssn` endpoint.Include the `token` path parameter to specify the business whose identification number (SSN, TIN, NIN, SIN) you want to return.You can indicate whether to return the full number or the last four digits only.
         /// </summary>
-        public class SsnRequestBuilderGetQueryParameters {
+        public class SsnRequestBuilderGetQueryParameters 
+        {
             /// <summary>To return the full identification number, set to `true`.To return only the last four digits, set to `false`.If the `proprietor_or_officer.identifications` array contains only the last four digits of the identification number, the `/businesses/{token}/ssn` endpoint will return only the last four digits regardless of the `full_ssn` parameter.</summary>
             [QueryParameter("full_ssn")]
             public bool? FullSsn { get; set; }

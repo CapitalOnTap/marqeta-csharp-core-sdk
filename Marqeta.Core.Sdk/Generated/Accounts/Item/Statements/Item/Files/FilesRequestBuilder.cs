@@ -12,20 +12,23 @@ namespace Marqeta.Core.Sdk.Accounts.Item.Statements.Item.Files {
     /// <summary>
     /// Builds and executes requests for operations under \accounts\{account_token}\statements\{statement_summary_token}\files
     /// </summary>
-    public class FilesRequestBuilder : BaseRequestBuilder {
+    public class FilesRequestBuilder : BaseRequestBuilder 
+    {
         /// <summary>
         /// Instantiates a new <see cref="FilesRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public FilesRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/accounts/{account_token}/statements/{statement_summary_token}/files{?count*,start_index*}", pathParameters) {
+        public FilesRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/accounts/{account_token}/statements/{statement_summary_token}/files{?count*,start_index*}", pathParameters)
+        {
         }
         /// <summary>
         /// Instantiates a new <see cref="FilesRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public FilesRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/accounts/{account_token}/statements/{statement_summary_token}/files{?count*,start_index*}", rawUrl) {
+        public FilesRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/accounts/{account_token}/statements/{statement_summary_token}/files{?count*,start_index*}", rawUrl)
+        {
         }
         /// <summary>
         /// Retrieve an array of statement files for a specific statement summary.
@@ -36,13 +39,16 @@ namespace Marqeta.Core.Sdk.Accounts.Item.Statements.Item.Files {
         /// <exception cref="ApiError">When receiving a 4XX or 5XX status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<StatementFilePage?> GetAsync(Action<RequestConfiguration<FilesRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default) {
+        public async Task<StatementFilePage?> GetAsync(Action<RequestConfiguration<FilesRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        {
 #nullable restore
 #else
-        public async Task<StatementFilePage> GetAsync(Action<RequestConfiguration<FilesRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default) {
+        public async Task<StatementFilePage> GetAsync(Action<RequestConfiguration<FilesRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            var errorMapping = new Dictionary<string, ParsableFactory<IParsable>> {
+            var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
+            {
                 {"XXX", ApiError.CreateFromDiscriminatorValue},
             };
             return await RequestAdapter.SendAsync<StatementFilePage>(requestInfo, StatementFilePage.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
@@ -54,10 +60,12 @@ namespace Marqeta.Core.Sdk.Accounts.Item.Statements.Item.Files {
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<FilesRequestBuilderGetQueryParameters>>? requestConfiguration = default) {
+        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<FilesRequestBuilderGetQueryParameters>>? requestConfiguration = default)
+        {
 #nullable restore
 #else
-        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<FilesRequestBuilderGetQueryParameters>> requestConfiguration = default) {
+        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<FilesRequestBuilderGetQueryParameters>> requestConfiguration = default)
+        {
 #endif
             var requestInfo = new RequestInformation(Method.GET, UrlTemplate, PathParameters);
             requestInfo.Configure(requestConfiguration);
@@ -69,13 +77,15 @@ namespace Marqeta.Core.Sdk.Accounts.Item.Statements.Item.Files {
         /// </summary>
         /// <returns>A <see cref="FilesRequestBuilder"/></returns>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
-        public FilesRequestBuilder WithUrl(string rawUrl) {
+        public FilesRequestBuilder WithUrl(string rawUrl)
+        {
             return new FilesRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
         /// Retrieve an array of statement files for a specific statement summary.
         /// </summary>
-        public class FilesRequestBuilderGetQueryParameters {
+        public class FilesRequestBuilderGetQueryParameters 
+        {
             /// <summary>Number of statement files to return.</summary>
             [QueryParameter("count")]
             public int? Count { get; set; }

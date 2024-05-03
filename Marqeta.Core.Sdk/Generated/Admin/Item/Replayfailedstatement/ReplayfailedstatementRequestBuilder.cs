@@ -10,28 +10,35 @@ namespace Marqeta.Core.Sdk.Admin.Item.Replayfailedstatement {
     /// <summary>
     /// Builds and executes requests for operations under \admin\{short_code}\replayfailedstatement
     /// </summary>
-    public class ReplayfailedstatementRequestBuilder : BaseRequestBuilder {
+    public class ReplayfailedstatementRequestBuilder : BaseRequestBuilder 
+    {
         /// <summary>Gets an item from the Marqeta.Core.Sdk.admin.item.replayfailedstatement.item collection</summary>
         /// <param name="position">account token of the account</param>
         /// <returns>A <see cref="WithAccount_tokenItemRequestBuilder"/></returns>
-        public WithAccount_tokenItemRequestBuilder this[string position] { get {
-            var urlTplParams = new Dictionary<string, object>(PathParameters);
-            urlTplParams.Add("account_token", position);
-            return new WithAccount_tokenItemRequestBuilder(urlTplParams, RequestAdapter);
-        } }
+        public WithAccount_tokenItemRequestBuilder this[string position]
+        {
+            get
+            {
+                var urlTplParams = new Dictionary<string, object>(PathParameters);
+                urlTplParams.Add("account_token", position);
+                return new WithAccount_tokenItemRequestBuilder(urlTplParams, RequestAdapter);
+            }
+        }
         /// <summary>
         /// Instantiates a new <see cref="ReplayfailedstatementRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public ReplayfailedstatementRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/admin/{short_code}/replayfailedstatement", pathParameters) {
+        public ReplayfailedstatementRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/admin/{short_code}/replayfailedstatement", pathParameters)
+        {
         }
         /// <summary>
         /// Instantiates a new <see cref="ReplayfailedstatementRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public ReplayfailedstatementRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/admin/{short_code}/replayfailedstatement", rawUrl) {
+        public ReplayfailedstatementRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/admin/{short_code}/replayfailedstatement", rawUrl)
+        {
         }
     }
 }

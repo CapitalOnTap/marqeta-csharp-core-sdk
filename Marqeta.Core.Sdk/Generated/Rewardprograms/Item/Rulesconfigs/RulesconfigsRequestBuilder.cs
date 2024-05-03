@@ -13,24 +13,28 @@ namespace Marqeta.Core.Sdk.Rewardprograms.Item.Rulesconfigs {
     /// <summary>
     /// Builds and executes requests for operations under \rewardprograms\{token}\rulesconfigs
     /// </summary>
-    public class RulesconfigsRequestBuilder : BaseRequestBuilder {
+    public class RulesconfigsRequestBuilder : BaseRequestBuilder 
+    {
         /// <summary>The applied property</summary>
-        public AppliedRequestBuilder Applied { get =>
-            new AppliedRequestBuilder(PathParameters, RequestAdapter);
+        public AppliedRequestBuilder Applied
+        {
+            get => new AppliedRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>
         /// Instantiates a new <see cref="RulesconfigsRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public RulesconfigsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/rewardprograms/{token}/rulesconfigs{?count*,is_active*,sort_by*,start_index*}", pathParameters) {
+        public RulesconfigsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/rewardprograms/{token}/rulesconfigs{?count*,is_active*,sort_by*,start_index*}", pathParameters)
+        {
         }
         /// <summary>
         /// Instantiates a new <see cref="RulesconfigsRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public RulesconfigsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/rewardprograms/{token}/rulesconfigs{?count*,is_active*,sort_by*,start_index*}", rawUrl) {
+        public RulesconfigsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/rewardprograms/{token}/rulesconfigs{?count*,is_active*,sort_by*,start_index*}", rawUrl)
+        {
         }
         /// <summary>
         /// Retrieve an array of rules configs for a specific reward program.
@@ -41,13 +45,16 @@ namespace Marqeta.Core.Sdk.Rewardprograms.Item.Rulesconfigs {
         /// <exception cref="ApiError">When receiving a 4XX or 5XX status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<RewardProgramsRulesConfigsPage?> GetAsync(Action<RequestConfiguration<RulesconfigsRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default) {
+        public async Task<RewardProgramsRulesConfigsPage?> GetAsync(Action<RequestConfiguration<RulesconfigsRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        {
 #nullable restore
 #else
-        public async Task<RewardProgramsRulesConfigsPage> GetAsync(Action<RequestConfiguration<RulesconfigsRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default) {
+        public async Task<RewardProgramsRulesConfigsPage> GetAsync(Action<RequestConfiguration<RulesconfigsRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            var errorMapping = new Dictionary<string, ParsableFactory<IParsable>> {
+            var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
+            {
                 {"XXX", ApiError.CreateFromDiscriminatorValue},
             };
             return await RequestAdapter.SendAsync<RewardProgramsRulesConfigsPage>(requestInfo, RewardProgramsRulesConfigsPage.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
@@ -59,10 +66,12 @@ namespace Marqeta.Core.Sdk.Rewardprograms.Item.Rulesconfigs {
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<RulesconfigsRequestBuilderGetQueryParameters>>? requestConfiguration = default) {
+        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<RulesconfigsRequestBuilderGetQueryParameters>>? requestConfiguration = default)
+        {
 #nullable restore
 #else
-        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<RulesconfigsRequestBuilderGetQueryParameters>> requestConfiguration = default) {
+        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<RulesconfigsRequestBuilderGetQueryParameters>> requestConfiguration = default)
+        {
 #endif
             var requestInfo = new RequestInformation(Method.GET, UrlTemplate, PathParameters);
             requestInfo.Configure(requestConfiguration);
@@ -74,13 +83,15 @@ namespace Marqeta.Core.Sdk.Rewardprograms.Item.Rulesconfigs {
         /// </summary>
         /// <returns>A <see cref="RulesconfigsRequestBuilder"/></returns>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
-        public RulesconfigsRequestBuilder WithUrl(string rawUrl) {
+        public RulesconfigsRequestBuilder WithUrl(string rawUrl)
+        {
             return new RulesconfigsRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
         /// Retrieve an array of rules configs for a specific reward program.
         /// </summary>
-        public class RulesconfigsRequestBuilderGetQueryParameters {
+        public class RulesconfigsRequestBuilderGetQueryParameters 
+        {
             /// <summary>Number of resources to retrieve.</summary>
             [QueryParameter("count")]
             public int? Count { get; set; }

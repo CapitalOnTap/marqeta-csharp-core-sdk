@@ -12,20 +12,23 @@ namespace Marqeta.Core.Sdk.Accounts.Item.Statements.Item.Yeartodate {
     /// <summary>
     /// Builds and executes requests for operations under \accounts\{account_token}\statements\{statement_summary_token}\yeartodate
     /// </summary>
-    public class YeartodateRequestBuilder : BaseRequestBuilder {
+    public class YeartodateRequestBuilder : BaseRequestBuilder 
+    {
         /// <summary>
         /// Instantiates a new <see cref="YeartodateRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public YeartodateRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/accounts/{account_token}/statements/{statement_summary_token}/yeartodate", pathParameters) {
+        public YeartodateRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/accounts/{account_token}/statements/{statement_summary_token}/yeartodate", pathParameters)
+        {
         }
         /// <summary>
         /// Instantiates a new <see cref="YeartodateRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public YeartodateRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/accounts/{account_token}/statements/{statement_summary_token}/yeartodate", rawUrl) {
+        public YeartodateRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/accounts/{account_token}/statements/{statement_summary_token}/yeartodate", rawUrl)
+        {
         }
         /// <summary>
         /// Retrieve the year-to-date fee and interest totals on a credit account&apos;s statement summary.
@@ -36,13 +39,16 @@ namespace Marqeta.Core.Sdk.Accounts.Item.Statements.Item.Yeartodate {
         /// <exception cref="ApiError">When receiving a 4XX or 5XX status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<Marqeta.Core.Sdk.Models.YearToDate?> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default) {
+        public async Task<Marqeta.Core.Sdk.Models.YearToDate?> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        {
 #nullable restore
 #else
-        public async Task<Marqeta.Core.Sdk.Models.YearToDate> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default) {
+        public async Task<Marqeta.Core.Sdk.Models.YearToDate> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            var errorMapping = new Dictionary<string, ParsableFactory<IParsable>> {
+            var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
+            {
                 {"XXX", ApiError.CreateFromDiscriminatorValue},
             };
             return await RequestAdapter.SendAsync<Marqeta.Core.Sdk.Models.YearToDate>(requestInfo, Marqeta.Core.Sdk.Models.YearToDate.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
@@ -54,10 +60,12 @@ namespace Marqeta.Core.Sdk.Accounts.Item.Statements.Item.Yeartodate {
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default) {
+        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
+        {
 #nullable restore
 #else
-        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default) {
+        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
+        {
 #endif
             var requestInfo = new RequestInformation(Method.GET, UrlTemplate, PathParameters);
             requestInfo.Configure(requestConfiguration);
@@ -69,7 +77,8 @@ namespace Marqeta.Core.Sdk.Accounts.Item.Statements.Item.Yeartodate {
         /// </summary>
         /// <returns>A <see cref="YeartodateRequestBuilder"/></returns>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
-        public YeartodateRequestBuilder WithUrl(string rawUrl) {
+        public YeartodateRequestBuilder WithUrl(string rawUrl)
+        {
             return new YeartodateRequestBuilder(rawUrl, RequestAdapter);
         }
     }

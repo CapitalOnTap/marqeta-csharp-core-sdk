@@ -13,24 +13,28 @@ namespace Marqeta.Core.Sdk.Commandomodes.Item {
     /// <summary>
     /// Builds and executes requests for operations under \commandomodes\{commandomode_token-id}
     /// </summary>
-    public class Commandomode_tokenItemRequestBuilder : BaseRequestBuilder {
+    public class Commandomode_tokenItemRequestBuilder : BaseRequestBuilder 
+    {
         /// <summary>The transitions property</summary>
-        public TransitionsRequestBuilder Transitions { get =>
-            new TransitionsRequestBuilder(PathParameters, RequestAdapter);
+        public TransitionsRequestBuilder Transitions
+        {
+            get => new TransitionsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>
         /// Instantiates a new <see cref="Commandomode_tokenItemRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public Commandomode_tokenItemRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/commandomodes/{commandomode_token%2Did}", pathParameters) {
+        public Commandomode_tokenItemRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/commandomodes/{commandomode_token%2Did}", pathParameters)
+        {
         }
         /// <summary>
         /// Instantiates a new <see cref="Commandomode_tokenItemRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public Commandomode_tokenItemRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/commandomodes/{commandomode_token%2Did}", rawUrl) {
+        public Commandomode_tokenItemRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/commandomodes/{commandomode_token%2Did}", rawUrl)
+        {
         }
         /// <summary>
         /// Retrieve a specific Commando Mode control set.
@@ -41,13 +45,16 @@ namespace Marqeta.Core.Sdk.Commandomodes.Item {
         /// <exception cref="ApiError">When receiving a 4XX or 5XX status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<Commando_mode_response?> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default) {
+        public async Task<Commando_mode_response?> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        {
 #nullable restore
 #else
-        public async Task<Commando_mode_response> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default) {
+        public async Task<Commando_mode_response> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            var errorMapping = new Dictionary<string, ParsableFactory<IParsable>> {
+            var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
+            {
                 {"XXX", ApiError.CreateFromDiscriminatorValue},
             };
             return await RequestAdapter.SendAsync<Commando_mode_response>(requestInfo, Commando_mode_response.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
@@ -59,10 +66,12 @@ namespace Marqeta.Core.Sdk.Commandomodes.Item {
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default) {
+        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
+        {
 #nullable restore
 #else
-        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default) {
+        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
+        {
 #endif
             var requestInfo = new RequestInformation(Method.GET, UrlTemplate, PathParameters);
             requestInfo.Configure(requestConfiguration);
@@ -74,7 +83,8 @@ namespace Marqeta.Core.Sdk.Commandomodes.Item {
         /// </summary>
         /// <returns>A <see cref="Commandomode_tokenItemRequestBuilder"/></returns>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
-        public Commandomode_tokenItemRequestBuilder WithUrl(string rawUrl) {
+        public Commandomode_tokenItemRequestBuilder WithUrl(string rawUrl)
+        {
             return new Commandomode_tokenItemRequestBuilder(rawUrl, RequestAdapter);
         }
     }

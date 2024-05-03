@@ -12,20 +12,23 @@ namespace Marqeta.Core.Sdk.Commandomodes.Item.Transitions {
     /// <summary>
     /// Builds and executes requests for operations under \commandomodes\{commandomode_token-id}\transitions
     /// </summary>
-    public class TransitionsRequestBuilder : BaseRequestBuilder {
+    public class TransitionsRequestBuilder : BaseRequestBuilder 
+    {
         /// <summary>
         /// Instantiates a new <see cref="TransitionsRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public TransitionsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/commandomodes/{commandomode_token%2Did}/transitions{?count*,sort_by*,start_index*}", pathParameters) {
+        public TransitionsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/commandomodes/{commandomode_token%2Did}/transitions{?count*,sort_by*,start_index*}", pathParameters)
+        {
         }
         /// <summary>
         /// Instantiates a new <see cref="TransitionsRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public TransitionsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/commandomodes/{commandomode_token%2Did}/transitions{?count*,sort_by*,start_index*}", rawUrl) {
+        public TransitionsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/commandomodes/{commandomode_token%2Did}/transitions{?count*,sort_by*,start_index*}", rawUrl)
+        {
         }
         /// <summary>
         /// Retrieve a list of Commando Mode transitions for a specific control set.This endpoint supports &lt;&lt;/core-api/field-filtering, field filtering&gt;&gt; and &lt;&lt;/core-api/sorting-and-pagination, pagination&gt;&gt;.
@@ -36,13 +39,16 @@ namespace Marqeta.Core.Sdk.Commandomodes.Item.Transitions {
         /// <exception cref="ApiError">When receiving a 4XX or 5XX status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<CommandoModeTransitionListResponse?> GetAsync(Action<RequestConfiguration<TransitionsRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default) {
+        public async Task<CommandoModeTransitionListResponse?> GetAsync(Action<RequestConfiguration<TransitionsRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        {
 #nullable restore
 #else
-        public async Task<CommandoModeTransitionListResponse> GetAsync(Action<RequestConfiguration<TransitionsRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default) {
+        public async Task<CommandoModeTransitionListResponse> GetAsync(Action<RequestConfiguration<TransitionsRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            var errorMapping = new Dictionary<string, ParsableFactory<IParsable>> {
+            var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
+            {
                 {"XXX", ApiError.CreateFromDiscriminatorValue},
             };
             return await RequestAdapter.SendAsync<CommandoModeTransitionListResponse>(requestInfo, CommandoModeTransitionListResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
@@ -54,10 +60,12 @@ namespace Marqeta.Core.Sdk.Commandomodes.Item.Transitions {
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<TransitionsRequestBuilderGetQueryParameters>>? requestConfiguration = default) {
+        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<TransitionsRequestBuilderGetQueryParameters>>? requestConfiguration = default)
+        {
 #nullable restore
 #else
-        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<TransitionsRequestBuilderGetQueryParameters>> requestConfiguration = default) {
+        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<TransitionsRequestBuilderGetQueryParameters>> requestConfiguration = default)
+        {
 #endif
             var requestInfo = new RequestInformation(Method.GET, UrlTemplate, PathParameters);
             requestInfo.Configure(requestConfiguration);
@@ -69,13 +77,15 @@ namespace Marqeta.Core.Sdk.Commandomodes.Item.Transitions {
         /// </summary>
         /// <returns>A <see cref="TransitionsRequestBuilder"/></returns>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
-        public TransitionsRequestBuilder WithUrl(string rawUrl) {
+        public TransitionsRequestBuilder WithUrl(string rawUrl)
+        {
             return new TransitionsRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
         /// Retrieve a list of Commando Mode transitions for a specific control set.This endpoint supports &lt;&lt;/core-api/field-filtering, field filtering&gt;&gt; and &lt;&lt;/core-api/sorting-and-pagination, pagination&gt;&gt;.
         /// </summary>
-        public class TransitionsRequestBuilderGetQueryParameters {
+        public class TransitionsRequestBuilderGetQueryParameters 
+        {
             /// <summary>Number of Commando Mode control set transitions to retrieve.</summary>
             [QueryParameter("count")]
             public int? Count { get; set; }

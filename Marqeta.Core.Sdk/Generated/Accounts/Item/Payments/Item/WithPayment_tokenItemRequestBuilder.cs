@@ -14,28 +14,33 @@ namespace Marqeta.Core.Sdk.Accounts.Item.Payments.Item {
     /// <summary>
     /// Builds and executes requests for operations under \accounts\{account_token}\payments\{payment_token}
     /// </summary>
-    public class WithPayment_tokenItemRequestBuilder : BaseRequestBuilder {
+    public class WithPayment_tokenItemRequestBuilder : BaseRequestBuilder 
+    {
         /// <summary>The releasehold property</summary>
-        public ReleaseholdRequestBuilder Releasehold { get =>
-            new ReleaseholdRequestBuilder(PathParameters, RequestAdapter);
+        public ReleaseholdRequestBuilder Releasehold
+        {
+            get => new ReleaseholdRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The transitions property</summary>
-        public TransitionsRequestBuilder Transitions { get =>
-            new TransitionsRequestBuilder(PathParameters, RequestAdapter);
+        public TransitionsRequestBuilder Transitions
+        {
+            get => new TransitionsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>
         /// Instantiates a new <see cref="WithPayment_tokenItemRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public WithPayment_tokenItemRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/accounts/{account_token}/payments/{payment_token}", pathParameters) {
+        public WithPayment_tokenItemRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/accounts/{account_token}/payments/{payment_token}", pathParameters)
+        {
         }
         /// <summary>
         /// Instantiates a new <see cref="WithPayment_tokenItemRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public WithPayment_tokenItemRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/accounts/{account_token}/payments/{payment_token}", rawUrl) {
+        public WithPayment_tokenItemRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/accounts/{account_token}/payments/{payment_token}", rawUrl)
+        {
         }
         /// <summary>
         /// Retrieve a payment for a credit account.
@@ -46,13 +51,16 @@ namespace Marqeta.Core.Sdk.Accounts.Item.Payments.Item {
         /// <exception cref="ApiError">When receiving a 4XX or 5XX status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<PaymentDetailResponse?> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default) {
+        public async Task<PaymentDetailResponse?> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        {
 #nullable restore
 #else
-        public async Task<PaymentDetailResponse> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default) {
+        public async Task<PaymentDetailResponse> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            var errorMapping = new Dictionary<string, ParsableFactory<IParsable>> {
+            var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
+            {
                 {"XXX", ApiError.CreateFromDiscriminatorValue},
             };
             return await RequestAdapter.SendAsync<PaymentDetailResponse>(requestInfo, PaymentDetailResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
@@ -64,10 +72,12 @@ namespace Marqeta.Core.Sdk.Accounts.Item.Payments.Item {
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default) {
+        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
+        {
 #nullable restore
 #else
-        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default) {
+        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
+        {
 #endif
             var requestInfo = new RequestInformation(Method.GET, UrlTemplate, PathParameters);
             requestInfo.Configure(requestConfiguration);
@@ -79,7 +89,8 @@ namespace Marqeta.Core.Sdk.Accounts.Item.Payments.Item {
         /// </summary>
         /// <returns>A <see cref="WithPayment_tokenItemRequestBuilder"/></returns>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
-        public WithPayment_tokenItemRequestBuilder WithUrl(string rawUrl) {
+        public WithPayment_tokenItemRequestBuilder WithUrl(string rawUrl)
+        {
             return new WithPayment_tokenItemRequestBuilder(rawUrl, RequestAdapter);
         }
     }

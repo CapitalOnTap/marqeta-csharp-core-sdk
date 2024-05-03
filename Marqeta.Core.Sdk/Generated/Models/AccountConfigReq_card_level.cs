@@ -3,12 +3,19 @@ using System.Runtime.Serialization;
 using System;
 namespace Marqeta.Core.Sdk.Models {
     /// <summary>Level of the credit card.</summary>
-    public enum AccountConfigReq_card_level {
+    public enum AccountConfigReq_card_level
+    {
         [EnumMember(Value = "PREMIUM")]
+        #pragma warning disable CS1591
         PREMIUM,
+        #pragma warning restore CS1591
         [EnumMember(Value = "TRADITIONAL")]
+        #pragma warning disable CS1591
         TRADITIONAL,
+        #pragma warning restore CS1591
         [EnumMember(Value = "NA")]
+        #pragma warning disable CS1591
         NA,
+        #pragma warning restore CS1591
     }
 }

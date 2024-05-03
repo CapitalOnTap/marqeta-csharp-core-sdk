@@ -3,18 +3,31 @@ using System.Runtime.Serialization;
 using System;
 namespace Marqeta.Core.Sdk.Models {
     /// <summary>Organizational structure of the business, such as corporation or sole proprietorship.This field is required for KYC verification (US-based accounts only).</summary>
-    public enum Business_incorporation_incorporation_type {
+    public enum Business_incorporation_incorporation_type
+    {
         [EnumMember(Value = "LLC")]
+        #pragma warning disable CS1591
         LLC,
+        #pragma warning restore CS1591
         [EnumMember(Value = "CORPORATION")]
+        #pragma warning disable CS1591
         CORPORATION,
+        #pragma warning restore CS1591
         [EnumMember(Value = "SOLE_PROPRIETORSHIP")]
+        #pragma warning disable CS1591
         SOLE_PROPRIETORSHIP,
+        #pragma warning restore CS1591
         [EnumMember(Value = "PARTNERSHIP")]
+        #pragma warning disable CS1591
         PARTNERSHIP,
+        #pragma warning restore CS1591
         [EnumMember(Value = "COOPERATIVE")]
+        #pragma warning disable CS1591
         COOPERATIVE,
+        #pragma warning restore CS1591
         [EnumMember(Value = "OTHER")]
+        #pragma warning disable CS1591
         OTHER,
+        #pragma warning restore CS1591
     }
 }

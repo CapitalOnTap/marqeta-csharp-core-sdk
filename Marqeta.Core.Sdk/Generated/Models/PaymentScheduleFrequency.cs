@@ -3,10 +3,15 @@ using System.Runtime.Serialization;
 using System;
 namespace Marqeta.Core.Sdk.Models {
     /// <summary>Defines how often to make a scheduled payment.</summary>
-    public enum PaymentScheduleFrequency {
+    public enum PaymentScheduleFrequency
+    {
         [EnumMember(Value = "ONCE")]
+        #pragma warning disable CS1591
         ONCE,
+        #pragma warning restore CS1591
         [EnumMember(Value = "MONTHLY")]
+        #pragma warning disable CS1591
         MONTHLY,
+        #pragma warning restore CS1591
     }
 }

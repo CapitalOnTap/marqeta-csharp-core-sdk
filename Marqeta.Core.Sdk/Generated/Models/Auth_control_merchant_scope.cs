@@ -8,7 +8,8 @@ namespace Marqeta.Core.Sdk.Models {
     /// <summary>
     /// Defines the group of merchants to which the authorization control applies.This object is required if the `association` object is not included in your request.Your request can include both the `merchant_scope` and `association` objects.If you include this object in your request, you must populate one or more of its fields.If no fields are populated, the authorization control applies to all merchants.
     /// </summary>
-    public class Auth_control_merchant_scope : IAdditionalDataHolder, IParsable {
+    public class Auth_control_merchant_scope : IAdditionalDataHolder, IParsable 
+    {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Merchant Category Code (MCC).Identifies the type of goods or services provided by the merchant.Enter a value to control access to a particular type of product or service.See &lt;&lt;/developer-guides/controlling-spending, Controlling Spending&gt;&gt; for links to more information about merchant category codes.</summary>
@@ -46,7 +47,8 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>
         /// Instantiates a new <see cref="Auth_control_merchant_scope"/> and sets the default values.
         /// </summary>
-        public Auth_control_merchant_scope() {
+        public Auth_control_merchant_scope()
+        {
             AdditionalData = new Dictionary<string, object>();
         }
         /// <summary>
@@ -54,7 +56,8 @@ namespace Marqeta.Core.Sdk.Models {
         /// </summary>
         /// <returns>A <see cref="Auth_control_merchant_scope"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static Auth_control_merchant_scope CreateFromDiscriminatorValue(IParseNode parseNode) {
+        public static Auth_control_merchant_scope CreateFromDiscriminatorValue(IParseNode parseNode)
+        {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
             return new Auth_control_merchant_scope();
         }
@@ -62,8 +65,10 @@ namespace Marqeta.Core.Sdk.Models {
         /// The deserialization information for the current model
         /// </summary>
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
-        public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers() {
-            return new Dictionary<string, Action<IParseNode>> {
+        public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
+        {
+            return new Dictionary<string, Action<IParseNode>>
+            {
                 {"mcc", n => { Mcc = n.GetStringValue(); } },
                 {"mcc_group", n => { MccGroup = n.GetStringValue(); } },
                 {"merchant_group_token", n => { MerchantGroupToken = n.GetStringValue(); } },
@@ -74,7 +79,8 @@ namespace Marqeta.Core.Sdk.Models {
         /// Serializes information the current object
         /// </summary>
         /// <param name="writer">Serialization writer to use to serialize this model</param>
-        public virtual void Serialize(ISerializationWriter writer) {
+        public virtual void Serialize(ISerializationWriter writer)
+        {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("mcc", Mcc);
             writer.WriteStringValue("mcc_group", MccGroup);

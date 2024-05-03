@@ -5,7 +5,10 @@ using System.IO;
 using System.Linq;
 using System;
 namespace Marqeta.Core.Sdk.Models {
-    public class ApplicationTransitionRequest : IAdditionalDataHolder, IParsable {
+    #pragma warning disable CS1591
+    public class ApplicationTransitionRequest : IAdditionalDataHolder, IParsable 
+    #pragma warning restore CS1591
+    {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>State of the application.If manually &lt;&lt;/core-api/credit-applications#transitionApplication, transitioning an application state&gt;&gt;:* `application_state` is the state to which you want to transition the application status; must be `ACCEPTED` or `REJECTED`.* `original_status` returns the state of the application before it was manually transitioned.* `status` returns the state to which the application was transitioned.</summary>
@@ -53,7 +56,8 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>
         /// Instantiates a new <see cref="ApplicationTransitionRequest"/> and sets the default values.
         /// </summary>
-        public ApplicationTransitionRequest() {
+        public ApplicationTransitionRequest()
+        {
             AdditionalData = new Dictionary<string, object>();
         }
         /// <summary>
@@ -61,7 +65,8 @@ namespace Marqeta.Core.Sdk.Models {
         /// </summary>
         /// <returns>A <see cref="ApplicationTransitionRequest"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static ApplicationTransitionRequest CreateFromDiscriminatorValue(IParseNode parseNode) {
+        public static ApplicationTransitionRequest CreateFromDiscriminatorValue(IParseNode parseNode)
+        {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
             return new ApplicationTransitionRequest();
         }
@@ -69,8 +74,10 @@ namespace Marqeta.Core.Sdk.Models {
         /// The deserialization information for the current model
         /// </summary>
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
-        public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers() {
-            return new Dictionary<string, Action<IParseNode>> {
+        public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
+        {
+            return new Dictionary<string, Action<IParseNode>>
+            {
                 {"application_state", n => { ApplicationState = n.GetEnumValue<ApplicationResourceState>(); } },
                 {"benefits_disclosure_tracking_token", n => { BenefitsDisclosureTrackingToken = n.GetStringValue(); } },
                 {"card_member_agreement_tracking_token", n => { CardMemberAgreementTrackingToken = n.GetStringValue(); } },
@@ -83,7 +90,8 @@ namespace Marqeta.Core.Sdk.Models {
         /// Serializes information the current object
         /// </summary>
         /// <param name="writer">Serialization writer to use to serialize this model</param>
-        public virtual void Serialize(ISerializationWriter writer) {
+        public virtual void Serialize(ISerializationWriter writer)
+        {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
             writer.WriteEnumValue<ApplicationResourceState>("application_state", ApplicationState);
             writer.WriteStringValue("benefits_disclosure_tracking_token", BenefitsDisclosureTrackingToken);

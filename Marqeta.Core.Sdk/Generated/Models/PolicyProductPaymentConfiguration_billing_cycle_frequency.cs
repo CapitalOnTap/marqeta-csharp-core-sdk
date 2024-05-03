@@ -3,8 +3,11 @@ using System.Runtime.Serialization;
 using System;
 namespace Marqeta.Core.Sdk.Models {
     /// <summary>Frequency at which your account is billed</summary>
-    public enum PolicyProductPaymentConfiguration_billing_cycle_frequency {
+    public enum PolicyProductPaymentConfiguration_billing_cycle_frequency
+    {
         [EnumMember(Value = "MONTHLY")]
+        #pragma warning disable CS1591
         MONTHLY,
+        #pragma warning restore CS1591
     }
 }

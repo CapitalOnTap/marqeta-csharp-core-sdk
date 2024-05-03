@@ -10,28 +10,35 @@ namespace Marqeta.Core.Sdk.Fundingsources.Addresses.Business {
     /// <summary>
     /// Builds and executes requests for operations under \fundingsources\addresses\business
     /// </summary>
-    public class BusinessRequestBuilder : BaseRequestBuilder {
+    public class BusinessRequestBuilder : BaseRequestBuilder 
+    {
         /// <summary>Gets an item from the Marqeta.Core.Sdk.fundingsources.addresses.business.item collection</summary>
         /// <param name="position">Unique identifier of the business account holder.Send a `GET` request to `/businesses` to retrieve business tokens.</param>
         /// <returns>A <see cref="WithBusiness_tokenItemRequestBuilder"/></returns>
-        public WithBusiness_tokenItemRequestBuilder this[string position] { get {
-            var urlTplParams = new Dictionary<string, object>(PathParameters);
-            urlTplParams.Add("business_token", position);
-            return new WithBusiness_tokenItemRequestBuilder(urlTplParams, RequestAdapter);
-        } }
+        public WithBusiness_tokenItemRequestBuilder this[string position]
+        {
+            get
+            {
+                var urlTplParams = new Dictionary<string, object>(PathParameters);
+                urlTplParams.Add("business_token", position);
+                return new WithBusiness_tokenItemRequestBuilder(urlTplParams, RequestAdapter);
+            }
+        }
         /// <summary>
         /// Instantiates a new <see cref="BusinessRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public BusinessRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/fundingsources/addresses/business", pathParameters) {
+        public BusinessRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/fundingsources/addresses/business", pathParameters)
+        {
         }
         /// <summary>
         /// Instantiates a new <see cref="BusinessRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public BusinessRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/fundingsources/addresses/business", rawUrl) {
+        public BusinessRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/fundingsources/addresses/business", rawUrl)
+        {
         }
     }
 }

@@ -8,7 +8,8 @@ namespace Marqeta.Core.Sdk.Models {
     /// <summary>
     /// Contains information about the organizational structure of the business.This object is required for KYC verification (US-based accounts only).
     /// </summary>
-    public class Business_incorporation : IAdditionalDataHolder, IParsable {
+    public class Business_incorporation : IAdditionalDataHolder, IParsable 
+    {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Address associated with the business.</summary>
@@ -50,7 +51,8 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>
         /// Instantiates a new <see cref="Business_incorporation"/> and sets the default values.
         /// </summary>
-        public Business_incorporation() {
+        public Business_incorporation()
+        {
             AdditionalData = new Dictionary<string, object>();
         }
         /// <summary>
@@ -58,7 +60,8 @@ namespace Marqeta.Core.Sdk.Models {
         /// </summary>
         /// <returns>A <see cref="Business_incorporation"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static Business_incorporation CreateFromDiscriminatorValue(IParseNode parseNode) {
+        public static Business_incorporation CreateFromDiscriminatorValue(IParseNode parseNode)
+        {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
             return new Business_incorporation();
         }
@@ -66,8 +69,10 @@ namespace Marqeta.Core.Sdk.Models {
         /// The deserialization information for the current model
         /// </summary>
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
-        public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers() {
-            return new Dictionary<string, Action<IParseNode>> {
+        public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
+        {
+            return new Dictionary<string, Action<IParseNode>>
+            {
                 {"address_registered_under", n => { AddressRegisteredUnder = n.GetObjectValue<AddressRequestModel>(AddressRequestModel.CreateFromDiscriminatorValue); } },
                 {"incorporation_type", n => { IncorporationType = n.GetEnumValue<Business_incorporation_incorporation_type>(); } },
                 {"is_public", n => { IsPublic = n.GetBoolValue(); } },
@@ -80,7 +85,8 @@ namespace Marqeta.Core.Sdk.Models {
         /// Serializes information the current object
         /// </summary>
         /// <param name="writer">Serialization writer to use to serialize this model</param>
-        public virtual void Serialize(ISerializationWriter writer) {
+        public virtual void Serialize(ISerializationWriter writer)
+        {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
             writer.WriteObjectValue<AddressRequestModel>("address_registered_under", AddressRegisteredUnder);
             writer.WriteEnumValue<Business_incorporation_incorporation_type>("incorporation_type", IncorporationType);

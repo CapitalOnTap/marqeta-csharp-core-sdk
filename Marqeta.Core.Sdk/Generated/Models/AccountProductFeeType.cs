@@ -3,16 +3,27 @@ using System.Runtime.Serialization;
 using System;
 namespace Marqeta.Core.Sdk.Models {
     /// <summary>Type of fee.</summary>
-    public enum AccountProductFeeType {
+    public enum AccountProductFeeType
+    {
         [EnumMember(Value = "LATE_PAYMENT_FEE")]
+        #pragma warning disable CS1591
         LATE_PAYMENT_FEE,
+        #pragma warning restore CS1591
         [EnumMember(Value = "RETURNED_PAYMENT_FEE")]
+        #pragma warning disable CS1591
         RETURNED_PAYMENT_FEE,
+        #pragma warning restore CS1591
         [EnumMember(Value = "MONTHLY_FEE")]
+        #pragma warning disable CS1591
         MONTHLY_FEE,
+        #pragma warning restore CS1591
         [EnumMember(Value = "ANNUAL_FEE")]
+        #pragma warning disable CS1591
         ANNUAL_FEE,
+        #pragma warning restore CS1591
         [EnumMember(Value = "FOREIGN_TRANSACTION_FEE")]
+        #pragma warning disable CS1591
         FOREIGN_TRANSACTION_FEE,
+        #pragma warning restore CS1591
     }
 }

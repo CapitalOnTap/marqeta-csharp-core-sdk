@@ -13,24 +13,28 @@ namespace Marqeta.Core.Sdk.Digitalwallettokens.Item {
     /// <summary>
     /// Builds and executes requests for operations under \digitalwallettokens\{token}
     /// </summary>
-    public class WithTokenItemRequestBuilder : BaseRequestBuilder {
+    public class WithTokenItemRequestBuilder : BaseRequestBuilder 
+    {
         /// <summary>The showtokenpan property</summary>
-        public ShowtokenpanRequestBuilder Showtokenpan { get =>
-            new ShowtokenpanRequestBuilder(PathParameters, RequestAdapter);
+        public ShowtokenpanRequestBuilder Showtokenpan
+        {
+            get => new ShowtokenpanRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>
         /// Instantiates a new <see cref="WithTokenItemRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public WithTokenItemRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/digitalwallettokens/{token}", pathParameters) {
+        public WithTokenItemRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/digitalwallettokens/{token}", pathParameters)
+        {
         }
         /// <summary>
         /// Instantiates a new <see cref="WithTokenItemRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public WithTokenItemRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/digitalwallettokens/{token}", rawUrl) {
+        public WithTokenItemRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/digitalwallettokens/{token}", rawUrl)
+        {
         }
         /// <summary>
         /// Use this endpoint to retrieve a specific digital wallet token.
@@ -41,13 +45,16 @@ namespace Marqeta.Core.Sdk.Digitalwallettokens.Item {
         /// <exception cref="ApiError">When receiving a 4XX or 5XX status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<Digital_wallet_token?> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default) {
+        public async Task<Digital_wallet_token?> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        {
 #nullable restore
 #else
-        public async Task<Digital_wallet_token> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default) {
+        public async Task<Digital_wallet_token> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            var errorMapping = new Dictionary<string, ParsableFactory<IParsable>> {
+            var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
+            {
                 {"XXX", ApiError.CreateFromDiscriminatorValue},
             };
             return await RequestAdapter.SendAsync<Digital_wallet_token>(requestInfo, Digital_wallet_token.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
@@ -59,10 +66,12 @@ namespace Marqeta.Core.Sdk.Digitalwallettokens.Item {
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default) {
+        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
+        {
 #nullable restore
 #else
-        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default) {
+        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
+        {
 #endif
             var requestInfo = new RequestInformation(Method.GET, UrlTemplate, PathParameters);
             requestInfo.Configure(requestConfiguration);
@@ -74,7 +83,8 @@ namespace Marqeta.Core.Sdk.Digitalwallettokens.Item {
         /// </summary>
         /// <returns>A <see cref="WithTokenItemRequestBuilder"/></returns>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
-        public WithTokenItemRequestBuilder WithUrl(string rawUrl) {
+        public WithTokenItemRequestBuilder WithUrl(string rawUrl)
+        {
             return new WithTokenItemRequestBuilder(rawUrl, RequestAdapter);
         }
     }

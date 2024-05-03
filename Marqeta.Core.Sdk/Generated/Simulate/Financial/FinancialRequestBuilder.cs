@@ -16,36 +16,43 @@ namespace Marqeta.Core.Sdk.Simulate.Financial {
     /// <summary>
     /// Builds and executes requests for operations under \simulate\financial
     /// </summary>
-    public class FinancialRequestBuilder : BaseRequestBuilder {
+    public class FinancialRequestBuilder : BaseRequestBuilder 
+    {
         /// <summary>The advice property</summary>
-        public AdviceRequestBuilder Advice { get =>
-            new AdviceRequestBuilder(PathParameters, RequestAdapter);
+        public AdviceRequestBuilder Advice
+        {
+            get => new AdviceRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The balanceinquiry property</summary>
-        public BalanceinquiryRequestBuilder Balanceinquiry { get =>
-            new BalanceinquiryRequestBuilder(PathParameters, RequestAdapter);
+        public BalanceinquiryRequestBuilder Balanceinquiry
+        {
+            get => new BalanceinquiryRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The originalcredit property</summary>
-        public OriginalcreditRequestBuilder Originalcredit { get =>
-            new OriginalcreditRequestBuilder(PathParameters, RequestAdapter);
+        public OriginalcreditRequestBuilder Originalcredit
+        {
+            get => new OriginalcreditRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The withdrawal property</summary>
-        public WithdrawalRequestBuilder Withdrawal { get =>
-            new WithdrawalRequestBuilder(PathParameters, RequestAdapter);
+        public WithdrawalRequestBuilder Withdrawal
+        {
+            get => new WithdrawalRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>
         /// Instantiates a new <see cref="FinancialRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public FinancialRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/simulate/financial", pathParameters) {
+        public FinancialRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/simulate/financial", pathParameters)
+        {
         }
         /// <summary>
         /// Instantiates a new <see cref="FinancialRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public FinancialRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/simulate/financial", rawUrl) {
+        public FinancialRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/simulate/financial", rawUrl)
+        {
         }
         /// <summary>
         /// Simulates a financial request (PIN debit) transaction with optional cash back
@@ -57,14 +64,17 @@ namespace Marqeta.Core.Sdk.Simulate.Financial {
         /// <exception cref="ApiError">When receiving a 4XX or 5XX status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<Simulation_response_model?> PostAsync(Financial_request_model body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default) {
+        public async Task<Simulation_response_model?> PostAsync(Financial_request_model body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        {
 #nullable restore
 #else
-        public async Task<Simulation_response_model> PostAsync(Financial_request_model body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default) {
+        public async Task<Simulation_response_model> PostAsync(Financial_request_model body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        {
 #endif
             _ = body ?? throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPostRequestInformation(body, requestConfiguration);
-            var errorMapping = new Dictionary<string, ParsableFactory<IParsable>> {
+            var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
+            {
                 {"XXX", ApiError.CreateFromDiscriminatorValue},
             };
             return await RequestAdapter.SendAsync<Simulation_response_model>(requestInfo, Simulation_response_model.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
@@ -77,10 +87,12 @@ namespace Marqeta.Core.Sdk.Simulate.Financial {
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToPostRequestInformation(Financial_request_model body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default) {
+        public RequestInformation ToPostRequestInformation(Financial_request_model body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
+        {
 #nullable restore
 #else
-        public RequestInformation ToPostRequestInformation(Financial_request_model body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default) {
+        public RequestInformation ToPostRequestInformation(Financial_request_model body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
+        {
 #endif
             _ = body ?? throw new ArgumentNullException(nameof(body));
             var requestInfo = new RequestInformation(Method.POST, UrlTemplate, PathParameters);
@@ -94,7 +106,8 @@ namespace Marqeta.Core.Sdk.Simulate.Financial {
         /// </summary>
         /// <returns>A <see cref="FinancialRequestBuilder"/></returns>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
-        public FinancialRequestBuilder WithUrl(string rawUrl) {
+        public FinancialRequestBuilder WithUrl(string rawUrl)
+        {
             return new FinancialRequestBuilder(rawUrl, RequestAdapter);
         }
     }

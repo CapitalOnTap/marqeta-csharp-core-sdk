@@ -3,14 +3,23 @@ using System.Runtime.Serialization;
 using System;
 namespace Marqeta.Core.Sdk.Models {
     /// <summary>Indicates whether the card acceptor or terminal can capture card personal identification numbers (PINs).*NOTE:* This field does not indicate whether a PIN was entered.</summary>
-    public enum Pos_pin_entry_mode {
+    public enum Pos_pin_entry_mode
+    {
         [EnumMember(Value = "UNKNOWN")]
+        #pragma warning disable CS1591
         UNKNOWN,
+        #pragma warning restore CS1591
         [EnumMember(Value = "TRUE")]
+        #pragma warning disable CS1591
         TRUE,
+        #pragma warning restore CS1591
         [EnumMember(Value = "FALSE")]
+        #pragma warning disable CS1591
         FALSE,
+        #pragma warning restore CS1591
         [EnumMember(Value = "DEFECTIVE")]
+        #pragma warning disable CS1591
         DEFECTIVE,
+        #pragma warning restore CS1591
     }
 }

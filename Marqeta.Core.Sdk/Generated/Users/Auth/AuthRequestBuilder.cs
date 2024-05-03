@@ -16,48 +16,58 @@ namespace Marqeta.Core.Sdk.Users.Auth {
     /// <summary>
     /// Builds and executes requests for operations under \users\auth
     /// </summary>
-    public class AuthRequestBuilder : BaseRequestBuilder {
+    public class AuthRequestBuilder : BaseRequestBuilder 
+    {
         /// <summary>The changepassword property</summary>
-        public ChangepasswordRequestBuilder Changepassword { get =>
-            new ChangepasswordRequestBuilder(PathParameters, RequestAdapter);
+        public ChangepasswordRequestBuilder Changepassword
+        {
+            get => new ChangepasswordRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The clientaccesstoken property</summary>
-        public ClientaccesstokenRequestBuilder Clientaccesstoken { get =>
-            new ClientaccesstokenRequestBuilder(PathParameters, RequestAdapter);
+        public ClientaccesstokenRequestBuilder Clientaccesstoken
+        {
+            get => new ClientaccesstokenRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The login property</summary>
-        public LoginRequestBuilder Login { get =>
-            new LoginRequestBuilder(PathParameters, RequestAdapter);
+        public LoginRequestBuilder Login
+        {
+            get => new LoginRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The logout property</summary>
-        public LogoutRequestBuilder Logout { get =>
-            new LogoutRequestBuilder(PathParameters, RequestAdapter);
+        public LogoutRequestBuilder Logout
+        {
+            get => new LogoutRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The onetime property</summary>
-        public OnetimeRequestBuilder Onetime { get =>
-            new OnetimeRequestBuilder(PathParameters, RequestAdapter);
+        public OnetimeRequestBuilder Onetime
+        {
+            get => new OnetimeRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The resetpassword property</summary>
-        public ResetpasswordRequestBuilder Resetpassword { get =>
-            new ResetpasswordRequestBuilder(PathParameters, RequestAdapter);
+        public ResetpasswordRequestBuilder Resetpassword
+        {
+            get => new ResetpasswordRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The verifyemail property</summary>
-        public VerifyemailRequestBuilder Verifyemail { get =>
-            new VerifyemailRequestBuilder(PathParameters, RequestAdapter);
+        public VerifyemailRequestBuilder Verifyemail
+        {
+            get => new VerifyemailRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>
         /// Instantiates a new <see cref="AuthRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public AuthRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/users/auth", pathParameters) {
+        public AuthRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/users/auth", pathParameters)
+        {
         }
         /// <summary>
         /// Instantiates a new <see cref="AuthRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public AuthRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/users/auth", rawUrl) {
+        public AuthRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/users/auth", rawUrl)
+        {
         }
     }
 }

@@ -8,7 +8,8 @@ namespace Marqeta.Core.Sdk.Models {
     /// <summary>
     /// Contains information about currency conversion.
     /// </summary>
-    public class Currency_conversion : IAdditionalDataHolder, IParsable {
+    public class Currency_conversion : IAdditionalDataHolder, IParsable 
+    {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Contains information from the card network about currency conversion, including the original currency of the transaction, the amount of the transaction in the original currency, and the conversion rate.</summary>
@@ -22,7 +23,8 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>
         /// Instantiates a new <see cref="Currency_conversion"/> and sets the default values.
         /// </summary>
-        public Currency_conversion() {
+        public Currency_conversion()
+        {
             AdditionalData = new Dictionary<string, object>();
         }
         /// <summary>
@@ -30,7 +32,8 @@ namespace Marqeta.Core.Sdk.Models {
         /// </summary>
         /// <returns>A <see cref="Currency_conversion"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static Currency_conversion CreateFromDiscriminatorValue(IParseNode parseNode) {
+        public static Currency_conversion CreateFromDiscriminatorValue(IParseNode parseNode)
+        {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
             return new Currency_conversion();
         }
@@ -38,8 +41,10 @@ namespace Marqeta.Core.Sdk.Models {
         /// The deserialization information for the current model
         /// </summary>
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
-        public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers() {
-            return new Dictionary<string, Action<IParseNode>> {
+        public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
+        {
+            return new Dictionary<string, Action<IParseNode>>
+            {
                 {"network", n => { Network = n.GetObjectValue<Marqeta.Core.Sdk.Models.Network>(Marqeta.Core.Sdk.Models.Network.CreateFromDiscriminatorValue); } },
             };
         }
@@ -47,7 +52,8 @@ namespace Marqeta.Core.Sdk.Models {
         /// Serializes information the current object
         /// </summary>
         /// <param name="writer">Serialization writer to use to serialize this model</param>
-        public virtual void Serialize(ISerializationWriter writer) {
+        public virtual void Serialize(ISerializationWriter writer)
+        {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
             writer.WriteObjectValue<Marqeta.Core.Sdk.Models.Network>("network", Network);
             writer.WriteAdditionalData(AdditionalData);

@@ -13,28 +13,35 @@ namespace Marqeta.Core.Sdk.Fundingsources.Paymentcard {
     /// <summary>
     /// Builds and executes requests for operations under \fundingsources\paymentcard
     /// </summary>
-    public class PaymentcardRequestBuilder : BaseRequestBuilder {
+    public class PaymentcardRequestBuilder : BaseRequestBuilder 
+    {
         /// <summary>Gets an item from the Marqeta.Core.Sdk.fundingsources.paymentcard.item collection</summary>
         /// <param name="position">Unique identifier of the funding source.Send a `GET` request to `/fundingsources/user/{user_token}` to retrieve existing funding source tokens for a user or to `/fundingsources/business/{business_token}` to retrieve existing funding source tokens for a business.</param>
         /// <returns>A <see cref="WithFunding_source_tokenItemRequestBuilder"/></returns>
-        public WithFunding_source_tokenItemRequestBuilder this[string position] { get {
-            var urlTplParams = new Dictionary<string, object>(PathParameters);
-            urlTplParams.Add("funding_source_token", position);
-            return new WithFunding_source_tokenItemRequestBuilder(urlTplParams, RequestAdapter);
-        } }
+        public WithFunding_source_tokenItemRequestBuilder this[string position]
+        {
+            get
+            {
+                var urlTplParams = new Dictionary<string, object>(PathParameters);
+                urlTplParams.Add("funding_source_token", position);
+                return new WithFunding_source_tokenItemRequestBuilder(urlTplParams, RequestAdapter);
+            }
+        }
         /// <summary>
         /// Instantiates a new <see cref="PaymentcardRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public PaymentcardRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/fundingsources/paymentcard", pathParameters) {
+        public PaymentcardRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/fundingsources/paymentcard", pathParameters)
+        {
         }
         /// <summary>
         /// Instantiates a new <see cref="PaymentcardRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public PaymentcardRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/fundingsources/paymentcard", rawUrl) {
+        public PaymentcardRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/fundingsources/paymentcard", rawUrl)
+        {
         }
         /// <summary>
         /// Create a payment card funding source for an existing account holder.This endpoint returns the card type and the last four digits of the card, and then sets the `active_ field` to `true`.Marqeta retains only a tokenized representation of the card number.
@@ -46,14 +53,17 @@ namespace Marqeta.Core.Sdk.Fundingsources.Paymentcard {
         /// <exception cref="ApiError">When receiving a 4XX or 5XX status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<Payment_card_response_model?> PostAsync(Token_request body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default) {
+        public async Task<Payment_card_response_model?> PostAsync(Token_request body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        {
 #nullable restore
 #else
-        public async Task<Payment_card_response_model> PostAsync(Token_request body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default) {
+        public async Task<Payment_card_response_model> PostAsync(Token_request body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        {
 #endif
             _ = body ?? throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPostRequestInformation(body, requestConfiguration);
-            var errorMapping = new Dictionary<string, ParsableFactory<IParsable>> {
+            var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
+            {
                 {"XXX", ApiError.CreateFromDiscriminatorValue},
             };
             return await RequestAdapter.SendAsync<Payment_card_response_model>(requestInfo, Payment_card_response_model.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
@@ -66,10 +76,12 @@ namespace Marqeta.Core.Sdk.Fundingsources.Paymentcard {
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToPostRequestInformation(Token_request body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default) {
+        public RequestInformation ToPostRequestInformation(Token_request body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
+        {
 #nullable restore
 #else
-        public RequestInformation ToPostRequestInformation(Token_request body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default) {
+        public RequestInformation ToPostRequestInformation(Token_request body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
+        {
 #endif
             _ = body ?? throw new ArgumentNullException(nameof(body));
             var requestInfo = new RequestInformation(Method.POST, UrlTemplate, PathParameters);
@@ -83,7 +95,8 @@ namespace Marqeta.Core.Sdk.Fundingsources.Paymentcard {
         /// </summary>
         /// <returns>A <see cref="PaymentcardRequestBuilder"/></returns>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
-        public PaymentcardRequestBuilder WithUrl(string rawUrl) {
+        public PaymentcardRequestBuilder WithUrl(string rawUrl)
+        {
             return new PaymentcardRequestBuilder(rawUrl, RequestAdapter);
         }
     }

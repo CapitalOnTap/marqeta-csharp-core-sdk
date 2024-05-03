@@ -3,8 +3,11 @@ using System.Runtime.Serialization;
 using System;
 namespace Marqeta.Core.Sdk.Models {
     /// <summary>Method used to calculate the fee value.</summary>
-    public enum PolicyFeePayment_default_method {
+    public enum PolicyFeePayment_default_method
+    {
         [EnumMember(Value = "FLAT")]
+        #pragma warning disable CS1591
         FLAT,
+        #pragma warning restore CS1591
     }
 }

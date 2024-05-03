@@ -8,7 +8,8 @@ namespace Marqeta.Core.Sdk.Models {
     /// <summary>
     /// Request body for a Card Group object
     /// </summary>
-    public class CardGroup : IAdditionalDataHolder, IParsable {
+    public class CardGroup : IAdditionalDataHolder, IParsable 
+    {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Array of card tokens associated with group. There will be at least one card token in the array.</summary>
@@ -58,7 +59,8 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>
         /// Instantiates a new <see cref="CardGroup"/> and sets the default values.
         /// </summary>
-        public CardGroup() {
+        public CardGroup()
+        {
             AdditionalData = new Dictionary<string, object>();
         }
         /// <summary>
@@ -66,7 +68,8 @@ namespace Marqeta.Core.Sdk.Models {
         /// </summary>
         /// <returns>A <see cref="CardGroup"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static CardGroup CreateFromDiscriminatorValue(IParseNode parseNode) {
+        public static CardGroup CreateFromDiscriminatorValue(IParseNode parseNode)
+        {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
             return new CardGroup();
         }
@@ -74,8 +77,10 @@ namespace Marqeta.Core.Sdk.Models {
         /// The deserialization information for the current model
         /// </summary>
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
-        public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers() {
-            return new Dictionary<string, Action<IParseNode>> {
+        public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
+        {
+            return new Dictionary<string, Action<IParseNode>>
+            {
                 {"card_tokens", n => { CardTokens = n.GetCollectionOfPrimitiveValues<string>()?.ToList(); } },
                 {"created_time", n => { CreatedTime = n.GetDateTimeOffsetValue(); } },
                 {"last_issued_card_token", n => { LastIssuedCardToken = n.GetStringValue(); } },
@@ -89,7 +94,8 @@ namespace Marqeta.Core.Sdk.Models {
         /// Serializes information the current object
         /// </summary>
         /// <param name="writer">Serialization writer to use to serialize this model</param>
-        public virtual void Serialize(ISerializationWriter writer) {
+        public virtual void Serialize(ISerializationWriter writer)
+        {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
             writer.WriteCollectionOfPrimitiveValues<string>("card_tokens", CardTokens);
             writer.WriteDateTimeOffsetValue("created_time", CreatedTime);

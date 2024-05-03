@@ -15,36 +15,45 @@ namespace Marqeta.Core.Sdk.Directdeposits {
     /// <summary>
     /// Builds and executes requests for operations under \directdeposits
     /// </summary>
-    public class DirectdepositsRequestBuilder : BaseRequestBuilder {
+    public class DirectdepositsRequestBuilder : BaseRequestBuilder 
+    {
         /// <summary>The accounts property</summary>
-        public AccountsRequestBuilder Accounts { get =>
-            new AccountsRequestBuilder(PathParameters, RequestAdapter);
+        public AccountsRequestBuilder Accounts
+        {
+            get => new AccountsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The transitions property</summary>
-        public TransitionsRequestBuilder Transitions { get =>
-            new TransitionsRequestBuilder(PathParameters, RequestAdapter);
+        public TransitionsRequestBuilder Transitions
+        {
+            get => new TransitionsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>Gets an item from the Marqeta.Core.Sdk.directdeposits.item collection</summary>
         /// <param name="position">Unique identifier of the item</param>
         /// <returns>A <see cref="WithTokenItemRequestBuilder"/></returns>
-        public WithTokenItemRequestBuilder this[string position] { get {
-            var urlTplParams = new Dictionary<string, object>(PathParameters);
-            urlTplParams.Add("token", position);
-            return new WithTokenItemRequestBuilder(urlTplParams, RequestAdapter);
-        } }
+        public WithTokenItemRequestBuilder this[string position]
+        {
+            get
+            {
+                var urlTplParams = new Dictionary<string, object>(PathParameters);
+                urlTplParams.Add("token", position);
+                return new WithTokenItemRequestBuilder(urlTplParams, RequestAdapter);
+            }
+        }
         /// <summary>
         /// Instantiates a new <see cref="DirectdepositsRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public DirectdepositsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/directdeposits{?business_token*,count*,direct_deposit_state*,end_settlement_date*,reversed_after_grace_period*,sort_by*,start_index*,start_settlement_date*,user_token*}", pathParameters) {
+        public DirectdepositsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/directdeposits{?business_token*,count*,direct_deposit_state*,end_settlement_date*,reversed_after_grace_period*,sort_by*,start_index*,start_settlement_date*,user_token*}", pathParameters)
+        {
         }
         /// <summary>
         /// Instantiates a new <see cref="DirectdepositsRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public DirectdepositsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/directdeposits{?business_token*,count*,direct_deposit_state*,end_settlement_date*,reversed_after_grace_period*,sort_by*,start_index*,start_settlement_date*,user_token*}", rawUrl) {
+        public DirectdepositsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/directdeposits{?business_token*,count*,direct_deposit_state*,end_settlement_date*,reversed_after_grace_period*,sort_by*,start_index*,start_settlement_date*,user_token*}", rawUrl)
+        {
         }
         /// <summary>
         /// Retrieves a list of all direct deposit records for your program.
@@ -55,13 +64,16 @@ namespace Marqeta.Core.Sdk.Directdeposits {
         /// <exception cref="ApiError">When receiving a 4XX or 5XX status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<DirectDepositListResponse?> GetAsync(Action<RequestConfiguration<DirectdepositsRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default) {
+        public async Task<DirectDepositListResponse?> GetAsync(Action<RequestConfiguration<DirectdepositsRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        {
 #nullable restore
 #else
-        public async Task<DirectDepositListResponse> GetAsync(Action<RequestConfiguration<DirectdepositsRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default) {
+        public async Task<DirectDepositListResponse> GetAsync(Action<RequestConfiguration<DirectdepositsRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            var errorMapping = new Dictionary<string, ParsableFactory<IParsable>> {
+            var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
+            {
                 {"XXX", ApiError.CreateFromDiscriminatorValue},
             };
             return await RequestAdapter.SendAsync<DirectDepositListResponse>(requestInfo, DirectDepositListResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
@@ -73,10 +85,12 @@ namespace Marqeta.Core.Sdk.Directdeposits {
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<DirectdepositsRequestBuilderGetQueryParameters>>? requestConfiguration = default) {
+        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<DirectdepositsRequestBuilderGetQueryParameters>>? requestConfiguration = default)
+        {
 #nullable restore
 #else
-        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<DirectdepositsRequestBuilderGetQueryParameters>> requestConfiguration = default) {
+        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<DirectdepositsRequestBuilderGetQueryParameters>> requestConfiguration = default)
+        {
 #endif
             var requestInfo = new RequestInformation(Method.GET, UrlTemplate, PathParameters);
             requestInfo.Configure(requestConfiguration);
@@ -88,13 +102,15 @@ namespace Marqeta.Core.Sdk.Directdeposits {
         /// </summary>
         /// <returns>A <see cref="DirectdepositsRequestBuilder"/></returns>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
-        public DirectdepositsRequestBuilder WithUrl(string rawUrl) {
+        public DirectdepositsRequestBuilder WithUrl(string rawUrl)
+        {
             return new DirectdepositsRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
         /// Retrieves a list of all direct deposit records for your program.
         /// </summary>
-        public class DirectdepositsRequestBuilderGetQueryParameters {
+        public class DirectdepositsRequestBuilderGetQueryParameters 
+        {
             /// <summary>Business token</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable

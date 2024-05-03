@@ -12,20 +12,23 @@ namespace Marqeta.Core.Sdk.Digitalwallets.Wpp.ApplePayJWT {
     /// <summary>
     /// Builds and executes requests for operations under \digitalwallets\wpp\applePayJWT
     /// </summary>
-    public class ApplePayJWTRequestBuilder : BaseRequestBuilder {
+    public class ApplePayJWTRequestBuilder : BaseRequestBuilder 
+    {
         /// <summary>
         /// Instantiates a new <see cref="ApplePayJWTRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public ApplePayJWTRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/digitalwallets/wpp/applePayJWT", pathParameters) {
+        public ApplePayJWTRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/digitalwallets/wpp/applePayJWT", pathParameters)
+        {
         }
         /// <summary>
         /// Instantiates a new <see cref="ApplePayJWTRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public ApplePayJWTRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/digitalwallets/wpp/applePayJWT", rawUrl) {
+        public ApplePayJWTRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/digitalwallets/wpp/applePayJWT", rawUrl)
+        {
         }
         /// <summary>
         /// [NOTE]This endpoint is currently in beta and subject to change.For more information, contact your Marqeta representative.Use this endpoint to add a card to Apple Wallet via a web application.
@@ -37,14 +40,17 @@ namespace Marqeta.Core.Sdk.Digitalwallets.Wpp.ApplePayJWT {
         /// <exception cref="ApiError">When receiving a 4XX or 5XX status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<Web_push_provisioning_apple_pay_JWT_response?> PostAsync(Request_for_apple_pay_wpp_JWT body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default) {
+        public async Task<Web_push_provisioning_apple_pay_JWT_response?> PostAsync(Request_for_apple_pay_wpp_JWT body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        {
 #nullable restore
 #else
-        public async Task<Web_push_provisioning_apple_pay_JWT_response> PostAsync(Request_for_apple_pay_wpp_JWT body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default) {
+        public async Task<Web_push_provisioning_apple_pay_JWT_response> PostAsync(Request_for_apple_pay_wpp_JWT body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        {
 #endif
             _ = body ?? throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPostRequestInformation(body, requestConfiguration);
-            var errorMapping = new Dictionary<string, ParsableFactory<IParsable>> {
+            var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
+            {
                 {"XXX", ApiError.CreateFromDiscriminatorValue},
             };
             return await RequestAdapter.SendAsync<Web_push_provisioning_apple_pay_JWT_response>(requestInfo, Web_push_provisioning_apple_pay_JWT_response.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
@@ -57,10 +63,12 @@ namespace Marqeta.Core.Sdk.Digitalwallets.Wpp.ApplePayJWT {
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToPostRequestInformation(Request_for_apple_pay_wpp_JWT body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default) {
+        public RequestInformation ToPostRequestInformation(Request_for_apple_pay_wpp_JWT body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
+        {
 #nullable restore
 #else
-        public RequestInformation ToPostRequestInformation(Request_for_apple_pay_wpp_JWT body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default) {
+        public RequestInformation ToPostRequestInformation(Request_for_apple_pay_wpp_JWT body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
+        {
 #endif
             _ = body ?? throw new ArgumentNullException(nameof(body));
             var requestInfo = new RequestInformation(Method.POST, UrlTemplate, PathParameters);
@@ -74,7 +82,8 @@ namespace Marqeta.Core.Sdk.Digitalwallets.Wpp.ApplePayJWT {
         /// </summary>
         /// <returns>A <see cref="ApplePayJWTRequestBuilder"/></returns>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
-        public ApplePayJWTRequestBuilder WithUrl(string rawUrl) {
+        public ApplePayJWTRequestBuilder WithUrl(string rawUrl)
+        {
             return new ApplePayJWTRequestBuilder(rawUrl, RequestAdapter);
         }
     }

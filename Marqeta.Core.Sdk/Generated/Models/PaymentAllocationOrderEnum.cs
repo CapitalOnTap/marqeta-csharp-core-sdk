@@ -3,12 +3,19 @@ using System.Runtime.Serialization;
 using System;
 namespace Marqeta.Core.Sdk.Models {
     /// <summary>Ordered list of balance types to which payments are allocated, from first to last.</summary>
-    public enum PaymentAllocationOrderEnum {
+    public enum PaymentAllocationOrderEnum
+    {
         [EnumMember(Value = "INTEREST")]
+        #pragma warning disable CS1591
         INTEREST,
+        #pragma warning restore CS1591
         [EnumMember(Value = "FEES")]
+        #pragma warning disable CS1591
         FEES,
+        #pragma warning restore CS1591
         [EnumMember(Value = "PRINCIPAL")]
+        #pragma warning disable CS1591
         PRINCIPAL,
+        #pragma warning restore CS1591
     }
 }

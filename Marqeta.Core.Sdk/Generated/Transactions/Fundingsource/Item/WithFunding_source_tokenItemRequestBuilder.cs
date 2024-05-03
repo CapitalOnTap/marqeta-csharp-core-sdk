@@ -12,20 +12,23 @@ namespace Marqeta.Core.Sdk.Transactions.Fundingsource.Item {
     /// <summary>
     /// Builds and executes requests for operations under \transactions\fundingsource\{funding_source_token}
     /// </summary>
-    public class WithFunding_source_tokenItemRequestBuilder : BaseRequestBuilder {
+    public class WithFunding_source_tokenItemRequestBuilder : BaseRequestBuilder 
+    {
         /// <summary>
         /// Instantiates a new <see cref="WithFunding_source_tokenItemRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public WithFunding_source_tokenItemRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/transactions/fundingsource/{funding_source_token}{?count*,end_date*,fields*,polarity*,sort_by*,start_date*,start_index*,type*,verbose*,version*}", pathParameters) {
+        public WithFunding_source_tokenItemRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/transactions/fundingsource/{funding_source_token}{?count*,end_date*,fields*,polarity*,sort_by*,start_date*,start_index*,type*,verbose*,version*}", pathParameters)
+        {
         }
         /// <summary>
         /// Instantiates a new <see cref="WithFunding_source_tokenItemRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public WithFunding_source_tokenItemRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/transactions/fundingsource/{funding_source_token}{?count*,end_date*,fields*,polarity*,sort_by*,start_date*,start_index*,type*,verbose*,version*}", rawUrl) {
+        public WithFunding_source_tokenItemRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/transactions/fundingsource/{funding_source_token}{?count*,end_date*,fields*,polarity*,sort_by*,start_date*,start_index*,type*,verbose*,version*}", rawUrl)
+        {
         }
         /// <summary>
         /// List transactions for a specific funding source.By default, this endpoint returns transactions conducted within the last 30 days.To return transactions older than 30 days, you must include the `start_date` and `end_date` query parameters in your request.By default, `GET /transactions/fundingsource/{funding_source_token}` returns transactions having either `PENDING` or `COMPLETION` states.This endpoint supports &lt;&lt;/core-api/field-filtering, field filtering&gt;&gt; and &lt;&lt;/core-api/sorting-and-pagination, pagination&gt;&gt;.
@@ -36,13 +39,16 @@ namespace Marqeta.Core.Sdk.Transactions.Fundingsource.Item {
         /// <exception cref="ApiError">When receiving a 4XX or 5XX status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<TransactionModelListResponse?> GetAsync(Action<RequestConfiguration<WithFunding_source_tokenItemRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default) {
+        public async Task<TransactionModelListResponse?> GetAsync(Action<RequestConfiguration<WithFunding_source_tokenItemRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        {
 #nullable restore
 #else
-        public async Task<TransactionModelListResponse> GetAsync(Action<RequestConfiguration<WithFunding_source_tokenItemRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default) {
+        public async Task<TransactionModelListResponse> GetAsync(Action<RequestConfiguration<WithFunding_source_tokenItemRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            var errorMapping = new Dictionary<string, ParsableFactory<IParsable>> {
+            var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
+            {
                 {"XXX", ApiError.CreateFromDiscriminatorValue},
             };
             return await RequestAdapter.SendAsync<TransactionModelListResponse>(requestInfo, TransactionModelListResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
@@ -54,10 +60,12 @@ namespace Marqeta.Core.Sdk.Transactions.Fundingsource.Item {
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<WithFunding_source_tokenItemRequestBuilderGetQueryParameters>>? requestConfiguration = default) {
+        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<WithFunding_source_tokenItemRequestBuilderGetQueryParameters>>? requestConfiguration = default)
+        {
 #nullable restore
 #else
-        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<WithFunding_source_tokenItemRequestBuilderGetQueryParameters>> requestConfiguration = default) {
+        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<WithFunding_source_tokenItemRequestBuilderGetQueryParameters>> requestConfiguration = default)
+        {
 #endif
             var requestInfo = new RequestInformation(Method.GET, UrlTemplate, PathParameters);
             requestInfo.Configure(requestConfiguration);
@@ -69,13 +77,15 @@ namespace Marqeta.Core.Sdk.Transactions.Fundingsource.Item {
         /// </summary>
         /// <returns>A <see cref="WithFunding_source_tokenItemRequestBuilder"/></returns>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
-        public WithFunding_source_tokenItemRequestBuilder WithUrl(string rawUrl) {
+        public WithFunding_source_tokenItemRequestBuilder WithUrl(string rawUrl)
+        {
             return new WithFunding_source_tokenItemRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
         /// List transactions for a specific funding source.By default, this endpoint returns transactions conducted within the last 30 days.To return transactions older than 30 days, you must include the `start_date` and `end_date` query parameters in your request.By default, `GET /transactions/fundingsource/{funding_source_token}` returns transactions having either `PENDING` or `COMPLETION` states.This endpoint supports &lt;&lt;/core-api/field-filtering, field filtering&gt;&gt; and &lt;&lt;/core-api/sorting-and-pagination, pagination&gt;&gt;.
         /// </summary>
-        public class WithFunding_source_tokenItemRequestBuilderGetQueryParameters {
+        public class WithFunding_source_tokenItemRequestBuilderGetQueryParameters 
+        {
             /// <summary>The number of transactions to retrieve.</summary>
             [QueryParameter("count")]
             public int? Count { get; set; }

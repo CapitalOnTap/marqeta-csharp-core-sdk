@@ -5,7 +5,10 @@ using System.IO;
 using System.Linq;
 using System;
 namespace Marqeta.Core.Sdk.Models {
-    public class Auth_control_request : IAdditionalDataHolder, IParsable {
+    #pragma warning disable CS1591
+    public class Auth_control_request : IAdditionalDataHolder, IParsable 
+    #pragma warning restore CS1591
+    {
         /// <summary>Indicates whether the authorization control is active.</summary>
         public bool? Active { get; set; }
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -49,7 +52,8 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>
         /// Instantiates a new <see cref="Auth_control_request"/> and sets the default values.
         /// </summary>
-        public Auth_control_request() {
+        public Auth_control_request()
+        {
             AdditionalData = new Dictionary<string, object>();
         }
         /// <summary>
@@ -57,7 +61,8 @@ namespace Marqeta.Core.Sdk.Models {
         /// </summary>
         /// <returns>A <see cref="Auth_control_request"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static Auth_control_request CreateFromDiscriminatorValue(IParseNode parseNode) {
+        public static Auth_control_request CreateFromDiscriminatorValue(IParseNode parseNode)
+        {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
             return new Auth_control_request();
         }
@@ -65,8 +70,10 @@ namespace Marqeta.Core.Sdk.Models {
         /// The deserialization information for the current model
         /// </summary>
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
-        public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers() {
-            return new Dictionary<string, Action<IParseNode>> {
+        public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
+        {
+            return new Dictionary<string, Action<IParseNode>>
+            {
                 {"active", n => { Active = n.GetBoolValue(); } },
                 {"association", n => { Association = n.GetObjectValue<Spend_control_association>(Spend_control_association.CreateFromDiscriminatorValue); } },
                 {"end_time", n => { EndTime = n.GetDateTimeOffsetValue(); } },
@@ -80,7 +87,8 @@ namespace Marqeta.Core.Sdk.Models {
         /// Serializes information the current object
         /// </summary>
         /// <param name="writer">Serialization writer to use to serialize this model</param>
-        public virtual void Serialize(ISerializationWriter writer) {
+        public virtual void Serialize(ISerializationWriter writer)
+        {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
             writer.WriteBoolValue("active", Active);
             writer.WriteObjectValue<Spend_control_association>("association", Association);

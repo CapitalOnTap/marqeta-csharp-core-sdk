@@ -14,32 +14,40 @@ namespace Marqeta.Core.Sdk.Rewardprograms.Item.Entries {
     /// <summary>
     /// Builds and executes requests for operations under \rewardprograms\{token}\entries
     /// </summary>
-    public class EntriesRequestBuilder : BaseRequestBuilder {
+    public class EntriesRequestBuilder : BaseRequestBuilder 
+    {
         /// <summary>The balance property</summary>
-        public BalanceRequestBuilder Balance { get =>
-            new BalanceRequestBuilder(PathParameters, RequestAdapter);
+        public BalanceRequestBuilder Balance
+        {
+            get => new BalanceRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>Gets an item from the Marqeta.Core.Sdk.rewardprograms.item.entries.item collection</summary>
         /// <param name="position">Unique identifier of the reward entry to retrieve.</param>
         /// <returns>A <see cref="WithEntry_tokenItemRequestBuilder"/></returns>
-        public WithEntry_tokenItemRequestBuilder this[string position] { get {
-            var urlTplParams = new Dictionary<string, object>(PathParameters);
-            urlTplParams.Add("entry_token", position);
-            return new WithEntry_tokenItemRequestBuilder(urlTplParams, RequestAdapter);
-        } }
+        public WithEntry_tokenItemRequestBuilder this[string position]
+        {
+            get
+            {
+                var urlTplParams = new Dictionary<string, object>(PathParameters);
+                urlTplParams.Add("entry_token", position);
+                return new WithEntry_tokenItemRequestBuilder(urlTplParams, RequestAdapter);
+            }
+        }
         /// <summary>
         /// Instantiates a new <see cref="EntriesRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public EntriesRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/rewardprograms/{token}/entries{?count*,end_date*,sort_by*,start_date*,start_index*,status*}", pathParameters) {
+        public EntriesRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/rewardprograms/{token}/entries{?count*,end_date*,sort_by*,start_date*,start_index*,status*}", pathParameters)
+        {
         }
         /// <summary>
         /// Instantiates a new <see cref="EntriesRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public EntriesRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/rewardprograms/{token}/entries{?count*,end_date*,sort_by*,start_date*,start_index*,status*}", rawUrl) {
+        public EntriesRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/rewardprograms/{token}/entries{?count*,end_date*,sort_by*,start_date*,start_index*,status*}", rawUrl)
+        {
         }
         /// <summary>
         /// Retrieve an array of reward entries on a specific reward program.The reward accrual service calculates values to four-decimal precision, however the `/credit/rewardprograms/{token}/entries/balance` endpoint returns pending and accrued balances to two-decimal precision.
@@ -50,13 +58,16 @@ namespace Marqeta.Core.Sdk.Rewardprograms.Item.Entries {
         /// <exception cref="ApiError">When receiving a 4XX or 5XX status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<RewardProgramsEntriesPage?> GetAsync(Action<RequestConfiguration<EntriesRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default) {
+        public async Task<RewardProgramsEntriesPage?> GetAsync(Action<RequestConfiguration<EntriesRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        {
 #nullable restore
 #else
-        public async Task<RewardProgramsEntriesPage> GetAsync(Action<RequestConfiguration<EntriesRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default) {
+        public async Task<RewardProgramsEntriesPage> GetAsync(Action<RequestConfiguration<EntriesRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            var errorMapping = new Dictionary<string, ParsableFactory<IParsable>> {
+            var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
+            {
                 {"XXX", ApiError.CreateFromDiscriminatorValue},
             };
             return await RequestAdapter.SendAsync<RewardProgramsEntriesPage>(requestInfo, RewardProgramsEntriesPage.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
@@ -71,14 +82,17 @@ namespace Marqeta.Core.Sdk.Rewardprograms.Item.Entries {
         /// <exception cref="ApiError">When receiving a 4XX or 5XX status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<RewardProgramsEntriesResponse?> PostAsync(CreateRewardProgramsEntriesRequest body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default) {
+        public async Task<RewardProgramsEntriesResponse?> PostAsync(CreateRewardProgramsEntriesRequest body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        {
 #nullable restore
 #else
-        public async Task<RewardProgramsEntriesResponse> PostAsync(CreateRewardProgramsEntriesRequest body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default) {
+        public async Task<RewardProgramsEntriesResponse> PostAsync(CreateRewardProgramsEntriesRequest body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        {
 #endif
             _ = body ?? throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPostRequestInformation(body, requestConfiguration);
-            var errorMapping = new Dictionary<string, ParsableFactory<IParsable>> {
+            var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
+            {
                 {"XXX", ApiError.CreateFromDiscriminatorValue},
             };
             return await RequestAdapter.SendAsync<RewardProgramsEntriesResponse>(requestInfo, RewardProgramsEntriesResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
@@ -90,10 +104,12 @@ namespace Marqeta.Core.Sdk.Rewardprograms.Item.Entries {
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<EntriesRequestBuilderGetQueryParameters>>? requestConfiguration = default) {
+        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<EntriesRequestBuilderGetQueryParameters>>? requestConfiguration = default)
+        {
 #nullable restore
 #else
-        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<EntriesRequestBuilderGetQueryParameters>> requestConfiguration = default) {
+        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<EntriesRequestBuilderGetQueryParameters>> requestConfiguration = default)
+        {
 #endif
             var requestInfo = new RequestInformation(Method.GET, UrlTemplate, PathParameters);
             requestInfo.Configure(requestConfiguration);
@@ -108,13 +124,15 @@ namespace Marqeta.Core.Sdk.Rewardprograms.Item.Entries {
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToPostRequestInformation(CreateRewardProgramsEntriesRequest body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default) {
+        public RequestInformation ToPostRequestInformation(CreateRewardProgramsEntriesRequest body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
+        {
 #nullable restore
 #else
-        public RequestInformation ToPostRequestInformation(CreateRewardProgramsEntriesRequest body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default) {
+        public RequestInformation ToPostRequestInformation(CreateRewardProgramsEntriesRequest body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
+        {
 #endif
             _ = body ?? throw new ArgumentNullException(nameof(body));
-            var requestInfo = new RequestInformation(Method.POST, "{+baseurl}/rewardprograms/{token}/entries", PathParameters);
+            var requestInfo = new RequestInformation(Method.POST, UrlTemplate, PathParameters);
             requestInfo.Configure(requestConfiguration);
             requestInfo.Headers.TryAdd("Accept", "application/json");
             requestInfo.SetContentFromParsable(RequestAdapter, "application/json", body);
@@ -125,13 +143,15 @@ namespace Marqeta.Core.Sdk.Rewardprograms.Item.Entries {
         /// </summary>
         /// <returns>A <see cref="EntriesRequestBuilder"/></returns>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
-        public EntriesRequestBuilder WithUrl(string rawUrl) {
+        public EntriesRequestBuilder WithUrl(string rawUrl)
+        {
             return new EntriesRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
         /// Retrieve an array of reward entries on a specific reward program.The reward accrual service calculates values to four-decimal precision, however the `/credit/rewardprograms/{token}/entries/balance` endpoint returns pending and accrued balances to two-decimal precision.
         /// </summary>
-        public class EntriesRequestBuilderGetQueryParameters {
+        public class EntriesRequestBuilderGetQueryParameters 
+        {
             /// <summary>Number of resources to retrieve.</summary>
             [QueryParameter("count")]
             public int? Count { get; set; }

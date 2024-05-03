@@ -8,7 +8,8 @@ namespace Marqeta.Core.Sdk.Models {
     /// <summary>
     /// Defines the type of order.
     /// </summary>
-    public class Gpa : IAdditionalDataHolder, IParsable {
+    public class Gpa : IAdditionalDataHolder, IParsable 
+    {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Available balance on the card after the reload has completed.This value must be greater than or equal to the value of `trigger_amount`.Note that this is not the same as the amount added to the card, which will vary from reload to reload.</summary>
@@ -18,7 +19,8 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>
         /// Instantiates a new <see cref="Gpa"/> and sets the default values.
         /// </summary>
-        public Gpa() {
+        public Gpa()
+        {
             AdditionalData = new Dictionary<string, object>();
         }
         /// <summary>
@@ -26,7 +28,8 @@ namespace Marqeta.Core.Sdk.Models {
         /// </summary>
         /// <returns>A <see cref="Gpa"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static Gpa CreateFromDiscriminatorValue(IParseNode parseNode) {
+        public static Gpa CreateFromDiscriminatorValue(IParseNode parseNode)
+        {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
             return new Gpa();
         }
@@ -34,8 +37,10 @@ namespace Marqeta.Core.Sdk.Models {
         /// The deserialization information for the current model
         /// </summary>
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
-        public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers() {
-            return new Dictionary<string, Action<IParseNode>> {
+        public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
+        {
+            return new Dictionary<string, Action<IParseNode>>
+            {
                 {"reload_amount", n => { ReloadAmount = n.GetDoubleValue(); } },
                 {"trigger_amount", n => { TriggerAmount = n.GetDoubleValue(); } },
             };
@@ -44,7 +49,8 @@ namespace Marqeta.Core.Sdk.Models {
         /// Serializes information the current object
         /// </summary>
         /// <param name="writer">Serialization writer to use to serialize this model</param>
-        public virtual void Serialize(ISerializationWriter writer) {
+        public virtual void Serialize(ISerializationWriter writer)
+        {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
             writer.WriteDoubleValue("reload_amount", ReloadAmount);
             writer.WriteDoubleValue("trigger_amount", TriggerAmount);

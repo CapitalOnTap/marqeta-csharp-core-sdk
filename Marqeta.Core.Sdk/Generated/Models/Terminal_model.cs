@@ -8,7 +8,8 @@ namespace Marqeta.Core.Sdk.Models {
     /// <summary>
     /// Contains information about the point of sale, including details on how the card was presented.Returned if provided by the card network, and the request uses Transaction Model v1 of the Marqeta Core API.Not returned for Transaction Model v2 requests.
     /// </summary>
-    public class Terminal_model : IAdditionalDataHolder, IParsable {
+    public class Terminal_model : IAdditionalDataHolder, IParsable 
+    {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Indicates whether the cardholder was present during the transaction.</summary>
@@ -64,7 +65,8 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>
         /// Instantiates a new <see cref="Terminal_model"/> and sets the default values.
         /// </summary>
-        public Terminal_model() {
+        public Terminal_model()
+        {
             AdditionalData = new Dictionary<string, object>();
         }
         /// <summary>
@@ -72,7 +74,8 @@ namespace Marqeta.Core.Sdk.Models {
         /// </summary>
         /// <returns>A <see cref="Terminal_model"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static Terminal_model CreateFromDiscriminatorValue(IParseNode parseNode) {
+        public static Terminal_model CreateFromDiscriminatorValue(IParseNode parseNode)
+        {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
             return new Terminal_model();
         }
@@ -80,8 +83,10 @@ namespace Marqeta.Core.Sdk.Models {
         /// The deserialization information for the current model
         /// </summary>
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
-        public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers() {
-            return new Dictionary<string, Action<IParseNode>> {
+        public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
+        {
+            return new Dictionary<string, Action<IParseNode>>
+            {
                 {"card_presence", n => { CardPresence = n.GetStringValue(); } },
                 {"cardholder_presence", n => { CardholderPresence = n.GetStringValue(); } },
                 {"partial_approval_capable", n => { PartialApprovalCapable = n.GetStringValue(); } },
@@ -95,7 +100,8 @@ namespace Marqeta.Core.Sdk.Models {
         /// Serializes information the current object
         /// </summary>
         /// <param name="writer">Serialization writer to use to serialize this model</param>
-        public virtual void Serialize(ISerializationWriter writer) {
+        public virtual void Serialize(ISerializationWriter writer)
+        {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("cardholder_presence", CardholderPresence);
             writer.WriteStringValue("card_presence", CardPresence);

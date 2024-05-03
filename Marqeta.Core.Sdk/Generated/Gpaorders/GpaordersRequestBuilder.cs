@@ -14,32 +14,40 @@ namespace Marqeta.Core.Sdk.Gpaorders {
     /// <summary>
     /// Builds and executes requests for operations under \gpaorders
     /// </summary>
-    public class GpaordersRequestBuilder : BaseRequestBuilder {
+    public class GpaordersRequestBuilder : BaseRequestBuilder 
+    {
         /// <summary>The unloads property</summary>
-        public UnloadsRequestBuilder Unloads { get =>
-            new UnloadsRequestBuilder(PathParameters, RequestAdapter);
+        public UnloadsRequestBuilder Unloads
+        {
+            get => new UnloadsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>Gets an item from the Marqeta.Core.Sdk.gpaorders.item collection</summary>
         /// <param name="position">Unique identifier of the GPA order.Send a `GET` request to `/transactions?type=gpa.credit` to retrieve GPA order tokens.</param>
         /// <returns>A <see cref="WithTokenItemRequestBuilder"/></returns>
-        public WithTokenItemRequestBuilder this[string position] { get {
-            var urlTplParams = new Dictionary<string, object>(PathParameters);
-            urlTplParams.Add("token", position);
-            return new WithTokenItemRequestBuilder(urlTplParams, RequestAdapter);
-        } }
+        public WithTokenItemRequestBuilder this[string position]
+        {
+            get
+            {
+                var urlTplParams = new Dictionary<string, object>(PathParameters);
+                urlTplParams.Add("token", position);
+                return new WithTokenItemRequestBuilder(urlTplParams, RequestAdapter);
+            }
+        }
         /// <summary>
         /// Instantiates a new <see cref="GpaordersRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public GpaordersRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/gpaorders", pathParameters) {
+        public GpaordersRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/gpaorders", pathParameters)
+        {
         }
         /// <summary>
         /// Instantiates a new <see cref="GpaordersRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public GpaordersRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/gpaorders", rawUrl) {
+        public GpaordersRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/gpaorders", rawUrl)
+        {
         }
         /// <summary>
         /// Use this endpoint to create an order to fund an account holder&apos;s GPA.You can assess a &lt;&lt;/core-api/fees, fee&gt;&gt; while funding a GPA by using the optional `fees` array to attach one or more fee resources to the GPA order.When you create a GPA order, the GPA is first credited for the fees, then debited at funding time.
@@ -51,14 +59,17 @@ namespace Marqeta.Core.Sdk.Gpaorders {
         /// <exception cref="ApiError">When receiving a 4XX or 5XX status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<Gpa_response?> PostAsync(Gpa_request body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default) {
+        public async Task<Gpa_response?> PostAsync(Gpa_request body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        {
 #nullable restore
 #else
-        public async Task<Gpa_response> PostAsync(Gpa_request body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default) {
+        public async Task<Gpa_response> PostAsync(Gpa_request body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        {
 #endif
             _ = body ?? throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPostRequestInformation(body, requestConfiguration);
-            var errorMapping = new Dictionary<string, ParsableFactory<IParsable>> {
+            var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
+            {
                 {"XXX", ApiError.CreateFromDiscriminatorValue},
             };
             return await RequestAdapter.SendAsync<Gpa_response>(requestInfo, Gpa_response.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
@@ -71,10 +82,12 @@ namespace Marqeta.Core.Sdk.Gpaorders {
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToPostRequestInformation(Gpa_request body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default) {
+        public RequestInformation ToPostRequestInformation(Gpa_request body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
+        {
 #nullable restore
 #else
-        public RequestInformation ToPostRequestInformation(Gpa_request body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default) {
+        public RequestInformation ToPostRequestInformation(Gpa_request body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
+        {
 #endif
             _ = body ?? throw new ArgumentNullException(nameof(body));
             var requestInfo = new RequestInformation(Method.POST, UrlTemplate, PathParameters);
@@ -88,7 +101,8 @@ namespace Marqeta.Core.Sdk.Gpaorders {
         /// </summary>
         /// <returns>A <see cref="GpaordersRequestBuilder"/></returns>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
-        public GpaordersRequestBuilder WithUrl(string rawUrl) {
+        public GpaordersRequestBuilder WithUrl(string rawUrl)
+        {
             return new GpaordersRequestBuilder(rawUrl, RequestAdapter);
         }
     }

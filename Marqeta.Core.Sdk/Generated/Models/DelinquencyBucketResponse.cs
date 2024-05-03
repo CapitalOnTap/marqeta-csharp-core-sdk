@@ -8,7 +8,8 @@ namespace Marqeta.Core.Sdk.Models {
     /// <summary>
     /// One or more delinquency buckets for an account.Each delinquency bucket represents a billing cycle during which the account was delinquent.
     /// </summary>
-    public class DelinquencyBucketResponse : IAdditionalDataHolder, IParsable {
+    public class DelinquencyBucketResponse : IAdditionalDataHolder, IParsable 
+    {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Delinquency bucket number in the returned array.Delinquency buckets are returned from most recent to least; the most recent delinquency bucket is `1`.</summary>
@@ -26,7 +27,8 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>
         /// Instantiates a new <see cref="DelinquencyBucketResponse"/> and sets the default values.
         /// </summary>
-        public DelinquencyBucketResponse() {
+        public DelinquencyBucketResponse()
+        {
             AdditionalData = new Dictionary<string, object>();
         }
         /// <summary>
@@ -34,7 +36,8 @@ namespace Marqeta.Core.Sdk.Models {
         /// </summary>
         /// <returns>A <see cref="DelinquencyBucketResponse"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static DelinquencyBucketResponse CreateFromDiscriminatorValue(IParseNode parseNode) {
+        public static DelinquencyBucketResponse CreateFromDiscriminatorValue(IParseNode parseNode)
+        {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
             return new DelinquencyBucketResponse();
         }
@@ -42,8 +45,10 @@ namespace Marqeta.Core.Sdk.Models {
         /// The deserialization information for the current model
         /// </summary>
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
-        public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers() {
-            return new Dictionary<string, Action<IParseNode>> {
+        public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
+        {
+            return new Dictionary<string, Action<IParseNode>>
+            {
                 {"bucket_number", n => { BucketNumber = n.GetIntValue(); } },
                 {"current_due", n => { CurrentDue = n.GetDoubleValue(); } },
                 {"days_past_due", n => { DaysPastDue = n.GetIntValue(); } },
@@ -56,7 +61,8 @@ namespace Marqeta.Core.Sdk.Models {
         /// Serializes information the current object
         /// </summary>
         /// <param name="writer">Serialization writer to use to serialize this model</param>
-        public virtual void Serialize(ISerializationWriter writer) {
+        public virtual void Serialize(ISerializationWriter writer)
+        {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
             writer.WriteIntValue("bucket_number", BucketNumber);
             writer.WriteDoubleValue("current_due", CurrentDue);

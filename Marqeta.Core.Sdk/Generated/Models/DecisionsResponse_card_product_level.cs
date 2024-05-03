@@ -3,10 +3,15 @@ using System.Runtime.Serialization;
 using System;
 namespace Marqeta.Core.Sdk.Models {
     /// <summary>The tier of the card product.</summary>
-    public enum DecisionsResponse_card_product_level {
+    public enum DecisionsResponse_card_product_level
+    {
         [EnumMember(Value = "PREMIUM")]
+        #pragma warning disable CS1591
         PREMIUM,
+        #pragma warning restore CS1591
         [EnumMember(Value = "TRADITIONAL")]
+        #pragma warning disable CS1591
         TRADITIONAL,
+        #pragma warning restore CS1591
     }
 }

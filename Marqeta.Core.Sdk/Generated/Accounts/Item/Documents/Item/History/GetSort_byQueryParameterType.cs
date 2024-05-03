@@ -2,10 +2,17 @@
 using System.Runtime.Serialization;
 using System;
 namespace Marqeta.Core.Sdk.Accounts.Item.Documents.Item.History {
-    public enum GetSort_byQueryParameterType {
+    #pragma warning disable CS1591
+    public enum GetSort_byQueryParameterType
+    #pragma warning restore CS1591
+    {
         [EnumMember(Value = "effectiveDate")]
+        #pragma warning disable CS1591
         EffectiveDate,
+        #pragma warning restore CS1591
         [EnumMember(Value = "-effectiveDate")]
+        #pragma warning disable CS1591
         Minus_effectiveDate,
+        #pragma warning restore CS1591
     }
 }

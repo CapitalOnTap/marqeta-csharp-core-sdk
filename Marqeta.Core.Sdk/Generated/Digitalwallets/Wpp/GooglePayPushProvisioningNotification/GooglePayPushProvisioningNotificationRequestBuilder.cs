@@ -12,20 +12,23 @@ namespace Marqeta.Core.Sdk.Digitalwallets.Wpp.GooglePayPushProvisioningNotificat
     /// <summary>
     /// Builds and executes requests for operations under \digitalwallets\wpp\googlePayPushProvisioningNotification
     /// </summary>
-    public class GooglePayPushProvisioningNotificationRequestBuilder : BaseRequestBuilder {
+    public class GooglePayPushProvisioningNotificationRequestBuilder : BaseRequestBuilder 
+    {
         /// <summary>
         /// Instantiates a new <see cref="GooglePayPushProvisioningNotificationRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public GooglePayPushProvisioningNotificationRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/digitalwallets/wpp/googlePayPushProvisioningNotification", pathParameters) {
+        public GooglePayPushProvisioningNotificationRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/digitalwallets/wpp/googlePayPushProvisioningNotification", pathParameters)
+        {
         }
         /// <summary>
         /// Instantiates a new <see cref="GooglePayPushProvisioningNotificationRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public GooglePayPushProvisioningNotificationRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/digitalwallets/wpp/googlePayPushProvisioningNotification", rawUrl) {
+        public GooglePayPushProvisioningNotificationRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/digitalwallets/wpp/googlePayPushProvisioningNotification", rawUrl)
+        {
         }
         /// <summary>
         /// [NOTE]This endpoint is currently in beta and subject to change.For more information, contact your Marqeta representative.Use this endpoint to add a card to Google Wallet via a web application.This endpoint does not return a payload in response to a request.Instead, a successful call will return a response code only.
@@ -36,14 +39,17 @@ namespace Marqeta.Core.Sdk.Digitalwallets.Wpp.GooglePayPushProvisioningNotificat
         /// <exception cref="ApiError">When receiving a 4XX or 5XX status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task PostAsync(Sending_provisioning_data_to_google_pay_backend_request body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default) {
+        public async Task PostAsync(Sending_provisioning_data_to_google_pay_backend_request body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        {
 #nullable restore
 #else
-        public async Task PostAsync(Sending_provisioning_data_to_google_pay_backend_request body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default) {
+        public async Task PostAsync(Sending_provisioning_data_to_google_pay_backend_request body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        {
 #endif
             _ = body ?? throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPostRequestInformation(body, requestConfiguration);
-            var errorMapping = new Dictionary<string, ParsableFactory<IParsable>> {
+            var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
+            {
                 {"XXX", ApiError.CreateFromDiscriminatorValue},
             };
             await RequestAdapter.SendNoContentAsync(requestInfo, errorMapping, cancellationToken).ConfigureAwait(false);
@@ -56,10 +62,12 @@ namespace Marqeta.Core.Sdk.Digitalwallets.Wpp.GooglePayPushProvisioningNotificat
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToPostRequestInformation(Sending_provisioning_data_to_google_pay_backend_request body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default) {
+        public RequestInformation ToPostRequestInformation(Sending_provisioning_data_to_google_pay_backend_request body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
+        {
 #nullable restore
 #else
-        public RequestInformation ToPostRequestInformation(Sending_provisioning_data_to_google_pay_backend_request body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default) {
+        public RequestInformation ToPostRequestInformation(Sending_provisioning_data_to_google_pay_backend_request body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
+        {
 #endif
             _ = body ?? throw new ArgumentNullException(nameof(body));
             var requestInfo = new RequestInformation(Method.POST, UrlTemplate, PathParameters);
@@ -73,7 +81,8 @@ namespace Marqeta.Core.Sdk.Digitalwallets.Wpp.GooglePayPushProvisioningNotificat
         /// </summary>
         /// <returns>A <see cref="GooglePayPushProvisioningNotificationRequestBuilder"/></returns>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
-        public GooglePayPushProvisioningNotificationRequestBuilder WithUrl(string rawUrl) {
+        public GooglePayPushProvisioningNotificationRequestBuilder WithUrl(string rawUrl)
+        {
             return new GooglePayPushProvisioningNotificationRequestBuilder(rawUrl, RequestAdapter);
         }
     }

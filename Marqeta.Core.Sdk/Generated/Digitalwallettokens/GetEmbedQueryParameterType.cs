@@ -2,8 +2,13 @@
 using System.Runtime.Serialization;
 using System;
 namespace Marqeta.Core.Sdk.Digitalwallettokens {
-    public enum GetEmbedQueryParameterType {
+    #pragma warning disable CS1591
+    public enum GetEmbedQueryParameterType
+    #pragma warning restore CS1591
+    {
         [EnumMember(Value = "user")]
+        #pragma warning disable CS1591
         User,
+        #pragma warning restore CS1591
     }
 }

@@ -5,7 +5,10 @@ using System.IO;
 using System.Linq;
 using System;
 namespace Marqeta.Core.Sdk.Models {
-    public class Card_update_request : IAdditionalDataHolder, IParsable {
+    #pragma warning disable CS1591
+    public class Card_update_request : IAdditionalDataHolder, IParsable 
+    #pragma warning restore CS1591
+    {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Set to `true` to request expedited processing of the card by your card fulfillment provider.This expedited service is available for cards fulfilled by link:http://perfectplastic.com/[Perfect Plastic Printing, window=&quot;_blank&quot;], link:http://www.idemia.com[IDEMIA, window=&quot;_blank&quot;], and link:https://www.arroweye.com/[Arroweye Solutions, window=&quot;_blank&quot;].*NOTE:* Contact your Marqeta representative for information regarding the cost of expedited service.</summary>
@@ -45,7 +48,8 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>
         /// Instantiates a new <see cref="Card_update_request"/> and sets the default values.
         /// </summary>
-        public Card_update_request() {
+        public Card_update_request()
+        {
             AdditionalData = new Dictionary<string, object>();
         }
         /// <summary>
@@ -53,7 +57,8 @@ namespace Marqeta.Core.Sdk.Models {
         /// </summary>
         /// <returns>A <see cref="Card_update_request"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static Card_update_request CreateFromDiscriminatorValue(IParseNode parseNode) {
+        public static Card_update_request CreateFromDiscriminatorValue(IParseNode parseNode)
+        {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
             return new Card_update_request();
         }
@@ -61,8 +66,10 @@ namespace Marqeta.Core.Sdk.Models {
         /// The deserialization information for the current model
         /// </summary>
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
-        public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers() {
-            return new Dictionary<string, Action<IParseNode>> {
+        public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
+        {
+            return new Dictionary<string, Action<IParseNode>>
+            {
                 {"expedite", n => { Expedite = n.GetBoolValue(); } },
                 {"fulfillment", n => { Fulfillment = n.GetObjectValue<CardFulfillmentRequest>(CardFulfillmentRequest.CreateFromDiscriminatorValue); } },
                 {"metadata", n => { Metadata = n.GetObjectValue<Card_update_request_metadata>(Card_update_request_metadata.CreateFromDiscriminatorValue); } },
@@ -74,7 +81,8 @@ namespace Marqeta.Core.Sdk.Models {
         /// Serializes information the current object
         /// </summary>
         /// <param name="writer">Serialization writer to use to serialize this model</param>
-        public virtual void Serialize(ISerializationWriter writer) {
+        public virtual void Serialize(ISerializationWriter writer)
+        {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
             writer.WriteBoolValue("expedite", Expedite);
             writer.WriteObjectValue<CardFulfillmentRequest>("fulfillment", Fulfillment);

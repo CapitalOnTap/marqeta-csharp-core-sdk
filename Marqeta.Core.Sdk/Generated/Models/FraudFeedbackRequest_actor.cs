@@ -3,12 +3,19 @@ using System.Runtime.Serialization;
 using System;
 namespace Marqeta.Core.Sdk.Models {
     /// <summary>This is the party making a call.</summary>
-    public enum FraudFeedbackRequest_actor {
+    public enum FraudFeedbackRequest_actor
+    {
         [EnumMember(Value = "UNKNOWN")]
+        #pragma warning disable CS1591
         UNKNOWN,
+        #pragma warning restore CS1591
         [EnumMember(Value = "THIRD_PARTY_FRAUD")]
+        #pragma warning disable CS1591
         THIRD_PARTY_FRAUD,
+        #pragma warning restore CS1591
         [EnumMember(Value = "CARD_USER_FRAUD")]
+        #pragma warning disable CS1591
         CARD_USER_FRAUD,
+        #pragma warning restore CS1591
     }
 }

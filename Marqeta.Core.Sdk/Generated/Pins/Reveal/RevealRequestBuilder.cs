@@ -12,20 +12,23 @@ namespace Marqeta.Core.Sdk.Pins.Reveal {
     /// <summary>
     /// Builds and executes requests for operations under \pins\reveal
     /// </summary>
-    public class RevealRequestBuilder : BaseRequestBuilder {
+    public class RevealRequestBuilder : BaseRequestBuilder 
+    {
         /// <summary>
         /// Instantiates a new <see cref="RevealRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public RevealRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/pins/reveal", pathParameters) {
+        public RevealRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/pins/reveal", pathParameters)
+        {
         }
         /// <summary>
         /// Instantiates a new <see cref="RevealRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public RevealRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/pins/reveal", rawUrl) {
+        public RevealRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/pins/reveal", rawUrl)
+        {
         }
         /// <summary>
         /// Reveals the personal identification number (PIN) of an existing, active card.*WARNING:* Only use this endpoint to access a PIN in order to reveal it to its cardholder.Do not use this endpoint for the purpose of storing a PIN at any location.Sending a request to this endpoint requires PCI DSS compliance.You must comply with PCI DSS data security requirements if you want to store, transmit, or process sensitive card data such as the cardholder&apos;s primary account number (PAN), personal identification number (PIN), and card expiration date.If you want instead to update a card&apos;s PIN, send a `PUT` request to the `/pins` endpoint.See &lt;&lt;/core-api/pins#putPins, Create or Update PIN&gt;&gt; on this page for details.Revealing a card&apos;s PIN is a two-step process.You must first create a new control token for the card by sending a `POST` request to `/pins/controltoken`, and then use that token to reveal the PIN.
@@ -36,14 +39,17 @@ namespace Marqeta.Core.Sdk.Pins.Reveal {
         /// <exception cref="ApiError">When receiving a 4XX or 5XX status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task PostAsync(Pin_reveal_request body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default) {
+        public async Task PostAsync(Pin_reveal_request body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        {
 #nullable restore
 #else
-        public async Task PostAsync(Pin_reveal_request body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default) {
+        public async Task PostAsync(Pin_reveal_request body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        {
 #endif
             _ = body ?? throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPostRequestInformation(body, requestConfiguration);
-            var errorMapping = new Dictionary<string, ParsableFactory<IParsable>> {
+            var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
+            {
                 {"XXX", ApiError.CreateFromDiscriminatorValue},
             };
             await RequestAdapter.SendNoContentAsync(requestInfo, errorMapping, cancellationToken).ConfigureAwait(false);
@@ -56,10 +62,12 @@ namespace Marqeta.Core.Sdk.Pins.Reveal {
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToPostRequestInformation(Pin_reveal_request body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default) {
+        public RequestInformation ToPostRequestInformation(Pin_reveal_request body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
+        {
 #nullable restore
 #else
-        public RequestInformation ToPostRequestInformation(Pin_reveal_request body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default) {
+        public RequestInformation ToPostRequestInformation(Pin_reveal_request body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
+        {
 #endif
             _ = body ?? throw new ArgumentNullException(nameof(body));
             var requestInfo = new RequestInformation(Method.POST, UrlTemplate, PathParameters);
@@ -73,7 +81,8 @@ namespace Marqeta.Core.Sdk.Pins.Reveal {
         /// </summary>
         /// <returns>A <see cref="RevealRequestBuilder"/></returns>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
-        public RevealRequestBuilder WithUrl(string rawUrl) {
+        public RevealRequestBuilder WithUrl(string rawUrl)
+        {
             return new RevealRequestBuilder(rawUrl, RequestAdapter);
         }
     }

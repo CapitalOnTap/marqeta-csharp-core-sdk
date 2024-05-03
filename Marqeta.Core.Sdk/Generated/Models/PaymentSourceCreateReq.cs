@@ -8,7 +8,8 @@ namespace Marqeta.Core.Sdk.Models {
     /// <summary>
     /// Contains information about a payment source.
     /// </summary>
-    public class PaymentSourceCreateReq : IAdditionalDataHolder, IParsable {
+    public class PaymentSourceCreateReq : IAdditionalDataHolder, IParsable 
+    {
         /// <summary>Account number of the payment source.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -92,7 +93,8 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>
         /// Instantiates a new <see cref="PaymentSourceCreateReq"/> and sets the default values.
         /// </summary>
-        public PaymentSourceCreateReq() {
+        public PaymentSourceCreateReq()
+        {
             AdditionalData = new Dictionary<string, object>();
         }
         /// <summary>
@@ -100,7 +102,8 @@ namespace Marqeta.Core.Sdk.Models {
         /// </summary>
         /// <returns>A <see cref="PaymentSourceCreateReq"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static PaymentSourceCreateReq CreateFromDiscriminatorValue(IParseNode parseNode) {
+        public static PaymentSourceCreateReq CreateFromDiscriminatorValue(IParseNode parseNode)
+        {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
             return new PaymentSourceCreateReq();
         }
@@ -108,8 +111,10 @@ namespace Marqeta.Core.Sdk.Models {
         /// The deserialization information for the current model
         /// </summary>
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
-        public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers() {
-            return new Dictionary<string, Action<IParseNode>> {
+        public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
+        {
+            return new Dictionary<string, Action<IParseNode>>
+            {
                 {"account_number", n => { AccountNumber = n.GetStringValue(); } },
                 {"account_token", n => { AccountToken = n.GetStringValue(); } },
                 {"bank_name", n => { BankName = n.GetStringValue(); } },
@@ -128,7 +133,8 @@ namespace Marqeta.Core.Sdk.Models {
         /// Serializes information the current object
         /// </summary>
         /// <param name="writer">Serialization writer to use to serialize this model</param>
-        public virtual void Serialize(ISerializationWriter writer) {
+        public virtual void Serialize(ISerializationWriter writer)
+        {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("account_number", AccountNumber);
             writer.WriteStringValue("account_token", AccountToken);

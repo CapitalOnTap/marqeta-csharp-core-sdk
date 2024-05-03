@@ -8,7 +8,8 @@ namespace Marqeta.Core.Sdk.Models {
     /// <summary>
     /// Controls transactional characteristics of card usage.
     /// </summary>
-    public class Transaction_controls : IAdditionalDataHolder, IParsable {
+    public class Transaction_controls : IAdditionalDataHolder, IParsable 
+    {
         /// <summary>Set to `accept_us_only` to allow transactions only within the US.Set to `decline_ofac_countries` to allow international transactions except with countries that the Financial Action Task Force (FATF) and Office of Foreign Assets Control (OFAC) have identified as high risk.Users with the Admin role can create and update additional lists of accepted countries for transactions at the `/acceptedcountries` endpoint.See &lt;&lt;/core-api/accepted-countries, Accepted Countries&gt;&gt;.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -88,7 +89,8 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>
         /// Instantiates a new <see cref="Transaction_controls"/> and sets the default values.
         /// </summary>
-        public Transaction_controls() {
+        public Transaction_controls()
+        {
             AdditionalData = new Dictionary<string, object>();
         }
         /// <summary>
@@ -96,7 +98,8 @@ namespace Marqeta.Core.Sdk.Models {
         /// </summary>
         /// <returns>A <see cref="Transaction_controls"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static Transaction_controls CreateFromDiscriminatorValue(IParseNode parseNode) {
+        public static Transaction_controls CreateFromDiscriminatorValue(IParseNode parseNode)
+        {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
             return new Transaction_controls();
         }
@@ -104,8 +107,10 @@ namespace Marqeta.Core.Sdk.Models {
         /// The deserialization information for the current model
         /// </summary>
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
-        public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers() {
-            return new Dictionary<string, Action<IParseNode>> {
+        public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
+        {
+            return new Dictionary<string, Action<IParseNode>>
+            {
                 {"accepted_countries_token", n => { AcceptedCountriesToken = n.GetStringValue(); } },
                 {"address_verification", n => { AddressVerification = n.GetObjectValue<Avs_controls>(Avs_controls.CreateFromDiscriminatorValue); } },
                 {"allow_chip_fallback", n => { AllowChipFallback = n.GetBoolValue(); } },
@@ -131,7 +136,8 @@ namespace Marqeta.Core.Sdk.Models {
         /// Serializes information the current object
         /// </summary>
         /// <param name="writer">Serialization writer to use to serialize this model</param>
-        public virtual void Serialize(ISerializationWriter writer) {
+        public virtual void Serialize(ISerializationWriter writer)
+        {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("accepted_countries_token", AcceptedCountriesToken);
             writer.WriteObjectValue<Avs_controls>("address_verification", AddressVerification);

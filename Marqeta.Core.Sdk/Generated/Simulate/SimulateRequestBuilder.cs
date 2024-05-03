@@ -14,40 +14,48 @@ namespace Marqeta.Core.Sdk.Simulate {
     /// <summary>
     /// Builds and executes requests for operations under \simulate
     /// </summary>
-    public class SimulateRequestBuilder : BaseRequestBuilder {
+    public class SimulateRequestBuilder : BaseRequestBuilder 
+    {
         /// <summary>The authorization property</summary>
-        public AuthorizationRequestBuilder Authorization { get =>
-            new AuthorizationRequestBuilder(PathParameters, RequestAdapter);
+        public AuthorizationRequestBuilder Authorization
+        {
+            get => new AuthorizationRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The clearing property</summary>
-        public ClearingRequestBuilder Clearing { get =>
-            new ClearingRequestBuilder(PathParameters, RequestAdapter);
+        public ClearingRequestBuilder Clearing
+        {
+            get => new ClearingRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The directdeposits property</summary>
-        public DirectdepositsRequestBuilder Directdeposits { get =>
-            new DirectdepositsRequestBuilder(PathParameters, RequestAdapter);
+        public DirectdepositsRequestBuilder Directdeposits
+        {
+            get => new DirectdepositsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The financial property</summary>
-        public FinancialRequestBuilder Financial { get =>
-            new FinancialRequestBuilder(PathParameters, RequestAdapter);
+        public FinancialRequestBuilder Financial
+        {
+            get => new FinancialRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The reversal property</summary>
-        public ReversalRequestBuilder Reversal { get =>
-            new ReversalRequestBuilder(PathParameters, RequestAdapter);
+        public ReversalRequestBuilder Reversal
+        {
+            get => new ReversalRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>
         /// Instantiates a new <see cref="SimulateRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public SimulateRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/simulate", pathParameters) {
+        public SimulateRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/simulate", pathParameters)
+        {
         }
         /// <summary>
         /// Instantiates a new <see cref="SimulateRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public SimulateRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/simulate", rawUrl) {
+        public SimulateRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/simulate", rawUrl)
+        {
         }
     }
 }

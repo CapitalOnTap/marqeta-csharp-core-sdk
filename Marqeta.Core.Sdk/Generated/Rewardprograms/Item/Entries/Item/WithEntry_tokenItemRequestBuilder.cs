@@ -12,20 +12,23 @@ namespace Marqeta.Core.Sdk.Rewardprograms.Item.Entries.Item {
     /// <summary>
     /// Builds and executes requests for operations under \rewardprograms\{token}\entries\{entry_token}
     /// </summary>
-    public class WithEntry_tokenItemRequestBuilder : BaseRequestBuilder {
+    public class WithEntry_tokenItemRequestBuilder : BaseRequestBuilder 
+    {
         /// <summary>
         /// Instantiates a new <see cref="WithEntry_tokenItemRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public WithEntry_tokenItemRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/rewardprograms/{token}/entries/{entry_token}", pathParameters) {
+        public WithEntry_tokenItemRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/rewardprograms/{token}/entries/{entry_token}", pathParameters)
+        {
         }
         /// <summary>
         /// Instantiates a new <see cref="WithEntry_tokenItemRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public WithEntry_tokenItemRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/rewardprograms/{token}/entries/{entry_token}", rawUrl) {
+        public WithEntry_tokenItemRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/rewardprograms/{token}/entries/{entry_token}", rawUrl)
+        {
         }
         /// <summary>
         /// Retrieve a specific reward entry on a reward program.The reward accrual service calculates values to four-decimal precision, however the `/credit/rewardprograms/{token}/entries/balance` endpoint returns pending and accrued balances to two-decimal precision.
@@ -36,13 +39,16 @@ namespace Marqeta.Core.Sdk.Rewardprograms.Item.Entries.Item {
         /// <exception cref="ApiError">When receiving a 4XX or 5XX status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<RewardProgramsEntriesResponse?> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default) {
+        public async Task<RewardProgramsEntriesResponse?> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        {
 #nullable restore
 #else
-        public async Task<RewardProgramsEntriesResponse> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default) {
+        public async Task<RewardProgramsEntriesResponse> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            var errorMapping = new Dictionary<string, ParsableFactory<IParsable>> {
+            var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
+            {
                 {"XXX", ApiError.CreateFromDiscriminatorValue},
             };
             return await RequestAdapter.SendAsync<RewardProgramsEntriesResponse>(requestInfo, RewardProgramsEntriesResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
@@ -54,10 +60,12 @@ namespace Marqeta.Core.Sdk.Rewardprograms.Item.Entries.Item {
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default) {
+        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
+        {
 #nullable restore
 #else
-        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default) {
+        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
+        {
 #endif
             var requestInfo = new RequestInformation(Method.GET, UrlTemplate, PathParameters);
             requestInfo.Configure(requestConfiguration);
@@ -69,7 +77,8 @@ namespace Marqeta.Core.Sdk.Rewardprograms.Item.Entries.Item {
         /// </summary>
         /// <returns>A <see cref="WithEntry_tokenItemRequestBuilder"/></returns>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
-        public WithEntry_tokenItemRequestBuilder WithUrl(string rawUrl) {
+        public WithEntry_tokenItemRequestBuilder WithUrl(string rawUrl)
+        {
             return new WithEntry_tokenItemRequestBuilder(rawUrl, RequestAdapter);
         }
     }

@@ -13,28 +13,35 @@ namespace Marqeta.Core.Sdk.Merchantgroups {
     /// <summary>
     /// Builds and executes requests for operations under \merchantgroups
     /// </summary>
-    public class MerchantgroupsRequestBuilder : BaseRequestBuilder {
+    public class MerchantgroupsRequestBuilder : BaseRequestBuilder 
+    {
         /// <summary>Gets an item from the Marqeta.Core.Sdk.merchantgroups.item collection</summary>
         /// <param name="position">Unique identifier of the merchant group.</param>
         /// <returns>A <see cref="WithTokenItemRequestBuilder"/></returns>
-        public WithTokenItemRequestBuilder this[string position] { get {
-            var urlTplParams = new Dictionary<string, object>(PathParameters);
-            urlTplParams.Add("token", position);
-            return new WithTokenItemRequestBuilder(urlTplParams, RequestAdapter);
-        } }
+        public WithTokenItemRequestBuilder this[string position]
+        {
+            get
+            {
+                var urlTplParams = new Dictionary<string, object>(PathParameters);
+                urlTplParams.Add("token", position);
+                return new WithTokenItemRequestBuilder(urlTplParams, RequestAdapter);
+            }
+        }
         /// <summary>
         /// Instantiates a new <see cref="MerchantgroupsRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public MerchantgroupsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/merchantgroups{?count*,mid*,sort_by*,start_index*}", pathParameters) {
+        public MerchantgroupsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/merchantgroups{?count*,mid*,sort_by*,start_index*}", pathParameters)
+        {
         }
         /// <summary>
         /// Instantiates a new <see cref="MerchantgroupsRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public MerchantgroupsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/merchantgroups{?count*,mid*,sort_by*,start_index*}", rawUrl) {
+        public MerchantgroupsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/merchantgroups{?count*,mid*,sort_by*,start_index*}", rawUrl)
+        {
         }
         /// <summary>
         /// To return an array of all merchant groups, send a `GET` request to the `/merchantgroups` endpoint.To return an array of all merchant groups that include a specific merchant identifier, send a `GET` request to the `/merchantgroups` endpoint that includes the merchant identifier in the query parameters.
@@ -45,13 +52,16 @@ namespace Marqeta.Core.Sdk.Merchantgroups {
         /// <exception cref="ApiError">When receiving a 4XX or 5XX status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<MerchantGroupListResponse?> GetAsync(Action<RequestConfiguration<MerchantgroupsRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default) {
+        public async Task<MerchantGroupListResponse?> GetAsync(Action<RequestConfiguration<MerchantgroupsRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        {
 #nullable restore
 #else
-        public async Task<MerchantGroupListResponse> GetAsync(Action<RequestConfiguration<MerchantgroupsRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default) {
+        public async Task<MerchantGroupListResponse> GetAsync(Action<RequestConfiguration<MerchantgroupsRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            var errorMapping = new Dictionary<string, ParsableFactory<IParsable>> {
+            var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
+            {
                 {"XXX", ApiError.CreateFromDiscriminatorValue},
             };
             return await RequestAdapter.SendAsync<MerchantGroupListResponse>(requestInfo, MerchantGroupListResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
@@ -66,14 +76,17 @@ namespace Marqeta.Core.Sdk.Merchantgroups {
         /// <exception cref="ApiError">When receiving a 4XX or 5XX status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<Merchant_group_response?> PostAsync(Merchant_group_request body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default) {
+        public async Task<Merchant_group_response?> PostAsync(Merchant_group_request body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        {
 #nullable restore
 #else
-        public async Task<Merchant_group_response> PostAsync(Merchant_group_request body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default) {
+        public async Task<Merchant_group_response> PostAsync(Merchant_group_request body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        {
 #endif
             _ = body ?? throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPostRequestInformation(body, requestConfiguration);
-            var errorMapping = new Dictionary<string, ParsableFactory<IParsable>> {
+            var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
+            {
                 {"XXX", ApiError.CreateFromDiscriminatorValue},
             };
             return await RequestAdapter.SendAsync<Merchant_group_response>(requestInfo, Merchant_group_response.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
@@ -85,10 +98,12 @@ namespace Marqeta.Core.Sdk.Merchantgroups {
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<MerchantgroupsRequestBuilderGetQueryParameters>>? requestConfiguration = default) {
+        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<MerchantgroupsRequestBuilderGetQueryParameters>>? requestConfiguration = default)
+        {
 #nullable restore
 #else
-        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<MerchantgroupsRequestBuilderGetQueryParameters>> requestConfiguration = default) {
+        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<MerchantgroupsRequestBuilderGetQueryParameters>> requestConfiguration = default)
+        {
 #endif
             var requestInfo = new RequestInformation(Method.GET, UrlTemplate, PathParameters);
             requestInfo.Configure(requestConfiguration);
@@ -103,13 +118,15 @@ namespace Marqeta.Core.Sdk.Merchantgroups {
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToPostRequestInformation(Merchant_group_request body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default) {
+        public RequestInformation ToPostRequestInformation(Merchant_group_request body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
+        {
 #nullable restore
 #else
-        public RequestInformation ToPostRequestInformation(Merchant_group_request body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default) {
+        public RequestInformation ToPostRequestInformation(Merchant_group_request body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
+        {
 #endif
             _ = body ?? throw new ArgumentNullException(nameof(body));
-            var requestInfo = new RequestInformation(Method.POST, "{+baseurl}/merchantgroups", PathParameters);
+            var requestInfo = new RequestInformation(Method.POST, UrlTemplate, PathParameters);
             requestInfo.Configure(requestConfiguration);
             requestInfo.Headers.TryAdd("Accept", "application/json");
             requestInfo.SetContentFromParsable(RequestAdapter, "application/json", body);
@@ -120,13 +137,15 @@ namespace Marqeta.Core.Sdk.Merchantgroups {
         /// </summary>
         /// <returns>A <see cref="MerchantgroupsRequestBuilder"/></returns>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
-        public MerchantgroupsRequestBuilder WithUrl(string rawUrl) {
+        public MerchantgroupsRequestBuilder WithUrl(string rawUrl)
+        {
             return new MerchantgroupsRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
         /// To return an array of all merchant groups, send a `GET` request to the `/merchantgroups` endpoint.To return an array of all merchant groups that include a specific merchant identifier, send a `GET` request to the `/merchantgroups` endpoint that includes the merchant identifier in the query parameters.
         /// </summary>
-        public class MerchantgroupsRequestBuilderGetQueryParameters {
+        public class MerchantgroupsRequestBuilderGetQueryParameters 
+        {
             /// <summary>Number of resources to retrieve.</summary>
             [QueryParameter("count")]
             public int? Count { get; set; }

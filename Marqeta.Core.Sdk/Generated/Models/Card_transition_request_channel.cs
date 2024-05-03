@@ -3,16 +3,27 @@ using System.Runtime.Serialization;
 using System;
 namespace Marqeta.Core.Sdk.Models {
     /// <summary>The mechanism by which the transition was initiated.* *ADMIN* - Indicates that the card transition was initiated through the Marqeta Dashboard.* *API* - Indicates that the card transition was initiated by you through the Core API.Use this value when creating a card transition with an API `POST` request.* *FRAUD* - Indicates that either Marqeta or the card network has determined that the card is fraudulent.* *IVR* - Indicates that the card transition was initiated through your Interactive Voice Response system.* *SYSTEM* - Indicates that the card transition was initiated by Marqeta.For example, Marqeta suspended the card due to excessive failed personal identification number (PIN) entries.</summary>
-    public enum Card_transition_request_channel {
+    public enum Card_transition_request_channel
+    {
         [EnumMember(Value = "API")]
+        #pragma warning disable CS1591
         API,
+        #pragma warning restore CS1591
         [EnumMember(Value = "IVR")]
+        #pragma warning disable CS1591
         IVR,
+        #pragma warning restore CS1591
         [EnumMember(Value = "FRAUD")]
+        #pragma warning disable CS1591
         FRAUD,
+        #pragma warning restore CS1591
         [EnumMember(Value = "ADMIN")]
+        #pragma warning disable CS1591
         ADMIN,
+        #pragma warning restore CS1591
         [EnumMember(Value = "SYSTEM")]
+        #pragma warning disable CS1591
         SYSTEM,
+        #pragma warning restore CS1591
     }
 }

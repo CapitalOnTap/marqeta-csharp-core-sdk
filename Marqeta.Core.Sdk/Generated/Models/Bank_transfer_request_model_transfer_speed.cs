@@ -3,10 +3,15 @@ using System.Runtime.Serialization;
 using System;
 namespace Marqeta.Core.Sdk.Models {
     /// <summary>Specifies how quickly to initiate the ACH transfer.*NOTE:* Same-day transfers are limited to a maximum amount of $100,000.</summary>
-    public enum Bank_transfer_request_model_transfer_speed {
+    public enum Bank_transfer_request_model_transfer_speed
+    {
         [EnumMember(Value = "STANDARD")]
+        #pragma warning disable CS1591
         STANDARD,
+        #pragma warning restore CS1591
         [EnumMember(Value = "SAME_DAY")]
+        #pragma warning disable CS1591
         SAME_DAY,
+        #pragma warning restore CS1591
     }
 }

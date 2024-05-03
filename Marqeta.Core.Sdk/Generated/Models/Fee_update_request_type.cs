@@ -2,10 +2,17 @@
 using System.Runtime.Serialization;
 using System;
 namespace Marqeta.Core.Sdk.Models {
-    public enum Fee_update_request_type {
+    #pragma warning disable CS1591
+    public enum Fee_update_request_type
+    #pragma warning restore CS1591
+    {
         [EnumMember(Value = "FLAT")]
+        #pragma warning disable CS1591
         FLAT,
+        #pragma warning restore CS1591
         [EnumMember(Value = "PERCENTAGE")]
+        #pragma warning disable CS1591
         PERCENTAGE,
+        #pragma warning restore CS1591
     }
 }

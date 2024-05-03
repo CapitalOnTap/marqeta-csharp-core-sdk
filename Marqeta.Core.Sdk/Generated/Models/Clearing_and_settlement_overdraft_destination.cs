@@ -3,14 +3,23 @@ using System.Runtime.Serialization;
 using System;
 namespace Marqeta.Core.Sdk.Models {
     /// <summary>Specifies the destination for overdraft funds.This field does not apply if JIT Funding is enabled.</summary>
-    public enum Clearing_and_settlement_overdraft_destination {
+    public enum Clearing_and_settlement_overdraft_destination
+    {
         [EnumMember(Value = "GPA")]
+        #pragma warning disable CS1591
         GPA,
+        #pragma warning restore CS1591
         [EnumMember(Value = "MSA")]
+        #pragma warning disable CS1591
         MSA,
+        #pragma warning restore CS1591
         [EnumMember(Value = "MERCHANT_CAMPAIGN_ACCOUNT")]
+        #pragma warning disable CS1591
         MERCHANT_CAMPAIGN_ACCOUNT,
+        #pragma warning restore CS1591
         [EnumMember(Value = "GLOBAL_OVERDRAFT_ACCOUNT")]
+        #pragma warning disable CS1591
         GLOBAL_OVERDRAFT_ACCOUNT,
+        #pragma warning restore CS1591
     }
 }

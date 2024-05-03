@@ -3,22 +3,39 @@ using System.Runtime.Serialization;
 using System;
 namespace Marqeta.Core.Sdk.Models {
     /// <summary>New state of the ACH transfer.</summary>
-    public enum Bank_transfer_transition_response_model_status {
+    public enum Bank_transfer_transition_response_model_status
+    {
         [EnumMember(Value = "PENDING")]
+        #pragma warning disable CS1591
         PENDING,
+        #pragma warning restore CS1591
         [EnumMember(Value = "PROCESSING")]
+        #pragma warning disable CS1591
         PROCESSING,
+        #pragma warning restore CS1591
         [EnumMember(Value = "SUBMITTED")]
+        #pragma warning disable CS1591
         SUBMITTED,
+        #pragma warning restore CS1591
         [EnumMember(Value = "RETURNED")]
+        #pragma warning disable CS1591
         RETURNED,
+        #pragma warning restore CS1591
         [EnumMember(Value = "COMPLETED")]
+        #pragma warning disable CS1591
         COMPLETED,
+        #pragma warning restore CS1591
         [EnumMember(Value = "CANCELLED")]
+        #pragma warning disable CS1591
         CANCELLED,
+        #pragma warning restore CS1591
         [EnumMember(Value = "REVERSAL_PEND")]
+        #pragma warning disable CS1591
         REVERSAL_PEND,
+        #pragma warning restore CS1591
         [EnumMember(Value = "REVERSAL_COMP")]
+        #pragma warning disable CS1591
         REVERSAL_COMP,
+        #pragma warning restore CS1591
     }
 }

@@ -12,20 +12,23 @@ namespace Marqeta.Core.Sdk.Businesses.Item.Children {
     /// <summary>
     /// Builds and executes requests for operations under \businesses\{parent_token-id}\children
     /// </summary>
-    public class ChildrenRequestBuilder : BaseRequestBuilder {
+    public class ChildrenRequestBuilder : BaseRequestBuilder 
+    {
         /// <summary>
         /// Instantiates a new <see cref="ChildrenRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public ChildrenRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/businesses/{parent_token%2Did}/children{?count*,fields*,sort_by*,start_index*}", pathParameters) {
+        public ChildrenRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/businesses/{parent_token%2Did}/children{?count*,fields*,sort_by*,start_index*}", pathParameters)
+        {
         }
         /// <summary>
         /// Instantiates a new <see cref="ChildrenRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public ChildrenRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/businesses/{parent_token%2Did}/children{?count*,fields*,sort_by*,start_index*}", rawUrl) {
+        public ChildrenRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/businesses/{parent_token%2Did}/children{?count*,fields*,sort_by*,start_index*}", rawUrl)
+        {
         }
         /// <summary>
         /// To return an array of all child cardholders of a particular business, send a `GET` request to the `/businesses/{parent_token}/children` endpoint.Include the `parent_token` as a URL path parameter.This endpoint supports &lt;&lt;/core-api/field-filtering, field filtering&gt;&gt;.
@@ -36,13 +39,16 @@ namespace Marqeta.Core.Sdk.Businesses.Item.Children {
         /// <exception cref="ApiError">When receiving a 4XX or 5XX status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<BusinessUserCardHolderListResponse?> GetAsync(Action<RequestConfiguration<ChildrenRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default) {
+        public async Task<BusinessUserCardHolderListResponse?> GetAsync(Action<RequestConfiguration<ChildrenRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        {
 #nullable restore
 #else
-        public async Task<BusinessUserCardHolderListResponse> GetAsync(Action<RequestConfiguration<ChildrenRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default) {
+        public async Task<BusinessUserCardHolderListResponse> GetAsync(Action<RequestConfiguration<ChildrenRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            var errorMapping = new Dictionary<string, ParsableFactory<IParsable>> {
+            var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
+            {
                 {"XXX", ApiError.CreateFromDiscriminatorValue},
             };
             return await RequestAdapter.SendAsync<BusinessUserCardHolderListResponse>(requestInfo, BusinessUserCardHolderListResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
@@ -54,10 +60,12 @@ namespace Marqeta.Core.Sdk.Businesses.Item.Children {
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<ChildrenRequestBuilderGetQueryParameters>>? requestConfiguration = default) {
+        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<ChildrenRequestBuilderGetQueryParameters>>? requestConfiguration = default)
+        {
 #nullable restore
 #else
-        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<ChildrenRequestBuilderGetQueryParameters>> requestConfiguration = default) {
+        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<ChildrenRequestBuilderGetQueryParameters>> requestConfiguration = default)
+        {
 #endif
             var requestInfo = new RequestInformation(Method.GET, UrlTemplate, PathParameters);
             requestInfo.Configure(requestConfiguration);
@@ -69,13 +77,15 @@ namespace Marqeta.Core.Sdk.Businesses.Item.Children {
         /// </summary>
         /// <returns>A <see cref="ChildrenRequestBuilder"/></returns>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
-        public ChildrenRequestBuilder WithUrl(string rawUrl) {
+        public ChildrenRequestBuilder WithUrl(string rawUrl)
+        {
             return new ChildrenRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
         /// To return an array of all child cardholders of a particular business, send a `GET` request to the `/businesses/{parent_token}/children` endpoint.Include the `parent_token` as a URL path parameter.This endpoint supports &lt;&lt;/core-api/field-filtering, field filtering&gt;&gt;.
         /// </summary>
-        public class ChildrenRequestBuilderGetQueryParameters {
+        public class ChildrenRequestBuilderGetQueryParameters 
+        {
             /// <summary>Number of child cardholders to retrieve.</summary>
             [QueryParameter("count")]
             public int? Count { get; set; }

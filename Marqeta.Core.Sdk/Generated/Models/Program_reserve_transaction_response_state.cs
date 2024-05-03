@@ -3,10 +3,15 @@ using System.Runtime.Serialization;
 using System;
 namespace Marqeta.Core.Sdk.Models {
     /// <summary>Transaction state.</summary>
-    public enum Program_reserve_transaction_response_state {
+    public enum Program_reserve_transaction_response_state
+    {
         [EnumMember(Value = "PENDING")]
+        #pragma warning disable CS1591
         PENDING,
+        #pragma warning restore CS1591
         [EnumMember(Value = "COMPLETE")]
+        #pragma warning disable CS1591
         COMPLETE,
+        #pragma warning restore CS1591
     }
 }

@@ -3,12 +3,19 @@ using System.Runtime.Serialization;
 using System;
 namespace Marqeta.Core.Sdk.Models {
     /// <summary>Determines whether to charge or waive interest for the billing period when the balance is paid off.</summary>
-    public enum InterestOnGraceReactivationEnum {
+    public enum InterestOnGraceReactivationEnum
+    {
         [EnumMember(Value = "ACCRUE_FULL_CYCLE")]
+        #pragma warning disable CS1591
         ACCRUE_FULL_CYCLE,
+        #pragma warning restore CS1591
         [EnumMember(Value = "ACCRUE_PAYMENT_DATE")]
+        #pragma warning disable CS1591
         ACCRUE_PAYMENT_DATE,
+        #pragma warning restore CS1591
         [EnumMember(Value = "WAIVE")]
+        #pragma warning disable CS1591
         WAIVE,
+        #pragma warning restore CS1591
     }
 }

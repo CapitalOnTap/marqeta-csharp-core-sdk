@@ -3,8 +3,11 @@ using System.Runtime.Serialization;
 using System;
 namespace Marqeta.Core.Sdk.Models {
     /// <summary>Determines if the billing cycle day is manually set or determined dynamically during account creation based on cycling logic</summary>
-    public enum ProductConfig_billing_cycle_day_strategy {
+    public enum ProductConfig_billing_cycle_day_strategy
+    {
         [EnumMember(Value = "MANUAL")]
+        #pragma warning disable CS1591
         MANUAL,
+        #pragma warning restore CS1591
     }
 }

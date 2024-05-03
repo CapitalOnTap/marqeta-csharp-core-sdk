@@ -14,32 +14,40 @@ namespace Marqeta.Core.Sdk.Transactions {
     /// <summary>
     /// Builds and executes requests for operations under \transactions
     /// </summary>
-    public class TransactionsRequestBuilder : BaseRequestBuilder {
+    public class TransactionsRequestBuilder : BaseRequestBuilder 
+    {
         /// <summary>The fundingsource property</summary>
-        public FundingsourceRequestBuilder Fundingsource { get =>
-            new FundingsourceRequestBuilder(PathParameters, RequestAdapter);
+        public FundingsourceRequestBuilder Fundingsource
+        {
+            get => new FundingsourceRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>Gets an item from the Marqeta.Core.Sdk.transactions.item collection</summary>
         /// <param name="position">The unique identifier of the transaction.</param>
         /// <returns>A <see cref="WithTokenItemRequestBuilder"/></returns>
-        public WithTokenItemRequestBuilder this[string position] { get {
-            var urlTplParams = new Dictionary<string, object>(PathParameters);
-            urlTplParams.Add("token", position);
-            return new WithTokenItemRequestBuilder(urlTplParams, RequestAdapter);
-        } }
+        public WithTokenItemRequestBuilder this[string position]
+        {
+            get
+            {
+                var urlTplParams = new Dictionary<string, object>(PathParameters);
+                urlTplParams.Add("token", position);
+                return new WithTokenItemRequestBuilder(urlTplParams, RequestAdapter);
+            }
+        }
         /// <summary>
         /// Instantiates a new <see cref="TransactionsRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public TransactionsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/transactions{?acting_user_token*,business_token*,card_token*,count*,end_date*,fields*,sort_by*,start_date*,start_identifier*,start_index*,state*,type*,user_token*,verbose*,version*}", pathParameters) {
+        public TransactionsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/transactions{?acting_user_token*,business_token*,card_token*,count*,end_date*,fields*,sort_by*,start_date*,start_identifier*,start_index*,state*,type*,user_token*,verbose*,version*}", pathParameters)
+        {
         }
         /// <summary>
         /// Instantiates a new <see cref="TransactionsRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public TransactionsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/transactions{?acting_user_token*,business_token*,card_token*,count*,end_date*,fields*,sort_by*,start_date*,start_identifier*,start_index*,state*,type*,user_token*,verbose*,version*}", rawUrl) {
+        public TransactionsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/transactions{?acting_user_token*,business_token*,card_token*,count*,end_date*,fields*,sort_by*,start_date*,start_identifier*,start_index*,state*,type*,user_token*,verbose*,version*}", rawUrl)
+        {
         }
         /// <summary>
         /// List all transactions.By default, this endpoint returns transactions conducted within the last 30 days.To return transactions older than 30 days, you must include the `start_date` and `end_date` query parameters in your request.By default, `GET /transactions` returns transactions having either `PENDING` or `COMPLETION` states.This endpoint supports &lt;&lt;/core-api/field-filtering, field filtering&gt;&gt; and &lt;&lt;/core-api/sorting-and-pagination, pagination&gt;&gt;.
@@ -50,13 +58,16 @@ namespace Marqeta.Core.Sdk.Transactions {
         /// <exception cref="ApiError">When receiving a 4XX or 5XX status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<TransactionModelListResponse?> GetAsync(Action<RequestConfiguration<TransactionsRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default) {
+        public async Task<TransactionModelListResponse?> GetAsync(Action<RequestConfiguration<TransactionsRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        {
 #nullable restore
 #else
-        public async Task<TransactionModelListResponse> GetAsync(Action<RequestConfiguration<TransactionsRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default) {
+        public async Task<TransactionModelListResponse> GetAsync(Action<RequestConfiguration<TransactionsRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            var errorMapping = new Dictionary<string, ParsableFactory<IParsable>> {
+            var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
+            {
                 {"XXX", ApiError.CreateFromDiscriminatorValue},
             };
             return await RequestAdapter.SendAsync<TransactionModelListResponse>(requestInfo, TransactionModelListResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
@@ -68,10 +79,12 @@ namespace Marqeta.Core.Sdk.Transactions {
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<TransactionsRequestBuilderGetQueryParameters>>? requestConfiguration = default) {
+        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<TransactionsRequestBuilderGetQueryParameters>>? requestConfiguration = default)
+        {
 #nullable restore
 #else
-        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<TransactionsRequestBuilderGetQueryParameters>> requestConfiguration = default) {
+        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<TransactionsRequestBuilderGetQueryParameters>> requestConfiguration = default)
+        {
 #endif
             var requestInfo = new RequestInformation(Method.GET, UrlTemplate, PathParameters);
             requestInfo.Configure(requestConfiguration);
@@ -83,13 +96,15 @@ namespace Marqeta.Core.Sdk.Transactions {
         /// </summary>
         /// <returns>A <see cref="TransactionsRequestBuilder"/></returns>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
-        public TransactionsRequestBuilder WithUrl(string rawUrl) {
+        public TransactionsRequestBuilder WithUrl(string rawUrl)
+        {
             return new TransactionsRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
         /// List all transactions.By default, this endpoint returns transactions conducted within the last 30 days.To return transactions older than 30 days, you must include the `start_date` and `end_date` query parameters in your request.By default, `GET /transactions` returns transactions having either `PENDING` or `COMPLETION` states.This endpoint supports &lt;&lt;/core-api/field-filtering, field filtering&gt;&gt; and &lt;&lt;/core-api/sorting-and-pagination, pagination&gt;&gt;.
         /// </summary>
-        public class TransactionsRequestBuilderGetQueryParameters {
+        public class TransactionsRequestBuilderGetQueryParameters 
+        {
             /// <summary>The unique identifier of the acting user.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable

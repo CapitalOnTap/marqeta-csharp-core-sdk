@@ -3,18 +3,31 @@ using System.Runtime.Serialization;
 using System;
 namespace Marqeta.Core.Sdk.Models {
     /// <summary>Event that triggered an update to the account&apos;s delinquency state.</summary>
-    public enum DelinquencyTransitionTriggerReason {
+    public enum DelinquencyTransitionTriggerReason
+    {
         [EnumMember(Value = "PAYMENT")]
+        #pragma warning disable CS1591
         PAYMENT,
+        #pragma warning restore CS1591
         [EnumMember(Value = "PAYMENT_VOID")]
+        #pragma warning disable CS1591
         PAYMENT_VOID,
+        #pragma warning restore CS1591
         [EnumMember(Value = "CREDIT")]
+        #pragma warning disable CS1591
         CREDIT,
+        #pragma warning restore CS1591
         [EnumMember(Value = "MINIMUM_PAYMENT_OVERRIDE")]
+        #pragma warning disable CS1591
         MINIMUM_PAYMENT_OVERRIDE,
+        #pragma warning restore CS1591
         [EnumMember(Value = "STATEMENT_GENERATION")]
+        #pragma warning disable CS1591
         STATEMENT_GENERATION,
+        #pragma warning restore CS1591
         [EnumMember(Value = "REAGE")]
+        #pragma warning disable CS1591
         REAGE,
+        #pragma warning restore CS1591
     }
 }

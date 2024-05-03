@@ -3,8 +3,11 @@ using System.Runtime.Serialization;
 using System;
 namespace Marqeta.Core.Sdk.Models {
     /// <summary>Subtype of the credit product type.`CREDIT_CARD` - Card that enables the cardholder to make purchases on credit.</summary>
-    public enum ProductSubType {
+    public enum ProductSubType
+    {
         [EnumMember(Value = "CREDIT_CARD")]
+        #pragma warning disable CS1591
         CREDIT_CARD,
+        #pragma warning restore CS1591
     }
 }

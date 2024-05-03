@@ -10,24 +10,28 @@ namespace Marqeta.Core.Sdk.Depositaccounts.Account.Item {
     /// <summary>
     /// Builds and executes requests for operations under \depositaccounts\account\{account_number}
     /// </summary>
-    public class WithAccount_numberItemRequestBuilder : BaseRequestBuilder {
+    public class WithAccount_numberItemRequestBuilder : BaseRequestBuilder 
+    {
         /// <summary>The user property</summary>
-        public UserRequestBuilder User { get =>
-            new UserRequestBuilder(PathParameters, RequestAdapter);
+        public UserRequestBuilder User
+        {
+            get => new UserRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>
         /// Instantiates a new <see cref="WithAccount_numberItemRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public WithAccount_numberItemRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/depositaccounts/account/{account_number}", pathParameters) {
+        public WithAccount_numberItemRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/depositaccounts/account/{account_number}", pathParameters)
+        {
         }
         /// <summary>
         /// Instantiates a new <see cref="WithAccount_numberItemRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public WithAccount_numberItemRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/depositaccounts/account/{account_number}", rawUrl) {
+        public WithAccount_numberItemRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/depositaccounts/account/{account_number}", rawUrl)
+        {
         }
     }
 }

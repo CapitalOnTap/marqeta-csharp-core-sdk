@@ -5,7 +5,10 @@ using System.IO;
 using System.Linq;
 using System;
 namespace Marqeta.Core.Sdk.Models {
-    public class Program_transfer_type_request : IAdditionalDataHolder, IParsable {
+    #pragma warning disable CS1591
+    public class Program_transfer_type_request : IAdditionalDataHolder, IParsable 
+    #pragma warning restore CS1591
+    {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Memo or note describing the program transfer type.</summary>
@@ -43,7 +46,8 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>
         /// Instantiates a new <see cref="Program_transfer_type_request"/> and sets the default values.
         /// </summary>
-        public Program_transfer_type_request() {
+        public Program_transfer_type_request()
+        {
             AdditionalData = new Dictionary<string, object>();
         }
         /// <summary>
@@ -51,7 +55,8 @@ namespace Marqeta.Core.Sdk.Models {
         /// </summary>
         /// <returns>A <see cref="Program_transfer_type_request"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static Program_transfer_type_request CreateFromDiscriminatorValue(IParseNode parseNode) {
+        public static Program_transfer_type_request CreateFromDiscriminatorValue(IParseNode parseNode)
+        {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
             return new Program_transfer_type_request();
         }
@@ -59,8 +64,10 @@ namespace Marqeta.Core.Sdk.Models {
         /// The deserialization information for the current model
         /// </summary>
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
-        public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers() {
-            return new Dictionary<string, Action<IParseNode>> {
+        public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
+        {
+            return new Dictionary<string, Action<IParseNode>>
+            {
                 {"memo", n => { Memo = n.GetStringValue(); } },
                 {"program_funding_source_token", n => { ProgramFundingSourceToken = n.GetStringValue(); } },
                 {"tags", n => { Tags = n.GetStringValue(); } },
@@ -71,7 +78,8 @@ namespace Marqeta.Core.Sdk.Models {
         /// Serializes information the current object
         /// </summary>
         /// <param name="writer">Serialization writer to use to serialize this model</param>
-        public virtual void Serialize(ISerializationWriter writer) {
+        public virtual void Serialize(ISerializationWriter writer)
+        {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("memo", Memo);
             writer.WriteStringValue("program_funding_source_token", ProgramFundingSourceToken);

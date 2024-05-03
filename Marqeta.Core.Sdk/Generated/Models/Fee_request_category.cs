@@ -3,10 +3,15 @@ using System.Runtime.Serialization;
 using System;
 namespace Marqeta.Core.Sdk.Models {
     /// <summary>Specifies if the fee is a standalone fee or a real-time fee.</summary>
-    public enum Fee_request_category {
+    public enum Fee_request_category
+    {
         [EnumMember(Value = "STANDALONE")]
+        #pragma warning disable CS1591
         STANDALONE,
+        #pragma warning restore CS1591
         [EnumMember(Value = "REALTIME")]
+        #pragma warning disable CS1591
         REALTIME,
+        #pragma warning restore CS1591
     }
 }

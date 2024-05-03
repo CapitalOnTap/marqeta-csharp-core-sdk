@@ -5,7 +5,10 @@ using System.IO;
 using System.Linq;
 using System;
 namespace Marqeta.Core.Sdk.Models {
-    public class Commando_mode_response : IAdditionalDataHolder, IParsable {
+    #pragma warning disable CS1591
+    public class Commando_mode_response : IAdditionalDataHolder, IParsable 
+    #pragma warning restore CS1591
+    {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Defines program behavior when Commando Mode is enabled.</summary>
@@ -55,7 +58,8 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>
         /// Instantiates a new <see cref="Commando_mode_response"/> and sets the default values.
         /// </summary>
-        public Commando_mode_response() {
+        public Commando_mode_response()
+        {
             AdditionalData = new Dictionary<string, object>();
         }
         /// <summary>
@@ -63,7 +67,8 @@ namespace Marqeta.Core.Sdk.Models {
         /// </summary>
         /// <returns>A <see cref="Commando_mode_response"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static Commando_mode_response CreateFromDiscriminatorValue(IParseNode parseNode) {
+        public static Commando_mode_response CreateFromDiscriminatorValue(IParseNode parseNode)
+        {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
             return new Commando_mode_response();
         }
@@ -71,8 +76,10 @@ namespace Marqeta.Core.Sdk.Models {
         /// The deserialization information for the current model
         /// </summary>
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
-        public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers() {
-            return new Dictionary<string, Action<IParseNode>> {
+        public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
+        {
+            return new Dictionary<string, Action<IParseNode>>
+            {
                 {"commando_mode_enables", n => { CommandoModeEnables = n.GetObjectValue<Commando_mode_enables>(Commando_mode_enables.CreateFromDiscriminatorValue); } },
                 {"created_time", n => { CreatedTime = n.GetDateTimeOffsetValue(); } },
                 {"current_state", n => { CurrentState = n.GetObjectValue<Commando_mode_nested_transition>(Commando_mode_nested_transition.CreateFromDiscriminatorValue); } },
@@ -86,7 +93,8 @@ namespace Marqeta.Core.Sdk.Models {
         /// Serializes information the current object
         /// </summary>
         /// <param name="writer">Serialization writer to use to serialize this model</param>
-        public virtual void Serialize(ISerializationWriter writer) {
+        public virtual void Serialize(ISerializationWriter writer)
+        {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
             writer.WriteObjectValue<Commando_mode_enables>("commando_mode_enables", CommandoModeEnables);
             writer.WriteDateTimeOffsetValue("created_time", CreatedTime);

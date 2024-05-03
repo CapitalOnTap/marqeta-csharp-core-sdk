@@ -3,12 +3,19 @@ using System.Runtime.Serialization;
 using System;
 namespace Marqeta.Core.Sdk.Models {
     /// <summary>default = API</summary>
-    public enum Bank_transfer_response_model_channel {
+    public enum Bank_transfer_response_model_channel
+    {
         [EnumMember(Value = "API")]
+        #pragma warning disable CS1591
         API,
+        #pragma warning restore CS1591
         [EnumMember(Value = "SYSTEM")]
+        #pragma warning disable CS1591
         SYSTEM,
+        #pragma warning restore CS1591
         [EnumMember(Value = "ADMIN")]
+        #pragma warning disable CS1591
         ADMIN,
+        #pragma warning restore CS1591
     }
 }

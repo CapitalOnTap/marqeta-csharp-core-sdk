@@ -3,10 +3,15 @@ using System.Runtime.Serialization;
 using System;
 namespace Marqeta.Core.Sdk.Models {
     /// <summary>Indicates whether the APR value is fixed or variable.</summary>
-    public enum AprScheduleEntryCreateReq_type {
+    public enum AprScheduleEntryCreateReq_type
+    {
         [EnumMember(Value = "FIXED")]
+        #pragma warning disable CS1591
         FIXED,
+        #pragma warning restore CS1591
         [EnumMember(Value = "VARIABLE")]
+        #pragma warning disable CS1591
         VARIABLE,
+        #pragma warning restore CS1591
     }
 }

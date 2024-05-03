@@ -11,28 +11,33 @@ namespace Marqeta.Core.Sdk.Digitalwallets.Wpp {
     /// <summary>
     /// Builds and executes requests for operations under \digitalwallets\wpp
     /// </summary>
-    public class WppRequestBuilder : BaseRequestBuilder {
+    public class WppRequestBuilder : BaseRequestBuilder 
+    {
         /// <summary>The applePayJWT property</summary>
-        public ApplePayJWTRequestBuilder ApplePayJWT { get =>
-            new ApplePayJWTRequestBuilder(PathParameters, RequestAdapter);
+        public ApplePayJWTRequestBuilder ApplePayJWT
+        {
+            get => new ApplePayJWTRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The googlePayPushProvisioningNotification property</summary>
-        public GooglePayPushProvisioningNotificationRequestBuilder GooglePayPushProvisioningNotification { get =>
-            new GooglePayPushProvisioningNotificationRequestBuilder(PathParameters, RequestAdapter);
+        public GooglePayPushProvisioningNotificationRequestBuilder GooglePayPushProvisioningNotification
+        {
+            get => new GooglePayPushProvisioningNotificationRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>
         /// Instantiates a new <see cref="WppRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public WppRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/digitalwallets/wpp", pathParameters) {
+        public WppRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/digitalwallets/wpp", pathParameters)
+        {
         }
         /// <summary>
         /// Instantiates a new <see cref="WppRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public WppRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/digitalwallets/wpp", rawUrl) {
+        public WppRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/digitalwallets/wpp", rawUrl)
+        {
         }
     }
 }

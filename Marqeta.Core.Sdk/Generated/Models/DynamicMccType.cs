@@ -3,8 +3,11 @@ using System.Runtime.Serialization;
 using System;
 namespace Marqeta.Core.Sdk.Models {
     /// <summary>Type of dynamic MCC.</summary>
-    public enum DynamicMccType {
+    public enum DynamicMccType
+    {
         [EnumMember(Value = "HIGHEST_SPEND")]
+        #pragma warning disable CS1591
         HIGHEST_SPEND,
+        #pragma warning restore CS1591
     }
 }

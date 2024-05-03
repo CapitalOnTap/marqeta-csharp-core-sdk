@@ -16,40 +16,50 @@ namespace Marqeta.Core.Sdk.Cards {
     /// <summary>
     /// Builds and executes requests for operations under \cards
     /// </summary>
-    public class CardsRequestBuilder : BaseRequestBuilder {
+    public class CardsRequestBuilder : BaseRequestBuilder 
+    {
         /// <summary>The barcode property</summary>
-        public BarcodeRequestBuilder Barcode { get =>
-            new BarcodeRequestBuilder(PathParameters, RequestAdapter);
+        public BarcodeRequestBuilder Barcode
+        {
+            get => new BarcodeRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The getbypan property</summary>
-        public GetbypanRequestBuilder Getbypan { get =>
-            new GetbypanRequestBuilder(PathParameters, RequestAdapter);
+        public GetbypanRequestBuilder Getbypan
+        {
+            get => new GetbypanRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The user property</summary>
-        public UserRequestBuilder User { get =>
-            new UserRequestBuilder(PathParameters, RequestAdapter);
+        public UserRequestBuilder User
+        {
+            get => new UserRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>Gets an item from the Marqeta.Core.Sdk.cards.item collection</summary>
         /// <param name="position">Unique identifier of the card you want to retrieve.</param>
         /// <returns>A <see cref="WithTokenItemRequestBuilder"/></returns>
-        public WithTokenItemRequestBuilder this[string position] { get {
-            var urlTplParams = new Dictionary<string, object>(PathParameters);
-            urlTplParams.Add("token", position);
-            return new WithTokenItemRequestBuilder(urlTplParams, RequestAdapter);
-        } }
+        public WithTokenItemRequestBuilder this[string position]
+        {
+            get
+            {
+                var urlTplParams = new Dictionary<string, object>(PathParameters);
+                urlTplParams.Add("token", position);
+                return new WithTokenItemRequestBuilder(urlTplParams, RequestAdapter);
+            }
+        }
         /// <summary>
         /// Instantiates a new <see cref="CardsRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public CardsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/cards?last_four={last_four}{&count*,fields*,sort_by*,start_index*}", pathParameters) {
+        public CardsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/cards?last_four={last_four}{&count*,fields*,show_cvv_number*,show_pan*,sort_by*,start_index*}", pathParameters)
+        {
         }
         /// <summary>
         /// Instantiates a new <see cref="CardsRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public CardsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/cards?last_four={last_four}{&count*,fields*,sort_by*,start_index*}", rawUrl) {
+        public CardsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/cards?last_four={last_four}{&count*,fields*,show_cvv_number*,show_pan*,sort_by*,start_index*}", rawUrl)
+        {
         }
         /// <summary>
         /// Retrieves an array of cards whose primary account numbers (PANs) end in the four digits specified by the `last_four` query parameter.This endpoint supports &lt;&lt;/core-api/field-filtering, field filtering&gt;&gt;, &lt;&lt;/core-api/object-expansion, object expansion&gt;&gt;, &lt;&lt;/core-api/sorting-and-pagination, sorting, and pagination&gt;&gt;.
@@ -60,13 +70,16 @@ namespace Marqeta.Core.Sdk.Cards {
         /// <exception cref="ApiError">When receiving a 4XX or 5XX status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<CardListResponse?> GetAsync(Action<RequestConfiguration<CardsRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default) {
+        public async Task<CardListResponse?> GetAsync(Action<RequestConfiguration<CardsRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        {
 #nullable restore
 #else
-        public async Task<CardListResponse> GetAsync(Action<RequestConfiguration<CardsRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default) {
+        public async Task<CardListResponse> GetAsync(Action<RequestConfiguration<CardsRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            var errorMapping = new Dictionary<string, ParsableFactory<IParsable>> {
+            var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
+            {
                 {"XXX", ApiError.CreateFromDiscriminatorValue},
             };
             return await RequestAdapter.SendAsync<CardListResponse>(requestInfo, CardListResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
@@ -81,14 +94,17 @@ namespace Marqeta.Core.Sdk.Cards {
         /// <exception cref="ApiError">When receiving a 4XX or 5XX status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<Card_response?> PostAsync(Card_request body, Action<RequestConfiguration<CardsRequestBuilderPostQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default) {
+        public async Task<Card_response?> PostAsync(Card_request body, Action<RequestConfiguration<CardsRequestBuilderPostQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        {
 #nullable restore
 #else
-        public async Task<Card_response> PostAsync(Card_request body, Action<RequestConfiguration<CardsRequestBuilderPostQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default) {
+        public async Task<Card_response> PostAsync(Card_request body, Action<RequestConfiguration<CardsRequestBuilderPostQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        {
 #endif
             _ = body ?? throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPostRequestInformation(body, requestConfiguration);
-            var errorMapping = new Dictionary<string, ParsableFactory<IParsable>> {
+            var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
+            {
                 {"XXX", ApiError.CreateFromDiscriminatorValue},
             };
             return await RequestAdapter.SendAsync<Card_response>(requestInfo, Card_response.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
@@ -100,12 +116,14 @@ namespace Marqeta.Core.Sdk.Cards {
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<CardsRequestBuilderGetQueryParameters>>? requestConfiguration = default) {
+        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<CardsRequestBuilderGetQueryParameters>>? requestConfiguration = default)
+        {
 #nullable restore
 #else
-        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<CardsRequestBuilderGetQueryParameters>> requestConfiguration = default) {
+        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<CardsRequestBuilderGetQueryParameters>> requestConfiguration = default)
+        {
 #endif
-            var requestInfo = new RequestInformation(Method.GET, UrlTemplate, PathParameters);
+            var requestInfo = new RequestInformation(Method.GET, "{+baseurl}/cards?last_four={last_four}{&count*,fields*,sort_by*,start_index*}", PathParameters);
             requestInfo.Configure(requestConfiguration);
             requestInfo.Headers.TryAdd("Accept", "application/json");
             return requestInfo;
@@ -118,10 +136,12 @@ namespace Marqeta.Core.Sdk.Cards {
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToPostRequestInformation(Card_request body, Action<RequestConfiguration<CardsRequestBuilderPostQueryParameters>>? requestConfiguration = default) {
+        public RequestInformation ToPostRequestInformation(Card_request body, Action<RequestConfiguration<CardsRequestBuilderPostQueryParameters>>? requestConfiguration = default)
+        {
 #nullable restore
 #else
-        public RequestInformation ToPostRequestInformation(Card_request body, Action<RequestConfiguration<CardsRequestBuilderPostQueryParameters>> requestConfiguration = default) {
+        public RequestInformation ToPostRequestInformation(Card_request body, Action<RequestConfiguration<CardsRequestBuilderPostQueryParameters>> requestConfiguration = default)
+        {
 #endif
             _ = body ?? throw new ArgumentNullException(nameof(body));
             var requestInfo = new RequestInformation(Method.POST, "{+baseurl}/cards{?show_cvv_number*,show_pan*}", PathParameters);
@@ -135,13 +155,15 @@ namespace Marqeta.Core.Sdk.Cards {
         /// </summary>
         /// <returns>A <see cref="CardsRequestBuilder"/></returns>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
-        public CardsRequestBuilder WithUrl(string rawUrl) {
+        public CardsRequestBuilder WithUrl(string rawUrl)
+        {
             return new CardsRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
         /// Retrieves an array of cards whose primary account numbers (PANs) end in the four digits specified by the `last_four` query parameter.This endpoint supports &lt;&lt;/core-api/field-filtering, field filtering&gt;&gt;, &lt;&lt;/core-api/object-expansion, object expansion&gt;&gt;, &lt;&lt;/core-api/sorting-and-pagination, sorting, and pagination&gt;&gt;.
         /// </summary>
-        public class CardsRequestBuilderGetQueryParameters {
+        public class CardsRequestBuilderGetQueryParameters 
+        {
             /// <summary>Number of resources to retrieve.</summary>
             [QueryParameter("count")]
             public int? Count { get; set; }
@@ -182,7 +204,8 @@ namespace Marqeta.Core.Sdk.Cards {
         /// <summary>
         /// Creates a card.Create the user and card product before you create the card.You create a card using the `user_token` of the user who will own the card and the `card_product_token` of the card product that will control the card.[TIP]By default, newly created cards are inactive and must be explicitly activated (see &lt;&lt;/core-api/cards#_create_card_transition, Create Card Transition&gt;&gt; for information on activating cards).To create cards that are activated upon issue, configure your card product&apos;s `config.card_life_cycle.activate_upon_issue` field (see &lt;&lt;/core-api/card-products, Card Products&gt;&gt;).Send a `POST` request to `/pins/controltoken` to set the card&apos;s personal identification number (PIN) if your program requires PIN numbers (for example, for Europay Mastercard and Visa cards); this action updates the `pin_is_set` field to `true`.See &lt;&lt;/core-api/pins#_create_or_update_pin, Create or Update PIN&gt;&gt; for details.You can use optional query parameters to show the primary account number (PAN) and card verification value (CVV2) number in the response.If `show_pan` and `show_cvv_number` are set to `true`, the fulfillment state of the card is `DIGITALLY_PRESENTED` instead of the typical initial state of `ISSUED`.This fulfillment state does not affect the delivery of physical cards.This endpoint requires PCI DSS compliance if `show_pan` and `show_cvv_number` are set to `true`.You must comply with PCI DSS data security requirements if you store, transmit, or process sensitive card data.
         /// </summary>
-        public class CardsRequestBuilderPostQueryParameters {
+        public class CardsRequestBuilderPostQueryParameters 
+        {
             /// <summary>Set to `true` to show the CVV2 number in the response.</summary>
             [QueryParameter("show_cvv_number")]
             public bool? ShowCvvNumber { get; set; }

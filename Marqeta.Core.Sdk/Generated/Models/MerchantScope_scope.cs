@@ -3,10 +3,15 @@ using System.Runtime.Serialization;
 using System;
 namespace Marqeta.Core.Sdk.Models {
     /// <summary>Scope of the merchant category.Can be either &apos;mcc&apos; or &apos;mcc_group&apos;.</summary>
-    public enum MerchantScope_scope {
+    public enum MerchantScope_scope
+    {
         [EnumMember(Value = "mcc")]
+        #pragma warning disable CS1591
         Mcc,
+        #pragma warning restore CS1591
         [EnumMember(Value = "mcc_group")]
+        #pragma warning disable CS1591
         Mcc_group,
+        #pragma warning restore CS1591
     }
 }

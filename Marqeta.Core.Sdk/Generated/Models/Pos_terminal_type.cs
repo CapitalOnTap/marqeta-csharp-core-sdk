@@ -3,18 +3,31 @@ using System.Runtime.Serialization;
 using System;
 namespace Marqeta.Core.Sdk.Models {
     /// <summary>Type of card acceptor/terminal.</summary>
-    public enum Pos_terminal_type {
+    public enum Pos_terminal_type
+    {
         [EnumMember(Value = "AUTO_DISPENSER_WITH_PIN")]
+        #pragma warning disable CS1591
         AUTO_DISPENSER_WITH_PIN,
+        #pragma warning restore CS1591
         [EnumMember(Value = "SELF_SERVICE")]
+        #pragma warning disable CS1591
         SELF_SERVICE,
+        #pragma warning restore CS1591
         [EnumMember(Value = "LIMITED_AMOUNT")]
+        #pragma warning disable CS1591
         LIMITED_AMOUNT,
+        #pragma warning restore CS1591
         [EnumMember(Value = "IN_FLIGHT")]
+        #pragma warning disable CS1591
         IN_FLIGHT,
+        #pragma warning restore CS1591
         [EnumMember(Value = "ECOMMERCE")]
+        #pragma warning disable CS1591
         ECOMMERCE,
+        #pragma warning restore CS1591
         [EnumMember(Value = "TRANSPONDER")]
+        #pragma warning disable CS1591
         TRANSPONDER,
+        #pragma warning restore CS1591
     }
 }

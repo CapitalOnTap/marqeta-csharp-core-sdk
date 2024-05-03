@@ -2,12 +2,21 @@
 using System.Runtime.Serialization;
 using System;
 namespace Marqeta.Core.Sdk.Models {
-    public enum Original_credit_sender_data_deferred_hold_by {
+    #pragma warning disable CS1591
+    public enum Original_credit_sender_data_deferred_hold_by
+    #pragma warning restore CS1591
+    {
         [EnumMember(Value = "absent")]
+        #pragma warning disable CS1591
         Absent,
+        #pragma warning restore CS1591
         [EnumMember(Value = "visa")]
+        #pragma warning disable CS1591
         Visa,
+        #pragma warning restore CS1591
         [EnumMember(Value = "originator")]
+        #pragma warning disable CS1591
         Originator,
+        #pragma warning restore CS1591
     }
 }

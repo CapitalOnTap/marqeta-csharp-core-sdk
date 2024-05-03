@@ -12,20 +12,23 @@ namespace Marqeta.Core.Sdk.Digitalwalletprovisionrequests.Xpay {
     /// <summary>
     /// Builds and executes requests for operations under \digitalwalletprovisionrequests\xpay
     /// </summary>
-    public class XpayRequestBuilder : BaseRequestBuilder {
+    public class XpayRequestBuilder : BaseRequestBuilder 
+    {
         /// <summary>
         /// Instantiates a new <see cref="XpayRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public XpayRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/digitalwalletprovisionrequests/xpay", pathParameters) {
+        public XpayRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/digitalwalletprovisionrequests/xpay", pathParameters)
+        {
         }
         /// <summary>
         /// Instantiates a new <see cref="XpayRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public XpayRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/digitalwalletprovisionrequests/xpay", rawUrl) {
+        public XpayRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/digitalwalletprovisionrequests/xpay", rawUrl)
+        {
         }
         /// <summary>
         /// [NOTE]This endpoint is limited in availability.For more information, contact your Marqeta representative.Use this endpoint to return card data for use in provisioning a digital wallet token into an XPay digital wallet.The returned card data is encrypted using the digital wallet provider&apos;s encryption key, thereby reducing your PCI compliance overhead.
@@ -37,14 +40,17 @@ namespace Marqeta.Core.Sdk.Digitalwalletprovisionrequests.Xpay {
         /// <exception cref="ApiError">When receiving a 4XX or 5XX status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<Digital_wallet_x_pay_provision_response?> PostAsync(Digital_wallet_x_pay_provision_request body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default) {
+        public async Task<Digital_wallet_x_pay_provision_response?> PostAsync(Digital_wallet_x_pay_provision_request body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        {
 #nullable restore
 #else
-        public async Task<Digital_wallet_x_pay_provision_response> PostAsync(Digital_wallet_x_pay_provision_request body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default) {
+        public async Task<Digital_wallet_x_pay_provision_response> PostAsync(Digital_wallet_x_pay_provision_request body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        {
 #endif
             _ = body ?? throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPostRequestInformation(body, requestConfiguration);
-            var errorMapping = new Dictionary<string, ParsableFactory<IParsable>> {
+            var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
+            {
                 {"XXX", ApiError.CreateFromDiscriminatorValue},
             };
             return await RequestAdapter.SendAsync<Digital_wallet_x_pay_provision_response>(requestInfo, Digital_wallet_x_pay_provision_response.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
@@ -57,10 +63,12 @@ namespace Marqeta.Core.Sdk.Digitalwalletprovisionrequests.Xpay {
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToPostRequestInformation(Digital_wallet_x_pay_provision_request body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default) {
+        public RequestInformation ToPostRequestInformation(Digital_wallet_x_pay_provision_request body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
+        {
 #nullable restore
 #else
-        public RequestInformation ToPostRequestInformation(Digital_wallet_x_pay_provision_request body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default) {
+        public RequestInformation ToPostRequestInformation(Digital_wallet_x_pay_provision_request body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
+        {
 #endif
             _ = body ?? throw new ArgumentNullException(nameof(body));
             var requestInfo = new RequestInformation(Method.POST, UrlTemplate, PathParameters);
@@ -74,7 +82,8 @@ namespace Marqeta.Core.Sdk.Digitalwalletprovisionrequests.Xpay {
         /// </summary>
         /// <returns>A <see cref="XpayRequestBuilder"/></returns>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
-        public XpayRequestBuilder WithUrl(string rawUrl) {
+        public XpayRequestBuilder WithUrl(string rawUrl)
+        {
             return new XpayRequestBuilder(rawUrl, RequestAdapter);
         }
     }
