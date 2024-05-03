@@ -64,10 +64,10 @@ public class TextHtmlParseNode : IParseNode
     public T GetObjectValue<T>(ParsableFactory<T> factory) where T : IParsable
     {
         // MODIFIED: If the item we want to create is an <see cref="ApiError"/>
-        // then set the ErrorMessage as the current text
+        // then set the MessageEscaped as the current text
         var item = factory(this);
-        if (item is ApiError { ErrorMessage.Length: 0 } apiError)
-            apiError.ErrorMessage = _text;
+        if (item is ApiError { MessageEscaped.Length: 0 } apiError)
+            apiError.MessageEscaped = _text;
         return item;
     }
     /// <inheritdoc />

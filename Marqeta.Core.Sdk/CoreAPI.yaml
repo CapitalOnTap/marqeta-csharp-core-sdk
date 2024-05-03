@@ -21997,14 +21997,13 @@ components:
           description: "The sort order index of the first resource in the returned array.\n\nThis field is returned if there are resources in your returned array."
           format: int32
     ApiError:
-      required:
-        - error_code
-        - error_message
       type: object
       properties:
         error_code:
           type: string
         error_message:
+          type: string
+        message:
           type: string
     UserCardHolderListResponse:
       type: object
