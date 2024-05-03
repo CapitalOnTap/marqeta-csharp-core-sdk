@@ -24,9 +24,9 @@ namespace Marqeta.Core.Sdk.Models {
 #else
         public string CardToken { get; set; }
 #endif
-        /// <summary>Date and time that the client access token was created, in UTC.</summary>
+        /// <summary>Date and time when the client access token was created, in UTC.</summary>
         public DateTimeOffset? Created { get; set; }
-        /// <summary>Date and time that the client access token expires, in UTC.</summary>
+        /// <summary>Date and time when the client access token expires, in UTC.</summary>
         public DateTimeOffset? Expires { get; set; }
         /// <summary>Value of the client access token to redeem when displaying sensitive card data.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER

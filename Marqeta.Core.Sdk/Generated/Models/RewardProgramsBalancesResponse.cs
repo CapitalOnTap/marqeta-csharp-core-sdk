@@ -17,7 +17,7 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>The pending balance of the rewards accrued for the current billing cycle.Pending rewards cannot be redeemed.</summary>
         public decimal? PendingRewardBalance { get; set; }
         /// <summary>The reward percentage applied to the balance for the current billing cycle.Determined by the reward rules config.</summary>
-        public int? Percentage { get; set; }
+        public decimal? Percentage { get; set; }
         /// <summary>Unique identifier of reward program for which to return balances.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -53,7 +53,7 @@ namespace Marqeta.Core.Sdk.Models {
                 {"billing_cycle_opening_date", n => { BillingCycleOpeningDate = n.GetDateTimeOffsetValue(); } },
                 {"net_balance", n => { NetBalance = n.GetDecimalValue(); } },
                 {"pending_reward_balance", n => { PendingRewardBalance = n.GetDecimalValue(); } },
-                {"percentage", n => { Percentage = n.GetIntValue(); } },
+                {"percentage", n => { Percentage = n.GetDecimalValue(); } },
                 {"reward_program_token", n => { RewardProgramToken = n.GetStringValue(); } },
                 {"total_reward_balance", n => { TotalRewardBalance = n.GetDecimalValue(); } },
             };
@@ -68,7 +68,7 @@ namespace Marqeta.Core.Sdk.Models {
             writer.WriteDateTimeOffsetValue("billing_cycle_opening_date", BillingCycleOpeningDate);
             writer.WriteDecimalValue("net_balance", NetBalance);
             writer.WriteDecimalValue("pending_reward_balance", PendingRewardBalance);
-            writer.WriteIntValue("percentage", Percentage);
+            writer.WriteDecimalValue("percentage", Percentage);
             writer.WriteStringValue("reward_program_token", RewardProgramToken);
             writer.WriteDecimalValue("total_reward_balance", TotalRewardBalance);
             writer.WriteAdditionalData(AdditionalData);

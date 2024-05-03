@@ -53,6 +53,14 @@ namespace Marqeta.Core.Sdk.Models {
 #else
         public string Tid { get; set; }
 #endif
+        /// <summary>Specifies whether the transaction was initiated by a cardholder or a merchant.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? TransactionInitiatedBy { get; set; }
+#nullable restore
+#else
+        public string TransactionInitiatedBy { get; set; }
+#endif
         /// <summary>
         /// Instantiates a new <see cref="Terminal_model"/> and sets the default values.
         /// </summary>
@@ -80,6 +88,7 @@ namespace Marqeta.Core.Sdk.Models {
                 {"pin_present", n => { PinPresent = n.GetStringValue(); } },
                 {"special_condition_indicator", n => { SpecialConditionIndicator = n.GetEnumValue<Terminal_model_special_condition_indicator>(); } },
                 {"tid", n => { Tid = n.GetStringValue(); } },
+                {"transaction_initiated_by", n => { TransactionInitiatedBy = n.GetStringValue(); } },
             };
         }
         /// <summary>
@@ -94,6 +103,7 @@ namespace Marqeta.Core.Sdk.Models {
             writer.WriteStringValue("pin_present", PinPresent);
             writer.WriteEnumValue<Terminal_model_special_condition_indicator>("special_condition_indicator", SpecialConditionIndicator);
             writer.WriteStringValue("tid", Tid);
+            writer.WriteStringValue("transaction_initiated_by", TransactionInitiatedBy);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

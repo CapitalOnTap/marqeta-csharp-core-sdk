@@ -38,7 +38,7 @@ namespace Marqeta.Core.Sdk.Models {
 #else
         public string AttesterTitle { get; set; }
 #endif
-        /// <summary>Contains authentication information for a credit user.</summary>
+        /// <summary>Contains the cardholder&apos;s email address and password information.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public Marqeta.Core.Sdk.Models.Authentication? Authentication { get; set; }

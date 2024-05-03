@@ -2,7 +2,7 @@
 using System.Runtime.Serialization;
 using System;
 namespace Marqeta.Core.Sdk.Models {
-    /// <summary>The channel through which the credit user&apos;s password was last updated.</summary>
+    /// <summary>Specifies the channel through which the password was last changed.</summary>
     public enum Authentication_last_password_update_channel {
         [EnumMember(Value = "USER_CHANGE")]
         USER_CHANGE,
