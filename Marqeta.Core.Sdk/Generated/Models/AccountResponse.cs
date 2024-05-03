@@ -51,7 +51,7 @@ namespace Marqeta.Core.Sdk.Models {
 #else
         public string CreditProductToken { get; set; }
 #endif
-        /// <summary>A valid three-digit link:https://www.iso.org/iso-4217-currency-codes.html[ISO 4217 currency code, window=&quot;_blank&quot;]</summary>
+        /// <summary>Valid three-digit link:https://www.iso.org/iso-4217-currency-codes.html[ISO 4217 currency code, window=&quot;_blank&quot;]</summary>
         public Marqeta.Core.Sdk.Models.CurrencyCode? CurrencyCode { get; set; }
         /// <summary>Current purchase balance on the credit account.</summary>
         public double? CurrentBalance { get; set; }
@@ -87,6 +87,14 @@ namespace Marqeta.Core.Sdk.Models {
         public double? RemainingStatementBalance { get; set; }
         /// <summary>Status of the credit account.*NOTE* `CHARGE_OFF` is not an allowable value for `original_status`.</summary>
         public AccountStatusEnum? Status { get; set; }
+        /// <summary>substatuses of the credit account.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<string>? Substatuses { get; set; }
+#nullable restore
+#else
+        public List<string> Substatuses { get; set; }
+#endif
         /// <summary>Unique identifier of the credit account.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -106,6 +114,14 @@ namespace Marqeta.Core.Sdk.Models {
 #nullable restore
 #else
         public List<AccountUsageResponse> Usages { get; set; }
+#endif
+        /// <summary>substatuses of the users under the credit account.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<string>? UserSubstatuses { get; set; }
+#nullable restore
+#else
+        public List<string> UserSubstatuses { get; set; }
 #endif
         /// <summary>Unique identifier of the primary account holder.Either a `user_token` or `business_token` is present, not both.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -154,10 +170,12 @@ namespace Marqeta.Core.Sdk.Models {
                 {"remaining_min_payment_due", n => { RemainingMinPaymentDue = n.GetDoubleValue(); } },
                 {"remaining_statement_balance", n => { RemainingStatementBalance = n.GetDoubleValue(); } },
                 {"status", n => { Status = n.GetEnumValue<AccountStatusEnum>(); } },
+                {"substatuses", n => { Substatuses = n.GetCollectionOfPrimitiveValues<string>()?.ToList(); } },
                 {"token", n => { Token = n.GetStringValue(); } },
                 {"type", n => { Type = n.GetEnumValue<AccountType>(); } },
                 {"updated_time", n => { UpdatedTime = n.GetDateTimeOffsetValue(); } },
                 {"usages", n => { Usages = n.GetCollectionOfObjectValues<AccountUsageResponse>(AccountUsageResponse.CreateFromDiscriminatorValue)?.ToList(); } },
+                {"user_substatuses", n => { UserSubstatuses = n.GetCollectionOfPrimitiveValues<string>()?.ToList(); } },
                 {"user_token", n => { UserToken = n.GetStringValue(); } },
             };
         }
@@ -184,10 +202,12 @@ namespace Marqeta.Core.Sdk.Models {
             writer.WriteDoubleValue("remaining_min_payment_due", RemainingMinPaymentDue);
             writer.WriteDoubleValue("remaining_statement_balance", RemainingStatementBalance);
             writer.WriteEnumValue<AccountStatusEnum>("status", Status);
+            writer.WriteCollectionOfPrimitiveValues<string>("substatuses", Substatuses);
             writer.WriteStringValue("token", Token);
             writer.WriteEnumValue<AccountType>("type", Type);
             writer.WriteDateTimeOffsetValue("updated_time", UpdatedTime);
             writer.WriteCollectionOfObjectValues<AccountUsageResponse>("usages", Usages);
+            writer.WriteCollectionOfPrimitiveValues<string>("user_substatuses", UserSubstatuses);
             writer.WriteStringValue("user_token", UserToken);
             writer.WriteAdditionalData(AdditionalData);
         }

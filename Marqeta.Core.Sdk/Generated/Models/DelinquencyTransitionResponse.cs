@@ -29,7 +29,7 @@ namespace Marqeta.Core.Sdk.Models {
         public DateTimeOffset? ImpactTime { get; set; }
         /// <summary>A value of `true` indicates that the system invalidated and rolled back the delinquency transition.This is a temporary field that allows Marqeta to handle occasional cases of out-of-order processing.This can occur when two delinquency state transition webhooks are sent near-simultaneously.For example, if a credit and a payment that bring an account current are made around the same time, two delinquency state transitions are sent very close together.In these cases, one of the transitions is rolled back and invalidated.For the transition that is rolled back, `is_rolled_back` is `true` and the transition should be ignored.This field is temporary and to be deprecated when out-of-order processing is addressed in a future release.</summary>
         public bool? IsRolledBack { get; set; }
-        /// <summary>The payment due date of the account&apos;s oldest delinquency bucket, in UTC.Useful when used with the delinquency state transition&apos;s `created_time` to determine the total number of days a payment is past due.</summary>
+        /// <summary>Payment due date of the account&apos;s oldest delinquency bucket, in UTC.Useful when used with the delinquency state transition&apos;s `created_time` to determine the total number of days a payment is past due.</summary>
         public DateTimeOffset? OldestPaymentDueDate { get; set; }
         /// <summary>Delinquency status of an account.</summary>
         public DelinquencyStatus? OriginalStatus { get; set; }

@@ -35,7 +35,7 @@ namespace Marqeta.Core.Sdk.Models {
 #else
         public Marqeta.Core.Sdk.Models.ExpirationOffset ExpirationOffset { get; set; }
 #endif
-        /// <summary>Reissues the specified card (known as the &quot;source&quot; card) with a new primary account number (PAN).This field reissues a card with a new PAN from the specified source card. The source card is automatically terminated when the card is reissued with the new PAN. Use this field when reissuing a lost or stolen card.</summary>
+        /// <summary>Reissues the specified card (known as the &quot;source&quot; card) with a new primary account number (PAN).This field reissues a card with a new PAN from the specified source card.The source card is automatically terminated when the card is reissued with the new PAN.Use this field when reissuing a lost or stolen card.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? NewPanFromCardToken { get; set; }

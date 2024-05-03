@@ -76,7 +76,7 @@ namespace Marqeta.Core.Sdk.Accounts.Item.Periodicfeeschedules {
         /// Get all active and upcoming periodic fee schedules of an account
         /// </summary>
         public class PeriodicfeeschedulesRequestBuilderGetQueryParameters {
-            /// <summary>The number of resources to retrieve.</summary>
+            /// <summary>Number of periodic fee schedule resources to retrieve.</summary>
             [QueryParameter("count")]
             public int? Count { get; set; }
             /// <summary>Sort order index of the first resource in the returned array.</summary>

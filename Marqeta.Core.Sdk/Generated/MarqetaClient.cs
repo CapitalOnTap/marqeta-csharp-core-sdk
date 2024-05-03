@@ -11,6 +11,7 @@ using Marqeta.Core.Sdk.Bulkissuances;
 using Marqeta.Core.Sdk.Bundles;
 using Marqeta.Core.Sdk.Businesses;
 using Marqeta.Core.Sdk.Businesstransitions;
+using Marqeta.Core.Sdk.Cardgroups;
 using Marqeta.Core.Sdk.Cardproducts;
 using Marqeta.Core.Sdk.Cards;
 using Marqeta.Core.Sdk.Cardtransitions;
@@ -42,9 +43,11 @@ using Marqeta.Core.Sdk.Programreserve;
 using Marqeta.Core.Sdk.Programtransfers;
 using Marqeta.Core.Sdk.Pushtocards;
 using Marqeta.Core.Sdk.Realtimefeegroups;
+using Marqeta.Core.Sdk.Rewardprograms;
 using Marqeta.Core.Sdk.Serialization.Json;
 using Marqeta.Core.Sdk.Serialization.Text;
 using Marqeta.Core.Sdk.Simulate;
+using Marqeta.Core.Sdk.Substatuses;
 using Marqeta.Core.Sdk.Transactions;
 using Marqeta.Core.Sdk.Users;
 using Marqeta.Core.Sdk.Usertransitions;
@@ -113,6 +116,10 @@ namespace Marqeta.Core.Sdk {
         /// <summary>The businesstransitions property</summary>
         public BusinesstransitionsRequestBuilder Businesstransitions { get =>
             new BusinesstransitionsRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The cardgroups property</summary>
+        public CardgroupsRequestBuilder Cardgroups { get =>
+            new CardgroupsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The cardproducts property</summary>
         public CardproductsRequestBuilder Cardproducts { get =>
@@ -238,9 +245,17 @@ namespace Marqeta.Core.Sdk {
         public RealtimefeegroupsRequestBuilder Realtimefeegroups { get =>
             new RealtimefeegroupsRequestBuilder(PathParameters, RequestAdapter);
         }
+        /// <summary>The rewardprograms property</summary>
+        public RewardprogramsRequestBuilder Rewardprograms { get =>
+            new RewardprogramsRequestBuilder(PathParameters, RequestAdapter);
+        }
         /// <summary>The simulate property</summary>
         public SimulateRequestBuilder Simulate { get =>
             new SimulateRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The substatuses property</summary>
+        public SubstatusesRequestBuilder Substatuses { get =>
+            new SubstatusesRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The transactions property</summary>
         public TransactionsRequestBuilder Transactions { get =>

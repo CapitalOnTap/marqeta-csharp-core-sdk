@@ -13,7 +13,7 @@ namespace Marqeta.Core.Sdk.Models {
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Max amount of the reward.</summary>
         public double? MaxAmount { get; set; }
-        /// <summary>The reward percentage applied when the balance for a billing cycle is within the range specified in the `filters.amount.greater_than` and `filters.amount.less_than` fields.For example, if the percentage is `1`, the account holder earns 1% of the account balance if they spend between the `greater_than` and `less_than` amounts during a billing cycle.</summary>
+        /// <summary>Reward percentage applied when the balance for a billing cycle is within the range specified in the `filters.amount.greater_than` and `filters.amount.less_than` fields.For example, if the percentage is `1`, the account holder earns 1% of the account balance if they spend between the `greater_than` and `less_than` amounts during a billing cycle.</summary>
         public double? Percentage { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="PolicyRewardRuleOutcome"/> and sets the default values.

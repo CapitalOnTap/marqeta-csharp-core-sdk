@@ -76,7 +76,7 @@ namespace Marqeta.Core.Sdk.Bundles.Item.Lineage {
         /// Retrieve an array of related product bundles.This endpoint supports &lt;&lt;/core-api/sorting-and-pagination, sorting and pagination&gt;&gt;.
         /// </summary>
         public class LineageRequestBuilderGetQueryParameters {
-            /// <summary>The number of resources to retrieve.</summary>
+            /// <summary>Number of related bundle product resources to retrieve.</summary>
             [QueryParameter("count")]
             public int? Count { get; set; }
             /// <summary>Field on which to sort.Prefix the field name with a hyphen (`-`) to sort in descending order.Omit the hyphen to sort in ascending order.*NOTE:*You must sort using system field names such as `lastModifiedTime`, and not by the field names appearing in response bodies such as `last_modified_time`.</summary>
@@ -85,7 +85,7 @@ namespace Marqeta.Core.Sdk.Bundles.Item.Lineage {
             /// <summary>Sort order index of the first resource in the returned array.</summary>
             [QueryParameter("start_index")]
             public int? StartIndex { get; set; }
-            /// <summary>An array of statuses by which to filter bundles.</summary>
+            /// <summary>Array of statuses by which to filter bundles.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
             [QueryParameter("status")]

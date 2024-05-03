@@ -15,7 +15,7 @@ namespace Marqeta.Core.Sdk.Accounts.Item.Accounttransitions {
     /// </summary>
     public class AccounttransitionsRequestBuilder : BaseRequestBuilder {
         /// <summary>Gets an item from the Marqeta.Core.Sdk.accounts.item.accounttransitions.item collection</summary>
-        /// <param name="position">The unique identifier of the account transition you want to retrieve.Send a `GET` request to `/credit/accounts/{account_token}/accounttransitions` to retrieve existing account transition tokens.</param>
+        /// <param name="position">Unique identifier of the account transition you want to retrieve.Send a `GET` request to `/credit/accounts/{account_token}/accounttransitions` to retrieve existing account transition tokens.</param>
         /// <returns>A <see cref="WithTokenItemRequestBuilder"/></returns>
         public WithTokenItemRequestBuilder this[string position] { get {
             var urlTplParams = new Dictionary<string, object>(PathParameters);
@@ -127,7 +127,7 @@ namespace Marqeta.Core.Sdk.Accounts.Item.Accounttransitions {
         /// Retrieve an array of transitions on a credit account.This endpoint supports &lt;&lt;/core-api/sorting-and-pagination, sorting and pagination&gt;&gt;.
         /// </summary>
         public class AccounttransitionsRequestBuilderGetQueryParameters {
-            /// <summary>The number of resources to retrieve.</summary>
+            /// <summary>Number of account transition resources to retrieve.</summary>
             [QueryParameter("count")]
             public int? Count { get; set; }
             /// <summary>Field on which to sort.Prefix the field name with a hyphen (`-`) to sort in descending order.Omit the hyphen to sort in ascending order.*NOTE:*You must sort using system field names such as `createdTime`, and not by the field names appearing in response bodies such as `created_time`.</summary>

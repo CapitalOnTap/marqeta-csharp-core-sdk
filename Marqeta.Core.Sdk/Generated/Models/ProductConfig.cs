@@ -25,9 +25,10 @@ namespace Marqeta.Core.Sdk.Models {
 #else
         public List<ProductFeeType?> Fees { get; set; }
 #endif
-        /// <summary>Day of month the payment for the previous billing cycle is due.</summary>
+        /// <summary>Day of month the payment for the previous billing cycle is due.This field is deprecated.Use the `product.payment_due_interval` field instead.To retrieve `payment_due_interval`, see &lt;&lt;/core-api/credit-product#retrieveCreditProduct, Retrieve credit product, config.payment_due_interval&gt;&gt;.</summary>
+        [Obsolete("")]
         public int? PaymentDueDay { get; set; }
-        /// <summary>Config for the payment due date, -1 indicates 1 day prior to the next billing cycle date</summary>
+        /// <summary>Specifies the payment due interval that is used to determine the payment due date for a billing cycle.The accepted values are either -1 or a value between 1 and 26.A value of -1 indicates one day prior to the next billing cycle date.</summary>
         public int? PaymentDueInterval { get; set; }
         /// <summary>Contains one or more periodic fees.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER

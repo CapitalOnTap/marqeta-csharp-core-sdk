@@ -15,7 +15,7 @@ namespace Marqeta.Core.Sdk.Policies.Products {
     /// </summary>
     public class ProductsRequestBuilder : BaseRequestBuilder {
         /// <summary>Gets an item from the Marqeta.Core.Sdk.policies.products.item collection</summary>
-        /// <param name="position">The unique identifier of the credit product policy to retrieve.Send a `GET` request to `/policies/products` to retrieve existing credit product policy tokens.</param>
+        /// <param name="position">Unique identifier of the credit product policy to retrieve.Send a `GET` request to `/policies/products` to retrieve existing credit product policy tokens.</param>
         /// <returns>A <see cref="WithTokenItemRequestBuilder"/></returns>
         public WithTokenItemRequestBuilder this[string position] { get {
             var urlTplParams = new Dictionary<string, object>(PathParameters);
@@ -127,7 +127,7 @@ namespace Marqeta.Core.Sdk.Policies.Products {
         /// Retrieve an array of existing credit product policies.This endpoint supports &lt;&lt;/core-api/sorting-and-pagination, sorting and pagination&gt;&gt;.
         /// </summary>
         public class ProductsRequestBuilderGetQueryParameters {
-            /// <summary>The number of resources to retrieve.</summary>
+            /// <summary>Number of product policy resources to retrieve.</summary>
             [QueryParameter("count")]
             public int? Count { get; set; }
             /// <summary>Field on which to sort.Prefix the field name with a hyphen (`-`) to sort in descending order.Omit the hyphen to sort in ascending order.*NOTE:*You must sort using system field names such as `lastModifiedTime`, and not by the field names appearing in response bodies such as `last_modified_time`.</summary>

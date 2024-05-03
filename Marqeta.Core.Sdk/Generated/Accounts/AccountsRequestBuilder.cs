@@ -15,7 +15,7 @@ namespace Marqeta.Core.Sdk.Accounts {
     /// </summary>
     public class AccountsRequestBuilder : BaseRequestBuilder {
         /// <summary>Gets an item from the Marqeta.Core.Sdk.accounts.item collection</summary>
-        /// <param name="position">The unique identifier of the credit account to retrieve.Send a `GET` request to `/credit/accounts` to retrieve existing credit account tokens.</param>
+        /// <param name="position">Unique identifier of the credit account to retrieve.Send a `GET` request to `/credit/accounts` to retrieve existing credit account tokens.</param>
         /// <returns>A <see cref="WithAccount_tokenItemRequestBuilder"/></returns>
         public WithAccount_tokenItemRequestBuilder this[string position] { get {
             var urlTplParams = new Dictionary<string, object>(PathParameters);
@@ -127,7 +127,7 @@ namespace Marqeta.Core.Sdk.Accounts {
         /// Retrieve an array of credit accounts.This endpoint supports &lt;&lt;/core-api/sorting-and-pagination, sorting and pagination&gt;&gt;.
         /// </summary>
         public class AccountsRequestBuilderGetQueryParameters {
-            /// <summary>The unique identifier of the credit card associated with the account.</summary>
+            /// <summary>Unique identifier of the credit card associated with the account.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
             [QueryParameter("card_token")]
@@ -137,7 +137,7 @@ namespace Marqeta.Core.Sdk.Accounts {
             [QueryParameter("card_token")]
             public string CardToken { get; set; }
 #endif
-            /// <summary>The number of resources to retrieve.</summary>
+            /// <summary>Number of credit account resources to retrieve.</summary>
             [QueryParameter("count")]
             public int? Count { get; set; }
             /// <summary>Field on which to sort.Prefix the field name with a hyphen (`-`) to sort in descending order.Omit the hyphen to sort in ascending order.*NOTE:*You must sort using system field names such as `lastModifiedTime`, and not by the field names appearing in response bodies such as `last_modified_time`.</summary>

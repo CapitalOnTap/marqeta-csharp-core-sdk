@@ -16,7 +16,7 @@ namespace Marqeta.Core.Sdk.Models {
         public double? Amount { get; set; }
         /// <summary>A category used to determine the actual payment amount.</summary>
         public PaymentScheduleAmountCategory? AmountCategory { get; set; }
-        /// <summary>A valid three-digit link:https://www.iso.org/iso-4217-currency-codes.html[ISO 4217 currency code, window=&quot;_blank&quot;]</summary>
+        /// <summary>Valid three-digit link:https://www.iso.org/iso-4217-currency-codes.html[ISO 4217 currency code, window=&quot;_blank&quot;]</summary>
         public Marqeta.Core.Sdk.Models.CurrencyCode? CurrencyCode { get; set; }
         /// <summary>Description of the payment schedule.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -28,7 +28,7 @@ namespace Marqeta.Core.Sdk.Models {
 #endif
         /// <summary>Defines how often to make a scheduled payment.</summary>
         public PaymentScheduleFrequency? Frequency { get; set; }
-        /// <summary>The date to make a one-time payment.Required if frequency is `ONCE`.</summary>
+        /// <summary>Date to make a one-time payment.Required if frequency is `ONCE`.</summary>
         public Date? NextPaymentImpactDate { get; set; }
         /// <summary>Day on which monthly payments are made.Required if `frequency` is `MONTHLY`.</summary>
         public PaymentScheduleCreateReq_payment_day? PaymentDay { get; set; }

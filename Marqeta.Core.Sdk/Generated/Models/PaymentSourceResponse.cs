@@ -27,6 +27,22 @@ namespace Marqeta.Core.Sdk.Models {
 #endif
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>Name of the bank associated with the routing number</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? BankName { get; set; }
+#nullable restore
+#else
+        public string BankName { get; set; }
+#endif
+        /// <summary>Unique identifier of the business making the payment.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? BusinessToken { get; set; }
+#nullable restore
+#else
+        public string BusinessToken { get; set; }
+#endif
         /// <summary>Date and time when the payment source was created on Marqeta&apos;s credit platform, in UTC.</summary>
         public DateTimeOffset? CreatedTime { get; set; }
         /// <summary>Date and time when the payment source was last updated on Marqeta&apos;s credit platform, in UTC.</summary>
@@ -102,6 +118,8 @@ namespace Marqeta.Core.Sdk.Models {
             return new Dictionary<string, Action<IParseNode>> {
                 {"account_suffix", n => { AccountSuffix = n.GetStringValue(); } },
                 {"account_token", n => { AccountToken = n.GetStringValue(); } },
+                {"bank_name", n => { BankName = n.GetStringValue(); } },
+                {"business_token", n => { BusinessToken = n.GetStringValue(); } },
                 {"created_time", n => { CreatedTime = n.GetDateTimeOffsetValue(); } },
                 {"last_modified_time", n => { LastModifiedTime = n.GetDateTimeOffsetValue(); } },
                 {"name", n => { Name = n.GetStringValue(); } },
@@ -123,6 +141,8 @@ namespace Marqeta.Core.Sdk.Models {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("account_suffix", AccountSuffix);
             writer.WriteStringValue("account_token", AccountToken);
+            writer.WriteStringValue("bank_name", BankName);
+            writer.WriteStringValue("business_token", BusinessToken);
             writer.WriteDateTimeOffsetValue("created_time", CreatedTime);
             writer.WriteDateTimeOffsetValue("last_modified_time", LastModifiedTime);
             writer.WriteStringValue("name", Name);

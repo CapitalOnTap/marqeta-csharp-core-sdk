@@ -15,7 +15,7 @@ namespace Marqeta.Core.Sdk.Accounts.Item.Payments {
     /// </summary>
     public class PaymentsRequestBuilder : BaseRequestBuilder {
         /// <summary>Gets an item from the Marqeta.Core.Sdk.accounts.item.payments.item collection</summary>
-        /// <param name="position">The unique identifier of the payment to retrieve.Send a `GET` request to `/credit/accounts/{token}/payments` to retrieve existing payment tokens.</param>
+        /// <param name="position">Unique identifier of the payment to retrieve.Send a `GET` request to `/credit/accounts/{token}/payments` to retrieve existing payment tokens.</param>
         /// <returns>A <see cref="WithPayment_tokenItemRequestBuilder"/></returns>
         public WithPayment_tokenItemRequestBuilder this[string position] { get {
             var urlTplParams = new Dictionary<string, object>(PathParameters);
@@ -127,7 +127,7 @@ namespace Marqeta.Core.Sdk.Accounts.Item.Payments {
         /// Retrieve an array of payments on a credit account.This endpoint supports &lt;&lt;/core-api/sorting-and-pagination, sorting and pagination&gt;&gt;.
         /// </summary>
         public class PaymentsRequestBuilderGetQueryParameters {
-            /// <summary>The number of resources to retrieve.</summary>
+            /// <summary>Number of account payments resources to retrieve.</summary>
             [QueryParameter("count")]
             public int? Count { get; set; }
             /// <summary>End of the date range of the payments to return.</summary>
@@ -142,7 +142,7 @@ namespace Marqeta.Core.Sdk.Accounts.Item.Payments {
             /// <summary>Sort order index of the first resource in the returned array.</summary>
             [QueryParameter("start_index")]
             public int? StartIndex { get; set; }
-            /// <summary>An array of statuses by which to filter payments.</summary>
+            /// <summary>Array of statuses by which to filter payments.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
             [QueryParameter("statuses")]

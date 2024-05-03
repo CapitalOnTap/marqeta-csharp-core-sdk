@@ -31,9 +31,9 @@ namespace Marqeta.Core.Sdk.Models {
 #endif
         /// <summary>Date and time when the journal entry was created on Marqeta&apos;s credit platform, in UTC.</summary>
         public DateTimeOffset? CreatedTime { get; set; }
-        /// <summary>A valid three-digit link:https://www.iso.org/iso-4217-currency-codes.html[ISO 4217 currency code, window=&quot;_blank&quot;]</summary>
+        /// <summary>Valid three-digit link:https://www.iso.org/iso-4217-currency-codes.html[ISO 4217 currency code, window=&quot;_blank&quot;]</summary>
         public Marqeta.Core.Sdk.Models.CurrencyCode? CurrencyCode { get; set; }
-        /// <summary>Contains the journal entry&apos;s full details.The fields returned in this object vary based on the journal entry group.The following lists each journal entry group and the specific fields returned for each group.* Purchases and refunds: see the &lt;&lt;/core-api/transactions#getTransactions, transactions&gt;&gt; response fields.* Disputes: see the &lt;&lt;/core-api/credit-disputes#retrieveDispute, account disputes response fields.&gt;&gt;* Original credit transaction (OCT): see the &lt;&lt;/core-api/push-to-card-payments#_create_push_to_card_disbursement, Push-to-Card disbursement&gt;&gt; fields.* Rewards: see the &lt;&lt;/core-api/credit-account-rewards#createReward, account reward&gt;&gt; response fields.* Payments: see the &lt;&lt;/core-api/credit-account-payments#retrievePayment, account payment&gt;&gt; response fields.* Balance refunds: see the &lt;&lt;/core-api/credit-balance-refunds#createBalanceRefund, balance refund&gt;&gt; response fields.* Adjustments: see the &lt;&lt;/core-api/credit-account-adjustments#retrieveAdjustment, account adjustment&gt;&gt; response fields.* Interest and fees: see fields below.</summary>
+        /// <summary>The detail_object property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public JournalEntry_detail_object? DetailObject { get; set; }
@@ -77,6 +77,14 @@ namespace Marqeta.Core.Sdk.Models {
 #else
         public string Memo { get; set; }
 #endif
+        /// <summary>Original Currency</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public Marqeta.Core.Sdk.Models.OriginalCurrency? OriginalCurrency { get; set; }
+#nullable restore
+#else
+        public Marqeta.Core.Sdk.Models.OriginalCurrency OriginalCurrency { get; set; }
+#endif
         /// <summary>Unique identifier of the original journal entry.If the current journal entry is the original, this field is returned empty.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -105,7 +113,7 @@ namespace Marqeta.Core.Sdk.Models {
 #else
         public string Token { get; set; }
 #endif
-        /// <summary>The journal entry event type.</summary>
+        /// <summary>Journal entry event type.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Type { get; set; }
@@ -155,6 +163,7 @@ namespace Marqeta.Core.Sdk.Models {
                 {"id", n => { Id = n.GetStringValue(); } },
                 {"impact_time", n => { ImpactTime = n.GetDateTimeOffsetValue(); } },
                 {"memo", n => { Memo = n.GetStringValue(); } },
+                {"original_currency", n => { OriginalCurrency = n.GetObjectValue<Marqeta.Core.Sdk.Models.OriginalCurrency>(Marqeta.Core.Sdk.Models.OriginalCurrency.CreateFromDiscriminatorValue); } },
                 {"related_token", n => { RelatedToken = n.GetStringValue(); } },
                 {"request_time", n => { RequestTime = n.GetDateTimeOffsetValue(); } },
                 {"root_token", n => { RootToken = n.GetStringValue(); } },
@@ -182,6 +191,7 @@ namespace Marqeta.Core.Sdk.Models {
             writer.WriteStringValue("id", Id);
             writer.WriteDateTimeOffsetValue("impact_time", ImpactTime);
             writer.WriteStringValue("memo", Memo);
+            writer.WriteObjectValue<Marqeta.Core.Sdk.Models.OriginalCurrency>("original_currency", OriginalCurrency);
             writer.WriteStringValue("related_token", RelatedToken);
             writer.WriteDateTimeOffsetValue("request_time", RequestTime);
             writer.WriteStringValue("root_token", RootToken);

@@ -15,7 +15,7 @@ namespace Marqeta.Core.Sdk.Accounts.Item.Ledgerentries {
     /// </summary>
     public class LedgerentriesRequestBuilder : BaseRequestBuilder {
         /// <summary>Gets an item from the Marqeta.Core.Sdk.accounts.item.ledgerentries.item collection</summary>
-        /// <param name="position">The unique identifier of the ledger entry you want to retrieve.Send a `GET` request to `/credit/accounts/{account_token}/ledgerentries` to retrieve existing ledger entry tokens.</param>
+        /// <param name="position">Unique identifier of the ledger entry you want to retrieve.Send a `GET` request to `/credit/accounts/{account_token}/ledgerentries` to retrieve existing ledger entry tokens.</param>
         /// <returns>A <see cref="WithLedger_entry_tokenItemRequestBuilder"/></returns>
         public WithLedger_entry_tokenItemRequestBuilder this[string position] { get {
             var urlTplParams = new Dictionary<string, object>(PathParameters);
@@ -88,13 +88,13 @@ namespace Marqeta.Core.Sdk.Accounts.Item.Ledgerentries {
         /// Retrieve an array of ledger entries on a credit account.This endpoint supports &lt;&lt;/core-api/sorting-and-pagination, sorting and pagination&gt;&gt; and &lt;&lt;/core-api/object-expansion, object expansion&gt;&gt;.
         /// </summary>
         public class LedgerentriesRequestBuilderGetQueryParameters {
-            /// <summary>The number of ledger entries to return.</summary>
+            /// <summary>Number of ledger entries to return.</summary>
             [QueryParameter("amount")]
             public double? Amount { get; set; }
-            /// <summary>The number of resources to retrieve.</summary>
+            /// <summary>Number of ledger entry resources to retrieve.</summary>
             [QueryParameter("count")]
             public int? Count { get; set; }
-            /// <summary>The description of the ledger entries to return.</summary>
+            /// <summary>Description of the ledger entries to return.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
             [QueryParameter("description")]
@@ -104,13 +104,27 @@ namespace Marqeta.Core.Sdk.Accounts.Item.Ledgerentries {
             [QueryParameter("description")]
             public string Description { get; set; }
 #endif
-            /// <summary>The ending date of the date range from which to return ledger entries.</summary>
+            /// <summary>Ending date of the date range from which to return ledger entries.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
             [QueryParameter("end_date")]
-            public Date? EndDate { get; set; }
+            public string? EndDate { get; set; }
+#nullable restore
+#else
+            [QueryParameter("end_date")]
+            public string EndDate { get; set; }
+#endif
             /// <summary>Embeds the specified object into the response.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
             [QueryParameter("expand")]
-            public GetExpandQueryParameterType? Expand { get; set; }
-            /// <summary>An array of groups by which to filter ledger entries.To return all ledger entry groups, do not include this query parameter.</summary>
+            public GetExpandQueryParameterType[]? Expand { get; set; }
+#nullable restore
+#else
+            [QueryParameter("expand")]
+            public GetExpandQueryParameterType[] Expand { get; set; }
+#endif
+            /// <summary>Array of groups by which to filter ledger entries.To return all ledger entry groups, do not include this query parameter.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
             [QueryParameter("groups")]
@@ -123,13 +137,20 @@ namespace Marqeta.Core.Sdk.Accounts.Item.Ledgerentries {
             /// <summary>Field on which to sort.Prefix the field name with a hyphen (`-`) to sort in descending order.Omit the hyphen to sort in ascending order.*NOTE:*You must sort using system field names such as `createdTime`, and not by the field names appearing in response bodies such as `created_time`.</summary>
             [QueryParameter("sort_by")]
             public GetSort_byQueryParameterType? SortBy { get; set; }
-            /// <summary>The starting date of the date range from which to return ledger entries.</summary>
+            /// <summary>Starting date of the date range from which to return ledger entries.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
             [QueryParameter("start_date")]
-            public Date? StartDate { get; set; }
+            public string? StartDate { get; set; }
+#nullable restore
+#else
+            [QueryParameter("start_date")]
+            public string StartDate { get; set; }
+#endif
             /// <summary>Sort order index of the first resource in the returned array.</summary>
             [QueryParameter("start_index")]
             public int? StartIndex { get; set; }
-            /// <summary>An array of statuses by which to filter ledger entries.</summary>
+            /// <summary>Array of statuses by which to filter ledger entries.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
             [QueryParameter("statuses")]

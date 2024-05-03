@@ -31,7 +31,7 @@ namespace Marqeta.Core.Sdk.Models {
 #else
         public ProductCreditLine CreditLine { get; set; }
 #endif
-        /// <summary>A valid three-digit link:https://www.iso.org/iso-4217-currency-codes.html[ISO 4217 currency code, window=&quot;_blank&quot;]</summary>
+        /// <summary>Valid three-digit link:https://www.iso.org/iso-4217-currency-codes.html[ISO 4217 currency code, window=&quot;_blank&quot;]</summary>
         public Marqeta.Core.Sdk.Models.CurrencyCode? CurrencyCode { get; set; }
         /// <summary>Description of the credit product policy.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER

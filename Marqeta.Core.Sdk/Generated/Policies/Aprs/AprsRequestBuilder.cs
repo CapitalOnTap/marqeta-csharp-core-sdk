@@ -15,7 +15,7 @@ namespace Marqeta.Core.Sdk.Policies.Aprs {
     /// </summary>
     public class AprsRequestBuilder : BaseRequestBuilder {
         /// <summary>Gets an item from the Marqeta.Core.Sdk.policies.aprs.item collection</summary>
-        /// <param name="position">The unique identifier of the APR policy to retrieve.Send a `GET` request to `/policies/aprs` to retrieve existing APR policy tokens.</param>
+        /// <param name="position">Unique identifier of the APR policy to retrieve.Send a `GET` request to `/policies/aprs` to retrieve existing APR policy tokens.</param>
         /// <returns>A <see cref="WithTokenItemRequestBuilder"/></returns>
         public WithTokenItemRequestBuilder this[string position] { get {
             var urlTplParams = new Dictionary<string, object>(PathParameters);
@@ -127,7 +127,7 @@ namespace Marqeta.Core.Sdk.Policies.Aprs {
         /// Retrieve an array of existing APR policies.This endpoint supports &lt;&lt;/core-api/sorting-and-pagination, sorting and pagination&gt;&gt;.
         /// </summary>
         public class AprsRequestBuilderGetQueryParameters {
-            /// <summary>The number of resources to retrieve.</summary>
+            /// <summary>Number of APR policy resources to retrieve.</summary>
             [QueryParameter("count")]
             public int? Count { get; set; }
             /// <summary>Field on which to sort.Prefix the field name with a hyphen (`-`) to sort in descending order.Omit the hyphen to sort in ascending order.*NOTE:*You must sort using system field names such as `effectiveDate`, and not by the field names appearing in response bodies such as `effective_date`.</summary>

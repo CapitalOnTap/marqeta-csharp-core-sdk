@@ -15,7 +15,7 @@ namespace Marqeta.Core.Sdk.Paymentsources {
     /// </summary>
     public class PaymentsourcesRequestBuilder : BaseRequestBuilder {
         /// <summary>Gets an item from the Marqeta.Core.Sdk.paymentsources.item collection</summary>
-        /// <param name="position">The unique identifier of the payment source to retrieve.Send a `GET` request to `/credit/paymentsources` to retrieve existing payment source tokens.</param>
+        /// <param name="position">Unique identifier of the payment source to retrieve.Send a `GET` request to `/credit/paymentsources` to retrieve existing payment source tokens.</param>
         /// <returns>A <see cref="WithTokenItemRequestBuilder"/></returns>
         public WithTokenItemRequestBuilder this[string position] { get {
             var urlTplParams = new Dictionary<string, object>(PathParameters);
@@ -27,14 +27,14 @@ namespace Marqeta.Core.Sdk.Paymentsources {
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public PaymentsourcesRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/paymentsources{?account_token*,count*,sort_by*,start_index*,user_token*}", pathParameters) {
+        public PaymentsourcesRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/paymentsources{?account_token*,business_token*,count*,sort_by*,start_index*,user_token*}", pathParameters) {
         }
         /// <summary>
         /// Instantiates a new <see cref="PaymentsourcesRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public PaymentsourcesRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/paymentsources{?account_token*,count*,sort_by*,start_index*,user_token*}", rawUrl) {
+        public PaymentsourcesRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/paymentsources{?account_token*,business_token*,count*,sort_by*,start_index*,user_token*}", rawUrl) {
         }
         /// <summary>
         /// Retrieve an array of payment sources.This endpoint supports &lt;&lt;/core-api/sorting-and-pagination, sorting and pagination&gt;&gt;.
@@ -127,7 +127,7 @@ namespace Marqeta.Core.Sdk.Paymentsources {
         /// Retrieve an array of payment sources.This endpoint supports &lt;&lt;/core-api/sorting-and-pagination, sorting and pagination&gt;&gt;.
         /// </summary>
         public class PaymentsourcesRequestBuilderGetQueryParameters {
-            /// <summary>The unique identifier of the credit account associated with the payment source.</summary>
+            /// <summary>Unique identifier of the credit account associated with the payment source.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
             [QueryParameter("account_token")]
@@ -137,7 +137,17 @@ namespace Marqeta.Core.Sdk.Paymentsources {
             [QueryParameter("account_token")]
             public string AccountToken { get; set; }
 #endif
-            /// <summary>The number of resources to retrieve.</summary>
+            /// <summary>Unique identifier of the business associated with the payment source.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            [QueryParameter("business_token")]
+            public string? BusinessToken { get; set; }
+#nullable restore
+#else
+            [QueryParameter("business_token")]
+            public string BusinessToken { get; set; }
+#endif
+            /// <summary>Number of payment source resources to retrieve.</summary>
             [QueryParameter("count")]
             public int? Count { get; set; }
             /// <summary>Field on which to sort.Prefix the field name with a hyphen (`-`) to sort in descending order.Omit the hyphen to sort in ascending order.*NOTE:*You must sort using system field names such as `lastModifiedTime`, and not by the field names appearing in response bodies such as `last_modified_time`.</summary>
@@ -146,7 +156,7 @@ namespace Marqeta.Core.Sdk.Paymentsources {
             /// <summary>Sort order index of the first resource in the returned array.</summary>
             [QueryParameter("start_index")]
             public int? StartIndex { get; set; }
-            /// <summary>The unique identifier of the user associated with the payment source.</summary>
+            /// <summary>Unique identifier of the user associated with the payment source.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
             [QueryParameter("user_token")]

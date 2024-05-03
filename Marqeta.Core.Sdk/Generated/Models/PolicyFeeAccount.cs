@@ -22,6 +22,14 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>Contains information on a specific fee in a fee policy.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
+        public PolicyFeeForeignTransaction? ForeignTransactionFee { get; set; }
+#nullable restore
+#else
+        public PolicyFeeForeignTransaction ForeignTransactionFee { get; set; }
+#endif
+        /// <summary>Contains information on a specific fee in a fee policy.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
         public PolicyFeePayment? LatePayment { get; set; }
 #nullable restore
 #else
@@ -65,6 +73,7 @@ namespace Marqeta.Core.Sdk.Models {
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers() {
             return new Dictionary<string, Action<IParseNode>> {
                 {"annual_fee", n => { AnnualFee = n.GetObjectValue<PolicyFeePeriodic>(PolicyFeePeriodic.CreateFromDiscriminatorValue); } },
+                {"foreign_transaction_fee", n => { ForeignTransactionFee = n.GetObjectValue<PolicyFeeForeignTransaction>(PolicyFeeForeignTransaction.CreateFromDiscriminatorValue); } },
                 {"late_payment", n => { LatePayment = n.GetObjectValue<PolicyFeePayment>(PolicyFeePayment.CreateFromDiscriminatorValue); } },
                 {"monthly_fee", n => { MonthlyFee = n.GetObjectValue<PolicyFeePeriodic>(PolicyFeePeriodic.CreateFromDiscriminatorValue); } },
                 {"returned_payment", n => { ReturnedPayment = n.GetObjectValue<PolicyFeePayment>(PolicyFeePayment.CreateFromDiscriminatorValue); } },
@@ -77,6 +86,7 @@ namespace Marqeta.Core.Sdk.Models {
         public virtual void Serialize(ISerializationWriter writer) {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
             writer.WriteObjectValue<PolicyFeePeriodic>("annual_fee", AnnualFee);
+            writer.WriteObjectValue<PolicyFeeForeignTransaction>("foreign_transaction_fee", ForeignTransactionFee);
             writer.WriteObjectValue<PolicyFeePayment>("late_payment", LatePayment);
             writer.WriteObjectValue<PolicyFeePeriodic>("monthly_fee", MonthlyFee);
             writer.WriteObjectValue<PolicyFeePayment>("returned_payment", ReturnedPayment);

@@ -27,7 +27,7 @@ namespace Marqeta.Core.Sdk.Models {
         public DateTimeOffset? CreatedTime { get; set; }
         /// <summary>Destination of the reward redemption.* `INVESTMENT` - The redemption is paid into an investment account.* `WALLET` - The redemption is paid into a digital wallet.* `ACH` - The redemption is paid into an ACH account.Required for external redemptions.</summary>
         public DestinationType? Destination { get; set; }
-        /// <summary>The note property</summary>
+        /// <summary>A note providing information on the reward redemption.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Note { get; set; }

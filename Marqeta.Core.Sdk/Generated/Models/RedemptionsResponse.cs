@@ -19,7 +19,7 @@ namespace Marqeta.Core.Sdk.Models {
         public DestinationType? Destination { get; set; }
         /// <summary>Date and time when the reward redemption was settled on your external platform.This field is returned if you handled the reward redemption outside of Marqeta&apos;s credit platform.</summary>
         public DateTimeOffset? ExternalSettlementDateTime { get; set; }
-        /// <summary>The note property</summary>
+        /// <summary>A note providing information on the reward redemption.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Note { get; set; }

@@ -15,7 +15,7 @@ namespace Marqeta.Core.Sdk.Accounts.Item.Journalentries {
     /// </summary>
     public class JournalentriesRequestBuilder : BaseRequestBuilder {
         /// <summary>Gets an item from the Marqeta.Core.Sdk.accounts.item.journalentries.item collection</summary>
-        /// <param name="position">The unique identifier of the journal entry you want to retrieve.Send a `GET` request to `/credit/accounts/{account_token}/journalentries` to retrieve existing journal entry tokens.</param>
+        /// <param name="position">Unique identifier of the journal entry you want to retrieve.Send a `GET` request to `/credit/accounts/{account_token}/journalentries` to retrieve existing journal entry tokens.</param>
         /// <returns>A <see cref="WithJournal_entry_tokenItemRequestBuilder"/></returns>
         public WithJournal_entry_tokenItemRequestBuilder this[string position] { get {
             var urlTplParams = new Dictionary<string, object>(PathParameters);
@@ -85,7 +85,7 @@ namespace Marqeta.Core.Sdk.Accounts.Item.Journalentries {
         /// Retrieve an array of journal entries on a credit account.This endpoint supports &lt;&lt;/core-api/sorting-and-pagination, sorting and pagination&gt;&gt; and &lt;&lt;/core-api/object-expansion, object expansion&gt;&gt;.
         /// </summary>
         public class JournalentriesRequestBuilderGetQueryParameters {
-            /// <summary>An array of card tokens by which to filter journal entries.Returns journal entries associated with the specified card tokens.Send a `GET` request to `/credit/accounts/{account_token}/cards/` to retrieve existing card tokens.</summary>
+            /// <summary>Array of card tokens by which to filter journal entries.Returns journal entries associated with the specified card tokens.Send a `GET` request to `/credit/accounts/{account_token}/cards/` to retrieve existing card tokens.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
             [QueryParameter("card_tokens")]
@@ -95,10 +95,10 @@ namespace Marqeta.Core.Sdk.Accounts.Item.Journalentries {
             [QueryParameter("card_tokens")]
             public string[] CardTokens { get; set; }
 #endif
-            /// <summary>The number of resources to retrieve.</summary>
+            /// <summary>Number of journal entry resources to retrieve.</summary>
             [QueryParameter("count")]
             public int? Count { get; set; }
-            /// <summary>The ending created_date of the date range from which to return journal entries.</summary>
+            /// <summary>Ending `created_date` of the date range from which to return journal entries.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
             [QueryParameter("end_created_time")]
@@ -108,7 +108,7 @@ namespace Marqeta.Core.Sdk.Accounts.Item.Journalentries {
             [QueryParameter("end_created_time")]
             public string EndCreatedTime { get; set; }
 #endif
-            /// <summary>The ending date of the date range from which to return journal entries.</summary>
+            /// <summary>Ending date of the date range from which to return journal entries.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
             [QueryParameter("end_date")]
@@ -118,7 +118,7 @@ namespace Marqeta.Core.Sdk.Accounts.Item.Journalentries {
             [QueryParameter("end_date")]
             public string EndDate { get; set; }
 #endif
-            /// <summary>The ending impact_time of the date range from which to return journal entries.</summary>
+            /// <summary>Ending `impact_time` of the date range from which to return journal entries.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
             [QueryParameter("end_impact_time")]
@@ -129,9 +129,16 @@ namespace Marqeta.Core.Sdk.Accounts.Item.Journalentries {
             public string EndImpactTime { get; set; }
 #endif
             /// <summary>Embeds the specified object into the response.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
             [QueryParameter("expand")]
-            public GetExpandQueryParameterType? Expand { get; set; }
-            /// <summary>An array of groups by which to filter journal entries.To return all journal entry groups, do not include this query parameter.</summary>
+            public GetExpandQueryParameterType[]? Expand { get; set; }
+#nullable restore
+#else
+            [QueryParameter("expand")]
+            public GetExpandQueryParameterType[] Expand { get; set; }
+#endif
+            /// <summary>Array of groups by which to filter journal entries.To return all journal entry groups, do not include this query parameter.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
             [QueryParameter("groups")]
@@ -144,7 +151,7 @@ namespace Marqeta.Core.Sdk.Accounts.Item.Journalentries {
             /// <summary>Field on which to sort.Prefix the field name with a hyphen (`-`) to sort in descending order.Omit the hyphen to sort in ascending order.*NOTE:*You must sort using system field names such as `createdTime`, and not by the field names appearing in response bodies such as `created_time`.</summary>
             [QueryParameter("sort_by")]
             public GetSort_byQueryParameterType? SortBy { get; set; }
-            /// <summary>The starting created_date of the date range from which to return journal entries.</summary>
+            /// <summary>Starting `created_date` of the date range from which to return journal entries.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
             [QueryParameter("start_created_time")]
@@ -154,7 +161,7 @@ namespace Marqeta.Core.Sdk.Accounts.Item.Journalentries {
             [QueryParameter("start_created_time")]
             public string StartCreatedTime { get; set; }
 #endif
-            /// <summary>The starting date of the date range from which to return journal entries.</summary>
+            /// <summary>Starting date of the date range from which to return journal entries.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
             [QueryParameter("start_date")]
@@ -164,7 +171,7 @@ namespace Marqeta.Core.Sdk.Accounts.Item.Journalentries {
             [QueryParameter("start_date")]
             public string StartDate { get; set; }
 #endif
-            /// <summary>The starting impact_time of the date range from which to return journal entries.</summary>
+            /// <summary>Starting `impact_time` of the date range from which to return journal entries.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
             [QueryParameter("start_impact_time")]
@@ -177,7 +184,7 @@ namespace Marqeta.Core.Sdk.Accounts.Item.Journalentries {
             /// <summary>Sort order index of the first resource in the returned array.</summary>
             [QueryParameter("start_index")]
             public int? StartIndex { get; set; }
-            /// <summary>An array of statuses by which to filter journal entries.</summary>
+            /// <summary>Array of statuses by which to filter journal entries.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
             [QueryParameter("statuses")]
@@ -187,7 +194,7 @@ namespace Marqeta.Core.Sdk.Accounts.Item.Journalentries {
             [QueryParameter("statuses")]
             public GetStatusesQueryParameterType[] Statuses { get; set; }
 #endif
-            /// <summary>An array of &lt;&lt;/core-api/event-types#_credit_journal_entry_events, event types&gt;&gt; by which to filter journal entries.To return all event types, do not include this query parameter.</summary>
+            /// <summary>Array of &lt;&lt;/core-api/event-types#_credit_journal_entry_events, event types&gt;&gt; by which to filter journal entries.To return all event types, do not include this query parameter.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
             [QueryParameter("types")]
@@ -197,7 +204,7 @@ namespace Marqeta.Core.Sdk.Accounts.Item.Journalentries {
             [QueryParameter("types")]
             public GetTypesQueryParameterType[] Types { get; set; }
 #endif
-            /// <summary>An array of user tokens by which to filter journal entries.Returns journal entries associated with the specified user tokens.Send a `GET` request to `/users` to retrieve existing user tokens.</summary>
+            /// <summary>Array of user tokens by which to filter journal entries.Returns journal entries associated with the specified user tokens.Send a `GET` request to `/users` to retrieve existing user tokens.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
             [QueryParameter("user_tokens")]

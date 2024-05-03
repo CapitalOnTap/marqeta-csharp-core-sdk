@@ -13,7 +13,7 @@ namespace Marqeta.Core.Sdk.Models {
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>How frequently the fee is charged.</summary>
         public ProductConfig_periodic_fees_frequency? Frequency { get; set; }
-        /// <summary>The number of days after an account is activated that the initial fee is charged.For example, if the value in this field is `30`, then the initial fee is charged 30 days after an account is activated.</summary>
+        /// <summary>Number of days after an account is activated that the initial fee is charged.For example, if the value in this field is `30`, then the initial fee is charged 30 days after an account is activated.</summary>
         public int? NumberOfDaysPostActivation { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="ProductConfig_periodic_fees"/> and sets the default values.

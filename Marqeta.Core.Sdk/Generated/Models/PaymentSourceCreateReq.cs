@@ -27,6 +27,22 @@ namespace Marqeta.Core.Sdk.Models {
 #endif
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>Name of the bank associated with the routing number</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? BankName { get; set; }
+#nullable restore
+#else
+        public string BankName { get; set; }
+#endif
+        /// <summary>Unique identifier of the business making the payment.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? BusinessToken { get; set; }
+#nullable restore
+#else
+        public string BusinessToken { get; set; }
+#endif
         /// <summary>Name of the individual or business who owns the payment source.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -96,6 +112,8 @@ namespace Marqeta.Core.Sdk.Models {
             return new Dictionary<string, Action<IParseNode>> {
                 {"account_number", n => { AccountNumber = n.GetStringValue(); } },
                 {"account_token", n => { AccountToken = n.GetStringValue(); } },
+                {"bank_name", n => { BankName = n.GetStringValue(); } },
+                {"business_token", n => { BusinessToken = n.GetStringValue(); } },
                 {"name", n => { Name = n.GetStringValue(); } },
                 {"owner", n => { Owner = n.GetEnumValue<PaymentSourceCreateReq_owner>(); } },
                 {"routing_number", n => { RoutingNumber = n.GetStringValue(); } },
@@ -114,6 +132,8 @@ namespace Marqeta.Core.Sdk.Models {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("account_number", AccountNumber);
             writer.WriteStringValue("account_token", AccountToken);
+            writer.WriteStringValue("bank_name", BankName);
+            writer.WriteStringValue("business_token", BusinessToken);
             writer.WriteStringValue("name", Name);
             writer.WriteEnumValue<PaymentSourceCreateReq_owner>("owner", Owner);
             writer.WriteStringValue("routing_number", RoutingNumber);

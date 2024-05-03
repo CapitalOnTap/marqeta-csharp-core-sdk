@@ -93,14 +93,14 @@ namespace Marqeta.Core.Sdk.Accounts.Item {
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public WithAccount_tokenItemRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/accounts/{account_token}", pathParameters) {
+        public WithAccount_tokenItemRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/accounts/{account_token}{?effective_fee_schedule_only*}", pathParameters) {
         }
         /// <summary>
         /// Instantiates a new <see cref="WithAccount_tokenItemRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public WithAccount_tokenItemRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/accounts/{account_token}", rawUrl) {
+        public WithAccount_tokenItemRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/accounts/{account_token}{?effective_fee_schedule_only*}", rawUrl) {
         }
         /// <summary>
         /// Retrieve a credit account.
@@ -111,10 +111,10 @@ namespace Marqeta.Core.Sdk.Accounts.Item {
         /// <exception cref="ApiError">When receiving a 4XX or 5XX status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<AccountResponse?> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default) {
+        public async Task<AccountResponse?> GetAsync(Action<RequestConfiguration<WithAccount_tokenItemRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default) {
 #nullable restore
 #else
-        public async Task<AccountResponse> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default) {
+        public async Task<AccountResponse> GetAsync(Action<RequestConfiguration<WithAccount_tokenItemRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default) {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>> {
@@ -151,10 +151,10 @@ namespace Marqeta.Core.Sdk.Accounts.Item {
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default) {
+        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<WithAccount_tokenItemRequestBuilderGetQueryParameters>>? requestConfiguration = default) {
 #nullable restore
 #else
-        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default) {
+        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<WithAccount_tokenItemRequestBuilderGetQueryParameters>> requestConfiguration = default) {
 #endif
             var requestInfo = new RequestInformation(Method.GET, UrlTemplate, PathParameters);
             requestInfo.Configure(requestConfiguration);
@@ -175,7 +175,7 @@ namespace Marqeta.Core.Sdk.Accounts.Item {
         public RequestInformation ToPutRequestInformation(AccountUpdateReq body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default) {
 #endif
             _ = body ?? throw new ArgumentNullException(nameof(body));
-            var requestInfo = new RequestInformation(Method.PUT, UrlTemplate, PathParameters);
+            var requestInfo = new RequestInformation(Method.PUT, "{+baseurl}/accounts/{account_token}", PathParameters);
             requestInfo.Configure(requestConfiguration);
             requestInfo.Headers.TryAdd("Accept", "application/json");
             requestInfo.SetContentFromParsable(RequestAdapter, "application/json", body);
@@ -188,6 +188,14 @@ namespace Marqeta.Core.Sdk.Accounts.Item {
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         public WithAccount_tokenItemRequestBuilder WithUrl(string rawUrl) {
             return new WithAccount_tokenItemRequestBuilder(rawUrl, RequestAdapter);
+        }
+        /// <summary>
+        /// Retrieve a credit account.
+        /// </summary>
+        public class WithAccount_tokenItemRequestBuilderGetQueryParameters {
+            /// <summary>Display the effective fee schedule only.</summary>
+            [QueryParameter("effective_fee_schedule_only")]
+            public bool? EffectiveFeeScheduleOnly { get; set; }
         }
     }
 }

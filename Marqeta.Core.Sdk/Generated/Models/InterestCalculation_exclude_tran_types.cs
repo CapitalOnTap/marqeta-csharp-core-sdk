@@ -13,5 +13,7 @@ namespace Marqeta.Core.Sdk.Models {
         CASH_BACK_STATEMENT_CREDIT,
         [EnumMember(Value = "RETURNED_PAYMENT_FEE")]
         RETURNED_PAYMENT_FEE,
+        [EnumMember(Value = "FOREIGN_TRANSACTION_FEE")]
+        FOREIGN_TRANSACTION_FEE,
     }
 }

@@ -11,9 +11,9 @@ namespace Marqeta.Core.Sdk.Models {
     public class AmountFilter : IAdditionalDataHolder, IParsable {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>The minimum amount that a balance for a billing cycle can be to earn the reward.</summary>
+        /// <summary>Minimum amount that a balance for a billing cycle can be to earn the reward.</summary>
         public double? GreaterThan { get; set; }
-        /// <summary>The maximum amount that a balance for a billing cycle can be to earn the reward.</summary>
+        /// <summary>Maximum amount that a balance for a billing cycle can be to earn the reward.</summary>
         public double? LessThan { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="AmountFilter"/> and sets the default values.

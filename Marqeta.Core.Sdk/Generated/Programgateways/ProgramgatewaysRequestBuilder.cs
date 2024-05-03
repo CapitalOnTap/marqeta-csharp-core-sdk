@@ -15,7 +15,7 @@ namespace Marqeta.Core.Sdk.Programgateways {
     /// </summary>
     public class ProgramgatewaysRequestBuilder : BaseRequestBuilder {
         /// <summary>Gets an item from the Marqeta.Core.Sdk.programgateways.item collection</summary>
-        /// <param name="position">The unique identifier of the Program Gateway to retrieve.Send a `GET` request to `/credit/programgateways` to retrieve existing Program Gateway tokens.</param>
+        /// <param name="position">Unique identifier of the Program Gateway to retrieve.Send a `GET` request to `/credit/programgateways` to retrieve existing Program Gateway tokens.</param>
         /// <returns>A <see cref="WithTokenItemRequestBuilder"/></returns>
         public WithTokenItemRequestBuilder this[string position] { get {
             var urlTplParams = new Dictionary<string, object>(PathParameters);
@@ -127,7 +127,7 @@ namespace Marqeta.Core.Sdk.Programgateways {
         /// Retrieve an array of existing Credit Program Gateways.This endpoint supports &lt;&lt;/core-api/sorting-and-pagination, sorting and pagination&gt;&gt;.
         /// </summary>
         public class ProgramgatewaysRequestBuilderGetQueryParameters {
-            /// <summary>The number of resources to retrieve.</summary>
+            /// <summary>Number of program gateway resources to retrieve.</summary>
             [QueryParameter("count")]
             public int? Count { get; set; }
             /// <summary>Field on which to sort.Prefix the field name with a hyphen (`-`) to sort in descending order.Omit the hyphen to sort in ascending order.*NOTE:*You must sort using system field names such as `lastModifiedTime`, and not by the field names appearing in response bodies such as `last_modified_time`.</summary>

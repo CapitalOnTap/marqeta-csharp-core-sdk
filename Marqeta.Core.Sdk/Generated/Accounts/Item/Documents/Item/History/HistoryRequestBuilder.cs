@@ -76,7 +76,7 @@ namespace Marqeta.Core.Sdk.Accounts.Item.Documents.Item.History {
         /// Retrieve the history of a specific type of document on a credit account.
         /// </summary>
         public class HistoryRequestBuilderGetQueryParameters {
-            /// <summary>The number of resources to retrieve.</summary>
+            /// <summary>Number of account document resources to retrieve.</summary>
             [QueryParameter("count")]
             public int? Count { get; set; }
             /// <summary>Field on which to sort.Prefix the field name with a hyphen (`-`) to sort in descending order.Omit the hyphen to sort in ascending order.*NOTE:*You must sort using system field names such as `effectiveDate`, and not by the field names appearing in response bodies such as `effective_date`.</summary>

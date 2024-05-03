@@ -76,7 +76,7 @@ namespace Marqeta.Core.Sdk.Accounts.Item.Statements.Item.Files {
         /// Retrieve an array of statement files for a specific statement summary.
         /// </summary>
         public class FilesRequestBuilderGetQueryParameters {
-            /// <summary>The number of statement files to return.</summary>
+            /// <summary>Number of statement files to return.</summary>
             [QueryParameter("count")]
             public int? Count { get; set; }
             /// <summary>Sort order index from which to begin returning files.</summary>

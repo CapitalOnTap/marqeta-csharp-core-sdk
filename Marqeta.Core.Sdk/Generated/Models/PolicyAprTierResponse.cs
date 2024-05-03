@@ -11,7 +11,7 @@ namespace Marqeta.Core.Sdk.Models {
     public class PolicyAprTierResponse : IAdditionalDataHolder, IParsable {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>The value of the APR.</summary>
+        /// <summary>Value of the APR.</summary>
         public double? Apr { get; set; }
         /// <summary>Margin rate for the risk tier for a pricing strategy.</summary>
         public double? MarginRate { get; set; }

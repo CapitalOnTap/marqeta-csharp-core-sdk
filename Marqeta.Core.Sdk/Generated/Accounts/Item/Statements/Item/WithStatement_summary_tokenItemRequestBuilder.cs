@@ -4,6 +4,7 @@ using Marqeta.Core.Sdk.Accounts.Item.Statements.Item.Interestcharges;
 using Marqeta.Core.Sdk.Accounts.Item.Statements.Item.Journalentries;
 using Marqeta.Core.Sdk.Accounts.Item.Statements.Item.Ledgerentries;
 using Marqeta.Core.Sdk.Accounts.Item.Statements.Item.Paymentinfo;
+using Marqeta.Core.Sdk.Accounts.Item.Statements.Item.Paymentreminders;
 using Marqeta.Core.Sdk.Accounts.Item.Statements.Item.Rewards;
 using Marqeta.Core.Sdk.Accounts.Item.Statements.Item.Yeartodate;
 using Marqeta.Core.Sdk.Models;
@@ -39,6 +40,10 @@ namespace Marqeta.Core.Sdk.Accounts.Item.Statements.Item {
         /// <summary>The paymentinfo property</summary>
         public PaymentinfoRequestBuilder Paymentinfo { get =>
             new PaymentinfoRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The paymentreminders property</summary>
+        public PaymentremindersRequestBuilder Paymentreminders { get =>
+            new PaymentremindersRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The rewards property</summary>
         public RewardsRequestBuilder Rewards { get =>

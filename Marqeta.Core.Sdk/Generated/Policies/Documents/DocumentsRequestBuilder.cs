@@ -15,7 +15,7 @@ namespace Marqeta.Core.Sdk.Policies.Documents {
     /// </summary>
     public class DocumentsRequestBuilder : BaseRequestBuilder {
         /// <summary>Gets an item from the Marqeta.Core.Sdk.policies.documents.item collection</summary>
-        /// <param name="position">The unique identifier of the document policy to retrieve.Send a `GET` request to `/policies/documents` to retrieve existing document policy tokens.</param>
+        /// <param name="position">Unique identifier of the document policy to retrieve.Send a `GET` request to `/policies/documents` to retrieve existing document policy tokens.</param>
         /// <returns>A <see cref="WithTokenItemRequestBuilder"/></returns>
         public WithTokenItemRequestBuilder this[string position] { get {
             var urlTplParams = new Dictionary<string, object>(PathParameters);
@@ -127,7 +127,7 @@ namespace Marqeta.Core.Sdk.Policies.Documents {
         /// Retrieve an array of existing document policies.A document policy consists of all the pre- and post-application disclosures and credit program documents known as assets and templates.Assets contain finalized values after a bundle is created; templates do not contain finalized values.This endpoint supports &lt;&lt;/core-api/sorting-and-pagination, sorting and pagination&gt;&gt;.
         /// </summary>
         public class DocumentsRequestBuilderGetQueryParameters {
-            /// <summary>The number of resources to retrieve.</summary>
+            /// <summary>Number of document policy resources to retrieve.</summary>
             [QueryParameter("count")]
             public int? Count { get; set; }
             /// <summary>Field on which to sort.Prefix the field name with a hyphen (`-`) to sort in descending order.Omit the hyphen to sort in ascending order.*NOTE:*You must sort using system field names such as `lastModifiedTime`, and not by the field names appearing in response bodies such as `last_modified_time`.</summary>

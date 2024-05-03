@@ -15,7 +15,7 @@ namespace Marqeta.Core.Sdk.Accounts.Item.Paymentschedules {
     /// </summary>
     public class PaymentschedulesRequestBuilder : BaseRequestBuilder {
         /// <summary>Gets an item from the Marqeta.Core.Sdk.accounts.item.paymentschedules.item collection</summary>
-        /// <param name="position">The unique identifier of the payment schedule that you want to retrieve.Send a `GET` request to `/credit/accounts/{account_token}/paymentschedules` to retrieve existing payment schedule tokens.</param>
+        /// <param name="position">Unique identifier of the payment schedule that you want to retrieve.Send a `GET` request to `/credit/accounts/{account_token}/paymentschedules` to retrieve existing payment schedule tokens.</param>
         /// <returns>A <see cref="WithPayment_schedule_tokenItemRequestBuilder"/></returns>
         public WithPayment_schedule_tokenItemRequestBuilder this[string position] { get {
             var urlTplParams = new Dictionary<string, object>(PathParameters);
@@ -127,7 +127,7 @@ namespace Marqeta.Core.Sdk.Accounts.Item.Paymentschedules {
         /// Retrieve an array of payment schedules on a specific credit account.This endpoint supports &lt;&lt;/core-api/sorting-and-pagination, sorting and pagination&gt;&gt;.
         /// </summary>
         public class PaymentschedulesRequestBuilderGetQueryParameters {
-            /// <summary>The number of resources to retrieve.</summary>
+            /// <summary>Number of payment schedule resources to retrieve.</summary>
             [QueryParameter("count")]
             public int? Count { get; set; }
             /// <summary>Frequency of the payment schedules to retrieve.</summary>

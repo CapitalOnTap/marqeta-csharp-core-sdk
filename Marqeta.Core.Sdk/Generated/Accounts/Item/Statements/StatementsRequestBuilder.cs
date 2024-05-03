@@ -20,7 +20,7 @@ namespace Marqeta.Core.Sdk.Accounts.Item.Statements {
             new FilesRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>Gets an item from the Marqeta.Core.Sdk.accounts.item.statements.item collection</summary>
-        /// <param name="position">The unique identifier of the statement summary to retrieve.Send a `GET` request to `/credit/accounts/{token}/statements/` to retrieve existing statement summary tokens.</param>
+        /// <param name="position">Unique identifier of the statement summary to retrieve.Send a `GET` request to `/credit/accounts/{token}/statements/` to retrieve existing statement summary tokens.</param>
         /// <returns>A <see cref="WithStatement_summary_tokenItemRequestBuilder"/></returns>
         public WithStatement_summary_tokenItemRequestBuilder this[string position] { get {
             var urlTplParams = new Dictionary<string, object>(PathParameters);
@@ -90,7 +90,7 @@ namespace Marqeta.Core.Sdk.Accounts.Item.Statements {
         /// Retrieve an array of statement summaries tied to a cardholder&apos;s account.The statement summary, which is a summary of account activity on a statement, provides account holders with a synopsis of activity that occurred on the account during a specified billing cycle.This endpoint supports &lt;&lt;/core-api/sorting-and-pagination, sorting and pagination&gt;&gt;.You can use optional query parameters to return a statement based on its exact opening or closing date, or a statement whose closing date falls within a range of dates.
         /// </summary>
         public class StatementsRequestBuilderGetQueryParameters {
-            /// <summary>The number of resources to retrieve.</summary>
+            /// <summary>Number of account statement resources to retrieve.</summary>
             [QueryParameter("count")]
             public int? Count { get; set; }
             /// <summary>Returns statements with a matching closing date.If both `start_date` and `end_date` are specified, statements whose closing date falls between the start and end dates are returned.</summary>

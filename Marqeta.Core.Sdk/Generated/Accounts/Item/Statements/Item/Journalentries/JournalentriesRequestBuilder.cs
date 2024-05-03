@@ -76,16 +76,23 @@ namespace Marqeta.Core.Sdk.Accounts.Item.Statements.Item.Journalentries {
         /// Retrieve an array of journal entries on a credit account&apos;s statement summary.This endpoint supports &lt;&lt;/core-api/sorting-and-pagination, sorting&gt;&gt;.
         /// </summary>
         public class JournalentriesRequestBuilderGetQueryParameters {
-            /// <summary>Specifies the number of journal entries to return.</summary>
+            /// <summary>Number of journal entry resources to return.</summary>
             [QueryParameter("count")]
             public int? Count { get; set; }
             /// <summary>Embeds the specified object into the response.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
             [QueryParameter("expand")]
-            public GetExpandQueryParameterType? Expand { get; set; }
+            public GetExpandQueryParameterType[]? Expand { get; set; }
+#nullable restore
+#else
+            [QueryParameter("expand")]
+            public GetExpandQueryParameterType[] Expand { get; set; }
+#endif
             /// <summary>Field on which to sort.Prefix the field name with a hyphen (`-`) to sort in descending order.Omit the hyphen to sort in ascending order.*NOTE:*You must sort using system field names such as `lastModifiedTime`, and not by the field names appearing in response bodies such as `last_modified_time`.</summary>
             [QueryParameter("sort_by")]
             public GetSort_byQueryParameterType? SortBy { get; set; }
-            /// <summary>Specifies the sort order index from which to begin returning journal entries.</summary>
+            /// <summary>Sort order index of the first resource in the returned array.</summary>
             [QueryParameter("start_index")]
             public int? StartIndex { get; set; }
         }

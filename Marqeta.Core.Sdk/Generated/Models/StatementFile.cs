@@ -6,7 +6,7 @@ using System.Linq;
 using System;
 namespace Marqeta.Core.Sdk.Models {
     /// <summary>
-    /// A collection of statement files.
+    /// Collection of statement files.
     /// </summary>
     public class StatementFile : IAdditionalDataHolder, IParsable {
         /// <summary>Unique identifier of the credit account on which the statement PDF file is generated.</summary>
@@ -23,7 +23,7 @@ namespace Marqeta.Core.Sdk.Models {
         public DateTimeOffset? ClosingDate { get; set; }
         /// <summary>Date and time when the statement period began.</summary>
         public DateTimeOffset? OpeningDate { get; set; }
-        /// <summary>The signed URL to retrieve the statement PDF file.</summary>
+        /// <summary>Signed URL to retrieve the statement PDF file.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? SignedUrl { get; set; }

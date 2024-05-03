@@ -15,7 +15,7 @@ namespace Marqeta.Core.Sdk.Accounts.Item.Adjustments {
     /// </summary>
     public class AdjustmentsRequestBuilder : BaseRequestBuilder {
         /// <summary>Gets an item from the Marqeta.Core.Sdk.accounts.item.adjustments.item collection</summary>
-        /// <param name="position">The unique identifier of the adjustment to retrieve.Send a `GET` request to `/credit/accounts/{account_token}/adjustments` to retrieve existing account adjustment tokens.</param>
+        /// <param name="position">Unique identifier of the adjustment to retrieve.Send a `GET` request to `/credit/accounts/{account_token}/adjustments` to retrieve existing account adjustment tokens.</param>
         /// <returns>A <see cref="WithAdjustment_tokenItemRequestBuilder"/></returns>
         public WithAdjustment_tokenItemRequestBuilder this[string position] { get {
             var urlTplParams = new Dictionary<string, object>(PathParameters);
@@ -127,7 +127,7 @@ namespace Marqeta.Core.Sdk.Accounts.Item.Adjustments {
         /// Retrieve an array of adjustments for a credit account.This endpoint supports &lt;&lt;/core-api/sorting-and-pagination, pagination&gt;&gt;.
         /// </summary>
         public class AdjustmentsRequestBuilderGetQueryParameters {
-            /// <summary>The number of resources to retrieve</summary>
+            /// <summary>Number of account adjustment resources to retrieve.</summary>
             [QueryParameter("count")]
             public int? Count { get; set; }
             /// <summary>Sort order index of the first resource in the returned array.</summary>

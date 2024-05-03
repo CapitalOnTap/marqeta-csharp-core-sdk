@@ -15,7 +15,7 @@ namespace Marqeta.Core.Sdk.Accounts.Item.Disputes {
     /// </summary>
     public class DisputesRequestBuilder : BaseRequestBuilder {
         /// <summary>Gets an item from the Marqeta.Core.Sdk.accounts.item.disputes.item collection</summary>
-        /// <param name="position">The unique identifier of the dispute to retrieve.Send a `GET` request to `/credit/accounts/{account_token}/disputes` to retrieve existing dispute tokens.</param>
+        /// <param name="position">Unique identifier of the dispute to retrieve.Send a `GET` request to `/credit/accounts/{account_token}/disputes` to retrieve existing dispute tokens.</param>
         /// <returns>A <see cref="WithDispute_tokenItemRequestBuilder"/></returns>
         public WithDispute_tokenItemRequestBuilder this[string position] { get {
             var urlTplParams = new Dictionary<string, object>(PathParameters);
@@ -127,7 +127,7 @@ namespace Marqeta.Core.Sdk.Accounts.Item.Disputes {
         /// Retrieve an array of disputes on a credit account.This endpoint supports &lt;&lt;/core-api/sorting-and-pagination, sorting and pagination&gt;&gt;.
         /// </summary>
         public class DisputesRequestBuilderGetQueryParameters {
-            /// <summary>The number of resources to retrieve.</summary>
+            /// <summary>Number of disputes resources to retrieve.</summary>
             [QueryParameter("count")]
             public int? Count { get; set; }
             /// <summary>Field on which to sort.Prefix the field name with a hyphen (`-`) to sort in descending order.Omit the hyphen to sort in ascending order.*NOTE:*You must sort using system field names such as `lastModifiedTime`, and not by the field names appearing in response bodies such as `last_modified_time`.</summary>

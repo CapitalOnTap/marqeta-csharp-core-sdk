@@ -18,11 +18,11 @@ namespace Marqeta.Core.Sdk.Models {
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Amount of the reward.</summary>
         public double? Amount { get; set; }
-        /// <summary>The total amount to which a percentage reward method is applied (for example, if a 3% reward is applied to 100, then `100` is the `applied_to_amount` value).This field is not applicable for a flat fee method.Returned for auto-cash back reward types only.</summary>
+        /// <summary>Total amount to which a percentage reward method is applied (for example, if a 3% reward is applied to 100, then `100` is the `applied_to_amount` value).This field is not applicable for a flat fee method.Returned for auto-cash back reward types only.</summary>
         public double? AppliedToAmount { get; set; }
         /// <summary>Date and time when the reward was created on Marqeta&apos;s credit platform, in UTC.</summary>
         public DateTimeOffset? CreatedTime { get; set; }
-        /// <summary>A valid three-digit link:https://www.iso.org/iso-4217-currency-codes.html[ISO 4217 currency code, window=&quot;_blank&quot;]</summary>
+        /// <summary>Valid three-digit link:https://www.iso.org/iso-4217-currency-codes.html[ISO 4217 currency code, window=&quot;_blank&quot;]</summary>
         public Marqeta.Core.Sdk.Models.CurrencyCode? CurrencyCode { get; set; }
         /// <summary>Description of the reward.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER

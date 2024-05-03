@@ -18,8 +18,16 @@ namespace Marqeta.Core.Sdk.Models {
         public bool? IsActive { get; set; }
         /// <summary>Maximum amount that the balance for a billing cycle can be to apply the specified reward percentage.For example, if the `less_than` value is `1500`, the account holder earns _x_% of the account balance if they spend under $1500 during a billing cycle.</summary>
         public decimal? LessThan { get; set; }
+        /// <summary>Merchant category code (MCC) of the related journal entry.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Mcc { get; set; }
+#nullable restore
+#else
+        public string Mcc { get; set; }
+#endif
         /// <summary>The reward percentage applied when the balance for a billing cycle is within the range specified in the `less_than` and `greater_than` fields.For example, if the `percentage` is `1`, the account holder earns 1% of the account balance if they spend between the `less_than` and `greater_than` amounts during a billing cycle.</summary>
-        public int? Percentage { get; set; }
+        public decimal? Percentage { get; set; }
         /// <summary>Unique identifier of the reward program on which the rules config is applied.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -64,7 +72,8 @@ namespace Marqeta.Core.Sdk.Models {
                 {"greater_than", n => { GreaterThan = n.GetDecimalValue(); } },
                 {"is_active", n => { IsActive = n.GetBoolValue(); } },
                 {"less_than", n => { LessThan = n.GetDecimalValue(); } },
-                {"percentage", n => { Percentage = n.GetIntValue(); } },
+                {"mcc", n => { Mcc = n.GetStringValue(); } },
+                {"percentage", n => { Percentage = n.GetDecimalValue(); } },
                 {"reward_program_token", n => { RewardProgramToken = n.GetStringValue(); } },
                 {"token", n => { Token = n.GetStringValue(); } },
                 {"updated_time", n => { UpdatedTime = n.GetDateTimeOffsetValue(); } },
@@ -81,7 +90,8 @@ namespace Marqeta.Core.Sdk.Models {
             writer.WriteDecimalValue("greater_than", GreaterThan);
             writer.WriteBoolValue("is_active", IsActive);
             writer.WriteDecimalValue("less_than", LessThan);
-            writer.WriteIntValue("percentage", Percentage);
+            writer.WriteStringValue("mcc", Mcc);
+            writer.WriteDecimalValue("percentage", Percentage);
             writer.WriteStringValue("reward_program_token", RewardProgramToken);
             writer.WriteStringValue("token", Token);
             writer.WriteDateTimeOffsetValue("updated_time", UpdatedTime);

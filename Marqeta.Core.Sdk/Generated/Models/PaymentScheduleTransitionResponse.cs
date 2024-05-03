@@ -21,7 +21,7 @@ namespace Marqeta.Core.Sdk.Models {
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Date and time when the payment schedule transition was created on Marqeta&apos;s credit platform, in UTC.</summary>
         public DateTimeOffset? CreatedTime { get; set; }
-        /// <summary>The unique identifier of the payment schedule whose status is to transition.Send a `GET` request to `/credit/accounts/{account_token}/paymentschedules` to retrieve existing payment schedule tokens.</summary>
+        /// <summary>Unique identifier of the payment schedule whose status is to transition.Send a `GET` request to `/credit/accounts/{account_token}/paymentschedules` to retrieve existing payment schedule tokens.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? PaymentScheduleToken { get; set; }

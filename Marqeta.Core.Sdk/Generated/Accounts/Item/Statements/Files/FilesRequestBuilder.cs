@@ -76,16 +76,16 @@ namespace Marqeta.Core.Sdk.Accounts.Item.Statements.Files {
         /// Retrieve an array of statement files for a specific credit account.
         /// </summary>
         public class FilesRequestBuilderGetQueryParameters {
-            /// <summary>The number of resources to retrieve.</summary>
+            /// <summary>Number of statement file resources to retrieve.</summary>
             [QueryParameter("count")]
             public int? Count { get; set; }
-            /// <summary>The end date of the statement files to return.</summary>
+            /// <summary>End date of the date range for which to return statement files.</summary>
             [QueryParameter("end_date")]
             public DateTimeOffset? EndDate { get; set; }
             /// <summary>Field on which to sort.Prefix the field name with a hyphen (`-`) to sort in descending order.Omit the hyphen to sort in ascending order.*NOTE:*You must sort using system field names such as `createdTime`, and not by the field names appearing in response bodies such as `created_time`.</summary>
             [QueryParameter("sort_by")]
             public GetSort_byQueryParameterType? SortBy { get; set; }
-            /// <summary>The start date of the statement files to return.</summary>
+            /// <summary>Start date of the date range for which to return statement files.</summary>
             [QueryParameter("start_date")]
             public DateTimeOffset? StartDate { get; set; }
             /// <summary>Sort order index of the first resource in the returned array.</summary>

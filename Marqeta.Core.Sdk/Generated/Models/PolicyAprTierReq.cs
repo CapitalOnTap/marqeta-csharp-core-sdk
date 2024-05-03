@@ -11,7 +11,7 @@ namespace Marqeta.Core.Sdk.Models {
     public class PolicyAprTierReq : IAdditionalDataHolder, IParsable {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>The number of percentage points added to the prime rate, used to calculate a variable APR value.</summary>
+        /// <summary>Number of percentage points added to the prime rate, used to calculate a variable APR value.</summary>
         public double? MarginRate { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="PolicyAprTierReq"/> and sets the default values.

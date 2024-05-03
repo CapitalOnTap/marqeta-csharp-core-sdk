@@ -13,7 +13,7 @@ namespace Marqeta.Core.Sdk.Models {
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Day of month the billing cycle starts.</summary>
         public int? BillingCycleDay { get; set; }
-        /// <summary>The level of the credit card.</summary>
+        /// <summary>Level of the credit card.</summary>
         public AccountConfigReq_card_level? CardLevel { get; set; }
         /// <summary>A value of `true` indicates that the account holder consents to receiving disclosures and statements electronically.</summary>
         public bool? EDisclosureActive { get; set; }
@@ -25,7 +25,8 @@ namespace Marqeta.Core.Sdk.Models {
 #else
         public List<ConfigFeeScheduleReq> Fees { get; set; }
 #endif
-        /// <summary>Day of month the payment for the previous billing cycle is due.</summary>
+        /// <summary>Day of month the payment for the previous billing cycle is due.This field is deprecated.Use the `account.payment_due_interval` field instead.To retrieve `payment_due_interval`, see &lt;&lt;/core-api/policies#retrieveProductPolicy, Retrieve credit product policy, payments.payment_due_interval&gt;&gt;.</summary>
+        [Obsolete("")]
         public int? PaymentDueDay { get; set; }
         /// <summary>Contains configurations for a payment hold.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER

@@ -5,5 +5,7 @@ namespace Marqeta.Core.Sdk.Accounts.Item.Ledgerentries {
     public enum GetExpandQueryParameterType {
         [EnumMember(Value = "detailObject")]
         DetailObject,
+        [EnumMember(Value = "originalCurrency")]
+        OriginalCurrency,
     }
 }

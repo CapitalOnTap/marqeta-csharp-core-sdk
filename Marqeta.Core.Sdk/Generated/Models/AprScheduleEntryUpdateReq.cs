@@ -12,7 +12,7 @@ namespace Marqeta.Core.Sdk.Models {
         public bool? ApplyNextCycle { get; set; }
         /// <summary>Date and time when the APR goes into effect, in UTC.If you do not include a date-time value, the system uses the date and time when the API request was received.*NOTE:*When passing multiple `schedule` objects, this field is required in all objects but the first.If you do not include `effective_date` in the first `schedule`, the system uses the date and time when the API request was received.</summary>
         public DateTimeOffset? EffectiveDate { get; set; }
-        /// <summary>The number of percentage points added to the prime rate, used to calculate a variable value.Used for variable values only.</summary>
+        /// <summary>Number of percentage points added to the prime rate, used to calculate a variable value.Used for variable values only.</summary>
         public float? Margin { get; set; }
         /// <summary>Indicates whether the APR value is fixed or variable.</summary>
         public AprScheduleEntryUpdateReq_type? Type { get; set; }

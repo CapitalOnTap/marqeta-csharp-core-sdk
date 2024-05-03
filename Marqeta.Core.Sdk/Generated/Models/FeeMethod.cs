@@ -6,5 +6,7 @@ namespace Marqeta.Core.Sdk.Models {
     public enum FeeMethod {
         [EnumMember(Value = "FLAT")]
         FLAT,
+        [EnumMember(Value = "PERCENTAGE")]
+        PERCENTAGE,
     }
 }

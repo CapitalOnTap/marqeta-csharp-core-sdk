@@ -85,7 +85,7 @@ namespace Marqeta.Core.Sdk.Accounts.Item.Delinquencystate.Transitions {
         /// Retrieve an array of delinquency state transitions for a credit account.A delinquency state transition occurs when an account&apos;s delinquency state transitions between delinquent and current.An account becomes delinquent when it falls behind on payments and becomes current when payments are made up to date.
         /// </summary>
         public class TransitionsRequestBuilderGetQueryParameters {
-            /// <summary>The number of resources to retrieve.</summary>
+            /// <summary>Number of resources to retrieve.</summary>
             [QueryParameter("count")]
             public int? Count { get; set; }
             /// <summary>Field on which to sort.Prefix the field name with a hyphen (`-`) to sort in descending order.Omit the hyphen to sort in ascending order.*NOTE:*You must sort using system field names such as `impactTime`, and not by the field names appearing in response bodies such as `impact_time`.</summary>

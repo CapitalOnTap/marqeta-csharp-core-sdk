@@ -6,18 +6,18 @@ using System.Linq;
 using System;
 namespace Marqeta.Core.Sdk.Models {
     /// <summary>
-    /// Contains authentication information for a credit user.
+    /// Contains the cardholder&apos;s email address and password information.
     /// </summary>
     public class Authentication : IAdditionalDataHolder, IParsable {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Indicates whether the credit user&apos;s email has been verified.</summary>
+        /// <summary>Specifies whether the email address has been verified.</summary>
         public bool? EmailVerified { get; set; }
-        /// <summary>If verified, the date and time when the credit user&apos;s email was verified.</summary>
+        /// <summary>Date and time when the email address was verified.</summary>
         public DateTimeOffset? EmailVerifiedTime { get; set; }
-        /// <summary>The channel through which the credit user&apos;s password was last updated.</summary>
+        /// <summary>Specifies the channel through which the password was last changed.</summary>
         public Authentication_last_password_update_channel? LastPasswordUpdateChannel { get; set; }
-        /// <summary>Date and time when the credit user&apos;s password was last updated.</summary>
+        /// <summary>Date and time when the password was last changed.</summary>
         public DateTimeOffset? LastPasswordUpdateTime { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="Authentication"/> and sets the default values.

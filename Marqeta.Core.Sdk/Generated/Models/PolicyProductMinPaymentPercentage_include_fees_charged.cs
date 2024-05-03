@@ -7,5 +7,7 @@ namespace Marqeta.Core.Sdk.Models {
         LATE_PAYMENT_FEE,
         [EnumMember(Value = "RETURNED_PAYMENT_FEE")]
         RETURNED_PAYMENT_FEE,
+        [EnumMember(Value = "FOREIGN_TRANSACTION_FEE")]
+        FOREIGN_TRANSACTION_FEE,
     }
 }

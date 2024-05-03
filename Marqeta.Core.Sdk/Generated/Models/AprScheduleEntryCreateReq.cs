@@ -8,7 +8,7 @@ namespace Marqeta.Core.Sdk.Models {
     public class AprScheduleEntryCreateReq : IAdditionalDataHolder, IParsable {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>The number of percentage points added to the prime rate, used to calculate a variable value.Used for variable values only.</summary>
+        /// <summary>Number of percentage points added to the prime rate, used to calculate a variable value.Used for variable values only.</summary>
         public float? Margin { get; set; }
         /// <summary>Indicates whether the APR value is fixed or variable.</summary>
         public AprScheduleEntryCreateReq_type? Type { get; set; }

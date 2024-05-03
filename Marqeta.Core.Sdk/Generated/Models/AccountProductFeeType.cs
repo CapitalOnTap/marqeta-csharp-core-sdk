@@ -12,5 +12,7 @@ namespace Marqeta.Core.Sdk.Models {
         MONTHLY_FEE,
         [EnumMember(Value = "ANNUAL_FEE")]
         ANNUAL_FEE,
+        [EnumMember(Value = "FOREIGN_TRANSACTION_FEE")]
+        FOREIGN_TRANSACTION_FEE,
     }
 }

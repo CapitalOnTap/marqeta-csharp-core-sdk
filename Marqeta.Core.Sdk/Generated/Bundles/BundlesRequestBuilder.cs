@@ -15,7 +15,7 @@ namespace Marqeta.Core.Sdk.Bundles {
     /// </summary>
     public class BundlesRequestBuilder : BaseRequestBuilder {
         /// <summary>Gets an item from the Marqeta.Core.Sdk.bundles.item collection</summary>
-        /// <param name="position">The unique identifier of the bundle to retrieve.Send a `GET` request to `/credit/bundles` to retrieve existing  tokens.</param>
+        /// <param name="position">Unique identifier of the bundle to retrieve.Send a `GET` request to `/credit/bundles` to retrieve existing  tokens.</param>
         /// <returns>A <see cref="WithTokenItemRequestBuilder"/></returns>
         public WithTokenItemRequestBuilder this[string position] { get {
             var urlTplParams = new Dictionary<string, object>(PathParameters);
@@ -127,7 +127,7 @@ namespace Marqeta.Core.Sdk.Bundles {
         /// Retrieve an array of bundles.This endpoint supports &lt;&lt;/core-api/sorting-and-pagination, sorting and pagination&gt;&gt;.
         /// </summary>
         public class BundlesRequestBuilderGetQueryParameters {
-            /// <summary>The number of resources to retrieve.</summary>
+            /// <summary>Number of bundles resources to retrieve.</summary>
             [QueryParameter("count")]
             public int? Count { get; set; }
             /// <summary>Field on which to sort.Prefix the field name with a hyphen (`-`) to sort in descending order.Omit the hyphen to sort in ascending order.*NOTE:*You must sort using system field names such as `lastModifiedTime`, and not by the field names appearing in response bodies such as `last_modified_time`.</summary>
