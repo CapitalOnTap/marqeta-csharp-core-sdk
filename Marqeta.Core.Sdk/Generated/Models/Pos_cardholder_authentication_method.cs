@@ -3,16 +3,27 @@ using System.Runtime.Serialization;
 using System;
 namespace Marqeta.Core.Sdk.Models {
     /// <summary>Method used to authenticate the cardholder.</summary>
-    public enum Pos_cardholder_authentication_method {
+    public enum Pos_cardholder_authentication_method
+    {
         [EnumMember(Value = "UNSPECIFIED")]
+        #pragma warning disable CS1591
         UNSPECIFIED,
+        #pragma warning restore CS1591
         [EnumMember(Value = "NON_AUTHENTICATED")]
+        #pragma warning disable CS1591
         NON_AUTHENTICATED,
+        #pragma warning restore CS1591
         [EnumMember(Value = "SIGNATURE")]
+        #pragma warning disable CS1591
         SIGNATURE,
+        #pragma warning restore CS1591
         [EnumMember(Value = "PIN")]
+        #pragma warning disable CS1591
         PIN,
+        #pragma warning restore CS1591
         [EnumMember(Value = "ID_VERIFIED")]
+        #pragma warning disable CS1591
         ID_VERIFIED,
+        #pragma warning restore CS1591
     }
 }

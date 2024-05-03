@@ -3,16 +3,27 @@ using System.Runtime.Serialization;
 using System;
 namespace Marqeta.Core.Sdk.Models {
     /// <summary>Type of error.</summary>
-    public enum ErrorDetailsResponse_type {
+    public enum ErrorDetailsResponse_type
+    {
         [EnumMember(Value = "VALIDATION")]
+        #pragma warning disable CS1591
         VALIDATION,
+        #pragma warning restore CS1591
         [EnumMember(Value = "TIMEOUT")]
+        #pragma warning disable CS1591
         TIMEOUT,
+        #pragma warning restore CS1591
         [EnumMember(Value = "UPSTREAM")]
+        #pragma warning disable CS1591
         UPSTREAM,
+        #pragma warning restore CS1591
         [EnumMember(Value = "DOWNSTREAM")]
+        #pragma warning disable CS1591
         DOWNSTREAM,
+        #pragma warning restore CS1591
         [EnumMember(Value = "UNKNOWN")]
+        #pragma warning disable CS1591
         UNKNOWN,
+        #pragma warning restore CS1591
     }
 }

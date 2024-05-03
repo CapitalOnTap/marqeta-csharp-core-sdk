@@ -3,24 +3,43 @@ using System.Runtime.Serialization;
 using System;
 namespace Marqeta.Core.Sdk.Models {
     /// <summary>Type of fee.*NOTE:*Only `RETURNED_PAYMENT_FEE`, `LATE_PAYMENT_FEE`, `ANNUAL_FEE`, and `MONTHLY_FEE` are currently supported.Do not pass other fees types.</summary>
-    public enum FeeType {
+    public enum FeeType
+    {
         [EnumMember(Value = "FOREIGN_TRANSACTION_FEE")]
+        #pragma warning disable CS1591
         FOREIGN_TRANSACTION_FEE,
+        #pragma warning restore CS1591
         [EnumMember(Value = "OVER_LIMIT_FEE")]
+        #pragma warning disable CS1591
         OVER_LIMIT_FEE,
+        #pragma warning restore CS1591
         [EnumMember(Value = "LATE_PAYMENT_FEE")]
+        #pragma warning disable CS1591
         LATE_PAYMENT_FEE,
+        #pragma warning restore CS1591
         [EnumMember(Value = "RETURNED_PAYMENT_FEE")]
+        #pragma warning disable CS1591
         RETURNED_PAYMENT_FEE,
+        #pragma warning restore CS1591
         [EnumMember(Value = "CARD_REPLACEMENT_FEE")]
+        #pragma warning disable CS1591
         CARD_REPLACEMENT_FEE,
+        #pragma warning restore CS1591
         [EnumMember(Value = "MINIMUM_INTEREST_FEE")]
+        #pragma warning disable CS1591
         MINIMUM_INTEREST_FEE,
+        #pragma warning restore CS1591
         [EnumMember(Value = "MINIMUM_INTEREST_FEE_REVERSAL")]
+        #pragma warning disable CS1591
         MINIMUM_INTEREST_FEE_REVERSAL,
+        #pragma warning restore CS1591
         [EnumMember(Value = "ANNUAL_FEE")]
+        #pragma warning disable CS1591
         ANNUAL_FEE,
+        #pragma warning restore CS1591
         [EnumMember(Value = "MONTHLY_FEE")]
+        #pragma warning disable CS1591
         MONTHLY_FEE,
+        #pragma warning restore CS1591
     }
 }

@@ -2,7 +2,7 @@
   "descriptionHash": "1C3CB204800ABBF9186A2A0167E8BD27EE4084BD1C1B8E7E79D877FFC32EE18FD672D6B688FB58C878F02BAAE45A82453834C9F81660A1A7DA6F168366BBFD00",
   "descriptionLocation": "..\\CoreAPI.yaml",
   "lockFileVersion": "1.0.0",
-  "kiotaVersion": "1.12.0",
+  "kiotaVersion": "1.14.0",
   "clientClassName": "MarqetaClient",
   "clientNamespaceName": "Marqeta.Core.Sdk",
   "language": "CSharp",

@@ -3,10 +3,15 @@ using System.Runtime.Serialization;
 using System;
 namespace Marqeta.Core.Sdk.Models {
     /// <summary>Gender of the cardholder.</summary>
-    public enum Card_holder_model_gender {
+    public enum Card_holder_model_gender
+    {
         [EnumMember(Value = "F")]
+        #pragma warning disable CS1591
         F,
+        #pragma warning restore CS1591
         [EnumMember(Value = "M")]
+        #pragma warning disable CS1591
         M,
+        #pragma warning restore CS1591
     }
 }

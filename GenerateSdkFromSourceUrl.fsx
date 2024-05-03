@@ -2,7 +2,7 @@
    If possible, please try updating the nuget packages each time we modify the script *)
 #r "nuget: Microsoft.OpenApi,1.6.14"
 #r "nuget: Microsoft.OpenApi.Readers,1.6.14"
-#r "nuget: Fli,1.101.0"
+#r "nuget: Fli,1.111.0"
 #r "nuget: FsHttp,14.5.0"
 
 /// <summary>

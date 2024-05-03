@@ -3,24 +3,43 @@ using System.Runtime.Serialization;
 using System;
 namespace Marqeta.Core.Sdk.Models {
     /// <summary>Type of identification.*NOTE:* Full Social Security Number (SSN) is required for US-based cardholder KYC verification.Nine digits only, no delimiters.`123456789`, for example.</summary>
-    public enum IdentificationRequestModel_type {
+    public enum IdentificationRequestModel_type
+    {
         [EnumMember(Value = "SSN")]
+        #pragma warning disable CS1591
         SSN,
+        #pragma warning restore CS1591
         [EnumMember(Value = "TIN")]
+        #pragma warning disable CS1591
         TIN,
+        #pragma warning restore CS1591
         [EnumMember(Value = "SIN")]
+        #pragma warning disable CS1591
         SIN,
+        #pragma warning restore CS1591
         [EnumMember(Value = "NIN")]
+        #pragma warning disable CS1591
         NIN,
+        #pragma warning restore CS1591
         [EnumMember(Value = "PASSPORT_NUMBER")]
+        #pragma warning disable CS1591
         PASSPORT_NUMBER,
+        #pragma warning restore CS1591
         [EnumMember(Value = "DRIVERS_LICENSE")]
+        #pragma warning disable CS1591
         DRIVERS_LICENSE,
+        #pragma warning restore CS1591
         [EnumMember(Value = "BUSINESS_NUMBER")]
+        #pragma warning disable CS1591
         BUSINESS_NUMBER,
+        #pragma warning restore CS1591
         [EnumMember(Value = "BUSINESS_TAX_ID")]
+        #pragma warning disable CS1591
         BUSINESS_TAX_ID,
+        #pragma warning restore CS1591
         [EnumMember(Value = "TAXPAYER_REFERENCE")]
+        #pragma warning disable CS1591
         TAXPAYER_REFERENCE,
+        #pragma warning restore CS1591
     }
 }

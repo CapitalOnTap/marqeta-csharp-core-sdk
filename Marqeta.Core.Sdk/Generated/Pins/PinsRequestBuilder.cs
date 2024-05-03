@@ -14,28 +14,33 @@ namespace Marqeta.Core.Sdk.Pins {
     /// <summary>
     /// Builds and executes requests for operations under \pins
     /// </summary>
-    public class PinsRequestBuilder : BaseRequestBuilder {
+    public class PinsRequestBuilder : BaseRequestBuilder 
+    {
         /// <summary>The controltoken property</summary>
-        public ControltokenRequestBuilder Controltoken { get =>
-            new ControltokenRequestBuilder(PathParameters, RequestAdapter);
+        public ControltokenRequestBuilder Controltoken
+        {
+            get => new ControltokenRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The reveal property</summary>
-        public RevealRequestBuilder Reveal { get =>
-            new RevealRequestBuilder(PathParameters, RequestAdapter);
+        public RevealRequestBuilder Reveal
+        {
+            get => new RevealRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>
         /// Instantiates a new <see cref="PinsRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public PinsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/pins", pathParameters) {
+        public PinsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/pins", pathParameters)
+        {
         }
         /// <summary>
         /// Instantiates a new <see cref="PinsRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public PinsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/pins", rawUrl) {
+        public PinsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/pins", rawUrl)
+        {
         }
         /// <summary>
         /// Creates or updates a personal identification number (PIN) for an existing card.If you want to manage a card&apos;s PIN, first create a new control token for the card by sending a `POST` request to `/pins/controltoken`, and then use that token to update the PIN.You must create a card before you can manage a PIN.Unless PIN reveal functionality has been enabled for your program, you cannot retrieve a PIN that has previously been created.If the PIN has been forgotten, you must either update the card&apos;s PIN or create a new card and PIN.If you have enabled PIN reveal functionality for your program, you can send a `POST` request to the `/pins/reveal` endpoint to retrieve an existing PIN.See &lt;&lt;/core-api/pins#revealPins, Reveal PIN&gt;&gt; on this page for details.[WARNING]Sending a request to this endpoint requires PCI DSS compliance.You must comply with PCI DSS data security requirements if you want to store, transmit, or process sensitive card data such as the cardholder&apos;s primary account number (PAN), personal identification number (PIN), and card expiration date.
@@ -46,14 +51,17 @@ namespace Marqeta.Core.Sdk.Pins {
         /// <exception cref="ApiError">When receiving a 4XX or 5XX status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task PutAsync(Pin_request body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default) {
+        public async Task PutAsync(Pin_request body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        {
 #nullable restore
 #else
-        public async Task PutAsync(Pin_request body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default) {
+        public async Task PutAsync(Pin_request body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        {
 #endif
             _ = body ?? throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPutRequestInformation(body, requestConfiguration);
-            var errorMapping = new Dictionary<string, ParsableFactory<IParsable>> {
+            var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
+            {
                 {"XXX", ApiError.CreateFromDiscriminatorValue},
             };
             await RequestAdapter.SendNoContentAsync(requestInfo, errorMapping, cancellationToken).ConfigureAwait(false);
@@ -66,10 +74,12 @@ namespace Marqeta.Core.Sdk.Pins {
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToPutRequestInformation(Pin_request body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default) {
+        public RequestInformation ToPutRequestInformation(Pin_request body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
+        {
 #nullable restore
 #else
-        public RequestInformation ToPutRequestInformation(Pin_request body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default) {
+        public RequestInformation ToPutRequestInformation(Pin_request body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
+        {
 #endif
             _ = body ?? throw new ArgumentNullException(nameof(body));
             var requestInfo = new RequestInformation(Method.PUT, UrlTemplate, PathParameters);
@@ -83,7 +93,8 @@ namespace Marqeta.Core.Sdk.Pins {
         /// </summary>
         /// <returns>A <see cref="PinsRequestBuilder"/></returns>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
-        public PinsRequestBuilder WithUrl(string rawUrl) {
+        public PinsRequestBuilder WithUrl(string rawUrl)
+        {
             return new PinsRequestBuilder(rawUrl, RequestAdapter);
         }
     }

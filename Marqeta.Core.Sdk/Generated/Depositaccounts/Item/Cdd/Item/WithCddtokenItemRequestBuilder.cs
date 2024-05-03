@@ -12,20 +12,23 @@ namespace Marqeta.Core.Sdk.Depositaccounts.Item.Cdd.Item {
     /// <summary>
     /// Builds and executes requests for operations under \depositaccounts\{token-id}\cdd\{cddtoken}
     /// </summary>
-    public class WithCddtokenItemRequestBuilder : BaseRequestBuilder {
+    public class WithCddtokenItemRequestBuilder : BaseRequestBuilder 
+    {
         /// <summary>
         /// Instantiates a new <see cref="WithCddtokenItemRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public WithCddtokenItemRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/depositaccounts/{token%2Did}/cdd/{cddtoken}", pathParameters) {
+        public WithCddtokenItemRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/depositaccounts/{token%2Did}/cdd/{cddtoken}", pathParameters)
+        {
         }
         /// <summary>
         /// Instantiates a new <see cref="WithCddtokenItemRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public WithCddtokenItemRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/depositaccounts/{token%2Did}/cdd/{cddtoken}", rawUrl) {
+        public WithCddtokenItemRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/depositaccounts/{token%2Did}/cdd/{cddtoken}", rawUrl)
+        {
         }
         /// <summary>
         /// Update CDD answers for Direct Deposit Account
@@ -37,14 +40,17 @@ namespace Marqeta.Core.Sdk.Depositaccounts.Item.Cdd.Item {
         /// <exception cref="ApiError">When receiving a 4XX or 5XX status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<Customer_due_diligence_response?> PutAsync(Customer_due_diligence_update_response body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default) {
+        public async Task<Customer_due_diligence_response?> PutAsync(Customer_due_diligence_update_response body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        {
 #nullable restore
 #else
-        public async Task<Customer_due_diligence_response> PutAsync(Customer_due_diligence_update_response body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default) {
+        public async Task<Customer_due_diligence_response> PutAsync(Customer_due_diligence_update_response body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        {
 #endif
             _ = body ?? throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPutRequestInformation(body, requestConfiguration);
-            var errorMapping = new Dictionary<string, ParsableFactory<IParsable>> {
+            var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
+            {
                 {"XXX", ApiError.CreateFromDiscriminatorValue},
             };
             return await RequestAdapter.SendAsync<Customer_due_diligence_response>(requestInfo, Customer_due_diligence_response.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
@@ -57,10 +63,12 @@ namespace Marqeta.Core.Sdk.Depositaccounts.Item.Cdd.Item {
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToPutRequestInformation(Customer_due_diligence_update_response body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default) {
+        public RequestInformation ToPutRequestInformation(Customer_due_diligence_update_response body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
+        {
 #nullable restore
 #else
-        public RequestInformation ToPutRequestInformation(Customer_due_diligence_update_response body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default) {
+        public RequestInformation ToPutRequestInformation(Customer_due_diligence_update_response body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
+        {
 #endif
             _ = body ?? throw new ArgumentNullException(nameof(body));
             var requestInfo = new RequestInformation(Method.PUT, UrlTemplate, PathParameters);
@@ -74,7 +82,8 @@ namespace Marqeta.Core.Sdk.Depositaccounts.Item.Cdd.Item {
         /// </summary>
         /// <returns>A <see cref="WithCddtokenItemRequestBuilder"/></returns>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
-        public WithCddtokenItemRequestBuilder WithUrl(string rawUrl) {
+        public WithCddtokenItemRequestBuilder WithUrl(string rawUrl)
+        {
             return new WithCddtokenItemRequestBuilder(rawUrl, RequestAdapter);
         }
     }

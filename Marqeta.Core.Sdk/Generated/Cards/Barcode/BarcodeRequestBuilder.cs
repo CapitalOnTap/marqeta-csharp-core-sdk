@@ -10,28 +10,35 @@ namespace Marqeta.Core.Sdk.Cards.Barcode {
     /// <summary>
     /// Builds and executes requests for operations under \cards\barcode
     /// </summary>
-    public class BarcodeRequestBuilder : BaseRequestBuilder {
+    public class BarcodeRequestBuilder : BaseRequestBuilder 
+    {
         /// <summary>Gets an item from the Marqeta.Core.Sdk.cards.barcode.item collection</summary>
         /// <param name="position">Barcode of the card to retrieve.</param>
         /// <returns>A <see cref="WithBarcodeItemRequestBuilder"/></returns>
-        public WithBarcodeItemRequestBuilder this[string position] { get {
-            var urlTplParams = new Dictionary<string, object>(PathParameters);
-            urlTplParams.Add("barcode", position);
-            return new WithBarcodeItemRequestBuilder(urlTplParams, RequestAdapter);
-        } }
+        public WithBarcodeItemRequestBuilder this[string position]
+        {
+            get
+            {
+                var urlTplParams = new Dictionary<string, object>(PathParameters);
+                urlTplParams.Add("barcode", position);
+                return new WithBarcodeItemRequestBuilder(urlTplParams, RequestAdapter);
+            }
+        }
         /// <summary>
         /// Instantiates a new <see cref="BarcodeRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public BarcodeRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/cards/barcode", pathParameters) {
+        public BarcodeRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/cards/barcode", pathParameters)
+        {
         }
         /// <summary>
         /// Instantiates a new <see cref="BarcodeRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public BarcodeRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/cards/barcode", rawUrl) {
+        public BarcodeRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/cards/barcode", rawUrl)
+        {
         }
     }
 }

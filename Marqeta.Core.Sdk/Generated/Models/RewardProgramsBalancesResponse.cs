@@ -5,7 +5,10 @@ using System.IO;
 using System.Linq;
 using System;
 namespace Marqeta.Core.Sdk.Models {
-    public class RewardProgramsBalancesResponse : IAdditionalDataHolder, IParsable {
+    #pragma warning disable CS1591
+    public class RewardProgramsBalancesResponse : IAdditionalDataHolder, IParsable 
+    #pragma warning restore CS1591
+    {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Closing date of the billing cycle for which rewards were accrued, in UTC.</summary>
@@ -31,7 +34,8 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>
         /// Instantiates a new <see cref="RewardProgramsBalancesResponse"/> and sets the default values.
         /// </summary>
-        public RewardProgramsBalancesResponse() {
+        public RewardProgramsBalancesResponse()
+        {
             AdditionalData = new Dictionary<string, object>();
         }
         /// <summary>
@@ -39,7 +43,8 @@ namespace Marqeta.Core.Sdk.Models {
         /// </summary>
         /// <returns>A <see cref="RewardProgramsBalancesResponse"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static RewardProgramsBalancesResponse CreateFromDiscriminatorValue(IParseNode parseNode) {
+        public static RewardProgramsBalancesResponse CreateFromDiscriminatorValue(IParseNode parseNode)
+        {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
             return new RewardProgramsBalancesResponse();
         }
@@ -47,8 +52,10 @@ namespace Marqeta.Core.Sdk.Models {
         /// The deserialization information for the current model
         /// </summary>
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
-        public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers() {
-            return new Dictionary<string, Action<IParseNode>> {
+        public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
+        {
+            return new Dictionary<string, Action<IParseNode>>
+            {
                 {"billing_cycle_closing_date", n => { BillingCycleClosingDate = n.GetDateTimeOffsetValue(); } },
                 {"billing_cycle_opening_date", n => { BillingCycleOpeningDate = n.GetDateTimeOffsetValue(); } },
                 {"net_balance", n => { NetBalance = n.GetDecimalValue(); } },
@@ -62,7 +69,8 @@ namespace Marqeta.Core.Sdk.Models {
         /// Serializes information the current object
         /// </summary>
         /// <param name="writer">Serialization writer to use to serialize this model</param>
-        public virtual void Serialize(ISerializationWriter writer) {
+        public virtual void Serialize(ISerializationWriter writer)
+        {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
             writer.WriteDateTimeOffsetValue("billing_cycle_closing_date", BillingCycleClosingDate);
             writer.WriteDateTimeOffsetValue("billing_cycle_opening_date", BillingCycleOpeningDate);

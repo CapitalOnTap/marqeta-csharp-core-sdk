@@ -2,10 +2,17 @@
 using System.Runtime.Serialization;
 using System;
 namespace Marqeta.Core.Sdk.Models {
-    public enum Fee_update_request_category {
+    #pragma warning disable CS1591
+    public enum Fee_update_request_category
+    #pragma warning restore CS1591
+    {
         [EnumMember(Value = "STANDALONE")]
+        #pragma warning disable CS1591
         STANDALONE,
+        #pragma warning restore CS1591
         [EnumMember(Value = "REALTIME")]
+        #pragma warning disable CS1591
         REALTIME,
+        #pragma warning restore CS1591
     }
 }

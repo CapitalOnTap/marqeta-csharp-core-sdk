@@ -8,7 +8,8 @@ namespace Marqeta.Core.Sdk.Models {
     /// <summary>
     /// Contains details about a fee.
     /// </summary>
-    public class Fee_detail : IAdditionalDataHolder, IParsable {
+    public class Fee_detail : IAdditionalDataHolder, IParsable 
+    {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Contains details about the fee.</summary>
@@ -54,7 +55,8 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>
         /// Instantiates a new <see cref="Fee_detail"/> and sets the default values.
         /// </summary>
-        public Fee_detail() {
+        public Fee_detail()
+        {
             AdditionalData = new Dictionary<string, object>();
         }
         /// <summary>
@@ -62,7 +64,8 @@ namespace Marqeta.Core.Sdk.Models {
         /// </summary>
         /// <returns>A <see cref="Fee_detail"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static Fee_detail CreateFromDiscriminatorValue(IParseNode parseNode) {
+        public static Fee_detail CreateFromDiscriminatorValue(IParseNode parseNode)
+        {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
             return new Fee_detail();
         }
@@ -70,8 +73,10 @@ namespace Marqeta.Core.Sdk.Models {
         /// The deserialization information for the current model
         /// </summary>
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
-        public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers() {
-            return new Dictionary<string, Action<IParseNode>> {
+        public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
+        {
+            return new Dictionary<string, Action<IParseNode>>
+            {
                 {"fee", n => { Fee = n.GetObjectValue<Marqeta.Core.Sdk.Models.Fee>(Marqeta.Core.Sdk.Models.Fee.CreateFromDiscriminatorValue); } },
                 {"memo", n => { Memo = n.GetStringValue(); } },
                 {"tags", n => { Tags = n.GetStringValue(); } },
@@ -83,7 +88,8 @@ namespace Marqeta.Core.Sdk.Models {
         /// Serializes information the current object
         /// </summary>
         /// <param name="writer">Serialization writer to use to serialize this model</param>
-        public virtual void Serialize(ISerializationWriter writer) {
+        public virtual void Serialize(ISerializationWriter writer)
+        {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
             writer.WriteObjectValue<Marqeta.Core.Sdk.Models.Fee>("fee", Fee);
             writer.WriteStringValue("memo", Memo);

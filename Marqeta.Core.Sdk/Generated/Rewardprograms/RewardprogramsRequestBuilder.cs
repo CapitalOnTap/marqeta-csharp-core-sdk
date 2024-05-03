@@ -14,32 +14,40 @@ namespace Marqeta.Core.Sdk.Rewardprograms {
     /// <summary>
     /// Builds and executes requests for operations under \rewardprograms
     /// </summary>
-    public class RewardprogramsRequestBuilder : BaseRequestBuilder {
+    public class RewardprogramsRequestBuilder : BaseRequestBuilder 
+    {
         /// <summary>The redemptions property</summary>
-        public RedemptionsRequestBuilder Redemptions { get =>
-            new RedemptionsRequestBuilder(PathParameters, RequestAdapter);
+        public RedemptionsRequestBuilder Redemptions
+        {
+            get => new RedemptionsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>Gets an item from the Marqeta.Core.Sdk.rewardprograms.item collection</summary>
         /// <param name="position">Unique identifier of the reward program.</param>
         /// <returns>A <see cref="WithTokenItemRequestBuilder"/></returns>
-        public WithTokenItemRequestBuilder this[string position] { get {
-            var urlTplParams = new Dictionary<string, object>(PathParameters);
-            urlTplParams.Add("token", position);
-            return new WithTokenItemRequestBuilder(urlTplParams, RequestAdapter);
-        } }
+        public WithTokenItemRequestBuilder this[string position]
+        {
+            get
+            {
+                var urlTplParams = new Dictionary<string, object>(PathParameters);
+                urlTplParams.Add("token", position);
+                return new WithTokenItemRequestBuilder(urlTplParams, RequestAdapter);
+            }
+        }
         /// <summary>
         /// Instantiates a new <see cref="RewardprogramsRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public RewardprogramsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/rewardprograms{?account_token*,count*,is_active*,sort_by*,start_index*}", pathParameters) {
+        public RewardprogramsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/rewardprograms{?account_token*,count*,is_active*,sort_by*,start_index*}", pathParameters)
+        {
         }
         /// <summary>
         /// Instantiates a new <see cref="RewardprogramsRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public RewardprogramsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/rewardprograms{?account_token*,count*,is_active*,sort_by*,start_index*}", rawUrl) {
+        public RewardprogramsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/rewardprograms{?account_token*,count*,is_active*,sort_by*,start_index*}", rawUrl)
+        {
         }
         /// <summary>
         /// Retrieve an array of reward programs.
@@ -50,13 +58,16 @@ namespace Marqeta.Core.Sdk.Rewardprograms {
         /// <exception cref="ApiError">When receiving a 4XX or 5XX status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<RewardProgramsPageResponse?> GetAsync(Action<RequestConfiguration<RewardprogramsRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default) {
+        public async Task<RewardProgramsPageResponse?> GetAsync(Action<RequestConfiguration<RewardprogramsRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        {
 #nullable restore
 #else
-        public async Task<RewardProgramsPageResponse> GetAsync(Action<RequestConfiguration<RewardprogramsRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default) {
+        public async Task<RewardProgramsPageResponse> GetAsync(Action<RequestConfiguration<RewardprogramsRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            var errorMapping = new Dictionary<string, ParsableFactory<IParsable>> {
+            var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
+            {
                 {"XXX", ApiError.CreateFromDiscriminatorValue},
             };
             return await RequestAdapter.SendAsync<RewardProgramsPageResponse>(requestInfo, RewardProgramsPageResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
@@ -68,10 +79,12 @@ namespace Marqeta.Core.Sdk.Rewardprograms {
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<RewardprogramsRequestBuilderGetQueryParameters>>? requestConfiguration = default) {
+        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<RewardprogramsRequestBuilderGetQueryParameters>>? requestConfiguration = default)
+        {
 #nullable restore
 #else
-        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<RewardprogramsRequestBuilderGetQueryParameters>> requestConfiguration = default) {
+        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<RewardprogramsRequestBuilderGetQueryParameters>> requestConfiguration = default)
+        {
 #endif
             var requestInfo = new RequestInformation(Method.GET, UrlTemplate, PathParameters);
             requestInfo.Configure(requestConfiguration);
@@ -83,13 +96,15 @@ namespace Marqeta.Core.Sdk.Rewardprograms {
         /// </summary>
         /// <returns>A <see cref="RewardprogramsRequestBuilder"/></returns>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
-        public RewardprogramsRequestBuilder WithUrl(string rawUrl) {
+        public RewardprogramsRequestBuilder WithUrl(string rawUrl)
+        {
             return new RewardprogramsRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
         /// Retrieve an array of reward programs.
         /// </summary>
-        public class RewardprogramsRequestBuilderGetQueryParameters {
+        public class RewardprogramsRequestBuilderGetQueryParameters 
+        {
             /// <summary>The unique identifier of the credit account for which you want to retrieve reward programs.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable

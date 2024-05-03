@@ -3,16 +3,27 @@ using System.Runtime.Serialization;
 using System;
 namespace Marqeta.Core.Sdk.Models {
     /// <summary>Specifies the state to which the digital wallet token is transitioning.</summary>
-    public enum Digital_wallet_token_transition_response_state {
+    public enum Digital_wallet_token_transition_response_state
+    {
         [EnumMember(Value = "REQUESTED")]
+        #pragma warning disable CS1591
         REQUESTED,
+        #pragma warning restore CS1591
         [EnumMember(Value = "REQUEST_DECLINED")]
+        #pragma warning disable CS1591
         REQUEST_DECLINED,
+        #pragma warning restore CS1591
         [EnumMember(Value = "ACTIVE")]
+        #pragma warning disable CS1591
         ACTIVE,
+        #pragma warning restore CS1591
         [EnumMember(Value = "SUSPENDED")]
+        #pragma warning disable CS1591
         SUSPENDED,
+        #pragma warning restore CS1591
         [EnumMember(Value = "TERMINATED")]
+        #pragma warning disable CS1591
         TERMINATED,
+        #pragma warning restore CS1591
     }
 }

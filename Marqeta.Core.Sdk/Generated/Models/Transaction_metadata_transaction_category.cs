@@ -3,32 +3,59 @@ using System.Runtime.Serialization;
 using System;
 namespace Marqeta.Core.Sdk.Models {
     /// <summary>Industry for which the transaction was originated.</summary>
-    public enum Transaction_metadata_transaction_category {
+    public enum Transaction_metadata_transaction_category
+    {
         [EnumMember(Value = "RETAIL_SALE")]
+        #pragma warning disable CS1591
         RETAIL_SALE,
+        #pragma warning restore CS1591
         [EnumMember(Value = "BILL_PAY")]
+        #pragma warning disable CS1591
         BILL_PAY,
+        #pragma warning restore CS1591
         [EnumMember(Value = "HOTEL")]
+        #pragma warning disable CS1591
         HOTEL,
+        #pragma warning restore CS1591
         [EnumMember(Value = "HEALTH_CARE")]
+        #pragma warning disable CS1591
         HEALTH_CARE,
+        #pragma warning restore CS1591
         [EnumMember(Value = "RESTAURANT")]
+        #pragma warning disable CS1591
         RESTAURANT,
+        #pragma warning restore CS1591
         [EnumMember(Value = "AUTO_RENTAL")]
+        #pragma warning disable CS1591
         AUTO_RENTAL,
+        #pragma warning restore CS1591
         [EnumMember(Value = "AIRLINE")]
+        #pragma warning disable CS1591
         AIRLINE,
+        #pragma warning restore CS1591
         [EnumMember(Value = "PAYMENT")]
+        #pragma warning disable CS1591
         PAYMENT,
+        #pragma warning restore CS1591
         [EnumMember(Value = "HOSPITALIZATION_COLLEGE")]
+        #pragma warning disable CS1591
         HOSPITALIZATION_COLLEGE,
+        #pragma warning restore CS1591
         [EnumMember(Value = "PHONE_MAIL_ECOMMERCE")]
+        #pragma warning disable CS1591
         PHONE_MAIL_ECOMMERCE,
+        #pragma warning restore CS1591
         [EnumMember(Value = "ATM")]
+        #pragma warning disable CS1591
         ATM,
+        #pragma warning restore CS1591
         [EnumMember(Value = "TRANSIT")]
+        #pragma warning disable CS1591
         TRANSIT,
+        #pragma warning restore CS1591
         [EnumMember(Value = "EXTENDED_AUTHORIZATION")]
+        #pragma warning disable CS1591
         EXTENDED_AUTHORIZATION,
+        #pragma warning restore CS1591
     }
 }

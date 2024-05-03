@@ -14,28 +14,33 @@ namespace Marqeta.Core.Sdk.Businesses.Item {
     /// <summary>
     /// Builds and executes requests for operations under \businesses\{parent_token-id}
     /// </summary>
-    public class Parent_tokenItemRequestBuilder : BaseRequestBuilder {
+    public class Parent_tokenItemRequestBuilder : BaseRequestBuilder 
+    {
         /// <summary>The children property</summary>
-        public ChildrenRequestBuilder Children { get =>
-            new ChildrenRequestBuilder(PathParameters, RequestAdapter);
+        public ChildrenRequestBuilder Children
+        {
+            get => new ChildrenRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The ssn property</summary>
-        public SsnRequestBuilder Ssn { get =>
-            new SsnRequestBuilder(PathParameters, RequestAdapter);
+        public SsnRequestBuilder Ssn
+        {
+            get => new SsnRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>
         /// Instantiates a new <see cref="Parent_tokenItemRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public Parent_tokenItemRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/businesses/{parent_token%2Did}{?fields*}", pathParameters) {
+        public Parent_tokenItemRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/businesses/{parent_token%2Did}{?fields*}", pathParameters)
+        {
         }
         /// <summary>
         /// Instantiates a new <see cref="Parent_tokenItemRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public Parent_tokenItemRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/businesses/{parent_token%2Did}{?fields*}", rawUrl) {
+        public Parent_tokenItemRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/businesses/{parent_token%2Did}{?fields*}", rawUrl)
+        {
         }
         /// <summary>
         /// To retrieve a specific business, send a `GET` request to the `/businesses/{token}` endpoint.Include the business `token` path parameter to specify the business to return.This endpoint supports &lt;&lt;/core-api/field-filtering, field filtering&gt;&gt; and &lt;&lt;/core-api/sorting-and-pagination, sorting and pagination&gt;&gt;.
@@ -46,13 +51,16 @@ namespace Marqeta.Core.Sdk.Businesses.Item {
         /// <exception cref="ApiError">When receiving a 4XX or 5XX status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<Business_card_holder_response?> GetAsync(Action<RequestConfiguration<Parent_tokenItemRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default) {
+        public async Task<Business_card_holder_response?> GetAsync(Action<RequestConfiguration<Parent_tokenItemRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        {
 #nullable restore
 #else
-        public async Task<Business_card_holder_response> GetAsync(Action<RequestConfiguration<Parent_tokenItemRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default) {
+        public async Task<Business_card_holder_response> GetAsync(Action<RequestConfiguration<Parent_tokenItemRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            var errorMapping = new Dictionary<string, ParsableFactory<IParsable>> {
+            var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
+            {
                 {"XXX", ApiError.CreateFromDiscriminatorValue},
             };
             return await RequestAdapter.SendAsync<Business_card_holder_response>(requestInfo, Business_card_holder_response.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
@@ -67,14 +75,17 @@ namespace Marqeta.Core.Sdk.Businesses.Item {
         /// <exception cref="ApiError">When receiving a 4XX or 5XX status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<Business_cardholder?> PutAsync(Business_card_holder_update body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default) {
+        public async Task<Business_cardholder?> PutAsync(Business_card_holder_update body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        {
 #nullable restore
 #else
-        public async Task<Business_cardholder> PutAsync(Business_card_holder_update body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default) {
+        public async Task<Business_cardholder> PutAsync(Business_card_holder_update body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        {
 #endif
             _ = body ?? throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPutRequestInformation(body, requestConfiguration);
-            var errorMapping = new Dictionary<string, ParsableFactory<IParsable>> {
+            var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
+            {
                 {"XXX", ApiError.CreateFromDiscriminatorValue},
             };
             return await RequestAdapter.SendAsync<Business_cardholder>(requestInfo, Business_cardholder.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
@@ -86,10 +97,12 @@ namespace Marqeta.Core.Sdk.Businesses.Item {
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<Parent_tokenItemRequestBuilderGetQueryParameters>>? requestConfiguration = default) {
+        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<Parent_tokenItemRequestBuilderGetQueryParameters>>? requestConfiguration = default)
+        {
 #nullable restore
 #else
-        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<Parent_tokenItemRequestBuilderGetQueryParameters>> requestConfiguration = default) {
+        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<Parent_tokenItemRequestBuilderGetQueryParameters>> requestConfiguration = default)
+        {
 #endif
             var requestInfo = new RequestInformation(Method.GET, UrlTemplate, PathParameters);
             requestInfo.Configure(requestConfiguration);
@@ -104,13 +117,15 @@ namespace Marqeta.Core.Sdk.Businesses.Item {
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToPutRequestInformation(Business_card_holder_update body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default) {
+        public RequestInformation ToPutRequestInformation(Business_card_holder_update body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
+        {
 #nullable restore
 #else
-        public RequestInformation ToPutRequestInformation(Business_card_holder_update body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default) {
+        public RequestInformation ToPutRequestInformation(Business_card_holder_update body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
+        {
 #endif
             _ = body ?? throw new ArgumentNullException(nameof(body));
-            var requestInfo = new RequestInformation(Method.PUT, "{+baseurl}/businesses/{parent_token%2Did}", PathParameters);
+            var requestInfo = new RequestInformation(Method.PUT, UrlTemplate, PathParameters);
             requestInfo.Configure(requestConfiguration);
             requestInfo.Headers.TryAdd("Accept", "application/json");
             requestInfo.SetContentFromParsable(RequestAdapter, "application/json", body);
@@ -121,13 +136,15 @@ namespace Marqeta.Core.Sdk.Businesses.Item {
         /// </summary>
         /// <returns>A <see cref="Parent_tokenItemRequestBuilder"/></returns>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
-        public Parent_tokenItemRequestBuilder WithUrl(string rawUrl) {
+        public Parent_tokenItemRequestBuilder WithUrl(string rawUrl)
+        {
             return new Parent_tokenItemRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
         /// To retrieve a specific business, send a `GET` request to the `/businesses/{token}` endpoint.Include the business `token` path parameter to specify the business to return.This endpoint supports &lt;&lt;/core-api/field-filtering, field filtering&gt;&gt; and &lt;&lt;/core-api/sorting-and-pagination, sorting and pagination&gt;&gt;.
         /// </summary>
-        public class Parent_tokenItemRequestBuilderGetQueryParameters {
+        public class Parent_tokenItemRequestBuilderGetQueryParameters 
+        {
             /// <summary>Comma-delimited list of fields to return (`field_1,field_2`, and so on).Leave blank to return all fields.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable

@@ -8,7 +8,8 @@ namespace Marqeta.Core.Sdk.Models {
     /// <summary>
     /// Specifies the destination for overdraft funds.
     /// </summary>
-    public class Clearing_and_settlement : IAdditionalDataHolder, IParsable {
+    public class Clearing_and_settlement : IAdditionalDataHolder, IParsable 
+    {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Specifies the destination for overdraft funds.This field does not apply if JIT Funding is enabled.</summary>
@@ -16,7 +17,8 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>
         /// Instantiates a new <see cref="Clearing_and_settlement"/> and sets the default values.
         /// </summary>
-        public Clearing_and_settlement() {
+        public Clearing_and_settlement()
+        {
             AdditionalData = new Dictionary<string, object>();
             OverdraftDestination = Clearing_and_settlement_overdraft_destination.GPA;
         }
@@ -25,7 +27,8 @@ namespace Marqeta.Core.Sdk.Models {
         /// </summary>
         /// <returns>A <see cref="Clearing_and_settlement"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static Clearing_and_settlement CreateFromDiscriminatorValue(IParseNode parseNode) {
+        public static Clearing_and_settlement CreateFromDiscriminatorValue(IParseNode parseNode)
+        {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
             return new Clearing_and_settlement();
         }
@@ -33,8 +36,10 @@ namespace Marqeta.Core.Sdk.Models {
         /// The deserialization information for the current model
         /// </summary>
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
-        public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers() {
-            return new Dictionary<string, Action<IParseNode>> {
+        public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
+        {
+            return new Dictionary<string, Action<IParseNode>>
+            {
                 {"overdraft_destination", n => { OverdraftDestination = n.GetEnumValue<Clearing_and_settlement_overdraft_destination>(); } },
             };
         }
@@ -42,7 +47,8 @@ namespace Marqeta.Core.Sdk.Models {
         /// Serializes information the current object
         /// </summary>
         /// <param name="writer">Serialization writer to use to serialize this model</param>
-        public virtual void Serialize(ISerializationWriter writer) {
+        public virtual void Serialize(ISerializationWriter writer)
+        {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
             writer.WriteEnumValue<Clearing_and_settlement_overdraft_destination>("overdraft_destination", OverdraftDestination);
             writer.WriteAdditionalData(AdditionalData);

@@ -3,16 +3,27 @@ using System.Runtime.Serialization;
 using System;
 namespace Marqeta.Core.Sdk.Models {
     /// <summary>Indicates the type of mail or telephone order transaction.</summary>
-    public enum Transaction_metadata_moto_indicator {
+    public enum Transaction_metadata_moto_indicator
+    {
         [EnumMember(Value = "UNKNOWN")]
+        #pragma warning disable CS1591
         UNKNOWN,
+        #pragma warning restore CS1591
         [EnumMember(Value = "MANUAL")]
+        #pragma warning disable CS1591
         MANUAL,
+        #pragma warning restore CS1591
         [EnumMember(Value = "RECURRING")]
+        #pragma warning disable CS1591
         RECURRING,
+        #pragma warning restore CS1591
         [EnumMember(Value = "INSTALLMENT")]
+        #pragma warning disable CS1591
         INSTALLMENT,
+        #pragma warning restore CS1591
         [EnumMember(Value = "OTHERS")]
+        #pragma warning disable CS1591
         OTHERS,
+        #pragma warning restore CS1591
     }
 }

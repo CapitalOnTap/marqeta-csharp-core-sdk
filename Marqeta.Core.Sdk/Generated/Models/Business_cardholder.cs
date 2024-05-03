@@ -8,7 +8,8 @@ namespace Marqeta.Core.Sdk.Models {
     /// <summary>
     /// Contains information about a business.
     /// </summary>
-    public class Business_cardholder : IAdditionalDataHolder, IParsable {
+    public class Business_cardholder : IAdditionalDataHolder, IParsable 
+    {
         /// <summary>Existing account holder group token that associates the specified account holder group with the business.Send a `GET` request to `/accountholdergroups` to retrieve account holder group tokens.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -242,7 +243,8 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>
         /// Instantiates a new <see cref="Business_cardholder"/> and sets the default values.
         /// </summary>
-        public Business_cardholder() {
+        public Business_cardholder()
+        {
             AdditionalData = new Dictionary<string, object>();
         }
         /// <summary>
@@ -250,7 +252,8 @@ namespace Marqeta.Core.Sdk.Models {
         /// </summary>
         /// <returns>A <see cref="Business_cardholder"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static Business_cardholder CreateFromDiscriminatorValue(IParseNode parseNode) {
+        public static Business_cardholder CreateFromDiscriminatorValue(IParseNode parseNode)
+        {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
             return new Business_cardholder();
         }
@@ -258,8 +261,10 @@ namespace Marqeta.Core.Sdk.Models {
         /// The deserialization information for the current model
         /// </summary>
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
-        public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers() {
-            return new Dictionary<string, Action<IParseNode>> {
+        public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
+        {
+            return new Dictionary<string, Action<IParseNode>>
+            {
                 {"account_holder_group_token", n => { AccountHolderGroupToken = n.GetStringValue(); } },
                 {"active", n => { Active = n.GetBoolValue(); } },
                 {"attestation_consent", n => { AttestationConsent = n.GetBoolValue(); } },
@@ -299,7 +304,8 @@ namespace Marqeta.Core.Sdk.Models {
         /// Serializes information the current object
         /// </summary>
         /// <param name="writer">Serialization writer to use to serialize this model</param>
-        public virtual void Serialize(ISerializationWriter writer) {
+        public virtual void Serialize(ISerializationWriter writer)
+        {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("account_holder_group_token", AccountHolderGroupToken);
             writer.WriteBoolValue("active", Active);

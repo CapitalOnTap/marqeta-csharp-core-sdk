@@ -5,7 +5,10 @@ using System.IO;
 using System.Linq;
 using System;
 namespace Marqeta.Core.Sdk.Models {
-    public class Direct_deposit_account_transition_request : IAdditionalDataHolder, IParsable {
+    #pragma warning disable CS1591
+    public class Direct_deposit_account_transition_request : IAdditionalDataHolder, IParsable 
+    #pragma warning restore CS1591
+    {
         /// <summary>The account_token property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -39,7 +42,8 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>
         /// Instantiates a new <see cref="Direct_deposit_account_transition_request"/> and sets the default values.
         /// </summary>
-        public Direct_deposit_account_transition_request() {
+        public Direct_deposit_account_transition_request()
+        {
             AdditionalData = new Dictionary<string, object>();
         }
         /// <summary>
@@ -47,7 +51,8 @@ namespace Marqeta.Core.Sdk.Models {
         /// </summary>
         /// <returns>A <see cref="Direct_deposit_account_transition_request"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static Direct_deposit_account_transition_request CreateFromDiscriminatorValue(IParseNode parseNode) {
+        public static Direct_deposit_account_transition_request CreateFromDiscriminatorValue(IParseNode parseNode)
+        {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
             return new Direct_deposit_account_transition_request();
         }
@@ -55,8 +60,10 @@ namespace Marqeta.Core.Sdk.Models {
         /// The deserialization information for the current model
         /// </summary>
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
-        public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers() {
-            return new Dictionary<string, Action<IParseNode>> {
+        public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
+        {
+            return new Dictionary<string, Action<IParseNode>>
+            {
                 {"account_token", n => { AccountToken = n.GetStringValue(); } },
                 {"channel", n => { Channel = n.GetEnumValue<Direct_deposit_account_transition_request_channel>(); } },
                 {"reason", n => { Reason = n.GetStringValue(); } },
@@ -68,7 +75,8 @@ namespace Marqeta.Core.Sdk.Models {
         /// Serializes information the current object
         /// </summary>
         /// <param name="writer">Serialization writer to use to serialize this model</param>
-        public virtual void Serialize(ISerializationWriter writer) {
+        public virtual void Serialize(ISerializationWriter writer)
+        {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("account_token", AccountToken);
             writer.WriteEnumValue<Direct_deposit_account_transition_request_channel>("channel", Channel);

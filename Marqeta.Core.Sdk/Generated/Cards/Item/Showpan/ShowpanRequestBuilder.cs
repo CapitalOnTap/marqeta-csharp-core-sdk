@@ -12,20 +12,23 @@ namespace Marqeta.Core.Sdk.Cards.Item.Showpan {
     /// <summary>
     /// Builds and executes requests for operations under \cards\{token}\showpan
     /// </summary>
-    public class ShowpanRequestBuilder : BaseRequestBuilder {
+    public class ShowpanRequestBuilder : BaseRequestBuilder 
+    {
         /// <summary>
         /// Instantiates a new <see cref="ShowpanRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public ShowpanRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/cards/{token}/showpan{?fields*,show_cvv_number*}", pathParameters) {
+        public ShowpanRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/cards/{token}/showpan{?fields*,show_cvv_number*}", pathParameters)
+        {
         }
         /// <summary>
         /// Instantiates a new <see cref="ShowpanRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public ShowpanRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/cards/{token}/showpan{?fields*,show_cvv_number*}", rawUrl) {
+        public ShowpanRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/cards/{token}/showpan{?fields*,show_cvv_number*}", rawUrl)
+        {
         }
         /// <summary>
         /// Retrieves a primary account number (PAN).For security reasons, the PAN is not fully visible on the card resource returned by `GET` `/cards/{token}`.This endpoint supports &lt;&lt;/core-api/field-filtering, field filtering&gt;&gt; and &lt;&lt;/core-api/object-expansion, object expansion&gt;&gt;.
@@ -36,13 +39,16 @@ namespace Marqeta.Core.Sdk.Cards.Item.Showpan {
         /// <exception cref="ApiError">When receiving a 4XX or 5XX status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<Card_response?> GetAsync(Action<RequestConfiguration<ShowpanRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default) {
+        public async Task<Card_response?> GetAsync(Action<RequestConfiguration<ShowpanRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        {
 #nullable restore
 #else
-        public async Task<Card_response> GetAsync(Action<RequestConfiguration<ShowpanRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default) {
+        public async Task<Card_response> GetAsync(Action<RequestConfiguration<ShowpanRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            var errorMapping = new Dictionary<string, ParsableFactory<IParsable>> {
+            var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
+            {
                 {"XXX", ApiError.CreateFromDiscriminatorValue},
             };
             return await RequestAdapter.SendAsync<Card_response>(requestInfo, Card_response.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
@@ -54,10 +60,12 @@ namespace Marqeta.Core.Sdk.Cards.Item.Showpan {
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<ShowpanRequestBuilderGetQueryParameters>>? requestConfiguration = default) {
+        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<ShowpanRequestBuilderGetQueryParameters>>? requestConfiguration = default)
+        {
 #nullable restore
 #else
-        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<ShowpanRequestBuilderGetQueryParameters>> requestConfiguration = default) {
+        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<ShowpanRequestBuilderGetQueryParameters>> requestConfiguration = default)
+        {
 #endif
             var requestInfo = new RequestInformation(Method.GET, UrlTemplate, PathParameters);
             requestInfo.Configure(requestConfiguration);
@@ -69,13 +77,15 @@ namespace Marqeta.Core.Sdk.Cards.Item.Showpan {
         /// </summary>
         /// <returns>A <see cref="ShowpanRequestBuilder"/></returns>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
-        public ShowpanRequestBuilder WithUrl(string rawUrl) {
+        public ShowpanRequestBuilder WithUrl(string rawUrl)
+        {
             return new ShowpanRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
         /// Retrieves a primary account number (PAN).For security reasons, the PAN is not fully visible on the card resource returned by `GET` `/cards/{token}`.This endpoint supports &lt;&lt;/core-api/field-filtering, field filtering&gt;&gt; and &lt;&lt;/core-api/object-expansion, object expansion&gt;&gt;.
         /// </summary>
-        public class ShowpanRequestBuilderGetQueryParameters {
+        public class ShowpanRequestBuilderGetQueryParameters 
+        {
             /// <summary>Comma-delimited list of fields to return (`field_1,field_2`, and so on).Leave blank to return all fields.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable

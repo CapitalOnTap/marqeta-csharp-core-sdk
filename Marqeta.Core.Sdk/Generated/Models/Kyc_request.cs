@@ -5,7 +5,10 @@ using System.IO;
 using System.Linq;
 using System;
 namespace Marqeta.Core.Sdk.Models {
-    public class Kyc_request : IAdditionalDataHolder, IParsable {
+    #pragma warning disable CS1591
+    public class Kyc_request : IAdditionalDataHolder, IParsable 
+    #pragma warning restore CS1591
+    {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Specifies the business account holder on which to perform the identity check.Do not pass this field if your request includes the `user_token` field.Send a `GET` request to `/businesses` to retrieve business tokens.</summary>
@@ -53,7 +56,8 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>
         /// Instantiates a new <see cref="Kyc_request"/> and sets the default values.
         /// </summary>
-        public Kyc_request() {
+        public Kyc_request()
+        {
             AdditionalData = new Dictionary<string, object>();
         }
         /// <summary>
@@ -61,7 +65,8 @@ namespace Marqeta.Core.Sdk.Models {
         /// </summary>
         /// <returns>A <see cref="Kyc_request"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static Kyc_request CreateFromDiscriminatorValue(IParseNode parseNode) {
+        public static Kyc_request CreateFromDiscriminatorValue(IParseNode parseNode)
+        {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
             return new Kyc_request();
         }
@@ -69,8 +74,10 @@ namespace Marqeta.Core.Sdk.Models {
         /// The deserialization information for the current model
         /// </summary>
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
-        public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers() {
-            return new Dictionary<string, Action<IParseNode>> {
+        public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
+        {
+            return new Dictionary<string, Action<IParseNode>>
+            {
                 {"business_token", n => { BusinessToken = n.GetStringValue(); } },
                 {"manual_override", n => { ManualOverride = n.GetBoolValue(); } },
                 {"notes", n => { Notes = n.GetStringValue(); } },
@@ -83,7 +90,8 @@ namespace Marqeta.Core.Sdk.Models {
         /// Serializes information the current object
         /// </summary>
         /// <param name="writer">Serialization writer to use to serialize this model</param>
-        public virtual void Serialize(ISerializationWriter writer) {
+        public virtual void Serialize(ISerializationWriter writer)
+        {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("business_token", BusinessToken);
             writer.WriteBoolValue("manual_override", ManualOverride);

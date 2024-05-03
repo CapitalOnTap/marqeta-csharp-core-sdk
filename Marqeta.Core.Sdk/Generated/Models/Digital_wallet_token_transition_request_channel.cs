@@ -3,22 +3,39 @@ using System.Runtime.Serialization;
 using System;
 namespace Marqeta.Core.Sdk.Models {
     /// <summary>Mechanism by which the transition was initiated.</summary>
-    public enum Digital_wallet_token_transition_request_channel {
+    public enum Digital_wallet_token_transition_request_channel
+    {
         [EnumMember(Value = "TOKEN_SERVICE_PROVIDER")]
+        #pragma warning disable CS1591
         TOKEN_SERVICE_PROVIDER,
+        #pragma warning restore CS1591
         [EnumMember(Value = "TOKEN_SERVICE_PROVIDER_API")]
+        #pragma warning disable CS1591
         TOKEN_SERVICE_PROVIDER_API,
+        #pragma warning restore CS1591
         [EnumMember(Value = "DIGITAL_WALLET")]
+        #pragma warning disable CS1591
         DIGITAL_WALLET,
+        #pragma warning restore CS1591
         [EnumMember(Value = "API")]
+        #pragma warning disable CS1591
         API,
+        #pragma warning restore CS1591
         [EnumMember(Value = "IVR")]
+        #pragma warning disable CS1591
         IVR,
+        #pragma warning restore CS1591
         [EnumMember(Value = "FRAUD")]
+        #pragma warning disable CS1591
         FRAUD,
+        #pragma warning restore CS1591
         [EnumMember(Value = "ADMIN")]
+        #pragma warning disable CS1591
         ADMIN,
+        #pragma warning restore CS1591
         [EnumMember(Value = "SYSTEM")]
+        #pragma warning disable CS1591
         SYSTEM,
+        #pragma warning restore CS1591
     }
 }

@@ -8,7 +8,8 @@ namespace Marqeta.Core.Sdk.Models {
     /// <summary>
     /// Contains information about an auto reload.See &lt;&lt;/core-api/auto-reload, Auto Reloads&gt;&gt; for more information.Returned if an auto reload was executed.
     /// </summary>
-    public class Auto_reload_model : IAdditionalDataHolder, IParsable {
+    public class Auto_reload_model : IAdditionalDataHolder, IParsable 
+    {
         /// <summary>Specifies whether the auto reload is active.Only one auto reload per level, per object, can be active.</summary>
         public bool? Active { get; set; }
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -64,7 +65,8 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>
         /// Instantiates a new <see cref="Auto_reload_model"/> and sets the default values.
         /// </summary>
-        public Auto_reload_model() {
+        public Auto_reload_model()
+        {
             AdditionalData = new Dictionary<string, object>();
         }
         /// <summary>
@@ -72,7 +74,8 @@ namespace Marqeta.Core.Sdk.Models {
         /// </summary>
         /// <returns>A <see cref="Auto_reload_model"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static Auto_reload_model CreateFromDiscriminatorValue(IParseNode parseNode) {
+        public static Auto_reload_model CreateFromDiscriminatorValue(IParseNode parseNode)
+        {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
             return new Auto_reload_model();
         }
@@ -80,8 +83,10 @@ namespace Marqeta.Core.Sdk.Models {
         /// The deserialization information for the current model
         /// </summary>
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
-        public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers() {
-            return new Dictionary<string, Action<IParseNode>> {
+        public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
+        {
+            return new Dictionary<string, Action<IParseNode>>
+            {
                 {"active", n => { Active = n.GetBoolValue(); } },
                 {"association", n => { Association = n.GetObjectValue<Auto_reload_association>(Auto_reload_association.CreateFromDiscriminatorValue); } },
                 {"currency_code", n => { CurrencyCode = n.GetStringValue(); } },
@@ -95,7 +100,8 @@ namespace Marqeta.Core.Sdk.Models {
         /// Serializes information the current object
         /// </summary>
         /// <param name="writer">Serialization writer to use to serialize this model</param>
-        public virtual void Serialize(ISerializationWriter writer) {
+        public virtual void Serialize(ISerializationWriter writer)
+        {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
             writer.WriteBoolValue("active", Active);
             writer.WriteObjectValue<Auto_reload_association>("association", Association);

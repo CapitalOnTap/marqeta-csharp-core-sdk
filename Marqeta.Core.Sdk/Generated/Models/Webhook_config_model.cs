@@ -8,7 +8,8 @@ namespace Marqeta.Core.Sdk.Models {
     /// <summary>
     /// Contains the configuration information for the webhook.
     /// </summary>
-    public class Webhook_config_model : IAdditionalDataHolder, IParsable {
+    public class Webhook_config_model : IAdditionalDataHolder, IParsable 
+    {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Password for accessing your webhook endpoint.</summary>
@@ -56,7 +57,8 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>
         /// Instantiates a new <see cref="Webhook_config_model"/> and sets the default values.
         /// </summary>
-        public Webhook_config_model() {
+        public Webhook_config_model()
+        {
             AdditionalData = new Dictionary<string, object>();
         }
         /// <summary>
@@ -64,7 +66,8 @@ namespace Marqeta.Core.Sdk.Models {
         /// </summary>
         /// <returns>A <see cref="Webhook_config_model"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static Webhook_config_model CreateFromDiscriminatorValue(IParseNode parseNode) {
+        public static Webhook_config_model CreateFromDiscriminatorValue(IParseNode parseNode)
+        {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
             return new Webhook_config_model();
         }
@@ -72,8 +75,10 @@ namespace Marqeta.Core.Sdk.Models {
         /// The deserialization information for the current model
         /// </summary>
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
-        public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers() {
-            return new Dictionary<string, Action<IParseNode>> {
+        public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
+        {
+            return new Dictionary<string, Action<IParseNode>>
+            {
                 {"basic_auth_password", n => { BasicAuthPassword = n.GetStringValue(); } },
                 {"basic_auth_username", n => { BasicAuthUsername = n.GetStringValue(); } },
                 {"custom_header", n => { CustomHeader = n.GetObjectValue<Webhook_config_model_custom_header>(Webhook_config_model_custom_header.CreateFromDiscriminatorValue); } },
@@ -86,7 +91,8 @@ namespace Marqeta.Core.Sdk.Models {
         /// Serializes information the current object
         /// </summary>
         /// <param name="writer">Serialization writer to use to serialize this model</param>
-        public virtual void Serialize(ISerializationWriter writer) {
+        public virtual void Serialize(ISerializationWriter writer)
+        {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("basic_auth_password", BasicAuthPassword);
             writer.WriteStringValue("basic_auth_username", BasicAuthUsername);

@@ -3,12 +3,19 @@ using System.Runtime.Serialization;
 using System;
 namespace Marqeta.Core.Sdk.Models {
     /// <summary>Specifies the return destination for refunds in the case of a transaction reversal.</summary>
-    public enum Jit_funding_paymentcard_funding_source_refunds_destination {
+    public enum Jit_funding_paymentcard_funding_source_refunds_destination
+    {
         [EnumMember(Value = "GATEWAY")]
+        #pragma warning disable CS1591
         GATEWAY,
+        #pragma warning restore CS1591
         [EnumMember(Value = "GPA")]
+        #pragma warning disable CS1591
         GPA,
+        #pragma warning restore CS1591
         [EnumMember(Value = "WATERFALL")]
+        #pragma warning disable CS1591
         WATERFALL,
+        #pragma warning restore CS1591
     }
 }

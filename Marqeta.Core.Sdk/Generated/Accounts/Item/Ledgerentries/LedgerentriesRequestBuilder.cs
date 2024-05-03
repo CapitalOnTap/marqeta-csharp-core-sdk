@@ -13,28 +13,35 @@ namespace Marqeta.Core.Sdk.Accounts.Item.Ledgerentries {
     /// <summary>
     /// Builds and executes requests for operations under \accounts\{account_token}\ledgerentries
     /// </summary>
-    public class LedgerentriesRequestBuilder : BaseRequestBuilder {
+    public class LedgerentriesRequestBuilder : BaseRequestBuilder 
+    {
         /// <summary>Gets an item from the Marqeta.Core.Sdk.accounts.item.ledgerentries.item collection</summary>
         /// <param name="position">Unique identifier of the ledger entry you want to retrieve.Send a `GET` request to `/credit/accounts/{account_token}/ledgerentries` to retrieve existing ledger entry tokens.</param>
         /// <returns>A <see cref="WithLedger_entry_tokenItemRequestBuilder"/></returns>
-        public WithLedger_entry_tokenItemRequestBuilder this[string position] { get {
-            var urlTplParams = new Dictionary<string, object>(PathParameters);
-            urlTplParams.Add("ledger_entry_token", position);
-            return new WithLedger_entry_tokenItemRequestBuilder(urlTplParams, RequestAdapter);
-        } }
+        public WithLedger_entry_tokenItemRequestBuilder this[string position]
+        {
+            get
+            {
+                var urlTplParams = new Dictionary<string, object>(PathParameters);
+                urlTplParams.Add("ledger_entry_token", position);
+                return new WithLedger_entry_tokenItemRequestBuilder(urlTplParams, RequestAdapter);
+            }
+        }
         /// <summary>
         /// Instantiates a new <see cref="LedgerentriesRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public LedgerentriesRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/accounts/{account_token}/ledgerentries{?amount*,count*,description*,end_date*,expand*,groups*,sort_by*,start_date*,start_index*,statuses*}", pathParameters) {
+        public LedgerentriesRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/accounts/{account_token}/ledgerentries{?amount*,count*,description*,end_date*,expand*,groups*,sort_by*,start_date*,start_index*,statuses*}", pathParameters)
+        {
         }
         /// <summary>
         /// Instantiates a new <see cref="LedgerentriesRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public LedgerentriesRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/accounts/{account_token}/ledgerentries{?amount*,count*,description*,end_date*,expand*,groups*,sort_by*,start_date*,start_index*,statuses*}", rawUrl) {
+        public LedgerentriesRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/accounts/{account_token}/ledgerentries{?amount*,count*,description*,end_date*,expand*,groups*,sort_by*,start_date*,start_index*,statuses*}", rawUrl)
+        {
         }
         /// <summary>
         /// Retrieve an array of ledger entries on a credit account.This endpoint supports &lt;&lt;/core-api/sorting-and-pagination, sorting and pagination&gt;&gt; and &lt;&lt;/core-api/object-expansion, object expansion&gt;&gt;.
@@ -46,13 +53,16 @@ namespace Marqeta.Core.Sdk.Accounts.Item.Ledgerentries {
         [Obsolete("")]
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<LedgerEntriesPage?> GetAsync(Action<RequestConfiguration<LedgerentriesRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default) {
+        public async Task<LedgerEntriesPage?> GetAsync(Action<RequestConfiguration<LedgerentriesRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        {
 #nullable restore
 #else
-        public async Task<LedgerEntriesPage> GetAsync(Action<RequestConfiguration<LedgerentriesRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default) {
+        public async Task<LedgerEntriesPage> GetAsync(Action<RequestConfiguration<LedgerentriesRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            var errorMapping = new Dictionary<string, ParsableFactory<IParsable>> {
+            var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
+            {
                 {"XXX", ApiError.CreateFromDiscriminatorValue},
             };
             return await RequestAdapter.SendAsync<LedgerEntriesPage>(requestInfo, LedgerEntriesPage.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
@@ -65,10 +75,12 @@ namespace Marqeta.Core.Sdk.Accounts.Item.Ledgerentries {
         [Obsolete("")]
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<LedgerentriesRequestBuilderGetQueryParameters>>? requestConfiguration = default) {
+        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<LedgerentriesRequestBuilderGetQueryParameters>>? requestConfiguration = default)
+        {
 #nullable restore
 #else
-        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<LedgerentriesRequestBuilderGetQueryParameters>> requestConfiguration = default) {
+        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<LedgerentriesRequestBuilderGetQueryParameters>> requestConfiguration = default)
+        {
 #endif
             var requestInfo = new RequestInformation(Method.GET, UrlTemplate, PathParameters);
             requestInfo.Configure(requestConfiguration);
@@ -81,13 +93,15 @@ namespace Marqeta.Core.Sdk.Accounts.Item.Ledgerentries {
         /// <returns>A <see cref="LedgerentriesRequestBuilder"/></returns>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         [Obsolete("")]
-        public LedgerentriesRequestBuilder WithUrl(string rawUrl) {
+        public LedgerentriesRequestBuilder WithUrl(string rawUrl)
+        {
             return new LedgerentriesRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
         /// Retrieve an array of ledger entries on a credit account.This endpoint supports &lt;&lt;/core-api/sorting-and-pagination, sorting and pagination&gt;&gt; and &lt;&lt;/core-api/object-expansion, object expansion&gt;&gt;.
         /// </summary>
-        public class LedgerentriesRequestBuilderGetQueryParameters {
+        public class LedgerentriesRequestBuilderGetQueryParameters 
+        {
             /// <summary>Number of ledger entries to return.</summary>
             [QueryParameter("amount")]
             public double? Amount { get; set; }

@@ -8,7 +8,8 @@ namespace Marqeta.Core.Sdk.Models {
     /// <summary>
     /// TODO Add description here
     /// </summary>
-    public class AccountReward : IAdditionalDataHolder, IParsable {
+    public class AccountReward : IAdditionalDataHolder, IParsable 
+    {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Method, either a flat amount or a percentage.*NOTE:*Only `FLAT` is currently supported.</summary>
@@ -20,7 +21,8 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>
         /// Instantiates a new <see cref="AccountReward"/> and sets the default values.
         /// </summary>
-        public AccountReward() {
+        public AccountReward()
+        {
             AdditionalData = new Dictionary<string, object>();
         }
         /// <summary>
@@ -28,7 +30,8 @@ namespace Marqeta.Core.Sdk.Models {
         /// </summary>
         /// <returns>A <see cref="AccountReward"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static AccountReward CreateFromDiscriminatorValue(IParseNode parseNode) {
+        public static AccountReward CreateFromDiscriminatorValue(IParseNode parseNode)
+        {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
             return new AccountReward();
         }
@@ -36,8 +39,10 @@ namespace Marqeta.Core.Sdk.Models {
         /// The deserialization information for the current model
         /// </summary>
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
-        public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers() {
-            return new Dictionary<string, Action<IParseNode>> {
+        public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
+        {
+            return new Dictionary<string, Action<IParseNode>>
+            {
                 {"method", n => { Method = n.GetEnumValue<MethodObject>(); } },
                 {"type", n => { Type = n.GetEnumValue<RewardType>(); } },
                 {"value", n => { Value = n.GetDoubleValue(); } },
@@ -47,7 +52,8 @@ namespace Marqeta.Core.Sdk.Models {
         /// Serializes information the current object
         /// </summary>
         /// <param name="writer">Serialization writer to use to serialize this model</param>
-        public virtual void Serialize(ISerializationWriter writer) {
+        public virtual void Serialize(ISerializationWriter writer)
+        {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
             writer.WriteEnumValue<MethodObject>("method", Method);
             writer.WriteEnumValue<RewardType>("type", Type);

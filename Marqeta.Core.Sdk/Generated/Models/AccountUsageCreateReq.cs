@@ -8,7 +8,8 @@ namespace Marqeta.Core.Sdk.Models {
     /// <summary>
     /// Contains information on how a credit account is used and what types of balances are permitted on the account.
     /// </summary>
-    public class AccountUsageCreateReq : IAdditionalDataHolder, IParsable {
+    public class AccountUsageCreateReq : IAdditionalDataHolder, IParsable 
+    {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Contains one or more annual percentage rates (APRs) associated with the type of balance on the credit account.</summary>
@@ -32,7 +33,8 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>
         /// Instantiates a new <see cref="AccountUsageCreateReq"/> and sets the default values.
         /// </summary>
-        public AccountUsageCreateReq() {
+        public AccountUsageCreateReq()
+        {
             AdditionalData = new Dictionary<string, object>();
         }
         /// <summary>
@@ -40,7 +42,8 @@ namespace Marqeta.Core.Sdk.Models {
         /// </summary>
         /// <returns>A <see cref="AccountUsageCreateReq"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static AccountUsageCreateReq CreateFromDiscriminatorValue(IParseNode parseNode) {
+        public static AccountUsageCreateReq CreateFromDiscriminatorValue(IParseNode parseNode)
+        {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
             return new AccountUsageCreateReq();
         }
@@ -48,8 +51,10 @@ namespace Marqeta.Core.Sdk.Models {
         /// The deserialization information for the current model
         /// </summary>
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
-        public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers() {
-            return new Dictionary<string, Action<IParseNode>> {
+        public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
+        {
+            return new Dictionary<string, Action<IParseNode>>
+            {
                 {"aprs", n => { Aprs = n.GetCollectionOfObjectValues<AprScheduleCreateReq>(AprScheduleCreateReq.CreateFromDiscriminatorValue)?.ToList(); } },
                 {"fees", n => { Fees = n.GetCollectionOfObjectValues<AccountFee>(AccountFee.CreateFromDiscriminatorValue)?.ToList(); } },
                 {"type", n => { Type = n.GetEnumValue<BalanceType>(); } },
@@ -59,7 +64,8 @@ namespace Marqeta.Core.Sdk.Models {
         /// Serializes information the current object
         /// </summary>
         /// <param name="writer">Serialization writer to use to serialize this model</param>
-        public virtual void Serialize(ISerializationWriter writer) {
+        public virtual void Serialize(ISerializationWriter writer)
+        {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
             writer.WriteCollectionOfObjectValues<AprScheduleCreateReq>("aprs", Aprs);
             writer.WriteCollectionOfObjectValues<AccountFee>("fees", Fees);

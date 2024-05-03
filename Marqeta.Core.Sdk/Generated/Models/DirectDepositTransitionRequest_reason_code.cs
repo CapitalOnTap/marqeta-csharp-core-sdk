@@ -2,42 +2,81 @@
 using System.Runtime.Serialization;
 using System;
 namespace Marqeta.Core.Sdk.Models {
-    public enum DirectDepositTransitionRequest_reason_code {
+    #pragma warning disable CS1591
+    public enum DirectDepositTransitionRequest_reason_code
+    #pragma warning restore CS1591
+    {
         [EnumMember(Value = "R01")]
+        #pragma warning disable CS1591
         R01,
+        #pragma warning restore CS1591
         [EnumMember(Value = "R02")]
+        #pragma warning disable CS1591
         R02,
+        #pragma warning restore CS1591
         [EnumMember(Value = "R03")]
+        #pragma warning disable CS1591
         R03,
+        #pragma warning restore CS1591
         [EnumMember(Value = "R04")]
+        #pragma warning disable CS1591
         R04,
+        #pragma warning restore CS1591
         [EnumMember(Value = "R06")]
+        #pragma warning disable CS1591
         R06,
+        #pragma warning restore CS1591
         [EnumMember(Value = "R08")]
+        #pragma warning disable CS1591
         R08,
+        #pragma warning restore CS1591
         [EnumMember(Value = "R09")]
+        #pragma warning disable CS1591
         R09,
+        #pragma warning restore CS1591
         [EnumMember(Value = "R10")]
+        #pragma warning disable CS1591
         R10,
+        #pragma warning restore CS1591
         [EnumMember(Value = "R11")]
+        #pragma warning disable CS1591
         R11,
+        #pragma warning restore CS1591
         [EnumMember(Value = "R14")]
+        #pragma warning disable CS1591
         R14,
+        #pragma warning restore CS1591
         [EnumMember(Value = "R15")]
+        #pragma warning disable CS1591
         R15,
+        #pragma warning restore CS1591
         [EnumMember(Value = "R16")]
+        #pragma warning disable CS1591
         R16,
+        #pragma warning restore CS1591
         [EnumMember(Value = "R17")]
+        #pragma warning disable CS1591
         R17,
+        #pragma warning restore CS1591
         [EnumMember(Value = "R18")]
+        #pragma warning disable CS1591
         R18,
+        #pragma warning restore CS1591
         [EnumMember(Value = "R20")]
+        #pragma warning disable CS1591
         R20,
+        #pragma warning restore CS1591
         [EnumMember(Value = "R23")]
+        #pragma warning disable CS1591
         R23,
+        #pragma warning restore CS1591
         [EnumMember(Value = "R24")]
+        #pragma warning disable CS1591
         R24,
+        #pragma warning restore CS1591
         [EnumMember(Value = "R29")]
+        #pragma warning disable CS1591
         R29,
+        #pragma warning restore CS1591
     }
 }

@@ -3,8 +3,11 @@ using System.Runtime.Serialization;
 using System;
 namespace Marqeta.Core.Sdk.Models {
     /// <summary>Day on which monthly payments are made.Returned if the `frequency` is `MONTHLY`.</summary>
-    public enum PaymentScheduleResponse_payment_day {
+    public enum PaymentScheduleResponse_payment_day
+    {
         [EnumMember(Value = "PAYMENT_DUE_DAY")]
+        #pragma warning disable CS1591
         PAYMENT_DUE_DAY,
+        #pragma warning restore CS1591
     }
 }

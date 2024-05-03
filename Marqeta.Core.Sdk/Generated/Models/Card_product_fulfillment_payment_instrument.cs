@@ -3,16 +3,27 @@ using System.Runtime.Serialization;
 using System;
 namespace Marqeta.Core.Sdk.Models {
     /// <summary>Specifies the physical form cards of this card product type will take.</summary>
-    public enum Card_product_fulfillment_payment_instrument {
+    public enum Card_product_fulfillment_payment_instrument
+    {
         [EnumMember(Value = "PHYSICAL_MSR")]
+        #pragma warning disable CS1591
         PHYSICAL_MSR,
+        #pragma warning restore CS1591
         [EnumMember(Value = "PHYSICAL_ICC")]
+        #pragma warning disable CS1591
         PHYSICAL_ICC,
+        #pragma warning restore CS1591
         [EnumMember(Value = "PHYSICAL_CONTACTLESS")]
+        #pragma warning disable CS1591
         PHYSICAL_CONTACTLESS,
+        #pragma warning restore CS1591
         [EnumMember(Value = "PHYSICAL_COMBO")]
+        #pragma warning disable CS1591
         PHYSICAL_COMBO,
+        #pragma warning restore CS1591
         [EnumMember(Value = "VIRTUAL_PAN")]
+        #pragma warning disable CS1591
         VIRTUAL_PAN,
+        #pragma warning restore CS1591
     }
 }

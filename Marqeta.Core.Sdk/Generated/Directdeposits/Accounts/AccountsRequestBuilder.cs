@@ -10,29 +10,36 @@ namespace Marqeta.Core.Sdk.Directdeposits.Accounts {
     /// <summary>
     /// Builds and executes requests for operations under \directdeposits\accounts
     /// </summary>
-    public class AccountsRequestBuilder : BaseRequestBuilder {
+    public class AccountsRequestBuilder : BaseRequestBuilder 
+    {
         /// <summary>Gets an item from the Marqeta.Core.Sdk.directdeposits.accounts.item collection</summary>
         /// <param name="position">Unique identifier of the item</param>
         /// <returns>A <see cref="WithUser_or_business_tokenItemRequestBuilder"/></returns>
         [Obsolete("")]
-        public WithUser_or_business_tokenItemRequestBuilder this[string position] { get {
-            var urlTplParams = new Dictionary<string, object>(PathParameters);
-            urlTplParams.Add("user_or_business_token", position);
-            return new WithUser_or_business_tokenItemRequestBuilder(urlTplParams, RequestAdapter);
-        } }
+        public WithUser_or_business_tokenItemRequestBuilder this[string position]
+        {
+            get
+            {
+                var urlTplParams = new Dictionary<string, object>(PathParameters);
+                urlTplParams.Add("user_or_business_token", position);
+                return new WithUser_or_business_tokenItemRequestBuilder(urlTplParams, RequestAdapter);
+            }
+        }
         /// <summary>
         /// Instantiates a new <see cref="AccountsRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public AccountsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/directdeposits/accounts", pathParameters) {
+        public AccountsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/directdeposits/accounts", pathParameters)
+        {
         }
         /// <summary>
         /// Instantiates a new <see cref="AccountsRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public AccountsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/directdeposits/accounts", rawUrl) {
+        public AccountsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/directdeposits/accounts", rawUrl)
+        {
         }
     }
 }

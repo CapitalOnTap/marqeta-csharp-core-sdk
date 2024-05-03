@@ -8,7 +8,8 @@ namespace Marqeta.Core.Sdk.Models {
     /// <summary>
     /// Contains information held and provided by the digital wallet provider.
     /// </summary>
-    public class Wallet_provider_profile : IAdditionalDataHolder, IParsable {
+    public class Wallet_provider_profile : IAdditionalDataHolder, IParsable 
+    {
         /// <summary>Contains information related to the cardholder and provided by the digital wallet provider.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -62,7 +63,8 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>
         /// Instantiates a new <see cref="Wallet_provider_profile"/> and sets the default values.
         /// </summary>
-        public Wallet_provider_profile() {
+        public Wallet_provider_profile()
+        {
             AdditionalData = new Dictionary<string, object>();
         }
         /// <summary>
@@ -70,7 +72,8 @@ namespace Marqeta.Core.Sdk.Models {
         /// </summary>
         /// <returns>A <see cref="Wallet_provider_profile"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static Wallet_provider_profile CreateFromDiscriminatorValue(IParseNode parseNode) {
+        public static Wallet_provider_profile CreateFromDiscriminatorValue(IParseNode parseNode)
+        {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
             return new Wallet_provider_profile();
         }
@@ -78,8 +81,10 @@ namespace Marqeta.Core.Sdk.Models {
         /// The deserialization information for the current model
         /// </summary>
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
-        public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers() {
-            return new Dictionary<string, Action<IParseNode>> {
+        public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
+        {
+            return new Dictionary<string, Action<IParseNode>>
+            {
                 {"account", n => { Account = n.GetObjectValue<Marqeta.Core.Sdk.Models.Account>(Marqeta.Core.Sdk.Models.Account.CreateFromDiscriminatorValue); } },
                 {"device_score", n => { DeviceScore = n.GetStringValue(); } },
                 {"pan_source", n => { PanSource = n.GetStringValue(); } },
@@ -92,7 +97,8 @@ namespace Marqeta.Core.Sdk.Models {
         /// Serializes information the current object
         /// </summary>
         /// <param name="writer">Serialization writer to use to serialize this model</param>
-        public virtual void Serialize(ISerializationWriter writer) {
+        public virtual void Serialize(ISerializationWriter writer)
+        {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
             writer.WriteObjectValue<Marqeta.Core.Sdk.Models.Account>("account", Account);
             writer.WriteStringValue("device_score", DeviceScore);

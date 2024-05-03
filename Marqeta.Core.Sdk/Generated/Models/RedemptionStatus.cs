@@ -3,16 +3,27 @@ using System.Runtime.Serialization;
 using System;
 namespace Marqeta.Core.Sdk.Models {
     /// <summary>Status of the redemption.If &lt;&lt;/core-api/reward-redemptions#postRedemptionTransition, transitioning the redemption&apos;s status&gt;&gt;:* `new_state` is the state to which you want to transition the redemption; must be `COMPLETED` or `RETURNED`.* `initial_status` is the initial status of the redemption prior to transition.</summary>
-    public enum RedemptionStatus {
+    public enum RedemptionStatus
+    {
         [EnumMember(Value = "INITIATED")]
+        #pragma warning disable CS1591
         INITIATED,
+        #pragma warning restore CS1591
         [EnumMember(Value = "COMPLETED")]
+        #pragma warning disable CS1591
         COMPLETED,
+        #pragma warning restore CS1591
         [EnumMember(Value = "RETURNED")]
+        #pragma warning disable CS1591
         RETURNED,
+        #pragma warning restore CS1591
         [EnumMember(Value = "PROCESSING")]
+        #pragma warning disable CS1591
         PROCESSING,
+        #pragma warning restore CS1591
         [EnumMember(Value = "SUBMITTED")]
+        #pragma warning disable CS1591
         SUBMITTED,
+        #pragma warning restore CS1591
     }
 }

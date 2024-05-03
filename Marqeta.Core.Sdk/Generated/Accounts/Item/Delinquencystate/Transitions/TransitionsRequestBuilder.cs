@@ -13,28 +13,35 @@ namespace Marqeta.Core.Sdk.Accounts.Item.Delinquencystate.Transitions {
     /// <summary>
     /// Builds and executes requests for operations under \accounts\{account_token}\delinquencystate\transitions
     /// </summary>
-    public class TransitionsRequestBuilder : BaseRequestBuilder {
+    public class TransitionsRequestBuilder : BaseRequestBuilder 
+    {
         /// <summary>Gets an item from the Marqeta.Core.Sdk.accounts.item.delinquencystate.transitions.item collection</summary>
         /// <param name="position">Unique identifier of the delinquency state transition.</param>
         /// <returns>A <see cref="WithDelinquency_transition_tokenItemRequestBuilder"/></returns>
-        public WithDelinquency_transition_tokenItemRequestBuilder this[string position] { get {
-            var urlTplParams = new Dictionary<string, object>(PathParameters);
-            urlTplParams.Add("delinquency_transition_token", position);
-            return new WithDelinquency_transition_tokenItemRequestBuilder(urlTplParams, RequestAdapter);
-        } }
+        public WithDelinquency_transition_tokenItemRequestBuilder this[string position]
+        {
+            get
+            {
+                var urlTplParams = new Dictionary<string, object>(PathParameters);
+                urlTplParams.Add("delinquency_transition_token", position);
+                return new WithDelinquency_transition_tokenItemRequestBuilder(urlTplParams, RequestAdapter);
+            }
+        }
         /// <summary>
         /// Instantiates a new <see cref="TransitionsRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public TransitionsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/accounts/{account_token}/delinquencystate/transitions{?count*,sort_by*,start_index*}", pathParameters) {
+        public TransitionsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/accounts/{account_token}/delinquencystate/transitions{?count*,sort_by*,start_index*}", pathParameters)
+        {
         }
         /// <summary>
         /// Instantiates a new <see cref="TransitionsRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public TransitionsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/accounts/{account_token}/delinquencystate/transitions{?count*,sort_by*,start_index*}", rawUrl) {
+        public TransitionsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/accounts/{account_token}/delinquencystate/transitions{?count*,sort_by*,start_index*}", rawUrl)
+        {
         }
         /// <summary>
         /// Retrieve an array of delinquency state transitions for a credit account.A delinquency state transition occurs when an account&apos;s delinquency state transitions between delinquent and current.An account becomes delinquent when it falls behind on payments and becomes current when payments are made up to date.
@@ -45,13 +52,16 @@ namespace Marqeta.Core.Sdk.Accounts.Item.Delinquencystate.Transitions {
         /// <exception cref="ApiError">When receiving a 4XX or 5XX status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<DelinquencyTransitionsResponsePage?> GetAsync(Action<RequestConfiguration<TransitionsRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default) {
+        public async Task<DelinquencyTransitionsResponsePage?> GetAsync(Action<RequestConfiguration<TransitionsRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        {
 #nullable restore
 #else
-        public async Task<DelinquencyTransitionsResponsePage> GetAsync(Action<RequestConfiguration<TransitionsRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default) {
+        public async Task<DelinquencyTransitionsResponsePage> GetAsync(Action<RequestConfiguration<TransitionsRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            var errorMapping = new Dictionary<string, ParsableFactory<IParsable>> {
+            var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
+            {
                 {"XXX", ApiError.CreateFromDiscriminatorValue},
             };
             return await RequestAdapter.SendAsync<DelinquencyTransitionsResponsePage>(requestInfo, DelinquencyTransitionsResponsePage.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
@@ -63,10 +73,12 @@ namespace Marqeta.Core.Sdk.Accounts.Item.Delinquencystate.Transitions {
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<TransitionsRequestBuilderGetQueryParameters>>? requestConfiguration = default) {
+        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<TransitionsRequestBuilderGetQueryParameters>>? requestConfiguration = default)
+        {
 #nullable restore
 #else
-        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<TransitionsRequestBuilderGetQueryParameters>> requestConfiguration = default) {
+        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<TransitionsRequestBuilderGetQueryParameters>> requestConfiguration = default)
+        {
 #endif
             var requestInfo = new RequestInformation(Method.GET, UrlTemplate, PathParameters);
             requestInfo.Configure(requestConfiguration);
@@ -78,13 +90,15 @@ namespace Marqeta.Core.Sdk.Accounts.Item.Delinquencystate.Transitions {
         /// </summary>
         /// <returns>A <see cref="TransitionsRequestBuilder"/></returns>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
-        public TransitionsRequestBuilder WithUrl(string rawUrl) {
+        public TransitionsRequestBuilder WithUrl(string rawUrl)
+        {
             return new TransitionsRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
         /// Retrieve an array of delinquency state transitions for a credit account.A delinquency state transition occurs when an account&apos;s delinquency state transitions between delinquent and current.An account becomes delinquent when it falls behind on payments and becomes current when payments are made up to date.
         /// </summary>
-        public class TransitionsRequestBuilderGetQueryParameters {
+        public class TransitionsRequestBuilderGetQueryParameters 
+        {
             /// <summary>Number of resources to retrieve.</summary>
             [QueryParameter("count")]
             public int? Count { get; set; }

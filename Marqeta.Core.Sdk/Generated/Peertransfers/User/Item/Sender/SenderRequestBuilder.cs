@@ -12,20 +12,23 @@ namespace Marqeta.Core.Sdk.Peertransfers.User.Item.Sender {
     /// <summary>
     /// Builds and executes requests for operations under \peertransfers\user\{user_or_business_token}\sender
     /// </summary>
-    public class SenderRequestBuilder : BaseRequestBuilder {
+    public class SenderRequestBuilder : BaseRequestBuilder 
+    {
         /// <summary>
         /// Instantiates a new <see cref="SenderRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public SenderRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/peertransfers/user/{user_or_business_token}/sender{?count*,fields*,start_index*}", pathParameters) {
+        public SenderRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/peertransfers/user/{user_or_business_token}/sender{?count*,fields*,start_index*}", pathParameters)
+        {
         }
         /// <summary>
         /// Instantiates a new <see cref="SenderRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public SenderRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/peertransfers/user/{user_or_business_token}/sender{?count*,fields*,start_index*}", rawUrl) {
+        public SenderRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/peertransfers/user/{user_or_business_token}/sender{?count*,fields*,start_index*}", rawUrl)
+        {
         }
         /// <summary>
         /// Use this endpoint to list peer transfers sent by an account holder.Include a user or business token as a path parameter to identify the sender.This endpoint supports &lt;&lt;/core-api/field-filtering, field filtering&gt;&gt; and &lt;&lt;/core-api/sorting-and-pagination, pagination&gt;&gt;.
@@ -36,13 +39,16 @@ namespace Marqeta.Core.Sdk.Peertransfers.User.Item.Sender {
         /// <exception cref="ApiError">When receiving a 4XX or 5XX status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<Peer_transfer_response?> GetAsync(Action<RequestConfiguration<SenderRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default) {
+        public async Task<Peer_transfer_response?> GetAsync(Action<RequestConfiguration<SenderRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        {
 #nullable restore
 #else
-        public async Task<Peer_transfer_response> GetAsync(Action<RequestConfiguration<SenderRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default) {
+        public async Task<Peer_transfer_response> GetAsync(Action<RequestConfiguration<SenderRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            var errorMapping = new Dictionary<string, ParsableFactory<IParsable>> {
+            var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
+            {
                 {"XXX", ApiError.CreateFromDiscriminatorValue},
             };
             return await RequestAdapter.SendAsync<Peer_transfer_response>(requestInfo, Peer_transfer_response.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
@@ -54,10 +60,12 @@ namespace Marqeta.Core.Sdk.Peertransfers.User.Item.Sender {
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<SenderRequestBuilderGetQueryParameters>>? requestConfiguration = default) {
+        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<SenderRequestBuilderGetQueryParameters>>? requestConfiguration = default)
+        {
 #nullable restore
 #else
-        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<SenderRequestBuilderGetQueryParameters>> requestConfiguration = default) {
+        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<SenderRequestBuilderGetQueryParameters>> requestConfiguration = default)
+        {
 #endif
             var requestInfo = new RequestInformation(Method.GET, UrlTemplate, PathParameters);
             requestInfo.Configure(requestConfiguration);
@@ -69,13 +77,15 @@ namespace Marqeta.Core.Sdk.Peertransfers.User.Item.Sender {
         /// </summary>
         /// <returns>A <see cref="SenderRequestBuilder"/></returns>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
-        public SenderRequestBuilder WithUrl(string rawUrl) {
+        public SenderRequestBuilder WithUrl(string rawUrl)
+        {
             return new SenderRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
         /// Use this endpoint to list peer transfers sent by an account holder.Include a user or business token as a path parameter to identify the sender.This endpoint supports &lt;&lt;/core-api/field-filtering, field filtering&gt;&gt; and &lt;&lt;/core-api/sorting-and-pagination, pagination&gt;&gt;.
         /// </summary>
-        public class SenderRequestBuilderGetQueryParameters {
+        public class SenderRequestBuilderGetQueryParameters 
+        {
             /// <summary>Number of peer transfer resources to retrieve.</summary>
             [QueryParameter("count")]
             public int? Count { get; set; }

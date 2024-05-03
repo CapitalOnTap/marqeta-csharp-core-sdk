@@ -8,7 +8,8 @@ namespace Marqeta.Core.Sdk.Models {
     /// <summary>
     /// Contains the KYC result code and a descriptive message about that codes.
     /// </summary>
-    public class Result_code : IAdditionalDataHolder, IParsable {
+    public class Result_code : IAdditionalDataHolder, IParsable 
+    {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>For any `PENDING` or `FAILURE` outcome, see the &lt;&lt;user_kyc_failure_codes, User KYC failure codes&gt;&gt; table, the &lt;&lt;outcome_reasons_for_the_business, Outcome reasons for the business&gt;&gt; table, or the &lt;&lt;outcome_reasons_for_individuals_associated_with_a_business, Outcome reasons for individuals associated with a business&gt;&gt; table.</summary>
@@ -30,7 +31,8 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>
         /// Instantiates a new <see cref="Result_code"/> and sets the default values.
         /// </summary>
-        public Result_code() {
+        public Result_code()
+        {
             AdditionalData = new Dictionary<string, object>();
         }
         /// <summary>
@@ -38,7 +40,8 @@ namespace Marqeta.Core.Sdk.Models {
         /// </summary>
         /// <returns>A <see cref="Result_code"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static Result_code CreateFromDiscriminatorValue(IParseNode parseNode) {
+        public static Result_code CreateFromDiscriminatorValue(IParseNode parseNode)
+        {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
             return new Result_code();
         }
@@ -46,8 +49,10 @@ namespace Marqeta.Core.Sdk.Models {
         /// The deserialization information for the current model
         /// </summary>
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
-        public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers() {
-            return new Dictionary<string, Action<IParseNode>> {
+        public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
+        {
+            return new Dictionary<string, Action<IParseNode>>
+            {
                 {"code", n => { Code = n.GetStringValue(); } },
                 {"message", n => { Message = n.GetStringValue(); } },
             };
@@ -56,7 +61,8 @@ namespace Marqeta.Core.Sdk.Models {
         /// Serializes information the current object
         /// </summary>
         /// <param name="writer">Serialization writer to use to serialize this model</param>
-        public virtual void Serialize(ISerializationWriter writer) {
+        public virtual void Serialize(ISerializationWriter writer)
+        {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("code", Code);
             writer.WriteStringValue("message", Message);

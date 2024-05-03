@@ -3,8 +3,11 @@ using System.Runtime.Serialization;
 using System;
 namespace Marqeta.Core.Sdk.Models {
     /// <summary>Valid three-digit link:https://www.iso.org/iso-4217-currency-codes.html[ISO 4217 currency code, window=&quot;_blank&quot;]</summary>
-    public enum CurrencyCode {
+    public enum CurrencyCode
+    {
         [EnumMember(Value = "USD")]
+        #pragma warning disable CS1591
         USD,
+        #pragma warning restore CS1591
     }
 }

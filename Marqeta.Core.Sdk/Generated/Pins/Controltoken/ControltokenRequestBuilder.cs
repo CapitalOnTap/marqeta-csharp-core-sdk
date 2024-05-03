@@ -12,20 +12,23 @@ namespace Marqeta.Core.Sdk.Pins.Controltoken {
     /// <summary>
     /// Builds and executes requests for operations under \pins\controltoken
     /// </summary>
-    public class ControltokenRequestBuilder : BaseRequestBuilder {
+    public class ControltokenRequestBuilder : BaseRequestBuilder 
+    {
         /// <summary>
         /// Instantiates a new <see cref="ControltokenRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public ControltokenRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/pins/controltoken", pathParameters) {
+        public ControltokenRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/pins/controltoken", pathParameters)
+        {
         }
         /// <summary>
         /// Instantiates a new <see cref="ControltokenRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public ControltokenRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/pins/controltoken", rawUrl) {
+        public ControltokenRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/pins/controltoken", rawUrl)
+        {
         }
         /// <summary>
         /// Creates a control token necessary when creating or updating a card&apos;s personal identification number (PIN).Creating, updating, or revealing a card&apos;s PIN is a two-step process.You must first create the control token that is required to create the PIN, and then you create, update, or reveal the PIN itself.The lifespan of the control token in a production environment is either five minutes or one hour from creation, depending on the token type.If multiple tokens are requested for a single card, only the most recent one is valid.Once redeemed, a token cannot be reused.
@@ -37,14 +40,17 @@ namespace Marqeta.Core.Sdk.Pins.Controltoken {
         /// <exception cref="ApiError">When receiving a 4XX or 5XX status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<Control_token_response?> PostAsync(Control_token_request body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default) {
+        public async Task<Control_token_response?> PostAsync(Control_token_request body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        {
 #nullable restore
 #else
-        public async Task<Control_token_response> PostAsync(Control_token_request body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default) {
+        public async Task<Control_token_response> PostAsync(Control_token_request body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        {
 #endif
             _ = body ?? throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPostRequestInformation(body, requestConfiguration);
-            var errorMapping = new Dictionary<string, ParsableFactory<IParsable>> {
+            var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
+            {
                 {"XXX", ApiError.CreateFromDiscriminatorValue},
             };
             return await RequestAdapter.SendAsync<Control_token_response>(requestInfo, Control_token_response.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
@@ -57,10 +63,12 @@ namespace Marqeta.Core.Sdk.Pins.Controltoken {
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToPostRequestInformation(Control_token_request body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default) {
+        public RequestInformation ToPostRequestInformation(Control_token_request body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
+        {
 #nullable restore
 #else
-        public RequestInformation ToPostRequestInformation(Control_token_request body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default) {
+        public RequestInformation ToPostRequestInformation(Control_token_request body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
+        {
 #endif
             _ = body ?? throw new ArgumentNullException(nameof(body));
             var requestInfo = new RequestInformation(Method.POST, UrlTemplate, PathParameters);
@@ -74,7 +82,8 @@ namespace Marqeta.Core.Sdk.Pins.Controltoken {
         /// </summary>
         /// <returns>A <see cref="ControltokenRequestBuilder"/></returns>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
-        public ControltokenRequestBuilder WithUrl(string rawUrl) {
+        public ControltokenRequestBuilder WithUrl(string rawUrl)
+        {
             return new ControltokenRequestBuilder(rawUrl, RequestAdapter);
         }
     }

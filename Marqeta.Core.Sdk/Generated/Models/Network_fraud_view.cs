@@ -8,7 +8,8 @@ namespace Marqeta.Core.Sdk.Models {
     /// <summary>
     /// Contains network-provided information about fraud determinations.
     /// </summary>
-    public class Network_fraud_view : IAdditionalDataHolder, IParsable {
+    public class Network_fraud_view : IAdditionalDataHolder, IParsable 
+    {
         /// <summary>_(Visa only)_ Account holder risk condition code evaluated by the card network.A higher score indicates a greater likelihood that the card number is compromised.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -48,7 +49,8 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>
         /// Instantiates a new <see cref="Network_fraud_view"/> and sets the default values.
         /// </summary>
-        public Network_fraud_view() {
+        public Network_fraud_view()
+        {
             AdditionalData = new Dictionary<string, object>();
         }
         /// <summary>
@@ -56,7 +58,8 @@ namespace Marqeta.Core.Sdk.Models {
         /// </summary>
         /// <returns>A <see cref="Network_fraud_view"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static Network_fraud_view CreateFromDiscriminatorValue(IParseNode parseNode) {
+        public static Network_fraud_view CreateFromDiscriminatorValue(IParseNode parseNode)
+        {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
             return new Network_fraud_view();
         }
@@ -64,8 +67,10 @@ namespace Marqeta.Core.Sdk.Models {
         /// The deserialization information for the current model
         /// </summary>
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
-        public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers() {
-            return new Dictionary<string, Action<IParseNode>> {
+        public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
+        {
+            return new Dictionary<string, Action<IParseNode>>
+            {
                 {"account_risk_score", n => { AccountRiskScore = n.GetStringValue(); } },
                 {"account_risk_score_reason_code", n => { AccountRiskScoreReasonCode = n.GetStringValue(); } },
                 {"transaction_risk_score", n => { TransactionRiskScore = n.GetIntValue(); } },
@@ -77,7 +82,8 @@ namespace Marqeta.Core.Sdk.Models {
         /// Serializes information the current object
         /// </summary>
         /// <param name="writer">Serialization writer to use to serialize this model</param>
-        public virtual void Serialize(ISerializationWriter writer) {
+        public virtual void Serialize(ISerializationWriter writer)
+        {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("account_risk_score", AccountRiskScore);
             writer.WriteStringValue("account_risk_score_reason_code", AccountRiskScoreReasonCode);

@@ -3,18 +3,31 @@ using System.Runtime.Serialization;
 using System;
 namespace Marqeta.Core.Sdk.Models {
     /// <summary>Type of transit transaction.</summary>
-    public enum Transit_transaction_type {
+    public enum Transit_transaction_type
+    {
         [EnumMember(Value = "PRE_FUNDED")]
+        #pragma warning disable CS1591
         PRE_FUNDED,
+        #pragma warning restore CS1591
         [EnumMember(Value = "REAL_TIME_AUTHORIZED")]
+        #pragma warning disable CS1591
         REAL_TIME_AUTHORIZED,
+        #pragma warning restore CS1591
         [EnumMember(Value = "POST_AUTHORIZED_AGGREGATED")]
+        #pragma warning disable CS1591
         POST_AUTHORIZED_AGGREGATED,
+        #pragma warning restore CS1591
         [EnumMember(Value = "AUTHORIZED_AGGREGATED_SPLIT_CLEARING")]
+        #pragma warning disable CS1591
         AUTHORIZED_AGGREGATED_SPLIT_CLEARING,
+        #pragma warning restore CS1591
         [EnumMember(Value = "OTHER")]
+        #pragma warning disable CS1591
         OTHER,
+        #pragma warning restore CS1591
         [EnumMember(Value = "DEBIT_RECOVERY")]
+        #pragma warning disable CS1591
         DEBIT_RECOVERY,
+        #pragma warning restore CS1591
     }
 }

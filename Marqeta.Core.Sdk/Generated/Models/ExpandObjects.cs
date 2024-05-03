@@ -2,12 +2,21 @@
 using System.Runtime.Serialization;
 using System;
 namespace Marqeta.Core.Sdk.Models {
-    public enum ExpandObjects {
+    #pragma warning disable CS1591
+    public enum ExpandObjects
+    #pragma warning restore CS1591
+    {
         [EnumMember(Value = "DEVICE_DATA")]
+        #pragma warning disable CS1591
         DEVICE_DATA,
+        #pragma warning restore CS1591
         [EnumMember(Value = "INCLUDE_DECISION")]
+        #pragma warning disable CS1591
         INCLUDE_DECISION,
+        #pragma warning restore CS1591
         [EnumMember(Value = "INCLUDE_ERROR")]
+        #pragma warning disable CS1591
         INCLUDE_ERROR,
+        #pragma warning restore CS1591
     }
 }

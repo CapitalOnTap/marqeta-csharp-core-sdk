@@ -3,10 +3,15 @@ using System.Runtime.Serialization;
 using System;
 namespace Marqeta.Core.Sdk.Models {
     /// <summary>Status of the verification for the payment source.</summary>
-    public enum PaymentSourceResponse_verification_status {
+    public enum PaymentSourceResponse_verification_status
+    {
         [EnumMember(Value = "ACH_VERIFIED")]
+        #pragma warning disable CS1591
         ACH_VERIFIED,
+        #pragma warning restore CS1591
         [EnumMember(Value = "PENDING")]
+        #pragma warning disable CS1591
         PENDING,
+        #pragma warning restore CS1591
     }
 }

@@ -8,7 +8,8 @@ namespace Marqeta.Core.Sdk.Models {
     /// <summary>
     /// Contains funding source information for the transaction, including the funding type and time.
     /// </summary>
-    public class Funding_source_model : IAdditionalDataHolder, IParsable {
+    public class Funding_source_model : IAdditionalDataHolder, IParsable 
+    {
         /// <summary>Whether the funding source is active.</summary>
         public bool? Active { get; set; }
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -38,7 +39,8 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>
         /// Instantiates a new <see cref="Funding_source_model"/> and sets the default values.
         /// </summary>
-        public Funding_source_model() {
+        public Funding_source_model()
+        {
             AdditionalData = new Dictionary<string, object>();
         }
         /// <summary>
@@ -46,10 +48,12 @@ namespace Marqeta.Core.Sdk.Models {
         /// </summary>
         /// <returns>A <see cref="Funding_source_model"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static Funding_source_model CreateFromDiscriminatorValue(IParseNode parseNode) {
+        public static Funding_source_model CreateFromDiscriminatorValue(IParseNode parseNode)
+        {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
             var mappingValue = parseNode.GetChildNode("type")?.GetStringValue();
-            return mappingValue switch {
+            return mappingValue switch
+            {
                 "bankaccount" => new Bank_account_funding_source_model(),
                 "chargeback" => new Chargeback_funding_source_model(),
                 "directdeposit" => new Direct_deposit_funding_source_model(),
@@ -63,8 +67,10 @@ namespace Marqeta.Core.Sdk.Models {
         /// The deserialization information for the current model
         /// </summary>
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
-        public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers() {
-            return new Dictionary<string, Action<IParseNode>> {
+        public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
+        {
+            return new Dictionary<string, Action<IParseNode>>
+            {
                 {"active", n => { Active = n.GetBoolValue(); } },
                 {"created_time", n => { CreatedTime = n.GetDateTimeOffsetValue(); } },
                 {"is_default_account", n => { IsDefaultAccount = n.GetBoolValue(); } },
@@ -77,7 +83,8 @@ namespace Marqeta.Core.Sdk.Models {
         /// Serializes information the current object
         /// </summary>
         /// <param name="writer">Serialization writer to use to serialize this model</param>
-        public virtual void Serialize(ISerializationWriter writer) {
+        public virtual void Serialize(ISerializationWriter writer)
+        {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
             writer.WriteBoolValue("active", Active);
             writer.WriteDateTimeOffsetValue("created_time", CreatedTime);

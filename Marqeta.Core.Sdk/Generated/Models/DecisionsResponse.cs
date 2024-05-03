@@ -9,7 +9,8 @@ namespace Marqeta.Core.Sdk.Models {
     /// <summary>
     /// Contains information on the decision model returned by the issuing bank if a decision has been rendered.Returned when retrieving an application after a decision has been rendered.
     /// </summary>
-    public class DecisionsResponse : PostDecisionsResponse, IParsable {
+    public class DecisionsResponse : PostDecisionsResponse, IParsable 
+    {
         /// <summary>Indicates the version of the Notice of Adverse Action (NOAA) template used.Can have these possible values:* `AA0` - score denial with score disclosure* `AA1` - individual reason with score disclosure* `AA2` - individual reason without score disclosure* `AA3` - locked and frozen* `AA4` - fraud related</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -77,7 +78,8 @@ namespace Marqeta.Core.Sdk.Models {
         /// </summary>
         /// <returns>A <see cref="DecisionsResponse"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static new DecisionsResponse CreateFromDiscriminatorValue(IParseNode parseNode) {
+        public static new DecisionsResponse CreateFromDiscriminatorValue(IParseNode parseNode)
+        {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
             return new DecisionsResponse();
         }
@@ -85,8 +87,10 @@ namespace Marqeta.Core.Sdk.Models {
         /// The deserialization information for the current model
         /// </summary>
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
-        public override IDictionary<string, Action<IParseNode>> GetFieldDeserializers() {
-            return new Dictionary<string, Action<IParseNode>>(base.GetFieldDeserializers()) {
+        public override IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
+        {
+            return new Dictionary<string, Action<IParseNode>>(base.GetFieldDeserializers())
+            {
                 {"adverse_action_template_code", n => { AdverseActionTemplateCode = n.GetStringValue(); } },
                 {"card_product_level", n => { CardProductLevel = n.GetEnumValue<DecisionsResponse_card_product_level>(); } },
                 {"created_date", n => { CreatedDate = n.GetDateTimeOffsetValue(); } },
@@ -109,7 +113,8 @@ namespace Marqeta.Core.Sdk.Models {
         /// Serializes information the current object
         /// </summary>
         /// <param name="writer">Serialization writer to use to serialize this model</param>
-        public override void Serialize(ISerializationWriter writer) {
+        public override void Serialize(ISerializationWriter writer)
+        {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
             base.Serialize(writer);
             writer.WriteStringValue("adverse_action_template_code", AdverseActionTemplateCode);

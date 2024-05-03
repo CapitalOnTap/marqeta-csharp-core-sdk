@@ -3,8 +3,11 @@ using System.Runtime.Serialization;
 using System;
 namespace Marqeta.Core.Sdk.Models {
     /// <summary>Type of credit product.`REVOLVING` - Allows users to continuously borrow and pay debts up to the credit limit.</summary>
-    public enum ProductType {
+    public enum ProductType
+    {
         [EnumMember(Value = "REVOLVING")]
+        #pragma warning disable CS1591
         REVOLVING,
+        #pragma warning restore CS1591
     }
 }

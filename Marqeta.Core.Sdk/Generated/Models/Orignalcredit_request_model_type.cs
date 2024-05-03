@@ -2,56 +2,109 @@
 using System.Runtime.Serialization;
 using System;
 namespace Marqeta.Core.Sdk.Models {
-    public enum Orignalcredit_request_model_type {
+    #pragma warning disable CS1591
+    public enum Orignalcredit_request_model_type
+    #pragma warning restore CS1591
+    {
         [EnumMember(Value = "account_to_account")]
+        #pragma warning disable CS1591
         Account_to_account,
+        #pragma warning restore CS1591
         [EnumMember(Value = "person_to_person")]
+        #pragma warning disable CS1591
         Person_to_person,
+        #pragma warning restore CS1591
         [EnumMember(Value = "prepaid")]
+        #pragma warning disable CS1591
         Prepaid,
+        #pragma warning restore CS1591
         [EnumMember(Value = "wallet_transfer")]
+        #pragma warning disable CS1591
         Wallet_transfer,
+        #pragma warning restore CS1591
         [EnumMember(Value = "money_transfer_by_bank")]
+        #pragma warning disable CS1591
         Money_transfer_by_bank,
+        #pragma warning restore CS1591
         [EnumMember(Value = "business_to_business")]
+        #pragma warning disable CS1591
         Business_to_business,
+        #pragma warning restore CS1591
         [EnumMember(Value = "disbursement")]
+        #pragma warning disable CS1591
         Disbursement,
+        #pragma warning restore CS1591
         [EnumMember(Value = "government_disbursement")]
+        #pragma warning disable CS1591
         Government_disbursement,
+        #pragma warning restore CS1591
         [EnumMember(Value = "gambling_payout")]
+        #pragma warning disable CS1591
         Gambling_payout,
+        #pragma warning restore CS1591
         [EnumMember(Value = "loyalty")]
+        #pragma warning disable CS1591
         Loyalty,
+        #pragma warning restore CS1591
         [EnumMember(Value = "merchant_disbursement")]
+        #pragma warning disable CS1591
         Merchant_disbursement,
+        #pragma warning restore CS1591
         [EnumMember(Value = "online_gambling_payout")]
+        #pragma warning disable CS1591
         Online_gambling_payout,
+        #pragma warning restore CS1591
         [EnumMember(Value = "pension_disbursement")]
+        #pragma warning disable CS1591
         Pension_disbursement,
+        #pragma warning restore CS1591
         [EnumMember(Value = "prepaid_loads")]
+        #pragma warning disable CS1591
         Prepaid_loads,
+        #pragma warning restore CS1591
         [EnumMember(Value = "card_bill_payment")]
+        #pragma warning disable CS1591
         Card_bill_payment,
+        #pragma warning restore CS1591
         [EnumMember(Value = "bill_payment")]
+        #pragma warning disable CS1591
         Bill_payment,
+        #pragma warning restore CS1591
         [EnumMember(Value = "cash_claim")]
+        #pragma warning disable CS1591
         Cash_claim,
+        #pragma warning restore CS1591
         [EnumMember(Value = "cash_in")]
+        #pragma warning disable CS1591
         Cash_in,
+        #pragma warning restore CS1591
         [EnumMember(Value = "cash_out")]
+        #pragma warning disable CS1591
         Cash_out,
+        #pragma warning restore CS1591
         [EnumMember(Value = "mobile_air_time_payment")]
+        #pragma warning disable CS1591
         Mobile_air_time_payment,
+        #pragma warning restore CS1591
         [EnumMember(Value = "money_transfer_by_merchant")]
+        #pragma warning disable CS1591
         Money_transfer_by_merchant,
+        #pragma warning restore CS1591
         [EnumMember(Value = "face_to_face_merchant_payment")]
+        #pragma warning disable CS1591
         Face_to_face_merchant_payment,
+        #pragma warning restore CS1591
         [EnumMember(Value = "government_payment")]
+        #pragma warning disable CS1591
         Government_payment,
+        #pragma warning restore CS1591
         [EnumMember(Value = "payments_goods_services")]
+        #pragma warning disable CS1591
         Payments_goods_services,
+        #pragma warning restore CS1591
         [EnumMember(Value = "purchase_repayment")]
+        #pragma warning disable CS1591
         Purchase_repayment,
+        #pragma warning restore CS1591
     }
 }

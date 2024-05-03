@@ -3,14 +3,23 @@ using System.Runtime.Serialization;
 using System;
 namespace Marqeta.Core.Sdk.Models {
     /// <summary>A category used to determine the actual payment amount.</summary>
-    public enum PaymentScheduleAmountCategory {
+    public enum PaymentScheduleAmountCategory
+    {
         [EnumMember(Value = "FIXED")]
+        #pragma warning disable CS1591
         FIXED,
+        #pragma warning restore CS1591
         [EnumMember(Value = "MINIMUM_PAYMENT")]
+        #pragma warning disable CS1591
         MINIMUM_PAYMENT,
+        #pragma warning restore CS1591
         [EnumMember(Value = "REMAINING_STATEMENT_BALANCE")]
+        #pragma warning disable CS1591
         REMAINING_STATEMENT_BALANCE,
+        #pragma warning restore CS1591
         [EnumMember(Value = "CURRENT_BALANCE")]
+        #pragma warning disable CS1591
         CURRENT_BALANCE,
+        #pragma warning restore CS1591
     }
 }

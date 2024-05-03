@@ -10,24 +10,28 @@ namespace Marqeta.Core.Sdk.Velocitycontrols.Cardgroup.Item {
     /// <summary>
     /// Builds and executes requests for operations under \velocitycontrols\cardgroup\{card_group_token}
     /// </summary>
-    public class WithCard_group_tokenItemRequestBuilder : BaseRequestBuilder {
+    public class WithCard_group_tokenItemRequestBuilder : BaseRequestBuilder 
+    {
         /// <summary>The available property</summary>
-        public AvailableRequestBuilder Available { get =>
-            new AvailableRequestBuilder(PathParameters, RequestAdapter);
+        public AvailableRequestBuilder Available
+        {
+            get => new AvailableRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>
         /// Instantiates a new <see cref="WithCard_group_tokenItemRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public WithCard_group_tokenItemRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/velocitycontrols/cardgroup/{card_group_token}", pathParameters) {
+        public WithCard_group_tokenItemRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/velocitycontrols/cardgroup/{card_group_token}", pathParameters)
+        {
         }
         /// <summary>
         /// Instantiates a new <see cref="WithCard_group_tokenItemRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public WithCard_group_tokenItemRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/velocitycontrols/cardgroup/{card_group_token}", rawUrl) {
+        public WithCard_group_tokenItemRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/velocitycontrols/cardgroup/{card_group_token}", rawUrl)
+        {
         }
     }
 }

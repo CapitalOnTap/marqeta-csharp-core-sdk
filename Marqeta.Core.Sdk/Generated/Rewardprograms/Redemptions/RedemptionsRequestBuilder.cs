@@ -12,20 +12,23 @@ namespace Marqeta.Core.Sdk.Rewardprograms.Redemptions {
     /// <summary>
     /// Builds and executes requests for operations under \rewardprograms\redemptions
     /// </summary>
-    public class RedemptionsRequestBuilder : BaseRequestBuilder {
+    public class RedemptionsRequestBuilder : BaseRequestBuilder 
+    {
         /// <summary>
         /// Instantiates a new <see cref="RedemptionsRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public RedemptionsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/rewardprograms/redemptions?settlement_end_date={settlement_end_date}&settlement_start_date={settlement_start_date}{&count*,destination*,start_index*}", pathParameters) {
+        public RedemptionsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/rewardprograms/redemptions?settlement_end_date={settlement_end_date}&settlement_start_date={settlement_start_date}{&count*,destination*,start_index*}", pathParameters)
+        {
         }
         /// <summary>
         /// Instantiates a new <see cref="RedemptionsRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public RedemptionsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/rewardprograms/redemptions?settlement_end_date={settlement_end_date}&settlement_start_date={settlement_start_date}{&count*,destination*,start_index*}", rawUrl) {
+        public RedemptionsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/rewardprograms/redemptions?settlement_end_date={settlement_end_date}&settlement_start_date={settlement_start_date}{&count*,destination*,start_index*}", rawUrl)
+        {
         }
         /// <summary>
         /// retrieves all completed redemptions by settlement date
@@ -36,13 +39,16 @@ namespace Marqeta.Core.Sdk.Rewardprograms.Redemptions {
         /// <exception cref="ApiError">When receiving a 4XX or 5XX status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<RedemptionsBySettlementDatePage?> GetAsync(Action<RequestConfiguration<RedemptionsRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default) {
+        public async Task<RedemptionsBySettlementDatePage?> GetAsync(Action<RequestConfiguration<RedemptionsRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        {
 #nullable restore
 #else
-        public async Task<RedemptionsBySettlementDatePage> GetAsync(Action<RequestConfiguration<RedemptionsRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default) {
+        public async Task<RedemptionsBySettlementDatePage> GetAsync(Action<RequestConfiguration<RedemptionsRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            var errorMapping = new Dictionary<string, ParsableFactory<IParsable>> {
+            var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
+            {
                 {"XXX", ApiError.CreateFromDiscriminatorValue},
             };
             return await RequestAdapter.SendAsync<RedemptionsBySettlementDatePage>(requestInfo, RedemptionsBySettlementDatePage.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
@@ -54,10 +60,12 @@ namespace Marqeta.Core.Sdk.Rewardprograms.Redemptions {
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<RedemptionsRequestBuilderGetQueryParameters>>? requestConfiguration = default) {
+        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<RedemptionsRequestBuilderGetQueryParameters>>? requestConfiguration = default)
+        {
 #nullable restore
 #else
-        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<RedemptionsRequestBuilderGetQueryParameters>> requestConfiguration = default) {
+        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<RedemptionsRequestBuilderGetQueryParameters>> requestConfiguration = default)
+        {
 #endif
             var requestInfo = new RequestInformation(Method.GET, UrlTemplate, PathParameters);
             requestInfo.Configure(requestConfiguration);
@@ -69,13 +77,15 @@ namespace Marqeta.Core.Sdk.Rewardprograms.Redemptions {
         /// </summary>
         /// <returns>A <see cref="RedemptionsRequestBuilder"/></returns>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
-        public RedemptionsRequestBuilder WithUrl(string rawUrl) {
+        public RedemptionsRequestBuilder WithUrl(string rawUrl)
+        {
             return new RedemptionsRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
         /// retrieves all completed redemptions by settlement date
         /// </summary>
-        public class RedemptionsRequestBuilderGetQueryParameters {
+        public class RedemptionsRequestBuilderGetQueryParameters 
+        {
             /// <summary>Number of resources to retrieve.</summary>
             [QueryParameter("count")]
             public int? Count { get; set; }

@@ -8,7 +8,8 @@ namespace Marqeta.Core.Sdk.Models {
     /// <summary>
     /// Contains information returned for account adjustment.
     /// </summary>
-    public class AccountAdjustmentResponse : IAdditionalDataHolder, IParsable {
+    public class AccountAdjustmentResponse : IAdditionalDataHolder, IParsable 
+    {
         /// <summary>Unique identifier of the credit account on which the adjustment was made.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -92,7 +93,8 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>
         /// Instantiates a new <see cref="AccountAdjustmentResponse"/> and sets the default values.
         /// </summary>
-        public AccountAdjustmentResponse() {
+        public AccountAdjustmentResponse()
+        {
             AdditionalData = new Dictionary<string, object>();
             CurrencyCode = Marqeta.Core.Sdk.Models.CurrencyCode.USD;
         }
@@ -101,7 +103,8 @@ namespace Marqeta.Core.Sdk.Models {
         /// </summary>
         /// <returns>A <see cref="AccountAdjustmentResponse"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static AccountAdjustmentResponse CreateFromDiscriminatorValue(IParseNode parseNode) {
+        public static AccountAdjustmentResponse CreateFromDiscriminatorValue(IParseNode parseNode)
+        {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
             return new AccountAdjustmentResponse();
         }
@@ -109,8 +112,10 @@ namespace Marqeta.Core.Sdk.Models {
         /// The deserialization information for the current model
         /// </summary>
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
-        public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers() {
-            return new Dictionary<string, Action<IParseNode>> {
+        public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
+        {
+            return new Dictionary<string, Action<IParseNode>>
+            {
                 {"account_token", n => { AccountToken = n.GetStringValue(); } },
                 {"adjustment_detail_object", n => { AdjustmentDetailObject = n.GetObjectValue<AccountAdjustmentResponse_adjustment_detail_object>(AccountAdjustmentResponse_adjustment_detail_object.CreateFromDiscriminatorValue); } },
                 {"amount", n => { Amount = n.GetDoubleValue(); } },
@@ -132,7 +137,8 @@ namespace Marqeta.Core.Sdk.Models {
         /// Serializes information the current object
         /// </summary>
         /// <param name="writer">Serialization writer to use to serialize this model</param>
-        public virtual void Serialize(ISerializationWriter writer) {
+        public virtual void Serialize(ISerializationWriter writer)
+        {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("account_token", AccountToken);
             writer.WriteObjectValue<AccountAdjustmentResponse_adjustment_detail_object>("adjustment_detail_object", AdjustmentDetailObject);

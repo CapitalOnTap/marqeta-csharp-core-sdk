@@ -8,7 +8,8 @@ namespace Marqeta.Core.Sdk.Models {
     /// <summary>
     /// Contains information about Strong Customer Authentication (SCA) behavior for contactless point-of-sale (POS) and low-value payment (LVP) e-commerce transactions.
     /// </summary>
-    public class Strong_customer_authentication_limits : IAdditionalDataHolder, IParsable {
+    public class Strong_customer_authentication_limits : IAdditionalDataHolder, IParsable 
+    {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>If you have enabled CAVV authentication amount validation, the value of this field specifies the maximum allowable variance between the authorization amount and the 3D Secure authentication amount.Expressed as a percentage.</summary>
@@ -54,7 +55,8 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>
         /// Instantiates a new <see cref="Strong_customer_authentication_limits"/> and sets the default values.
         /// </summary>
-        public Strong_customer_authentication_limits() {
+        public Strong_customer_authentication_limits()
+        {
             AdditionalData = new Dictionary<string, object>();
         }
         /// <summary>
@@ -62,7 +64,8 @@ namespace Marqeta.Core.Sdk.Models {
         /// </summary>
         /// <returns>A <see cref="Strong_customer_authentication_limits"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static Strong_customer_authentication_limits CreateFromDiscriminatorValue(IParseNode parseNode) {
+        public static Strong_customer_authentication_limits CreateFromDiscriminatorValue(IParseNode parseNode)
+        {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
             return new Strong_customer_authentication_limits();
         }
@@ -70,8 +73,10 @@ namespace Marqeta.Core.Sdk.Models {
         /// The deserialization information for the current model
         /// </summary>
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
-        public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers() {
-            return new Dictionary<string, Action<IParseNode>> {
+        public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
+        {
+            return new Dictionary<string, Action<IParseNode>>
+            {
                 {"cavv_authentication_amount_incremental_percentage", n => { CavvAuthenticationAmountIncrementalPercentage = n.GetStringValue(); } },
                 {"enable_cavv_authentication_amount_validation", n => { EnableCavvAuthenticationAmountValidation = n.GetBoolValue(); } },
                 {"sca_contactless_cumulative_amount_limit", n => { ScaContactlessCumulativeAmountLimit = n.GetDoubleValue(); } },
@@ -89,7 +94,8 @@ namespace Marqeta.Core.Sdk.Models {
         /// Serializes information the current object
         /// </summary>
         /// <param name="writer">Serialization writer to use to serialize this model</param>
-        public virtual void Serialize(ISerializationWriter writer) {
+        public virtual void Serialize(ISerializationWriter writer)
+        {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("cavv_authentication_amount_incremental_percentage", CavvAuthenticationAmountIncrementalPercentage);
             writer.WriteBoolValue("enable_cavv_authentication_amount_validation", EnableCavvAuthenticationAmountValidation);

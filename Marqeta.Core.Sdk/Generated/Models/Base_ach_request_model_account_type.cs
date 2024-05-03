@@ -3,14 +3,23 @@ using System.Runtime.Serialization;
 using System;
 namespace Marqeta.Core.Sdk.Models {
     /// <summary>Type of account.</summary>
-    public enum Base_ach_request_model_account_type {
+    public enum Base_ach_request_model_account_type
+    {
         [EnumMember(Value = "checking")]
+        #pragma warning disable CS1591
         Checking,
+        #pragma warning restore CS1591
         [EnumMember(Value = "savings")]
+        #pragma warning disable CS1591
         Savings,
+        #pragma warning restore CS1591
         [EnumMember(Value = "corporate")]
+        #pragma warning disable CS1591
         Corporate,
+        #pragma warning restore CS1591
         [EnumMember(Value = "loan")]
+        #pragma warning disable CS1591
         Loan,
+        #pragma warning restore CS1591
     }
 }

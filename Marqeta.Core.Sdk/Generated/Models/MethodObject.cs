@@ -3,10 +3,15 @@ using System.Runtime.Serialization;
 using System;
 namespace Marqeta.Core.Sdk.Models {
     /// <summary>Method, either a flat amount or a percentage.*NOTE:*Only `FLAT` is currently supported.</summary>
-    public enum MethodObject {
+    public enum MethodObject
+    {
         [EnumMember(Value = "PERCENTAGE")]
+        #pragma warning disable CS1591
         PERCENTAGE,
+        #pragma warning restore CS1591
         [EnumMember(Value = "FLAT")]
+        #pragma warning disable CS1591
         FLAT,
+        #pragma warning restore CS1591
     }
 }

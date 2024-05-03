@@ -8,7 +8,8 @@ namespace Marqeta.Core.Sdk.Models {
     /// <summary>
     /// Contains information on a specific fee in a fee policy.
     /// </summary>
-    public class PolicyFeePayment : IAdditionalDataHolder, IParsable {
+    public class PolicyFeePayment : IAdditionalDataHolder, IParsable 
+    {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Method used to calculate the fee value.</summary>
@@ -18,7 +19,8 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>
         /// Instantiates a new <see cref="PolicyFeePayment"/> and sets the default values.
         /// </summary>
-        public PolicyFeePayment() {
+        public PolicyFeePayment()
+        {
             AdditionalData = new Dictionary<string, object>();
         }
         /// <summary>
@@ -26,7 +28,8 @@ namespace Marqeta.Core.Sdk.Models {
         /// </summary>
         /// <returns>A <see cref="PolicyFeePayment"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static PolicyFeePayment CreateFromDiscriminatorValue(IParseNode parseNode) {
+        public static PolicyFeePayment CreateFromDiscriminatorValue(IParseNode parseNode)
+        {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
             return new PolicyFeePayment();
         }
@@ -34,8 +37,10 @@ namespace Marqeta.Core.Sdk.Models {
         /// The deserialization information for the current model
         /// </summary>
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
-        public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers() {
-            return new Dictionary<string, Action<IParseNode>> {
+        public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
+        {
+            return new Dictionary<string, Action<IParseNode>>
+            {
                 {"default_method", n => { DefaultMethod = n.GetEnumValue<PolicyFeePayment_default_method>(); } },
                 {"default_value", n => { DefaultValue = n.GetDoubleValue(); } },
             };
@@ -44,7 +49,8 @@ namespace Marqeta.Core.Sdk.Models {
         /// Serializes information the current object
         /// </summary>
         /// <param name="writer">Serialization writer to use to serialize this model</param>
-        public virtual void Serialize(ISerializationWriter writer) {
+        public virtual void Serialize(ISerializationWriter writer)
+        {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
             writer.WriteEnumValue<PolicyFeePayment_default_method>("default_method", DefaultMethod);
             writer.WriteDoubleValue("default_value", DefaultValue);

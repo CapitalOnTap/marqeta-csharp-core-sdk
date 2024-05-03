@@ -3,22 +3,39 @@ using System.Runtime.Serialization;
 using System;
 namespace Marqeta.Core.Sdk.Models {
     /// <summary>The type of fee assessed by the card network.</summary>
-    public enum Network_fee_model_type {
+    public enum Network_fee_model_type
+    {
         [EnumMember(Value = "ISSUER_FEE")]
+        #pragma warning disable CS1591
         ISSUER_FEE,
+        #pragma warning restore CS1591
         [EnumMember(Value = "SWITCH_FEE")]
+        #pragma warning disable CS1591
         SWITCH_FEE,
+        #pragma warning restore CS1591
         [EnumMember(Value = "PINDEBIT_ASSOC_FEE")]
+        #pragma warning disable CS1591
         PINDEBIT_ASSOC_FEE,
+        #pragma warning restore CS1591
         [EnumMember(Value = "ACQUIRER_FEE")]
+        #pragma warning disable CS1591
         ACQUIRER_FEE,
+        #pragma warning restore CS1591
         [EnumMember(Value = "INTERCHANGE_FEE")]
+        #pragma warning disable CS1591
         INTERCHANGE_FEE,
+        #pragma warning restore CS1591
         [EnumMember(Value = "CUR_CONV_CARDHOLDER_FEE")]
+        #pragma warning disable CS1591
         CUR_CONV_CARDHOLDER_FEE,
+        #pragma warning restore CS1591
         [EnumMember(Value = "CUR_CONV_ISSUER_FEE")]
+        #pragma warning disable CS1591
         CUR_CONV_ISSUER_FEE,
+        #pragma warning restore CS1591
         [EnumMember(Value = "CROSS_BORDER_ISSUER_FEE")]
+        #pragma warning disable CS1591
         CROSS_BORDER_ISSUER_FEE,
+        #pragma warning restore CS1591
     }
 }

@@ -8,7 +8,8 @@ namespace Marqeta.Core.Sdk.Models {
     /// <summary>
     /// Contains information about the merchant&apos;s financial institution.
     /// </summary>
-    public class Acquirer : IAdditionalDataHolder, IParsable {
+    public class Acquirer : IAdditionalDataHolder, IParsable 
+    {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Country code of the merchant&apos;s financial institution.</summary>
@@ -54,7 +55,8 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>
         /// Instantiates a new <see cref="Acquirer"/> and sets the default values.
         /// </summary>
-        public Acquirer() {
+        public Acquirer()
+        {
             AdditionalData = new Dictionary<string, object>();
         }
         /// <summary>
@@ -62,7 +64,8 @@ namespace Marqeta.Core.Sdk.Models {
         /// </summary>
         /// <returns>A <see cref="Acquirer"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static Acquirer CreateFromDiscriminatorValue(IParseNode parseNode) {
+        public static Acquirer CreateFromDiscriminatorValue(IParseNode parseNode)
+        {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
             return new Acquirer();
         }
@@ -70,8 +73,10 @@ namespace Marqeta.Core.Sdk.Models {
         /// The deserialization information for the current model
         /// </summary>
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
-        public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers() {
-            return new Dictionary<string, Action<IParseNode>> {
+        public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
+        {
+            return new Dictionary<string, Action<IParseNode>>
+            {
                 {"institution_country", n => { InstitutionCountry = n.GetStringValue(); } },
                 {"institution_id_code", n => { InstitutionIdCode = n.GetStringValue(); } },
                 {"network_international_id", n => { NetworkInternationalId = n.GetStringValue(); } },
@@ -83,7 +88,8 @@ namespace Marqeta.Core.Sdk.Models {
         /// Serializes information the current object
         /// </summary>
         /// <param name="writer">Serialization writer to use to serialize this model</param>
-        public virtual void Serialize(ISerializationWriter writer) {
+        public virtual void Serialize(ISerializationWriter writer)
+        {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("institution_country", InstitutionCountry);
             writer.WriteStringValue("institution_id_code", InstitutionIdCode);

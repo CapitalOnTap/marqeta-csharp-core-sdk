@@ -3,22 +3,39 @@ using System.Runtime.Serialization;
 using System;
 namespace Marqeta.Core.Sdk.Models {
     /// <summary>State of the case.</summary>
-    public enum Chargeback_response_state {
+    public enum Chargeback_response_state
+    {
         [EnumMember(Value = "INITIATED")]
+        #pragma warning disable CS1591
         INITIATED,
+        #pragma warning restore CS1591
         [EnumMember(Value = "REPRESENTMENT")]
+        #pragma warning disable CS1591
         REPRESENTMENT,
+        #pragma warning restore CS1591
         [EnumMember(Value = "PREARBITRATION")]
+        #pragma warning disable CS1591
         PREARBITRATION,
+        #pragma warning restore CS1591
         [EnumMember(Value = "ARBITRATION")]
+        #pragma warning disable CS1591
         ARBITRATION,
+        #pragma warning restore CS1591
         [EnumMember(Value = "CASE_WON")]
+        #pragma warning disable CS1591
         CASE_WON,
+        #pragma warning restore CS1591
         [EnumMember(Value = "CASE_LOST")]
+        #pragma warning disable CS1591
         CASE_LOST,
+        #pragma warning restore CS1591
         [EnumMember(Value = "NETWORK_REJECTED")]
+        #pragma warning disable CS1591
         NETWORK_REJECTED,
+        #pragma warning restore CS1591
         [EnumMember(Value = "WITHDRAWN")]
+        #pragma warning disable CS1591
         WITHDRAWN,
+        #pragma warning restore CS1591
     }
 }

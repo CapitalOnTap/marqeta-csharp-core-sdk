@@ -3,14 +3,23 @@ using System.Runtime.Serialization;
 using System;
 namespace Marqeta.Core.Sdk.Models {
     /// <summary>Transaction type.</summary>
-    public enum Program_reserve_transaction_response_type {
+    public enum Program_reserve_transaction_response_type
+    {
         [EnumMember(Value = "CREDIT")]
+        #pragma warning disable CS1591
         CREDIT,
+        #pragma warning restore CS1591
         [EnumMember(Value = "DEBIT")]
+        #pragma warning disable CS1591
         DEBIT,
+        #pragma warning restore CS1591
         [EnumMember(Value = "PENDING_CREDIT")]
+        #pragma warning disable CS1591
         PENDING_CREDIT,
+        #pragma warning restore CS1591
         [EnumMember(Value = "PENDING_DEBIT")]
+        #pragma warning disable CS1591
         PENDING_DEBIT,
+        #pragma warning restore CS1591
     }
 }

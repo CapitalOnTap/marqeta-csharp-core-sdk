@@ -12,20 +12,23 @@ namespace Marqeta.Core.Sdk.Users.Lookup {
     /// <summary>
     /// Builds and executes requests for operations under \users\lookup
     /// </summary>
-    public class LookupRequestBuilder : BaseRequestBuilder {
+    public class LookupRequestBuilder : BaseRequestBuilder 
+    {
         /// <summary>
         /// Instantiates a new <see cref="LookupRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public LookupRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/users/lookup{?count*,fields*,search_type*,sort_by*,start_index*}", pathParameters) {
+        public LookupRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/users/lookup{?count*,fields*,search_type*,sort_by*,start_index*}", pathParameters)
+        {
         }
         /// <summary>
         /// Instantiates a new <see cref="LookupRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public LookupRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/users/lookup{?count*,fields*,search_type*,sort_by*,start_index*}", rawUrl) {
+        public LookupRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/users/lookup{?count*,fields*,search_type*,sort_by*,start_index*}", rawUrl)
+        {
         }
         /// <summary>
         /// To search for one or more users, send a `POST` request to the `/users/lookup` endpoint.Include in the message body any parameters by which you want to query.This endpoint supports &lt;&lt;/core-api/field-filtering, field filtering&gt;&gt; and &lt;&lt;/core-api/sorting-and-pagination, pagination&gt;&gt;.
@@ -37,14 +40,17 @@ namespace Marqeta.Core.Sdk.Users.Lookup {
         /// <exception cref="ApiError">When receiving a 4XX or 5XX status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<UserCardHolderListResponse?> PostAsync(User_card_holder_search_model body, Action<RequestConfiguration<LookupRequestBuilderPostQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default) {
+        public async Task<UserCardHolderListResponse?> PostAsync(User_card_holder_search_model body, Action<RequestConfiguration<LookupRequestBuilderPostQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        {
 #nullable restore
 #else
-        public async Task<UserCardHolderListResponse> PostAsync(User_card_holder_search_model body, Action<RequestConfiguration<LookupRequestBuilderPostQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default) {
+        public async Task<UserCardHolderListResponse> PostAsync(User_card_holder_search_model body, Action<RequestConfiguration<LookupRequestBuilderPostQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        {
 #endif
             _ = body ?? throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPostRequestInformation(body, requestConfiguration);
-            var errorMapping = new Dictionary<string, ParsableFactory<IParsable>> {
+            var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
+            {
                 {"XXX", ApiError.CreateFromDiscriminatorValue},
             };
             return await RequestAdapter.SendAsync<UserCardHolderListResponse>(requestInfo, UserCardHolderListResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
@@ -57,10 +63,12 @@ namespace Marqeta.Core.Sdk.Users.Lookup {
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToPostRequestInformation(User_card_holder_search_model body, Action<RequestConfiguration<LookupRequestBuilderPostQueryParameters>>? requestConfiguration = default) {
+        public RequestInformation ToPostRequestInformation(User_card_holder_search_model body, Action<RequestConfiguration<LookupRequestBuilderPostQueryParameters>>? requestConfiguration = default)
+        {
 #nullable restore
 #else
-        public RequestInformation ToPostRequestInformation(User_card_holder_search_model body, Action<RequestConfiguration<LookupRequestBuilderPostQueryParameters>> requestConfiguration = default) {
+        public RequestInformation ToPostRequestInformation(User_card_holder_search_model body, Action<RequestConfiguration<LookupRequestBuilderPostQueryParameters>> requestConfiguration = default)
+        {
 #endif
             _ = body ?? throw new ArgumentNullException(nameof(body));
             var requestInfo = new RequestInformation(Method.POST, UrlTemplate, PathParameters);
@@ -74,13 +82,15 @@ namespace Marqeta.Core.Sdk.Users.Lookup {
         /// </summary>
         /// <returns>A <see cref="LookupRequestBuilder"/></returns>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
-        public LookupRequestBuilder WithUrl(string rawUrl) {
+        public LookupRequestBuilder WithUrl(string rawUrl)
+        {
             return new LookupRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
         /// To search for one or more users, send a `POST` request to the `/users/lookup` endpoint.Include in the message body any parameters by which you want to query.This endpoint supports &lt;&lt;/core-api/field-filtering, field filtering&gt;&gt; and &lt;&lt;/core-api/sorting-and-pagination, pagination&gt;&gt;.
         /// </summary>
-        public class LookupRequestBuilderPostQueryParameters {
+        public class LookupRequestBuilderPostQueryParameters 
+        {
             /// <summary>Number of user resources to retrieve.</summary>
             [QueryParameter("count")]
             public int? Count { get; set; }

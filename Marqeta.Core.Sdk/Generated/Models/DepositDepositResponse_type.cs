@@ -3,10 +3,15 @@ using System.Runtime.Serialization;
 using System;
 namespace Marqeta.Core.Sdk.Models {
     /// <summary>Determines whether funds are being debited from or credited to the account.</summary>
-    public enum DepositDepositResponse_type {
+    public enum DepositDepositResponse_type
+    {
         [EnumMember(Value = "CREDIT")]
+        #pragma warning disable CS1591
         CREDIT,
+        #pragma warning restore CS1591
         [EnumMember(Value = "DEBIT")]
+        #pragma warning disable CS1591
         DEBIT,
+        #pragma warning restore CS1591
     }
 }

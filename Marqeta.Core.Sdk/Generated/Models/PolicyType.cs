@@ -3,20 +3,35 @@ using System.Runtime.Serialization;
 using System;
 namespace Marqeta.Core.Sdk.Models {
     /// <summary>Type of policy.</summary>
-    public enum PolicyType {
+    public enum PolicyType
+    {
         [EnumMember(Value = "APR")]
+        #pragma warning disable CS1591
         APR,
+        #pragma warning restore CS1591
         [EnumMember(Value = "DOCUMENT")]
+        #pragma warning disable CS1591
         DOCUMENT,
+        #pragma warning restore CS1591
         [EnumMember(Value = "FEE")]
+        #pragma warning disable CS1591
         FEE,
+        #pragma warning restore CS1591
         [EnumMember(Value = "OFFER")]
+        #pragma warning disable CS1591
         OFFER,
+        #pragma warning restore CS1591
         [EnumMember(Value = "PRODUCT")]
+        #pragma warning disable CS1591
         PRODUCT,
+        #pragma warning restore CS1591
         [EnumMember(Value = "REWARD")]
+        #pragma warning disable CS1591
         REWARD,
+        #pragma warning restore CS1591
         [EnumMember(Value = "ALL")]
+        #pragma warning disable CS1591
         ALL,
+        #pragma warning restore CS1591
     }
 }

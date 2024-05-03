@@ -3,16 +3,27 @@ using System.Runtime.Serialization;
 using System;
 namespace Marqeta.Core.Sdk.Models {
     /// <summary>Status of the credit account.*NOTE* `CHARGE_OFF` is not an allowable value for `original_status`.</summary>
-    public enum AccountStatusEnum {
+    public enum AccountStatusEnum
+    {
         [EnumMember(Value = "UNACTIVATED")]
+        #pragma warning disable CS1591
         UNACTIVATED,
+        #pragma warning restore CS1591
         [EnumMember(Value = "ACTIVE")]
+        #pragma warning disable CS1591
         ACTIVE,
+        #pragma warning restore CS1591
         [EnumMember(Value = "SUSPENDED")]
+        #pragma warning disable CS1591
         SUSPENDED,
+        #pragma warning restore CS1591
         [EnumMember(Value = "TERMINATED")]
+        #pragma warning disable CS1591
         TERMINATED,
+        #pragma warning restore CS1591
         [EnumMember(Value = "CHARGE_OFF")]
+        #pragma warning disable CS1591
         CHARGE_OFF,
+        #pragma warning restore CS1591
     }
 }

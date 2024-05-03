@@ -3,20 +3,35 @@ using System.Runtime.Serialization;
 using System;
 namespace Marqeta.Core.Sdk.Models {
     /// <summary>Channel from which the transaction was originated.</summary>
-    public enum Transaction_metadata_payment_channel {
+    public enum Transaction_metadata_payment_channel
+    {
         [EnumMember(Value = "OTHER")]
+        #pragma warning disable CS1591
         OTHER,
+        #pragma warning restore CS1591
         [EnumMember(Value = "ATM")]
+        #pragma warning disable CS1591
         ATM,
+        #pragma warning restore CS1591
         [EnumMember(Value = "ECOMMERCE")]
+        #pragma warning disable CS1591
         ECOMMERCE,
+        #pragma warning restore CS1591
         [EnumMember(Value = "MAIL")]
+        #pragma warning disable CS1591
         MAIL,
+        #pragma warning restore CS1591
         [EnumMember(Value = "PHONE")]
+        #pragma warning disable CS1591
         PHONE,
+        #pragma warning restore CS1591
         [EnumMember(Value = "MOTO")]
+        #pragma warning disable CS1591
         MOTO,
+        #pragma warning restore CS1591
         [EnumMember(Value = "EU_MOTO_NON_SECURE")]
+        #pragma warning disable CS1591
         EU_MOTO_NON_SECURE,
+        #pragma warning restore CS1591
     }
 }

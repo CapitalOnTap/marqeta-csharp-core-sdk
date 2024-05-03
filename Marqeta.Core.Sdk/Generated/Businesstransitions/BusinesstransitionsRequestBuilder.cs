@@ -14,32 +14,40 @@ namespace Marqeta.Core.Sdk.Businesstransitions {
     /// <summary>
     /// Builds and executes requests for operations under \businesstransitions
     /// </summary>
-    public class BusinesstransitionsRequestBuilder : BaseRequestBuilder {
+    public class BusinesstransitionsRequestBuilder : BaseRequestBuilder 
+    {
         /// <summary>The business property</summary>
-        public BusinessRequestBuilder Business { get =>
-            new BusinessRequestBuilder(PathParameters, RequestAdapter);
+        public BusinessRequestBuilder Business
+        {
+            get => new BusinessRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>Gets an item from the Marqeta.Core.Sdk.businesstransitions.item collection</summary>
         /// <param name="position">The unique identifier of the business transition you want to retrieve.</param>
         /// <returns>A <see cref="WithTokenItemRequestBuilder"/></returns>
-        public WithTokenItemRequestBuilder this[string position] { get {
-            var urlTplParams = new Dictionary<string, object>(PathParameters);
-            urlTplParams.Add("token", position);
-            return new WithTokenItemRequestBuilder(urlTplParams, RequestAdapter);
-        } }
+        public WithTokenItemRequestBuilder this[string position]
+        {
+            get
+            {
+                var urlTplParams = new Dictionary<string, object>(PathParameters);
+                urlTplParams.Add("token", position);
+                return new WithTokenItemRequestBuilder(urlTplParams, RequestAdapter);
+            }
+        }
         /// <summary>
         /// Instantiates a new <see cref="BusinesstransitionsRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public BusinesstransitionsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/businesstransitions", pathParameters) {
+        public BusinesstransitionsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/businesstransitions", pathParameters)
+        {
         }
         /// <summary>
         /// Instantiates a new <see cref="BusinesstransitionsRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public BusinesstransitionsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/businesstransitions", rawUrl) {
+        public BusinesstransitionsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/businesstransitions", rawUrl)
+        {
         }
         /// <summary>
         /// This endpoint enables you to change a business&apos; status, depending on your role and the previous status change.By changing a business&apos; status, you can control the business&apos; capabilities and the setting of the `business.active` field.The `business.active` field is `true` if your business is in the `LIMITED` or `ACTIVE` state, and `false` if your business is in the `UNVERIFIED` state.You cannot control the value of the `business.active` field directly.[cols=&quot;,2a,2a&quot;]|===| The business.status field | Description | Business limitations| Unverified| Initial status of a newly created business belonging to an `accountholdergroup` where KYC is always required.| Cannot load funds.*The business.active field:*   +`false`*Allowable transitions:*   +`ACTIVE`, `SUSPENDED`, `CLOSED`| Limited| Initial status of a newly created business belonging to an `accountholdergroup` where KYC is conditionally required.| Restricted by rules in `accountholdergroups.pre_kyc_controls`.*The business.active field:*   +`true`*Allowable transitions:*   +`ACTIVE`, `SUSPENDED`, `CLOSED`| Active| Status of a business that has passed KYC; initial status of a newly created business belonging to an `accountholdergroup` where KYC is never required.| None.*The business.active field:*   +`true`*Allowable transitions:*   +`SUSPENDED`, `CLOSED`| Suspended| The business is temporarily inactive.*NOTE:* Transitioning a suspended business to the `ACTIVE` status is restricted, based on your role and the details of the previous status change.| Cannot load funds or activate cards.*The business.active field:*   +`false`*Allowable transitions:*   +`ACTIVE`, `LIMITED`, `UNVERIFIED`, `CLOSED`| Closed| The business is permanently inactive.*NOTE:* `CLOSED` is a terminal status.In exceptional cases, you can transition a business from `CLOSED` to another status, depending on your role and the details of the previous status change.Contact your Marqeta representative for more information.| Cannot load funds.*The business.active field:*   +`false`*Allowable transitions:*   +`ACTIVE`, `LIMITED`, `UNVERIFIED`, `SUSPENDED`|===[NOTE]The Marqeta platform transitions a business&apos; status in response to certain events.For example, a business with an `UNVERIFIED` status transitions to `ACTIVE` when the business passes KYC.
@@ -51,14 +59,17 @@ namespace Marqeta.Core.Sdk.Businesstransitions {
         /// <exception cref="ApiError">When receiving a 4XX or 5XX status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<BusinessTransitionResponse?> PostAsync(BusinessTransitionRequest body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default) {
+        public async Task<BusinessTransitionResponse?> PostAsync(BusinessTransitionRequest body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        {
 #nullable restore
 #else
-        public async Task<BusinessTransitionResponse> PostAsync(BusinessTransitionRequest body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default) {
+        public async Task<BusinessTransitionResponse> PostAsync(BusinessTransitionRequest body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        {
 #endif
             _ = body ?? throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPostRequestInformation(body, requestConfiguration);
-            var errorMapping = new Dictionary<string, ParsableFactory<IParsable>> {
+            var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
+            {
                 {"XXX", ApiError.CreateFromDiscriminatorValue},
             };
             return await RequestAdapter.SendAsync<BusinessTransitionResponse>(requestInfo, BusinessTransitionResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
@@ -71,10 +82,12 @@ namespace Marqeta.Core.Sdk.Businesstransitions {
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToPostRequestInformation(BusinessTransitionRequest body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default) {
+        public RequestInformation ToPostRequestInformation(BusinessTransitionRequest body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
+        {
 #nullable restore
 #else
-        public RequestInformation ToPostRequestInformation(BusinessTransitionRequest body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default) {
+        public RequestInformation ToPostRequestInformation(BusinessTransitionRequest body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
+        {
 #endif
             _ = body ?? throw new ArgumentNullException(nameof(body));
             var requestInfo = new RequestInformation(Method.POST, UrlTemplate, PathParameters);
@@ -88,7 +101,8 @@ namespace Marqeta.Core.Sdk.Businesstransitions {
         /// </summary>
         /// <returns>A <see cref="BusinesstransitionsRequestBuilder"/></returns>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
-        public BusinesstransitionsRequestBuilder WithUrl(string rawUrl) {
+        public BusinesstransitionsRequestBuilder WithUrl(string rawUrl)
+        {
             return new BusinesstransitionsRequestBuilder(rawUrl, RequestAdapter);
         }
     }

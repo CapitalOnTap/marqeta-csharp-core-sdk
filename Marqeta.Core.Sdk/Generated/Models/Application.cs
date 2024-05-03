@@ -8,7 +8,8 @@ namespace Marqeta.Core.Sdk.Models {
     /// <summary>
     /// Contains client application information.
     /// </summary>
-    public class Application : IAdditionalDataHolder, IParsable {
+    public class Application : IAdditionalDataHolder, IParsable 
+    {
         /// <summary>Access code of the client application.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -70,7 +71,8 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>
         /// Instantiates a new <see cref="Application"/> and sets the default values.
         /// </summary>
-        public Application() {
+        public Application()
+        {
             AdditionalData = new Dictionary<string, object>();
         }
         /// <summary>
@@ -78,7 +80,8 @@ namespace Marqeta.Core.Sdk.Models {
         /// </summary>
         /// <returns>A <see cref="Application"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static Application CreateFromDiscriminatorValue(IParseNode parseNode) {
+        public static Application CreateFromDiscriminatorValue(IParseNode parseNode)
+        {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
             return new Application();
         }
@@ -86,8 +89,10 @@ namespace Marqeta.Core.Sdk.Models {
         /// The deserialization information for the current model
         /// </summary>
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
-        public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers() {
-            return new Dictionary<string, Action<IParseNode>> {
+        public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
+        {
+            return new Dictionary<string, Action<IParseNode>>
+            {
                 {"access_code", n => { AccessCode = n.GetStringValue(); } },
                 {"assets_url", n => { AssetsUrl = n.GetStringValue(); } },
                 {"client_api_base_url", n => { ClientApiBaseUrl = n.GetStringValue(); } },
@@ -101,7 +106,8 @@ namespace Marqeta.Core.Sdk.Models {
         /// Serializes information the current object
         /// </summary>
         /// <param name="writer">Serialization writer to use to serialize this model</param>
-        public virtual void Serialize(ISerializationWriter writer) {
+        public virtual void Serialize(ISerializationWriter writer)
+        {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("access_code", AccessCode);
             writer.WriteStringValue("assets_url", AssetsUrl);

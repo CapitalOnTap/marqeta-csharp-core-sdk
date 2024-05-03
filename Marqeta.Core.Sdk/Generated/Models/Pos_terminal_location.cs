@@ -3,14 +3,23 @@ using System.Runtime.Serialization;
 using System;
 namespace Marqeta.Core.Sdk.Models {
     /// <summary>Location of the card acceptor/terminal.</summary>
-    public enum Pos_terminal_location {
+    public enum Pos_terminal_location
+    {
         [EnumMember(Value = "ON_PREMISE")]
+        #pragma warning disable CS1591
         ON_PREMISE,
+        #pragma warning restore CS1591
         [EnumMember(Value = "OFF_PREMISE_MERCHANT")]
+        #pragma warning disable CS1591
         OFF_PREMISE_MERCHANT,
+        #pragma warning restore CS1591
         [EnumMember(Value = "OFF_PREMISE_CARDHOLDER")]
+        #pragma warning disable CS1591
         OFF_PREMISE_CARDHOLDER,
+        #pragma warning restore CS1591
         [EnumMember(Value = "NO_TERMINAL")]
+        #pragma warning disable CS1591
         NO_TERMINAL,
+        #pragma warning restore CS1591
     }
 }

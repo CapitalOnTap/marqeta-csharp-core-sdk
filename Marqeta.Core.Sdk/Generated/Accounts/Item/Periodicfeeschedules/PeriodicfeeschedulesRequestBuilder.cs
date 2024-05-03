@@ -12,20 +12,23 @@ namespace Marqeta.Core.Sdk.Accounts.Item.Periodicfeeschedules {
     /// <summary>
     /// Builds and executes requests for operations under \accounts\{account_token}\periodicfeeschedules
     /// </summary>
-    public class PeriodicfeeschedulesRequestBuilder : BaseRequestBuilder {
+    public class PeriodicfeeschedulesRequestBuilder : BaseRequestBuilder 
+    {
         /// <summary>
         /// Instantiates a new <see cref="PeriodicfeeschedulesRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public PeriodicfeeschedulesRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/accounts/{account_token}/periodicfeeschedules{?count*,start_index*}", pathParameters) {
+        public PeriodicfeeschedulesRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/accounts/{account_token}/periodicfeeschedules{?count*,start_index*}", pathParameters)
+        {
         }
         /// <summary>
         /// Instantiates a new <see cref="PeriodicfeeschedulesRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public PeriodicfeeschedulesRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/accounts/{account_token}/periodicfeeschedules{?count*,start_index*}", rawUrl) {
+        public PeriodicfeeschedulesRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/accounts/{account_token}/periodicfeeschedules{?count*,start_index*}", rawUrl)
+        {
         }
         /// <summary>
         /// Get all active and upcoming periodic fee schedules of an account
@@ -36,13 +39,16 @@ namespace Marqeta.Core.Sdk.Accounts.Item.Periodicfeeschedules {
         /// <exception cref="ApiError">When receiving a 4XX or 5XX status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<PeriodicFeeSchedulePage?> GetAsync(Action<RequestConfiguration<PeriodicfeeschedulesRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default) {
+        public async Task<PeriodicFeeSchedulePage?> GetAsync(Action<RequestConfiguration<PeriodicfeeschedulesRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        {
 #nullable restore
 #else
-        public async Task<PeriodicFeeSchedulePage> GetAsync(Action<RequestConfiguration<PeriodicfeeschedulesRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default) {
+        public async Task<PeriodicFeeSchedulePage> GetAsync(Action<RequestConfiguration<PeriodicfeeschedulesRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            var errorMapping = new Dictionary<string, ParsableFactory<IParsable>> {
+            var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
+            {
                 {"XXX", ApiError.CreateFromDiscriminatorValue},
             };
             return await RequestAdapter.SendAsync<PeriodicFeeSchedulePage>(requestInfo, PeriodicFeeSchedulePage.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
@@ -54,10 +60,12 @@ namespace Marqeta.Core.Sdk.Accounts.Item.Periodicfeeschedules {
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<PeriodicfeeschedulesRequestBuilderGetQueryParameters>>? requestConfiguration = default) {
+        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<PeriodicfeeschedulesRequestBuilderGetQueryParameters>>? requestConfiguration = default)
+        {
 #nullable restore
 #else
-        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<PeriodicfeeschedulesRequestBuilderGetQueryParameters>> requestConfiguration = default) {
+        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<PeriodicfeeschedulesRequestBuilderGetQueryParameters>> requestConfiguration = default)
+        {
 #endif
             var requestInfo = new RequestInformation(Method.GET, UrlTemplate, PathParameters);
             requestInfo.Configure(requestConfiguration);
@@ -69,13 +77,15 @@ namespace Marqeta.Core.Sdk.Accounts.Item.Periodicfeeschedules {
         /// </summary>
         /// <returns>A <see cref="PeriodicfeeschedulesRequestBuilder"/></returns>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
-        public PeriodicfeeschedulesRequestBuilder WithUrl(string rawUrl) {
+        public PeriodicfeeschedulesRequestBuilder WithUrl(string rawUrl)
+        {
             return new PeriodicfeeschedulesRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
         /// Get all active and upcoming periodic fee schedules of an account
         /// </summary>
-        public class PeriodicfeeschedulesRequestBuilderGetQueryParameters {
+        public class PeriodicfeeschedulesRequestBuilderGetQueryParameters 
+        {
             /// <summary>Number of periodic fee schedule resources to retrieve.</summary>
             [QueryParameter("count")]
             public int? Count { get; set; }

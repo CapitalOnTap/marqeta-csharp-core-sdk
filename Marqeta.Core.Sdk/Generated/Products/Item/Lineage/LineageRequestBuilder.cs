@@ -12,20 +12,23 @@ namespace Marqeta.Core.Sdk.Products.Item.Lineage {
     /// <summary>
     /// Builds and executes requests for operations under \products\{token}\lineage
     /// </summary>
-    public class LineageRequestBuilder : BaseRequestBuilder {
+    public class LineageRequestBuilder : BaseRequestBuilder 
+    {
         /// <summary>
         /// Instantiates a new <see cref="LineageRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public LineageRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/products/{token}/lineage{?count*,sort_by*,start_index*,status*}", pathParameters) {
+        public LineageRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/products/{token}/lineage{?count*,sort_by*,start_index*,status*}", pathParameters)
+        {
         }
         /// <summary>
         /// Instantiates a new <see cref="LineageRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public LineageRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/products/{token}/lineage{?count*,sort_by*,start_index*,status*}", rawUrl) {
+        public LineageRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/products/{token}/lineage{?count*,sort_by*,start_index*,status*}", rawUrl)
+        {
         }
         /// <summary>
         /// Retrieve the lineage of a credit product, which is an array of related credit products whose lineage can be traced back to the same original credit product.This endpoint supports &lt;&lt;/core-api/sorting-and-pagination, sorting and pagination&gt;&gt;.
@@ -36,13 +39,16 @@ namespace Marqeta.Core.Sdk.Products.Item.Lineage {
         /// <exception cref="ApiError">When receiving a 4XX or 5XX status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<ProductsPage?> GetAsync(Action<RequestConfiguration<LineageRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default) {
+        public async Task<ProductsPage?> GetAsync(Action<RequestConfiguration<LineageRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        {
 #nullable restore
 #else
-        public async Task<ProductsPage> GetAsync(Action<RequestConfiguration<LineageRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default) {
+        public async Task<ProductsPage> GetAsync(Action<RequestConfiguration<LineageRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            var errorMapping = new Dictionary<string, ParsableFactory<IParsable>> {
+            var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
+            {
                 {"XXX", ApiError.CreateFromDiscriminatorValue},
             };
             return await RequestAdapter.SendAsync<ProductsPage>(requestInfo, ProductsPage.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
@@ -54,10 +60,12 @@ namespace Marqeta.Core.Sdk.Products.Item.Lineage {
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<LineageRequestBuilderGetQueryParameters>>? requestConfiguration = default) {
+        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<LineageRequestBuilderGetQueryParameters>>? requestConfiguration = default)
+        {
 #nullable restore
 #else
-        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<LineageRequestBuilderGetQueryParameters>> requestConfiguration = default) {
+        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<LineageRequestBuilderGetQueryParameters>> requestConfiguration = default)
+        {
 #endif
             var requestInfo = new RequestInformation(Method.GET, UrlTemplate, PathParameters);
             requestInfo.Configure(requestConfiguration);
@@ -69,13 +77,15 @@ namespace Marqeta.Core.Sdk.Products.Item.Lineage {
         /// </summary>
         /// <returns>A <see cref="LineageRequestBuilder"/></returns>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
-        public LineageRequestBuilder WithUrl(string rawUrl) {
+        public LineageRequestBuilder WithUrl(string rawUrl)
+        {
             return new LineageRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
         /// Retrieve the lineage of a credit product, which is an array of related credit products whose lineage can be traced back to the same original credit product.This endpoint supports &lt;&lt;/core-api/sorting-and-pagination, sorting and pagination&gt;&gt;.
         /// </summary>
-        public class LineageRequestBuilderGetQueryParameters {
+        public class LineageRequestBuilderGetQueryParameters 
+        {
             /// <summary>Number of credit product resources to retrieve.</summary>
             [QueryParameter("count")]
             public int? Count { get; set; }

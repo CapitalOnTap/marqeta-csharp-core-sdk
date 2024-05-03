@@ -12,20 +12,23 @@ namespace Marqeta.Core.Sdk.Users.Auth.Onetime {
     /// <summary>
     /// Builds and executes requests for operations under \users\auth\onetime
     /// </summary>
-    public class OnetimeRequestBuilder : BaseRequestBuilder {
+    public class OnetimeRequestBuilder : BaseRequestBuilder 
+    {
         /// <summary>
         /// Instantiates a new <see cref="OnetimeRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public OnetimeRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/users/auth/onetime", pathParameters) {
+        public OnetimeRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/users/auth/onetime", pathParameters)
+        {
         }
         /// <summary>
         /// Instantiates a new <see cref="OnetimeRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public OnetimeRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/users/auth/onetime", rawUrl) {
+        public OnetimeRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/users/auth/onetime", rawUrl)
+        {
         }
         /// <summary>
         /// This endpoint returns a single-use access token.This type of token authorizes a single request to access API endpoints and data associated with a particular user.A single-use access token differs from a user access token (as returned by `POST` `/users/auth/login`) only in the number of times it can be used.To return a single-use access token, send a `POST` request to the `/users/auth/onetime` endpoint.Provide one of these sets of input data:* *Case #1* – Application token and user access token* *Case #2* – Application token, admin access token, and user token* *Case #3* – Application token, user&apos;s Marqeta password, and user&apos;s email addressIn each case, provide the application token as the HTTP Basic Authentication username in the request header&apos;s Authorization field.When applicable, provide the user access token or admin access token as the HTTP Basic Authentication password.When applicable, provide the user token or user&apos;s Marqeta password and email address in link:http://www.json.org/[JSON, window=&quot;_blank&quot;] format in the request body.Before instantiating an embedded Marqeta widget, call this endpoint to obtain the single-use access token required as input (cases #1 and #2).This endpoint is also useful when you want to check a user&apos;s credentials before performing a sensitive operation without having to log out the user (case #3).[NOTE]Calling this endpoint and returning a single-use access token does not invalidate the user&apos;s current user access token.
@@ -37,14 +40,17 @@ namespace Marqeta.Core.Sdk.Users.Auth.Onetime {
         /// <exception cref="ApiError">When receiving a 4XX or 5XX status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<Access_token_response?> PostAsync(One_time_request_model body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default) {
+        public async Task<Access_token_response?> PostAsync(One_time_request_model body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        {
 #nullable restore
 #else
-        public async Task<Access_token_response> PostAsync(One_time_request_model body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default) {
+        public async Task<Access_token_response> PostAsync(One_time_request_model body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        {
 #endif
             _ = body ?? throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPostRequestInformation(body, requestConfiguration);
-            var errorMapping = new Dictionary<string, ParsableFactory<IParsable>> {
+            var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
+            {
                 {"XXX", ApiError.CreateFromDiscriminatorValue},
             };
             return await RequestAdapter.SendAsync<Access_token_response>(requestInfo, Access_token_response.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
@@ -57,10 +63,12 @@ namespace Marqeta.Core.Sdk.Users.Auth.Onetime {
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToPostRequestInformation(One_time_request_model body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default) {
+        public RequestInformation ToPostRequestInformation(One_time_request_model body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
+        {
 #nullable restore
 #else
-        public RequestInformation ToPostRequestInformation(One_time_request_model body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default) {
+        public RequestInformation ToPostRequestInformation(One_time_request_model body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
+        {
 #endif
             _ = body ?? throw new ArgumentNullException(nameof(body));
             var requestInfo = new RequestInformation(Method.POST, UrlTemplate, PathParameters);
@@ -74,7 +82,8 @@ namespace Marqeta.Core.Sdk.Users.Auth.Onetime {
         /// </summary>
         /// <returns>A <see cref="OnetimeRequestBuilder"/></returns>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
-        public OnetimeRequestBuilder WithUrl(string rawUrl) {
+        public OnetimeRequestBuilder WithUrl(string rawUrl)
+        {
             return new OnetimeRequestBuilder(rawUrl, RequestAdapter);
         }
     }

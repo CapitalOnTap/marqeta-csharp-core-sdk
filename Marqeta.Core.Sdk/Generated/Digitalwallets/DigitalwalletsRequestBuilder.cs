@@ -10,24 +10,28 @@ namespace Marqeta.Core.Sdk.Digitalwallets {
     /// <summary>
     /// Builds and executes requests for operations under \digitalwallets
     /// </summary>
-    public class DigitalwalletsRequestBuilder : BaseRequestBuilder {
+    public class DigitalwalletsRequestBuilder : BaseRequestBuilder 
+    {
         /// <summary>The wpp property</summary>
-        public WppRequestBuilder Wpp { get =>
-            new WppRequestBuilder(PathParameters, RequestAdapter);
+        public WppRequestBuilder Wpp
+        {
+            get => new WppRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>
         /// Instantiates a new <see cref="DigitalwalletsRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public DigitalwalletsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/digitalwallets", pathParameters) {
+        public DigitalwalletsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/digitalwallets", pathParameters)
+        {
         }
         /// <summary>
         /// Instantiates a new <see cref="DigitalwalletsRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public DigitalwalletsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/digitalwallets", rawUrl) {
+        public DigitalwalletsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/digitalwallets", rawUrl)
+        {
         }
     }
 }

@@ -2,10 +2,17 @@
 using System.Runtime.Serialization;
 using System;
 namespace Marqeta.Core.Sdk.Models {
-    public enum DirectDepositRequest_type {
+    #pragma warning disable CS1591
+    public enum DirectDepositRequest_type
+    #pragma warning restore CS1591
+    {
         [EnumMember(Value = "CREDIT")]
+        #pragma warning disable CS1591
         CREDIT,
+        #pragma warning restore CS1591
         [EnumMember(Value = "DEBIT")]
+        #pragma warning disable CS1591
         DEBIT,
+        #pragma warning restore CS1591
     }
 }

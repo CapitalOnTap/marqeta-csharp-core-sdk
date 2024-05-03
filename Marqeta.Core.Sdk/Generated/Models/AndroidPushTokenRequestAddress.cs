@@ -8,7 +8,8 @@ namespace Marqeta.Core.Sdk.Models {
     /// <summary>
     /// Specifies the cardholder address.
     /// </summary>
-    public class AndroidPushTokenRequestAddress : IAdditionalDataHolder, IParsable {
+    public class AndroidPushTokenRequestAddress : IAdditionalDataHolder, IParsable 
+    {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Street address of the cardholder.</summary>
@@ -86,7 +87,8 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>
         /// Instantiates a new <see cref="AndroidPushTokenRequestAddress"/> and sets the default values.
         /// </summary>
-        public AndroidPushTokenRequestAddress() {
+        public AndroidPushTokenRequestAddress()
+        {
             AdditionalData = new Dictionary<string, object>();
         }
         /// <summary>
@@ -94,7 +96,8 @@ namespace Marqeta.Core.Sdk.Models {
         /// </summary>
         /// <returns>A <see cref="AndroidPushTokenRequestAddress"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static AndroidPushTokenRequestAddress CreateFromDiscriminatorValue(IParseNode parseNode) {
+        public static AndroidPushTokenRequestAddress CreateFromDiscriminatorValue(IParseNode parseNode)
+        {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
             return new AndroidPushTokenRequestAddress();
         }
@@ -102,8 +105,10 @@ namespace Marqeta.Core.Sdk.Models {
         /// The deserialization information for the current model
         /// </summary>
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
-        public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers() {
-            return new Dictionary<string, Action<IParseNode>> {
+        public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
+        {
+            return new Dictionary<string, Action<IParseNode>>
+            {
                 {"address1", n => { Address1 = n.GetStringValue(); } },
                 {"address2", n => { Address2 = n.GetStringValue(); } },
                 {"city", n => { City = n.GetStringValue(); } },
@@ -119,7 +124,8 @@ namespace Marqeta.Core.Sdk.Models {
         /// Serializes information the current object
         /// </summary>
         /// <param name="writer">Serialization writer to use to serialize this model</param>
-        public virtual void Serialize(ISerializationWriter writer) {
+        public virtual void Serialize(ISerializationWriter writer)
+        {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("address1", Address1);
             writer.WriteStringValue("address2", Address2);

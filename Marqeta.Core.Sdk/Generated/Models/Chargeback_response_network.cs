@@ -3,16 +3,27 @@ using System.Runtime.Serialization;
 using System;
 namespace Marqeta.Core.Sdk.Models {
     /// <summary>Network handling the chargeback.</summary>
-    public enum Chargeback_response_network {
+    public enum Chargeback_response_network
+    {
         [EnumMember(Value = "MARQETA")]
+        #pragma warning disable CS1591
         MARQETA,
+        #pragma warning restore CS1591
         [EnumMember(Value = "DISCOVER")]
+        #pragma warning disable CS1591
         DISCOVER,
+        #pragma warning restore CS1591
         [EnumMember(Value = "MASTERCARD")]
+        #pragma warning disable CS1591
         MASTERCARD,
+        #pragma warning restore CS1591
         [EnumMember(Value = "PULSE")]
+        #pragma warning disable CS1591
         PULSE,
+        #pragma warning restore CS1591
         [EnumMember(Value = "VISA")]
+        #pragma warning disable CS1591
         VISA,
+        #pragma warning restore CS1591
     }
 }

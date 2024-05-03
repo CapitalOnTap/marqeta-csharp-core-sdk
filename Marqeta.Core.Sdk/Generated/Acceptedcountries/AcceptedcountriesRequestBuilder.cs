@@ -13,28 +13,35 @@ namespace Marqeta.Core.Sdk.Acceptedcountries {
     /// <summary>
     /// Builds and executes requests for operations under \acceptedcountries
     /// </summary>
-    public class AcceptedcountriesRequestBuilder : BaseRequestBuilder {
+    public class AcceptedcountriesRequestBuilder : BaseRequestBuilder 
+    {
         /// <summary>Gets an item from the Marqeta.Core.Sdk.acceptedcountries.item collection</summary>
         /// <param name="position">Unique identifier of the accepted countries object.</param>
         /// <returns>A <see cref="WithTokenItemRequestBuilder"/></returns>
-        public WithTokenItemRequestBuilder this[string position] { get {
-            var urlTplParams = new Dictionary<string, object>(PathParameters);
-            urlTplParams.Add("token", position);
-            return new WithTokenItemRequestBuilder(urlTplParams, RequestAdapter);
-        } }
+        public WithTokenItemRequestBuilder this[string position]
+        {
+            get
+            {
+                var urlTplParams = new Dictionary<string, object>(PathParameters);
+                urlTplParams.Add("token", position);
+                return new WithTokenItemRequestBuilder(urlTplParams, RequestAdapter);
+            }
+        }
         /// <summary>
         /// Instantiates a new <see cref="AcceptedcountriesRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public AcceptedcountriesRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/acceptedcountries{?count*,fields*,name*,search_type*,sort_by*,start_index*,whitelist*}", pathParameters) {
+        public AcceptedcountriesRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/acceptedcountries{?count*,fields*,name*,search_type*,sort_by*,start_index*,whitelist*}", pathParameters)
+        {
         }
         /// <summary>
         /// Instantiates a new <see cref="AcceptedcountriesRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public AcceptedcountriesRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/acceptedcountries{?count*,fields*,name*,search_type*,sort_by*,start_index*,whitelist*}", rawUrl) {
+        public AcceptedcountriesRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/acceptedcountries{?count*,fields*,name*,search_type*,sort_by*,start_index*,whitelist*}", rawUrl)
+        {
         }
         /// <summary>
         /// Retrieve a list of `acceptedcountries` objects.
@@ -45,13 +52,16 @@ namespace Marqeta.Core.Sdk.Acceptedcountries {
         /// <exception cref="ApiError">When receiving a 4XX or 5XX status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<AcceptedCountriesListResponse?> GetAsync(Action<RequestConfiguration<AcceptedcountriesRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default) {
+        public async Task<AcceptedCountriesListResponse?> GetAsync(Action<RequestConfiguration<AcceptedcountriesRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        {
 #nullable restore
 #else
-        public async Task<AcceptedCountriesListResponse> GetAsync(Action<RequestConfiguration<AcceptedcountriesRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default) {
+        public async Task<AcceptedCountriesListResponse> GetAsync(Action<RequestConfiguration<AcceptedcountriesRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            var errorMapping = new Dictionary<string, ParsableFactory<IParsable>> {
+            var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
+            {
                 {"XXX", ApiError.CreateFromDiscriminatorValue},
             };
             return await RequestAdapter.SendAsync<AcceptedCountriesListResponse>(requestInfo, AcceptedCountriesListResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
@@ -63,10 +73,12 @@ namespace Marqeta.Core.Sdk.Acceptedcountries {
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<AcceptedcountriesRequestBuilderGetQueryParameters>>? requestConfiguration = default) {
+        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<AcceptedcountriesRequestBuilderGetQueryParameters>>? requestConfiguration = default)
+        {
 #nullable restore
 #else
-        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<AcceptedcountriesRequestBuilderGetQueryParameters>> requestConfiguration = default) {
+        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<AcceptedcountriesRequestBuilderGetQueryParameters>> requestConfiguration = default)
+        {
 #endif
             var requestInfo = new RequestInformation(Method.GET, UrlTemplate, PathParameters);
             requestInfo.Configure(requestConfiguration);
@@ -78,13 +90,15 @@ namespace Marqeta.Core.Sdk.Acceptedcountries {
         /// </summary>
         /// <returns>A <see cref="AcceptedcountriesRequestBuilder"/></returns>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
-        public AcceptedcountriesRequestBuilder WithUrl(string rawUrl) {
+        public AcceptedcountriesRequestBuilder WithUrl(string rawUrl)
+        {
             return new AcceptedcountriesRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
         /// Retrieve a list of `acceptedcountries` objects.
         /// </summary>
-        public class AcceptedcountriesRequestBuilderGetQueryParameters {
+        public class AcceptedcountriesRequestBuilderGetQueryParameters 
+        {
             /// <summary>Number of accepted countries objects to retrieve.</summary>
             [QueryParameter("count")]
             public int? Count { get; set; }

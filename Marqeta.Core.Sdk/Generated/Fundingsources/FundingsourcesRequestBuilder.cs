@@ -17,56 +17,70 @@ namespace Marqeta.Core.Sdk.Fundingsources {
     /// <summary>
     /// Builds and executes requests for operations under \fundingsources
     /// </summary>
-    public class FundingsourcesRequestBuilder : BaseRequestBuilder {
+    public class FundingsourcesRequestBuilder : BaseRequestBuilder 
+    {
         /// <summary>The ach property</summary>
-        public AchRequestBuilder Ach { get =>
-            new AchRequestBuilder(PathParameters, RequestAdapter);
+        public AchRequestBuilder Ach
+        {
+            get => new AchRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The addresses property</summary>
-        public AddressesRequestBuilder Addresses { get =>
-            new AddressesRequestBuilder(PathParameters, RequestAdapter);
+        public AddressesRequestBuilder Addresses
+        {
+            get => new AddressesRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The business property</summary>
-        public BusinessRequestBuilder Business { get =>
-            new BusinessRequestBuilder(PathParameters, RequestAdapter);
+        public BusinessRequestBuilder Business
+        {
+            get => new BusinessRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The paymentcard property</summary>
-        public PaymentcardRequestBuilder Paymentcard { get =>
-            new PaymentcardRequestBuilder(PathParameters, RequestAdapter);
+        public PaymentcardRequestBuilder Paymentcard
+        {
+            get => new PaymentcardRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The program property</summary>
-        public ProgramRequestBuilder Program { get =>
-            new ProgramRequestBuilder(PathParameters, RequestAdapter);
+        public ProgramRequestBuilder Program
+        {
+            get => new ProgramRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The programgateway property</summary>
-        public ProgramgatewayRequestBuilder Programgateway { get =>
-            new ProgramgatewayRequestBuilder(PathParameters, RequestAdapter);
+        public ProgramgatewayRequestBuilder Programgateway
+        {
+            get => new ProgramgatewayRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The user property</summary>
-        public UserRequestBuilder User { get =>
-            new UserRequestBuilder(PathParameters, RequestAdapter);
+        public UserRequestBuilder User
+        {
+            get => new UserRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>Gets an item from the Marqeta.Core.Sdk.fundingsources.item collection</summary>
         /// <param name="position">Unique identifier of the funding source.Send a `GET` request to `/fundingsources/user/{user_token}` to retrieve existing funding source tokens for a user or to `/fundingsources/business/{business_token}` to retrieve existing funding source tokens for a business.</param>
         /// <returns>A <see cref="WithFunding_source_tokenItemRequestBuilder"/></returns>
-        public WithFunding_source_tokenItemRequestBuilder this[string position] { get {
-            var urlTplParams = new Dictionary<string, object>(PathParameters);
-            urlTplParams.Add("funding_source_token", position);
-            return new WithFunding_source_tokenItemRequestBuilder(urlTplParams, RequestAdapter);
-        } }
+        public WithFunding_source_tokenItemRequestBuilder this[string position]
+        {
+            get
+            {
+                var urlTplParams = new Dictionary<string, object>(PathParameters);
+                urlTplParams.Add("funding_source_token", position);
+                return new WithFunding_source_tokenItemRequestBuilder(urlTplParams, RequestAdapter);
+            }
+        }
         /// <summary>
         /// Instantiates a new <see cref="FundingsourcesRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public FundingsourcesRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/fundingsources", pathParameters) {
+        public FundingsourcesRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/fundingsources", pathParameters)
+        {
         }
         /// <summary>
         /// Instantiates a new <see cref="FundingsourcesRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public FundingsourcesRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/fundingsources", rawUrl) {
+        public FundingsourcesRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/fundingsources", rawUrl)
+        {
         }
     }
 }

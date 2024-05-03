@@ -8,7 +8,8 @@ namespace Marqeta.Core.Sdk.Models {
     /// <summary>
     /// Contains information on a document policy.
     /// </summary>
-    public class PolicyDocumentResponse : IAdditionalDataHolder, IParsable {
+    public class PolicyDocumentResponse : IAdditionalDataHolder, IParsable 
+    {
         /// <summary>Response details for a template.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -138,7 +139,8 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>
         /// Instantiates a new <see cref="PolicyDocumentResponse"/> and sets the default values.
         /// </summary>
-        public PolicyDocumentResponse() {
+        public PolicyDocumentResponse()
+        {
             AdditionalData = new Dictionary<string, object>();
         }
         /// <summary>
@@ -146,7 +148,8 @@ namespace Marqeta.Core.Sdk.Models {
         /// </summary>
         /// <returns>A <see cref="PolicyDocumentResponse"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static PolicyDocumentResponse CreateFromDiscriminatorValue(IParseNode parseNode) {
+        public static PolicyDocumentResponse CreateFromDiscriminatorValue(IParseNode parseNode)
+        {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
             return new PolicyDocumentResponse();
         }
@@ -154,8 +157,10 @@ namespace Marqeta.Core.Sdk.Models {
         /// The deserialization information for the current model
         /// </summary>
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
-        public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers() {
-            return new Dictionary<string, Action<IParseNode>> {
+        public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
+        {
+            return new Dictionary<string, Action<IParseNode>>
+            {
                 {"account_statement", n => { AccountStatement = n.GetObjectValue<PolicyDocumentTemplateResponse>(PolicyDocumentTemplateResponse.CreateFromDiscriminatorValue); } },
                 {"benefits_disclosure_premium", n => { BenefitsDisclosurePremium = n.GetObjectValue<PolicyDocumentAssetResponse>(PolicyDocumentAssetResponse.CreateFromDiscriminatorValue); } },
                 {"benefits_disclosure_traditional", n => { BenefitsDisclosureTraditional = n.GetObjectValue<PolicyDocumentAssetResponse>(PolicyDocumentAssetResponse.CreateFromDiscriminatorValue); } },
@@ -179,7 +184,8 @@ namespace Marqeta.Core.Sdk.Models {
         /// Serializes information the current object
         /// </summary>
         /// <param name="writer">Serialization writer to use to serialize this model</param>
-        public virtual void Serialize(ISerializationWriter writer) {
+        public virtual void Serialize(ISerializationWriter writer)
+        {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
             writer.WriteObjectValue<PolicyDocumentTemplateResponse>("account_statement", AccountStatement);
             writer.WriteObjectValue<PolicyDocumentAssetResponse>("benefits_disclosure_premium", BenefitsDisclosurePremium);

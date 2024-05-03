@@ -3,12 +3,19 @@ using System.Runtime.Serialization;
 using System;
 namespace Marqeta.Core.Sdk.Models {
     /// <summary>If set to `ALWAYS`, new account holders are created in an `UNVERIFIED` status and must pass identity verification (KYC) before they can be active; if set to `CONDITIONAL`, new account holders begin in a `LIMITED` status and have limited actions available before passing identity verification; if set to `NEVER`, new account holders are created in an active state.</summary>
-    public enum Account_holder_group_config_kyc_required {
+    public enum Account_holder_group_config_kyc_required
+    {
         [EnumMember(Value = "ALWAYS")]
+        #pragma warning disable CS1591
         ALWAYS,
+        #pragma warning restore CS1591
         [EnumMember(Value = "CONDITIONAL")]
+        #pragma warning disable CS1591
         CONDITIONAL,
+        #pragma warning restore CS1591
         [EnumMember(Value = "NEVER")]
+        #pragma warning disable CS1591
         NEVER,
+        #pragma warning restore CS1591
     }
 }

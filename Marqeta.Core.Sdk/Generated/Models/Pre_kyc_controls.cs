@@ -8,7 +8,8 @@ namespace Marqeta.Core.Sdk.Models {
     /// <summary>
     /// Contains configuration fields for a number of controls.*NOTE:* These controls are in effect only if `kyc_required` is `ALWAYS` or `CONDITIONAL` and the account holder has not yet passed KYC.
     /// </summary>
-    public class Pre_kyc_controls : IAdditionalDataHolder, IParsable {
+    public class Pre_kyc_controls : IAdditionalDataHolder, IParsable 
+    {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Specifies the maximum ledger balance allowed for members of the account holder group.</summary>
@@ -24,7 +25,8 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>
         /// Instantiates a new <see cref="Pre_kyc_controls"/> and sets the default values.
         /// </summary>
-        public Pre_kyc_controls() {
+        public Pre_kyc_controls()
+        {
             AdditionalData = new Dictionary<string, object>();
         }
         /// <summary>
@@ -32,7 +34,8 @@ namespace Marqeta.Core.Sdk.Models {
         /// </summary>
         /// <returns>A <see cref="Pre_kyc_controls"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static Pre_kyc_controls CreateFromDiscriminatorValue(IParseNode parseNode) {
+        public static Pre_kyc_controls CreateFromDiscriminatorValue(IParseNode parseNode)
+        {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
             return new Pre_kyc_controls();
         }
@@ -40,8 +43,10 @@ namespace Marqeta.Core.Sdk.Models {
         /// The deserialization information for the current model
         /// </summary>
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
-        public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers() {
-            return new Dictionary<string, Action<IParseNode>> {
+        public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
+        {
+            return new Dictionary<string, Action<IParseNode>>
+            {
                 {"balance_max", n => { BalanceMax = n.GetDoubleValue(); } },
                 {"cash_access_enabled", n => { CashAccessEnabled = n.GetBoolValue(); } },
                 {"enable_non_program_loads", n => { EnableNonProgramLoads = n.GetBoolValue(); } },
@@ -53,7 +58,8 @@ namespace Marqeta.Core.Sdk.Models {
         /// Serializes information the current object
         /// </summary>
         /// <param name="writer">Serialization writer to use to serialize this model</param>
-        public virtual void Serialize(ISerializationWriter writer) {
+        public virtual void Serialize(ISerializationWriter writer)
+        {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
             writer.WriteDoubleValue("balance_max", BalanceMax);
             writer.WriteBoolValue("cash_access_enabled", CashAccessEnabled);

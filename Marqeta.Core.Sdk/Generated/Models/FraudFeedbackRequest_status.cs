@@ -3,10 +3,15 @@ using System.Runtime.Serialization;
 using System;
 namespace Marqeta.Core.Sdk.Models {
     /// <summary>This is the value of the status of the fraud.</summary>
-    public enum FraudFeedbackRequest_status {
+    public enum FraudFeedbackRequest_status
+    {
         [EnumMember(Value = "CONFIRMED")]
+        #pragma warning disable CS1591
         CONFIRMED,
+        #pragma warning restore CS1591
         [EnumMember(Value = "DISPUTED")]
+        #pragma warning disable CS1591
         DISPUTED,
+        #pragma warning restore CS1591
     }
 }

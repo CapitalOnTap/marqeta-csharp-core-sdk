@@ -14,32 +14,40 @@ namespace Marqeta.Core.Sdk.Accounts.Item.Statements {
     /// <summary>
     /// Builds and executes requests for operations under \accounts\{account_token}\statements
     /// </summary>
-    public class StatementsRequestBuilder : BaseRequestBuilder {
+    public class StatementsRequestBuilder : BaseRequestBuilder 
+    {
         /// <summary>The files property</summary>
-        public FilesRequestBuilder Files { get =>
-            new FilesRequestBuilder(PathParameters, RequestAdapter);
+        public FilesRequestBuilder Files
+        {
+            get => new FilesRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>Gets an item from the Marqeta.Core.Sdk.accounts.item.statements.item collection</summary>
         /// <param name="position">Unique identifier of the statement summary to retrieve.Send a `GET` request to `/credit/accounts/{token}/statements/` to retrieve existing statement summary tokens.</param>
         /// <returns>A <see cref="WithStatement_summary_tokenItemRequestBuilder"/></returns>
-        public WithStatement_summary_tokenItemRequestBuilder this[string position] { get {
-            var urlTplParams = new Dictionary<string, object>(PathParameters);
-            urlTplParams.Add("statement_summary_token", position);
-            return new WithStatement_summary_tokenItemRequestBuilder(urlTplParams, RequestAdapter);
-        } }
+        public WithStatement_summary_tokenItemRequestBuilder this[string position]
+        {
+            get
+            {
+                var urlTplParams = new Dictionary<string, object>(PathParameters);
+                urlTplParams.Add("statement_summary_token", position);
+                return new WithStatement_summary_tokenItemRequestBuilder(urlTplParams, RequestAdapter);
+            }
+        }
         /// <summary>
         /// Instantiates a new <see cref="StatementsRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public StatementsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/accounts/{account_token}/statements{?count*,end_date*,sort_by*,start_date*,start_index*}", pathParameters) {
+        public StatementsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/accounts/{account_token}/statements{?count*,end_date*,sort_by*,start_date*,start_index*}", pathParameters)
+        {
         }
         /// <summary>
         /// Instantiates a new <see cref="StatementsRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public StatementsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/accounts/{account_token}/statements{?count*,end_date*,sort_by*,start_date*,start_index*}", rawUrl) {
+        public StatementsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/accounts/{account_token}/statements{?count*,end_date*,sort_by*,start_date*,start_index*}", rawUrl)
+        {
         }
         /// <summary>
         /// Retrieve an array of statement summaries tied to a cardholder&apos;s account.The statement summary, which is a summary of account activity on a statement, provides account holders with a synopsis of activity that occurred on the account during a specified billing cycle.This endpoint supports &lt;&lt;/core-api/sorting-and-pagination, sorting and pagination&gt;&gt;.You can use optional query parameters to return a statement based on its exact opening or closing date, or a statement whose closing date falls within a range of dates.
@@ -50,13 +58,16 @@ namespace Marqeta.Core.Sdk.Accounts.Item.Statements {
         /// <exception cref="ApiError">When receiving a 4XX or 5XX status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<StatementSummaryPage?> GetAsync(Action<RequestConfiguration<StatementsRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default) {
+        public async Task<StatementSummaryPage?> GetAsync(Action<RequestConfiguration<StatementsRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        {
 #nullable restore
 #else
-        public async Task<StatementSummaryPage> GetAsync(Action<RequestConfiguration<StatementsRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default) {
+        public async Task<StatementSummaryPage> GetAsync(Action<RequestConfiguration<StatementsRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            var errorMapping = new Dictionary<string, ParsableFactory<IParsable>> {
+            var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
+            {
                 {"XXX", ApiError.CreateFromDiscriminatorValue},
             };
             return await RequestAdapter.SendAsync<StatementSummaryPage>(requestInfo, StatementSummaryPage.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
@@ -68,10 +79,12 @@ namespace Marqeta.Core.Sdk.Accounts.Item.Statements {
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<StatementsRequestBuilderGetQueryParameters>>? requestConfiguration = default) {
+        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<StatementsRequestBuilderGetQueryParameters>>? requestConfiguration = default)
+        {
 #nullable restore
 #else
-        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<StatementsRequestBuilderGetQueryParameters>> requestConfiguration = default) {
+        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<StatementsRequestBuilderGetQueryParameters>> requestConfiguration = default)
+        {
 #endif
             var requestInfo = new RequestInformation(Method.GET, UrlTemplate, PathParameters);
             requestInfo.Configure(requestConfiguration);
@@ -83,13 +96,15 @@ namespace Marqeta.Core.Sdk.Accounts.Item.Statements {
         /// </summary>
         /// <returns>A <see cref="StatementsRequestBuilder"/></returns>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
-        public StatementsRequestBuilder WithUrl(string rawUrl) {
+        public StatementsRequestBuilder WithUrl(string rawUrl)
+        {
             return new StatementsRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
         /// Retrieve an array of statement summaries tied to a cardholder&apos;s account.The statement summary, which is a summary of account activity on a statement, provides account holders with a synopsis of activity that occurred on the account during a specified billing cycle.This endpoint supports &lt;&lt;/core-api/sorting-and-pagination, sorting and pagination&gt;&gt;.You can use optional query parameters to return a statement based on its exact opening or closing date, or a statement whose closing date falls within a range of dates.
         /// </summary>
-        public class StatementsRequestBuilderGetQueryParameters {
+        public class StatementsRequestBuilderGetQueryParameters 
+        {
             /// <summary>Number of account statement resources to retrieve.</summary>
             [QueryParameter("count")]
             public int? Count { get; set; }

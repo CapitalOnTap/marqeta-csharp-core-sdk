@@ -8,7 +8,8 @@ namespace Marqeta.Core.Sdk.Models {
     /// <summary>
     /// Controls characteristics related to digital wallets.
     /// </summary>
-    public class Digital_wallet_tokenization : IAdditionalDataHolder, IParsable {
+    public class Digital_wallet_tokenization : IAdditionalDataHolder, IParsable 
+    {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Specifies the digital wallet card art identifier for the card product.Digital wallets display the card art after the initial token has been provisioned and activated.Digital wallet card art is updated for all wallets automatically whenever a tokenized card is reissued or replaced.* If your card program is Managed by Marqeta, Marqeta populates this field on your behalf.* If your card program is Powered by Marqeta, you can obtain the correct card art identifier directly from Visa or Mastercard.If this field is left blank, your card product inherits the card art assigned to the account BIN range.</summary>
@@ -30,7 +31,8 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>
         /// Instantiates a new <see cref="Digital_wallet_tokenization"/> and sets the default values.
         /// </summary>
-        public Digital_wallet_tokenization() {
+        public Digital_wallet_tokenization()
+        {
             AdditionalData = new Dictionary<string, object>();
         }
         /// <summary>
@@ -38,7 +40,8 @@ namespace Marqeta.Core.Sdk.Models {
         /// </summary>
         /// <returns>A <see cref="Digital_wallet_tokenization"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static Digital_wallet_tokenization CreateFromDiscriminatorValue(IParseNode parseNode) {
+        public static Digital_wallet_tokenization CreateFromDiscriminatorValue(IParseNode parseNode)
+        {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
             return new Digital_wallet_tokenization();
         }
@@ -46,8 +49,10 @@ namespace Marqeta.Core.Sdk.Models {
         /// The deserialization information for the current model
         /// </summary>
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
-        public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers() {
-            return new Dictionary<string, Action<IParseNode>> {
+        public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
+        {
+            return new Dictionary<string, Action<IParseNode>>
+            {
                 {"card_art_id", n => { CardArtId = n.GetStringValue(); } },
                 {"provisioning_controls", n => { ProvisioningControls = n.GetObjectValue<Provisioning_controls>(Provisioning_controls.CreateFromDiscriminatorValue); } },
             };
@@ -56,7 +61,8 @@ namespace Marqeta.Core.Sdk.Models {
         /// Serializes information the current object
         /// </summary>
         /// <param name="writer">Serialization writer to use to serialize this model</param>
-        public virtual void Serialize(ISerializationWriter writer) {
+        public virtual void Serialize(ISerializationWriter writer)
+        {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("card_art_id", CardArtId);
             writer.WriteObjectValue<Provisioning_controls>("provisioning_controls", ProvisioningControls);

@@ -13,36 +13,43 @@ namespace Marqeta.Core.Sdk.Digitalwalletprovisionrequests {
     /// <summary>
     /// Builds and executes requests for operations under \digitalwalletprovisionrequests
     /// </summary>
-    public class DigitalwalletprovisionrequestsRequestBuilder : BaseRequestBuilder {
+    public class DigitalwalletprovisionrequestsRequestBuilder : BaseRequestBuilder 
+    {
         /// <summary>The androidpay property</summary>
-        public AndroidpayRequestBuilder Androidpay { get =>
-            new AndroidpayRequestBuilder(PathParameters, RequestAdapter);
+        public AndroidpayRequestBuilder Androidpay
+        {
+            get => new AndroidpayRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The applepay property</summary>
-        public ApplepayRequestBuilder Applepay { get =>
-            new ApplepayRequestBuilder(PathParameters, RequestAdapter);
+        public ApplepayRequestBuilder Applepay
+        {
+            get => new ApplepayRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The samsungpay property</summary>
-        public SamsungpayRequestBuilder Samsungpay { get =>
-            new SamsungpayRequestBuilder(PathParameters, RequestAdapter);
+        public SamsungpayRequestBuilder Samsungpay
+        {
+            get => new SamsungpayRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The xpay property</summary>
-        public XpayRequestBuilder Xpay { get =>
-            new XpayRequestBuilder(PathParameters, RequestAdapter);
+        public XpayRequestBuilder Xpay
+        {
+            get => new XpayRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>
         /// Instantiates a new <see cref="DigitalwalletprovisionrequestsRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public DigitalwalletprovisionrequestsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/digitalwalletprovisionrequests", pathParameters) {
+        public DigitalwalletprovisionrequestsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/digitalwalletprovisionrequests", pathParameters)
+        {
         }
         /// <summary>
         /// Instantiates a new <see cref="DigitalwalletprovisionrequestsRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public DigitalwalletprovisionrequestsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/digitalwalletprovisionrequests", rawUrl) {
+        public DigitalwalletprovisionrequestsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/digitalwalletprovisionrequests", rawUrl)
+        {
         }
     }
 }

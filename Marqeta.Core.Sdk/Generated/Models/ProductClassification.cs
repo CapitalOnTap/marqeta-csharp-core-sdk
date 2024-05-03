@@ -3,10 +3,15 @@ using System.Runtime.Serialization;
 using System;
 namespace Marqeta.Core.Sdk.Models {
     /// <summary>Specifies for whom the credit product is intended.* `CONSUMER` - The credit product is intended for individual consumers.* `SMALL_AND_MEDIUM_BUSINESS` - The credit product is intended for small and medium business.</summary>
-    public enum ProductClassification {
+    public enum ProductClassification
+    {
         [EnumMember(Value = "CONSUMER")]
+        #pragma warning disable CS1591
         CONSUMER,
+        #pragma warning restore CS1591
         [EnumMember(Value = "SMALL_AND_MEDIUM_BUSINESS")]
+        #pragma warning disable CS1591
         SMALL_AND_MEDIUM_BUSINESS,
+        #pragma warning restore CS1591
     }
 }

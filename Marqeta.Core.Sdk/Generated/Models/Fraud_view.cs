@@ -8,7 +8,8 @@ namespace Marqeta.Core.Sdk.Models {
     /// <summary>
     /// Contains one or more fraud determinations by the card network that apply to either the transaction or the cardholder&apos;s account.
     /// </summary>
-    public class Fraud_view : IAdditionalDataHolder, IParsable {
+    public class Fraud_view : IAdditionalDataHolder, IParsable 
+    {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Contains one or more fraud determinations by the card network that apply to either the transaction or the cardholder&apos;s account.</summary>
@@ -38,7 +39,8 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>
         /// Instantiates a new <see cref="Fraud_view"/> and sets the default values.
         /// </summary>
-        public Fraud_view() {
+        public Fraud_view()
+        {
             AdditionalData = new Dictionary<string, object>();
         }
         /// <summary>
@@ -46,7 +48,8 @@ namespace Marqeta.Core.Sdk.Models {
         /// </summary>
         /// <returns>A <see cref="Fraud_view"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static Fraud_view CreateFromDiscriminatorValue(IParseNode parseNode) {
+        public static Fraud_view CreateFromDiscriminatorValue(IParseNode parseNode)
+        {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
             return new Fraud_view();
         }
@@ -54,8 +57,10 @@ namespace Marqeta.Core.Sdk.Models {
         /// The deserialization information for the current model
         /// </summary>
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
-        public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers() {
-            return new Dictionary<string, Action<IParseNode>> {
+        public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
+        {
+            return new Dictionary<string, Action<IParseNode>>
+            {
                 {"issuer_processor", n => { IssuerProcessor = n.GetObjectValue<Issuer_fraud_view>(Issuer_fraud_view.CreateFromDiscriminatorValue); } },
                 {"network", n => { Network = n.GetObjectValue<Network_fraud_view>(Network_fraud_view.CreateFromDiscriminatorValue); } },
                 {"network_account_intelligence_score", n => { NetworkAccountIntelligenceScore = n.GetObjectValue<Network_account_intelligence_score>(Network_account_intelligence_score.CreateFromDiscriminatorValue); } },
@@ -65,7 +70,8 @@ namespace Marqeta.Core.Sdk.Models {
         /// Serializes information the current object
         /// </summary>
         /// <param name="writer">Serialization writer to use to serialize this model</param>
-        public virtual void Serialize(ISerializationWriter writer) {
+        public virtual void Serialize(ISerializationWriter writer)
+        {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
             writer.WriteObjectValue<Issuer_fraud_view>("issuer_processor", IssuerProcessor);
             writer.WriteObjectValue<Network_fraud_view>("network", Network);

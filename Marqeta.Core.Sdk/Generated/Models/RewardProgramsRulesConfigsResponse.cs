@@ -5,7 +5,10 @@ using System.IO;
 using System.Linq;
 using System;
 namespace Marqeta.Core.Sdk.Models {
-    public class RewardProgramsRulesConfigsResponse : IAdditionalDataHolder, IParsable {
+    #pragma warning disable CS1591
+    public class RewardProgramsRulesConfigsResponse : IAdditionalDataHolder, IParsable 
+    #pragma warning restore CS1591
+    {
         /// <summary>Type of reward accrued.</summary>
         public Marqeta.Core.Sdk.Models.AccrualType? AccrualType { get; set; }
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -49,7 +52,8 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>
         /// Instantiates a new <see cref="RewardProgramsRulesConfigsResponse"/> and sets the default values.
         /// </summary>
-        public RewardProgramsRulesConfigsResponse() {
+        public RewardProgramsRulesConfigsResponse()
+        {
             AdditionalData = new Dictionary<string, object>();
         }
         /// <summary>
@@ -57,7 +61,8 @@ namespace Marqeta.Core.Sdk.Models {
         /// </summary>
         /// <returns>A <see cref="RewardProgramsRulesConfigsResponse"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static RewardProgramsRulesConfigsResponse CreateFromDiscriminatorValue(IParseNode parseNode) {
+        public static RewardProgramsRulesConfigsResponse CreateFromDiscriminatorValue(IParseNode parseNode)
+        {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
             return new RewardProgramsRulesConfigsResponse();
         }
@@ -65,8 +70,10 @@ namespace Marqeta.Core.Sdk.Models {
         /// The deserialization information for the current model
         /// </summary>
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
-        public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers() {
-            return new Dictionary<string, Action<IParseNode>> {
+        public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
+        {
+            return new Dictionary<string, Action<IParseNode>>
+            {
                 {"accrual_type", n => { AccrualType = n.GetEnumValue<AccrualType>(); } },
                 {"created_time", n => { CreatedTime = n.GetDateTimeOffsetValue(); } },
                 {"greater_than", n => { GreaterThan = n.GetDecimalValue(); } },
@@ -83,7 +90,8 @@ namespace Marqeta.Core.Sdk.Models {
         /// Serializes information the current object
         /// </summary>
         /// <param name="writer">Serialization writer to use to serialize this model</param>
-        public virtual void Serialize(ISerializationWriter writer) {
+        public virtual void Serialize(ISerializationWriter writer)
+        {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
             writer.WriteEnumValue<AccrualType>("accrual_type", AccrualType);
             writer.WriteDateTimeOffsetValue("created_time", CreatedTime);
