@@ -2,8 +2,8 @@
 using System.Runtime.Serialization;
 using System;
 namespace Marqeta.Core.Sdk.Models {
-    /// <summary>Possible values: USER, ACCOUNT.</summary>
-    public enum SubstatusCreateReq_resource_type
+    /// <summary>substatus resource type</summary>
+    public enum SubstatusResponse_resource_type
     {
         [EnumMember(Value = "USER")]
         #pragma warning disable CS1591

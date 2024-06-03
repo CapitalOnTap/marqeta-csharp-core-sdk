@@ -6,21 +6,27 @@ using System.Linq;
 using System;
 namespace Marqeta.Core.Sdk.Models {
     /// <summary>
-    /// Contains information relevant to creating substatus
+    /// Contains information relevant to creating a substatus.
     /// </summary>
     public class SubstatusCreateReq : IAdditionalDataHolder, IParsable 
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Date when the sub status goes into effect, in UTC.</summary>
-        public DateTimeOffset? EffectiveDate { get; set; }
-        /// <summary>Reason for the substatus.</summary>
+        /// <summary>Dynamic attributes for the substatus.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Reason { get; set; }
+        public SubstatusCreateReq_attributes? Attributes { get; set; }
 #nullable restore
 #else
-        public string Reason { get; set; }
+        public SubstatusCreateReq_attributes Attributes { get; set; }
+#endif
+        /// <summary>List of events related to the substatus.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<SubstatusCreateReq_events>? Events { get; set; }
+#nullable restore
+#else
+        public List<SubstatusCreateReq_events> Events { get; set; }
 #endif
         /// <summary>The unique identifier of the user or account for which you want to create a substatus.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -30,9 +36,9 @@ namespace Marqeta.Core.Sdk.Models {
 #else
         public string ResourceToken { get; set; }
 #endif
-        /// <summary>Possible values: USER, ACCOUNT, BUSINESS</summary>
+        /// <summary>Possible values: USER, ACCOUNT.</summary>
         public SubstatusCreateReq_resource_type? ResourceType { get; set; }
-        /// <summary>Possible values: FRAUD, DECEASED, BANKRUPTCY, BANKRUPTCY_FILED, BANKRUPTCY_REAFFIRMED, BANKRUPTCY_WITHDRAWN, BANKRUPTCY_RESCINDED, BANKRUPTCY_DISCHARGED, HARDSHIP, MLA, SCRA</summary>
+        /// <summary>Possible values: FRAUD, DECEASED, BANKRUPTCY, BANKRUPTCY_FILED, BANKRUPTCY_REAFFIRMED,BANKRUPTCY_WITHDRAWN, BANKRUPTCY_RESCINDED, BANKRUPTCY_DISCHARGED, HARDSHIP, MLA, SCRA.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Substatus { get; set; }
@@ -65,8 +71,8 @@ namespace Marqeta.Core.Sdk.Models {
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                {"effective_date", n => { EffectiveDate = n.GetDateTimeOffsetValue(); } },
-                {"reason", n => { Reason = n.GetStringValue(); } },
+                {"attributes", n => { Attributes = n.GetObjectValue<SubstatusCreateReq_attributes>(SubstatusCreateReq_attributes.CreateFromDiscriminatorValue); } },
+                {"events", n => { Events = n.GetCollectionOfObjectValues<SubstatusCreateReq_events>(SubstatusCreateReq_events.CreateFromDiscriminatorValue)?.ToList(); } },
                 {"resource_token", n => { ResourceToken = n.GetStringValue(); } },
                 {"resource_type", n => { ResourceType = n.GetEnumValue<SubstatusCreateReq_resource_type>(); } },
                 {"substatus", n => { Substatus = n.GetStringValue(); } },
@@ -79,8 +85,8 @@ namespace Marqeta.Core.Sdk.Models {
         public virtual void Serialize(ISerializationWriter writer)
         {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
-            writer.WriteDateTimeOffsetValue("effective_date", EffectiveDate);
-            writer.WriteStringValue("reason", Reason);
+            writer.WriteObjectValue<SubstatusCreateReq_attributes>("attributes", Attributes);
+            writer.WriteCollectionOfObjectValues<SubstatusCreateReq_events>("events", Events);
             writer.WriteStringValue("resource_token", ResourceToken);
             writer.WriteEnumValue<SubstatusCreateReq_resource_type>("resource_type", ResourceType);
             writer.WriteStringValue("substatus", Substatus);

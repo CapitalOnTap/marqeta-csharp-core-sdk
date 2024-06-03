@@ -12,30 +12,24 @@ namespace Marqeta.Core.Sdk.Models {
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Date and time when the sub status was created on Marqeta&apos;s credit platform, in UTC.</summary>
-        public DateTimeOffset? CreatedTime { get; set; }
-        /// <summary>Reason for deactivating the sub status.</summary>
+        /// <summary>Additional dynamic attributes related to the substatus.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? DeactivationReason { get; set; }
+        public SubstatusResponse_attributes? Attributes { get; set; }
 #nullable restore
 #else
-        public string DeactivationReason { get; set; }
+        public SubstatusResponse_attributes Attributes { get; set; }
 #endif
-        /// <summary>Date and time when the sub status was deactivated on Marqeta&apos;s credit platform, in UTC.</summary>
-        public DateTimeOffset? DeactivationTime { get; set; }
-        /// <summary>Date when the sub status goes into effect, in UTC.</summary>
-        public DateTimeOffset? EffectiveDate { get; set; }
-        /// <summary>Indicates whether the sub status is active.</summary>
+        /// <summary>List of events related to the substatus.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<SubstatusResponse_events>? Events { get; set; }
+#nullable restore
+#else
+        public List<SubstatusResponse_events> Events { get; set; }
+#endif
+        /// <summary>Flag indicating whether the substatus is active (false when deactivated).</summary>
         public bool? IsActive { get; set; }
-        /// <summary>substatus reason</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? Reason { get; set; }
-#nullable restore
-#else
-        public string Reason { get; set; }
-#endif
         /// <summary>substatus resource token</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -45,13 +39,7 @@ namespace Marqeta.Core.Sdk.Models {
         public string ResourceToken { get; set; }
 #endif
         /// <summary>substatus resource type</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? ResourceType { get; set; }
-#nullable restore
-#else
-        public string ResourceType { get; set; }
-#endif
+        public SubstatusResponse_resource_type? ResourceType { get; set; }
         /// <summary>substatus</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -93,14 +81,11 @@ namespace Marqeta.Core.Sdk.Models {
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                {"created_time", n => { CreatedTime = n.GetDateTimeOffsetValue(); } },
-                {"deactivation_reason", n => { DeactivationReason = n.GetStringValue(); } },
-                {"deactivation_time", n => { DeactivationTime = n.GetDateTimeOffsetValue(); } },
-                {"effective_date", n => { EffectiveDate = n.GetDateTimeOffsetValue(); } },
+                {"attributes", n => { Attributes = n.GetObjectValue<SubstatusResponse_attributes>(SubstatusResponse_attributes.CreateFromDiscriminatorValue); } },
+                {"events", n => { Events = n.GetCollectionOfObjectValues<SubstatusResponse_events>(SubstatusResponse_events.CreateFromDiscriminatorValue)?.ToList(); } },
                 {"is_active", n => { IsActive = n.GetBoolValue(); } },
-                {"reason", n => { Reason = n.GetStringValue(); } },
                 {"resource_token", n => { ResourceToken = n.GetStringValue(); } },
-                {"resource_type", n => { ResourceType = n.GetStringValue(); } },
+                {"resource_type", n => { ResourceType = n.GetEnumValue<SubstatusResponse_resource_type>(); } },
                 {"substatus", n => { Substatus = n.GetStringValue(); } },
                 {"token", n => { Token = n.GetStringValue(); } },
             };
@@ -112,14 +97,11 @@ namespace Marqeta.Core.Sdk.Models {
         public virtual void Serialize(ISerializationWriter writer)
         {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
-            writer.WriteDateTimeOffsetValue("created_time", CreatedTime);
-            writer.WriteStringValue("deactivation_reason", DeactivationReason);
-            writer.WriteDateTimeOffsetValue("deactivation_time", DeactivationTime);
-            writer.WriteDateTimeOffsetValue("effective_date", EffectiveDate);
+            writer.WriteObjectValue<SubstatusResponse_attributes>("attributes", Attributes);
+            writer.WriteCollectionOfObjectValues<SubstatusResponse_events>("events", Events);
             writer.WriteBoolValue("is_active", IsActive);
-            writer.WriteStringValue("reason", Reason);
             writer.WriteStringValue("resource_token", ResourceToken);
-            writer.WriteStringValue("resource_type", ResourceType);
+            writer.WriteEnumValue<SubstatusResponse_resource_type>("resource_type", ResourceType);
             writer.WriteStringValue("substatus", Substatus);
             writer.WriteStringValue("token", Token);
             writer.WriteAdditionalData(AdditionalData);
