@@ -24,7 +24,7 @@ namespace Marqeta.Core.Sdk.Models {
 #else
         public string BundleToken { get; set; }
 #endif
-        /// <summary>Unique identifier of the parent business program.Either a `user_token` or `business_token` is present, not both.</summary>
+        /// <summary>Unique identifier of the parent business program.Either a `user_token` or `business_token` is returned, not both.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? BusinessToken { get; set; }
@@ -52,7 +52,7 @@ namespace Marqeta.Core.Sdk.Models {
 #else
         public string CreditProductToken { get; set; }
 #endif
-        /// <summary>Valid three-digit link:https://www.iso.org/iso-4217-currency-codes.html[ISO 4217 currency code, window=&quot;_blank&quot;]</summary>
+        /// <summary>Valid three-digit link:https://www.iso.org/iso-4217-currency-codes.html[ISO 4217 currency code, window=&quot;_blank&quot;].</summary>
         public Marqeta.Core.Sdk.Models.CurrencyCode? CurrencyCode { get; set; }
         /// <summary>Current purchase balance on the credit account.</summary>
         public double? CurrentBalance { get; set; }
@@ -74,6 +74,14 @@ namespace Marqeta.Core.Sdk.Models {
 #endif
         /// <summary>Type of cycle.* `BEGINNING_REVOLVING` - Account is beginning to revolve and just started carrying a balancefrom the previous month.* `REVOLVING` - Account is revolving and has been carrying a balance from month to month for more than one month.* `END_REVOLVING` - Account is no longer revolving and the previous month&apos;s balance is paid off.* `TRANSACTING` - Account is not revolving and the balance is paid off each month.</summary>
         public CycleType? LatestStatementCycleType { get; set; }
+        /// <summary>Contains `max_apr_schedule` objects, which provide information about any temporary overrides of the APRs on the credit account. This could include special APR rates due to account/user sub status changes.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<MaxAPRSchedulesResponse>? MaxAprSchedules { get; set; }
+#nullable restore
+#else
+        public List<MaxAPRSchedulesResponse> MaxAprSchedules { get; set; }
+#endif
         /// <summary>Name of the credit account.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -88,7 +96,7 @@ namespace Marqeta.Core.Sdk.Models {
         public double? RemainingStatementBalance { get; set; }
         /// <summary>Status of the credit account.*NOTE* `CHARGE_OFF` is not an allowable value for `original_status`.</summary>
         public AccountStatusEnum? Status { get; set; }
-        /// <summary>substatuses of the credit account.</summary>
+        /// <summary>Substatuses of the credit account.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<string>? Substatuses { get; set; }
@@ -116,7 +124,7 @@ namespace Marqeta.Core.Sdk.Models {
 #else
         public List<AccountUsageResponse> Usages { get; set; }
 #endif
-        /// <summary>substatuses of the users under the credit account.</summary>
+        /// <summary>Substatuses of the users under the credit account.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<string>? UserSubstatuses { get; set; }
@@ -124,7 +132,7 @@ namespace Marqeta.Core.Sdk.Models {
 #else
         public List<string> UserSubstatuses { get; set; }
 #endif
-        /// <summary>Unique identifier of the primary account holder.Either a `user_token` or `business_token` is present, not both.</summary>
+        /// <summary>Unique identifier of the primary account holder.Either a `user_token` or `business_token` is returned, not both.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? UserToken { get; set; }
@@ -171,6 +179,7 @@ namespace Marqeta.Core.Sdk.Models {
                 {"description", n => { Description = n.GetStringValue(); } },
                 {"external_offer_id", n => { ExternalOfferId = n.GetStringValue(); } },
                 {"latest_statement_cycle_type", n => { LatestStatementCycleType = n.GetEnumValue<CycleType>(); } },
+                {"max_apr_schedules", n => { MaxAprSchedules = n.GetCollectionOfObjectValues<MaxAPRSchedulesResponse>(MaxAPRSchedulesResponse.CreateFromDiscriminatorValue)?.ToList(); } },
                 {"name", n => { Name = n.GetStringValue(); } },
                 {"remaining_min_payment_due", n => { RemainingMinPaymentDue = n.GetDoubleValue(); } },
                 {"remaining_statement_balance", n => { RemainingStatementBalance = n.GetDoubleValue(); } },
@@ -204,6 +213,7 @@ namespace Marqeta.Core.Sdk.Models {
             writer.WriteStringValue("description", Description);
             writer.WriteStringValue("external_offer_id", ExternalOfferId);
             writer.WriteEnumValue<CycleType>("latest_statement_cycle_type", LatestStatementCycleType);
+            writer.WriteCollectionOfObjectValues<MaxAPRSchedulesResponse>("max_apr_schedules", MaxAprSchedules);
             writer.WriteStringValue("name", Name);
             writer.WriteDoubleValue("remaining_min_payment_due", RemainingMinPaymentDue);
             writer.WriteDoubleValue("remaining_statement_balance", RemainingStatementBalance);

@@ -57,7 +57,7 @@ namespace Marqeta.Core.Sdk.Substatuses.Item {
         /// Update substatus for an user or account.
         /// </summary>
         /// <returns>A <see cref="SubstatusResponse"/></returns>
-        /// <param name="body">Contains information relevant to updating substatus</param>
+        /// <param name="body">Contains information relevant to deactivating a substatus.</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
         /// <exception cref="ApiError">When receiving a 4XX or 5XX status code</exception>
@@ -101,7 +101,7 @@ namespace Marqeta.Core.Sdk.Substatuses.Item {
         /// Update substatus for an user or account.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
-        /// <param name="body">Contains information relevant to updating substatus</param>
+        /// <param name="body">Contains information relevant to deactivating a substatus.</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable

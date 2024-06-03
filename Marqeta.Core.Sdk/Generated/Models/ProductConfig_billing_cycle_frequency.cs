@@ -2,7 +2,7 @@
 using System.Runtime.Serialization;
 using System;
 namespace Marqeta.Core.Sdk.Models {
-    /// <summary>Frequency at which your account is billed</summary>
+    /// <summary>Frequency at which your account is billed.</summary>
     public enum ProductConfig_billing_cycle_frequency
     {
         [EnumMember(Value = "MONTHLY")]

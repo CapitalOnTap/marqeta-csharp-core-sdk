@@ -22,9 +22,9 @@ namespace Marqeta.Core.Sdk.Models {
 #endif
         /// <summary>Day of month the billing cycle starts.</summary>
         public int? BillingCycleDay { get; set; }
-        /// <summary>Determines if the billing cycle day is manually set or determined dynamically during account creation based on cycling logic</summary>
+        /// <summary>Determines if the billing cycle day is manually set or determined dynamically during account creation based on cycling logic.</summary>
         public PolicyProductPaymentConfiguration_billing_cycle_day_strategy? BillingCycleDayStrategy { get; set; }
-        /// <summary>Frequency at which your account is billed</summary>
+        /// <summary>Frequency at which your account is billed.</summary>
         public PolicyProductPaymentConfiguration_billing_cycle_frequency? BillingCycleFrequency { get; set; }
         /// <summary>Day of month the payment for the previous billing cycle is due.This field is being deprecated and replaced by `payment_due_interval` of a product policy.To retrieve `payment_due_interval`, see &lt;&lt;/core-api/policies#retrieveProductPolicy, Retrieve credit product policy, payments.payment_due_interval&gt;&gt;.</summary>
         [Obsolete("")]
@@ -37,7 +37,7 @@ namespace Marqeta.Core.Sdk.Models {
 #else
         public PolicyProductMinPaymentCalculation MinPaymentCalculation { get; set; }
 #endif
-        /// <summary>Specifies the payment due interval that is used to determine the payment due date for a billing cycle.The accepted values are either -1 or a value between 1 and 26.A value of -1 indicates one day prior to the next billing cycle date.</summary>
+        /// <summary>Specifies the payment due interval that is used to determine the payment due date for a billing cycle.The accepted values are either -1 or a value between 1 and 26.A value of -1 indicates one day prior to the next billing cycle date</summary>
         public int? PaymentDueInterval { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="PolicyProductPaymentConfiguration"/> and sets the default values.

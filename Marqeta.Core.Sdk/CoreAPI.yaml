@@ -6,7 +6,7 @@ info:
   contact:
     name: Marqeta
     email: support@marqeta.com
-  version: 3.0.17
+  version: 3.0.18
 servers:
   - url: /v3
 paths:
@@ -342,9 +342,7 @@ paths:
           style: form
           schema:
             type: boolean
-            x-allowableValues:
-              - true
-              - false
+            x-allowableValues: '`true`, `false`'
         - name: account_token
           in: path
           description: "Unique identifier of the credit account to retrieve.\n\nSend a `GET` request to `/credit/accounts` to retrieve existing credit account tokens."
@@ -685,6 +683,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ApiError'
+      security:
+        - zionToken: [ ]
   '/accounts/{account_token}/cards':
     get:
       tags:
@@ -13045,7 +13045,7 @@ paths:
       tags:
         - User Transitions
       summary: Create user transition
-      description: "This endpoint enables you to change a user's status, depending on your role and the previous status change.\nBy changing a user's status, you can control the user's capabilities and the setting of the `user.active` field.\nDo not set the value of the `user.active` field directly.\n\n[cols=\"2,4a,4a\"]\n|===\n| user.status Field | Description | User Limitations\n\n| `UNVERIFIED`\n| Initial status of a new user belonging to an account holder group where KYC is always required.\n\n*Allowable transitions:*  +\n`ACTIVE`, `CLOSED`\n| Cannot load funds or activate cards.\n\n*user.active Field:*  +\n`false`\n\n| `LIMITED`\n| Initial status of a new user belonging to an account holder group where KYC is conditionally required.\n\n*Allowable transitions:*  +\n`ACTIVE`, `SUSPENDED`, `CLOSED`\n| Restricted by rules in `accountholdergroups.pre_kyc_controls`.\n\n*user.active Field:*  +\n`true`\n\n| `ACTIVE`\n| Status of a user who has passed KYC, or initial status of a new user belonging to an account holder group where KYC is never required.\n\n*Allowable transitions:*  +\n`SUSPENDED`, `CLOSED`, `UNVERIFIED`\n| None.\n\n*user.active Field:*  +\n`true`\n\n| `SUSPENDED`\n| The user is temporarily inactive.\n\nTransitioning a suspended user to the `ACTIVE` status is restricted, based on your role and the details of the previous status change.\n\n*Allowable transitions:*  +\n`ACTIVE`, `LIMITED`, `UNVERIFIED`, `CLOSED`\n| Cannot load funds or activate cards.\n\n*user.active Field:*  +\n`false`\n\n| `CLOSED`\n| The user is permanently inactive.\n\nIn general, the `CLOSED` status should be terminal.\nFor exceptional cases, you can transition a user to other statuses, depending on your role and the details of the previous status change.\nContact your Marqeta representative for more information.\n\n*Allowable transitions:*  +\n`ACTIVE`, `LIMITED`, `UNVERIFIED`, `SUSPENDED`\n| Cannot load funds or activate cards.\n\n*user.active Field:*  +\n`false`\n\n|===\n\n[NOTE]\nThe Marqeta platform transitions a user's status in response to certain events.\nFor example, a user in the `UNVERIFIED` status is transitioned to `ACTIVE` when the user passes KYC verification."
+      description: "This endpoint enables you to change a user's status, depending on your role and the previous status change.\nBy changing a user's status, you can control the user's capabilities and the setting of the `user.active` field.\nDo not set the value of the `user.active` field directly.\n\n[cols=\"2,4a,4a\"]\n|===\n| user.status Field | Description | User Limitations\n\n| `UNVERIFIED`\n| Initial status of a new user belonging to an account holder group where KYC is always required.\n\n*Allowable transitions:*  +\n`ACTIVE`, `CLOSED`\n| Cannot activate cards or load funds.\n\n*user.active Field:*  +\n`false`\n\n| `LIMITED`\n| Initial status of a new user belonging to an account holder group where KYC is conditionally required.\n\n*Allowable transitions:*  +\n`ACTIVE`, `SUSPENDED`, `CLOSED`\n| Restricted by rules in `accountholdergroups.pre_kyc_controls`.\n\n*user.active Field:*  +\n`true`\n\n| `ACTIVE`\n| Status of a user who has passed KYC, or initial status of a new user belonging to an account holder group where KYC is never required.\n\n*Allowable transitions:*  +\n`SUSPENDED`, `CLOSED`, `UNVERIFIED`\n| None.\n\n*user.active Field:*  +\n`true`\n\n| `SUSPENDED`\n| The user is temporarily inactive.\n\nTransitioning a suspended user to the `ACTIVE` status is restricted, based on your role and the details of the previous status change.\n\n*Allowable transitions:*  +\n`ACTIVE`, `LIMITED`, `UNVERIFIED`, `CLOSED`\n| Cannot activate cards, load funds, or transact.\n\n*user.active Field:*  +\n`false`\n\n| `CLOSED`\n| The user is permanently inactive.\n\nIn general, the `CLOSED` status should be terminal.\nFor exceptional cases, you can transition a user to other statuses, depending on your role and the details of the previous status change.\nContact your Marqeta representative for more information.\n\n*Allowable transitions:*  +\n`ACTIVE`, `LIMITED`, `UNVERIFIED`, `SUSPENDED`\n| Cannot activate cards, load funds, or transact.\n\n*user.active Field:*  +\n`false`\n\n|===\n\n[NOTE]\nThe Marqeta platform transitions a user's status in response to certain events.\nFor example, a user in the `UNVERIFIED` status is transitioned to `ACTIVE` when the user passes KYC verification."
       operationId: postUsertransitions
       requestBody:
         content:
@@ -14051,7 +14051,7 @@ components:
           maximum: 28
           minimum: 1
           type: integer
-          description: Day of month the billing cycle starts.
+          description: "Day of month the billing cycle starts. \nIf an override value is not provided, the default value is derived from the bundle."
         card_level:
           enum:
             - PREMIUM
@@ -14095,7 +14095,7 @@ components:
           maximum: 28
           minimum: 1
           type: integer
-          description: Day of month the billing cycle starts.
+          description: "Day of month the billing cycle starts. \nIf an override value is not provided, the default value is derived from the bundle."
         card_level:
           enum:
             - PREMIUM
@@ -14401,7 +14401,7 @@ components:
           description: Unique identifier of the associated bundle product.
         business_token:
           type: string
-          description: "Unique identifier of the parent business program.\n\nEither a `user_token` or `business_token` is present, not both."
+          description: "Unique identifier of the parent business program.\n\nEither a `user_token` or `business_token` is returned, not both."
         config:
           $ref: '#/components/schemas/AccountConfigResponse'
         created_time:
@@ -14430,6 +14430,12 @@ components:
           description: Unique identifier you provide of the associated external credit offer.
         latest_statement_cycle_type:
           $ref: '#/components/schemas/CycleType'
+        max_apr_schedules:
+          minItems: 0
+          type: array
+          items:
+            $ref: '#/components/schemas/MaxAPRSchedulesResponse'
+          description: 'Contains `max_apr_schedule` objects, which provide information about any temporary overrides of the APRs on the credit account. This could include special APR rates due to account/user sub status changes.'
         name:
           type: string
           description: Name of the credit account.
@@ -14446,7 +14452,7 @@ components:
           items:
             type: string
             description: Substatus of the credit account.
-          description: substatuses of the credit account.
+          description: Substatuses of the credit account.
         token:
           maxLength: 36
           type: string
@@ -14467,10 +14473,10 @@ components:
           items:
             type: string
             description: Substatus of the user under the credit account.
-          description: substatuses of the users under the credit account.
+          description: Substatuses of the users under the credit account.
         user_token:
           type: string
-          description: "Unique identifier of the primary account holder.\n\nEither a `user_token` or `business_token` is present, not both."
+          description: "Unique identifier of the primary account holder.\n\nEither a `user_token` or `business_token` is returned, not both."
       description: Contains information on a credit account.
     AccountReward:
       required:
@@ -16562,7 +16568,7 @@ components:
       enum:
         - USD
       type: string
-      description: 'Valid three-digit link:https://www.iso.org/iso-4217-currency-codes.html[ISO 4217 currency code, window="_blank"]'
+      description: 'Valid three-digit link:https://www.iso.org/iso-4217-currency-codes.html[ISO 4217 currency code, window="_blank"].'
       default: USD
     CycleType:
       enum:
@@ -18204,6 +18210,34 @@ components:
           type: integer
           description: "The sort order index of the first resource in the returned array.\n\nThis field is returned if there are resources in your returned array."
           format: int32
+    MaxAPRSchedulesResponse:
+      required:
+        - end_date
+        - reason
+        - start_date
+        - value
+      type: object
+      properties:
+        end_date:
+          type: string
+          description: 'Date and time when the override APR ends, in UTC.'
+          format: date-time
+        reason:
+          enum:
+            - SCRA
+            - MLA
+            - HARDSHIP
+          type: string
+          description: Reason for the override APR.
+        start_date:
+          type: string
+          description: 'Date and time when the override APR goes into effect, in UTC.'
+          format: date-time
+        value:
+          maximum: 100
+          minimum: 0
+          type: number
+          description: 'The APR percentage value. This is the value of the fixed rate during the override period. The APR value must adhere to the constraints of the main schedule, such as maximum allowable values.'
     MccDynamicFilter:
       required:
         - includes
@@ -19825,13 +19859,13 @@ components:
           enum:
             - MANUAL
           type: string
-          description: Determines if the billing cycle day is manually set or determined dynamically during account creation based on cycling logic
+          description: Determines if the billing cycle day is manually set or determined dynamically during account creation based on cycling logic.
           default: MANUAL
         billing_cycle_frequency:
           enum:
             - MONTHLY
           type: string
-          description: Frequency at which your account is billed
+          description: Frequency at which your account is billed.
           default: MONTHLY
         due_day:
           maximum: 31
@@ -19843,7 +19877,7 @@ components:
           $ref: '#/components/schemas/PolicyProductMinPaymentCalculation'
         payment_due_interval:
           type: integer
-          description: "Specifies the payment due interval that is used to determine the payment due date for a billing cycle.\nThe accepted values are either -1 or a value between 1 and 26.\nA value of -1 indicates one day prior to the next billing cycle date."
+          description: "Specifies the payment due interval that is used to determine the payment due date for a billing cycle.\nThe accepted values are either -1 or a value between 1 and 26.\nA value of -1 indicates one day prior to the next billing cycle date"
           default: -1
       description: 'Contains the configurations for billing cycle day, payment due day, and fees.'
     PolicyProductResponse:
@@ -20180,13 +20214,13 @@ components:
           enum:
             - MANUAL
           type: string
-          description: Determines if the billing cycle day is manually set or determined dynamically during account creation based on cycling logic
+          description: Determines if the billing cycle day is manually set or determined dynamically during account creation based on cycling logic.
           default: MANUAL
         billing_cycle_frequency:
           enum:
             - MONTHLY
           type: string
-          description: Frequency at which your account is billed
+          description: Frequency at which your account is billed.
           default: MONTHLY
         fees:
           type: array
@@ -20197,7 +20231,7 @@ components:
           maximum: 31
           minimum: 31
           type: integer
-          description: "Day of month the payment for the previous billing cycle is due.\n\nThis field is deprecated.\nUse the `product.payment_due_interval` field instead.\nTo retrieve `payment_due_interval`, see <</core-api/credit-product#retrieveCreditProduct, Retrieve credit product, config.payment_due_interval>>."
+          description: "Day of month the payment for the previous billing cycle is due.\n\nThis field is deprecated.\nUse the `product.payment_due_interval` field instead.\nTo retrieve `payment_due_interval`, see <</core-api/credit-products#retrieveProduct, Retrieve credit product, config.payment_due_interval>>."
           deprecated: true
         payment_due_interval:
           type: integer
@@ -21848,36 +21882,94 @@ components:
       description: Return filtered transactions.
     SubstatusCreateReq:
       required:
-        - reason
+        - events
         - resource_token
         - resource_type
         - substatus
       type: object
       properties:
-        effective_date:
-          type: string
-          description: 'Date when the sub status goes into effect, in UTC.'
-          format: date-time
-        reason:
-          maxLength: 255
+        attributes:
+          type: object
+          additionalProperties:
+            type: string
+          description: Dynamic attributes for the substatus.
+        events:
+          type: array
+          items:
+            required:
+              - activation
+            type: object
+            properties:
+              activation:
+                $ref: '#/components/schemas/SubstatusEventDetails'
+              deactivation:
+                $ref: '#/components/schemas/SubstatusEventDetails'
+              state:
+                type: string
+                description: State of the event.
+          description: List of events related to the substatus.
+        resource_token:
           minLength: 1
           type: string
-          description: Reason for the substatus.
-        resource_token:
-          type: string
-          description: "The unique identifier of the user or account for which you want to create a substatus.\n"
+          description: The unique identifier of the user or account for which you want to create a substatus.
         resource_type:
           enum:
             - USER
             - ACCOUNT
           type: string
-          description: "Possible values: USER, ACCOUNT, BUSINESS\n"
+          description: "Possible values: USER, ACCOUNT.\n"
         substatus:
           maxLength: 36
           minLength: 1
           type: string
-          description: "Possible values: FRAUD, DECEASED, BANKRUPTCY, BANKRUPTCY_FILED, BANKRUPTCY_REAFFIRMED, BANKRUPTCY_WITHDRAWN, BANKRUPTCY_RESCINDED, BANKRUPTCY_DISCHARGED, HARDSHIP, MLA, SCRA\n"
-      description: Contains information relevant to creating substatus
+          description: "Possible values: FRAUD, DECEASED, BANKRUPTCY, BANKRUPTCY_FILED, BANKRUPTCY_REAFFIRMED,\nBANKRUPTCY_WITHDRAWN, BANKRUPTCY_RESCINDED, BANKRUPTCY_DISCHARGED, HARDSHIP, MLA, SCRA.\n"
+      description: Contains information relevant to creating a substatus.
+    SubstatusEventDetails:
+      required:
+        - reason
+      type: object
+      properties:
+        channel:
+          enum:
+            - ADMIN
+            - API
+            - FRAUD
+            - SYSTEM
+          type: string
+          description: The channel through which the event occurred.
+        effective_date:
+          type: string
+          description: 'Effective date of the event, in UTC.'
+          format: date-time
+        reason:
+          type: string
+          description: Reason for the event.
+      description: Details of an event related to a substatus.
+    SubstatusEventResponseDetails:
+      required:
+        - reason
+      type: object
+      properties:
+        channel:
+          enum:
+            - ADMIN
+            - API
+            - FRAUD
+            - SYSTEM
+          type: string
+          description: The channel through which the event occurred.
+        created_time:
+          type: string
+          description: Creation time of the event.
+          format: date-time
+        effective_date:
+          type: string
+          description: 'Effective date of the event, in UTC.'
+          format: date-time
+        reason:
+          type: string
+          description: Reason for the event.
+      description: Details of an event related to a substatus.
     SubstatusPage:
       required:
         - count
@@ -21906,43 +21998,41 @@ components:
       description: Return paginated account and user substatuses
     SubstatusResponse:
       required:
-        - created_time
-        - effective_date
-        - reason
+        - is_active
         - resource_token
         - resource_type
         - substatus
         - token
       type: object
       properties:
-        created_time:
-          type: string
-          description: 'Date and time when the sub status was created on Marqeta''s credit platform, in UTC.'
-          format: date-time
-        deactivation_reason:
-          maxLength: 255
-          type: string
-          description: Reason for deactivating the sub status.
-        deactivation_time:
-          type: string
-          description: 'Date and time when the sub status was deactivated on Marqeta''s credit platform, in UTC.'
-          format: date-time
-        effective_date:
-          type: string
-          description: 'Date when the sub status goes into effect, in UTC.'
-          format: date-time
+        attributes:
+          type: object
+          additionalProperties:
+            type: string
+          description: Additional dynamic attributes related to the substatus.
+        events:
+          type: array
+          items:
+            type: object
+            properties:
+              activation:
+                $ref: '#/components/schemas/SubstatusEventResponseDetails'
+              deactivation:
+                $ref: '#/components/schemas/SubstatusEventResponseDetails'
+              state:
+                type: string
+                description: 'The state of the event (e.g., MLA, SCRA).'
+          description: List of events related to the substatus.
         is_active:
           type: boolean
-          description: Indicates whether the sub status is active.
-        reason:
-          maxLength: 255
-          type: string
-          description: substatus reason
+          description: Flag indicating whether the substatus is active (false when deactivated).
         resource_token:
-          maxLength: 36
           type: string
           description: substatus resource token
         resource_type:
+          enum:
+            - USER
+            - ACCOUNT
           type: string
           description: substatus resource type
         substatus:
@@ -21950,21 +22040,38 @@ components:
           type: string
           description: substatus
         token:
-          maxLength: 36
           type: string
           description: substatus token
       description: Contains information about the substatus.
     SubstatusUpdateReq:
       required:
-        - deactivation_reason
+        - deactivation
       type: object
       properties:
-        deactivation_reason:
-          maxLength: 255
-          minLength: 1
-          type: string
-          description: Reason to deactivate the substatus.
-      description: Contains information relevant to updating substatus
+        deactivation:
+          required:
+            - reason
+          type: object
+          properties:
+            channel:
+              enum:
+                - ADMIN
+                - API
+                - FRAUD
+                - SYSTEM
+              type: string
+              description: "The channel through which deactivation is occurring:\n- **ADMIN**: Added through the Marqeta Dashboard.\n- **API**: Initiated through the Core API.\n- **FRAUD**: Determined by Marqeta or the card network.\n- **SYSTEM**: Initiated by Marqeta\n"
+            effective_date:
+              type: string
+              description: 'Effective date of the deactivation, in UTC.'
+              format: date-time
+            reason:
+              maxLength: 255
+              minLength: 1
+              type: string
+              description: Reason for deactivating the substatus.
+          description: Details of the deactivation process.
+      description: Contains information relevant to deactivating a substatus.
     Success:
       type: object
       properties:
@@ -25977,7 +26084,7 @@ components:
           description: Specifies the 3D Secure message version used for authentication.
         verification_result:
           type: string
-          description: "Result of cardholder authentication verification value (CAVV) or accountholder authentication value (AAV) verification performed by the card network.\n\n* `failed`\n* `not_present`\n* `not_provided`\n* `not_verified`\n* `not_verified_authentication_outage`\n* `verified`\n* `verified_amount_checked`\n* `verified_amount_greater_than_20_percent`: For Mastercard AAV verification, indicates that the original authentication amount and final authorization amount are mismatched, and that the final authorization amount exceeds the original authentication amount by more than 20%.\nThis 20% margin falls outside Mastercard's suggested tolerance for what a European cardholder might reasonably expect when the total transaction amount is not known in advance.\n* `verified_amount_less_than_20_percent`: For Mastercard AAV verification, indicates that the original authentication amount and final authorization amount are mismatched, and that the final authorization amount exceeds the original authentication amount by 20% or less.\nThis 20% margin falls within Mastercard's suggested tolerance for what a European cardholder might reasonably expect when the total transaction amount is not known in advance."
+          description: "Result of cardholder authentication verification value (CAVV) or accountholder authentication value (AAV) verification performed by the card network.\n\n* `failed`\n* `not_present`\n* `not_provided`\n* `not_verified`\n* `not_verified_authentication_outage`\n* `verified`\n* `verified_amount_checked`\n* `verified_amount_greater_than_20_percent`: For Mastercard AAV verification, indicates that the original authentication amount and final authorization amount are mismatched, and that the final authorization amount exceeds the original authentication amount by more than 20%.\nThis 20% margin falls outside Mastercard's suggested tolerance for what a European cardholder might reasonably expect when the total transaction amount is not known in advance.\n* `verified_amount_less_than_20_percent`: For Mastercard AAV verification, indicates that the original authentication amount and final authorization amount are mismatched, and that the final authorization amount exceeds the original authentication amount by 20% or less.\nThis 20% margin falls within Mastercard's suggested tolerance for what a European cardholder might reasonably expect when the total transaction amount is not known in advance.\n* `not_verified_mac_key_validation_passed`: For Mastercard only.\nThis field is present when the transaction passes MAC key validation, but Dynamic Linking was not performed by the Mastercard card network due to system connectivity issues.\n* `not_verified_mac_key_validation_failed`: For Mastercard only.\nThis field is present when the transaction fails MAC key validation, and Dynamic Linking was not performed by the Mastercard card network due to system connectivity issues."
         verification_value_created_by:
           type: string
           description: Transaction participant who determined the verification result.
@@ -32819,7 +32926,7 @@ tags:
   - name: web push provisioning
   - name: webhooks
   - name: Account Cards
-    description: "// Conditional snippet for beta or internal content\ninclude::../../include/maturity-admonition-banner.adoc[]\n\nUse the account cards endpoints to create and retrieve credit cards that can access the credit line on a <</core-api/credit-accounts, credit account>>.\n\nOnce a credit card is created, you can use the `/cards` endpoint to <</core-api/cards#putCardsToken, update the card>> or <</developer-guides/managing-lost-stolen-or-damaged-cards, manage lost, stolen, or damaged cards>>.\n\nTo receive webhook notifications when card transition or card action events occur, see <</core-api/event-types#_card_transition_events, Card transition events>> and <</core-api/event-types#_card_action_events, Card action events>> in Event Types."
+    description: "// Conditional snippet for beta or internal content\ninclude::../../maturity-admonition-banner.adoc[]\n\nUse the account cards endpoints to create and retrieve credit cards that can access the credit line on a <</core-api/credit-accounts, credit account>>.\n\nOnce a credit card is created, you can use the `/cards` endpoint to <</core-api/cards#putCardsToken, update the card>> or <</developer-guides/managing-lost-stolen-or-damaged-cards, manage lost, stolen, or damaged cards>>.\n\nTo receive webhook notifications when card transition or card action events occur, see <</core-api/event-types#_card_transition_events, Card transition events>> and <</core-api/event-types#_card_action_events, Card action events>> in Event Types."
   - name: Account Rewards
     description: "// Conditional snippet for beta or internal content\ninclude::../../maturity-admonition-banner.adoc[]\n\nUse the `/credit/accounts/{account_token}/rewards` endpoint to create a one-time reward on a <</core-api/credit-accounts, credit account>>.\n\nCreating a reward triggers the creation of a <</core-api/credit-account-journal-entries, journal entry>> belonging to the `REWARD` group.\nFor more on reward journal entries, see <</developer-guides/about-credit-account-journal-entries#_rewards, Rewards>> in the About Credit Account Journal Entries guide.\n\nFor the reward programs that are associated with a reward policy on a bundle, see <</core-api/reward-programs, Reward Programs>>."
   - name: Account Transitions
@@ -32891,13 +32998,13 @@ tags:
   - name: Reward Redemptions (Beta)
     description: "// Conditional snippet for beta or internal content\ninclude::../../maturity-admonition-banner.adoc[]\n\nUse the `/credit/rewardprograms/{token}/redemptions` endpoint to the manage reward redemptions on a credit account.\nA reward program's rules configuration specifies how rewards are redeemed and is defined in the <</developer-guides/credit-programs-dashboard#_creating_a_reward_policy, reward policy>> on the account's associated bundle.\nTo receive webhook notifications when reward redemption transition events occur, see <</core-api/event-types#_credit_reward_redemption_transition_events, Credit reward redemption transition events>> in Event Types."
   - name: Digital Wallets Management
-    description: "The Marqeta platform facilitates the use of digital wallets for storing tokenized cards and making payments.\nThe API provides endpoints that enable mobile applications to provision tokens into a digital wallet.\nIt also provides endpoints for retrieving digital wallet tokens and for managing their lifecycle through state transitions.\n\nFor an overview of digital wallet tokens, see <</developer-guides/digital-wallets-and-tokenization, Digital Wallets and Tokenization>>."
+    description: "// Conditional snippet for beta or internal content\ninclude::../../maturity-admonition-banner.adoc[]\n\nThe Marqeta platform facilitates the use of digital wallets for storing tokenized cards and making payments.\nThe API provides endpoints that enable mobile applications to provision tokens into a digital wallet.\nIt also provides endpoints for retrieving digital wallet tokens and for managing their lifecycle through state transitions.\n\nFor an overview of digital wallet tokens, see <</developer-guides/digital-wallets-and-tokenization, Digital Wallets and Tokenization>>."
   - name: Transactions
     description: "// Conditional snippet for beta or internal content\ninclude::../../maturity-admonition-banner.adoc[]\n\nThe `/transactions` resource represents the electronic messages that carry information used for payment processing.\nA transaction usually originates when a cardholder attempts to make a payment, either online or at a physical point of sale.\n\nYou can receive information about transactions as they occur by configuring webhooks.\nLearn about configuring webhooks in the <</developer-guides/about-webhooks, About Webhooks>> guide.\nSee the transaction events for which you can set up webhooks in the <</core-api/event-types, Event Types>> API reference page.\n\nYou can also retrieve transactions associated with specific cards, merchants, and account holders using the endpoints described here.\n\nFor an overview of transactions and the `transaction` object, including the complete list of <</developer-guides/about-transactions#_transaction_response_codes, transaction response codes>>, see <</developer-guides/about-transactions, About Transactions>>.\n\n[TIP]\nUse the `/transactions` endpoint to retrieve smaller datasets (up to one page).\nFor best performance when requesting larger datasets, use the <</diva-api/introduction, DiVA API>>."
   - name: Users
     description: "// Conditional snippet for beta or internal content\ninclude::../../maturity-admonition-banner.adoc[]\n\nThe `users` resource represents a person who accesses Marqeta-administered funds via a Marqeta card (whether physical or virtual).\nThis endpoint enables you to create and manage users on the Marqeta platform.\n\nThis resource stores user attributes such as name, address, and date of birth, as well as financial information such as balances.\nBy default, every user automatically has a general purpose account (GPA) that is used for the funding of transfers and is therefore an `account holder`.\nNote that account balances reside at the account holder level — there are no separate `account` or `balance` objects.\n\nYou can use the `/users` endpoint to create parent-child relationships between two users (where one user is the parent and the other is the child) or between a business and a user (where the business is the parent and the user is the child).\nThis relationship provides reporting to the parent about how cards of children are used and enables the parent to monitor and even restrict card usage.\n\n[NOTE]\nA user can simultaneously be a child of a business and a parent of other users if the user is not configured to use a parent's account balances and the user's child is configured to use a parent's account balances.\nFor more information on account holders, see <</developer-guides/about-account-holders, About Account Holders>>."
   - name: User Transitions
-    description: 'Use the `/usertransitions` endpoints to transition user resources between statuses, as well as to retrieve and list status changes for a user resource.'
+    description: "// Conditional snippet for beta or internal content\ninclude::../../maturity-admonition-banner.adoc[]\n\nUse the `/usertransitions` endpoints to transition user resources between statuses, as well as to retrieve and list status changes for a user resource."
   - name: Velocity Controls
     description: "A velocity control limits how much users can spend.\nYou can configure velocity controls to limit how much users can spend and the number of transactions they can make in a given span of time.\nYou can apply velocity controls to a single user, to all users associated with a particular card product, or to all users in your program.\n\nOnly Program Managers can create or modify program-wide velocity controls.\nA `POST` or `PUT` call from a role that does not have Program Manager permissions will receive a 403 error if its `association` field is null, or if it includes all of the fields in the request body.\nAvoid this by passing a valid `user_token` or `card_product_token` in the velocity control's `association` object, indicating that the request is specific to a user or card product, and not program-wide.\nYou should also only include the specific fields you want to update, because a `PUT` or `POST` with values for all fields is interpreted as a change that requires Program Manager permissions.\n\nSee <</developer-guides/controlling-spending, Controlling Spending>> for a tutorial that walks you through the creation of a spend control.\n\n[NOTE]\nEach program supports a maximum of 90 spend controls (velocity controls and <</core-api/authorization-controls, authorization controls>> combined).\nThe limit of 90 spend controls applies at the program level only; it does not affect the number of user-level spend controls you can use."
   - name: Webhooks
