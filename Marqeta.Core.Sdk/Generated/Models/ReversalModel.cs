@@ -4,9 +4,10 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System;
-namespace Marqeta.Core.Sdk.Models {
+namespace Marqeta.Core.Sdk.Models
+{
     #pragma warning disable CS1591
-    public class ReversalModel : IAdditionalDataHolder, IParsable 
+    public class ReversalModel : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -20,10 +21,10 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>The network_fees property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<Network_fee_model>? NetworkFees { get; set; }
+        public List<Marqeta.Core.Sdk.Models.Network_fee_model>? NetworkFees { get; set; }
 #nullable restore
 #else
-        public List<Network_fee_model> NetworkFees { get; set; }
+        public List<Marqeta.Core.Sdk.Models.Network_fee_model> NetworkFees { get; set; }
 #endif
         /// <summary>The original_transaction_token property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -42,7 +43,7 @@ namespace Marqeta.Core.Sdk.Models {
         public Marqeta.Core.Sdk.Models.Webhook Webhook { get; set; }
 #endif
         /// <summary>
-        /// Instantiates a new <see cref="ReversalModel"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Models.ReversalModel"/> and sets the default values.
         /// </summary>
         public ReversalModel()
         {
@@ -51,12 +52,12 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="ReversalModel"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Models.ReversalModel"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static ReversalModel CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static Marqeta.Core.Sdk.Models.ReversalModel CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-            return new ReversalModel();
+            return new Marqeta.Core.Sdk.Models.ReversalModel();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -66,12 +67,12 @@ namespace Marqeta.Core.Sdk.Models {
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                {"amount", n => { Amount = n.GetDoubleValue(); } },
-                {"find_original_window_days", n => { FindOriginalWindowDays = n.GetIntValue(); } },
-                {"is_advice", n => { IsAdvice = n.GetBoolValue(); } },
-                {"network_fees", n => { NetworkFees = n.GetCollectionOfObjectValues<Network_fee_model>(Network_fee_model.CreateFromDiscriminatorValue)?.ToList(); } },
-                {"original_transaction_token", n => { OriginalTransactionToken = n.GetStringValue(); } },
-                {"webhook", n => { Webhook = n.GetObjectValue<Marqeta.Core.Sdk.Models.Webhook>(Marqeta.Core.Sdk.Models.Webhook.CreateFromDiscriminatorValue); } },
+                { "amount", n => { Amount = n.GetDoubleValue(); } },
+                { "find_original_window_days", n => { FindOriginalWindowDays = n.GetIntValue(); } },
+                { "is_advice", n => { IsAdvice = n.GetBoolValue(); } },
+                { "network_fees", n => { NetworkFees = n.GetCollectionOfObjectValues<Marqeta.Core.Sdk.Models.Network_fee_model>(Marqeta.Core.Sdk.Models.Network_fee_model.CreateFromDiscriminatorValue)?.ToList(); } },
+                { "original_transaction_token", n => { OriginalTransactionToken = n.GetStringValue(); } },
+                { "webhook", n => { Webhook = n.GetObjectValue<Marqeta.Core.Sdk.Models.Webhook>(Marqeta.Core.Sdk.Models.Webhook.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -84,7 +85,7 @@ namespace Marqeta.Core.Sdk.Models {
             writer.WriteDoubleValue("amount", Amount);
             writer.WriteIntValue("find_original_window_days", FindOriginalWindowDays);
             writer.WriteBoolValue("is_advice", IsAdvice);
-            writer.WriteCollectionOfObjectValues<Network_fee_model>("network_fees", NetworkFees);
+            writer.WriteCollectionOfObjectValues<Marqeta.Core.Sdk.Models.Network_fee_model>("network_fees", NetworkFees);
             writer.WriteStringValue("original_transaction_token", OriginalTransactionToken);
             writer.WriteObjectValue<Marqeta.Core.Sdk.Models.Webhook>("webhook", Webhook);
             writer.WriteAdditionalData(AdditionalData);

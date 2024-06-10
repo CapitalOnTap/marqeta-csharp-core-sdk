@@ -4,11 +4,12 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System;
-namespace Marqeta.Core.Sdk.Models {
+namespace Marqeta.Core.Sdk.Models
+{
     /// <summary>
     /// Contains information on a bundle.
     /// </summary>
-    public class BundleCreateReq : IAdditionalDataHolder, IParsable 
+    public class BundleCreateReq : IAdditionalDataHolder, IParsable
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
@@ -77,7 +78,7 @@ namespace Marqeta.Core.Sdk.Models {
         public string RewardPolicyToken { get; set; }
 #endif
         /// <summary>Status of the bundle.* `DRAFT` - The bundle is in the process of being created.* `PENDING_APPROVAL` - The bundle has been created and is awaiting approval.* `SENT_FOR_REVISION` - The bundle has been returned for revision.* `ACTIVE` - The bundle is active.* `REJECTED` - The bundle has been rejected; this status cannot be changed.* `ARCHIVED` - The previously active bundle has been archived.* `APPROVED` - The bundle has been approved (after having been sent for approval).</summary>
-        public BundleResourceStatus? Status { get; set; }
+        public Marqeta.Core.Sdk.Models.BundleResourceStatus? Status { get; set; }
         /// <summary>Unique identifier of the bundle.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -87,7 +88,7 @@ namespace Marqeta.Core.Sdk.Models {
         public string Token { get; set; }
 #endif
         /// <summary>
-        /// Instantiates a new <see cref="BundleCreateReq"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Models.BundleCreateReq"/> and sets the default values.
         /// </summary>
         public BundleCreateReq()
         {
@@ -96,12 +97,12 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="BundleCreateReq"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Models.BundleCreateReq"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static BundleCreateReq CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static Marqeta.Core.Sdk.Models.BundleCreateReq CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-            return new BundleCreateReq();
+            return new Marqeta.Core.Sdk.Models.BundleCreateReq();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -111,16 +112,16 @@ namespace Marqeta.Core.Sdk.Models {
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                {"apr_policy_token", n => { AprPolicyToken = n.GetStringValue(); } },
-                {"credit_product_policy_token", n => { CreditProductPolicyToken = n.GetStringValue(); } },
-                {"description", n => { Description = n.GetStringValue(); } },
-                {"document_policy_token", n => { DocumentPolicyToken = n.GetStringValue(); } },
-                {"fee_policy_token", n => { FeePolicyToken = n.GetStringValue(); } },
-                {"name", n => { Name = n.GetStringValue(); } },
-                {"offer_policy_token", n => { OfferPolicyToken = n.GetStringValue(); } },
-                {"reward_policy_token", n => { RewardPolicyToken = n.GetStringValue(); } },
-                {"status", n => { Status = n.GetEnumValue<BundleResourceStatus>(); } },
-                {"token", n => { Token = n.GetStringValue(); } },
+                { "apr_policy_token", n => { AprPolicyToken = n.GetStringValue(); } },
+                { "credit_product_policy_token", n => { CreditProductPolicyToken = n.GetStringValue(); } },
+                { "description", n => { Description = n.GetStringValue(); } },
+                { "document_policy_token", n => { DocumentPolicyToken = n.GetStringValue(); } },
+                { "fee_policy_token", n => { FeePolicyToken = n.GetStringValue(); } },
+                { "name", n => { Name = n.GetStringValue(); } },
+                { "offer_policy_token", n => { OfferPolicyToken = n.GetStringValue(); } },
+                { "reward_policy_token", n => { RewardPolicyToken = n.GetStringValue(); } },
+                { "status", n => { Status = n.GetEnumValue<Marqeta.Core.Sdk.Models.BundleResourceStatus>(); } },
+                { "token", n => { Token = n.GetStringValue(); } },
             };
         }
         /// <summary>
@@ -138,7 +139,7 @@ namespace Marqeta.Core.Sdk.Models {
             writer.WriteStringValue("name", Name);
             writer.WriteStringValue("offer_policy_token", OfferPolicyToken);
             writer.WriteStringValue("reward_policy_token", RewardPolicyToken);
-            writer.WriteEnumValue<BundleResourceStatus>("status", Status);
+            writer.WriteEnumValue<Marqeta.Core.Sdk.Models.BundleResourceStatus>("status", Status);
             writer.WriteStringValue("token", Token);
             writer.WriteAdditionalData(AdditionalData);
         }

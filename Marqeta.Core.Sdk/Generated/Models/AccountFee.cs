@@ -4,22 +4,23 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System;
-namespace Marqeta.Core.Sdk.Models {
+namespace Marqeta.Core.Sdk.Models
+{
     /// <summary>
     /// Contains fee configurations on a credit account.
     /// </summary>
-    public class AccountFee : IAdditionalDataHolder, IParsable 
+    public class AccountFee : IAdditionalDataHolder, IParsable
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Method, either a flat amount or a percentage.*NOTE:*Only `FLAT` is currently supported.</summary>
-        public MethodObject? Method { get; set; }
+        public Marqeta.Core.Sdk.Models.MethodObject? Method { get; set; }
         /// <summary>Type of fee.*NOTE:*Only `RETURNED_PAYMENT_FEE`, `LATE_PAYMENT_FEE`, `ANNUAL_FEE`, and `MONTHLY_FEE` are currently supported.Do not pass other fees types.</summary>
-        public FeeType? Type { get; set; }
+        public Marqeta.Core.Sdk.Models.FeeType? Type { get; set; }
         /// <summary>Value of the fee, either a flat fee amount or percentage value.</summary>
         public double? Value { get; set; }
         /// <summary>
-        /// Instantiates a new <see cref="AccountFee"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Models.AccountFee"/> and sets the default values.
         /// </summary>
         public AccountFee()
         {
@@ -28,12 +29,12 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="AccountFee"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Models.AccountFee"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static AccountFee CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static Marqeta.Core.Sdk.Models.AccountFee CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-            return new AccountFee();
+            return new Marqeta.Core.Sdk.Models.AccountFee();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -43,9 +44,9 @@ namespace Marqeta.Core.Sdk.Models {
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                {"method", n => { Method = n.GetEnumValue<MethodObject>(); } },
-                {"type", n => { Type = n.GetEnumValue<FeeType>(); } },
-                {"value", n => { Value = n.GetDoubleValue(); } },
+                { "method", n => { Method = n.GetEnumValue<Marqeta.Core.Sdk.Models.MethodObject>(); } },
+                { "type", n => { Type = n.GetEnumValue<Marqeta.Core.Sdk.Models.FeeType>(); } },
+                { "value", n => { Value = n.GetDoubleValue(); } },
             };
         }
         /// <summary>
@@ -55,8 +56,8 @@ namespace Marqeta.Core.Sdk.Models {
         public virtual void Serialize(ISerializationWriter writer)
         {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
-            writer.WriteEnumValue<MethodObject>("method", Method);
-            writer.WriteEnumValue<FeeType>("type", Type);
+            writer.WriteEnumValue<Marqeta.Core.Sdk.Models.MethodObject>("method", Method);
+            writer.WriteEnumValue<Marqeta.Core.Sdk.Models.FeeType>("type", Type);
             writer.WriteDoubleValue("value", Value);
             writer.WriteAdditionalData(AdditionalData);
         }

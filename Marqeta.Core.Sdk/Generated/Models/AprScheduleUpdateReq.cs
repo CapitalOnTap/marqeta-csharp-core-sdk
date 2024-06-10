@@ -4,9 +4,10 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System;
-namespace Marqeta.Core.Sdk.Models {
+namespace Marqeta.Core.Sdk.Models
+{
     #pragma warning disable CS1591
-    public class AprScheduleUpdateReq : IAdditionalDataHolder, IParsable 
+    public class AprScheduleUpdateReq : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -14,15 +15,15 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>Contains one or more `schedule` objects, which contain information about the annual percentage rates (APRs) associated with the type of balance on the credit account and when they are effective.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<AprScheduleEntryUpdateReq>? Schedule { get; set; }
+        public List<Marqeta.Core.Sdk.Models.AprScheduleEntryUpdateReq>? Schedule { get; set; }
 #nullable restore
 #else
-        public List<AprScheduleEntryUpdateReq> Schedule { get; set; }
+        public List<Marqeta.Core.Sdk.Models.AprScheduleEntryUpdateReq> Schedule { get; set; }
 #endif
         /// <summary>Type of APR.* `GO_TO` - Default APR rate that is applicable when any promotional periods expire.* `PROMOTIONAL` - A temporary rate that is applicable for a specified period of time.</summary>
-        public AccountAprType? Type { get; set; }
+        public Marqeta.Core.Sdk.Models.AccountAprType? Type { get; set; }
         /// <summary>
-        /// Instantiates a new <see cref="AprScheduleUpdateReq"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Models.AprScheduleUpdateReq"/> and sets the default values.
         /// </summary>
         public AprScheduleUpdateReq()
         {
@@ -31,12 +32,12 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="AprScheduleUpdateReq"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Models.AprScheduleUpdateReq"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static AprScheduleUpdateReq CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static Marqeta.Core.Sdk.Models.AprScheduleUpdateReq CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-            return new AprScheduleUpdateReq();
+            return new Marqeta.Core.Sdk.Models.AprScheduleUpdateReq();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -46,8 +47,8 @@ namespace Marqeta.Core.Sdk.Models {
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                {"schedule", n => { Schedule = n.GetCollectionOfObjectValues<AprScheduleEntryUpdateReq>(AprScheduleEntryUpdateReq.CreateFromDiscriminatorValue)?.ToList(); } },
-                {"type", n => { Type = n.GetEnumValue<AccountAprType>(); } },
+                { "schedule", n => { Schedule = n.GetCollectionOfObjectValues<Marqeta.Core.Sdk.Models.AprScheduleEntryUpdateReq>(Marqeta.Core.Sdk.Models.AprScheduleEntryUpdateReq.CreateFromDiscriminatorValue)?.ToList(); } },
+                { "type", n => { Type = n.GetEnumValue<Marqeta.Core.Sdk.Models.AccountAprType>(); } },
             };
         }
         /// <summary>
@@ -57,8 +58,8 @@ namespace Marqeta.Core.Sdk.Models {
         public virtual void Serialize(ISerializationWriter writer)
         {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
-            writer.WriteCollectionOfObjectValues<AprScheduleEntryUpdateReq>("schedule", Schedule);
-            writer.WriteEnumValue<AccountAprType>("type", Type);
+            writer.WriteCollectionOfObjectValues<Marqeta.Core.Sdk.Models.AprScheduleEntryUpdateReq>("schedule", Schedule);
+            writer.WriteEnumValue<Marqeta.Core.Sdk.Models.AccountAprType>("type", Type);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

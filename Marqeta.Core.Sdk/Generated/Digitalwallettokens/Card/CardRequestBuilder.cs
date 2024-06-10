@@ -6,26 +6,27 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using System;
-namespace Marqeta.Core.Sdk.Digitalwallettokens.Card {
+namespace Marqeta.Core.Sdk.Digitalwallettokens.Card
+{
     /// <summary>
     /// Builds and executes requests for operations under \digitalwallettokens\card
     /// </summary>
-    public class CardRequestBuilder : BaseRequestBuilder 
+    public class CardRequestBuilder : BaseRequestBuilder
     {
         /// <summary>Gets an item from the Marqeta.Core.Sdk.digitalwallettokens.card.item collection</summary>
         /// <param name="position">Unique identifier of the card.Used to minimize the need to exchange card details during subsequent calls, and also for troubleshooting.</param>
-        /// <returns>A <see cref="WithCard_tokenItemRequestBuilder"/></returns>
-        public WithCard_tokenItemRequestBuilder this[string position]
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Digitalwallettokens.Card.Item.WithCard_tokenItemRequestBuilder"/></returns>
+        public Marqeta.Core.Sdk.Digitalwallettokens.Card.Item.WithCard_tokenItemRequestBuilder this[string position]
         {
             get
             {
                 var urlTplParams = new Dictionary<string, object>(PathParameters);
                 urlTplParams.Add("card_token", position);
-                return new WithCard_tokenItemRequestBuilder(urlTplParams, RequestAdapter);
+                return new Marqeta.Core.Sdk.Digitalwallettokens.Card.Item.WithCard_tokenItemRequestBuilder(urlTplParams, RequestAdapter);
             }
         }
         /// <summary>
-        /// Instantiates a new <see cref="CardRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Digitalwallettokens.Card.CardRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
@@ -33,7 +34,7 @@ namespace Marqeta.Core.Sdk.Digitalwallettokens.Card {
         {
         }
         /// <summary>
-        /// Instantiates a new <see cref="CardRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Digitalwallettokens.Card.CardRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>

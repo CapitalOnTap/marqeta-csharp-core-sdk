@@ -4,9 +4,10 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System;
-namespace Marqeta.Core.Sdk.Models {
+namespace Marqeta.Core.Sdk.Models
+{
     #pragma warning disable CS1591
-    public class Program_gateway_funding_source_model : Funding_source_model, IParsable 
+    public class Program_gateway_funding_source_model : Marqeta.Core.Sdk.Models.Funding_source_model, IParsable
     #pragma warning restore CS1591
     {
         /// <summary>The name property</summary>
@@ -20,12 +21,12 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="Program_gateway_funding_source_model"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Models.Program_gateway_funding_source_model"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static new Program_gateway_funding_source_model CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static new Marqeta.Core.Sdk.Models.Program_gateway_funding_source_model CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-            return new Program_gateway_funding_source_model();
+            return new Marqeta.Core.Sdk.Models.Program_gateway_funding_source_model();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -35,7 +36,7 @@ namespace Marqeta.Core.Sdk.Models {
         {
             return new Dictionary<string, Action<IParseNode>>(base.GetFieldDeserializers())
             {
-                {"name", n => { Name = n.GetStringValue(); } },
+                { "name", n => { Name = n.GetStringValue(); } },
             };
         }
         /// <summary>

@@ -4,9 +4,10 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System;
-namespace Marqeta.Core.Sdk.Models {
+namespace Marqeta.Core.Sdk.Models
+{
     #pragma warning disable CS1591
-    public class RewardProgramsEntriesResponse : IAdditionalDataHolder, IParsable 
+    public class RewardProgramsEntriesResponse : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -70,7 +71,7 @@ namespace Marqeta.Core.Sdk.Models {
         public string RewardRulesConfigToken { get; set; }
 #endif
         /// <summary>Status of the reward entry.</summary>
-        public RewardEntryStatus? Status { get; set; }
+        public Marqeta.Core.Sdk.Models.RewardEntryStatus? Status { get; set; }
         /// <summary>Unique identifier of the reward entry.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -84,7 +85,7 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>Value of the reward entry.</summary>
         public decimal? Value { get; set; }
         /// <summary>
-        /// Instantiates a new <see cref="RewardProgramsEntriesResponse"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Models.RewardProgramsEntriesResponse"/> and sets the default values.
         /// </summary>
         public RewardProgramsEntriesResponse()
         {
@@ -93,12 +94,12 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="RewardProgramsEntriesResponse"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Models.RewardProgramsEntriesResponse"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static RewardProgramsEntriesResponse CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static Marqeta.Core.Sdk.Models.RewardProgramsEntriesResponse CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-            return new RewardProgramsEntriesResponse();
+            return new Marqeta.Core.Sdk.Models.RewardProgramsEntriesResponse();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -108,18 +109,18 @@ namespace Marqeta.Core.Sdk.Models {
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                {"created_time", n => { CreatedTime = n.GetDateTimeOffsetValue(); } },
-                {"mcc", n => { Mcc = n.GetStringValue(); } },
-                {"mid", n => { Mid = n.GetStringValue(); } },
-                {"note", n => { Note = n.GetStringValue(); } },
-                {"related_journal_entry_token", n => { RelatedJournalEntryToken = n.GetStringValue(); } },
-                {"related_redemption_token", n => { RelatedRedemptionToken = n.GetStringValue(); } },
-                {"reward_program_token", n => { RewardProgramToken = n.GetStringValue(); } },
-                {"reward_rules_config_token", n => { RewardRulesConfigToken = n.GetStringValue(); } },
-                {"status", n => { Status = n.GetEnumValue<RewardEntryStatus>(); } },
-                {"token", n => { Token = n.GetStringValue(); } },
-                {"transaction_amount", n => { TransactionAmount = n.GetDecimalValue(); } },
-                {"value", n => { Value = n.GetDecimalValue(); } },
+                { "created_time", n => { CreatedTime = n.GetDateTimeOffsetValue(); } },
+                { "mcc", n => { Mcc = n.GetStringValue(); } },
+                { "mid", n => { Mid = n.GetStringValue(); } },
+                { "note", n => { Note = n.GetStringValue(); } },
+                { "related_journal_entry_token", n => { RelatedJournalEntryToken = n.GetStringValue(); } },
+                { "related_redemption_token", n => { RelatedRedemptionToken = n.GetStringValue(); } },
+                { "reward_program_token", n => { RewardProgramToken = n.GetStringValue(); } },
+                { "reward_rules_config_token", n => { RewardRulesConfigToken = n.GetStringValue(); } },
+                { "status", n => { Status = n.GetEnumValue<Marqeta.Core.Sdk.Models.RewardEntryStatus>(); } },
+                { "token", n => { Token = n.GetStringValue(); } },
+                { "transaction_amount", n => { TransactionAmount = n.GetDecimalValue(); } },
+                { "value", n => { Value = n.GetDecimalValue(); } },
             };
         }
         /// <summary>
@@ -137,7 +138,7 @@ namespace Marqeta.Core.Sdk.Models {
             writer.WriteStringValue("related_redemption_token", RelatedRedemptionToken);
             writer.WriteStringValue("reward_program_token", RewardProgramToken);
             writer.WriteStringValue("reward_rules_config_token", RewardRulesConfigToken);
-            writer.WriteEnumValue<RewardEntryStatus>("status", Status);
+            writer.WriteEnumValue<Marqeta.Core.Sdk.Models.RewardEntryStatus>("status", Status);
             writer.WriteStringValue("token", Token);
             writer.WriteDecimalValue("transaction_amount", TransactionAmount);
             writer.WriteDecimalValue("value", Value);

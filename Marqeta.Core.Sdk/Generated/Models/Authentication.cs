@@ -4,11 +4,12 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System;
-namespace Marqeta.Core.Sdk.Models {
+namespace Marqeta.Core.Sdk.Models
+{
     /// <summary>
     /// Contains the cardholder&apos;s email address and password information.
     /// </summary>
-    public class Authentication : IAdditionalDataHolder, IParsable 
+    public class Authentication : IAdditionalDataHolder, IParsable
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
@@ -17,11 +18,11 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>Date and time when the email address was verified.</summary>
         public DateTimeOffset? EmailVerifiedTime { get; set; }
         /// <summary>Specifies the channel through which the password was last changed.</summary>
-        public Authentication_last_password_update_channel? LastPasswordUpdateChannel { get; set; }
+        public Marqeta.Core.Sdk.Models.Authentication_last_password_update_channel? LastPasswordUpdateChannel { get; set; }
         /// <summary>Date and time when the password was last changed.</summary>
         public DateTimeOffset? LastPasswordUpdateTime { get; set; }
         /// <summary>
-        /// Instantiates a new <see cref="Authentication"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Models.Authentication"/> and sets the default values.
         /// </summary>
         public Authentication()
         {
@@ -30,12 +31,12 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="Authentication"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Models.Authentication"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static Authentication CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static Marqeta.Core.Sdk.Models.Authentication CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-            return new Authentication();
+            return new Marqeta.Core.Sdk.Models.Authentication();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -45,10 +46,10 @@ namespace Marqeta.Core.Sdk.Models {
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                {"email_verified", n => { EmailVerified = n.GetBoolValue(); } },
-                {"email_verified_time", n => { EmailVerifiedTime = n.GetDateTimeOffsetValue(); } },
-                {"last_password_update_channel", n => { LastPasswordUpdateChannel = n.GetEnumValue<Authentication_last_password_update_channel>(); } },
-                {"last_password_update_time", n => { LastPasswordUpdateTime = n.GetDateTimeOffsetValue(); } },
+                { "email_verified", n => { EmailVerified = n.GetBoolValue(); } },
+                { "email_verified_time", n => { EmailVerifiedTime = n.GetDateTimeOffsetValue(); } },
+                { "last_password_update_channel", n => { LastPasswordUpdateChannel = n.GetEnumValue<Marqeta.Core.Sdk.Models.Authentication_last_password_update_channel>(); } },
+                { "last_password_update_time", n => { LastPasswordUpdateTime = n.GetDateTimeOffsetValue(); } },
             };
         }
         /// <summary>
@@ -60,7 +61,7 @@ namespace Marqeta.Core.Sdk.Models {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
             writer.WriteBoolValue("email_verified", EmailVerified);
             writer.WriteDateTimeOffsetValue("email_verified_time", EmailVerifiedTime);
-            writer.WriteEnumValue<Authentication_last_password_update_channel>("last_password_update_channel", LastPasswordUpdateChannel);
+            writer.WriteEnumValue<Marqeta.Core.Sdk.Models.Authentication_last_password_update_channel>("last_password_update_channel", LastPasswordUpdateChannel);
             writer.WriteDateTimeOffsetValue("last_password_update_time", LastPasswordUpdateTime);
             writer.WriteAdditionalData(AdditionalData);
         }

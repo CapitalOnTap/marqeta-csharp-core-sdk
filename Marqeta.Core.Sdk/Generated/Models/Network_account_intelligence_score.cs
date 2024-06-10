@@ -4,11 +4,12 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System;
-namespace Marqeta.Core.Sdk.Models {
+namespace Marqeta.Core.Sdk.Models
+{
     /// <summary>
     /// Account intelligence score information, as provided by the Mastercard network.
     /// </summary>
-    public class Network_account_intelligence_score : IAdditionalDataHolder, IParsable 
+    public class Network_account_intelligence_score : IAdditionalDataHolder, IParsable
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
@@ -37,7 +38,7 @@ namespace Marqeta.Core.Sdk.Models {
         public string Value { get; set; }
 #endif
         /// <summary>
-        /// Instantiates a new <see cref="Network_account_intelligence_score"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Models.Network_account_intelligence_score"/> and sets the default values.
         /// </summary>
         public Network_account_intelligence_score()
         {
@@ -46,12 +47,12 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="Network_account_intelligence_score"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Models.Network_account_intelligence_score"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static Network_account_intelligence_score CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static Marqeta.Core.Sdk.Models.Network_account_intelligence_score CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-            return new Network_account_intelligence_score();
+            return new Marqeta.Core.Sdk.Models.Network_account_intelligence_score();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -61,9 +62,9 @@ namespace Marqeta.Core.Sdk.Models {
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                {"name", n => { Name = n.GetStringValue(); } },
-                {"service_type", n => { ServiceType = n.GetStringValue(); } },
-                {"value", n => { Value = n.GetStringValue(); } },
+                { "name", n => { Name = n.GetStringValue(); } },
+                { "service_type", n => { ServiceType = n.GetStringValue(); } },
+                { "value", n => { Value = n.GetStringValue(); } },
             };
         }
         /// <summary>

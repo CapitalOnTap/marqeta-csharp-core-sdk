@@ -6,26 +6,27 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using System;
-namespace Marqeta.Core.Sdk.Usertransitions.User {
+namespace Marqeta.Core.Sdk.Usertransitions.User
+{
     /// <summary>
     /// Builds and executes requests for operations under \usertransitions\user
     /// </summary>
-    public class UserRequestBuilder : BaseRequestBuilder 
+    public class UserRequestBuilder : BaseRequestBuilder
     {
         /// <summary>Gets an item from the Marqeta.Core.Sdk.usertransitions.user.item collection</summary>
         /// <param name="position">Unique identifier of the user resource.</param>
-        /// <returns>A <see cref="WithUser_tokenItemRequestBuilder"/></returns>
-        public WithUser_tokenItemRequestBuilder this[string position]
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Usertransitions.User.Item.WithUser_tokenItemRequestBuilder"/></returns>
+        public Marqeta.Core.Sdk.Usertransitions.User.Item.WithUser_tokenItemRequestBuilder this[string position]
         {
             get
             {
                 var urlTplParams = new Dictionary<string, object>(PathParameters);
                 urlTplParams.Add("user_token", position);
-                return new WithUser_tokenItemRequestBuilder(urlTplParams, RequestAdapter);
+                return new Marqeta.Core.Sdk.Usertransitions.User.Item.WithUser_tokenItemRequestBuilder(urlTplParams, RequestAdapter);
             }
         }
         /// <summary>
-        /// Instantiates a new <see cref="UserRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Usertransitions.User.UserRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
@@ -33,7 +34,7 @@ namespace Marqeta.Core.Sdk.Usertransitions.User {
         {
         }
         /// <summary>
-        /// Instantiates a new <see cref="UserRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Usertransitions.User.UserRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>

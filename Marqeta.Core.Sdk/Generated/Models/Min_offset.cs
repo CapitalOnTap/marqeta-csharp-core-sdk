@@ -4,20 +4,21 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System;
-namespace Marqeta.Core.Sdk.Models {
+namespace Marqeta.Core.Sdk.Models
+{
     /// <summary>
     /// Specifies the minimum length of time after the date of issue for which the cards are valid.
     /// </summary>
-    public class Min_offset : IAdditionalDataHolder, IParsable 
+    public class Min_offset : IAdditionalDataHolder, IParsable
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Specifies the time unit of the `value` field.</summary>
-        public Min_offset_unit? Unit { get; set; }
+        public Marqeta.Core.Sdk.Models.Min_offset_unit? Unit { get; set; }
         /// <summary>Specifies the number of time units (as defined by the `unit` field) for which cards of this card product type are valid.Cards expire `value` x `unit` after the date of issue.This number is rounded as follows:* *YEARS* – Rounds up to the last second of the last day of the month of expiration.For example, if the issue date is 1 Jan 2021 and `value = 1`, the cards expire on the last day of Jan 2022.* *MONTHS* – Rounds up to the last second of the last day of the month of expiration.For example, if the issue date is 1 May 2022 and `value = 1`, the cards expire on the last day of June 2022.* *DAYS* – Rounds up to the last second of the day of expiration.* *HOURS*, *MINUTES*, *SECONDS* – No rounding.</summary>
         public int? Value { get; set; }
         /// <summary>
-        /// Instantiates a new <see cref="Min_offset"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Models.Min_offset"/> and sets the default values.
         /// </summary>
         public Min_offset()
         {
@@ -26,12 +27,12 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="Min_offset"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Models.Min_offset"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static Min_offset CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static Marqeta.Core.Sdk.Models.Min_offset CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-            return new Min_offset();
+            return new Marqeta.Core.Sdk.Models.Min_offset();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -41,8 +42,8 @@ namespace Marqeta.Core.Sdk.Models {
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                {"unit", n => { Unit = n.GetEnumValue<Min_offset_unit>(); } },
-                {"value", n => { Value = n.GetIntValue(); } },
+                { "unit", n => { Unit = n.GetEnumValue<Marqeta.Core.Sdk.Models.Min_offset_unit>(); } },
+                { "value", n => { Value = n.GetIntValue(); } },
             };
         }
         /// <summary>
@@ -52,7 +53,7 @@ namespace Marqeta.Core.Sdk.Models {
         public virtual void Serialize(ISerializationWriter writer)
         {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
-            writer.WriteEnumValue<Min_offset_unit>("unit", Unit);
+            writer.WriteEnumValue<Marqeta.Core.Sdk.Models.Min_offset_unit>("unit", Unit);
             writer.WriteIntValue("value", Value);
             writer.WriteAdditionalData(AdditionalData);
         }

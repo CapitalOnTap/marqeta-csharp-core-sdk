@@ -5,9 +5,10 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System;
-namespace Marqeta.Core.Sdk.Models {
+namespace Marqeta.Core.Sdk.Models
+{
     #pragma warning disable CS1591
-    public class Card_product_response : IAdditionalDataHolder, IParsable 
+    public class Card_product_response : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
     {
         /// <summary>Indicates whether the card product is active.This field is returned if it exists in the resource.</summary>
@@ -17,10 +18,10 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>Defines the characteristics of the card product.Configurations are conditionally required based on program setup.For more information, contact your Marqeta representative.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public Card_product_config? Config { get; set; }
+        public Marqeta.Core.Sdk.Models.Card_product_config? Config { get; set; }
 #nullable restore
 #else
-        public Card_product_config Config { get; set; }
+        public Marqeta.Core.Sdk.Models.Card_product_config Config { get; set; }
 #endif
         /// <summary>Date and time when the resource was created, in UTC.</summary>
         public DateTimeOffset? CreatedTime { get; set; }
@@ -47,7 +48,7 @@ namespace Marqeta.Core.Sdk.Models {
         public string Token { get; set; }
 #endif
         /// <summary>
-        /// Instantiates a new <see cref="Card_product_response"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Models.Card_product_response"/> and sets the default values.
         /// </summary>
         public Card_product_response()
         {
@@ -56,12 +57,12 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="Card_product_response"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Models.Card_product_response"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static Card_product_response CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static Marqeta.Core.Sdk.Models.Card_product_response CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-            return new Card_product_response();
+            return new Marqeta.Core.Sdk.Models.Card_product_response();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -71,14 +72,14 @@ namespace Marqeta.Core.Sdk.Models {
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                {"active", n => { Active = n.GetBoolValue(); } },
-                {"config", n => { Config = n.GetObjectValue<Card_product_config>(Card_product_config.CreateFromDiscriminatorValue); } },
-                {"created_time", n => { CreatedTime = n.GetDateTimeOffsetValue(); } },
-                {"end_date", n => { EndDate = n.GetDateValue(); } },
-                {"last_modified_time", n => { LastModifiedTime = n.GetDateTimeOffsetValue(); } },
-                {"name", n => { Name = n.GetStringValue(); } },
-                {"start_date", n => { StartDate = n.GetDateValue(); } },
-                {"token", n => { Token = n.GetStringValue(); } },
+                { "active", n => { Active = n.GetBoolValue(); } },
+                { "config", n => { Config = n.GetObjectValue<Marqeta.Core.Sdk.Models.Card_product_config>(Marqeta.Core.Sdk.Models.Card_product_config.CreateFromDiscriminatorValue); } },
+                { "created_time", n => { CreatedTime = n.GetDateTimeOffsetValue(); } },
+                { "end_date", n => { EndDate = n.GetDateValue(); } },
+                { "last_modified_time", n => { LastModifiedTime = n.GetDateTimeOffsetValue(); } },
+                { "name", n => { Name = n.GetStringValue(); } },
+                { "start_date", n => { StartDate = n.GetDateValue(); } },
+                { "token", n => { Token = n.GetStringValue(); } },
             };
         }
         /// <summary>
@@ -89,7 +90,7 @@ namespace Marqeta.Core.Sdk.Models {
         {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
             writer.WriteBoolValue("active", Active);
-            writer.WriteObjectValue<Card_product_config>("config", Config);
+            writer.WriteObjectValue<Marqeta.Core.Sdk.Models.Card_product_config>("config", Config);
             writer.WriteDateTimeOffsetValue("created_time", CreatedTime);
             writer.WriteDateValue("end_date", EndDate);
             writer.WriteDateTimeOffsetValue("last_modified_time", LastModifiedTime);

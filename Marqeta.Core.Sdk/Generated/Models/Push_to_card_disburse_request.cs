@@ -4,9 +4,10 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System;
-namespace Marqeta.Core.Sdk.Models {
+namespace Marqeta.Core.Sdk.Models
+{
     #pragma warning disable CS1591
-    public class Push_to_card_disburse_request : IAdditionalDataHolder, IParsable 
+    public class Push_to_card_disburse_request : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -40,10 +41,10 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>The soft_descriptor property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public PTCSoftDescriptor? SoftDescriptor { get; set; }
+        public Marqeta.Core.Sdk.Models.PTCSoftDescriptor? SoftDescriptor { get; set; }
 #nullable restore
 #else
-        public PTCSoftDescriptor SoftDescriptor { get; set; }
+        public Marqeta.Core.Sdk.Models.PTCSoftDescriptor SoftDescriptor { get; set; }
 #endif
         /// <summary>The tags property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -62,7 +63,7 @@ namespace Marqeta.Core.Sdk.Models {
         public string Token { get; set; }
 #endif
         /// <summary>
-        /// Instantiates a new <see cref="Push_to_card_disburse_request"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Models.Push_to_card_disburse_request"/> and sets the default values.
         /// </summary>
         public Push_to_card_disburse_request()
         {
@@ -71,12 +72,12 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="Push_to_card_disburse_request"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Models.Push_to_card_disburse_request"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static Push_to_card_disburse_request CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static Marqeta.Core.Sdk.Models.Push_to_card_disburse_request CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-            return new Push_to_card_disburse_request();
+            return new Marqeta.Core.Sdk.Models.Push_to_card_disburse_request();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -86,13 +87,13 @@ namespace Marqeta.Core.Sdk.Models {
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                {"amount", n => { Amount = n.GetDoubleValue(); } },
-                {"currency_code", n => { CurrencyCode = n.GetStringValue(); } },
-                {"memo", n => { Memo = n.GetStringValue(); } },
-                {"payment_instrument_token", n => { PaymentInstrumentToken = n.GetStringValue(); } },
-                {"soft_descriptor", n => { SoftDescriptor = n.GetObjectValue<PTCSoftDescriptor>(PTCSoftDescriptor.CreateFromDiscriminatorValue); } },
-                {"tags", n => { Tags = n.GetStringValue(); } },
-                {"token", n => { Token = n.GetStringValue(); } },
+                { "amount", n => { Amount = n.GetDoubleValue(); } },
+                { "currency_code", n => { CurrencyCode = n.GetStringValue(); } },
+                { "memo", n => { Memo = n.GetStringValue(); } },
+                { "payment_instrument_token", n => { PaymentInstrumentToken = n.GetStringValue(); } },
+                { "soft_descriptor", n => { SoftDescriptor = n.GetObjectValue<Marqeta.Core.Sdk.Models.PTCSoftDescriptor>(Marqeta.Core.Sdk.Models.PTCSoftDescriptor.CreateFromDiscriminatorValue); } },
+                { "tags", n => { Tags = n.GetStringValue(); } },
+                { "token", n => { Token = n.GetStringValue(); } },
             };
         }
         /// <summary>
@@ -106,7 +107,7 @@ namespace Marqeta.Core.Sdk.Models {
             writer.WriteStringValue("currency_code", CurrencyCode);
             writer.WriteStringValue("memo", Memo);
             writer.WriteStringValue("payment_instrument_token", PaymentInstrumentToken);
-            writer.WriteObjectValue<PTCSoftDescriptor>("soft_descriptor", SoftDescriptor);
+            writer.WriteObjectValue<Marqeta.Core.Sdk.Models.PTCSoftDescriptor>("soft_descriptor", SoftDescriptor);
             writer.WriteStringValue("tags", Tags);
             writer.WriteStringValue("token", Token);
             writer.WriteAdditionalData(AdditionalData);

@@ -4,11 +4,12 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System;
-namespace Marqeta.Core.Sdk.Models {
+namespace Marqeta.Core.Sdk.Models
+{
     /// <summary>
     /// Contains funding information for the transaction, including funding amount, type, and time.
     /// </summary>
-    public class Funding : IAdditionalDataHolder, IParsable 
+    public class Funding : IAdditionalDataHolder, IParsable
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
@@ -17,29 +18,29 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>Contains information from the JIT Funding gateway in response to a funding request.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public Gateway_log_model? GatewayLog { get; set; }
+        public Marqeta.Core.Sdk.Models.Gateway_log_model? GatewayLog { get; set; }
 #nullable restore
 #else
-        public Gateway_log_model GatewayLog { get; set; }
+        public Marqeta.Core.Sdk.Models.Gateway_log_model GatewayLog { get; set; }
 #endif
         /// <summary>Contains funding source information for the transaction, including the funding type and time.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public Funding_source_model? Source { get; set; }
+        public Marqeta.Core.Sdk.Models.Funding_source_model? Source { get; set; }
 #nullable restore
 #else
-        public Funding_source_model Source { get; set; }
+        public Marqeta.Core.Sdk.Models.Funding_source_model Source { get; set; }
 #endif
         /// <summary>Contains information about the billing address of the funding source.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public CardholderAddressResponse? SourceAddress { get; set; }
+        public Marqeta.Core.Sdk.Models.CardholderAddressResponse? SourceAddress { get; set; }
 #nullable restore
 #else
-        public CardholderAddressResponse SourceAddress { get; set; }
+        public Marqeta.Core.Sdk.Models.CardholderAddressResponse SourceAddress { get; set; }
 #endif
         /// <summary>
-        /// Instantiates a new <see cref="Funding"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Models.Funding"/> and sets the default values.
         /// </summary>
         public Funding()
         {
@@ -48,12 +49,12 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="Funding"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Models.Funding"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static Funding CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static Marqeta.Core.Sdk.Models.Funding CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-            return new Funding();
+            return new Marqeta.Core.Sdk.Models.Funding();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -63,10 +64,10 @@ namespace Marqeta.Core.Sdk.Models {
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                {"amount", n => { Amount = n.GetDoubleValue(); } },
-                {"gateway_log", n => { GatewayLog = n.GetObjectValue<Gateway_log_model>(Gateway_log_model.CreateFromDiscriminatorValue); } },
-                {"source", n => { Source = n.GetObjectValue<Funding_source_model>(Funding_source_model.CreateFromDiscriminatorValue); } },
-                {"source_address", n => { SourceAddress = n.GetObjectValue<CardholderAddressResponse>(CardholderAddressResponse.CreateFromDiscriminatorValue); } },
+                { "amount", n => { Amount = n.GetDoubleValue(); } },
+                { "gateway_log", n => { GatewayLog = n.GetObjectValue<Marqeta.Core.Sdk.Models.Gateway_log_model>(Marqeta.Core.Sdk.Models.Gateway_log_model.CreateFromDiscriminatorValue); } },
+                { "source", n => { Source = n.GetObjectValue<Marqeta.Core.Sdk.Models.Funding_source_model>(Marqeta.Core.Sdk.Models.Funding_source_model.CreateFromDiscriminatorValue); } },
+                { "source_address", n => { SourceAddress = n.GetObjectValue<Marqeta.Core.Sdk.Models.CardholderAddressResponse>(Marqeta.Core.Sdk.Models.CardholderAddressResponse.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -77,9 +78,9 @@ namespace Marqeta.Core.Sdk.Models {
         {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
             writer.WriteDoubleValue("amount", Amount);
-            writer.WriteObjectValue<Gateway_log_model>("gateway_log", GatewayLog);
-            writer.WriteObjectValue<Funding_source_model>("source", Source);
-            writer.WriteObjectValue<CardholderAddressResponse>("source_address", SourceAddress);
+            writer.WriteObjectValue<Marqeta.Core.Sdk.Models.Gateway_log_model>("gateway_log", GatewayLog);
+            writer.WriteObjectValue<Marqeta.Core.Sdk.Models.Funding_source_model>("source", Source);
+            writer.WriteObjectValue<Marqeta.Core.Sdk.Models.CardholderAddressResponse>("source_address", SourceAddress);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

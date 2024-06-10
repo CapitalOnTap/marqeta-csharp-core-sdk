@@ -8,14 +8,15 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Threading;
 using System;
-namespace Marqeta.Core.Sdk.Feedback.Fraud {
+namespace Marqeta.Core.Sdk.Feedback.Fraud
+{
     /// <summary>
     /// Builds and executes requests for operations under \feedback\fraud
     /// </summary>
-    public class FraudRequestBuilder : BaseRequestBuilder 
+    public class FraudRequestBuilder : BaseRequestBuilder
     {
         /// <summary>
-        /// Instantiates a new <see cref="FraudRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Feedback.Fraud.FraudRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
@@ -23,7 +24,7 @@ namespace Marqeta.Core.Sdk.Feedback.Fraud {
         {
         }
         /// <summary>
-        /// Instantiates a new <see cref="FraudRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Feedback.Fraud.FraudRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
@@ -33,27 +34,27 @@ namespace Marqeta.Core.Sdk.Feedback.Fraud {
         /// <summary>
         /// This endpoint is to get a fraud feedback from the customer.
         /// </summary>
-        /// <returns>A <see cref="FraudFeedbackResponse"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Models.FraudFeedbackResponse"/></returns>
         /// <param name="body">of the fraud object</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        /// <exception cref="ApiError">When receiving a 4XX or 5XX status code</exception>
+        /// <exception cref="Marqeta.Core.Sdk.Models.ApiError">When receiving a 4XX or 5XX status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<FraudFeedbackResponse?> PostAsync(FraudFeedbackRequest body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<Marqeta.Core.Sdk.Models.FraudFeedbackResponse?> PostAsync(Marqeta.Core.Sdk.Models.FraudFeedbackRequest body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<FraudFeedbackResponse> PostAsync(FraudFeedbackRequest body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<Marqeta.Core.Sdk.Models.FraudFeedbackResponse> PostAsync(Marqeta.Core.Sdk.Models.FraudFeedbackRequest body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             _ = body ?? throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPostRequestInformation(body, requestConfiguration);
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
-                {"XXX", ApiError.CreateFromDiscriminatorValue},
+                { "XXX", Marqeta.Core.Sdk.Models.ApiError.CreateFromDiscriminatorValue },
             };
-            return await RequestAdapter.SendAsync<FraudFeedbackResponse>(requestInfo, FraudFeedbackResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<Marqeta.Core.Sdk.Models.FraudFeedbackResponse>(requestInfo, Marqeta.Core.Sdk.Models.FraudFeedbackResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// This endpoint is to get a fraud feedback from the customer.
@@ -63,11 +64,11 @@ namespace Marqeta.Core.Sdk.Feedback.Fraud {
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToPostRequestInformation(FraudFeedbackRequest body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
+        public RequestInformation ToPostRequestInformation(Marqeta.Core.Sdk.Models.FraudFeedbackRequest body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
         {
 #nullable restore
 #else
-        public RequestInformation ToPostRequestInformation(FraudFeedbackRequest body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
+        public RequestInformation ToPostRequestInformation(Marqeta.Core.Sdk.Models.FraudFeedbackRequest body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
         {
 #endif
             _ = body ?? throw new ArgumentNullException(nameof(body));
@@ -80,11 +81,11 @@ namespace Marqeta.Core.Sdk.Feedback.Fraud {
         /// <summary>
         /// Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
         /// </summary>
-        /// <returns>A <see cref="FraudRequestBuilder"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Feedback.Fraud.FraudRequestBuilder"/></returns>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
-        public FraudRequestBuilder WithUrl(string rawUrl)
+        public Marqeta.Core.Sdk.Feedback.Fraud.FraudRequestBuilder WithUrl(string rawUrl)
         {
-            return new FraudRequestBuilder(rawUrl, RequestAdapter);
+            return new Marqeta.Core.Sdk.Feedback.Fraud.FraudRequestBuilder(rawUrl, RequestAdapter);
         }
     }
 }

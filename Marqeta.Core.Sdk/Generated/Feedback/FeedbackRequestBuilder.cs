@@ -6,19 +6,20 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using System;
-namespace Marqeta.Core.Sdk.Feedback {
+namespace Marqeta.Core.Sdk.Feedback
+{
     /// <summary>
     /// Builds and executes requests for operations under \feedback
     /// </summary>
-    public class FeedbackRequestBuilder : BaseRequestBuilder 
+    public class FeedbackRequestBuilder : BaseRequestBuilder
     {
         /// <summary>The fraud property</summary>
-        public FraudRequestBuilder Fraud
+        public Marqeta.Core.Sdk.Feedback.Fraud.FraudRequestBuilder Fraud
         {
-            get => new FraudRequestBuilder(PathParameters, RequestAdapter);
+            get => new Marqeta.Core.Sdk.Feedback.Fraud.FraudRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>
-        /// Instantiates a new <see cref="FeedbackRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Feedback.FeedbackRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
@@ -26,7 +27,7 @@ namespace Marqeta.Core.Sdk.Feedback {
         {
         }
         /// <summary>
-        /// Instantiates a new <see cref="FeedbackRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Feedback.FeedbackRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>

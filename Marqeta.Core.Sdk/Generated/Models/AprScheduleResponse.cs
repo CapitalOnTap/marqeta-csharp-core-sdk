@@ -4,9 +4,10 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System;
-namespace Marqeta.Core.Sdk.Models {
+namespace Marqeta.Core.Sdk.Models
+{
     #pragma warning disable CS1591
-    public class AprScheduleResponse : IAdditionalDataHolder, IParsable 
+    public class AprScheduleResponse : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
     {
         /// <summary>Whether the APR is active.</summary>
@@ -18,17 +19,17 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>Contains one or more `schedule` objects, which contain information about the annual percentage rates (APRs) associated with the type of balance on the credit account and when they are effective.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<AprScheduleEntryResponse>? Schedule { get; set; }
+        public List<Marqeta.Core.Sdk.Models.AprScheduleEntryResponse>? Schedule { get; set; }
 #nullable restore
 #else
-        public List<AprScheduleEntryResponse> Schedule { get; set; }
+        public List<Marqeta.Core.Sdk.Models.AprScheduleEntryResponse> Schedule { get; set; }
 #endif
         /// <summary>Type of APR.* `GO_TO` - Default APR rate that is applicable when any promotional periods expire.* `PROMOTIONAL` - A temporary rate that is applicable for a specified period of time.</summary>
-        public AccountAprType? Type { get; set; }
+        public Marqeta.Core.Sdk.Models.AccountAprType? Type { get; set; }
         /// <summary>Date and time when the APR was last updated on Marqeta&apos;s credit platform, in UTC.</summary>
         public DateTimeOffset? UpdatedDate { get; set; }
         /// <summary>
-        /// Instantiates a new <see cref="AprScheduleResponse"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Models.AprScheduleResponse"/> and sets the default values.
         /// </summary>
         public AprScheduleResponse()
         {
@@ -37,12 +38,12 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="AprScheduleResponse"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Models.AprScheduleResponse"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static AprScheduleResponse CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static Marqeta.Core.Sdk.Models.AprScheduleResponse CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-            return new AprScheduleResponse();
+            return new Marqeta.Core.Sdk.Models.AprScheduleResponse();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -52,11 +53,11 @@ namespace Marqeta.Core.Sdk.Models {
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                {"active", n => { Active = n.GetBoolValue(); } },
-                {"created_date", n => { CreatedDate = n.GetDateTimeOffsetValue(); } },
-                {"schedule", n => { Schedule = n.GetCollectionOfObjectValues<AprScheduleEntryResponse>(AprScheduleEntryResponse.CreateFromDiscriminatorValue)?.ToList(); } },
-                {"type", n => { Type = n.GetEnumValue<AccountAprType>(); } },
-                {"updated_date", n => { UpdatedDate = n.GetDateTimeOffsetValue(); } },
+                { "active", n => { Active = n.GetBoolValue(); } },
+                { "created_date", n => { CreatedDate = n.GetDateTimeOffsetValue(); } },
+                { "schedule", n => { Schedule = n.GetCollectionOfObjectValues<Marqeta.Core.Sdk.Models.AprScheduleEntryResponse>(Marqeta.Core.Sdk.Models.AprScheduleEntryResponse.CreateFromDiscriminatorValue)?.ToList(); } },
+                { "type", n => { Type = n.GetEnumValue<Marqeta.Core.Sdk.Models.AccountAprType>(); } },
+                { "updated_date", n => { UpdatedDate = n.GetDateTimeOffsetValue(); } },
             };
         }
         /// <summary>
@@ -68,8 +69,8 @@ namespace Marqeta.Core.Sdk.Models {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
             writer.WriteBoolValue("active", Active);
             writer.WriteDateTimeOffsetValue("created_date", CreatedDate);
-            writer.WriteCollectionOfObjectValues<AprScheduleEntryResponse>("schedule", Schedule);
-            writer.WriteEnumValue<AccountAprType>("type", Type);
+            writer.WriteCollectionOfObjectValues<Marqeta.Core.Sdk.Models.AprScheduleEntryResponse>("schedule", Schedule);
+            writer.WriteEnumValue<Marqeta.Core.Sdk.Models.AccountAprType>("type", Type);
             writer.WriteDateTimeOffsetValue("updated_date", UpdatedDate);
             writer.WriteAdditionalData(AdditionalData);
         }

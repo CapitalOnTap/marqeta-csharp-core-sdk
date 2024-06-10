@@ -4,11 +4,12 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System;
-namespace Marqeta.Core.Sdk.Models {
+namespace Marqeta.Core.Sdk.Models
+{
     /// <summary>
     /// Defines characteristics of the lifecycle of cards of this card product type.
     /// </summary>
-    public class Card_life_cycle : IAdditionalDataHolder, IParsable 
+    public class Card_life_cycle : IAdditionalDataHolder, IParsable
     {
         /// <summary>A value of `true` indicates that cards of this card product type are active once they are issued.</summary>
         public bool? ActivateUponIssue { get; set; }
@@ -19,15 +20,15 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>Specifies the length of time after the date of issue for which cards of this card product type are valid.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public Expiration_offset_with_minimum? ExpirationOffset { get; set; }
+        public Marqeta.Core.Sdk.Models.Expiration_offset_with_minimum? ExpirationOffset { get; set; }
 #nullable restore
 #else
-        public Expiration_offset_with_minimum ExpirationOffset { get; set; }
+        public Marqeta.Core.Sdk.Models.Expiration_offset_with_minimum ExpirationOffset { get; set; }
 #endif
         /// <summary>Normally, the `expiration_offset` is measured from the date of issue.Set this field to `true` to measure `expiration_offset` from the date of activation instead.</summary>
         public bool? UpdateExpirationUponActivation { get; set; }
         /// <summary>
-        /// Instantiates a new <see cref="Card_life_cycle"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Models.Card_life_cycle"/> and sets the default values.
         /// </summary>
         public Card_life_cycle()
         {
@@ -36,12 +37,12 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="Card_life_cycle"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Models.Card_life_cycle"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static Card_life_cycle CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static Marqeta.Core.Sdk.Models.Card_life_cycle CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-            return new Card_life_cycle();
+            return new Marqeta.Core.Sdk.Models.Card_life_cycle();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -51,10 +52,10 @@ namespace Marqeta.Core.Sdk.Models {
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                {"activate_upon_issue", n => { ActivateUponIssue = n.GetBoolValue(); } },
-                {"card_service_code", n => { CardServiceCode = n.GetIntValue(); } },
-                {"expiration_offset", n => { ExpirationOffset = n.GetObjectValue<Expiration_offset_with_minimum>(Expiration_offset_with_minimum.CreateFromDiscriminatorValue); } },
-                {"update_expiration_upon_activation", n => { UpdateExpirationUponActivation = n.GetBoolValue(); } },
+                { "activate_upon_issue", n => { ActivateUponIssue = n.GetBoolValue(); } },
+                { "card_service_code", n => { CardServiceCode = n.GetIntValue(); } },
+                { "expiration_offset", n => { ExpirationOffset = n.GetObjectValue<Marqeta.Core.Sdk.Models.Expiration_offset_with_minimum>(Marqeta.Core.Sdk.Models.Expiration_offset_with_minimum.CreateFromDiscriminatorValue); } },
+                { "update_expiration_upon_activation", n => { UpdateExpirationUponActivation = n.GetBoolValue(); } },
             };
         }
         /// <summary>
@@ -66,7 +67,7 @@ namespace Marqeta.Core.Sdk.Models {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
             writer.WriteBoolValue("activate_upon_issue", ActivateUponIssue);
             writer.WriteIntValue("card_service_code", CardServiceCode);
-            writer.WriteObjectValue<Expiration_offset_with_minimum>("expiration_offset", ExpirationOffset);
+            writer.WriteObjectValue<Marqeta.Core.Sdk.Models.Expiration_offset_with_minimum>("expiration_offset", ExpirationOffset);
             writer.WriteBoolValue("update_expiration_upon_activation", UpdateExpirationUponActivation);
             writer.WriteAdditionalData(AdditionalData);
         }

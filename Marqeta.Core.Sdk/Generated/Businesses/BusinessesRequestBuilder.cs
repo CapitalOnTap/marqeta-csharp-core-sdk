@@ -10,31 +10,32 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Threading;
 using System;
-namespace Marqeta.Core.Sdk.Businesses {
+namespace Marqeta.Core.Sdk.Businesses
+{
     /// <summary>
     /// Builds and executes requests for operations under \businesses
     /// </summary>
-    public class BusinessesRequestBuilder : BaseRequestBuilder 
+    public class BusinessesRequestBuilder : BaseRequestBuilder
     {
         /// <summary>The lookup property</summary>
-        public LookupRequestBuilder Lookup
+        public Marqeta.Core.Sdk.Businesses.Lookup.LookupRequestBuilder Lookup
         {
-            get => new LookupRequestBuilder(PathParameters, RequestAdapter);
+            get => new Marqeta.Core.Sdk.Businesses.Lookup.LookupRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>Gets an item from the Marqeta.Core.Sdk.businesses.item collection</summary>
         /// <param name="position">Unique identifier of the business resource.</param>
-        /// <returns>A <see cref="Parent_tokenItemRequestBuilder"/></returns>
-        public Parent_tokenItemRequestBuilder this[string position]
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Businesses.Item.Parent_tokenItemRequestBuilder"/></returns>
+        public Marqeta.Core.Sdk.Businesses.Item.Parent_tokenItemRequestBuilder this[string position]
         {
             get
             {
                 var urlTplParams = new Dictionary<string, object>(PathParameters);
                 urlTplParams.Add("parent_token%2Did", position);
-                return new Parent_tokenItemRequestBuilder(urlTplParams, RequestAdapter);
+                return new Marqeta.Core.Sdk.Businesses.Item.Parent_tokenItemRequestBuilder(urlTplParams, RequestAdapter);
             }
         }
         /// <summary>
-        /// Instantiates a new <see cref="BusinessesRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Businesses.BusinessesRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
@@ -42,7 +43,7 @@ namespace Marqeta.Core.Sdk.Businesses {
         {
         }
         /// <summary>
-        /// Instantiates a new <see cref="BusinessesRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Businesses.BusinessesRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
@@ -52,50 +53,50 @@ namespace Marqeta.Core.Sdk.Businesses {
         /// <summary>
         /// To return an array of all businesses, send a `GET` request to the `/businesses` endpoint.To narrow your result set to businesses that match a particular legal or fictitious name, include the appropriate parameters from the following query parameters table.This endpoint also supports &lt;&lt;/core-api/field-filtering, field filtering&gt;&gt; and &lt;&lt;/core-api/sorting-and-pagination, sorting and pagination&gt;&gt;.
         /// </summary>
-        /// <returns>A <see cref="BusinessCardHolderListResponse"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Models.BusinessCardHolderListResponse"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        /// <exception cref="ApiError">When receiving a 4XX or 5XX status code</exception>
+        /// <exception cref="Marqeta.Core.Sdk.Models.ApiError">When receiving a 4XX or 5XX status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<BusinessCardHolderListResponse?> GetAsync(Action<RequestConfiguration<BusinessesRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<Marqeta.Core.Sdk.Models.BusinessCardHolderListResponse?> GetAsync(Action<RequestConfiguration<Marqeta.Core.Sdk.Businesses.BusinessesRequestBuilder.BusinessesRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<BusinessCardHolderListResponse> GetAsync(Action<RequestConfiguration<BusinessesRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<Marqeta.Core.Sdk.Models.BusinessCardHolderListResponse> GetAsync(Action<RequestConfiguration<Marqeta.Core.Sdk.Businesses.BusinessesRequestBuilder.BusinessesRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
-                {"XXX", ApiError.CreateFromDiscriminatorValue},
+                { "XXX", Marqeta.Core.Sdk.Models.ApiError.CreateFromDiscriminatorValue },
             };
-            return await RequestAdapter.SendAsync<BusinessCardHolderListResponse>(requestInfo, BusinessCardHolderListResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<Marqeta.Core.Sdk.Models.BusinessCardHolderListResponse>(requestInfo, Marqeta.Core.Sdk.Models.BusinessCardHolderListResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Create a business.The initial status of a newly created business depends on the &lt;&lt;/core-api/kyc-verification, Know Your Customer (KYC) requirements&gt;&gt; of the program or associated &lt;&lt;/core-api/account-holder-groups, account holder group&gt;&gt;.[cols=&quot;1,1,1,2&quot;]|===| KYC Required | Initial Business State | Business Active on Creation | Business Limitations| Always| `UNVERIFIED`| No| Cannot load funds.| Conditionally| `LIMITED`| No| Restricted by rules in `accountholdergroups.pre_kyc_controls`.| Never| `ACTIVE`| Required| None.|===To change or track the history of a business&apos; status, use the `/businesstransitions` endpoint.For more information on status changes, see &lt;&lt;create_business_transition, Create Business Transition&gt;&gt;.For information about configuring the required fields for KYC verification, see &lt;&lt;/core-api/kyc-verification#_perform_kyc, Perform KYC&gt;&gt;.
         /// </summary>
-        /// <returns>A <see cref="Business_card_holder_response"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Models.Business_card_holder_response"/></returns>
         /// <param name="body">Contains information about a business.</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        /// <exception cref="ApiError">When receiving a 4XX or 5XX status code</exception>
+        /// <exception cref="Marqeta.Core.Sdk.Models.ApiError">When receiving a 4XX or 5XX status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<Business_card_holder_response?> PostAsync(Business_cardholder body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<Marqeta.Core.Sdk.Models.Business_card_holder_response?> PostAsync(Marqeta.Core.Sdk.Models.Business_cardholder body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<Business_card_holder_response> PostAsync(Business_cardholder body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<Marqeta.Core.Sdk.Models.Business_card_holder_response> PostAsync(Marqeta.Core.Sdk.Models.Business_cardholder body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             _ = body ?? throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPostRequestInformation(body, requestConfiguration);
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
-                {"XXX", ApiError.CreateFromDiscriminatorValue},
+                { "XXX", Marqeta.Core.Sdk.Models.ApiError.CreateFromDiscriminatorValue },
             };
-            return await RequestAdapter.SendAsync<Business_card_holder_response>(requestInfo, Business_card_holder_response.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<Marqeta.Core.Sdk.Models.Business_card_holder_response>(requestInfo, Marqeta.Core.Sdk.Models.Business_card_holder_response.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// To return an array of all businesses, send a `GET` request to the `/businesses` endpoint.To narrow your result set to businesses that match a particular legal or fictitious name, include the appropriate parameters from the following query parameters table.This endpoint also supports &lt;&lt;/core-api/field-filtering, field filtering&gt;&gt; and &lt;&lt;/core-api/sorting-and-pagination, sorting and pagination&gt;&gt;.
@@ -104,11 +105,11 @@ namespace Marqeta.Core.Sdk.Businesses {
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<BusinessesRequestBuilderGetQueryParameters>>? requestConfiguration = default)
+        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<Marqeta.Core.Sdk.Businesses.BusinessesRequestBuilder.BusinessesRequestBuilderGetQueryParameters>>? requestConfiguration = default)
         {
 #nullable restore
 #else
-        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<BusinessesRequestBuilderGetQueryParameters>> requestConfiguration = default)
+        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<Marqeta.Core.Sdk.Businesses.BusinessesRequestBuilder.BusinessesRequestBuilderGetQueryParameters>> requestConfiguration = default)
         {
 #endif
             var requestInfo = new RequestInformation(Method.GET, UrlTemplate, PathParameters);
@@ -124,11 +125,11 @@ namespace Marqeta.Core.Sdk.Businesses {
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToPostRequestInformation(Business_cardholder body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
+        public RequestInformation ToPostRequestInformation(Marqeta.Core.Sdk.Models.Business_cardholder body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
         {
 #nullable restore
 #else
-        public RequestInformation ToPostRequestInformation(Business_cardholder body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
+        public RequestInformation ToPostRequestInformation(Marqeta.Core.Sdk.Models.Business_cardholder body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
         {
 #endif
             _ = body ?? throw new ArgumentNullException(nameof(body));
@@ -141,11 +142,11 @@ namespace Marqeta.Core.Sdk.Businesses {
         /// <summary>
         /// Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
         /// </summary>
-        /// <returns>A <see cref="BusinessesRequestBuilder"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Businesses.BusinessesRequestBuilder"/></returns>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
-        public BusinessesRequestBuilder WithUrl(string rawUrl)
+        public Marqeta.Core.Sdk.Businesses.BusinessesRequestBuilder WithUrl(string rawUrl)
         {
-            return new BusinessesRequestBuilder(rawUrl, RequestAdapter);
+            return new Marqeta.Core.Sdk.Businesses.BusinessesRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
         /// To return an array of all businesses, send a `GET` request to the `/businesses` endpoint.To narrow your result set to businesses that match a particular legal or fictitious name, include the appropriate parameters from the following query parameters table.This endpoint also supports &lt;&lt;/core-api/field-filtering, field filtering&gt;&gt; and &lt;&lt;/core-api/sorting-and-pagination, sorting and pagination&gt;&gt;.

@@ -4,11 +4,12 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System;
-namespace Marqeta.Core.Sdk.Models {
+namespace Marqeta.Core.Sdk.Models
+{
     /// <summary>
     /// Contains configuration fields for a number of controls.*NOTE:* These controls are in effect only if `kyc_required` is `ALWAYS` or `CONDITIONAL` and the account holder has not yet passed KYC.
     /// </summary>
-    public class Pre_kyc_controls : IAdditionalDataHolder, IParsable 
+    public class Pre_kyc_controls : IAdditionalDataHolder, IParsable
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
@@ -23,7 +24,7 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>If set to `false`, this control prohibits an account holder&apos;s account from being reloaded with funds after an initial load.This restriction applies to GPA orders, peer transfers, and direct deposits, but does not apply to operator adjustments.</summary>
         public bool? IsReloadablePreKyc { get; set; }
         /// <summary>
-        /// Instantiates a new <see cref="Pre_kyc_controls"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Models.Pre_kyc_controls"/> and sets the default values.
         /// </summary>
         public Pre_kyc_controls()
         {
@@ -32,12 +33,12 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="Pre_kyc_controls"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Models.Pre_kyc_controls"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static Pre_kyc_controls CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static Marqeta.Core.Sdk.Models.Pre_kyc_controls CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-            return new Pre_kyc_controls();
+            return new Marqeta.Core.Sdk.Models.Pre_kyc_controls();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -47,11 +48,11 @@ namespace Marqeta.Core.Sdk.Models {
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                {"balance_max", n => { BalanceMax = n.GetDoubleValue(); } },
-                {"cash_access_enabled", n => { CashAccessEnabled = n.GetBoolValue(); } },
-                {"enable_non_program_loads", n => { EnableNonProgramLoads = n.GetBoolValue(); } },
-                {"international_enabled", n => { InternationalEnabled = n.GetBoolValue(); } },
-                {"is_reloadable_pre_kyc", n => { IsReloadablePreKyc = n.GetBoolValue(); } },
+                { "balance_max", n => { BalanceMax = n.GetDoubleValue(); } },
+                { "cash_access_enabled", n => { CashAccessEnabled = n.GetBoolValue(); } },
+                { "enable_non_program_loads", n => { EnableNonProgramLoads = n.GetBoolValue(); } },
+                { "international_enabled", n => { InternationalEnabled = n.GetBoolValue(); } },
+                { "is_reloadable_pre_kyc", n => { IsReloadablePreKyc = n.GetBoolValue(); } },
             };
         }
         /// <summary>

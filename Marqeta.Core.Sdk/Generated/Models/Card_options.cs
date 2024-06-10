@@ -4,9 +4,10 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System;
-namespace Marqeta.Core.Sdk.Models {
+namespace Marqeta.Core.Sdk.Models
+{
     #pragma warning disable CS1591
-    public class Card_options : IAdditionalDataHolder, IParsable 
+    public class Card_options : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -38,7 +39,7 @@ namespace Marqeta.Core.Sdk.Models {
         public string Expiration { get; set; }
 #endif
         /// <summary>
-        /// Instantiates a new <see cref="Card_options"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Models.Card_options"/> and sets the default values.
         /// </summary>
         public Card_options()
         {
@@ -47,12 +48,12 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="Card_options"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Models.Card_options"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static Card_options CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static Marqeta.Core.Sdk.Models.Card_options CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-            return new Card_options();
+            return new Marqeta.Core.Sdk.Models.Card_options();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -62,10 +63,10 @@ namespace Marqeta.Core.Sdk.Models {
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                {"billing_address", n => { BillingAddress = n.GetObjectValue<Marqeta.Core.Sdk.Models.BillingAddress>(Marqeta.Core.Sdk.Models.BillingAddress.CreateFromDiscriminatorValue); } },
-                {"card_present", n => { CardPresent = n.GetBoolValue(); } },
-                {"cvv", n => { Cvv = n.GetStringValue(); } },
-                {"expiration", n => { Expiration = n.GetStringValue(); } },
+                { "billing_address", n => { BillingAddress = n.GetObjectValue<Marqeta.Core.Sdk.Models.BillingAddress>(Marqeta.Core.Sdk.Models.BillingAddress.CreateFromDiscriminatorValue); } },
+                { "card_present", n => { CardPresent = n.GetBoolValue(); } },
+                { "cvv", n => { Cvv = n.GetStringValue(); } },
+                { "expiration", n => { Expiration = n.GetStringValue(); } },
             };
         }
         /// <summary>

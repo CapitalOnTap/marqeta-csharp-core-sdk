@@ -4,11 +4,12 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System;
-namespace Marqeta.Core.Sdk.Models {
+namespace Marqeta.Core.Sdk.Models
+{
     /// <summary>
     /// A payment schedule transition on a credit account.
     /// </summary>
-    public class PaymentScheduleTransitionResponse : IAdditionalDataHolder, IParsable 
+    public class PaymentScheduleTransitionResponse : IAdditionalDataHolder, IParsable
     {
         /// <summary>Unique identifier of the credit account on which to transition a payment schedule.Send a `GET` request to `/credit/accounts` to retrieve existing credit account tokens.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -31,7 +32,7 @@ namespace Marqeta.Core.Sdk.Models {
         public string PaymentScheduleToken { get; set; }
 #endif
         /// <summary>Status of the payment schedule.</summary>
-        public PaymentScheduleStatus? Status { get; set; }
+        public Marqeta.Core.Sdk.Models.PaymentScheduleStatus? Status { get; set; }
         /// <summary>Unique identifier of the payment schedule transition.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -43,7 +44,7 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>Date and time when the payment schedule transition was last updated on Marqeta&apos;s credit platform, in UTC.</summary>
         public DateTimeOffset? UpdatedTime { get; set; }
         /// <summary>
-        /// Instantiates a new <see cref="PaymentScheduleTransitionResponse"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Models.PaymentScheduleTransitionResponse"/> and sets the default values.
         /// </summary>
         public PaymentScheduleTransitionResponse()
         {
@@ -52,12 +53,12 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="PaymentScheduleTransitionResponse"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Models.PaymentScheduleTransitionResponse"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static PaymentScheduleTransitionResponse CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static Marqeta.Core.Sdk.Models.PaymentScheduleTransitionResponse CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-            return new PaymentScheduleTransitionResponse();
+            return new Marqeta.Core.Sdk.Models.PaymentScheduleTransitionResponse();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -67,12 +68,12 @@ namespace Marqeta.Core.Sdk.Models {
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                {"account_token", n => { AccountToken = n.GetStringValue(); } },
-                {"created_time", n => { CreatedTime = n.GetDateTimeOffsetValue(); } },
-                {"payment_schedule_token", n => { PaymentScheduleToken = n.GetStringValue(); } },
-                {"status", n => { Status = n.GetEnumValue<PaymentScheduleStatus>(); } },
-                {"token", n => { Token = n.GetStringValue(); } },
-                {"updated_time", n => { UpdatedTime = n.GetDateTimeOffsetValue(); } },
+                { "account_token", n => { AccountToken = n.GetStringValue(); } },
+                { "created_time", n => { CreatedTime = n.GetDateTimeOffsetValue(); } },
+                { "payment_schedule_token", n => { PaymentScheduleToken = n.GetStringValue(); } },
+                { "status", n => { Status = n.GetEnumValue<Marqeta.Core.Sdk.Models.PaymentScheduleStatus>(); } },
+                { "token", n => { Token = n.GetStringValue(); } },
+                { "updated_time", n => { UpdatedTime = n.GetDateTimeOffsetValue(); } },
             };
         }
         /// <summary>
@@ -85,7 +86,7 @@ namespace Marqeta.Core.Sdk.Models {
             writer.WriteStringValue("account_token", AccountToken);
             writer.WriteDateTimeOffsetValue("created_time", CreatedTime);
             writer.WriteStringValue("payment_schedule_token", PaymentScheduleToken);
-            writer.WriteEnumValue<PaymentScheduleStatus>("status", Status);
+            writer.WriteEnumValue<Marqeta.Core.Sdk.Models.PaymentScheduleStatus>("status", Status);
             writer.WriteStringValue("token", Token);
             writer.WriteDateTimeOffsetValue("updated_time", UpdatedTime);
             writer.WriteAdditionalData(AdditionalData);

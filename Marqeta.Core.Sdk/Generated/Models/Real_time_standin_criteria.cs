@@ -4,11 +4,12 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System;
-namespace Marqeta.Core.Sdk.Models {
+namespace Marqeta.Core.Sdk.Models
+{
     /// <summary>
     /// Specifies which event types automatically enable Commando Mode.
     /// </summary>
-    public class Real_time_standin_criteria : IAdditionalDataHolder, IParsable 
+    public class Real_time_standin_criteria : IAdditionalDataHolder, IParsable
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
@@ -21,7 +22,7 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>If set to `true`, a gateway response slower than 3000ms automatically enables Commando Mode when `real_time_standin_criteria.enabled` is also `true`.</summary>
         public bool? IncludeResponseTimeouts { get; set; }
         /// <summary>
-        /// Instantiates a new <see cref="Real_time_standin_criteria"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Models.Real_time_standin_criteria"/> and sets the default values.
         /// </summary>
         public Real_time_standin_criteria()
         {
@@ -30,12 +31,12 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="Real_time_standin_criteria"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Models.Real_time_standin_criteria"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static Real_time_standin_criteria CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static Marqeta.Core.Sdk.Models.Real_time_standin_criteria CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-            return new Real_time_standin_criteria();
+            return new Marqeta.Core.Sdk.Models.Real_time_standin_criteria();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -45,10 +46,10 @@ namespace Marqeta.Core.Sdk.Models {
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                {"enabled", n => { Enabled = n.GetBoolValue(); } },
-                {"include_application_errors", n => { IncludeApplicationErrors = n.GetBoolValue(); } },
-                {"include_connection_errors", n => { IncludeConnectionErrors = n.GetBoolValue(); } },
-                {"include_response_timeouts", n => { IncludeResponseTimeouts = n.GetBoolValue(); } },
+                { "enabled", n => { Enabled = n.GetBoolValue(); } },
+                { "include_application_errors", n => { IncludeApplicationErrors = n.GetBoolValue(); } },
+                { "include_connection_errors", n => { IncludeConnectionErrors = n.GetBoolValue(); } },
+                { "include_response_timeouts", n => { IncludeResponseTimeouts = n.GetBoolValue(); } },
             };
         }
         /// <summary>

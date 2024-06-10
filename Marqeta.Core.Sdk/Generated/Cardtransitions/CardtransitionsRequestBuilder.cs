@@ -10,31 +10,32 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Threading;
 using System;
-namespace Marqeta.Core.Sdk.Cardtransitions {
+namespace Marqeta.Core.Sdk.Cardtransitions
+{
     /// <summary>
     /// Builds and executes requests for operations under \cardtransitions
     /// </summary>
-    public class CardtransitionsRequestBuilder : BaseRequestBuilder 
+    public class CardtransitionsRequestBuilder : BaseRequestBuilder
     {
         /// <summary>The card property</summary>
-        public CardRequestBuilder Card
+        public Marqeta.Core.Sdk.Cardtransitions.Card.CardRequestBuilder Card
         {
-            get => new CardRequestBuilder(PathParameters, RequestAdapter);
+            get => new Marqeta.Core.Sdk.Cardtransitions.Card.CardRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>Gets an item from the Marqeta.Core.Sdk.cardtransitions.item collection</summary>
         /// <param name="position">Unique identifier of the card transition.Send a `GET` request to `/cardtransitions/card/{token}` to retrieve card transition tokens for a specific card.</param>
-        /// <returns>A <see cref="WithTokenItemRequestBuilder"/></returns>
-        public WithTokenItemRequestBuilder this[string position]
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Cardtransitions.Item.WithTokenItemRequestBuilder"/></returns>
+        public Marqeta.Core.Sdk.Cardtransitions.Item.WithTokenItemRequestBuilder this[string position]
         {
             get
             {
                 var urlTplParams = new Dictionary<string, object>(PathParameters);
                 urlTplParams.Add("token", position);
-                return new WithTokenItemRequestBuilder(urlTplParams, RequestAdapter);
+                return new Marqeta.Core.Sdk.Cardtransitions.Item.WithTokenItemRequestBuilder(urlTplParams, RequestAdapter);
             }
         }
         /// <summary>
-        /// Instantiates a new <see cref="CardtransitionsRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Cardtransitions.CardtransitionsRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
@@ -42,7 +43,7 @@ namespace Marqeta.Core.Sdk.Cardtransitions {
         {
         }
         /// <summary>
-        /// Instantiates a new <see cref="CardtransitionsRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Cardtransitions.CardtransitionsRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
@@ -52,27 +53,27 @@ namespace Marqeta.Core.Sdk.Cardtransitions {
         /// <summary>
         /// Creates a card state transition to set the state of an existing card.If your system uses IVR, you can send a `POST` request to `/cards/getbypan` to retrieve a card token, which you can then use in your `POST` request to `/cardtransitions`.It may not be possible to move a card from one user to another once the card has been activated.
         /// </summary>
-        /// <returns>A <see cref="Card_transition_response"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Models.Card_transition_response"/></returns>
         /// <param name="body">The request body</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        /// <exception cref="ApiError">When receiving a 4XX or 5XX status code</exception>
+        /// <exception cref="Marqeta.Core.Sdk.Models.ApiError">When receiving a 4XX or 5XX status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<Card_transition_response?> PostAsync(Card_transition_request body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<Marqeta.Core.Sdk.Models.Card_transition_response?> PostAsync(Marqeta.Core.Sdk.Models.Card_transition_request body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<Card_transition_response> PostAsync(Card_transition_request body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<Marqeta.Core.Sdk.Models.Card_transition_response> PostAsync(Marqeta.Core.Sdk.Models.Card_transition_request body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             _ = body ?? throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPostRequestInformation(body, requestConfiguration);
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
-                {"XXX", ApiError.CreateFromDiscriminatorValue},
+                { "XXX", Marqeta.Core.Sdk.Models.ApiError.CreateFromDiscriminatorValue },
             };
-            return await RequestAdapter.SendAsync<Card_transition_response>(requestInfo, Card_transition_response.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<Marqeta.Core.Sdk.Models.Card_transition_response>(requestInfo, Marqeta.Core.Sdk.Models.Card_transition_response.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Creates a card state transition to set the state of an existing card.If your system uses IVR, you can send a `POST` request to `/cards/getbypan` to retrieve a card token, which you can then use in your `POST` request to `/cardtransitions`.It may not be possible to move a card from one user to another once the card has been activated.
@@ -82,11 +83,11 @@ namespace Marqeta.Core.Sdk.Cardtransitions {
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToPostRequestInformation(Card_transition_request body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
+        public RequestInformation ToPostRequestInformation(Marqeta.Core.Sdk.Models.Card_transition_request body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
         {
 #nullable restore
 #else
-        public RequestInformation ToPostRequestInformation(Card_transition_request body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
+        public RequestInformation ToPostRequestInformation(Marqeta.Core.Sdk.Models.Card_transition_request body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
         {
 #endif
             _ = body ?? throw new ArgumentNullException(nameof(body));
@@ -99,11 +100,11 @@ namespace Marqeta.Core.Sdk.Cardtransitions {
         /// <summary>
         /// Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
         /// </summary>
-        /// <returns>A <see cref="CardtransitionsRequestBuilder"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Cardtransitions.CardtransitionsRequestBuilder"/></returns>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
-        public CardtransitionsRequestBuilder WithUrl(string rawUrl)
+        public Marqeta.Core.Sdk.Cardtransitions.CardtransitionsRequestBuilder WithUrl(string rawUrl)
         {
-            return new CardtransitionsRequestBuilder(rawUrl, RequestAdapter);
+            return new Marqeta.Core.Sdk.Cardtransitions.CardtransitionsRequestBuilder(rawUrl, RequestAdapter);
         }
     }
 }

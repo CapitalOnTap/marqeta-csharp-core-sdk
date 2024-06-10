@@ -4,16 +4,17 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System;
-namespace Marqeta.Core.Sdk.Models {
+namespace Marqeta.Core.Sdk.Models
+{
     /// <summary>
     /// Contains information on the card products associated with the credit product policy.
     /// </summary>
-    public class PolicyProductCardProductReq : IAdditionalDataHolder, IParsable 
+    public class PolicyProductCardProductReq : IAdditionalDataHolder, IParsable
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Level of the card product.</summary>
-        public PolicyProductCardProductLevel? Level { get; set; }
+        public Marqeta.Core.Sdk.Models.PolicyProductCardProductLevel? Level { get; set; }
         /// <summary>Unique identifier of the card product.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -23,7 +24,7 @@ namespace Marqeta.Core.Sdk.Models {
         public string Token { get; set; }
 #endif
         /// <summary>
-        /// Instantiates a new <see cref="PolicyProductCardProductReq"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Models.PolicyProductCardProductReq"/> and sets the default values.
         /// </summary>
         public PolicyProductCardProductReq()
         {
@@ -32,12 +33,12 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="PolicyProductCardProductReq"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Models.PolicyProductCardProductReq"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static PolicyProductCardProductReq CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static Marqeta.Core.Sdk.Models.PolicyProductCardProductReq CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-            return new PolicyProductCardProductReq();
+            return new Marqeta.Core.Sdk.Models.PolicyProductCardProductReq();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -47,8 +48,8 @@ namespace Marqeta.Core.Sdk.Models {
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                {"level", n => { Level = n.GetEnumValue<PolicyProductCardProductLevel>(); } },
-                {"token", n => { Token = n.GetStringValue(); } },
+                { "level", n => { Level = n.GetEnumValue<Marqeta.Core.Sdk.Models.PolicyProductCardProductLevel>(); } },
+                { "token", n => { Token = n.GetStringValue(); } },
             };
         }
         /// <summary>
@@ -58,7 +59,7 @@ namespace Marqeta.Core.Sdk.Models {
         public virtual void Serialize(ISerializationWriter writer)
         {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
-            writer.WriteEnumValue<PolicyProductCardProductLevel>("level", Level);
+            writer.WriteEnumValue<Marqeta.Core.Sdk.Models.PolicyProductCardProductLevel>("level", Level);
             writer.WriteStringValue("token", Token);
             writer.WriteAdditionalData(AdditionalData);
         }

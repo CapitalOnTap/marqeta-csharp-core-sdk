@@ -4,9 +4,10 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System;
-namespace Marqeta.Core.Sdk.Models {
+namespace Marqeta.Core.Sdk.Models
+{
     #pragma warning disable CS1591
-    public class Orignalcredit_request_model : IAdditionalDataHolder, IParsable 
+    public class Orignalcredit_request_model : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -16,10 +17,10 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>The card_acceptor property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public Card_acceptor_model? CardAcceptor { get; set; }
+        public Marqeta.Core.Sdk.Models.Card_acceptor_model? CardAcceptor { get; set; }
 #nullable restore
 #else
-        public Card_acceptor_model CardAcceptor { get; set; }
+        public Marqeta.Core.Sdk.Models.Card_acceptor_model CardAcceptor { get; set; }
 #endif
         /// <summary>The card_token property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -48,10 +49,10 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>The sender_data property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public Original_credit_sender_data? SenderData { get; set; }
+        public Marqeta.Core.Sdk.Models.Original_credit_sender_data? SenderData { get; set; }
 #nullable restore
 #else
-        public Original_credit_sender_data SenderData { get; set; }
+        public Marqeta.Core.Sdk.Models.Original_credit_sender_data SenderData { get; set; }
 #endif
         /// <summary>The transactionPurpose property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -62,7 +63,7 @@ namespace Marqeta.Core.Sdk.Models {
         public string TransactionPurpose { get; set; }
 #endif
         /// <summary>The type property</summary>
-        public Orignalcredit_request_model_type? Type { get; set; }
+        public Marqeta.Core.Sdk.Models.Orignalcredit_request_model_type? Type { get; set; }
         /// <summary>The webhook property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -72,7 +73,7 @@ namespace Marqeta.Core.Sdk.Models {
         public Marqeta.Core.Sdk.Models.Webhook Webhook { get; set; }
 #endif
         /// <summary>
-        /// Instantiates a new <see cref="Orignalcredit_request_model"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Models.Orignalcredit_request_model"/> and sets the default values.
         /// </summary>
         public Orignalcredit_request_model()
         {
@@ -81,12 +82,12 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="Orignalcredit_request_model"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Models.Orignalcredit_request_model"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static Orignalcredit_request_model CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static Marqeta.Core.Sdk.Models.Orignalcredit_request_model CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-            return new Orignalcredit_request_model();
+            return new Marqeta.Core.Sdk.Models.Orignalcredit_request_model();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -96,15 +97,15 @@ namespace Marqeta.Core.Sdk.Models {
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                {"amount", n => { Amount = n.GetDoubleValue(); } },
-                {"card_acceptor", n => { CardAcceptor = n.GetObjectValue<Card_acceptor_model>(Card_acceptor_model.CreateFromDiscriminatorValue); } },
-                {"card_token", n => { CardToken = n.GetStringValue(); } },
-                {"mid", n => { Mid = n.GetStringValue(); } },
-                {"screening_score", n => { ScreeningScore = n.GetStringValue(); } },
-                {"sender_data", n => { SenderData = n.GetObjectValue<Original_credit_sender_data>(Original_credit_sender_data.CreateFromDiscriminatorValue); } },
-                {"transactionPurpose", n => { TransactionPurpose = n.GetStringValue(); } },
-                {"type", n => { Type = n.GetEnumValue<Orignalcredit_request_model_type>(); } },
-                {"webhook", n => { Webhook = n.GetObjectValue<Marqeta.Core.Sdk.Models.Webhook>(Marqeta.Core.Sdk.Models.Webhook.CreateFromDiscriminatorValue); } },
+                { "amount", n => { Amount = n.GetDoubleValue(); } },
+                { "card_acceptor", n => { CardAcceptor = n.GetObjectValue<Marqeta.Core.Sdk.Models.Card_acceptor_model>(Marqeta.Core.Sdk.Models.Card_acceptor_model.CreateFromDiscriminatorValue); } },
+                { "card_token", n => { CardToken = n.GetStringValue(); } },
+                { "mid", n => { Mid = n.GetStringValue(); } },
+                { "screening_score", n => { ScreeningScore = n.GetStringValue(); } },
+                { "sender_data", n => { SenderData = n.GetObjectValue<Marqeta.Core.Sdk.Models.Original_credit_sender_data>(Marqeta.Core.Sdk.Models.Original_credit_sender_data.CreateFromDiscriminatorValue); } },
+                { "transactionPurpose", n => { TransactionPurpose = n.GetStringValue(); } },
+                { "type", n => { Type = n.GetEnumValue<Marqeta.Core.Sdk.Models.Orignalcredit_request_model_type>(); } },
+                { "webhook", n => { Webhook = n.GetObjectValue<Marqeta.Core.Sdk.Models.Webhook>(Marqeta.Core.Sdk.Models.Webhook.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -115,13 +116,13 @@ namespace Marqeta.Core.Sdk.Models {
         {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
             writer.WriteDoubleValue("amount", Amount);
-            writer.WriteObjectValue<Card_acceptor_model>("card_acceptor", CardAcceptor);
+            writer.WriteObjectValue<Marqeta.Core.Sdk.Models.Card_acceptor_model>("card_acceptor", CardAcceptor);
             writer.WriteStringValue("card_token", CardToken);
             writer.WriteStringValue("mid", Mid);
             writer.WriteStringValue("screening_score", ScreeningScore);
-            writer.WriteObjectValue<Original_credit_sender_data>("sender_data", SenderData);
+            writer.WriteObjectValue<Marqeta.Core.Sdk.Models.Original_credit_sender_data>("sender_data", SenderData);
             writer.WriteStringValue("transactionPurpose", TransactionPurpose);
-            writer.WriteEnumValue<Orignalcredit_request_model_type>("type", Type);
+            writer.WriteEnumValue<Marqeta.Core.Sdk.Models.Orignalcredit_request_model_type>("type", Type);
             writer.WriteObjectValue<Marqeta.Core.Sdk.Models.Webhook>("webhook", Webhook);
             writer.WriteAdditionalData(AdditionalData);
         }

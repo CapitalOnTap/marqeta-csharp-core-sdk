@@ -4,15 +4,16 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System;
-namespace Marqeta.Core.Sdk.Models {
+namespace Marqeta.Core.Sdk.Models
+{
     #pragma warning disable CS1591
-    public class JournalEntry_detail_object : IAdditionalDataHolder, IParsable 
+    public class JournalEntry_detail_object : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>
-        /// Instantiates a new <see cref="JournalEntry_detail_object"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Models.JournalEntry_detail_object"/> and sets the default values.
         /// </summary>
         public JournalEntry_detail_object()
         {
@@ -21,12 +22,12 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="JournalEntry_detail_object"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Models.JournalEntry_detail_object"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static JournalEntry_detail_object CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static Marqeta.Core.Sdk.Models.JournalEntry_detail_object CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-            return new JournalEntry_detail_object();
+            return new Marqeta.Core.Sdk.Models.JournalEntry_detail_object();
         }
         /// <summary>
         /// The deserialization information for the current model

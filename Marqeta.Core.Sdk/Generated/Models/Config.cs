@@ -4,24 +4,25 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System;
-namespace Marqeta.Core.Sdk.Models {
+namespace Marqeta.Core.Sdk.Models
+{
     /// <summary>
     /// Allows for configuration options for this group, including control over the expiration of authorizations and automatic increases to the authorization amount.
     /// </summary>
-    public class Config : IAdditionalDataHolder, IParsable 
+    public class Config : IAdditionalDataHolder, IParsable
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Controls the expiration of authorizations and automatic increases to the authorization amount for MCCs specified in this group.By default, these authorization controls apply program-wide, meaning that they apply to every card in your program.You can, however, exempt cards associated with any particular card product by setting that card product&apos;s `allow_mcc_group_authorization_controls` field to `false`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public Authorization_controls? AuthorizationControls { get; set; }
+        public Marqeta.Core.Sdk.Models.Authorization_controls? AuthorizationControls { get; set; }
 #nullable restore
 #else
-        public Authorization_controls AuthorizationControls { get; set; }
+        public Marqeta.Core.Sdk.Models.Authorization_controls AuthorizationControls { get; set; }
 #endif
         /// <summary>
-        /// Instantiates a new <see cref="Config"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Models.Config"/> and sets the default values.
         /// </summary>
         public Config()
         {
@@ -30,12 +31,12 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="Config"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Models.Config"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static Config CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static Marqeta.Core.Sdk.Models.Config CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-            return new Config();
+            return new Marqeta.Core.Sdk.Models.Config();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -45,7 +46,7 @@ namespace Marqeta.Core.Sdk.Models {
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                {"authorization_controls", n => { AuthorizationControls = n.GetObjectValue<Authorization_controls>(Authorization_controls.CreateFromDiscriminatorValue); } },
+                { "authorization_controls", n => { AuthorizationControls = n.GetObjectValue<Marqeta.Core.Sdk.Models.Authorization_controls>(Marqeta.Core.Sdk.Models.Authorization_controls.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -55,7 +56,7 @@ namespace Marqeta.Core.Sdk.Models {
         public virtual void Serialize(ISerializationWriter writer)
         {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<Authorization_controls>("authorization_controls", AuthorizationControls);
+            writer.WriteObjectValue<Marqeta.Core.Sdk.Models.Authorization_controls>("authorization_controls", AuthorizationControls);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

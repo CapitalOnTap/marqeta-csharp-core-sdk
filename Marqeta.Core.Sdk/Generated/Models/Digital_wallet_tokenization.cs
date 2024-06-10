@@ -4,11 +4,12 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System;
-namespace Marqeta.Core.Sdk.Models {
+namespace Marqeta.Core.Sdk.Models
+{
     /// <summary>
     /// Controls characteristics related to digital wallets.
     /// </summary>
-    public class Digital_wallet_tokenization : IAdditionalDataHolder, IParsable 
+    public class Digital_wallet_tokenization : IAdditionalDataHolder, IParsable
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
@@ -23,13 +24,13 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>The provisioning_controls property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public Provisioning_controls? ProvisioningControls { get; set; }
+        public Marqeta.Core.Sdk.Models.Provisioning_controls? ProvisioningControls { get; set; }
 #nullable restore
 #else
-        public Provisioning_controls ProvisioningControls { get; set; }
+        public Marqeta.Core.Sdk.Models.Provisioning_controls ProvisioningControls { get; set; }
 #endif
         /// <summary>
-        /// Instantiates a new <see cref="Digital_wallet_tokenization"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Models.Digital_wallet_tokenization"/> and sets the default values.
         /// </summary>
         public Digital_wallet_tokenization()
         {
@@ -38,12 +39,12 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="Digital_wallet_tokenization"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Models.Digital_wallet_tokenization"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static Digital_wallet_tokenization CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static Marqeta.Core.Sdk.Models.Digital_wallet_tokenization CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-            return new Digital_wallet_tokenization();
+            return new Marqeta.Core.Sdk.Models.Digital_wallet_tokenization();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -53,8 +54,8 @@ namespace Marqeta.Core.Sdk.Models {
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                {"card_art_id", n => { CardArtId = n.GetStringValue(); } },
-                {"provisioning_controls", n => { ProvisioningControls = n.GetObjectValue<Provisioning_controls>(Provisioning_controls.CreateFromDiscriminatorValue); } },
+                { "card_art_id", n => { CardArtId = n.GetStringValue(); } },
+                { "provisioning_controls", n => { ProvisioningControls = n.GetObjectValue<Marqeta.Core.Sdk.Models.Provisioning_controls>(Marqeta.Core.Sdk.Models.Provisioning_controls.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -65,7 +66,7 @@ namespace Marqeta.Core.Sdk.Models {
         {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("card_art_id", CardArtId);
-            writer.WriteObjectValue<Provisioning_controls>("provisioning_controls", ProvisioningControls);
+            writer.WriteObjectValue<Marqeta.Core.Sdk.Models.Provisioning_controls>("provisioning_controls", ProvisioningControls);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

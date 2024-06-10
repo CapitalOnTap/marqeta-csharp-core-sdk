@@ -4,9 +4,10 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System;
-namespace Marqeta.Core.Sdk.Models {
+namespace Marqeta.Core.Sdk.Models
+{
     #pragma warning disable CS1591
-    public class PutRewardProgramsRequest : IAdditionalDataHolder, IParsable 
+    public class PutRewardProgramsRequest : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -22,7 +23,7 @@ namespace Marqeta.Core.Sdk.Models {
         public string Note { get; set; }
 #endif
         /// <summary>
-        /// Instantiates a new <see cref="PutRewardProgramsRequest"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Models.PutRewardProgramsRequest"/> and sets the default values.
         /// </summary>
         public PutRewardProgramsRequest()
         {
@@ -31,12 +32,12 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="PutRewardProgramsRequest"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Models.PutRewardProgramsRequest"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static PutRewardProgramsRequest CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static Marqeta.Core.Sdk.Models.PutRewardProgramsRequest CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-            return new PutRewardProgramsRequest();
+            return new Marqeta.Core.Sdk.Models.PutRewardProgramsRequest();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -46,8 +47,8 @@ namespace Marqeta.Core.Sdk.Models {
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                {"is_active", n => { IsActive = n.GetBoolValue(); } },
-                {"note", n => { Note = n.GetStringValue(); } },
+                { "is_active", n => { IsActive = n.GetBoolValue(); } },
+                { "note", n => { Note = n.GetStringValue(); } },
             };
         }
         /// <summary>

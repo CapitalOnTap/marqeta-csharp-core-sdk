@@ -4,9 +4,10 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System;
-namespace Marqeta.Core.Sdk.Models {
+namespace Marqeta.Core.Sdk.Models
+{
     #pragma warning disable CS1591
-    public class Push_to_card_disbursement_response : IAdditionalDataHolder, IParsable 
+    public class Push_to_card_disbursement_response : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -66,7 +67,7 @@ namespace Marqeta.Core.Sdk.Models {
         public string Token { get; set; }
 #endif
         /// <summary>
-        /// Instantiates a new <see cref="Push_to_card_disbursement_response"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Models.Push_to_card_disbursement_response"/> and sets the default values.
         /// </summary>
         public Push_to_card_disbursement_response()
         {
@@ -75,12 +76,12 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="Push_to_card_disbursement_response"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Models.Push_to_card_disbursement_response"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static Push_to_card_disbursement_response CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static Marqeta.Core.Sdk.Models.Push_to_card_disbursement_response CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-            return new Push_to_card_disbursement_response();
+            return new Marqeta.Core.Sdk.Models.Push_to_card_disbursement_response();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -90,15 +91,15 @@ namespace Marqeta.Core.Sdk.Models {
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                {"amount", n => { Amount = n.GetDoubleValue(); } },
-                {"created_time", n => { CreatedTime = n.GetDateTimeOffsetValue(); } },
-                {"currency_code", n => { CurrencyCode = n.GetStringValue(); } },
-                {"last_modified_time", n => { LastModifiedTime = n.GetDateTimeOffsetValue(); } },
-                {"memo", n => { Memo = n.GetStringValue(); } },
-                {"payment_instrument_token", n => { PaymentInstrumentToken = n.GetStringValue(); } },
-                {"status", n => { Status = n.GetStringValue(); } },
-                {"tags", n => { Tags = n.GetStringValue(); } },
-                {"token", n => { Token = n.GetStringValue(); } },
+                { "amount", n => { Amount = n.GetDoubleValue(); } },
+                { "created_time", n => { CreatedTime = n.GetDateTimeOffsetValue(); } },
+                { "currency_code", n => { CurrencyCode = n.GetStringValue(); } },
+                { "last_modified_time", n => { LastModifiedTime = n.GetDateTimeOffsetValue(); } },
+                { "memo", n => { Memo = n.GetStringValue(); } },
+                { "payment_instrument_token", n => { PaymentInstrumentToken = n.GetStringValue(); } },
+                { "status", n => { Status = n.GetStringValue(); } },
+                { "tags", n => { Tags = n.GetStringValue(); } },
+                { "token", n => { Token = n.GetStringValue(); } },
             };
         }
         /// <summary>

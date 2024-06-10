@@ -4,11 +4,12 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System;
-namespace Marqeta.Core.Sdk.Models {
+namespace Marqeta.Core.Sdk.Models
+{
     /// <summary>
     /// Response containing payment transition information.
     /// </summary>
-    public class PaymentTransitionResponse : IAdditionalDataHolder, IParsable 
+    public class PaymentTransitionResponse : IAdditionalDataHolder, IParsable
     {
         /// <summary>Unique identifier of the credit account on which you want to transition a payment status.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -31,7 +32,7 @@ namespace Marqeta.Core.Sdk.Models {
         public string PaymentToken { get; set; }
 #endif
         /// <summary>Current status of the payment or refund.</summary>
-        public PaymentStatus? Status { get; set; }
+        public Marqeta.Core.Sdk.Models.PaymentStatus? Status { get; set; }
         /// <summary>Unique identifier of the payment status transition.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -41,7 +42,7 @@ namespace Marqeta.Core.Sdk.Models {
         public string Token { get; set; }
 #endif
         /// <summary>
-        /// Instantiates a new <see cref="PaymentTransitionResponse"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Models.PaymentTransitionResponse"/> and sets the default values.
         /// </summary>
         public PaymentTransitionResponse()
         {
@@ -50,12 +51,12 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="PaymentTransitionResponse"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Models.PaymentTransitionResponse"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static PaymentTransitionResponse CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static Marqeta.Core.Sdk.Models.PaymentTransitionResponse CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-            return new PaymentTransitionResponse();
+            return new Marqeta.Core.Sdk.Models.PaymentTransitionResponse();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -65,11 +66,11 @@ namespace Marqeta.Core.Sdk.Models {
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                {"account_token", n => { AccountToken = n.GetStringValue(); } },
-                {"created_time", n => { CreatedTime = n.GetDateTimeOffsetValue(); } },
-                {"payment_token", n => { PaymentToken = n.GetStringValue(); } },
-                {"status", n => { Status = n.GetEnumValue<PaymentStatus>(); } },
-                {"token", n => { Token = n.GetStringValue(); } },
+                { "account_token", n => { AccountToken = n.GetStringValue(); } },
+                { "created_time", n => { CreatedTime = n.GetDateTimeOffsetValue(); } },
+                { "payment_token", n => { PaymentToken = n.GetStringValue(); } },
+                { "status", n => { Status = n.GetEnumValue<Marqeta.Core.Sdk.Models.PaymentStatus>(); } },
+                { "token", n => { Token = n.GetStringValue(); } },
             };
         }
         /// <summary>
@@ -82,7 +83,7 @@ namespace Marqeta.Core.Sdk.Models {
             writer.WriteStringValue("account_token", AccountToken);
             writer.WriteDateTimeOffsetValue("created_time", CreatedTime);
             writer.WriteStringValue("payment_token", PaymentToken);
-            writer.WriteEnumValue<PaymentStatus>("status", Status);
+            writer.WriteEnumValue<Marqeta.Core.Sdk.Models.PaymentStatus>("status", Status);
             writer.WriteStringValue("token", Token);
             writer.WriteAdditionalData(AdditionalData);
         }

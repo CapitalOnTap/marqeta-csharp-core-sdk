@@ -4,11 +4,12 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System;
-namespace Marqeta.Core.Sdk.Models {
+namespace Marqeta.Core.Sdk.Models
+{
     /// <summary>
     /// Contains authentication data for 3D Secure and digital wallet token transactions:* `electronic_commerce_indicator` – The level of verification performed.* `verification_result` – The result of the verification.* `verification_value_created_by` – The transaction participant who determined the verification result.* `three_ds_message_version` – The 3D Secure message version used for authentication.* `authentication_method` – The 3D Secure authentication method.* `authentication_status` – The 3D Secure authentication status.* `acquirer_exemption` – Indicates a 3D Secure authentication exemption from the acquirer.* `issuer_exemption` – Indicates a 3D Secure authentication exemption from the issuer.
     /// </summary>
-    public class Cardholder_authentication_data : IAdditionalDataHolder, IParsable 
+    public class Cardholder_authentication_data : IAdditionalDataHolder, IParsable
     {
         /// <summary>Indicates 3D Secure authentication exemptions from the acquirer.This array is returned if it is included in the transaction data from the card network.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -93,7 +94,7 @@ namespace Marqeta.Core.Sdk.Models {
         public string VerificationValueCreatedBy { get; set; }
 #endif
         /// <summary>
-        /// Instantiates a new <see cref="Cardholder_authentication_data"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Models.Cardholder_authentication_data"/> and sets the default values.
         /// </summary>
         public Cardholder_authentication_data()
         {
@@ -102,12 +103,12 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="Cardholder_authentication_data"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Models.Cardholder_authentication_data"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static Cardholder_authentication_data CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static Marqeta.Core.Sdk.Models.Cardholder_authentication_data CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-            return new Cardholder_authentication_data();
+            return new Marqeta.Core.Sdk.Models.Cardholder_authentication_data();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -117,16 +118,16 @@ namespace Marqeta.Core.Sdk.Models {
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                {"acquirer_exemption", n => { AcquirerExemption = n.GetCollectionOfPrimitiveValues<string>()?.ToList(); } },
-                {"authentication_method", n => { AuthenticationMethod = n.GetStringValue(); } },
-                {"authentication_status", n => { AuthenticationStatus = n.GetStringValue(); } },
-                {"cavv_authentication_amount", n => { CavvAuthenticationAmount = n.GetStringValue(); } },
-                {"electronic_commerce_indicator", n => { ElectronicCommerceIndicator = n.GetStringValue(); } },
-                {"issuer_exemption", n => { IssuerExemption = n.GetStringValue(); } },
-                {"raw_cavv_data", n => { RawCavvData = n.GetStringValue(); } },
-                {"three_ds_message_version", n => { ThreeDsMessageVersion = n.GetStringValue(); } },
-                {"verification_result", n => { VerificationResult = n.GetStringValue(); } },
-                {"verification_value_created_by", n => { VerificationValueCreatedBy = n.GetStringValue(); } },
+                { "acquirer_exemption", n => { AcquirerExemption = n.GetCollectionOfPrimitiveValues<string>()?.ToList(); } },
+                { "authentication_method", n => { AuthenticationMethod = n.GetStringValue(); } },
+                { "authentication_status", n => { AuthenticationStatus = n.GetStringValue(); } },
+                { "cavv_authentication_amount", n => { CavvAuthenticationAmount = n.GetStringValue(); } },
+                { "electronic_commerce_indicator", n => { ElectronicCommerceIndicator = n.GetStringValue(); } },
+                { "issuer_exemption", n => { IssuerExemption = n.GetStringValue(); } },
+                { "raw_cavv_data", n => { RawCavvData = n.GetStringValue(); } },
+                { "three_ds_message_version", n => { ThreeDsMessageVersion = n.GetStringValue(); } },
+                { "verification_result", n => { VerificationResult = n.GetStringValue(); } },
+                { "verification_value_created_by", n => { VerificationValueCreatedBy = n.GetStringValue(); } },
             };
         }
         /// <summary>

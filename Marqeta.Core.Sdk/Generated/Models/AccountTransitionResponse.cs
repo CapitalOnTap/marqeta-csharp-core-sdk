@@ -4,11 +4,12 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System;
-namespace Marqeta.Core.Sdk.Models {
+namespace Marqeta.Core.Sdk.Models
+{
     /// <summary>
     /// Information on the credit account transition.
     /// </summary>
-    public class AccountTransitionResponse : IAdditionalDataHolder, IParsable 
+    public class AccountTransitionResponse : IAdditionalDataHolder, IParsable
     {
         /// <summary>Unique identifier of the credit account for which to transition a status.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -23,9 +24,9 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>Date and time when the transition record was created on Marqeta&apos;s credit platform, in UTC.</summary>
         public DateTimeOffset? CreatedTime { get; set; }
         /// <summary>Status of the credit account.*NOTE* `CHARGE_OFF` is not an allowable value for `original_status`.</summary>
-        public AccountStatusEnum? OriginalStatus { get; set; }
+        public Marqeta.Core.Sdk.Models.AccountStatusEnum? OriginalStatus { get; set; }
         /// <summary>Status of the credit account.*NOTE* `CHARGE_OFF` is not an allowable value for `original_status`.</summary>
-        public AccountStatusEnum? Status { get; set; }
+        public Marqeta.Core.Sdk.Models.AccountStatusEnum? Status { get; set; }
         /// <summary>Unique identifier of the credit account transition.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -35,7 +36,7 @@ namespace Marqeta.Core.Sdk.Models {
         public string Token { get; set; }
 #endif
         /// <summary>
-        /// Instantiates a new <see cref="AccountTransitionResponse"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Models.AccountTransitionResponse"/> and sets the default values.
         /// </summary>
         public AccountTransitionResponse()
         {
@@ -44,12 +45,12 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="AccountTransitionResponse"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Models.AccountTransitionResponse"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static AccountTransitionResponse CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static Marqeta.Core.Sdk.Models.AccountTransitionResponse CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-            return new AccountTransitionResponse();
+            return new Marqeta.Core.Sdk.Models.AccountTransitionResponse();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -59,11 +60,11 @@ namespace Marqeta.Core.Sdk.Models {
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                {"account_token", n => { AccountToken = n.GetStringValue(); } },
-                {"created_time", n => { CreatedTime = n.GetDateTimeOffsetValue(); } },
-                {"original_status", n => { OriginalStatus = n.GetEnumValue<AccountStatusEnum>(); } },
-                {"status", n => { Status = n.GetEnumValue<AccountStatusEnum>(); } },
-                {"token", n => { Token = n.GetStringValue(); } },
+                { "account_token", n => { AccountToken = n.GetStringValue(); } },
+                { "created_time", n => { CreatedTime = n.GetDateTimeOffsetValue(); } },
+                { "original_status", n => { OriginalStatus = n.GetEnumValue<Marqeta.Core.Sdk.Models.AccountStatusEnum>(); } },
+                { "status", n => { Status = n.GetEnumValue<Marqeta.Core.Sdk.Models.AccountStatusEnum>(); } },
+                { "token", n => { Token = n.GetStringValue(); } },
             };
         }
         /// <summary>
@@ -75,8 +76,8 @@ namespace Marqeta.Core.Sdk.Models {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("account_token", AccountToken);
             writer.WriteDateTimeOffsetValue("created_time", CreatedTime);
-            writer.WriteEnumValue<AccountStatusEnum>("original_status", OriginalStatus);
-            writer.WriteEnumValue<AccountStatusEnum>("status", Status);
+            writer.WriteEnumValue<Marqeta.Core.Sdk.Models.AccountStatusEnum>("original_status", OriginalStatus);
+            writer.WriteEnumValue<Marqeta.Core.Sdk.Models.AccountStatusEnum>("status", Status);
             writer.WriteStringValue("token", Token);
             writer.WriteAdditionalData(AdditionalData);
         }

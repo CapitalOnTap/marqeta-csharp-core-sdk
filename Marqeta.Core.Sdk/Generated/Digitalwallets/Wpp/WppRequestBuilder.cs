@@ -7,24 +7,25 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using System;
-namespace Marqeta.Core.Sdk.Digitalwallets.Wpp {
+namespace Marqeta.Core.Sdk.Digitalwallets.Wpp
+{
     /// <summary>
     /// Builds and executes requests for operations under \digitalwallets\wpp
     /// </summary>
-    public class WppRequestBuilder : BaseRequestBuilder 
+    public class WppRequestBuilder : BaseRequestBuilder
     {
         /// <summary>The applePayJWT property</summary>
-        public ApplePayJWTRequestBuilder ApplePayJWT
+        public Marqeta.Core.Sdk.Digitalwallets.Wpp.ApplePayJWT.ApplePayJWTRequestBuilder ApplePayJWT
         {
-            get => new ApplePayJWTRequestBuilder(PathParameters, RequestAdapter);
+            get => new Marqeta.Core.Sdk.Digitalwallets.Wpp.ApplePayJWT.ApplePayJWTRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The googlePayPushProvisioningNotification property</summary>
-        public GooglePayPushProvisioningNotificationRequestBuilder GooglePayPushProvisioningNotification
+        public Marqeta.Core.Sdk.Digitalwallets.Wpp.GooglePayPushProvisioningNotification.GooglePayPushProvisioningNotificationRequestBuilder GooglePayPushProvisioningNotification
         {
-            get => new GooglePayPushProvisioningNotificationRequestBuilder(PathParameters, RequestAdapter);
+            get => new Marqeta.Core.Sdk.Digitalwallets.Wpp.GooglePayPushProvisioningNotification.GooglePayPushProvisioningNotificationRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>
-        /// Instantiates a new <see cref="WppRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Digitalwallets.Wpp.WppRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
@@ -32,7 +33,7 @@ namespace Marqeta.Core.Sdk.Digitalwallets.Wpp {
         {
         }
         /// <summary>
-        /// Instantiates a new <see cref="WppRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Digitalwallets.Wpp.WppRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>

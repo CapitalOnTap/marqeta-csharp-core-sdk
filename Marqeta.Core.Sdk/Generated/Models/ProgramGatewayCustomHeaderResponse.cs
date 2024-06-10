@@ -4,16 +4,17 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System;
-namespace Marqeta.Core.Sdk.Models {
+namespace Marqeta.Core.Sdk.Models
+{
     /// <summary>
     /// Additional custom information included in the HTTP header.
     /// </summary>
-    public class ProgramGatewayCustomHeaderResponse : IAdditionalDataHolder, IParsable 
+    public class ProgramGatewayCustomHeaderResponse : IAdditionalDataHolder, IParsable
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>
-        /// Instantiates a new <see cref="ProgramGatewayCustomHeaderResponse"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Models.ProgramGatewayCustomHeaderResponse"/> and sets the default values.
         /// </summary>
         public ProgramGatewayCustomHeaderResponse()
         {
@@ -22,12 +23,12 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="ProgramGatewayCustomHeaderResponse"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Models.ProgramGatewayCustomHeaderResponse"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static ProgramGatewayCustomHeaderResponse CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static Marqeta.Core.Sdk.Models.ProgramGatewayCustomHeaderResponse CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-            return new ProgramGatewayCustomHeaderResponse();
+            return new Marqeta.Core.Sdk.Models.ProgramGatewayCustomHeaderResponse();
         }
         /// <summary>
         /// The deserialization information for the current model

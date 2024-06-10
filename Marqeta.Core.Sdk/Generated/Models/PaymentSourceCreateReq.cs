@@ -4,11 +4,12 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System;
-namespace Marqeta.Core.Sdk.Models {
+namespace Marqeta.Core.Sdk.Models
+{
     /// <summary>
     /// Contains information about a payment source.
     /// </summary>
-    public class PaymentSourceCreateReq : IAdditionalDataHolder, IParsable 
+    public class PaymentSourceCreateReq : IAdditionalDataHolder, IParsable
     {
         /// <summary>Account number of the payment source.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -53,7 +54,7 @@ namespace Marqeta.Core.Sdk.Models {
         public string Name { get; set; }
 #endif
         /// <summary>Type of payment source owner.</summary>
-        public PaymentSourceCreateReq_owner? Owner { get; set; }
+        public Marqeta.Core.Sdk.Models.PaymentSourceCreateReq_owner? Owner { get; set; }
         /// <summary>Routing number of the payment source.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -63,7 +64,7 @@ namespace Marqeta.Core.Sdk.Models {
         public string RoutingNumber { get; set; }
 #endif
         /// <summary>Type of payment source.</summary>
-        public PaymentSourceCreateReq_source_type? SourceType { get; set; }
+        public Marqeta.Core.Sdk.Models.PaymentSourceCreateReq_source_type? SourceType { get; set; }
         /// <summary>Unique identifier of the payment source.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -91,7 +92,7 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>Whether to override the verification process.</summary>
         public bool? VerificationOverride { get; set; }
         /// <summary>
-        /// Instantiates a new <see cref="PaymentSourceCreateReq"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Models.PaymentSourceCreateReq"/> and sets the default values.
         /// </summary>
         public PaymentSourceCreateReq()
         {
@@ -100,12 +101,12 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="PaymentSourceCreateReq"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Models.PaymentSourceCreateReq"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static PaymentSourceCreateReq CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static Marqeta.Core.Sdk.Models.PaymentSourceCreateReq CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-            return new PaymentSourceCreateReq();
+            return new Marqeta.Core.Sdk.Models.PaymentSourceCreateReq();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -115,18 +116,18 @@ namespace Marqeta.Core.Sdk.Models {
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                {"account_number", n => { AccountNumber = n.GetStringValue(); } },
-                {"account_token", n => { AccountToken = n.GetStringValue(); } },
-                {"bank_name", n => { BankName = n.GetStringValue(); } },
-                {"business_token", n => { BusinessToken = n.GetStringValue(); } },
-                {"name", n => { Name = n.GetStringValue(); } },
-                {"owner", n => { Owner = n.GetEnumValue<PaymentSourceCreateReq_owner>(); } },
-                {"routing_number", n => { RoutingNumber = n.GetStringValue(); } },
-                {"source_type", n => { SourceType = n.GetEnumValue<PaymentSourceCreateReq_source_type>(); } },
-                {"token", n => { Token = n.GetStringValue(); } },
-                {"user_token", n => { UserToken = n.GetStringValue(); } },
-                {"verification_notes", n => { VerificationNotes = n.GetStringValue(); } },
-                {"verification_override", n => { VerificationOverride = n.GetBoolValue(); } },
+                { "account_number", n => { AccountNumber = n.GetStringValue(); } },
+                { "account_token", n => { AccountToken = n.GetStringValue(); } },
+                { "bank_name", n => { BankName = n.GetStringValue(); } },
+                { "business_token", n => { BusinessToken = n.GetStringValue(); } },
+                { "name", n => { Name = n.GetStringValue(); } },
+                { "owner", n => { Owner = n.GetEnumValue<Marqeta.Core.Sdk.Models.PaymentSourceCreateReq_owner>(); } },
+                { "routing_number", n => { RoutingNumber = n.GetStringValue(); } },
+                { "source_type", n => { SourceType = n.GetEnumValue<Marqeta.Core.Sdk.Models.PaymentSourceCreateReq_source_type>(); } },
+                { "token", n => { Token = n.GetStringValue(); } },
+                { "user_token", n => { UserToken = n.GetStringValue(); } },
+                { "verification_notes", n => { VerificationNotes = n.GetStringValue(); } },
+                { "verification_override", n => { VerificationOverride = n.GetBoolValue(); } },
             };
         }
         /// <summary>
@@ -141,9 +142,9 @@ namespace Marqeta.Core.Sdk.Models {
             writer.WriteStringValue("bank_name", BankName);
             writer.WriteStringValue("business_token", BusinessToken);
             writer.WriteStringValue("name", Name);
-            writer.WriteEnumValue<PaymentSourceCreateReq_owner>("owner", Owner);
+            writer.WriteEnumValue<Marqeta.Core.Sdk.Models.PaymentSourceCreateReq_owner>("owner", Owner);
             writer.WriteStringValue("routing_number", RoutingNumber);
-            writer.WriteEnumValue<PaymentSourceCreateReq_source_type>("source_type", SourceType);
+            writer.WriteEnumValue<Marqeta.Core.Sdk.Models.PaymentSourceCreateReq_source_type>("source_type", SourceType);
             writer.WriteStringValue("token", Token);
             writer.WriteStringValue("user_token", UserToken);
             writer.WriteStringValue("verification_notes", VerificationNotes);

@@ -4,11 +4,12 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System;
-namespace Marqeta.Core.Sdk.Models {
+namespace Marqeta.Core.Sdk.Models
+{
     /// <summary>
     /// Response details for a template.
     /// </summary>
-    public class PolicyDocumentTemplateResponse : IAdditionalDataHolder, IParsable 
+    public class PolicyDocumentTemplateResponse : IAdditionalDataHolder, IParsable
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
@@ -25,13 +26,13 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>Contains one or more URLs for a template.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public PolicyDocumentTemplateURLs? TemplateUrls { get; set; }
+        public Marqeta.Core.Sdk.Models.PolicyDocumentTemplateURLs? TemplateUrls { get; set; }
 #nullable restore
 #else
-        public PolicyDocumentTemplateURLs TemplateUrls { get; set; }
+        public Marqeta.Core.Sdk.Models.PolicyDocumentTemplateURLs TemplateUrls { get; set; }
 #endif
         /// <summary>
-        /// Instantiates a new <see cref="PolicyDocumentTemplateResponse"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Models.PolicyDocumentTemplateResponse"/> and sets the default values.
         /// </summary>
         public PolicyDocumentTemplateResponse()
         {
@@ -40,12 +41,12 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="PolicyDocumentTemplateResponse"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Models.PolicyDocumentTemplateResponse"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static PolicyDocumentTemplateResponse CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static Marqeta.Core.Sdk.Models.PolicyDocumentTemplateResponse CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-            return new PolicyDocumentTemplateResponse();
+            return new Marqeta.Core.Sdk.Models.PolicyDocumentTemplateResponse();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -55,9 +56,9 @@ namespace Marqeta.Core.Sdk.Models {
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                {"template_created_time", n => { TemplateCreatedTime = n.GetDateTimeOffsetValue(); } },
-                {"template_token", n => { TemplateToken = n.GetStringValue(); } },
-                {"template_urls", n => { TemplateUrls = n.GetObjectValue<PolicyDocumentTemplateURLs>(PolicyDocumentTemplateURLs.CreateFromDiscriminatorValue); } },
+                { "template_created_time", n => { TemplateCreatedTime = n.GetDateTimeOffsetValue(); } },
+                { "template_token", n => { TemplateToken = n.GetStringValue(); } },
+                { "template_urls", n => { TemplateUrls = n.GetObjectValue<Marqeta.Core.Sdk.Models.PolicyDocumentTemplateURLs>(Marqeta.Core.Sdk.Models.PolicyDocumentTemplateURLs.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -69,7 +70,7 @@ namespace Marqeta.Core.Sdk.Models {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
             writer.WriteDateTimeOffsetValue("template_created_time", TemplateCreatedTime);
             writer.WriteStringValue("template_token", TemplateToken);
-            writer.WriteObjectValue<PolicyDocumentTemplateURLs>("template_urls", TemplateUrls);
+            writer.WriteObjectValue<Marqeta.Core.Sdk.Models.PolicyDocumentTemplateURLs>("template_urls", TemplateUrls);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

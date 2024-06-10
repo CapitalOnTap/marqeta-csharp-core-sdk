@@ -4,22 +4,23 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System;
-namespace Marqeta.Core.Sdk.Models {
+namespace Marqeta.Core.Sdk.Models
+{
     /// <summary>
     /// Contains card network fees assessed against the cardholder.
     /// </summary>
-    public class Network_fee_model : IAdditionalDataHolder, IParsable 
+    public class Network_fee_model : IAdditionalDataHolder, IParsable
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The amount of the network fee.</summary>
         public double? Amount { get; set; }
         /// <summary>Indicates whether the fee is a credit or a debit.* *C* indicates a credit* *D* indicates a debit</summary>
-        public Network_fee_model_credit_debit? CreditDebit { get; set; }
+        public Marqeta.Core.Sdk.Models.Network_fee_model_credit_debit? CreditDebit { get; set; }
         /// <summary>The type of fee assessed by the card network.</summary>
-        public Network_fee_model_type? Type { get; set; }
+        public Marqeta.Core.Sdk.Models.Network_fee_model_type? Type { get; set; }
         /// <summary>
-        /// Instantiates a new <see cref="Network_fee_model"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Models.Network_fee_model"/> and sets the default values.
         /// </summary>
         public Network_fee_model()
         {
@@ -28,12 +29,12 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="Network_fee_model"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Models.Network_fee_model"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static Network_fee_model CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static Marqeta.Core.Sdk.Models.Network_fee_model CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-            return new Network_fee_model();
+            return new Marqeta.Core.Sdk.Models.Network_fee_model();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -43,9 +44,9 @@ namespace Marqeta.Core.Sdk.Models {
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                {"amount", n => { Amount = n.GetDoubleValue(); } },
-                {"credit_debit", n => { CreditDebit = n.GetEnumValue<Network_fee_model_credit_debit>(); } },
-                {"type", n => { Type = n.GetEnumValue<Network_fee_model_type>(); } },
+                { "amount", n => { Amount = n.GetDoubleValue(); } },
+                { "credit_debit", n => { CreditDebit = n.GetEnumValue<Marqeta.Core.Sdk.Models.Network_fee_model_credit_debit>(); } },
+                { "type", n => { Type = n.GetEnumValue<Marqeta.Core.Sdk.Models.Network_fee_model_type>(); } },
             };
         }
         /// <summary>
@@ -56,8 +57,8 @@ namespace Marqeta.Core.Sdk.Models {
         {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
             writer.WriteDoubleValue("amount", Amount);
-            writer.WriteEnumValue<Network_fee_model_credit_debit>("credit_debit", CreditDebit);
-            writer.WriteEnumValue<Network_fee_model_type>("type", Type);
+            writer.WriteEnumValue<Marqeta.Core.Sdk.Models.Network_fee_model_credit_debit>("credit_debit", CreditDebit);
+            writer.WriteEnumValue<Marqeta.Core.Sdk.Models.Network_fee_model_type>("type", Type);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

@@ -4,11 +4,12 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System;
-namespace Marqeta.Core.Sdk.Models {
+namespace Marqeta.Core.Sdk.Models
+{
     /// <summary>
     /// Response codes and memos for account name verification, address verification, card security verification, and transactions.
     /// </summary>
-    public class Response : IAdditionalDataHolder, IParsable 
+    public class Response : IAdditionalDataHolder, IParsable
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
@@ -37,7 +38,7 @@ namespace Marqeta.Core.Sdk.Models {
         public string Memo { get; set; }
 #endif
         /// <summary>
-        /// Instantiates a new <see cref="Response"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Models.Response"/> and sets the default values.
         /// </summary>
         public Response()
         {
@@ -46,12 +47,12 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="Response"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Models.Response"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static Response CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static Marqeta.Core.Sdk.Models.Response CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-            return new Response();
+            return new Marqeta.Core.Sdk.Models.Response();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -61,9 +62,9 @@ namespace Marqeta.Core.Sdk.Models {
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                {"additional_information", n => { AdditionalInformation = n.GetStringValue(); } },
-                {"code", n => { Code = n.GetStringValue(); } },
-                {"memo", n => { Memo = n.GetStringValue(); } },
+                { "additional_information", n => { AdditionalInformation = n.GetStringValue(); } },
+                { "code", n => { Code = n.GetStringValue(); } },
+                { "memo", n => { Memo = n.GetStringValue(); } },
             };
         }
         /// <summary>

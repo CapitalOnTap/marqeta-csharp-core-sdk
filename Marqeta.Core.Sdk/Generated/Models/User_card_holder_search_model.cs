@@ -4,9 +4,10 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System;
-namespace Marqeta.Core.Sdk.Models {
+namespace Marqeta.Core.Sdk.Models
+{
     #pragma warning disable CS1591
-    public class User_card_holder_search_model : IAdditionalDataHolder, IParsable 
+    public class User_card_holder_search_model : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -60,7 +61,7 @@ namespace Marqeta.Core.Sdk.Models {
         public string Ssn { get; set; }
 #endif
         /// <summary>
-        /// Instantiates a new <see cref="User_card_holder_search_model"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Models.User_card_holder_search_model"/> and sets the default values.
         /// </summary>
         public User_card_holder_search_model()
         {
@@ -69,12 +70,12 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="User_card_holder_search_model"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Models.User_card_holder_search_model"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static User_card_holder_search_model CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static Marqeta.Core.Sdk.Models.User_card_holder_search_model CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-            return new User_card_holder_search_model();
+            return new Marqeta.Core.Sdk.Models.User_card_holder_search_model();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -84,12 +85,12 @@ namespace Marqeta.Core.Sdk.Models {
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                {"dda", n => { Dda = n.GetStringValue(); } },
-                {"email", n => { Email = n.GetStringValue(); } },
-                {"first_name", n => { FirstName = n.GetStringValue(); } },
-                {"last_name", n => { LastName = n.GetStringValue(); } },
-                {"phone", n => { Phone = n.GetStringValue(); } },
-                {"ssn", n => { Ssn = n.GetStringValue(); } },
+                { "dda", n => { Dda = n.GetStringValue(); } },
+                { "email", n => { Email = n.GetStringValue(); } },
+                { "first_name", n => { FirstName = n.GetStringValue(); } },
+                { "last_name", n => { LastName = n.GetStringValue(); } },
+                { "phone", n => { Phone = n.GetStringValue(); } },
+                { "ssn", n => { Ssn = n.GetStringValue(); } },
             };
         }
         /// <summary>

@@ -4,11 +4,12 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System;
-namespace Marqeta.Core.Sdk.Models {
+namespace Marqeta.Core.Sdk.Models
+{
     /// <summary>
     /// Contains details on an application error.
     /// </summary>
-    public class ErrorDetailsResponse : IAdditionalDataHolder, IParsable 
+    public class ErrorDetailsResponse : IAdditionalDataHolder, IParsable
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
@@ -37,9 +38,9 @@ namespace Marqeta.Core.Sdk.Models {
         public string Token { get; set; }
 #endif
         /// <summary>Type of error.</summary>
-        public ErrorDetailsResponse_type? Type { get; set; }
+        public Marqeta.Core.Sdk.Models.ErrorDetailsResponse_type? Type { get; set; }
         /// <summary>
-        /// Instantiates a new <see cref="ErrorDetailsResponse"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Models.ErrorDetailsResponse"/> and sets the default values.
         /// </summary>
         public ErrorDetailsResponse()
         {
@@ -48,12 +49,12 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="ErrorDetailsResponse"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Models.ErrorDetailsResponse"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static ErrorDetailsResponse CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static Marqeta.Core.Sdk.Models.ErrorDetailsResponse CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-            return new ErrorDetailsResponse();
+            return new Marqeta.Core.Sdk.Models.ErrorDetailsResponse();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -63,10 +64,10 @@ namespace Marqeta.Core.Sdk.Models {
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                {"application_token", n => { ApplicationToken = n.GetStringValue(); } },
-                {"message", n => { Message = n.GetStringValue(); } },
-                {"token", n => { Token = n.GetStringValue(); } },
-                {"type", n => { Type = n.GetEnumValue<ErrorDetailsResponse_type>(); } },
+                { "application_token", n => { ApplicationToken = n.GetStringValue(); } },
+                { "message", n => { Message = n.GetStringValue(); } },
+                { "token", n => { Token = n.GetStringValue(); } },
+                { "type", n => { Type = n.GetEnumValue<Marqeta.Core.Sdk.Models.ErrorDetailsResponse_type>(); } },
             };
         }
         /// <summary>
@@ -79,7 +80,7 @@ namespace Marqeta.Core.Sdk.Models {
             writer.WriteStringValue("application_token", ApplicationToken);
             writer.WriteStringValue("message", Message);
             writer.WriteStringValue("token", Token);
-            writer.WriteEnumValue<ErrorDetailsResponse_type>("type", Type);
+            writer.WriteEnumValue<Marqeta.Core.Sdk.Models.ErrorDetailsResponse_type>("type", Type);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

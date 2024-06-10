@@ -4,11 +4,12 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System;
-namespace Marqeta.Core.Sdk.Models {
+namespace Marqeta.Core.Sdk.Models
+{
     /// <summary>
     /// Return payment reminders.
     /// </summary>
-    public class PaymentReminderPage : IAdditionalDataHolder, IParsable 
+    public class PaymentReminderPage : IAdditionalDataHolder, IParsable
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
@@ -17,10 +18,10 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>Contains payment reminders on a credit account statement. Can be zero if none exist for the given statement.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<PaymentReminderResponse>? Data { get; set; }
+        public List<Marqeta.Core.Sdk.Models.PaymentReminderResponse>? Data { get; set; }
 #nullable restore
 #else
-        public List<PaymentReminderResponse> Data { get; set; }
+        public List<Marqeta.Core.Sdk.Models.PaymentReminderResponse> Data { get; set; }
 #endif
         /// <summary>Sort order index of the last resource in the returned array.</summary>
         public int? EndIndex { get; set; }
@@ -29,7 +30,7 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>Sort order index of the first resource in the returned array.</summary>
         public int? StartIndex { get; set; }
         /// <summary>
-        /// Instantiates a new <see cref="PaymentReminderPage"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Models.PaymentReminderPage"/> and sets the default values.
         /// </summary>
         public PaymentReminderPage()
         {
@@ -38,12 +39,12 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="PaymentReminderPage"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Models.PaymentReminderPage"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static PaymentReminderPage CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static Marqeta.Core.Sdk.Models.PaymentReminderPage CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-            return new PaymentReminderPage();
+            return new Marqeta.Core.Sdk.Models.PaymentReminderPage();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -53,11 +54,11 @@ namespace Marqeta.Core.Sdk.Models {
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                {"count", n => { Count = n.GetIntValue(); } },
-                {"data", n => { Data = n.GetCollectionOfObjectValues<PaymentReminderResponse>(PaymentReminderResponse.CreateFromDiscriminatorValue)?.ToList(); } },
-                {"end_index", n => { EndIndex = n.GetIntValue(); } },
-                {"is_more", n => { IsMore = n.GetBoolValue(); } },
-                {"start_index", n => { StartIndex = n.GetIntValue(); } },
+                { "count", n => { Count = n.GetIntValue(); } },
+                { "data", n => { Data = n.GetCollectionOfObjectValues<Marqeta.Core.Sdk.Models.PaymentReminderResponse>(Marqeta.Core.Sdk.Models.PaymentReminderResponse.CreateFromDiscriminatorValue)?.ToList(); } },
+                { "end_index", n => { EndIndex = n.GetIntValue(); } },
+                { "is_more", n => { IsMore = n.GetBoolValue(); } },
+                { "start_index", n => { StartIndex = n.GetIntValue(); } },
             };
         }
         /// <summary>
@@ -68,7 +69,7 @@ namespace Marqeta.Core.Sdk.Models {
         {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
             writer.WriteIntValue("count", Count);
-            writer.WriteCollectionOfObjectValues<PaymentReminderResponse>("data", Data);
+            writer.WriteCollectionOfObjectValues<Marqeta.Core.Sdk.Models.PaymentReminderResponse>("data", Data);
             writer.WriteIntValue("end_index", EndIndex);
             writer.WriteBoolValue("is_more", IsMore);
             writer.WriteIntValue("start_index", StartIndex);

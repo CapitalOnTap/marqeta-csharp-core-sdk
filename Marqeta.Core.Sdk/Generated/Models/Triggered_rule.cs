@@ -4,11 +4,12 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System;
-namespace Marqeta.Core.Sdk.Models {
+namespace Marqeta.Core.Sdk.Models
+{
     /// <summary>
     /// Provides a list of rules triggered by a fraud event, along with the information on tags and rule characteristics.
     /// </summary>
-    public class Triggered_rule : IAdditionalDataHolder, IParsable 
+    public class Triggered_rule : IAdditionalDataHolder, IParsable
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
@@ -35,13 +36,13 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>All the tags defined in the triggered rule.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<Tag>? Tags { get; set; }
+        public List<Marqeta.Core.Sdk.Models.Tag>? Tags { get; set; }
 #nullable restore
 #else
-        public List<Tag> Tags { get; set; }
+        public List<Marqeta.Core.Sdk.Models.Tag> Tags { get; set; }
 #endif
         /// <summary>
-        /// Instantiates a new <see cref="Triggered_rule"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Models.Triggered_rule"/> and sets the default values.
         /// </summary>
         public Triggered_rule()
         {
@@ -50,12 +51,12 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="Triggered_rule"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Models.Triggered_rule"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static Triggered_rule CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static Marqeta.Core.Sdk.Models.Triggered_rule CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-            return new Triggered_rule();
+            return new Marqeta.Core.Sdk.Models.Triggered_rule();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -65,11 +66,11 @@ namespace Marqeta.Core.Sdk.Models {
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                {"alert", n => { Alert = n.GetBoolValue(); } },
-                {"entity_type", n => { EntityType = n.GetStringValue(); } },
-                {"rule_name", n => { RuleName = n.GetStringValue(); } },
-                {"suppress_alert", n => { SuppressAlert = n.GetBoolValue(); } },
-                {"tags", n => { Tags = n.GetCollectionOfObjectValues<Tag>(Tag.CreateFromDiscriminatorValue)?.ToList(); } },
+                { "alert", n => { Alert = n.GetBoolValue(); } },
+                { "entity_type", n => { EntityType = n.GetStringValue(); } },
+                { "rule_name", n => { RuleName = n.GetStringValue(); } },
+                { "suppress_alert", n => { SuppressAlert = n.GetBoolValue(); } },
+                { "tags", n => { Tags = n.GetCollectionOfObjectValues<Marqeta.Core.Sdk.Models.Tag>(Marqeta.Core.Sdk.Models.Tag.CreateFromDiscriminatorValue)?.ToList(); } },
             };
         }
         /// <summary>
@@ -83,7 +84,7 @@ namespace Marqeta.Core.Sdk.Models {
             writer.WriteStringValue("entity_type", EntityType);
             writer.WriteStringValue("rule_name", RuleName);
             writer.WriteBoolValue("suppress_alert", SuppressAlert);
-            writer.WriteCollectionOfObjectValues<Tag>("tags", Tags);
+            writer.WriteCollectionOfObjectValues<Marqeta.Core.Sdk.Models.Tag>("tags", Tags);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

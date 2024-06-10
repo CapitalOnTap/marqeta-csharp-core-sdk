@@ -16,54 +16,55 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Threading;
 using System;
-namespace Marqeta.Core.Sdk.Accounts.Item.Statements.Item {
+namespace Marqeta.Core.Sdk.Accounts.Item.Statements.Item
+{
     /// <summary>
     /// Builds and executes requests for operations under \accounts\{account_token}\statements\{statement_summary_token}
     /// </summary>
-    public class WithStatement_summary_tokenItemRequestBuilder : BaseRequestBuilder 
+    public class WithStatement_summary_tokenItemRequestBuilder : BaseRequestBuilder
     {
         /// <summary>The files property</summary>
-        public FilesRequestBuilder Files
+        public Marqeta.Core.Sdk.Accounts.Item.Statements.Item.Files.FilesRequestBuilder Files
         {
-            get => new FilesRequestBuilder(PathParameters, RequestAdapter);
+            get => new Marqeta.Core.Sdk.Accounts.Item.Statements.Item.Files.FilesRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The interestcharges property</summary>
-        public InterestchargesRequestBuilder Interestcharges
+        public Marqeta.Core.Sdk.Accounts.Item.Statements.Item.Interestcharges.InterestchargesRequestBuilder Interestcharges
         {
-            get => new InterestchargesRequestBuilder(PathParameters, RequestAdapter);
+            get => new Marqeta.Core.Sdk.Accounts.Item.Statements.Item.Interestcharges.InterestchargesRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The journalentries property</summary>
-        public JournalentriesRequestBuilder Journalentries
+        public Marqeta.Core.Sdk.Accounts.Item.Statements.Item.Journalentries.JournalentriesRequestBuilder Journalentries
         {
-            get => new JournalentriesRequestBuilder(PathParameters, RequestAdapter);
+            get => new Marqeta.Core.Sdk.Accounts.Item.Statements.Item.Journalentries.JournalentriesRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The ledgerentries property</summary>
-        public LedgerentriesRequestBuilder Ledgerentries
+        public Marqeta.Core.Sdk.Accounts.Item.Statements.Item.Ledgerentries.LedgerentriesRequestBuilder Ledgerentries
         {
-            get => new LedgerentriesRequestBuilder(PathParameters, RequestAdapter);
+            get => new Marqeta.Core.Sdk.Accounts.Item.Statements.Item.Ledgerentries.LedgerentriesRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The paymentinfo property</summary>
-        public PaymentinfoRequestBuilder Paymentinfo
+        public Marqeta.Core.Sdk.Accounts.Item.Statements.Item.Paymentinfo.PaymentinfoRequestBuilder Paymentinfo
         {
-            get => new PaymentinfoRequestBuilder(PathParameters, RequestAdapter);
+            get => new Marqeta.Core.Sdk.Accounts.Item.Statements.Item.Paymentinfo.PaymentinfoRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The paymentreminders property</summary>
-        public PaymentremindersRequestBuilder Paymentreminders
+        public Marqeta.Core.Sdk.Accounts.Item.Statements.Item.Paymentreminders.PaymentremindersRequestBuilder Paymentreminders
         {
-            get => new PaymentremindersRequestBuilder(PathParameters, RequestAdapter);
+            get => new Marqeta.Core.Sdk.Accounts.Item.Statements.Item.Paymentreminders.PaymentremindersRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The rewards property</summary>
-        public RewardsRequestBuilder Rewards
+        public Marqeta.Core.Sdk.Accounts.Item.Statements.Item.Rewards.RewardsRequestBuilder Rewards
         {
-            get => new RewardsRequestBuilder(PathParameters, RequestAdapter);
+            get => new Marqeta.Core.Sdk.Accounts.Item.Statements.Item.Rewards.RewardsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The yeartodate property</summary>
-        public YeartodateRequestBuilder Yeartodate
+        public Marqeta.Core.Sdk.Accounts.Item.Statements.Item.Yeartodate.YeartodateRequestBuilder Yeartodate
         {
-            get => new YeartodateRequestBuilder(PathParameters, RequestAdapter);
+            get => new Marqeta.Core.Sdk.Accounts.Item.Statements.Item.Yeartodate.YeartodateRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>
-        /// Instantiates a new <see cref="WithStatement_summary_tokenItemRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Accounts.Item.Statements.Item.WithStatement_summary_tokenItemRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
@@ -71,7 +72,7 @@ namespace Marqeta.Core.Sdk.Accounts.Item.Statements.Item {
         {
         }
         /// <summary>
-        /// Instantiates a new <see cref="WithStatement_summary_tokenItemRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Accounts.Item.Statements.Item.WithStatement_summary_tokenItemRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
@@ -81,25 +82,25 @@ namespace Marqeta.Core.Sdk.Accounts.Item.Statements.Item {
         /// <summary>
         /// Retrieve a statement summary for a credit account.
         /// </summary>
-        /// <returns>A <see cref="StatementSummary"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Models.StatementSummary"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        /// <exception cref="ApiError">When receiving a 4XX or 5XX status code</exception>
+        /// <exception cref="Marqeta.Core.Sdk.Models.ApiError">When receiving a 4XX or 5XX status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<StatementSummary?> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<Marqeta.Core.Sdk.Models.StatementSummary?> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<StatementSummary> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<Marqeta.Core.Sdk.Models.StatementSummary> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
-                {"XXX", ApiError.CreateFromDiscriminatorValue},
+                { "XXX", Marqeta.Core.Sdk.Models.ApiError.CreateFromDiscriminatorValue },
             };
-            return await RequestAdapter.SendAsync<StatementSummary>(requestInfo, StatementSummary.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<Marqeta.Core.Sdk.Models.StatementSummary>(requestInfo, Marqeta.Core.Sdk.Models.StatementSummary.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Retrieve a statement summary for a credit account.
@@ -123,11 +124,11 @@ namespace Marqeta.Core.Sdk.Accounts.Item.Statements.Item {
         /// <summary>
         /// Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
         /// </summary>
-        /// <returns>A <see cref="WithStatement_summary_tokenItemRequestBuilder"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Accounts.Item.Statements.Item.WithStatement_summary_tokenItemRequestBuilder"/></returns>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
-        public WithStatement_summary_tokenItemRequestBuilder WithUrl(string rawUrl)
+        public Marqeta.Core.Sdk.Accounts.Item.Statements.Item.WithStatement_summary_tokenItemRequestBuilder WithUrl(string rawUrl)
         {
-            return new WithStatement_summary_tokenItemRequestBuilder(rawUrl, RequestAdapter);
+            return new Marqeta.Core.Sdk.Accounts.Item.Statements.Item.WithStatement_summary_tokenItemRequestBuilder(rawUrl, RequestAdapter);
         }
     }
 }

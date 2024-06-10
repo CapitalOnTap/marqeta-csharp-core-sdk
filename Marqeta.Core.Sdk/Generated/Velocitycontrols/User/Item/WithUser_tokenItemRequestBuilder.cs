@@ -6,19 +6,20 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using System;
-namespace Marqeta.Core.Sdk.Velocitycontrols.User.Item {
+namespace Marqeta.Core.Sdk.Velocitycontrols.User.Item
+{
     /// <summary>
     /// Builds and executes requests for operations under \velocitycontrols\user\{user_token}
     /// </summary>
-    public class WithUser_tokenItemRequestBuilder : BaseRequestBuilder 
+    public class WithUser_tokenItemRequestBuilder : BaseRequestBuilder
     {
         /// <summary>The available property</summary>
-        public AvailableRequestBuilder Available
+        public Marqeta.Core.Sdk.Velocitycontrols.User.Item.Available.AvailableRequestBuilder Available
         {
-            get => new AvailableRequestBuilder(PathParameters, RequestAdapter);
+            get => new Marqeta.Core.Sdk.Velocitycontrols.User.Item.Available.AvailableRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>
-        /// Instantiates a new <see cref="WithUser_tokenItemRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Velocitycontrols.User.Item.WithUser_tokenItemRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
@@ -26,7 +27,7 @@ namespace Marqeta.Core.Sdk.Velocitycontrols.User.Item {
         {
         }
         /// <summary>
-        /// Instantiates a new <see cref="WithUser_tokenItemRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Velocitycontrols.User.Item.WithUser_tokenItemRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>

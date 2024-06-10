@@ -4,9 +4,10 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System;
-namespace Marqeta.Core.Sdk.Models {
+namespace Marqeta.Core.Sdk.Models
+{
     #pragma warning disable CS1591
-    public class Program_transfer : IAdditionalDataHolder, IParsable 
+    public class Program_transfer : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -32,10 +33,10 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>Contains attributes that define characteristics of one or more fees.This array is returned in the response when it is included in the request.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<Fee_model>? Fees { get; set; }
+        public List<Marqeta.Core.Sdk.Models.Fee_model>? Fees { get; set; }
 #nullable restore
 #else
-        public List<Fee_model> Fees { get; set; }
+        public List<Marqeta.Core.Sdk.Models.Fee_model> Fees { get; set; }
 #endif
         /// <summary>Memo or note describing the program transfer.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -78,7 +79,7 @@ namespace Marqeta.Core.Sdk.Models {
         public string UserToken { get; set; }
 #endif
         /// <summary>
-        /// Instantiates a new <see cref="Program_transfer"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Models.Program_transfer"/> and sets the default values.
         /// </summary>
         public Program_transfer()
         {
@@ -87,12 +88,12 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="Program_transfer"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Models.Program_transfer"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static Program_transfer CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static Marqeta.Core.Sdk.Models.Program_transfer CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-            return new Program_transfer();
+            return new Marqeta.Core.Sdk.Models.Program_transfer();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -102,15 +103,15 @@ namespace Marqeta.Core.Sdk.Models {
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                {"amount", n => { Amount = n.GetDoubleValue(); } },
-                {"business_token", n => { BusinessToken = n.GetStringValue(); } },
-                {"currency_code", n => { CurrencyCode = n.GetStringValue(); } },
-                {"fees", n => { Fees = n.GetCollectionOfObjectValues<Fee_model>(Fee_model.CreateFromDiscriminatorValue)?.ToList(); } },
-                {"memo", n => { Memo = n.GetStringValue(); } },
-                {"tags", n => { Tags = n.GetStringValue(); } },
-                {"token", n => { Token = n.GetStringValue(); } },
-                {"type_token", n => { TypeToken = n.GetStringValue(); } },
-                {"user_token", n => { UserToken = n.GetStringValue(); } },
+                { "amount", n => { Amount = n.GetDoubleValue(); } },
+                { "business_token", n => { BusinessToken = n.GetStringValue(); } },
+                { "currency_code", n => { CurrencyCode = n.GetStringValue(); } },
+                { "fees", n => { Fees = n.GetCollectionOfObjectValues<Marqeta.Core.Sdk.Models.Fee_model>(Marqeta.Core.Sdk.Models.Fee_model.CreateFromDiscriminatorValue)?.ToList(); } },
+                { "memo", n => { Memo = n.GetStringValue(); } },
+                { "tags", n => { Tags = n.GetStringValue(); } },
+                { "token", n => { Token = n.GetStringValue(); } },
+                { "type_token", n => { TypeToken = n.GetStringValue(); } },
+                { "user_token", n => { UserToken = n.GetStringValue(); } },
             };
         }
         /// <summary>
@@ -123,7 +124,7 @@ namespace Marqeta.Core.Sdk.Models {
             writer.WriteDoubleValue("amount", Amount);
             writer.WriteStringValue("business_token", BusinessToken);
             writer.WriteStringValue("currency_code", CurrencyCode);
-            writer.WriteCollectionOfObjectValues<Fee_model>("fees", Fees);
+            writer.WriteCollectionOfObjectValues<Marqeta.Core.Sdk.Models.Fee_model>("fees", Fees);
             writer.WriteStringValue("memo", Memo);
             writer.WriteStringValue("tags", Tags);
             writer.WriteStringValue("token", Token);

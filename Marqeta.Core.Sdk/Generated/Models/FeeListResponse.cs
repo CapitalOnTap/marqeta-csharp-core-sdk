@@ -4,9 +4,10 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System;
-namespace Marqeta.Core.Sdk.Models {
+namespace Marqeta.Core.Sdk.Models
+{
     #pragma warning disable CS1591
-    public class FeeListResponse : IAdditionalDataHolder, IParsable 
+    public class FeeListResponse : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -16,10 +17,10 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>An array of fee objects.Objects are returned as appropriate to your query.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<Fee_response>? Data { get; set; }
+        public List<Marqeta.Core.Sdk.Models.Fee_response>? Data { get; set; }
 #nullable restore
 #else
-        public List<Fee_response> Data { get; set; }
+        public List<Marqeta.Core.Sdk.Models.Fee_response> Data { get; set; }
 #endif
         /// <summary>Sort order index of the last resource in the returned array.This field is returned if there are resources in your returned array.</summary>
         public int? EndIndex { get; set; }
@@ -28,7 +29,7 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>Sort order index of the first resource in the returned array.This field is returned if there are resources in your returned array.</summary>
         public int? StartIndex { get; set; }
         /// <summary>
-        /// Instantiates a new <see cref="FeeListResponse"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Models.FeeListResponse"/> and sets the default values.
         /// </summary>
         public FeeListResponse()
         {
@@ -37,12 +38,12 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="FeeListResponse"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Models.FeeListResponse"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static FeeListResponse CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static Marqeta.Core.Sdk.Models.FeeListResponse CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-            return new FeeListResponse();
+            return new Marqeta.Core.Sdk.Models.FeeListResponse();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -52,11 +53,11 @@ namespace Marqeta.Core.Sdk.Models {
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                {"count", n => { Count = n.GetIntValue(); } },
-                {"data", n => { Data = n.GetCollectionOfObjectValues<Fee_response>(Fee_response.CreateFromDiscriminatorValue)?.ToList(); } },
-                {"end_index", n => { EndIndex = n.GetIntValue(); } },
-                {"is_more", n => { IsMore = n.GetBoolValue(); } },
-                {"start_index", n => { StartIndex = n.GetIntValue(); } },
+                { "count", n => { Count = n.GetIntValue(); } },
+                { "data", n => { Data = n.GetCollectionOfObjectValues<Marqeta.Core.Sdk.Models.Fee_response>(Marqeta.Core.Sdk.Models.Fee_response.CreateFromDiscriminatorValue)?.ToList(); } },
+                { "end_index", n => { EndIndex = n.GetIntValue(); } },
+                { "is_more", n => { IsMore = n.GetBoolValue(); } },
+                { "start_index", n => { StartIndex = n.GetIntValue(); } },
             };
         }
         /// <summary>
@@ -67,7 +68,7 @@ namespace Marqeta.Core.Sdk.Models {
         {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
             writer.WriteIntValue("count", Count);
-            writer.WriteCollectionOfObjectValues<Fee_response>("data", Data);
+            writer.WriteCollectionOfObjectValues<Marqeta.Core.Sdk.Models.Fee_response>("data", Data);
             writer.WriteIntValue("end_index", EndIndex);
             writer.WriteBoolValue("is_more", IsMore);
             writer.WriteIntValue("start_index", StartIndex);

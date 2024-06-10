@@ -4,9 +4,10 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System;
-namespace Marqeta.Core.Sdk.Models {
+namespace Marqeta.Core.Sdk.Models
+{
     #pragma warning disable CS1591
-    public class Direct_deposit_account_transition_response : IAdditionalDataHolder, IParsable 
+    public class Direct_deposit_account_transition_response : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
     {
         /// <summary>The account_token property</summary>
@@ -70,7 +71,7 @@ namespace Marqeta.Core.Sdk.Models {
         public string UserToken { get; set; }
 #endif
         /// <summary>
-        /// Instantiates a new <see cref="Direct_deposit_account_transition_response"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Models.Direct_deposit_account_transition_response"/> and sets the default values.
         /// </summary>
         public Direct_deposit_account_transition_response()
         {
@@ -79,12 +80,12 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="Direct_deposit_account_transition_response"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Models.Direct_deposit_account_transition_response"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static Direct_deposit_account_transition_response CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static Marqeta.Core.Sdk.Models.Direct_deposit_account_transition_response CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-            return new Direct_deposit_account_transition_response();
+            return new Marqeta.Core.Sdk.Models.Direct_deposit_account_transition_response();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -94,14 +95,14 @@ namespace Marqeta.Core.Sdk.Models {
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                {"account_token", n => { AccountToken = n.GetStringValue(); } },
-                {"business_token", n => { BusinessToken = n.GetStringValue(); } },
-                {"channel", n => { Channel = n.GetStringValue(); } },
-                {"created_time", n => { CreatedTime = n.GetDateTimeOffsetValue(); } },
-                {"reason", n => { Reason = n.GetStringValue(); } },
-                {"state", n => { State = n.GetStringValue(); } },
-                {"token", n => { Token = n.GetStringValue(); } },
-                {"user_token", n => { UserToken = n.GetStringValue(); } },
+                { "account_token", n => { AccountToken = n.GetStringValue(); } },
+                { "business_token", n => { BusinessToken = n.GetStringValue(); } },
+                { "channel", n => { Channel = n.GetStringValue(); } },
+                { "created_time", n => { CreatedTime = n.GetDateTimeOffsetValue(); } },
+                { "reason", n => { Reason = n.GetStringValue(); } },
+                { "state", n => { State = n.GetStringValue(); } },
+                { "token", n => { Token = n.GetStringValue(); } },
+                { "user_token", n => { UserToken = n.GetStringValue(); } },
             };
         }
         /// <summary>

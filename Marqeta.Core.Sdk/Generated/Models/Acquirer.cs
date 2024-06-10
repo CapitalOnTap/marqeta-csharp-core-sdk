@@ -4,11 +4,12 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System;
-namespace Marqeta.Core.Sdk.Models {
+namespace Marqeta.Core.Sdk.Models
+{
     /// <summary>
     /// Contains information about the merchant&apos;s financial institution.
     /// </summary>
-    public class Acquirer : IAdditionalDataHolder, IParsable 
+    public class Acquirer : IAdditionalDataHolder, IParsable
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
@@ -53,7 +54,7 @@ namespace Marqeta.Core.Sdk.Models {
         public string SystemTraceAuditNumber { get; set; }
 #endif
         /// <summary>
-        /// Instantiates a new <see cref="Acquirer"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Models.Acquirer"/> and sets the default values.
         /// </summary>
         public Acquirer()
         {
@@ -62,12 +63,12 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="Acquirer"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Models.Acquirer"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static Acquirer CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static Marqeta.Core.Sdk.Models.Acquirer CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-            return new Acquirer();
+            return new Marqeta.Core.Sdk.Models.Acquirer();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -77,11 +78,11 @@ namespace Marqeta.Core.Sdk.Models {
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                {"institution_country", n => { InstitutionCountry = n.GetStringValue(); } },
-                {"institution_id_code", n => { InstitutionIdCode = n.GetStringValue(); } },
-                {"network_international_id", n => { NetworkInternationalId = n.GetStringValue(); } },
-                {"retrieval_reference_number", n => { RetrievalReferenceNumber = n.GetStringValue(); } },
-                {"system_trace_audit_number", n => { SystemTraceAuditNumber = n.GetStringValue(); } },
+                { "institution_country", n => { InstitutionCountry = n.GetStringValue(); } },
+                { "institution_id_code", n => { InstitutionIdCode = n.GetStringValue(); } },
+                { "network_international_id", n => { NetworkInternationalId = n.GetStringValue(); } },
+                { "retrieval_reference_number", n => { RetrievalReferenceNumber = n.GetStringValue(); } },
+                { "system_trace_audit_number", n => { SystemTraceAuditNumber = n.GetStringValue(); } },
             };
         }
         /// <summary>

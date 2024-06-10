@@ -4,9 +4,10 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System;
-namespace Marqeta.Core.Sdk.Models {
+namespace Marqeta.Core.Sdk.Models
+{
     #pragma warning disable CS1591
-    public class Bulk_issuance_response : IAdditionalDataHolder, IParsable 
+    public class Bulk_issuance_response : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -32,18 +33,18 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>Specifies the length of time after the date of issue for which the cards are valid.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public Expiration_offset? ExpirationOffset { get; set; }
+        public Marqeta.Core.Sdk.Models.Expiration_offset? ExpirationOffset { get; set; }
 #nullable restore
 #else
-        public Expiration_offset ExpirationOffset { get; set; }
+        public Marqeta.Core.Sdk.Models.Expiration_offset ExpirationOffset { get; set; }
 #endif
         /// <summary>Specifies certain physical characteristics of a card, as well as bulk shipment information.This object is returned if it exists in the resource.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public FulfillmentResponse? Fulfillment { get; set; }
+        public Marqeta.Core.Sdk.Models.FulfillmentResponse? Fulfillment { get; set; }
 #nullable restore
 #else
-        public FulfillmentResponse Fulfillment { get; set; }
+        public Marqeta.Core.Sdk.Models.FulfillmentResponse Fulfillment { get; set; }
 #endif
         /// <summary>This field is included if your bulk card order has been processed.You can use the `name_line1_start_index` and `name_line1_end_index` fields to identify the cards and users associated with the order.For example, if the start index is &quot;1&quot; and the end index is &quot;3&quot;, the card tokens are &quot;card-1&quot;, &quot;card-2&quot;, and &quot;card-3&quot;, and the user tokens are &quot;user-1&quot;, &quot;user-2&quot;, and &quot;user-3&quot;.See &lt;&lt;/core-api/bulk-card-orders#create_bulk_card_order, Create bulk card order&gt;&gt; for more information about the automatic generation and naming of cards and users.</summary>
         public int? NameLine1EndIndex { get; set; }
@@ -82,13 +83,13 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>Associates each card with a user.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public User_association? UserAssociation { get; set; }
+        public Marqeta.Core.Sdk.Models.User_association? UserAssociation { get; set; }
 #nullable restore
 #else
-        public User_association UserAssociation { get; set; }
+        public Marqeta.Core.Sdk.Models.User_association UserAssociation { get; set; }
 #endif
         /// <summary>
-        /// Instantiates a new <see cref="Bulk_issuance_response"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Models.Bulk_issuance_response"/> and sets the default values.
         /// </summary>
         public Bulk_issuance_response()
         {
@@ -97,12 +98,12 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="Bulk_issuance_response"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Models.Bulk_issuance_response"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static Bulk_issuance_response CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static Marqeta.Core.Sdk.Models.Bulk_issuance_response CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-            return new Bulk_issuance_response();
+            return new Marqeta.Core.Sdk.Models.Bulk_issuance_response();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -112,23 +113,23 @@ namespace Marqeta.Core.Sdk.Models {
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                {"card_allocation", n => { CardAllocation = n.GetIntValue(); } },
-                {"card_fulfillment_time", n => { CardFulfillmentTime = n.GetDateTimeOffsetValue(); } },
-                {"card_product_token", n => { CardProductToken = n.GetStringValue(); } },
-                {"cards_processed", n => { CardsProcessed = n.GetIntValue(); } },
-                {"created_time", n => { CreatedTime = n.GetDateTimeOffsetValue(); } },
-                {"expedite", n => { Expedite = n.GetBoolValue(); } },
-                {"expiration_offset", n => { ExpirationOffset = n.GetObjectValue<Expiration_offset>(Expiration_offset.CreateFromDiscriminatorValue); } },
-                {"fulfillment", n => { Fulfillment = n.GetObjectValue<FulfillmentResponse>(FulfillmentResponse.CreateFromDiscriminatorValue); } },
-                {"name_line1_end_index", n => { NameLine1EndIndex = n.GetIntValue(); } },
-                {"name_line_1_numeric_postfix", n => { NameLine1NumericPostfix = n.GetBoolValue(); } },
-                {"name_line_1_random_postfix", n => { NameLine1RandomPostfix = n.GetBoolValue(); } },
-                {"name_line1_start_index", n => { NameLine1StartIndex = n.GetIntValue(); } },
-                {"provider_ship_date", n => { ProviderShipDate = n.GetDateTimeOffsetValue(); } },
-                {"provider_shipping_method", n => { ProviderShippingMethod = n.GetStringValue(); } },
-                {"provider_tracking_number", n => { ProviderTrackingNumber = n.GetStringValue(); } },
-                {"token", n => { Token = n.GetStringValue(); } },
-                {"user_association", n => { UserAssociation = n.GetObjectValue<User_association>(User_association.CreateFromDiscriminatorValue); } },
+                { "card_allocation", n => { CardAllocation = n.GetIntValue(); } },
+                { "card_fulfillment_time", n => { CardFulfillmentTime = n.GetDateTimeOffsetValue(); } },
+                { "card_product_token", n => { CardProductToken = n.GetStringValue(); } },
+                { "cards_processed", n => { CardsProcessed = n.GetIntValue(); } },
+                { "created_time", n => { CreatedTime = n.GetDateTimeOffsetValue(); } },
+                { "expedite", n => { Expedite = n.GetBoolValue(); } },
+                { "expiration_offset", n => { ExpirationOffset = n.GetObjectValue<Marqeta.Core.Sdk.Models.Expiration_offset>(Marqeta.Core.Sdk.Models.Expiration_offset.CreateFromDiscriminatorValue); } },
+                { "fulfillment", n => { Fulfillment = n.GetObjectValue<Marqeta.Core.Sdk.Models.FulfillmentResponse>(Marqeta.Core.Sdk.Models.FulfillmentResponse.CreateFromDiscriminatorValue); } },
+                { "name_line1_end_index", n => { NameLine1EndIndex = n.GetIntValue(); } },
+                { "name_line_1_numeric_postfix", n => { NameLine1NumericPostfix = n.GetBoolValue(); } },
+                { "name_line_1_random_postfix", n => { NameLine1RandomPostfix = n.GetBoolValue(); } },
+                { "name_line1_start_index", n => { NameLine1StartIndex = n.GetIntValue(); } },
+                { "provider_ship_date", n => { ProviderShipDate = n.GetDateTimeOffsetValue(); } },
+                { "provider_shipping_method", n => { ProviderShippingMethod = n.GetStringValue(); } },
+                { "provider_tracking_number", n => { ProviderTrackingNumber = n.GetStringValue(); } },
+                { "token", n => { Token = n.GetStringValue(); } },
+                { "user_association", n => { UserAssociation = n.GetObjectValue<Marqeta.Core.Sdk.Models.User_association>(Marqeta.Core.Sdk.Models.User_association.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -144,8 +145,8 @@ namespace Marqeta.Core.Sdk.Models {
             writer.WriteIntValue("cards_processed", CardsProcessed);
             writer.WriteDateTimeOffsetValue("created_time", CreatedTime);
             writer.WriteBoolValue("expedite", Expedite);
-            writer.WriteObjectValue<Expiration_offset>("expiration_offset", ExpirationOffset);
-            writer.WriteObjectValue<FulfillmentResponse>("fulfillment", Fulfillment);
+            writer.WriteObjectValue<Marqeta.Core.Sdk.Models.Expiration_offset>("expiration_offset", ExpirationOffset);
+            writer.WriteObjectValue<Marqeta.Core.Sdk.Models.FulfillmentResponse>("fulfillment", Fulfillment);
             writer.WriteIntValue("name_line1_end_index", NameLine1EndIndex);
             writer.WriteBoolValue("name_line_1_numeric_postfix", NameLine1NumericPostfix);
             writer.WriteBoolValue("name_line_1_random_postfix", NameLine1RandomPostfix);
@@ -154,7 +155,7 @@ namespace Marqeta.Core.Sdk.Models {
             writer.WriteStringValue("provider_shipping_method", ProviderShippingMethod);
             writer.WriteStringValue("provider_tracking_number", ProviderTrackingNumber);
             writer.WriteStringValue("token", Token);
-            writer.WriteObjectValue<User_association>("user_association", UserAssociation);
+            writer.WriteObjectValue<Marqeta.Core.Sdk.Models.User_association>("user_association", UserAssociation);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

@@ -4,18 +4,19 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System;
-namespace Marqeta.Core.Sdk.Models {
+namespace Marqeta.Core.Sdk.Models
+{
     /// <summary>
     /// Contains details about account funding transactions.Account funding transactions move money into a cardholder&apos;s general purpose account (GPA).
     /// </summary>
-    public class Account_funding : IAdditionalDataHolder, IParsable 
+    public class Account_funding : IAdditionalDataHolder, IParsable
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Specifies the type of account from which the transaction was funded.</summary>
-        public Account_funding_funding_source? FundingSource { get; set; }
+        public Marqeta.Core.Sdk.Models.Account_funding_funding_source? FundingSource { get; set; }
         /// <summary>Specifies the type of account receiving the funding.</summary>
-        public Account_funding_receiver_account_type? ReceiverAccountType { get; set; }
+        public Marqeta.Core.Sdk.Models.Account_funding_receiver_account_type? ReceiverAccountType { get; set; }
         /// <summary>Specifies the name of the account holder receiving the funding.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -41,9 +42,9 @@ namespace Marqeta.Core.Sdk.Models {
         public string TransactionPurpose { get; set; }
 #endif
         /// <summary>Specifies the account funding transaction type.</summary>
-        public Account_funding_transaction_type? TransactionType { get; set; }
+        public Marqeta.Core.Sdk.Models.Account_funding_transaction_type? TransactionType { get; set; }
         /// <summary>
-        /// Instantiates a new <see cref="Account_funding"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Models.Account_funding"/> and sets the default values.
         /// </summary>
         public Account_funding()
         {
@@ -52,12 +53,12 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="Account_funding"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Models.Account_funding"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static Account_funding CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static Marqeta.Core.Sdk.Models.Account_funding CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-            return new Account_funding();
+            return new Marqeta.Core.Sdk.Models.Account_funding();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -67,12 +68,12 @@ namespace Marqeta.Core.Sdk.Models {
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                {"funding_source", n => { FundingSource = n.GetEnumValue<Account_funding_funding_source>(); } },
-                {"receiver_account_type", n => { ReceiverAccountType = n.GetEnumValue<Account_funding_receiver_account_type>(); } },
-                {"receiver_name", n => { ReceiverName = n.GetStringValue(); } },
-                {"screening_score", n => { ScreeningScore = n.GetStringValue(); } },
-                {"transaction_purpose", n => { TransactionPurpose = n.GetStringValue(); } },
-                {"transaction_type", n => { TransactionType = n.GetEnumValue<Account_funding_transaction_type>(); } },
+                { "funding_source", n => { FundingSource = n.GetEnumValue<Marqeta.Core.Sdk.Models.Account_funding_funding_source>(); } },
+                { "receiver_account_type", n => { ReceiverAccountType = n.GetEnumValue<Marqeta.Core.Sdk.Models.Account_funding_receiver_account_type>(); } },
+                { "receiver_name", n => { ReceiverName = n.GetStringValue(); } },
+                { "screening_score", n => { ScreeningScore = n.GetStringValue(); } },
+                { "transaction_purpose", n => { TransactionPurpose = n.GetStringValue(); } },
+                { "transaction_type", n => { TransactionType = n.GetEnumValue<Marqeta.Core.Sdk.Models.Account_funding_transaction_type>(); } },
             };
         }
         /// <summary>
@@ -82,12 +83,12 @@ namespace Marqeta.Core.Sdk.Models {
         public virtual void Serialize(ISerializationWriter writer)
         {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
-            writer.WriteEnumValue<Account_funding_funding_source>("funding_source", FundingSource);
-            writer.WriteEnumValue<Account_funding_receiver_account_type>("receiver_account_type", ReceiverAccountType);
+            writer.WriteEnumValue<Marqeta.Core.Sdk.Models.Account_funding_funding_source>("funding_source", FundingSource);
+            writer.WriteEnumValue<Marqeta.Core.Sdk.Models.Account_funding_receiver_account_type>("receiver_account_type", ReceiverAccountType);
             writer.WriteStringValue("receiver_name", ReceiverName);
             writer.WriteStringValue("screening_score", ScreeningScore);
             writer.WriteStringValue("transaction_purpose", TransactionPurpose);
-            writer.WriteEnumValue<Account_funding_transaction_type>("transaction_type", TransactionType);
+            writer.WriteEnumValue<Marqeta.Core.Sdk.Models.Account_funding_transaction_type>("transaction_type", TransactionType);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

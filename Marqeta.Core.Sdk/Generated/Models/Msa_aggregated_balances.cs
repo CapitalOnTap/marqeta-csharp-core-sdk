@@ -4,9 +4,10 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System;
-namespace Marqeta.Core.Sdk.Models {
+namespace Marqeta.Core.Sdk.Models
+{
     #pragma warning disable CS1591
-    public class Msa_aggregated_balances : IAdditionalDataHolder, IParsable 
+    public class Msa_aggregated_balances : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -16,10 +17,10 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>The balances property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public Msa_aggregated_balances_balances? Balances { get; set; }
+        public Marqeta.Core.Sdk.Models.Msa_aggregated_balances_balances? Balances { get; set; }
 #nullable restore
 #else
-        public Msa_aggregated_balances_balances Balances { get; set; }
+        public Marqeta.Core.Sdk.Models.Msa_aggregated_balances_balances Balances { get; set; }
 #endif
         /// <summary>The cached_balance property</summary>
         public double? CachedBalance { get; set; }
@@ -42,7 +43,7 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>The pending_credits property</summary>
         public double? PendingCredits { get; set; }
         /// <summary>
-        /// Instantiates a new <see cref="Msa_aggregated_balances"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Models.Msa_aggregated_balances"/> and sets the default values.
         /// </summary>
         public Msa_aggregated_balances()
         {
@@ -51,12 +52,12 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="Msa_aggregated_balances"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Models.Msa_aggregated_balances"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static Msa_aggregated_balances CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static Marqeta.Core.Sdk.Models.Msa_aggregated_balances CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-            return new Msa_aggregated_balances();
+            return new Marqeta.Core.Sdk.Models.Msa_aggregated_balances();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -66,15 +67,15 @@ namespace Marqeta.Core.Sdk.Models {
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                {"available_balance", n => { AvailableBalance = n.GetDoubleValue(); } },
-                {"balances", n => { Balances = n.GetObjectValue<Msa_aggregated_balances_balances>(Msa_aggregated_balances_balances.CreateFromDiscriminatorValue); } },
-                {"cached_balance", n => { CachedBalance = n.GetDoubleValue(); } },
-                {"credit_balance", n => { CreditBalance = n.GetDoubleValue(); } },
-                {"currency_code", n => { CurrencyCode = n.GetStringValue(); } },
-                {"impacted_amount", n => { ImpactedAmount = n.GetDoubleValue(); } },
-                {"last_updated_time", n => { LastUpdatedTime = n.GetDateTimeOffsetValue(); } },
-                {"ledger_balance", n => { LedgerBalance = n.GetDoubleValue(); } },
-                {"pending_credits", n => { PendingCredits = n.GetDoubleValue(); } },
+                { "available_balance", n => { AvailableBalance = n.GetDoubleValue(); } },
+                { "balances", n => { Balances = n.GetObjectValue<Marqeta.Core.Sdk.Models.Msa_aggregated_balances_balances>(Marqeta.Core.Sdk.Models.Msa_aggregated_balances_balances.CreateFromDiscriminatorValue); } },
+                { "cached_balance", n => { CachedBalance = n.GetDoubleValue(); } },
+                { "credit_balance", n => { CreditBalance = n.GetDoubleValue(); } },
+                { "currency_code", n => { CurrencyCode = n.GetStringValue(); } },
+                { "impacted_amount", n => { ImpactedAmount = n.GetDoubleValue(); } },
+                { "last_updated_time", n => { LastUpdatedTime = n.GetDateTimeOffsetValue(); } },
+                { "ledger_balance", n => { LedgerBalance = n.GetDoubleValue(); } },
+                { "pending_credits", n => { PendingCredits = n.GetDoubleValue(); } },
             };
         }
         /// <summary>
@@ -85,7 +86,7 @@ namespace Marqeta.Core.Sdk.Models {
         {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
             writer.WriteDoubleValue("available_balance", AvailableBalance);
-            writer.WriteObjectValue<Msa_aggregated_balances_balances>("balances", Balances);
+            writer.WriteObjectValue<Marqeta.Core.Sdk.Models.Msa_aggregated_balances_balances>("balances", Balances);
             writer.WriteDoubleValue("cached_balance", CachedBalance);
             writer.WriteDoubleValue("credit_balance", CreditBalance);
             writer.WriteStringValue("currency_code", CurrencyCode);

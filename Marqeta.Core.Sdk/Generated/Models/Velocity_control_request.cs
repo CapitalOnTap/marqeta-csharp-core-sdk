@@ -4,9 +4,10 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System;
-namespace Marqeta.Core.Sdk.Models {
+namespace Marqeta.Core.Sdk.Models
+{
     #pragma warning disable CS1591
-    public class Velocity_control_request : IAdditionalDataHolder, IParsable 
+    public class Velocity_control_request : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
     {
         /// <summary>Indicates whether the velocity control is active.</summary>
@@ -20,10 +21,10 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>Defines the group of users to which the velocity control applies.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public Spend_control_association? Association { get; set; }
+        public Marqeta.Core.Sdk.Models.Spend_control_association? Association { get; set; }
 #nullable restore
 #else
-        public Spend_control_association Association { get; set; }
+        public Marqeta.Core.Sdk.Models.Spend_control_association Association { get; set; }
 #endif
         /// <summary>Three-character ISO 4217 currency code.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -46,18 +47,18 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>Defines the group of merchants to which the velocity control applies.Populate no more than one field of the `merchant_scope` object.If no fields are populated, the velocity control applies to all merchants.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public Merchant_scope? MerchantScope { get; set; }
+        public Marqeta.Core.Sdk.Models.Merchant_scope? MerchantScope { get; set; }
 #nullable restore
 #else
-        public Merchant_scope MerchantScope { get; set; }
+        public Marqeta.Core.Sdk.Models.Merchant_scope MerchantScope { get; set; }
 #endif
         /// <summary>Defines the original credit transaction (OCT) types that are subject to velocity control.Your request can contain either a `money_in_transaction` object or the `include_credits` field, not both.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public Money_in_transaction? MoneyInTransaction { get; set; }
+        public Marqeta.Core.Sdk.Models.Money_in_transaction? MoneyInTransaction { get; set; }
 #nullable restore
 #else
-        public Money_in_transaction MoneyInTransaction { get; set; }
+        public Marqeta.Core.Sdk.Models.Money_in_transaction MoneyInTransaction { get; set; }
 #endif
         /// <summary>Description of how the velocity control restricts spending, for example, &quot;Max spend of $500 per day&quot; or &quot;Max spend of $5000 per month for non-exempt employees&quot;.Ensure that the description you provide here adequately captures the kind of restriction exerted by this velocity control, because the Marqeta platform will send this information to you in a webhook in the event that the transaction authorization attempt is declined by the velocity control.*NOTE:* This field is very important.If your program has multiple velocity controls in place, it is not always clear which one prevented the transaction from being approved.Adding specific details to this field gives you more contextual information when debugging or monitoring declined authorization attempts.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -78,9 +79,9 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>Maximum number of times a card can be used within the time period defined by the `velocity_window` field.If `velocity_window` is set to `TRANSACTION`, do not include a `usage_limit` in your request.Set to `-1` to indicate that the card can be used an unlimited number of times.</summary>
         public int? UsageLimit { get; set; }
         /// <summary>Defines the time period to which the `amount_limit` and `usage_limit` fields apply:* *DAY* – one day; days begin at 00:00:00 UTC.* *WEEK* – one week; weeks begin Sundays at 00:00:00 UTC.* *MONTH* – one month; months begin on the first day of month at 00:00:00 UTC.* *LIFETIME* – forever; time period never expires.* *TRANSACTION* – a single transaction.// (2023-05-03): This statement was validated by Processing, as part of a customer inquiry.*NOTE:* If set to `DAY`, `WEEK`, or `MONTH`, the velocity control takes effect retroactively from the beginning of the specified period.The amount and usage data already collected within the first period is counted toward the limits.// (2023-05-03): Commenting this note out, as it is untrue in testing as reported by customers and confirmed by transaction engine team//*NOTE:* Editing any of the following fields on a velocity control resets its usage and amount count to 0://* `merchant_scope.mcc`//* `merchant_scope.mid`//* `merchant_scope.mcc_group`//* `association.user_token`//* `association.card_product_token`</summary>
-        public Velocity_control_request_velocity_window? VelocityWindow { get; set; }
+        public Marqeta.Core.Sdk.Models.Velocity_control_request_velocity_window? VelocityWindow { get; set; }
         /// <summary>
-        /// Instantiates a new <see cref="Velocity_control_request"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Models.Velocity_control_request"/> and sets the default values.
         /// </summary>
         public Velocity_control_request()
         {
@@ -89,12 +90,12 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="Velocity_control_request"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Models.Velocity_control_request"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static Velocity_control_request CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static Marqeta.Core.Sdk.Models.Velocity_control_request CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-            return new Velocity_control_request();
+            return new Marqeta.Core.Sdk.Models.Velocity_control_request();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -104,22 +105,22 @@ namespace Marqeta.Core.Sdk.Models {
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                {"active", n => { Active = n.GetBoolValue(); } },
-                {"amount_limit", n => { AmountLimit = n.GetDoubleValue(); } },
-                {"approvals_only", n => { ApprovalsOnly = n.GetBoolValue(); } },
-                {"association", n => { Association = n.GetObjectValue<Spend_control_association>(Spend_control_association.CreateFromDiscriminatorValue); } },
-                {"currency_code", n => { CurrencyCode = n.GetStringValue(); } },
-                {"include_cashback", n => { IncludeCashback = n.GetBoolValue(); } },
-                {"include_credits", n => { IncludeCredits = n.GetBoolValue(); } },
-                {"include_purchases", n => { IncludePurchases = n.GetBoolValue(); } },
-                {"include_transfers", n => { IncludeTransfers = n.GetBoolValue(); } },
-                {"include_withdrawals", n => { IncludeWithdrawals = n.GetBoolValue(); } },
-                {"merchant_scope", n => { MerchantScope = n.GetObjectValue<Merchant_scope>(Merchant_scope.CreateFromDiscriminatorValue); } },
-                {"money_in_transaction", n => { MoneyInTransaction = n.GetObjectValue<Money_in_transaction>(Money_in_transaction.CreateFromDiscriminatorValue); } },
-                {"name", n => { Name = n.GetStringValue(); } },
-                {"token", n => { Token = n.GetStringValue(); } },
-                {"usage_limit", n => { UsageLimit = n.GetIntValue(); } },
-                {"velocity_window", n => { VelocityWindow = n.GetEnumValue<Velocity_control_request_velocity_window>(); } },
+                { "active", n => { Active = n.GetBoolValue(); } },
+                { "amount_limit", n => { AmountLimit = n.GetDoubleValue(); } },
+                { "approvals_only", n => { ApprovalsOnly = n.GetBoolValue(); } },
+                { "association", n => { Association = n.GetObjectValue<Marqeta.Core.Sdk.Models.Spend_control_association>(Marqeta.Core.Sdk.Models.Spend_control_association.CreateFromDiscriminatorValue); } },
+                { "currency_code", n => { CurrencyCode = n.GetStringValue(); } },
+                { "include_cashback", n => { IncludeCashback = n.GetBoolValue(); } },
+                { "include_credits", n => { IncludeCredits = n.GetBoolValue(); } },
+                { "include_purchases", n => { IncludePurchases = n.GetBoolValue(); } },
+                { "include_transfers", n => { IncludeTransfers = n.GetBoolValue(); } },
+                { "include_withdrawals", n => { IncludeWithdrawals = n.GetBoolValue(); } },
+                { "merchant_scope", n => { MerchantScope = n.GetObjectValue<Marqeta.Core.Sdk.Models.Merchant_scope>(Marqeta.Core.Sdk.Models.Merchant_scope.CreateFromDiscriminatorValue); } },
+                { "money_in_transaction", n => { MoneyInTransaction = n.GetObjectValue<Marqeta.Core.Sdk.Models.Money_in_transaction>(Marqeta.Core.Sdk.Models.Money_in_transaction.CreateFromDiscriminatorValue); } },
+                { "name", n => { Name = n.GetStringValue(); } },
+                { "token", n => { Token = n.GetStringValue(); } },
+                { "usage_limit", n => { UsageLimit = n.GetIntValue(); } },
+                { "velocity_window", n => { VelocityWindow = n.GetEnumValue<Marqeta.Core.Sdk.Models.Velocity_control_request_velocity_window>(); } },
             };
         }
         /// <summary>
@@ -132,19 +133,19 @@ namespace Marqeta.Core.Sdk.Models {
             writer.WriteBoolValue("active", Active);
             writer.WriteDoubleValue("amount_limit", AmountLimit);
             writer.WriteBoolValue("approvals_only", ApprovalsOnly);
-            writer.WriteObjectValue<Spend_control_association>("association", Association);
+            writer.WriteObjectValue<Marqeta.Core.Sdk.Models.Spend_control_association>("association", Association);
             writer.WriteStringValue("currency_code", CurrencyCode);
             writer.WriteBoolValue("include_cashback", IncludeCashback);
             writer.WriteBoolValue("include_credits", IncludeCredits);
             writer.WriteBoolValue("include_purchases", IncludePurchases);
             writer.WriteBoolValue("include_transfers", IncludeTransfers);
             writer.WriteBoolValue("include_withdrawals", IncludeWithdrawals);
-            writer.WriteObjectValue<Merchant_scope>("merchant_scope", MerchantScope);
-            writer.WriteObjectValue<Money_in_transaction>("money_in_transaction", MoneyInTransaction);
+            writer.WriteObjectValue<Marqeta.Core.Sdk.Models.Merchant_scope>("merchant_scope", MerchantScope);
+            writer.WriteObjectValue<Marqeta.Core.Sdk.Models.Money_in_transaction>("money_in_transaction", MoneyInTransaction);
             writer.WriteStringValue("name", Name);
             writer.WriteStringValue("token", Token);
             writer.WriteIntValue("usage_limit", UsageLimit);
-            writer.WriteEnumValue<Velocity_control_request_velocity_window>("velocity_window", VelocityWindow);
+            writer.WriteEnumValue<Marqeta.Core.Sdk.Models.Velocity_control_request_velocity_window>("velocity_window", VelocityWindow);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

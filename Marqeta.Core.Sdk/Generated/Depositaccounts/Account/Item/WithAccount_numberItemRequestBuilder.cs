@@ -6,19 +6,20 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using System;
-namespace Marqeta.Core.Sdk.Depositaccounts.Account.Item {
+namespace Marqeta.Core.Sdk.Depositaccounts.Account.Item
+{
     /// <summary>
     /// Builds and executes requests for operations under \depositaccounts\account\{account_number}
     /// </summary>
-    public class WithAccount_numberItemRequestBuilder : BaseRequestBuilder 
+    public class WithAccount_numberItemRequestBuilder : BaseRequestBuilder
     {
         /// <summary>The user property</summary>
-        public UserRequestBuilder User
+        public Marqeta.Core.Sdk.Depositaccounts.Account.Item.User.UserRequestBuilder User
         {
-            get => new UserRequestBuilder(PathParameters, RequestAdapter);
+            get => new Marqeta.Core.Sdk.Depositaccounts.Account.Item.User.UserRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>
-        /// Instantiates a new <see cref="WithAccount_numberItemRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Depositaccounts.Account.Item.WithAccount_numberItemRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
@@ -26,7 +27,7 @@ namespace Marqeta.Core.Sdk.Depositaccounts.Account.Item {
         {
         }
         /// <summary>
-        /// Instantiates a new <see cref="WithAccount_numberItemRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Depositaccounts.Account.Item.WithAccount_numberItemRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>

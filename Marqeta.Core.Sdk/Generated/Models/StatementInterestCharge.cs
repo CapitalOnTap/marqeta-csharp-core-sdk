@@ -4,26 +4,27 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System;
-namespace Marqeta.Core.Sdk.Models {
+namespace Marqeta.Core.Sdk.Models
+{
     /// <summary>
     /// Contains information on statement interest charges.
     /// </summary>
-    public class StatementInterestCharge : IAdditionalDataHolder, IParsable 
+    public class StatementInterestCharge : IAdditionalDataHolder, IParsable
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Amount of interest calculated for the billing period.</summary>
         public double? Amount { get; set; }
         /// <summary>Type of APR.</summary>
-        public StatementInterestCharge_apr_type? AprType { get; set; }
+        public Marqeta.Core.Sdk.Models.StatementInterestCharge_apr_type? AprType { get; set; }
         /// <summary>Annual percentage rate.</summary>
         public double? AprValue { get; set; }
         /// <summary>Average daily balance used to calculate interest.</summary>
         public double? BalanceSubjectToInterestRate { get; set; }
         /// <summary>Type of balance.* `PURCHASE` - The balance on purchases.</summary>
-        public StatementInterestCharge_balance_type? BalanceType { get; set; }
+        public Marqeta.Core.Sdk.Models.StatementInterestCharge_balance_type? BalanceType { get; set; }
         /// <summary>
-        /// Instantiates a new <see cref="StatementInterestCharge"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Models.StatementInterestCharge"/> and sets the default values.
         /// </summary>
         public StatementInterestCharge()
         {
@@ -32,12 +33,12 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="StatementInterestCharge"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Models.StatementInterestCharge"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static StatementInterestCharge CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static Marqeta.Core.Sdk.Models.StatementInterestCharge CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-            return new StatementInterestCharge();
+            return new Marqeta.Core.Sdk.Models.StatementInterestCharge();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -47,11 +48,11 @@ namespace Marqeta.Core.Sdk.Models {
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                {"amount", n => { Amount = n.GetDoubleValue(); } },
-                {"apr_type", n => { AprType = n.GetEnumValue<StatementInterestCharge_apr_type>(); } },
-                {"apr_value", n => { AprValue = n.GetDoubleValue(); } },
-                {"balance_subject_to_interest_rate", n => { BalanceSubjectToInterestRate = n.GetDoubleValue(); } },
-                {"balance_type", n => { BalanceType = n.GetEnumValue<StatementInterestCharge_balance_type>(); } },
+                { "amount", n => { Amount = n.GetDoubleValue(); } },
+                { "apr_type", n => { AprType = n.GetEnumValue<Marqeta.Core.Sdk.Models.StatementInterestCharge_apr_type>(); } },
+                { "apr_value", n => { AprValue = n.GetDoubleValue(); } },
+                { "balance_subject_to_interest_rate", n => { BalanceSubjectToInterestRate = n.GetDoubleValue(); } },
+                { "balance_type", n => { BalanceType = n.GetEnumValue<Marqeta.Core.Sdk.Models.StatementInterestCharge_balance_type>(); } },
             };
         }
         /// <summary>
@@ -62,10 +63,10 @@ namespace Marqeta.Core.Sdk.Models {
         {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
             writer.WriteDoubleValue("amount", Amount);
-            writer.WriteEnumValue<StatementInterestCharge_apr_type>("apr_type", AprType);
+            writer.WriteEnumValue<Marqeta.Core.Sdk.Models.StatementInterestCharge_apr_type>("apr_type", AprType);
             writer.WriteDoubleValue("apr_value", AprValue);
             writer.WriteDoubleValue("balance_subject_to_interest_rate", BalanceSubjectToInterestRate);
-            writer.WriteEnumValue<StatementInterestCharge_balance_type>("balance_type", BalanceType);
+            writer.WriteEnumValue<Marqeta.Core.Sdk.Models.StatementInterestCharge_balance_type>("balance_type", BalanceType);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

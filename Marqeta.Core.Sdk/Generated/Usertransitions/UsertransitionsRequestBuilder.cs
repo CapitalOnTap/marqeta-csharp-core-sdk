@@ -10,31 +10,32 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Threading;
 using System;
-namespace Marqeta.Core.Sdk.Usertransitions {
+namespace Marqeta.Core.Sdk.Usertransitions
+{
     /// <summary>
     /// Builds and executes requests for operations under \usertransitions
     /// </summary>
-    public class UsertransitionsRequestBuilder : BaseRequestBuilder 
+    public class UsertransitionsRequestBuilder : BaseRequestBuilder
     {
         /// <summary>The user property</summary>
-        public UserRequestBuilder User
+        public Marqeta.Core.Sdk.Usertransitions.User.UserRequestBuilder User
         {
-            get => new UserRequestBuilder(PathParameters, RequestAdapter);
+            get => new Marqeta.Core.Sdk.Usertransitions.User.UserRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>Gets an item from the Marqeta.Core.Sdk.usertransitions.item collection</summary>
         /// <param name="position">Unique identifier of the user transition you want to retrieve.</param>
-        /// <returns>A <see cref="WithTokenItemRequestBuilder"/></returns>
-        public WithTokenItemRequestBuilder this[string position]
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Usertransitions.Item.WithTokenItemRequestBuilder"/></returns>
+        public Marqeta.Core.Sdk.Usertransitions.Item.WithTokenItemRequestBuilder this[string position]
         {
             get
             {
                 var urlTplParams = new Dictionary<string, object>(PathParameters);
                 urlTplParams.Add("token", position);
-                return new WithTokenItemRequestBuilder(urlTplParams, RequestAdapter);
+                return new Marqeta.Core.Sdk.Usertransitions.Item.WithTokenItemRequestBuilder(urlTplParams, RequestAdapter);
             }
         }
         /// <summary>
-        /// Instantiates a new <see cref="UsertransitionsRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Usertransitions.UsertransitionsRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
@@ -42,7 +43,7 @@ namespace Marqeta.Core.Sdk.Usertransitions {
         {
         }
         /// <summary>
-        /// Instantiates a new <see cref="UsertransitionsRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Usertransitions.UsertransitionsRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
@@ -52,27 +53,27 @@ namespace Marqeta.Core.Sdk.Usertransitions {
         /// <summary>
         /// This endpoint enables you to change a user&apos;s status, depending on your role and the previous status change.By changing a user&apos;s status, you can control the user&apos;s capabilities and the setting of the `user.active` field.Do not set the value of the `user.active` field directly.[cols=&quot;2,4a,4a&quot;]|===| user.status Field | Description | User Limitations| `UNVERIFIED`| Initial status of a new user belonging to an account holder group where KYC is always required.*Allowable transitions:*  +`ACTIVE`, `CLOSED`| Cannot activate cards or load funds.*user.active Field:*  +`false`| `LIMITED`| Initial status of a new user belonging to an account holder group where KYC is conditionally required.*Allowable transitions:*  +`ACTIVE`, `SUSPENDED`, `CLOSED`| Restricted by rules in `accountholdergroups.pre_kyc_controls`.*user.active Field:*  +`true`| `ACTIVE`| Status of a user who has passed KYC, or initial status of a new user belonging to an account holder group where KYC is never required.*Allowable transitions:*  +`SUSPENDED`, `CLOSED`, `UNVERIFIED`| None.*user.active Field:*  +`true`| `SUSPENDED`| The user is temporarily inactive.Transitioning a suspended user to the `ACTIVE` status is restricted, based on your role and the details of the previous status change.*Allowable transitions:*  +`ACTIVE`, `LIMITED`, `UNVERIFIED`, `CLOSED`| Cannot activate cards, load funds, or transact.*user.active Field:*  +`false`| `CLOSED`| The user is permanently inactive.In general, the `CLOSED` status should be terminal.For exceptional cases, you can transition a user to other statuses, depending on your role and the details of the previous status change.Contact your Marqeta representative for more information.*Allowable transitions:*  +`ACTIVE`, `LIMITED`, `UNVERIFIED`, `SUSPENDED`| Cannot activate cards, load funds, or transact.*user.active Field:*  +`false`|===[NOTE]The Marqeta platform transitions a user&apos;s status in response to certain events.For example, a user in the `UNVERIFIED` status is transitioned to `ACTIVE` when the user passes KYC verification.
         /// </summary>
-        /// <returns>A <see cref="UserTransitionResponse"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Models.UserTransitionResponse"/></returns>
         /// <param name="body">The request body</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        /// <exception cref="ApiError">When receiving a 4XX or 5XX status code</exception>
+        /// <exception cref="Marqeta.Core.Sdk.Models.ApiError">When receiving a 4XX or 5XX status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<UserTransitionResponse?> PostAsync(UserTransitionRequest body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<Marqeta.Core.Sdk.Models.UserTransitionResponse?> PostAsync(Marqeta.Core.Sdk.Models.UserTransitionRequest body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<UserTransitionResponse> PostAsync(UserTransitionRequest body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<Marqeta.Core.Sdk.Models.UserTransitionResponse> PostAsync(Marqeta.Core.Sdk.Models.UserTransitionRequest body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             _ = body ?? throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPostRequestInformation(body, requestConfiguration);
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
-                {"XXX", ApiError.CreateFromDiscriminatorValue},
+                { "XXX", Marqeta.Core.Sdk.Models.ApiError.CreateFromDiscriminatorValue },
             };
-            return await RequestAdapter.SendAsync<UserTransitionResponse>(requestInfo, UserTransitionResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<Marqeta.Core.Sdk.Models.UserTransitionResponse>(requestInfo, Marqeta.Core.Sdk.Models.UserTransitionResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// This endpoint enables you to change a user&apos;s status, depending on your role and the previous status change.By changing a user&apos;s status, you can control the user&apos;s capabilities and the setting of the `user.active` field.Do not set the value of the `user.active` field directly.[cols=&quot;2,4a,4a&quot;]|===| user.status Field | Description | User Limitations| `UNVERIFIED`| Initial status of a new user belonging to an account holder group where KYC is always required.*Allowable transitions:*  +`ACTIVE`, `CLOSED`| Cannot activate cards or load funds.*user.active Field:*  +`false`| `LIMITED`| Initial status of a new user belonging to an account holder group where KYC is conditionally required.*Allowable transitions:*  +`ACTIVE`, `SUSPENDED`, `CLOSED`| Restricted by rules in `accountholdergroups.pre_kyc_controls`.*user.active Field:*  +`true`| `ACTIVE`| Status of a user who has passed KYC, or initial status of a new user belonging to an account holder group where KYC is never required.*Allowable transitions:*  +`SUSPENDED`, `CLOSED`, `UNVERIFIED`| None.*user.active Field:*  +`true`| `SUSPENDED`| The user is temporarily inactive.Transitioning a suspended user to the `ACTIVE` status is restricted, based on your role and the details of the previous status change.*Allowable transitions:*  +`ACTIVE`, `LIMITED`, `UNVERIFIED`, `CLOSED`| Cannot activate cards, load funds, or transact.*user.active Field:*  +`false`| `CLOSED`| The user is permanently inactive.In general, the `CLOSED` status should be terminal.For exceptional cases, you can transition a user to other statuses, depending on your role and the details of the previous status change.Contact your Marqeta representative for more information.*Allowable transitions:*  +`ACTIVE`, `LIMITED`, `UNVERIFIED`, `SUSPENDED`| Cannot activate cards, load funds, or transact.*user.active Field:*  +`false`|===[NOTE]The Marqeta platform transitions a user&apos;s status in response to certain events.For example, a user in the `UNVERIFIED` status is transitioned to `ACTIVE` when the user passes KYC verification.
@@ -82,11 +83,11 @@ namespace Marqeta.Core.Sdk.Usertransitions {
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToPostRequestInformation(UserTransitionRequest body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
+        public RequestInformation ToPostRequestInformation(Marqeta.Core.Sdk.Models.UserTransitionRequest body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
         {
 #nullable restore
 #else
-        public RequestInformation ToPostRequestInformation(UserTransitionRequest body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
+        public RequestInformation ToPostRequestInformation(Marqeta.Core.Sdk.Models.UserTransitionRequest body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
         {
 #endif
             _ = body ?? throw new ArgumentNullException(nameof(body));
@@ -99,11 +100,11 @@ namespace Marqeta.Core.Sdk.Usertransitions {
         /// <summary>
         /// Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
         /// </summary>
-        /// <returns>A <see cref="UsertransitionsRequestBuilder"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Usertransitions.UsertransitionsRequestBuilder"/></returns>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
-        public UsertransitionsRequestBuilder WithUrl(string rawUrl)
+        public Marqeta.Core.Sdk.Usertransitions.UsertransitionsRequestBuilder WithUrl(string rawUrl)
         {
-            return new UsertransitionsRequestBuilder(rawUrl, RequestAdapter);
+            return new Marqeta.Core.Sdk.Usertransitions.UsertransitionsRequestBuilder(rawUrl, RequestAdapter);
         }
     }
 }

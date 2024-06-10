@@ -4,11 +4,12 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System;
-namespace Marqeta.Core.Sdk.Models {
+namespace Marqeta.Core.Sdk.Models
+{
     /// <summary>
     /// Contains the configurations for interest calculation.
     /// </summary>
-    public class InterestCalculation : IAdditionalDataHolder, IParsable 
+    public class InterestCalculation : IAdditionalDataHolder, IParsable
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
@@ -21,33 +22,33 @@ namespace Marqeta.Core.Sdk.Models {
         public Marqeta.Core.Sdk.Models.ApplicationOfCredits ApplicationOfCredits { get; set; }
 #endif
         /// <summary>Day-count convention.</summary>
-        public InterestCalculation_day_count? DayCount { get; set; }
+        public Marqeta.Core.Sdk.Models.InterestCalculation_day_count? DayCount { get; set; }
         /// <summary>One or more transactions that are excluded from current billing period&apos;s interest charge, but included in next.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<InterestCalculation_exclude_tran_types?>? ExcludeTranTypes { get; set; }
+        public List<Marqeta.Core.Sdk.Models.InterestCalculation_exclude_tran_types?>? ExcludeTranTypes { get; set; }
 #nullable restore
 #else
-        public List<InterestCalculation_exclude_tran_types?> ExcludeTranTypes { get; set; }
+        public List<Marqeta.Core.Sdk.Models.InterestCalculation_exclude_tran_types?> ExcludeTranTypes { get; set; }
 #endif
         /// <summary>Determines the last day of grace period based on which interest charges are calculated.</summary>
-        public InterestCalculation_grace_days_application? GraceDaysApplication { get; set; }
+        public Marqeta.Core.Sdk.Models.InterestCalculation_grace_days_application? GraceDaysApplication { get; set; }
         /// <summary>One or more balance types on which interest is applied.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<InterestCalculation_interest_application?>? InterestApplication { get; set; }
+        public List<Marqeta.Core.Sdk.Models.InterestCalculation_interest_application?>? InterestApplication { get; set; }
 #nullable restore
 #else
-        public List<InterestCalculation_interest_application?> InterestApplication { get; set; }
+        public List<Marqeta.Core.Sdk.Models.InterestCalculation_interest_application?> InterestApplication { get; set; }
 #endif
         /// <summary>Determines whether to charge or waive interest for the billing period when the balance is paid off.</summary>
-        public InterestOnGraceReactivationEnum? InterestOnGraceReactivation { get; set; }
+        public Marqeta.Core.Sdk.Models.InterestOnGraceReactivationEnum? InterestOnGraceReactivation { get; set; }
         /// <summary>Method of interest calculation.</summary>
-        public InterestCalculation_method? Method { get; set; }
+        public Marqeta.Core.Sdk.Models.InterestCalculation_method? Method { get; set; }
         /// <summary>When interest is applied, this value determines the minimum amount of interest that can be charged.</summary>
         public double? MinimumInterest { get; set; }
         /// <summary>
-        /// Instantiates a new <see cref="InterestCalculation"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Models.InterestCalculation"/> and sets the default values.
         /// </summary>
         public InterestCalculation()
         {
@@ -56,12 +57,12 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="InterestCalculation"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Models.InterestCalculation"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static InterestCalculation CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static Marqeta.Core.Sdk.Models.InterestCalculation CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-            return new InterestCalculation();
+            return new Marqeta.Core.Sdk.Models.InterestCalculation();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -71,14 +72,14 @@ namespace Marqeta.Core.Sdk.Models {
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                {"application_of_credits", n => { ApplicationOfCredits = n.GetObjectValue<Marqeta.Core.Sdk.Models.ApplicationOfCredits>(Marqeta.Core.Sdk.Models.ApplicationOfCredits.CreateFromDiscriminatorValue); } },
-                {"day_count", n => { DayCount = n.GetEnumValue<InterestCalculation_day_count>(); } },
-                {"exclude_tran_types", n => { ExcludeTranTypes = n.GetCollectionOfEnumValues<InterestCalculation_exclude_tran_types>()?.ToList(); } },
-                {"grace_days_application", n => { GraceDaysApplication = n.GetEnumValue<InterestCalculation_grace_days_application>(); } },
-                {"interest_application", n => { InterestApplication = n.GetCollectionOfEnumValues<InterestCalculation_interest_application>()?.ToList(); } },
-                {"interest_on_grace_reactivation", n => { InterestOnGraceReactivation = n.GetEnumValue<InterestOnGraceReactivationEnum>(); } },
-                {"method", n => { Method = n.GetEnumValue<InterestCalculation_method>(); } },
-                {"minimum_interest", n => { MinimumInterest = n.GetDoubleValue(); } },
+                { "application_of_credits", n => { ApplicationOfCredits = n.GetObjectValue<Marqeta.Core.Sdk.Models.ApplicationOfCredits>(Marqeta.Core.Sdk.Models.ApplicationOfCredits.CreateFromDiscriminatorValue); } },
+                { "day_count", n => { DayCount = n.GetEnumValue<Marqeta.Core.Sdk.Models.InterestCalculation_day_count>(); } },
+                { "exclude_tran_types", n => { ExcludeTranTypes = n.GetCollectionOfEnumValues<Marqeta.Core.Sdk.Models.InterestCalculation_exclude_tran_types>()?.ToList(); } },
+                { "grace_days_application", n => { GraceDaysApplication = n.GetEnumValue<Marqeta.Core.Sdk.Models.InterestCalculation_grace_days_application>(); } },
+                { "interest_application", n => { InterestApplication = n.GetCollectionOfEnumValues<Marqeta.Core.Sdk.Models.InterestCalculation_interest_application>()?.ToList(); } },
+                { "interest_on_grace_reactivation", n => { InterestOnGraceReactivation = n.GetEnumValue<Marqeta.Core.Sdk.Models.InterestOnGraceReactivationEnum>(); } },
+                { "method", n => { Method = n.GetEnumValue<Marqeta.Core.Sdk.Models.InterestCalculation_method>(); } },
+                { "minimum_interest", n => { MinimumInterest = n.GetDoubleValue(); } },
             };
         }
         /// <summary>
@@ -89,12 +90,12 @@ namespace Marqeta.Core.Sdk.Models {
         {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
             writer.WriteObjectValue<Marqeta.Core.Sdk.Models.ApplicationOfCredits>("application_of_credits", ApplicationOfCredits);
-            writer.WriteEnumValue<InterestCalculation_day_count>("day_count", DayCount);
-            writer.WriteCollectionOfEnumValues<InterestCalculation_exclude_tran_types>("exclude_tran_types", ExcludeTranTypes);
-            writer.WriteEnumValue<InterestCalculation_grace_days_application>("grace_days_application", GraceDaysApplication);
-            writer.WriteCollectionOfEnumValues<InterestCalculation_interest_application>("interest_application", InterestApplication);
-            writer.WriteEnumValue<InterestOnGraceReactivationEnum>("interest_on_grace_reactivation", InterestOnGraceReactivation);
-            writer.WriteEnumValue<InterestCalculation_method>("method", Method);
+            writer.WriteEnumValue<Marqeta.Core.Sdk.Models.InterestCalculation_day_count>("day_count", DayCount);
+            writer.WriteCollectionOfEnumValues<Marqeta.Core.Sdk.Models.InterestCalculation_exclude_tran_types>("exclude_tran_types", ExcludeTranTypes);
+            writer.WriteEnumValue<Marqeta.Core.Sdk.Models.InterestCalculation_grace_days_application>("grace_days_application", GraceDaysApplication);
+            writer.WriteCollectionOfEnumValues<Marqeta.Core.Sdk.Models.InterestCalculation_interest_application>("interest_application", InterestApplication);
+            writer.WriteEnumValue<Marqeta.Core.Sdk.Models.InterestOnGraceReactivationEnum>("interest_on_grace_reactivation", InterestOnGraceReactivation);
+            writer.WriteEnumValue<Marqeta.Core.Sdk.Models.InterestCalculation_method>("method", Method);
             writer.WriteDoubleValue("minimum_interest", MinimumInterest);
             writer.WriteAdditionalData(AdditionalData);
         }

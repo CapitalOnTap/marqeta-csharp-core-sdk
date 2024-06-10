@@ -4,11 +4,12 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System;
-namespace Marqeta.Core.Sdk.Models {
+namespace Marqeta.Core.Sdk.Models
+{
     /// <summary>
     /// Contains information on the transition of an application&apos;s state.
     /// </summary>
-    public class ApplicationTransitionResponse : IAdditionalDataHolder, IParsable 
+    public class ApplicationTransitionResponse : IAdditionalDataHolder, IParsable
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
@@ -23,9 +24,9 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>Date and time when the application changed states on the Marqeta platform, in UTC.</summary>
         public DateTimeOffset? CreatedTime { get; set; }
         /// <summary>State of the application.If manually &lt;&lt;/core-api/credit-applications#transitionApplication, transitioning an application state&gt;&gt;:* `application_state` is the state to which you want to transition the application status; must be `ACCEPTED` or `REJECTED`.* `original_status` returns the state of the application before it was manually transitioned.* `status` returns the state to which the application was transitioned.</summary>
-        public ApplicationResourceState? OriginalStatus { get; set; }
+        public Marqeta.Core.Sdk.Models.ApplicationResourceState? OriginalStatus { get; set; }
         /// <summary>State of the application.If manually &lt;&lt;/core-api/credit-applications#transitionApplication, transitioning an application state&gt;&gt;:* `application_state` is the state to which you want to transition the application status; must be `ACCEPTED` or `REJECTED`.* `original_status` returns the state of the application before it was manually transitioned.* `status` returns the state to which the application was transitioned.</summary>
-        public ApplicationResourceState? Status { get; set; }
+        public Marqeta.Core.Sdk.Models.ApplicationResourceState? Status { get; set; }
         /// <summary>Unique identifier of the transition of an application&apos;s state.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -35,7 +36,7 @@ namespace Marqeta.Core.Sdk.Models {
         public string Token { get; set; }
 #endif
         /// <summary>
-        /// Instantiates a new <see cref="ApplicationTransitionResponse"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Models.ApplicationTransitionResponse"/> and sets the default values.
         /// </summary>
         public ApplicationTransitionResponse()
         {
@@ -44,12 +45,12 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="ApplicationTransitionResponse"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Models.ApplicationTransitionResponse"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static ApplicationTransitionResponse CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static Marqeta.Core.Sdk.Models.ApplicationTransitionResponse CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-            return new ApplicationTransitionResponse();
+            return new Marqeta.Core.Sdk.Models.ApplicationTransitionResponse();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -59,11 +60,11 @@ namespace Marqeta.Core.Sdk.Models {
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                {"application_token", n => { ApplicationToken = n.GetStringValue(); } },
-                {"created_time", n => { CreatedTime = n.GetDateTimeOffsetValue(); } },
-                {"original_status", n => { OriginalStatus = n.GetEnumValue<ApplicationResourceState>(); } },
-                {"status", n => { Status = n.GetEnumValue<ApplicationResourceState>(); } },
-                {"token", n => { Token = n.GetStringValue(); } },
+                { "application_token", n => { ApplicationToken = n.GetStringValue(); } },
+                { "created_time", n => { CreatedTime = n.GetDateTimeOffsetValue(); } },
+                { "original_status", n => { OriginalStatus = n.GetEnumValue<Marqeta.Core.Sdk.Models.ApplicationResourceState>(); } },
+                { "status", n => { Status = n.GetEnumValue<Marqeta.Core.Sdk.Models.ApplicationResourceState>(); } },
+                { "token", n => { Token = n.GetStringValue(); } },
             };
         }
         /// <summary>
@@ -75,8 +76,8 @@ namespace Marqeta.Core.Sdk.Models {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("application_token", ApplicationToken);
             writer.WriteDateTimeOffsetValue("created_time", CreatedTime);
-            writer.WriteEnumValue<ApplicationResourceState>("original_status", OriginalStatus);
-            writer.WriteEnumValue<ApplicationResourceState>("status", Status);
+            writer.WriteEnumValue<Marqeta.Core.Sdk.Models.ApplicationResourceState>("original_status", OriginalStatus);
+            writer.WriteEnumValue<Marqeta.Core.Sdk.Models.ApplicationResourceState>("status", Status);
             writer.WriteStringValue("token", Token);
             writer.WriteAdditionalData(AdditionalData);
         }

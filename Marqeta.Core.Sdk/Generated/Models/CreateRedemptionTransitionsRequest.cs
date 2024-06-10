@@ -4,9 +4,10 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System;
-namespace Marqeta.Core.Sdk.Models {
+namespace Marqeta.Core.Sdk.Models
+{
     #pragma warning disable CS1591
-    public class CreateRedemptionTransitionsRequest : IAdditionalDataHolder, IParsable 
+    public class CreateRedemptionTransitionsRequest : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -14,9 +15,9 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>Date and time when the reward redemption was settled on your external platform.Pass this field if you handle the reward redemption outside of Marqeta&apos;s credit platform.</summary>
         public DateTimeOffset? ExternalSettlementDateTime { get; set; }
         /// <summary>Status of the redemption.If &lt;&lt;/core-api/reward-redemptions#postRedemptionTransition, transitioning the redemption&apos;s status&gt;&gt;:* `new_state` is the state to which you want to transition the redemption; must be `COMPLETED` or `RETURNED`.* `initial_status` is the initial status of the redemption prior to transition.</summary>
-        public RedemptionStatus? NewState { get; set; }
+        public Marqeta.Core.Sdk.Models.RedemptionStatus? NewState { get; set; }
         /// <summary>
-        /// Instantiates a new <see cref="CreateRedemptionTransitionsRequest"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Models.CreateRedemptionTransitionsRequest"/> and sets the default values.
         /// </summary>
         public CreateRedemptionTransitionsRequest()
         {
@@ -25,12 +26,12 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="CreateRedemptionTransitionsRequest"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Models.CreateRedemptionTransitionsRequest"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static CreateRedemptionTransitionsRequest CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static Marqeta.Core.Sdk.Models.CreateRedemptionTransitionsRequest CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-            return new CreateRedemptionTransitionsRequest();
+            return new Marqeta.Core.Sdk.Models.CreateRedemptionTransitionsRequest();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -40,8 +41,8 @@ namespace Marqeta.Core.Sdk.Models {
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                {"external_settlement_date_time", n => { ExternalSettlementDateTime = n.GetDateTimeOffsetValue(); } },
-                {"new_state", n => { NewState = n.GetEnumValue<RedemptionStatus>(); } },
+                { "external_settlement_date_time", n => { ExternalSettlementDateTime = n.GetDateTimeOffsetValue(); } },
+                { "new_state", n => { NewState = n.GetEnumValue<Marqeta.Core.Sdk.Models.RedemptionStatus>(); } },
             };
         }
         /// <summary>
@@ -52,7 +53,7 @@ namespace Marqeta.Core.Sdk.Models {
         {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
             writer.WriteDateTimeOffsetValue("external_settlement_date_time", ExternalSettlementDateTime);
-            writer.WriteEnumValue<RedemptionStatus>("new_state", NewState);
+            writer.WriteEnumValue<Marqeta.Core.Sdk.Models.RedemptionStatus>("new_state", NewState);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

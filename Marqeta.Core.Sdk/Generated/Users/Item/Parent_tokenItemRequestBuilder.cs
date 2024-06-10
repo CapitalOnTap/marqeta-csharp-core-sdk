@@ -10,24 +10,25 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Threading;
 using System;
-namespace Marqeta.Core.Sdk.Users.Item {
+namespace Marqeta.Core.Sdk.Users.Item
+{
     /// <summary>
     /// Builds and executes requests for operations under \users\{parent_token-id}
     /// </summary>
-    public class Parent_tokenItemRequestBuilder : BaseRequestBuilder 
+    public class Parent_tokenItemRequestBuilder : BaseRequestBuilder
     {
         /// <summary>The children property</summary>
-        public ChildrenRequestBuilder Children
+        public Marqeta.Core.Sdk.Users.Item.Children.ChildrenRequestBuilder Children
         {
-            get => new ChildrenRequestBuilder(PathParameters, RequestAdapter);
+            get => new Marqeta.Core.Sdk.Users.Item.Children.ChildrenRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The ssn property</summary>
-        public SsnRequestBuilder Ssn
+        public Marqeta.Core.Sdk.Users.Item.Ssn.SsnRequestBuilder Ssn
         {
-            get => new SsnRequestBuilder(PathParameters, RequestAdapter);
+            get => new Marqeta.Core.Sdk.Users.Item.Ssn.SsnRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>
-        /// Instantiates a new <see cref="Parent_tokenItemRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Users.Item.Parent_tokenItemRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
@@ -35,7 +36,7 @@ namespace Marqeta.Core.Sdk.Users.Item {
         {
         }
         /// <summary>
-        /// Instantiates a new <see cref="Parent_tokenItemRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Users.Item.Parent_tokenItemRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
@@ -45,50 +46,50 @@ namespace Marqeta.Core.Sdk.Users.Item {
         /// <summary>
         /// To retrieve a specific user, send a `GET` request to the `/users/{token}` endpoint.Include the user `token` path parameter to specify the user to return.The `business_token` field is conditionally returned in the response (it cannot be set through the API).You can use this field in conjunction with the `parent_token` field to determine whether the user has a parent or grandparent that is a business:[cols=&quot;1,1,1&quot;]|===| parent_token | business_token | Description| Not populated| Not populated| User does not have a parent.| Populated| Not populated| User&apos;s parent is a user.| Populated; matches `business_token`| Populated; matches `parent_token`| User&apos;s parent is a business.| Populated; does not match `business_token`| Populated; does not match `parent_token`| User&apos;s parent is a user and their grandparent is a business.|===This endpoint supports &lt;&lt;/core-api/field-filtering, field filtering&gt;&gt;.
         /// </summary>
-        /// <returns>A <see cref="User_card_holder_response"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Models.User_card_holder_response"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        /// <exception cref="ApiError">When receiving a 4XX or 5XX status code</exception>
+        /// <exception cref="Marqeta.Core.Sdk.Models.ApiError">When receiving a 4XX or 5XX status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<User_card_holder_response?> GetAsync(Action<RequestConfiguration<Parent_tokenItemRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<Marqeta.Core.Sdk.Models.User_card_holder_response?> GetAsync(Action<RequestConfiguration<Marqeta.Core.Sdk.Users.Item.Parent_tokenItemRequestBuilder.Parent_tokenItemRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<User_card_holder_response> GetAsync(Action<RequestConfiguration<Parent_tokenItemRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<Marqeta.Core.Sdk.Models.User_card_holder_response> GetAsync(Action<RequestConfiguration<Marqeta.Core.Sdk.Users.Item.Parent_tokenItemRequestBuilder.Parent_tokenItemRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
-                {"XXX", ApiError.CreateFromDiscriminatorValue},
+                { "XXX", Marqeta.Core.Sdk.Models.ApiError.CreateFromDiscriminatorValue },
             };
-            return await RequestAdapter.SendAsync<User_card_holder_response>(requestInfo, User_card_holder_response.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<Marqeta.Core.Sdk.Models.User_card_holder_response>(requestInfo, Marqeta.Core.Sdk.Models.User_card_holder_response.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// To update a specific user resource, send a `PUT` request to the `/users/{token}` endpoint.Include the user `token` path parameter to specify the user to update.To unlink a child user account from a parent account, pass a null value to the `parent_token` field of the child user resource.
         /// </summary>
-        /// <returns>A <see cref="Card_holder_model"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Models.Card_holder_model"/></returns>
         /// <param name="body">The request body</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        /// <exception cref="ApiError">When receiving a 4XX or 5XX status code</exception>
+        /// <exception cref="Marqeta.Core.Sdk.Models.ApiError">When receiving a 4XX or 5XX status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<Card_holder_model?> PutAsync(UserCardHolderUpdateModel body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<Marqeta.Core.Sdk.Models.Card_holder_model?> PutAsync(Marqeta.Core.Sdk.Models.UserCardHolderUpdateModel body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<Card_holder_model> PutAsync(UserCardHolderUpdateModel body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<Marqeta.Core.Sdk.Models.Card_holder_model> PutAsync(Marqeta.Core.Sdk.Models.UserCardHolderUpdateModel body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             _ = body ?? throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPutRequestInformation(body, requestConfiguration);
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
-                {"XXX", ApiError.CreateFromDiscriminatorValue},
+                { "XXX", Marqeta.Core.Sdk.Models.ApiError.CreateFromDiscriminatorValue },
             };
-            return await RequestAdapter.SendAsync<Card_holder_model>(requestInfo, Card_holder_model.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<Marqeta.Core.Sdk.Models.Card_holder_model>(requestInfo, Marqeta.Core.Sdk.Models.Card_holder_model.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// To retrieve a specific user, send a `GET` request to the `/users/{token}` endpoint.Include the user `token` path parameter to specify the user to return.The `business_token` field is conditionally returned in the response (it cannot be set through the API).You can use this field in conjunction with the `parent_token` field to determine whether the user has a parent or grandparent that is a business:[cols=&quot;1,1,1&quot;]|===| parent_token | business_token | Description| Not populated| Not populated| User does not have a parent.| Populated| Not populated| User&apos;s parent is a user.| Populated; matches `business_token`| Populated; matches `parent_token`| User&apos;s parent is a business.| Populated; does not match `business_token`| Populated; does not match `parent_token`| User&apos;s parent is a user and their grandparent is a business.|===This endpoint supports &lt;&lt;/core-api/field-filtering, field filtering&gt;&gt;.
@@ -97,11 +98,11 @@ namespace Marqeta.Core.Sdk.Users.Item {
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<Parent_tokenItemRequestBuilderGetQueryParameters>>? requestConfiguration = default)
+        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<Marqeta.Core.Sdk.Users.Item.Parent_tokenItemRequestBuilder.Parent_tokenItemRequestBuilderGetQueryParameters>>? requestConfiguration = default)
         {
 #nullable restore
 #else
-        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<Parent_tokenItemRequestBuilderGetQueryParameters>> requestConfiguration = default)
+        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<Marqeta.Core.Sdk.Users.Item.Parent_tokenItemRequestBuilder.Parent_tokenItemRequestBuilderGetQueryParameters>> requestConfiguration = default)
         {
 #endif
             var requestInfo = new RequestInformation(Method.GET, UrlTemplate, PathParameters);
@@ -117,11 +118,11 @@ namespace Marqeta.Core.Sdk.Users.Item {
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToPutRequestInformation(UserCardHolderUpdateModel body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
+        public RequestInformation ToPutRequestInformation(Marqeta.Core.Sdk.Models.UserCardHolderUpdateModel body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
         {
 #nullable restore
 #else
-        public RequestInformation ToPutRequestInformation(UserCardHolderUpdateModel body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
+        public RequestInformation ToPutRequestInformation(Marqeta.Core.Sdk.Models.UserCardHolderUpdateModel body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
         {
 #endif
             _ = body ?? throw new ArgumentNullException(nameof(body));
@@ -134,11 +135,11 @@ namespace Marqeta.Core.Sdk.Users.Item {
         /// <summary>
         /// Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
         /// </summary>
-        /// <returns>A <see cref="Parent_tokenItemRequestBuilder"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Users.Item.Parent_tokenItemRequestBuilder"/></returns>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
-        public Parent_tokenItemRequestBuilder WithUrl(string rawUrl)
+        public Marqeta.Core.Sdk.Users.Item.Parent_tokenItemRequestBuilder WithUrl(string rawUrl)
         {
-            return new Parent_tokenItemRequestBuilder(rawUrl, RequestAdapter);
+            return new Marqeta.Core.Sdk.Users.Item.Parent_tokenItemRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
         /// To retrieve a specific user, send a `GET` request to the `/users/{token}` endpoint.Include the user `token` path parameter to specify the user to return.The `business_token` field is conditionally returned in the response (it cannot be set through the API).You can use this field in conjunction with the `parent_token` field to determine whether the user has a parent or grandparent that is a business:[cols=&quot;1,1,1&quot;]|===| parent_token | business_token | Description| Not populated| Not populated| User does not have a parent.| Populated| Not populated| User&apos;s parent is a user.| Populated; matches `business_token`| Populated; matches `parent_token`| User&apos;s parent is a business.| Populated; does not match `business_token`| Populated; does not match `parent_token`| User&apos;s parent is a user and their grandparent is a business.|===This endpoint supports &lt;&lt;/core-api/field-filtering, field filtering&gt;&gt;.

@@ -4,11 +4,12 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System;
-namespace Marqeta.Core.Sdk.Models {
+namespace Marqeta.Core.Sdk.Models
+{
     /// <summary>
     /// Contains information related to the cardholder and provided by the digital wallet provider.
     /// </summary>
-    public class Account : IAdditionalDataHolder, IParsable 
+    public class Account : IAdditionalDataHolder, IParsable
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
@@ -37,7 +38,7 @@ namespace Marqeta.Core.Sdk.Models {
         public string Score { get; set; }
 #endif
         /// <summary>
-        /// Instantiates a new <see cref="Account"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Models.Account"/> and sets the default values.
         /// </summary>
         public Account()
         {
@@ -46,12 +47,12 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="Account"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Models.Account"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static Account CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static Marqeta.Core.Sdk.Models.Account CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-            return new Account();
+            return new Marqeta.Core.Sdk.Models.Account();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -61,9 +62,9 @@ namespace Marqeta.Core.Sdk.Models {
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                {"email_address", n => { EmailAddress = n.GetStringValue(); } },
-                {"id", n => { Id = n.GetStringValue(); } },
-                {"score", n => { Score = n.GetStringValue(); } },
+                { "email_address", n => { EmailAddress = n.GetStringValue(); } },
+                { "id", n => { Id = n.GetStringValue(); } },
+                { "score", n => { Score = n.GetStringValue(); } },
             };
         }
         /// <summary>

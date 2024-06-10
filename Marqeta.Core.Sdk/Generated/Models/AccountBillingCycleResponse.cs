@@ -4,11 +4,12 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System;
-namespace Marqeta.Core.Sdk.Models {
+namespace Marqeta.Core.Sdk.Models
+{
     /// <summary>
     /// Details of a billing cycle.
     /// </summary>
-    public class AccountBillingCycleResponse : IAdditionalDataHolder, IParsable 
+    public class AccountBillingCycleResponse : IAdditionalDataHolder, IParsable
     {
         /// <summary>Token of the associated account.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -45,7 +46,7 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>Date and time when the BillingCycle was last updated on Marqeta&apos;s credit platform</summary>
         public DateTimeOffset? UpdatedTime { get; set; }
         /// <summary>
-        /// Instantiates a new <see cref="AccountBillingCycleResponse"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Models.AccountBillingCycleResponse"/> and sets the default values.
         /// </summary>
         public AccountBillingCycleResponse()
         {
@@ -54,12 +55,12 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="AccountBillingCycleResponse"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Models.AccountBillingCycleResponse"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static AccountBillingCycleResponse CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static Marqeta.Core.Sdk.Models.AccountBillingCycleResponse CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-            return new AccountBillingCycleResponse();
+            return new Marqeta.Core.Sdk.Models.AccountBillingCycleResponse();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -69,16 +70,16 @@ namespace Marqeta.Core.Sdk.Models {
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                {"account_token", n => { AccountToken = n.GetStringValue(); } },
-                {"created_time", n => { CreatedTime = n.GetDateTimeOffsetValue(); } },
-                {"current_end_time", n => { CurrentEndTime = n.GetDateTimeOffsetValue(); } },
-                {"current_payment_due_date", n => { CurrentPaymentDueDate = n.GetDateTimeOffsetValue(); } },
-                {"current_start_time", n => { CurrentStartTime = n.GetDateTimeOffsetValue(); } },
-                {"next_end_time", n => { NextEndTime = n.GetDateTimeOffsetValue(); } },
-                {"next_payment_due_date", n => { NextPaymentDueDate = n.GetDateTimeOffsetValue(); } },
-                {"next_start_time", n => { NextStartTime = n.GetDateTimeOffsetValue(); } },
-                {"short_code", n => { ShortCode = n.GetStringValue(); } },
-                {"updated_time", n => { UpdatedTime = n.GetDateTimeOffsetValue(); } },
+                { "account_token", n => { AccountToken = n.GetStringValue(); } },
+                { "created_time", n => { CreatedTime = n.GetDateTimeOffsetValue(); } },
+                { "current_end_time", n => { CurrentEndTime = n.GetDateTimeOffsetValue(); } },
+                { "current_payment_due_date", n => { CurrentPaymentDueDate = n.GetDateTimeOffsetValue(); } },
+                { "current_start_time", n => { CurrentStartTime = n.GetDateTimeOffsetValue(); } },
+                { "next_end_time", n => { NextEndTime = n.GetDateTimeOffsetValue(); } },
+                { "next_payment_due_date", n => { NextPaymentDueDate = n.GetDateTimeOffsetValue(); } },
+                { "next_start_time", n => { NextStartTime = n.GetDateTimeOffsetValue(); } },
+                { "short_code", n => { ShortCode = n.GetStringValue(); } },
+                { "updated_time", n => { UpdatedTime = n.GetDateTimeOffsetValue(); } },
             };
         }
         /// <summary>

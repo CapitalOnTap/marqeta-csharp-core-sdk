@@ -7,24 +7,25 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using System;
-namespace Marqeta.Core.Sdk.Programreserve {
+namespace Marqeta.Core.Sdk.Programreserve
+{
     /// <summary>
     /// Builds and executes requests for operations under \programreserve
     /// </summary>
-    public class ProgramreserveRequestBuilder : BaseRequestBuilder 
+    public class ProgramreserveRequestBuilder : BaseRequestBuilder
     {
         /// <summary>The balances property</summary>
-        public BalancesRequestBuilder Balances
+        public Marqeta.Core.Sdk.Programreserve.Balances.BalancesRequestBuilder Balances
         {
-            get => new BalancesRequestBuilder(PathParameters, RequestAdapter);
+            get => new Marqeta.Core.Sdk.Programreserve.Balances.BalancesRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The transactions property</summary>
-        public TransactionsRequestBuilder Transactions
+        public Marqeta.Core.Sdk.Programreserve.Transactions.TransactionsRequestBuilder Transactions
         {
-            get => new TransactionsRequestBuilder(PathParameters, RequestAdapter);
+            get => new Marqeta.Core.Sdk.Programreserve.Transactions.TransactionsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>
-        /// Instantiates a new <see cref="ProgramreserveRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Programreserve.ProgramreserveRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
@@ -32,7 +33,7 @@ namespace Marqeta.Core.Sdk.Programreserve {
         {
         }
         /// <summary>
-        /// Instantiates a new <see cref="ProgramreserveRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Programreserve.ProgramreserveRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>

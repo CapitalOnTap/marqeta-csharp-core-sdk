@@ -4,9 +4,10 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System;
-namespace Marqeta.Core.Sdk.Models {
+namespace Marqeta.Core.Sdk.Models
+{
     #pragma warning disable CS1591
-    public class Digital_wallet_android_pay_provision_response : IAdditionalDataHolder, IParsable 
+    public class Digital_wallet_android_pay_provision_response : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -26,13 +27,13 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>Contains details about a card tokenization push request.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public Android_push_tokenize_request_data? PushTokenizeRequestData { get; set; }
+        public Marqeta.Core.Sdk.Models.Android_push_tokenize_request_data? PushTokenizeRequestData { get; set; }
 #nullable restore
 #else
-        public Android_push_tokenize_request_data PushTokenizeRequestData { get; set; }
+        public Marqeta.Core.Sdk.Models.Android_push_tokenize_request_data PushTokenizeRequestData { get; set; }
 #endif
         /// <summary>
-        /// Instantiates a new <see cref="Digital_wallet_android_pay_provision_response"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Models.Digital_wallet_android_pay_provision_response"/> and sets the default values.
         /// </summary>
         public Digital_wallet_android_pay_provision_response()
         {
@@ -41,12 +42,12 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="Digital_wallet_android_pay_provision_response"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Models.Digital_wallet_android_pay_provision_response"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static Digital_wallet_android_pay_provision_response CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static Marqeta.Core.Sdk.Models.Digital_wallet_android_pay_provision_response CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-            return new Digital_wallet_android_pay_provision_response();
+            return new Marqeta.Core.Sdk.Models.Digital_wallet_android_pay_provision_response();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -56,10 +57,10 @@ namespace Marqeta.Core.Sdk.Models {
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                {"card_token", n => { CardToken = n.GetStringValue(); } },
-                {"created_time", n => { CreatedTime = n.GetDateTimeOffsetValue(); } },
-                {"last_modified_time", n => { LastModifiedTime = n.GetDateTimeOffsetValue(); } },
-                {"push_tokenize_request_data", n => { PushTokenizeRequestData = n.GetObjectValue<Android_push_tokenize_request_data>(Android_push_tokenize_request_data.CreateFromDiscriminatorValue); } },
+                { "card_token", n => { CardToken = n.GetStringValue(); } },
+                { "created_time", n => { CreatedTime = n.GetDateTimeOffsetValue(); } },
+                { "last_modified_time", n => { LastModifiedTime = n.GetDateTimeOffsetValue(); } },
+                { "push_tokenize_request_data", n => { PushTokenizeRequestData = n.GetObjectValue<Marqeta.Core.Sdk.Models.Android_push_tokenize_request_data>(Marqeta.Core.Sdk.Models.Android_push_tokenize_request_data.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -72,7 +73,7 @@ namespace Marqeta.Core.Sdk.Models {
             writer.WriteStringValue("card_token", CardToken);
             writer.WriteDateTimeOffsetValue("created_time", CreatedTime);
             writer.WriteDateTimeOffsetValue("last_modified_time", LastModifiedTime);
-            writer.WriteObjectValue<Android_push_tokenize_request_data>("push_tokenize_request_data", PushTokenizeRequestData);
+            writer.WriteObjectValue<Marqeta.Core.Sdk.Models.Android_push_tokenize_request_data>("push_tokenize_request_data", PushTokenizeRequestData);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

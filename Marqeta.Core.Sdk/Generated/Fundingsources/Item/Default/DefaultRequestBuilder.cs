@@ -8,14 +8,15 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Threading;
 using System;
-namespace Marqeta.Core.Sdk.Fundingsources.Item.Default {
+namespace Marqeta.Core.Sdk.Fundingsources.Item.Default
+{
     /// <summary>
     /// Builds and executes requests for operations under \fundingsources\{funding_source_token}\default
     /// </summary>
-    public class DefaultRequestBuilder : BaseRequestBuilder 
+    public class DefaultRequestBuilder : BaseRequestBuilder
     {
         /// <summary>
-        /// Instantiates a new <see cref="DefaultRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Fundingsources.Item.Default.DefaultRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
@@ -23,7 +24,7 @@ namespace Marqeta.Core.Sdk.Fundingsources.Item.Default {
         {
         }
         /// <summary>
-        /// Instantiates a new <see cref="DefaultRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Fundingsources.Item.Default.DefaultRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
@@ -33,25 +34,25 @@ namespace Marqeta.Core.Sdk.Fundingsources.Item.Default {
         /// <summary>
         /// Configure either an ACH funding source or a payment card funding source as the default funding source.A default funding source is used when you omit the `funding_source_token` field from funding requests, such as a `POST` request to `/gpaorders`.Note that the first funding source you create is automatically set as the default (`is_default_source=true`).
         /// </summary>
-        /// <returns>A <see cref="Payment_card_response_model"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Models.Payment_card_response_model"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        /// <exception cref="ApiError">When receiving a 4XX or 5XX status code</exception>
+        /// <exception cref="Marqeta.Core.Sdk.Models.ApiError">When receiving a 4XX or 5XX status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<Payment_card_response_model?> PutAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<Marqeta.Core.Sdk.Models.Payment_card_response_model?> PutAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<Payment_card_response_model> PutAsync(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<Marqeta.Core.Sdk.Models.Payment_card_response_model> PutAsync(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             var requestInfo = ToPutRequestInformation(requestConfiguration);
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
-                {"XXX", ApiError.CreateFromDiscriminatorValue},
+                { "XXX", Marqeta.Core.Sdk.Models.ApiError.CreateFromDiscriminatorValue },
             };
-            return await RequestAdapter.SendAsync<Payment_card_response_model>(requestInfo, Payment_card_response_model.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<Marqeta.Core.Sdk.Models.Payment_card_response_model>(requestInfo, Marqeta.Core.Sdk.Models.Payment_card_response_model.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Configure either an ACH funding source or a payment card funding source as the default funding source.A default funding source is used when you omit the `funding_source_token` field from funding requests, such as a `POST` request to `/gpaorders`.Note that the first funding source you create is automatically set as the default (`is_default_source=true`).
@@ -75,11 +76,11 @@ namespace Marqeta.Core.Sdk.Fundingsources.Item.Default {
         /// <summary>
         /// Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
         /// </summary>
-        /// <returns>A <see cref="DefaultRequestBuilder"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Fundingsources.Item.Default.DefaultRequestBuilder"/></returns>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
-        public DefaultRequestBuilder WithUrl(string rawUrl)
+        public Marqeta.Core.Sdk.Fundingsources.Item.Default.DefaultRequestBuilder WithUrl(string rawUrl)
         {
-            return new DefaultRequestBuilder(rawUrl, RequestAdapter);
+            return new Marqeta.Core.Sdk.Fundingsources.Item.Default.DefaultRequestBuilder(rawUrl, RequestAdapter);
         }
     }
 }

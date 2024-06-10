@@ -4,11 +4,12 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System;
-namespace Marqeta.Core.Sdk.Models {
+namespace Marqeta.Core.Sdk.Models
+{
     /// <summary>
     /// Controls transactional characteristics of card usage.
     /// </summary>
-    public class Transaction_controls : IAdditionalDataHolder, IParsable 
+    public class Transaction_controls : IAdditionalDataHolder, IParsable
     {
         /// <summary>Set to `accept_us_only` to allow transactions only within the US.Set to `decline_ofac_countries` to allow international transactions except with countries that the Financial Action Task Force (FATF) and Office of Foreign Assets Control (OFAC) have identified as high risk.Users with the Admin role can create and update additional lists of accepted countries for transactions at the `/acceptedcountries` endpoint.See &lt;&lt;/core-api/accepted-countries, Accepted Countries&gt;&gt;.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -23,10 +24,10 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>The address_verification property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public Avs_controls? AddressVerification { get; set; }
+        public Marqeta.Core.Sdk.Models.Avs_controls? AddressVerification { get; set; }
 #nullable restore
 #else
-        public Avs_controls AddressVerification { get; set; }
+        public Marqeta.Core.Sdk.Models.Avs_controls AddressVerification { get; set; }
 #endif
         /// <summary>Indicates whether to allow transactions where a Europay Mastercard and Visa (EMV) chip-enabled card was processed using the magstripe as fallback.</summary>
         public bool? AllowChipFallback { get; set; }
@@ -81,13 +82,13 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>Contains information about Strong Customer Authentication (SCA) behavior for contactless point-of-sale (POS) and low-value payment (LVP) e-commerce transactions.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public Strong_customer_authentication_limits? StrongCustomerAuthenticationLimits { get; set; }
+        public Marqeta.Core.Sdk.Models.Strong_customer_authentication_limits? StrongCustomerAuthenticationLimits { get; set; }
 #nullable restore
 #else
-        public Strong_customer_authentication_limits StrongCustomerAuthenticationLimits { get; set; }
+        public Marqeta.Core.Sdk.Models.Strong_customer_authentication_limits StrongCustomerAuthenticationLimits { get; set; }
 #endif
         /// <summary>
-        /// Instantiates a new <see cref="Transaction_controls"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Models.Transaction_controls"/> and sets the default values.
         /// </summary>
         public Transaction_controls()
         {
@@ -96,12 +97,12 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="Transaction_controls"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Models.Transaction_controls"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static Transaction_controls CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static Marqeta.Core.Sdk.Models.Transaction_controls CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-            return new Transaction_controls();
+            return new Marqeta.Core.Sdk.Models.Transaction_controls();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -111,25 +112,25 @@ namespace Marqeta.Core.Sdk.Models {
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                {"accepted_countries_token", n => { AcceptedCountriesToken = n.GetStringValue(); } },
-                {"address_verification", n => { AddressVerification = n.GetObjectValue<Avs_controls>(Avs_controls.CreateFromDiscriminatorValue); } },
-                {"allow_chip_fallback", n => { AllowChipFallback = n.GetBoolValue(); } },
-                {"allow_first_pin_set_via_financial_transaction", n => { AllowFirstPinSetViaFinancialTransaction = n.GetBoolValue(); } },
-                {"allow_gpa_auth", n => { AllowGpaAuth = n.GetBoolValue(); } },
-                {"allow_mcc_group_authorization_controls", n => { AllowMccGroupAuthorizationControls = n.GetBoolValue(); } },
-                {"allow_network_load", n => { AllowNetworkLoad = n.GetBoolValue(); } },
-                {"allow_network_load_card_activation", n => { AllowNetworkLoadCardActivation = n.GetBoolValue(); } },
-                {"allow_quasi_cash", n => { AllowQuasiCash = n.GetBoolValue(); } },
-                {"always_require_icc", n => { AlwaysRequireIcc = n.GetBoolValue(); } },
-                {"always_require_pin", n => { AlwaysRequirePin = n.GetBoolValue(); } },
-                {"enable_credit_service", n => { EnableCreditService = n.GetBoolValue(); } },
-                {"enable_partial_auth_approval", n => { EnablePartialAuthApproval = n.GetBoolValue(); } },
-                {"ignore_card_suspended_state", n => { IgnoreCardSuspendedState = n.GetBoolValue(); } },
-                {"notification_language", n => { NotificationLanguage = n.GetStringValue(); } },
-                {"quasi_cash_exempt_merchant_group_token", n => { QuasiCashExemptMerchantGroupToken = n.GetStringValue(); } },
-                {"quasi_cash_exempt_mids", n => { QuasiCashExemptMids = n.GetStringValue(); } },
-                {"require_card_not_present_card_security_code", n => { RequireCardNotPresentCardSecurityCode = n.GetBoolValue(); } },
-                {"strong_customer_authentication_limits", n => { StrongCustomerAuthenticationLimits = n.GetObjectValue<Strong_customer_authentication_limits>(Strong_customer_authentication_limits.CreateFromDiscriminatorValue); } },
+                { "accepted_countries_token", n => { AcceptedCountriesToken = n.GetStringValue(); } },
+                { "address_verification", n => { AddressVerification = n.GetObjectValue<Marqeta.Core.Sdk.Models.Avs_controls>(Marqeta.Core.Sdk.Models.Avs_controls.CreateFromDiscriminatorValue); } },
+                { "allow_chip_fallback", n => { AllowChipFallback = n.GetBoolValue(); } },
+                { "allow_first_pin_set_via_financial_transaction", n => { AllowFirstPinSetViaFinancialTransaction = n.GetBoolValue(); } },
+                { "allow_gpa_auth", n => { AllowGpaAuth = n.GetBoolValue(); } },
+                { "allow_mcc_group_authorization_controls", n => { AllowMccGroupAuthorizationControls = n.GetBoolValue(); } },
+                { "allow_network_load", n => { AllowNetworkLoad = n.GetBoolValue(); } },
+                { "allow_network_load_card_activation", n => { AllowNetworkLoadCardActivation = n.GetBoolValue(); } },
+                { "allow_quasi_cash", n => { AllowQuasiCash = n.GetBoolValue(); } },
+                { "always_require_icc", n => { AlwaysRequireIcc = n.GetBoolValue(); } },
+                { "always_require_pin", n => { AlwaysRequirePin = n.GetBoolValue(); } },
+                { "enable_credit_service", n => { EnableCreditService = n.GetBoolValue(); } },
+                { "enable_partial_auth_approval", n => { EnablePartialAuthApproval = n.GetBoolValue(); } },
+                { "ignore_card_suspended_state", n => { IgnoreCardSuspendedState = n.GetBoolValue(); } },
+                { "notification_language", n => { NotificationLanguage = n.GetStringValue(); } },
+                { "quasi_cash_exempt_merchant_group_token", n => { QuasiCashExemptMerchantGroupToken = n.GetStringValue(); } },
+                { "quasi_cash_exempt_mids", n => { QuasiCashExemptMids = n.GetStringValue(); } },
+                { "require_card_not_present_card_security_code", n => { RequireCardNotPresentCardSecurityCode = n.GetBoolValue(); } },
+                { "strong_customer_authentication_limits", n => { StrongCustomerAuthenticationLimits = n.GetObjectValue<Marqeta.Core.Sdk.Models.Strong_customer_authentication_limits>(Marqeta.Core.Sdk.Models.Strong_customer_authentication_limits.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -140,7 +141,7 @@ namespace Marqeta.Core.Sdk.Models {
         {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("accepted_countries_token", AcceptedCountriesToken);
-            writer.WriteObjectValue<Avs_controls>("address_verification", AddressVerification);
+            writer.WriteObjectValue<Marqeta.Core.Sdk.Models.Avs_controls>("address_verification", AddressVerification);
             writer.WriteBoolValue("allow_chip_fallback", AllowChipFallback);
             writer.WriteBoolValue("allow_first_pin_set_via_financial_transaction", AllowFirstPinSetViaFinancialTransaction);
             writer.WriteBoolValue("allow_gpa_auth", AllowGpaAuth);
@@ -157,7 +158,7 @@ namespace Marqeta.Core.Sdk.Models {
             writer.WriteStringValue("quasi_cash_exempt_merchant_group_token", QuasiCashExemptMerchantGroupToken);
             writer.WriteStringValue("quasi_cash_exempt_mids", QuasiCashExemptMids);
             writer.WriteBoolValue("require_card_not_present_card_security_code", RequireCardNotPresentCardSecurityCode);
-            writer.WriteObjectValue<Strong_customer_authentication_limits>("strong_customer_authentication_limits", StrongCustomerAuthenticationLimits);
+            writer.WriteObjectValue<Marqeta.Core.Sdk.Models.Strong_customer_authentication_limits>("strong_customer_authentication_limits", StrongCustomerAuthenticationLimits);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

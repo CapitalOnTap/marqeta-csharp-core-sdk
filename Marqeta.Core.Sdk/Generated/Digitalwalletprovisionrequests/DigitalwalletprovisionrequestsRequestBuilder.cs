@@ -9,34 +9,35 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using System;
-namespace Marqeta.Core.Sdk.Digitalwalletprovisionrequests {
+namespace Marqeta.Core.Sdk.Digitalwalletprovisionrequests
+{
     /// <summary>
     /// Builds and executes requests for operations under \digitalwalletprovisionrequests
     /// </summary>
-    public class DigitalwalletprovisionrequestsRequestBuilder : BaseRequestBuilder 
+    public class DigitalwalletprovisionrequestsRequestBuilder : BaseRequestBuilder
     {
         /// <summary>The androidpay property</summary>
-        public AndroidpayRequestBuilder Androidpay
+        public Marqeta.Core.Sdk.Digitalwalletprovisionrequests.Androidpay.AndroidpayRequestBuilder Androidpay
         {
-            get => new AndroidpayRequestBuilder(PathParameters, RequestAdapter);
+            get => new Marqeta.Core.Sdk.Digitalwalletprovisionrequests.Androidpay.AndroidpayRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The applepay property</summary>
-        public ApplepayRequestBuilder Applepay
+        public Marqeta.Core.Sdk.Digitalwalletprovisionrequests.Applepay.ApplepayRequestBuilder Applepay
         {
-            get => new ApplepayRequestBuilder(PathParameters, RequestAdapter);
+            get => new Marqeta.Core.Sdk.Digitalwalletprovisionrequests.Applepay.ApplepayRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The samsungpay property</summary>
-        public SamsungpayRequestBuilder Samsungpay
+        public Marqeta.Core.Sdk.Digitalwalletprovisionrequests.Samsungpay.SamsungpayRequestBuilder Samsungpay
         {
-            get => new SamsungpayRequestBuilder(PathParameters, RequestAdapter);
+            get => new Marqeta.Core.Sdk.Digitalwalletprovisionrequests.Samsungpay.SamsungpayRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The xpay property</summary>
-        public XpayRequestBuilder Xpay
+        public Marqeta.Core.Sdk.Digitalwalletprovisionrequests.Xpay.XpayRequestBuilder Xpay
         {
-            get => new XpayRequestBuilder(PathParameters, RequestAdapter);
+            get => new Marqeta.Core.Sdk.Digitalwalletprovisionrequests.Xpay.XpayRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>
-        /// Instantiates a new <see cref="DigitalwalletprovisionrequestsRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Digitalwalletprovisionrequests.DigitalwalletprovisionrequestsRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
@@ -44,7 +45,7 @@ namespace Marqeta.Core.Sdk.Digitalwalletprovisionrequests {
         {
         }
         /// <summary>
-        /// Instantiates a new <see cref="DigitalwalletprovisionrequestsRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Digitalwalletprovisionrequests.DigitalwalletprovisionrequestsRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>

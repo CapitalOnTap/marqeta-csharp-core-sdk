@@ -4,29 +4,30 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System;
-namespace Marqeta.Core.Sdk.Models {
+namespace Marqeta.Core.Sdk.Models
+{
     /// <summary>
     /// Return paginated redemptions by settlement date.
     /// </summary>
-    public class RedemptionsBySettlementDatePage : AbstractPage, IParsable 
+    public class RedemptionsBySettlementDatePage : Marqeta.Core.Sdk.Models.AbstractPage, IParsable
     {
         /// <summary>List of redemptions.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<RedemptionsBySettlementDateResponse>? Data { get; set; }
+        public List<Marqeta.Core.Sdk.Models.RedemptionsBySettlementDateResponse>? Data { get; set; }
 #nullable restore
 #else
-        public List<RedemptionsBySettlementDateResponse> Data { get; set; }
+        public List<Marqeta.Core.Sdk.Models.RedemptionsBySettlementDateResponse> Data { get; set; }
 #endif
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="RedemptionsBySettlementDatePage"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Models.RedemptionsBySettlementDatePage"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static new RedemptionsBySettlementDatePage CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static new Marqeta.Core.Sdk.Models.RedemptionsBySettlementDatePage CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-            return new RedemptionsBySettlementDatePage();
+            return new Marqeta.Core.Sdk.Models.RedemptionsBySettlementDatePage();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -36,7 +37,7 @@ namespace Marqeta.Core.Sdk.Models {
         {
             return new Dictionary<string, Action<IParseNode>>(base.GetFieldDeserializers())
             {
-                {"data", n => { Data = n.GetCollectionOfObjectValues<RedemptionsBySettlementDateResponse>(RedemptionsBySettlementDateResponse.CreateFromDiscriminatorValue)?.ToList(); } },
+                { "data", n => { Data = n.GetCollectionOfObjectValues<Marqeta.Core.Sdk.Models.RedemptionsBySettlementDateResponse>(Marqeta.Core.Sdk.Models.RedemptionsBySettlementDateResponse.CreateFromDiscriminatorValue)?.ToList(); } },
             };
         }
         /// <summary>
@@ -47,7 +48,7 @@ namespace Marqeta.Core.Sdk.Models {
         {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
             base.Serialize(writer);
-            writer.WriteCollectionOfObjectValues<RedemptionsBySettlementDateResponse>("data", Data);
+            writer.WriteCollectionOfObjectValues<Marqeta.Core.Sdk.Models.RedemptionsBySettlementDateResponse>("data", Data);
         }
     }
 }

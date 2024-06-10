@@ -4,11 +4,12 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System;
-namespace Marqeta.Core.Sdk.Models {
+namespace Marqeta.Core.Sdk.Models
+{
     /// <summary>
     /// Contains information about a cardholder.
     /// </summary>
-    public class User_card_holder_response : IAdditionalDataHolder, IParsable 
+    public class User_card_holder_response : IAdditionalDataHolder, IParsable
     {
         /// <summary>Associates the specified account holder group with the cardholder.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -107,7 +108,7 @@ namespace Marqeta.Core.Sdk.Models {
         public string FirstName { get; set; }
 #endif
         /// <summary>Gender of the cardholder.</summary>
-        public User_card_holder_response_gender? Gender { get; set; }
+        public Marqeta.Core.Sdk.Models.User_card_holder_response_gender? Gender { get; set; }
         /// <summary>Cardholder&apos;s title or prefix: Dr., Miss, Mr., Ms., and so on.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -135,10 +136,10 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>One or more objects containing identifications associated with the cardholder.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<IdentificationResponseModel>? Identifications { get; set; }
+        public List<Marqeta.Core.Sdk.Models.IdentificationResponseModel>? Identifications { get; set; }
 #nullable restore
 #else
-        public List<IdentificationResponseModel> Identifications { get; set; }
+        public List<Marqeta.Core.Sdk.Models.IdentificationResponseModel> Identifications { get; set; }
 #endif
         /// <summary>Cardholder&apos;s IP address.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -161,10 +162,10 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>Associates any additional metadata you provide with the cardholder.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public User_card_holder_response_metadata? Metadata { get; set; }
+        public Marqeta.Core.Sdk.Models.User_card_holder_response_metadata? Metadata { get; set; }
 #nullable restore
 #else
-        public User_card_holder_response_metadata Metadata { get; set; }
+        public Marqeta.Core.Sdk.Models.User_card_holder_response_metadata Metadata { get; set; }
 #endif
         /// <summary>Cardholder&apos;s middle name.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -255,7 +256,7 @@ namespace Marqeta.Core.Sdk.Models {
         public string State { get; set; }
 #endif
         /// <summary>Specifies the status of the cardholder on the Marqeta platform.</summary>
-        public User_card_holder_response_status? Status { get; set; }
+        public Marqeta.Core.Sdk.Models.User_card_holder_response_status? Status { get; set; }
         /// <summary>Unique identifier of the cardholder.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -275,7 +276,7 @@ namespace Marqeta.Core.Sdk.Models {
         public string Zip { get; set; }
 #endif
         /// <summary>
-        /// Instantiates a new <see cref="User_card_holder_response"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Models.User_card_holder_response"/> and sets the default values.
         /// </summary>
         public User_card_holder_response()
         {
@@ -284,12 +285,12 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="User_card_holder_response"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Models.User_card_holder_response"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static User_card_holder_response CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static Marqeta.Core.Sdk.Models.User_card_holder_response CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-            return new User_card_holder_response();
+            return new Marqeta.Core.Sdk.Models.User_card_holder_response();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -299,44 +300,44 @@ namespace Marqeta.Core.Sdk.Models {
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                {"account_holder_group_token", n => { AccountHolderGroupToken = n.GetStringValue(); } },
-                {"active", n => { Active = n.GetBoolValue(); } },
-                {"address1", n => { Address1 = n.GetStringValue(); } },
-                {"address2", n => { Address2 = n.GetStringValue(); } },
-                {"authentication", n => { Authentication = n.GetObjectValue<Marqeta.Core.Sdk.Models.Authentication>(Marqeta.Core.Sdk.Models.Authentication.CreateFromDiscriminatorValue); } },
-                {"birth_date", n => { BirthDate = n.GetStringValue(); } },
-                {"business_token", n => { BusinessToken = n.GetStringValue(); } },
-                {"city", n => { City = n.GetStringValue(); } },
-                {"company", n => { Company = n.GetStringValue(); } },
-                {"corporate_card_holder", n => { CorporateCardHolder = n.GetBoolValue(); } },
-                {"country", n => { Country = n.GetStringValue(); } },
-                {"created_time", n => { CreatedTime = n.GetDateTimeOffsetValue(); } },
-                {"email", n => { Email = n.GetStringValue(); } },
-                {"first_name", n => { FirstName = n.GetStringValue(); } },
-                {"gender", n => { Gender = n.GetEnumValue<User_card_holder_response_gender>(); } },
-                {"honorific", n => { Honorific = n.GetStringValue(); } },
-                {"id_card_expiration_date", n => { IdCardExpirationDate = n.GetStringValue(); } },
-                {"id_card_number", n => { IdCardNumber = n.GetStringValue(); } },
-                {"identifications", n => { Identifications = n.GetCollectionOfObjectValues<IdentificationResponseModel>(IdentificationResponseModel.CreateFromDiscriminatorValue)?.ToList(); } },
-                {"ip_address", n => { IpAddress = n.GetStringValue(); } },
-                {"last_modified_time", n => { LastModifiedTime = n.GetDateTimeOffsetValue(); } },
-                {"last_name", n => { LastName = n.GetStringValue(); } },
-                {"metadata", n => { Metadata = n.GetObjectValue<User_card_holder_response_metadata>(User_card_holder_response_metadata.CreateFromDiscriminatorValue); } },
-                {"middle_name", n => { MiddleName = n.GetStringValue(); } },
-                {"nationality", n => { Nationality = n.GetStringValue(); } },
-                {"notes", n => { Notes = n.GetStringValue(); } },
-                {"parent_token", n => { ParentToken = n.GetStringValue(); } },
-                {"passport_expiration_date", n => { PassportExpirationDate = n.GetStringValue(); } },
-                {"passport_number", n => { PassportNumber = n.GetStringValue(); } },
-                {"password", n => { Password = n.GetStringValue(); } },
-                {"phone", n => { Phone = n.GetStringValue(); } },
-                {"postal_code", n => { PostalCode = n.GetStringValue(); } },
-                {"ssn", n => { Ssn = n.GetStringValue(); } },
-                {"state", n => { State = n.GetStringValue(); } },
-                {"status", n => { Status = n.GetEnumValue<User_card_holder_response_status>(); } },
-                {"token", n => { Token = n.GetStringValue(); } },
-                {"uses_parent_account", n => { UsesParentAccount = n.GetBoolValue(); } },
-                {"zip", n => { Zip = n.GetStringValue(); } },
+                { "account_holder_group_token", n => { AccountHolderGroupToken = n.GetStringValue(); } },
+                { "active", n => { Active = n.GetBoolValue(); } },
+                { "address1", n => { Address1 = n.GetStringValue(); } },
+                { "address2", n => { Address2 = n.GetStringValue(); } },
+                { "authentication", n => { Authentication = n.GetObjectValue<Marqeta.Core.Sdk.Models.Authentication>(Marqeta.Core.Sdk.Models.Authentication.CreateFromDiscriminatorValue); } },
+                { "birth_date", n => { BirthDate = n.GetStringValue(); } },
+                { "business_token", n => { BusinessToken = n.GetStringValue(); } },
+                { "city", n => { City = n.GetStringValue(); } },
+                { "company", n => { Company = n.GetStringValue(); } },
+                { "corporate_card_holder", n => { CorporateCardHolder = n.GetBoolValue(); } },
+                { "country", n => { Country = n.GetStringValue(); } },
+                { "created_time", n => { CreatedTime = n.GetDateTimeOffsetValue(); } },
+                { "email", n => { Email = n.GetStringValue(); } },
+                { "first_name", n => { FirstName = n.GetStringValue(); } },
+                { "gender", n => { Gender = n.GetEnumValue<Marqeta.Core.Sdk.Models.User_card_holder_response_gender>(); } },
+                { "honorific", n => { Honorific = n.GetStringValue(); } },
+                { "id_card_expiration_date", n => { IdCardExpirationDate = n.GetStringValue(); } },
+                { "id_card_number", n => { IdCardNumber = n.GetStringValue(); } },
+                { "identifications", n => { Identifications = n.GetCollectionOfObjectValues<Marqeta.Core.Sdk.Models.IdentificationResponseModel>(Marqeta.Core.Sdk.Models.IdentificationResponseModel.CreateFromDiscriminatorValue)?.ToList(); } },
+                { "ip_address", n => { IpAddress = n.GetStringValue(); } },
+                { "last_modified_time", n => { LastModifiedTime = n.GetDateTimeOffsetValue(); } },
+                { "last_name", n => { LastName = n.GetStringValue(); } },
+                { "metadata", n => { Metadata = n.GetObjectValue<Marqeta.Core.Sdk.Models.User_card_holder_response_metadata>(Marqeta.Core.Sdk.Models.User_card_holder_response_metadata.CreateFromDiscriminatorValue); } },
+                { "middle_name", n => { MiddleName = n.GetStringValue(); } },
+                { "nationality", n => { Nationality = n.GetStringValue(); } },
+                { "notes", n => { Notes = n.GetStringValue(); } },
+                { "parent_token", n => { ParentToken = n.GetStringValue(); } },
+                { "passport_expiration_date", n => { PassportExpirationDate = n.GetStringValue(); } },
+                { "passport_number", n => { PassportNumber = n.GetStringValue(); } },
+                { "password", n => { Password = n.GetStringValue(); } },
+                { "phone", n => { Phone = n.GetStringValue(); } },
+                { "postal_code", n => { PostalCode = n.GetStringValue(); } },
+                { "ssn", n => { Ssn = n.GetStringValue(); } },
+                { "state", n => { State = n.GetStringValue(); } },
+                { "status", n => { Status = n.GetEnumValue<Marqeta.Core.Sdk.Models.User_card_holder_response_status>(); } },
+                { "token", n => { Token = n.GetStringValue(); } },
+                { "uses_parent_account", n => { UsesParentAccount = n.GetBoolValue(); } },
+                { "zip", n => { Zip = n.GetStringValue(); } },
             };
         }
         /// <summary>
@@ -360,15 +361,15 @@ namespace Marqeta.Core.Sdk.Models {
             writer.WriteDateTimeOffsetValue("created_time", CreatedTime);
             writer.WriteStringValue("email", Email);
             writer.WriteStringValue("first_name", FirstName);
-            writer.WriteEnumValue<User_card_holder_response_gender>("gender", Gender);
+            writer.WriteEnumValue<Marqeta.Core.Sdk.Models.User_card_holder_response_gender>("gender", Gender);
             writer.WriteStringValue("honorific", Honorific);
             writer.WriteStringValue("id_card_expiration_date", IdCardExpirationDate);
             writer.WriteStringValue("id_card_number", IdCardNumber);
-            writer.WriteCollectionOfObjectValues<IdentificationResponseModel>("identifications", Identifications);
+            writer.WriteCollectionOfObjectValues<Marqeta.Core.Sdk.Models.IdentificationResponseModel>("identifications", Identifications);
             writer.WriteStringValue("ip_address", IpAddress);
             writer.WriteDateTimeOffsetValue("last_modified_time", LastModifiedTime);
             writer.WriteStringValue("last_name", LastName);
-            writer.WriteObjectValue<User_card_holder_response_metadata>("metadata", Metadata);
+            writer.WriteObjectValue<Marqeta.Core.Sdk.Models.User_card_holder_response_metadata>("metadata", Metadata);
             writer.WriteStringValue("middle_name", MiddleName);
             writer.WriteStringValue("nationality", Nationality);
             writer.WriteStringValue("notes", Notes);
@@ -380,7 +381,7 @@ namespace Marqeta.Core.Sdk.Models {
             writer.WriteStringValue("postal_code", PostalCode);
             writer.WriteStringValue("ssn", Ssn);
             writer.WriteStringValue("state", State);
-            writer.WriteEnumValue<User_card_holder_response_status>("status", Status);
+            writer.WriteEnumValue<Marqeta.Core.Sdk.Models.User_card_holder_response_status>("status", Status);
             writer.WriteStringValue("token", Token);
             writer.WriteBoolValue("uses_parent_account", UsesParentAccount);
             writer.WriteStringValue("zip", Zip);

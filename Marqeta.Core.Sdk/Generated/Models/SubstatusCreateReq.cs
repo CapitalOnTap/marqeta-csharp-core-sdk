@@ -4,29 +4,30 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System;
-namespace Marqeta.Core.Sdk.Models {
+namespace Marqeta.Core.Sdk.Models
+{
     /// <summary>
     /// Contains information relevant to creating a substatus.
     /// </summary>
-    public class SubstatusCreateReq : IAdditionalDataHolder, IParsable 
+    public class SubstatusCreateReq : IAdditionalDataHolder, IParsable
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Dynamic attributes for the substatus.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public SubstatusCreateReq_attributes? Attributes { get; set; }
+        public Marqeta.Core.Sdk.Models.SubstatusCreateReq_attributes? Attributes { get; set; }
 #nullable restore
 #else
-        public SubstatusCreateReq_attributes Attributes { get; set; }
+        public Marqeta.Core.Sdk.Models.SubstatusCreateReq_attributes Attributes { get; set; }
 #endif
         /// <summary>List of events related to the substatus.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<SubstatusCreateReq_events>? Events { get; set; }
+        public List<Marqeta.Core.Sdk.Models.SubstatusCreateReq_events>? Events { get; set; }
 #nullable restore
 #else
-        public List<SubstatusCreateReq_events> Events { get; set; }
+        public List<Marqeta.Core.Sdk.Models.SubstatusCreateReq_events> Events { get; set; }
 #endif
         /// <summary>The unique identifier of the user or account for which you want to create a substatus.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -37,7 +38,7 @@ namespace Marqeta.Core.Sdk.Models {
         public string ResourceToken { get; set; }
 #endif
         /// <summary>Possible values: USER, ACCOUNT.</summary>
-        public SubstatusCreateReq_resource_type? ResourceType { get; set; }
+        public Marqeta.Core.Sdk.Models.SubstatusCreateReq_resource_type? ResourceType { get; set; }
         /// <summary>Possible values: FRAUD, DECEASED, BANKRUPTCY, BANKRUPTCY_FILED, BANKRUPTCY_REAFFIRMED,BANKRUPTCY_WITHDRAWN, BANKRUPTCY_RESCINDED, BANKRUPTCY_DISCHARGED, HARDSHIP, MLA, SCRA.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -47,7 +48,7 @@ namespace Marqeta.Core.Sdk.Models {
         public string Substatus { get; set; }
 #endif
         /// <summary>
-        /// Instantiates a new <see cref="SubstatusCreateReq"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Models.SubstatusCreateReq"/> and sets the default values.
         /// </summary>
         public SubstatusCreateReq()
         {
@@ -56,12 +57,12 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="SubstatusCreateReq"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Models.SubstatusCreateReq"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static SubstatusCreateReq CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static Marqeta.Core.Sdk.Models.SubstatusCreateReq CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-            return new SubstatusCreateReq();
+            return new Marqeta.Core.Sdk.Models.SubstatusCreateReq();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -71,11 +72,11 @@ namespace Marqeta.Core.Sdk.Models {
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                {"attributes", n => { Attributes = n.GetObjectValue<SubstatusCreateReq_attributes>(SubstatusCreateReq_attributes.CreateFromDiscriminatorValue); } },
-                {"events", n => { Events = n.GetCollectionOfObjectValues<SubstatusCreateReq_events>(SubstatusCreateReq_events.CreateFromDiscriminatorValue)?.ToList(); } },
-                {"resource_token", n => { ResourceToken = n.GetStringValue(); } },
-                {"resource_type", n => { ResourceType = n.GetEnumValue<SubstatusCreateReq_resource_type>(); } },
-                {"substatus", n => { Substatus = n.GetStringValue(); } },
+                { "attributes", n => { Attributes = n.GetObjectValue<Marqeta.Core.Sdk.Models.SubstatusCreateReq_attributes>(Marqeta.Core.Sdk.Models.SubstatusCreateReq_attributes.CreateFromDiscriminatorValue); } },
+                { "events", n => { Events = n.GetCollectionOfObjectValues<Marqeta.Core.Sdk.Models.SubstatusCreateReq_events>(Marqeta.Core.Sdk.Models.SubstatusCreateReq_events.CreateFromDiscriminatorValue)?.ToList(); } },
+                { "resource_token", n => { ResourceToken = n.GetStringValue(); } },
+                { "resource_type", n => { ResourceType = n.GetEnumValue<Marqeta.Core.Sdk.Models.SubstatusCreateReq_resource_type>(); } },
+                { "substatus", n => { Substatus = n.GetStringValue(); } },
             };
         }
         /// <summary>
@@ -85,10 +86,10 @@ namespace Marqeta.Core.Sdk.Models {
         public virtual void Serialize(ISerializationWriter writer)
         {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<SubstatusCreateReq_attributes>("attributes", Attributes);
-            writer.WriteCollectionOfObjectValues<SubstatusCreateReq_events>("events", Events);
+            writer.WriteObjectValue<Marqeta.Core.Sdk.Models.SubstatusCreateReq_attributes>("attributes", Attributes);
+            writer.WriteCollectionOfObjectValues<Marqeta.Core.Sdk.Models.SubstatusCreateReq_events>("events", Events);
             writer.WriteStringValue("resource_token", ResourceToken);
-            writer.WriteEnumValue<SubstatusCreateReq_resource_type>("resource_type", ResourceType);
+            writer.WriteEnumValue<Marqeta.Core.Sdk.Models.SubstatusCreateReq_resource_type>("resource_type", ResourceType);
             writer.WriteStringValue("substatus", Substatus);
             writer.WriteAdditionalData(AdditionalData);
         }

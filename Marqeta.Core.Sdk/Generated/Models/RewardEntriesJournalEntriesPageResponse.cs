@@ -4,9 +4,10 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System;
-namespace Marqeta.Core.Sdk.Models {
+namespace Marqeta.Core.Sdk.Models
+{
     #pragma warning disable CS1591
-    public class RewardEntriesJournalEntriesPageResponse : IAdditionalDataHolder, IParsable 
+    public class RewardEntriesJournalEntriesPageResponse : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -16,10 +17,10 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>An array of redacted reward entry objects.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<RewardEntriesJournalEntriesResponse>? Data { get; set; }
+        public List<Marqeta.Core.Sdk.Models.RewardEntriesJournalEntriesResponse>? Data { get; set; }
 #nullable restore
 #else
-        public List<RewardEntriesJournalEntriesResponse> Data { get; set; }
+        public List<Marqeta.Core.Sdk.Models.RewardEntriesJournalEntriesResponse> Data { get; set; }
 #endif
         /// <summary>Sort order index of the last resource in the returned array.</summary>
         public long? EndIndex { get; set; }
@@ -28,7 +29,7 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>Sort order index of the first resource in the returned array.</summary>
         public long? StartIndex { get; set; }
         /// <summary>
-        /// Instantiates a new <see cref="RewardEntriesJournalEntriesPageResponse"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Models.RewardEntriesJournalEntriesPageResponse"/> and sets the default values.
         /// </summary>
         public RewardEntriesJournalEntriesPageResponse()
         {
@@ -37,12 +38,12 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="RewardEntriesJournalEntriesPageResponse"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Models.RewardEntriesJournalEntriesPageResponse"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static RewardEntriesJournalEntriesPageResponse CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static Marqeta.Core.Sdk.Models.RewardEntriesJournalEntriesPageResponse CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-            return new RewardEntriesJournalEntriesPageResponse();
+            return new Marqeta.Core.Sdk.Models.RewardEntriesJournalEntriesPageResponse();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -52,11 +53,11 @@ namespace Marqeta.Core.Sdk.Models {
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                {"count", n => { Count = n.GetIntValue(); } },
-                {"data", n => { Data = n.GetCollectionOfObjectValues<RewardEntriesJournalEntriesResponse>(RewardEntriesJournalEntriesResponse.CreateFromDiscriminatorValue)?.ToList(); } },
-                {"end_index", n => { EndIndex = n.GetLongValue(); } },
-                {"is_more", n => { IsMore = n.GetBoolValue(); } },
-                {"start_index", n => { StartIndex = n.GetLongValue(); } },
+                { "count", n => { Count = n.GetIntValue(); } },
+                { "data", n => { Data = n.GetCollectionOfObjectValues<Marqeta.Core.Sdk.Models.RewardEntriesJournalEntriesResponse>(Marqeta.Core.Sdk.Models.RewardEntriesJournalEntriesResponse.CreateFromDiscriminatorValue)?.ToList(); } },
+                { "end_index", n => { EndIndex = n.GetLongValue(); } },
+                { "is_more", n => { IsMore = n.GetBoolValue(); } },
+                { "start_index", n => { StartIndex = n.GetLongValue(); } },
             };
         }
         /// <summary>
@@ -67,7 +68,7 @@ namespace Marqeta.Core.Sdk.Models {
         {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
             writer.WriteIntValue("count", Count);
-            writer.WriteCollectionOfObjectValues<RewardEntriesJournalEntriesResponse>("data", Data);
+            writer.WriteCollectionOfObjectValues<Marqeta.Core.Sdk.Models.RewardEntriesJournalEntriesResponse>("data", Data);
             writer.WriteLongValue("end_index", EndIndex);
             writer.WriteBoolValue("is_more", IsMore);
             writer.WriteLongValue("start_index", StartIndex);

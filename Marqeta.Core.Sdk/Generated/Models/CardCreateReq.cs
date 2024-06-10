@@ -4,11 +4,12 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System;
-namespace Marqeta.Core.Sdk.Models {
+namespace Marqeta.Core.Sdk.Models
+{
     /// <summary>
     /// Information to create a credit card.
     /// </summary>
-    public class CardCreateReq : IAdditionalDataHolder, IParsable 
+    public class CardCreateReq : IAdditionalDataHolder, IParsable
     {
         /// <summary>Contains information on actions that can be performed when a card is activated.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -77,7 +78,7 @@ namespace Marqeta.Core.Sdk.Models {
         public string UserToken { get; set; }
 #endif
         /// <summary>
-        /// Instantiates a new <see cref="CardCreateReq"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Models.CardCreateReq"/> and sets the default values.
         /// </summary>
         public CardCreateReq()
         {
@@ -86,12 +87,12 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="CardCreateReq"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Models.CardCreateReq"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static CardCreateReq CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static Marqeta.Core.Sdk.Models.CardCreateReq CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-            return new CardCreateReq();
+            return new Marqeta.Core.Sdk.Models.CardCreateReq();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -101,14 +102,14 @@ namespace Marqeta.Core.Sdk.Models {
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                {"activation_actions", n => { ActivationActions = n.GetObjectValue<Marqeta.Core.Sdk.Models.ActivationActions>(Marqeta.Core.Sdk.Models.ActivationActions.CreateFromDiscriminatorValue); } },
-                {"card_product_token", n => { CardProductToken = n.GetStringValue(); } },
-                {"expiration_offset", n => { ExpirationOffset = n.GetObjectValue<Marqeta.Core.Sdk.Models.ExpirationOffset>(Marqeta.Core.Sdk.Models.ExpirationOffset.CreateFromDiscriminatorValue); } },
-                {"new_pan_from_card_token", n => { NewPanFromCardToken = n.GetStringValue(); } },
-                {"reissue_pan_from_card_token", n => { ReissuePanFromCardToken = n.GetStringValue(); } },
-                {"token", n => { Token = n.GetStringValue(); } },
-                {"translate_pin_from_card_token", n => { TranslatePinFromCardToken = n.GetStringValue(); } },
-                {"user_token", n => { UserToken = n.GetStringValue(); } },
+                { "activation_actions", n => { ActivationActions = n.GetObjectValue<Marqeta.Core.Sdk.Models.ActivationActions>(Marqeta.Core.Sdk.Models.ActivationActions.CreateFromDiscriminatorValue); } },
+                { "card_product_token", n => { CardProductToken = n.GetStringValue(); } },
+                { "expiration_offset", n => { ExpirationOffset = n.GetObjectValue<Marqeta.Core.Sdk.Models.ExpirationOffset>(Marqeta.Core.Sdk.Models.ExpirationOffset.CreateFromDiscriminatorValue); } },
+                { "new_pan_from_card_token", n => { NewPanFromCardToken = n.GetStringValue(); } },
+                { "reissue_pan_from_card_token", n => { ReissuePanFromCardToken = n.GetStringValue(); } },
+                { "token", n => { Token = n.GetStringValue(); } },
+                { "translate_pin_from_card_token", n => { TranslatePinFromCardToken = n.GetStringValue(); } },
+                { "user_token", n => { UserToken = n.GetStringValue(); } },
             };
         }
         /// <summary>

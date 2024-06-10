@@ -4,11 +4,12 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System;
-namespace Marqeta.Core.Sdk.Models {
+namespace Marqeta.Core.Sdk.Models
+{
     /// <summary>
     /// Specifies personalized attributes to be added to the card.
     /// </summary>
-    public class Card_personalization : IAdditionalDataHolder, IParsable 
+    public class Card_personalization : IAdditionalDataHolder, IParsable
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
@@ -29,7 +30,7 @@ namespace Marqeta.Core.Sdk.Models {
         public Marqeta.Core.Sdk.Models.Images Images { get; set; }
 #endif
         /// <summary>Specifies the type of card personalization.</summary>
-        public Card_personalization_perso_type? PersoType { get; set; }
+        public Marqeta.Core.Sdk.Models.Card_personalization_perso_type? PersoType { get; set; }
         /// <summary>Specifies personalized text that appears on the card.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -39,7 +40,7 @@ namespace Marqeta.Core.Sdk.Models {
         public Marqeta.Core.Sdk.Models.Text Text { get; set; }
 #endif
         /// <summary>
-        /// Instantiates a new <see cref="Card_personalization"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Models.Card_personalization"/> and sets the default values.
         /// </summary>
         public Card_personalization()
         {
@@ -48,12 +49,12 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="Card_personalization"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Models.Card_personalization"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static Card_personalization CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static Marqeta.Core.Sdk.Models.Card_personalization CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-            return new Card_personalization();
+            return new Marqeta.Core.Sdk.Models.Card_personalization();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -63,10 +64,10 @@ namespace Marqeta.Core.Sdk.Models {
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                {"carrier", n => { Carrier = n.GetObjectValue<Marqeta.Core.Sdk.Models.Carrier>(Marqeta.Core.Sdk.Models.Carrier.CreateFromDiscriminatorValue); } },
-                {"images", n => { Images = n.GetObjectValue<Marqeta.Core.Sdk.Models.Images>(Marqeta.Core.Sdk.Models.Images.CreateFromDiscriminatorValue); } },
-                {"perso_type", n => { PersoType = n.GetEnumValue<Card_personalization_perso_type>(); } },
-                {"text", n => { Text = n.GetObjectValue<Marqeta.Core.Sdk.Models.Text>(Marqeta.Core.Sdk.Models.Text.CreateFromDiscriminatorValue); } },
+                { "carrier", n => { Carrier = n.GetObjectValue<Marqeta.Core.Sdk.Models.Carrier>(Marqeta.Core.Sdk.Models.Carrier.CreateFromDiscriminatorValue); } },
+                { "images", n => { Images = n.GetObjectValue<Marqeta.Core.Sdk.Models.Images>(Marqeta.Core.Sdk.Models.Images.CreateFromDiscriminatorValue); } },
+                { "perso_type", n => { PersoType = n.GetEnumValue<Marqeta.Core.Sdk.Models.Card_personalization_perso_type>(); } },
+                { "text", n => { Text = n.GetObjectValue<Marqeta.Core.Sdk.Models.Text>(Marqeta.Core.Sdk.Models.Text.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -78,7 +79,7 @@ namespace Marqeta.Core.Sdk.Models {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
             writer.WriteObjectValue<Marqeta.Core.Sdk.Models.Carrier>("carrier", Carrier);
             writer.WriteObjectValue<Marqeta.Core.Sdk.Models.Images>("images", Images);
-            writer.WriteEnumValue<Card_personalization_perso_type>("perso_type", PersoType);
+            writer.WriteEnumValue<Marqeta.Core.Sdk.Models.Card_personalization_perso_type>("perso_type", PersoType);
             writer.WriteObjectValue<Marqeta.Core.Sdk.Models.Text>("text", Text);
             writer.WriteAdditionalData(AdditionalData);
         }

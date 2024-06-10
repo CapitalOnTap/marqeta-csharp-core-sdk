@@ -4,16 +4,17 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System;
-namespace Marqeta.Core.Sdk.Models {
+namespace Marqeta.Core.Sdk.Models
+{
     /// <summary>
     /// Details of an event related to a substatus.
     /// </summary>
-    public class SubstatusEventDetails : IAdditionalDataHolder, IParsable 
+    public class SubstatusEventDetails : IAdditionalDataHolder, IParsable
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The channel through which the event occurred.</summary>
-        public SubstatusEventDetails_channel? Channel { get; set; }
+        public Marqeta.Core.Sdk.Models.SubstatusEventDetails_channel? Channel { get; set; }
         /// <summary>Effective date of the event, in UTC.</summary>
         public DateTimeOffset? EffectiveDate { get; set; }
         /// <summary>Reason for the event.</summary>
@@ -25,7 +26,7 @@ namespace Marqeta.Core.Sdk.Models {
         public string Reason { get; set; }
 #endif
         /// <summary>
-        /// Instantiates a new <see cref="SubstatusEventDetails"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Models.SubstatusEventDetails"/> and sets the default values.
         /// </summary>
         public SubstatusEventDetails()
         {
@@ -34,12 +35,12 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="SubstatusEventDetails"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Models.SubstatusEventDetails"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static SubstatusEventDetails CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static Marqeta.Core.Sdk.Models.SubstatusEventDetails CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-            return new SubstatusEventDetails();
+            return new Marqeta.Core.Sdk.Models.SubstatusEventDetails();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -49,9 +50,9 @@ namespace Marqeta.Core.Sdk.Models {
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                {"channel", n => { Channel = n.GetEnumValue<SubstatusEventDetails_channel>(); } },
-                {"effective_date", n => { EffectiveDate = n.GetDateTimeOffsetValue(); } },
-                {"reason", n => { Reason = n.GetStringValue(); } },
+                { "channel", n => { Channel = n.GetEnumValue<Marqeta.Core.Sdk.Models.SubstatusEventDetails_channel>(); } },
+                { "effective_date", n => { EffectiveDate = n.GetDateTimeOffsetValue(); } },
+                { "reason", n => { Reason = n.GetStringValue(); } },
             };
         }
         /// <summary>
@@ -61,7 +62,7 @@ namespace Marqeta.Core.Sdk.Models {
         public virtual void Serialize(ISerializationWriter writer)
         {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
-            writer.WriteEnumValue<SubstatusEventDetails_channel>("channel", Channel);
+            writer.WriteEnumValue<Marqeta.Core.Sdk.Models.SubstatusEventDetails_channel>("channel", Channel);
             writer.WriteDateTimeOffsetValue("effective_date", EffectiveDate);
             writer.WriteStringValue("reason", Reason);
             writer.WriteAdditionalData(AdditionalData);

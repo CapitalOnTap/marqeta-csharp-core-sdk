@@ -4,19 +4,20 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System;
-namespace Marqeta.Core.Sdk.Models {
+namespace Marqeta.Core.Sdk.Models
+{
     /// <summary>
     /// Contains information about the card used in the transaction.
     /// </summary>
-    public class Card_response : IAdditionalDataHolder, IParsable 
+    public class Card_response : IAdditionalDataHolder, IParsable
     {
         /// <summary>Defines actions to execute when the card is activated.The fields in this object are mutually exclusive.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public Activation_actions? ActivationActions { get; set; }
+        public Marqeta.Core.Sdk.Models.Activation_actions? ActivationActions { get; set; }
 #nullable restore
 #else
-        public Activation_actions ActivationActions { get; set; }
+        public Marqeta.Core.Sdk.Models.Activation_actions ActivationActions { get; set; }
 #endif
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
@@ -81,15 +82,15 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>Determines physical characteristics of a card and shipment information.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public CardFulfillmentResponse? Fulfillment { get; set; }
+        public Marqeta.Core.Sdk.Models.CardFulfillmentResponse? Fulfillment { get; set; }
 #nullable restore
 #else
-        public CardFulfillmentResponse Fulfillment { get; set; }
+        public Marqeta.Core.Sdk.Models.CardFulfillmentResponse Fulfillment { get; set; }
 #endif
         /// <summary>Card fulfillment status:* *ISSUED:* Initial state of all newly created/issued cards.* *ORDERED:* Card ordered through the card fulfillment provider.* *REORDERED:* Card reordered through the card fulfillment provider.* *REJECTED:* Card rejected by the card fulfillment provider.* *SHIPPED:* Card shipped by the card fulfillment provider.* *DELIVERED:* Card delivered by the card fulfillment provider.* *DIGITALLY_PRESENTED:* Card digitally presented using the `/cards/{token}/showpan` endpoint; does not affect the delivery of physical cards.</summary>
-        public Card_response_fulfillment_status? FulfillmentStatus { get; set; }
+        public Marqeta.Core.Sdk.Models.Card_response_fulfillment_status? FulfillmentStatus { get; set; }
         /// <summary>Instrument type of the card:* *PHYSICAL_MSR:* A physical card with a magnetic stripe. This is the default physical card type.* *PHYSICAL_ICC:* A physical card with an integrated circuit, or &quot;chip.&quot;* *PHYSICAL_CONTACTLESS:* A physical card that uses radio frequency identification (RFID) or near-field communication (NFC) to enable payment over a secure radio interface.* *PHYSICAL_COMBO:* A physical card with a chip that also supports contactless payments.* *VIRTUAL_PAN:* A virtual card with a primary account number (PAN).</summary>
-        public Card_response_instrument_type? InstrumentType { get; set; }
+        public Marqeta.Core.Sdk.Models.Card_response_instrument_type? InstrumentType { get; set; }
         /// <summary>Last four digits of the card primary account number (PAN).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -103,10 +104,10 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>Associates customer-provided metadata with the card.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public Card_response_metadata? Metadata { get; set; }
+        public Marqeta.Core.Sdk.Models.Card_response_metadata? Metadata { get; set; }
 #nullable restore
 #else
-        public Card_response_metadata Metadata { get; set; }
+        public Marqeta.Core.Sdk.Models.Card_response_metadata Metadata { get; set; }
 #endif
         /// <summary>Reissues the specified card (known as the &quot;source&quot; card) with a new primary account number (PAN).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -135,7 +136,7 @@ namespace Marqeta.Core.Sdk.Models {
         public string ReissuePanFromCardToken { get; set; }
 #endif
         /// <summary>Indicates the state of the card.</summary>
-        public Card_response_state? State { get; set; }
+        public Marqeta.Core.Sdk.Models.Card_response_state? State { get; set; }
         /// <summary>Descriptive reason for why the card is in its current state.For example, &quot;Card activated by cardholder&quot;.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -169,7 +170,7 @@ namespace Marqeta.Core.Sdk.Models {
         public string UserToken { get; set; }
 #endif
         /// <summary>
-        /// Instantiates a new <see cref="Card_response"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Models.Card_response"/> and sets the default values.
         /// </summary>
         public Card_response()
         {
@@ -178,12 +179,12 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="Card_response"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Models.Card_response"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static Card_response CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static Marqeta.Core.Sdk.Models.Card_response CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-            return new Card_response();
+            return new Marqeta.Core.Sdk.Models.Card_response();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -193,33 +194,33 @@ namespace Marqeta.Core.Sdk.Models {
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                {"activation_actions", n => { ActivationActions = n.GetObjectValue<Activation_actions>(Activation_actions.CreateFromDiscriminatorValue); } },
-                {"barcode", n => { Barcode = n.GetStringValue(); } },
-                {"bulk_issuance_token", n => { BulkIssuanceToken = n.GetStringValue(); } },
-                {"card_product_token", n => { CardProductToken = n.GetStringValue(); } },
-                {"chip_cvv_number", n => { ChipCvvNumber = n.GetStringValue(); } },
-                {"contactless_exemption_counter", n => { ContactlessExemptionCounter = n.GetIntValue(); } },
-                {"contactless_exemption_total_amount", n => { ContactlessExemptionTotalAmount = n.GetDoubleValue(); } },
-                {"created_time", n => { CreatedTime = n.GetDateTimeOffsetValue(); } },
-                {"cvv_number", n => { CvvNumber = n.GetStringValue(); } },
-                {"expedite", n => { Expedite = n.GetBoolValue(); } },
-                {"expiration", n => { Expiration = n.GetStringValue(); } },
-                {"expiration_time", n => { ExpirationTime = n.GetDateTimeOffsetValue(); } },
-                {"fulfillment", n => { Fulfillment = n.GetObjectValue<CardFulfillmentResponse>(CardFulfillmentResponse.CreateFromDiscriminatorValue); } },
-                {"fulfillment_status", n => { FulfillmentStatus = n.GetEnumValue<Card_response_fulfillment_status>(); } },
-                {"instrument_type", n => { InstrumentType = n.GetEnumValue<Card_response_instrument_type>(); } },
-                {"last_four", n => { LastFour = n.GetStringValue(); } },
-                {"last_modified_time", n => { LastModifiedTime = n.GetDateTimeOffsetValue(); } },
-                {"metadata", n => { Metadata = n.GetObjectValue<Card_response_metadata>(Card_response_metadata.CreateFromDiscriminatorValue); } },
-                {"new_pan_from_card_token", n => { NewPanFromCardToken = n.GetStringValue(); } },
-                {"pan", n => { Pan = n.GetStringValue(); } },
-                {"pin_is_set", n => { PinIsSet = n.GetBoolValue(); } },
-                {"reissue_pan_from_card_token", n => { ReissuePanFromCardToken = n.GetStringValue(); } },
-                {"state", n => { State = n.GetEnumValue<Card_response_state>(); } },
-                {"state_reason", n => { StateReason = n.GetStringValue(); } },
-                {"token", n => { Token = n.GetStringValue(); } },
-                {"translate_pin_from_card_token", n => { TranslatePinFromCardToken = n.GetStringValue(); } },
-                {"user_token", n => { UserToken = n.GetStringValue(); } },
+                { "activation_actions", n => { ActivationActions = n.GetObjectValue<Marqeta.Core.Sdk.Models.Activation_actions>(Marqeta.Core.Sdk.Models.Activation_actions.CreateFromDiscriminatorValue); } },
+                { "barcode", n => { Barcode = n.GetStringValue(); } },
+                { "bulk_issuance_token", n => { BulkIssuanceToken = n.GetStringValue(); } },
+                { "card_product_token", n => { CardProductToken = n.GetStringValue(); } },
+                { "chip_cvv_number", n => { ChipCvvNumber = n.GetStringValue(); } },
+                { "contactless_exemption_counter", n => { ContactlessExemptionCounter = n.GetIntValue(); } },
+                { "contactless_exemption_total_amount", n => { ContactlessExemptionTotalAmount = n.GetDoubleValue(); } },
+                { "created_time", n => { CreatedTime = n.GetDateTimeOffsetValue(); } },
+                { "cvv_number", n => { CvvNumber = n.GetStringValue(); } },
+                { "expedite", n => { Expedite = n.GetBoolValue(); } },
+                { "expiration", n => { Expiration = n.GetStringValue(); } },
+                { "expiration_time", n => { ExpirationTime = n.GetDateTimeOffsetValue(); } },
+                { "fulfillment", n => { Fulfillment = n.GetObjectValue<Marqeta.Core.Sdk.Models.CardFulfillmentResponse>(Marqeta.Core.Sdk.Models.CardFulfillmentResponse.CreateFromDiscriminatorValue); } },
+                { "fulfillment_status", n => { FulfillmentStatus = n.GetEnumValue<Marqeta.Core.Sdk.Models.Card_response_fulfillment_status>(); } },
+                { "instrument_type", n => { InstrumentType = n.GetEnumValue<Marqeta.Core.Sdk.Models.Card_response_instrument_type>(); } },
+                { "last_four", n => { LastFour = n.GetStringValue(); } },
+                { "last_modified_time", n => { LastModifiedTime = n.GetDateTimeOffsetValue(); } },
+                { "metadata", n => { Metadata = n.GetObjectValue<Marqeta.Core.Sdk.Models.Card_response_metadata>(Marqeta.Core.Sdk.Models.Card_response_metadata.CreateFromDiscriminatorValue); } },
+                { "new_pan_from_card_token", n => { NewPanFromCardToken = n.GetStringValue(); } },
+                { "pan", n => { Pan = n.GetStringValue(); } },
+                { "pin_is_set", n => { PinIsSet = n.GetBoolValue(); } },
+                { "reissue_pan_from_card_token", n => { ReissuePanFromCardToken = n.GetStringValue(); } },
+                { "state", n => { State = n.GetEnumValue<Marqeta.Core.Sdk.Models.Card_response_state>(); } },
+                { "state_reason", n => { StateReason = n.GetStringValue(); } },
+                { "token", n => { Token = n.GetStringValue(); } },
+                { "translate_pin_from_card_token", n => { TranslatePinFromCardToken = n.GetStringValue(); } },
+                { "user_token", n => { UserToken = n.GetStringValue(); } },
             };
         }
         /// <summary>
@@ -229,7 +230,7 @@ namespace Marqeta.Core.Sdk.Models {
         public virtual void Serialize(ISerializationWriter writer)
         {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<Activation_actions>("activation_actions", ActivationActions);
+            writer.WriteObjectValue<Marqeta.Core.Sdk.Models.Activation_actions>("activation_actions", ActivationActions);
             writer.WriteStringValue("barcode", Barcode);
             writer.WriteStringValue("bulk_issuance_token", BulkIssuanceToken);
             writer.WriteStringValue("card_product_token", CardProductToken);
@@ -241,17 +242,17 @@ namespace Marqeta.Core.Sdk.Models {
             writer.WriteBoolValue("expedite", Expedite);
             writer.WriteStringValue("expiration", Expiration);
             writer.WriteDateTimeOffsetValue("expiration_time", ExpirationTime);
-            writer.WriteObjectValue<CardFulfillmentResponse>("fulfillment", Fulfillment);
-            writer.WriteEnumValue<Card_response_fulfillment_status>("fulfillment_status", FulfillmentStatus);
-            writer.WriteEnumValue<Card_response_instrument_type>("instrument_type", InstrumentType);
+            writer.WriteObjectValue<Marqeta.Core.Sdk.Models.CardFulfillmentResponse>("fulfillment", Fulfillment);
+            writer.WriteEnumValue<Marqeta.Core.Sdk.Models.Card_response_fulfillment_status>("fulfillment_status", FulfillmentStatus);
+            writer.WriteEnumValue<Marqeta.Core.Sdk.Models.Card_response_instrument_type>("instrument_type", InstrumentType);
             writer.WriteStringValue("last_four", LastFour);
             writer.WriteDateTimeOffsetValue("last_modified_time", LastModifiedTime);
-            writer.WriteObjectValue<Card_response_metadata>("metadata", Metadata);
+            writer.WriteObjectValue<Marqeta.Core.Sdk.Models.Card_response_metadata>("metadata", Metadata);
             writer.WriteStringValue("new_pan_from_card_token", NewPanFromCardToken);
             writer.WriteStringValue("pan", Pan);
             writer.WriteBoolValue("pin_is_set", PinIsSet);
             writer.WriteStringValue("reissue_pan_from_card_token", ReissuePanFromCardToken);
-            writer.WriteEnumValue<Card_response_state>("state", State);
+            writer.WriteEnumValue<Marqeta.Core.Sdk.Models.Card_response_state>("state", State);
             writer.WriteStringValue("state_reason", StateReason);
             writer.WriteStringValue("token", Token);
             writer.WriteStringValue("translate_pin_from_card_token", TranslatePinFromCardToken);

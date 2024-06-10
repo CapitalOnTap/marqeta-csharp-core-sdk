@@ -4,11 +4,12 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System;
-namespace Marqeta.Core.Sdk.Models {
+namespace Marqeta.Core.Sdk.Models
+{
     /// <summary>
     /// Governs the point of interaction.
     /// </summary>
-    public class Poi : IAdditionalDataHolder, IParsable 
+    public class Poi : IAdditionalDataHolder, IParsable
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
@@ -19,13 +20,13 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>Allows for configuration of points of interaction other than ecommerce or ATMs, such as points of sale (POS).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public Other_poi? Other { get; set; }
+        public Marqeta.Core.Sdk.Models.Other_poi? Other { get; set; }
 #nullable restore
 #else
-        public Other_poi Other { get; set; }
+        public Marqeta.Core.Sdk.Models.Other_poi Other { get; set; }
 #endif
         /// <summary>
-        /// Instantiates a new <see cref="Poi"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Models.Poi"/> and sets the default values.
         /// </summary>
         public Poi()
         {
@@ -34,12 +35,12 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="Poi"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Models.Poi"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static Poi CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static Marqeta.Core.Sdk.Models.Poi CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-            return new Poi();
+            return new Marqeta.Core.Sdk.Models.Poi();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -49,9 +50,9 @@ namespace Marqeta.Core.Sdk.Models {
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                {"atm", n => { Atm = n.GetBoolValue(); } },
-                {"ecommerce", n => { Ecommerce = n.GetBoolValue(); } },
-                {"other", n => { Other = n.GetObjectValue<Other_poi>(Other_poi.CreateFromDiscriminatorValue); } },
+                { "atm", n => { Atm = n.GetBoolValue(); } },
+                { "ecommerce", n => { Ecommerce = n.GetBoolValue(); } },
+                { "other", n => { Other = n.GetObjectValue<Marqeta.Core.Sdk.Models.Other_poi>(Marqeta.Core.Sdk.Models.Other_poi.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -63,7 +64,7 @@ namespace Marqeta.Core.Sdk.Models {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
             writer.WriteBoolValue("atm", Atm);
             writer.WriteBoolValue("ecommerce", Ecommerce);
-            writer.WriteObjectValue<Other_poi>("other", Other);
+            writer.WriteObjectValue<Marqeta.Core.Sdk.Models.Other_poi>("other", Other);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

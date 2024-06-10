@@ -4,53 +4,54 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System;
-namespace Marqeta.Core.Sdk.Models {
+namespace Marqeta.Core.Sdk.Models
+{
     /// <summary>
     /// Defines the characteristics of the card product.Configurations are conditionally required based on program setup.For more information, contact your Marqeta representative.
     /// </summary>
-    public class Card_product_config : IAdditionalDataHolder, IParsable 
+    public class Card_product_config : IAdditionalDataHolder, IParsable
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Defines characteristics of the lifecycle of cards of this card product type.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public Card_life_cycle? CardLifeCycle { get; set; }
+        public Marqeta.Core.Sdk.Models.Card_life_cycle? CardLifeCycle { get; set; }
 #nullable restore
 #else
-        public Card_life_cycle CardLifeCycle { get; set; }
+        public Marqeta.Core.Sdk.Models.Card_life_cycle CardLifeCycle { get; set; }
 #endif
         /// <summary>Specifies the destination for overdraft funds.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public Clearing_and_settlement? ClearingAndSettlement { get; set; }
+        public Marqeta.Core.Sdk.Models.Clearing_and_settlement? ClearingAndSettlement { get; set; }
 #nullable restore
 #else
-        public Clearing_and_settlement ClearingAndSettlement { get; set; }
+        public Marqeta.Core.Sdk.Models.Clearing_and_settlement ClearingAndSettlement { get; set; }
 #endif
         /// <summary>Controls characteristics related to digital wallets.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public Digital_wallet_tokenization? DigitalWalletTokenization { get; set; }
+        public Marqeta.Core.Sdk.Models.Digital_wallet_tokenization? DigitalWalletTokenization { get; set; }
 #nullable restore
 #else
-        public Digital_wallet_tokenization DigitalWalletTokenization { get; set; }
+        public Marqeta.Core.Sdk.Models.Digital_wallet_tokenization DigitalWalletTokenization { get; set; }
 #endif
         /// <summary>Determines physical characteristics of a card, along with its bulk shipment information.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public Card_product_fulfillment? Fulfillment { get; set; }
+        public Marqeta.Core.Sdk.Models.Card_product_fulfillment? Fulfillment { get; set; }
 #nullable restore
 #else
-        public Card_product_fulfillment Fulfillment { get; set; }
+        public Marqeta.Core.Sdk.Models.Card_product_fulfillment Fulfillment { get; set; }
 #endif
         /// <summary>Governs the behavior of JIT Funding.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public Jit_funding? JitFunding { get; set; }
+        public Marqeta.Core.Sdk.Models.Jit_funding? JitFunding { get; set; }
 #nullable restore
 #else
-        public Jit_funding JitFunding { get; set; }
+        public Marqeta.Core.Sdk.Models.Jit_funding JitFunding { get; set; }
 #endif
         /// <summary>Governs the point of interaction.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -63,10 +64,10 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>Contains information about authorization decisions.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public Selective_auth? SelectiveAuth { get; set; }
+        public Marqeta.Core.Sdk.Models.Selective_auth? SelectiveAuth { get; set; }
 #nullable restore
 #else
-        public Selective_auth SelectiveAuth { get; set; }
+        public Marqeta.Core.Sdk.Models.Selective_auth SelectiveAuth { get; set; }
 #endif
         /// <summary>Contains information about merchant onboarding.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -79,13 +80,13 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>Controls transactional characteristics of card usage.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public Transaction_controls? TransactionControls { get; set; }
+        public Marqeta.Core.Sdk.Models.Transaction_controls? TransactionControls { get; set; }
 #nullable restore
 #else
-        public Transaction_controls TransactionControls { get; set; }
+        public Marqeta.Core.Sdk.Models.Transaction_controls TransactionControls { get; set; }
 #endif
         /// <summary>
-        /// Instantiates a new <see cref="Card_product_config"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Models.Card_product_config"/> and sets the default values.
         /// </summary>
         public Card_product_config()
         {
@@ -94,12 +95,12 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="Card_product_config"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Models.Card_product_config"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static Card_product_config CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static Marqeta.Core.Sdk.Models.Card_product_config CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-            return new Card_product_config();
+            return new Marqeta.Core.Sdk.Models.Card_product_config();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -109,15 +110,15 @@ namespace Marqeta.Core.Sdk.Models {
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                {"card_life_cycle", n => { CardLifeCycle = n.GetObjectValue<Card_life_cycle>(Card_life_cycle.CreateFromDiscriminatorValue); } },
-                {"clearing_and_settlement", n => { ClearingAndSettlement = n.GetObjectValue<Clearing_and_settlement>(Clearing_and_settlement.CreateFromDiscriminatorValue); } },
-                {"digital_wallet_tokenization", n => { DigitalWalletTokenization = n.GetObjectValue<Digital_wallet_tokenization>(Digital_wallet_tokenization.CreateFromDiscriminatorValue); } },
-                {"fulfillment", n => { Fulfillment = n.GetObjectValue<Card_product_fulfillment>(Card_product_fulfillment.CreateFromDiscriminatorValue); } },
-                {"jit_funding", n => { JitFunding = n.GetObjectValue<Jit_funding>(Jit_funding.CreateFromDiscriminatorValue); } },
-                {"poi", n => { Poi = n.GetObjectValue<Marqeta.Core.Sdk.Models.Poi>(Marqeta.Core.Sdk.Models.Poi.CreateFromDiscriminatorValue); } },
-                {"selective_auth", n => { SelectiveAuth = n.GetObjectValue<Selective_auth>(Selective_auth.CreateFromDiscriminatorValue); } },
-                {"special", n => { Special = n.GetObjectValue<Marqeta.Core.Sdk.Models.Special>(Marqeta.Core.Sdk.Models.Special.CreateFromDiscriminatorValue); } },
-                {"transaction_controls", n => { TransactionControls = n.GetObjectValue<Transaction_controls>(Transaction_controls.CreateFromDiscriminatorValue); } },
+                { "card_life_cycle", n => { CardLifeCycle = n.GetObjectValue<Marqeta.Core.Sdk.Models.Card_life_cycle>(Marqeta.Core.Sdk.Models.Card_life_cycle.CreateFromDiscriminatorValue); } },
+                { "clearing_and_settlement", n => { ClearingAndSettlement = n.GetObjectValue<Marqeta.Core.Sdk.Models.Clearing_and_settlement>(Marqeta.Core.Sdk.Models.Clearing_and_settlement.CreateFromDiscriminatorValue); } },
+                { "digital_wallet_tokenization", n => { DigitalWalletTokenization = n.GetObjectValue<Marqeta.Core.Sdk.Models.Digital_wallet_tokenization>(Marqeta.Core.Sdk.Models.Digital_wallet_tokenization.CreateFromDiscriminatorValue); } },
+                { "fulfillment", n => { Fulfillment = n.GetObjectValue<Marqeta.Core.Sdk.Models.Card_product_fulfillment>(Marqeta.Core.Sdk.Models.Card_product_fulfillment.CreateFromDiscriminatorValue); } },
+                { "jit_funding", n => { JitFunding = n.GetObjectValue<Marqeta.Core.Sdk.Models.Jit_funding>(Marqeta.Core.Sdk.Models.Jit_funding.CreateFromDiscriminatorValue); } },
+                { "poi", n => { Poi = n.GetObjectValue<Marqeta.Core.Sdk.Models.Poi>(Marqeta.Core.Sdk.Models.Poi.CreateFromDiscriminatorValue); } },
+                { "selective_auth", n => { SelectiveAuth = n.GetObjectValue<Marqeta.Core.Sdk.Models.Selective_auth>(Marqeta.Core.Sdk.Models.Selective_auth.CreateFromDiscriminatorValue); } },
+                { "special", n => { Special = n.GetObjectValue<Marqeta.Core.Sdk.Models.Special>(Marqeta.Core.Sdk.Models.Special.CreateFromDiscriminatorValue); } },
+                { "transaction_controls", n => { TransactionControls = n.GetObjectValue<Marqeta.Core.Sdk.Models.Transaction_controls>(Marqeta.Core.Sdk.Models.Transaction_controls.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -127,15 +128,15 @@ namespace Marqeta.Core.Sdk.Models {
         public virtual void Serialize(ISerializationWriter writer)
         {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<Card_life_cycle>("card_life_cycle", CardLifeCycle);
-            writer.WriteObjectValue<Clearing_and_settlement>("clearing_and_settlement", ClearingAndSettlement);
-            writer.WriteObjectValue<Digital_wallet_tokenization>("digital_wallet_tokenization", DigitalWalletTokenization);
-            writer.WriteObjectValue<Card_product_fulfillment>("fulfillment", Fulfillment);
-            writer.WriteObjectValue<Jit_funding>("jit_funding", JitFunding);
+            writer.WriteObjectValue<Marqeta.Core.Sdk.Models.Card_life_cycle>("card_life_cycle", CardLifeCycle);
+            writer.WriteObjectValue<Marqeta.Core.Sdk.Models.Clearing_and_settlement>("clearing_and_settlement", ClearingAndSettlement);
+            writer.WriteObjectValue<Marqeta.Core.Sdk.Models.Digital_wallet_tokenization>("digital_wallet_tokenization", DigitalWalletTokenization);
+            writer.WriteObjectValue<Marqeta.Core.Sdk.Models.Card_product_fulfillment>("fulfillment", Fulfillment);
+            writer.WriteObjectValue<Marqeta.Core.Sdk.Models.Jit_funding>("jit_funding", JitFunding);
             writer.WriteObjectValue<Marqeta.Core.Sdk.Models.Poi>("poi", Poi);
-            writer.WriteObjectValue<Selective_auth>("selective_auth", SelectiveAuth);
+            writer.WriteObjectValue<Marqeta.Core.Sdk.Models.Selective_auth>("selective_auth", SelectiveAuth);
             writer.WriteObjectValue<Marqeta.Core.Sdk.Models.Special>("special", Special);
-            writer.WriteObjectValue<Transaction_controls>("transaction_controls", TransactionControls);
+            writer.WriteObjectValue<Marqeta.Core.Sdk.Models.Transaction_controls>("transaction_controls", TransactionControls);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

@@ -4,9 +4,10 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System;
-namespace Marqeta.Core.Sdk.Models {
+namespace Marqeta.Core.Sdk.Models
+{
     #pragma warning disable CS1591
-    public class Program_reserve_transaction_response : IAdditionalDataHolder, IParsable 
+    public class Program_reserve_transaction_response : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -36,7 +37,7 @@ namespace Marqeta.Core.Sdk.Models {
         public string Memo { get; set; }
 #endif
         /// <summary>Transaction state.</summary>
-        public Program_reserve_transaction_response_state? State { get; set; }
+        public Marqeta.Core.Sdk.Models.Program_reserve_transaction_response_state? State { get; set; }
         /// <summary>Comma-delimited list of tags describing the transaction.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -62,9 +63,9 @@ namespace Marqeta.Core.Sdk.Models {
         public string TransactionToken { get; set; }
 #endif
         /// <summary>Transaction type.</summary>
-        public Program_reserve_transaction_response_type? Type { get; set; }
+        public Marqeta.Core.Sdk.Models.Program_reserve_transaction_response_type? Type { get; set; }
         /// <summary>
-        /// Instantiates a new <see cref="Program_reserve_transaction_response"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Models.Program_reserve_transaction_response"/> and sets the default values.
         /// </summary>
         public Program_reserve_transaction_response()
         {
@@ -73,12 +74,12 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="Program_reserve_transaction_response"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Models.Program_reserve_transaction_response"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static Program_reserve_transaction_response CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static Marqeta.Core.Sdk.Models.Program_reserve_transaction_response CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-            return new Program_reserve_transaction_response();
+            return new Marqeta.Core.Sdk.Models.Program_reserve_transaction_response();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -88,17 +89,17 @@ namespace Marqeta.Core.Sdk.Models {
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                {"amount", n => { Amount = n.GetDoubleValue(); } },
-                {"created_time", n => { CreatedTime = n.GetDateTimeOffsetValue(); } },
-                {"currency_code", n => { CurrencyCode = n.GetStringValue(); } },
-                {"is_collateral", n => { IsCollateral = n.GetBoolValue(); } },
-                {"last_modified_time", n => { LastModifiedTime = n.GetDateTimeOffsetValue(); } },
-                {"memo", n => { Memo = n.GetStringValue(); } },
-                {"state", n => { State = n.GetEnumValue<Program_reserve_transaction_response_state>(); } },
-                {"tags", n => { Tags = n.GetStringValue(); } },
-                {"token", n => { Token = n.GetStringValue(); } },
-                {"transaction_token", n => { TransactionToken = n.GetStringValue(); } },
-                {"type", n => { Type = n.GetEnumValue<Program_reserve_transaction_response_type>(); } },
+                { "amount", n => { Amount = n.GetDoubleValue(); } },
+                { "created_time", n => { CreatedTime = n.GetDateTimeOffsetValue(); } },
+                { "currency_code", n => { CurrencyCode = n.GetStringValue(); } },
+                { "is_collateral", n => { IsCollateral = n.GetBoolValue(); } },
+                { "last_modified_time", n => { LastModifiedTime = n.GetDateTimeOffsetValue(); } },
+                { "memo", n => { Memo = n.GetStringValue(); } },
+                { "state", n => { State = n.GetEnumValue<Marqeta.Core.Sdk.Models.Program_reserve_transaction_response_state>(); } },
+                { "tags", n => { Tags = n.GetStringValue(); } },
+                { "token", n => { Token = n.GetStringValue(); } },
+                { "transaction_token", n => { TransactionToken = n.GetStringValue(); } },
+                { "type", n => { Type = n.GetEnumValue<Marqeta.Core.Sdk.Models.Program_reserve_transaction_response_type>(); } },
             };
         }
         /// <summary>
@@ -114,11 +115,11 @@ namespace Marqeta.Core.Sdk.Models {
             writer.WriteBoolValue("is_collateral", IsCollateral);
             writer.WriteDateTimeOffsetValue("last_modified_time", LastModifiedTime);
             writer.WriteStringValue("memo", Memo);
-            writer.WriteEnumValue<Program_reserve_transaction_response_state>("state", State);
+            writer.WriteEnumValue<Marqeta.Core.Sdk.Models.Program_reserve_transaction_response_state>("state", State);
             writer.WriteStringValue("tags", Tags);
             writer.WriteStringValue("token", Token);
             writer.WriteStringValue("transaction_token", TransactionToken);
-            writer.WriteEnumValue<Program_reserve_transaction_response_type>("type", Type);
+            writer.WriteEnumValue<Marqeta.Core.Sdk.Models.Program_reserve_transaction_response_type>("type", Type);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

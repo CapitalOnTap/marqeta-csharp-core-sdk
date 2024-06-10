@@ -4,11 +4,12 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System;
-namespace Marqeta.Core.Sdk.Models {
+namespace Marqeta.Core.Sdk.Models
+{
     /// <summary>
     /// Specifies shared details for a credit program.Once set to `ACTIVE`, cannot be edited or deleted.
     /// </summary>
-    public class ProductResponse : IAdditionalDataHolder, IParsable 
+    public class ProductResponse : IAdditionalDataHolder, IParsable
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
@@ -21,24 +22,24 @@ namespace Marqeta.Core.Sdk.Models {
         public List<string> CardProductTokens { get; set; }
 #endif
         /// <summary>Specifies for whom the credit product is intended.* `CONSUMER` - The credit product is intended for individual consumers.* `SMALL_AND_MEDIUM_BUSINESS` - The credit product is intended for small and medium business.</summary>
-        public ProductClassification? Classification { get; set; }
+        public Marqeta.Core.Sdk.Models.ProductClassification? Classification { get; set; }
         /// <summary>Contains information on configurations for billing cycle day, payment due day, and fees.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public ProductConfig? Config { get; set; }
+        public Marqeta.Core.Sdk.Models.ProductConfig? Config { get; set; }
 #nullable restore
 #else
-        public ProductConfig Config { get; set; }
+        public Marqeta.Core.Sdk.Models.ProductConfig Config { get; set; }
 #endif
         /// <summary>Date and time when the credit product was created on Marqeta&apos;s credit platform, in UTC.</summary>
         public DateTimeOffset? CreatedTime { get; set; }
         /// <summary>Contains information on the credit line range.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public ProductCreditLine? CreditLine { get; set; }
+        public Marqeta.Core.Sdk.Models.ProductCreditLine? CreditLine { get; set; }
 #nullable restore
 #else
-        public ProductCreditLine CreditLine { get; set; }
+        public Marqeta.Core.Sdk.Models.ProductCreditLine CreditLine { get; set; }
 #endif
         /// <summary>Valid three-digit link:https://www.iso.org/iso-4217-currency-codes.html[ISO 4217 currency code, window=&quot;_blank&quot;].</summary>
         public Marqeta.Core.Sdk.Models.CurrencyCode? CurrencyCode { get; set; }
@@ -61,10 +62,10 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>Contains information used to calculate the minimum payment amount.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public ProductMinPaymentCalculation? MinPaymentCalculation { get; set; }
+        public Marqeta.Core.Sdk.Models.ProductMinPaymentCalculation? MinPaymentCalculation { get; set; }
 #nullable restore
 #else
-        public ProductMinPaymentCalculation MinPaymentCalculation { get; set; }
+        public Marqeta.Core.Sdk.Models.ProductMinPaymentCalculation MinPaymentCalculation { get; set; }
 #endif
         /// <summary>Minimum payment, expressed as a flat amount, due on the payment due day.</summary>
         public double? MinPaymentFlatAmount { get; set; }
@@ -89,17 +90,17 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>Ordered list of balance types to which payments are allocated, from first to last.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<PaymentAllocationOrderEnum?>? PaymentAllocationOrder { get; set; }
+        public List<Marqeta.Core.Sdk.Models.PaymentAllocationOrderEnum?>? PaymentAllocationOrder { get; set; }
 #nullable restore
 #else
-        public List<PaymentAllocationOrderEnum?> PaymentAllocationOrder { get; set; }
+        public List<Marqeta.Core.Sdk.Models.PaymentAllocationOrderEnum?> PaymentAllocationOrder { get; set; }
 #endif
         /// <summary>Subtype of the credit product type.`CREDIT_CARD` - Card that enables the cardholder to make purchases on credit.</summary>
         public Marqeta.Core.Sdk.Models.ProductSubType? ProductSubType { get; set; }
         /// <summary>Type of credit product.`REVOLVING` - Allows users to continuously borrow and pay debts up to the credit limit.</summary>
         public Marqeta.Core.Sdk.Models.ProductType? ProductType { get; set; }
         /// <summary>Status of the credit product.* `DRAFT` - The credit product is in the process of being created.* `PENDING_APPROVAL` - The credit product has been created and is awaiting approval.* `SENT_FOR_REVISION` - The credit product has been returned for revision.* `ACTIVE` - The credit product is active.* `REJECTED` - The credit product has been rejected; this status cannot be changed.* `ARCHIVED` - The previously active credit product has been archived.</summary>
-        public ResourceStatus? Status { get; set; }
+        public Marqeta.Core.Sdk.Models.ResourceStatus? Status { get; set; }
         /// <summary>Unique identifier of the credit product.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -113,18 +114,18 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>One or more usage types for the credit product.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<BalanceType?>? Usage { get; set; }
+        public List<Marqeta.Core.Sdk.Models.BalanceType?>? Usage { get; set; }
 #nullable restore
 #else
-        public List<BalanceType?> Usage { get; set; }
+        public List<Marqeta.Core.Sdk.Models.BalanceType?> Usage { get; set; }
 #endif
         /// <summary>
-        /// Instantiates a new <see cref="ProductResponse"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Models.ProductResponse"/> and sets the default values.
         /// </summary>
         public ProductResponse()
         {
             AdditionalData = new Dictionary<string, object>();
-            Classification = ProductClassification.CONSUMER;
+            Classification = Marqeta.Core.Sdk.Models.ProductClassification.CONSUMER;
             CurrencyCode = Marqeta.Core.Sdk.Models.CurrencyCode.USD;
             ProductSubType = Marqeta.Core.Sdk.Models.ProductSubType.CREDIT_CARD;
             ProductType = Marqeta.Core.Sdk.Models.ProductType.REVOLVING;
@@ -132,12 +133,12 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="ProductResponse"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Models.ProductResponse"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static ProductResponse CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static Marqeta.Core.Sdk.Models.ProductResponse CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-            return new ProductResponse();
+            return new Marqeta.Core.Sdk.Models.ProductResponse();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -147,26 +148,26 @@ namespace Marqeta.Core.Sdk.Models {
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                {"card_product_tokens", n => { CardProductTokens = n.GetCollectionOfPrimitiveValues<string>()?.ToList(); } },
-                {"classification", n => { Classification = n.GetEnumValue<ProductClassification>(); } },
-                {"config", n => { Config = n.GetObjectValue<ProductConfig>(ProductConfig.CreateFromDiscriminatorValue); } },
-                {"created_time", n => { CreatedTime = n.GetDateTimeOffsetValue(); } },
-                {"credit_line", n => { CreditLine = n.GetObjectValue<ProductCreditLine>(ProductCreditLine.CreateFromDiscriminatorValue); } },
-                {"currency_code", n => { CurrencyCode = n.GetEnumValue<CurrencyCode>(); } },
-                {"description", n => { Description = n.GetStringValue(); } },
-                {"interest_calculation", n => { InterestCalculation = n.GetObjectValue<Marqeta.Core.Sdk.Models.InterestCalculation>(Marqeta.Core.Sdk.Models.InterestCalculation.CreateFromDiscriminatorValue); } },
-                {"min_payment_calculation", n => { MinPaymentCalculation = n.GetObjectValue<ProductMinPaymentCalculation>(ProductMinPaymentCalculation.CreateFromDiscriminatorValue); } },
-                {"min_payment_flat_amount", n => { MinPaymentFlatAmount = n.GetDoubleValue(); } },
-                {"min_payment_percentage", n => { MinPaymentPercentage = n.GetDoubleValue(); } },
-                {"name", n => { Name = n.GetStringValue(); } },
-                {"parent_product_token", n => { ParentProductToken = n.GetStringValue(); } },
-                {"payment_allocation_order", n => { PaymentAllocationOrder = n.GetCollectionOfEnumValues<PaymentAllocationOrderEnum>()?.ToList(); } },
-                {"product_sub_type", n => { ProductSubType = n.GetEnumValue<ProductSubType>(); } },
-                {"product_type", n => { ProductType = n.GetEnumValue<ProductType>(); } },
-                {"status", n => { Status = n.GetEnumValue<ResourceStatus>(); } },
-                {"token", n => { Token = n.GetStringValue(); } },
-                {"updated_time", n => { UpdatedTime = n.GetDateTimeOffsetValue(); } },
-                {"usage", n => { Usage = n.GetCollectionOfEnumValues<BalanceType>()?.ToList(); } },
+                { "card_product_tokens", n => { CardProductTokens = n.GetCollectionOfPrimitiveValues<string>()?.ToList(); } },
+                { "classification", n => { Classification = n.GetEnumValue<Marqeta.Core.Sdk.Models.ProductClassification>(); } },
+                { "config", n => { Config = n.GetObjectValue<Marqeta.Core.Sdk.Models.ProductConfig>(Marqeta.Core.Sdk.Models.ProductConfig.CreateFromDiscriminatorValue); } },
+                { "created_time", n => { CreatedTime = n.GetDateTimeOffsetValue(); } },
+                { "credit_line", n => { CreditLine = n.GetObjectValue<Marqeta.Core.Sdk.Models.ProductCreditLine>(Marqeta.Core.Sdk.Models.ProductCreditLine.CreateFromDiscriminatorValue); } },
+                { "currency_code", n => { CurrencyCode = n.GetEnumValue<Marqeta.Core.Sdk.Models.CurrencyCode>(); } },
+                { "description", n => { Description = n.GetStringValue(); } },
+                { "interest_calculation", n => { InterestCalculation = n.GetObjectValue<Marqeta.Core.Sdk.Models.InterestCalculation>(Marqeta.Core.Sdk.Models.InterestCalculation.CreateFromDiscriminatorValue); } },
+                { "min_payment_calculation", n => { MinPaymentCalculation = n.GetObjectValue<Marqeta.Core.Sdk.Models.ProductMinPaymentCalculation>(Marqeta.Core.Sdk.Models.ProductMinPaymentCalculation.CreateFromDiscriminatorValue); } },
+                { "min_payment_flat_amount", n => { MinPaymentFlatAmount = n.GetDoubleValue(); } },
+                { "min_payment_percentage", n => { MinPaymentPercentage = n.GetDoubleValue(); } },
+                { "name", n => { Name = n.GetStringValue(); } },
+                { "parent_product_token", n => { ParentProductToken = n.GetStringValue(); } },
+                { "payment_allocation_order", n => { PaymentAllocationOrder = n.GetCollectionOfEnumValues<Marqeta.Core.Sdk.Models.PaymentAllocationOrderEnum>()?.ToList(); } },
+                { "product_sub_type", n => { ProductSubType = n.GetEnumValue<Marqeta.Core.Sdk.Models.ProductSubType>(); } },
+                { "product_type", n => { ProductType = n.GetEnumValue<Marqeta.Core.Sdk.Models.ProductType>(); } },
+                { "status", n => { Status = n.GetEnumValue<Marqeta.Core.Sdk.Models.ResourceStatus>(); } },
+                { "token", n => { Token = n.GetStringValue(); } },
+                { "updated_time", n => { UpdatedTime = n.GetDateTimeOffsetValue(); } },
+                { "usage", n => { Usage = n.GetCollectionOfEnumValues<Marqeta.Core.Sdk.Models.BalanceType>()?.ToList(); } },
             };
         }
         /// <summary>
@@ -177,25 +178,25 @@ namespace Marqeta.Core.Sdk.Models {
         {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
             writer.WriteCollectionOfPrimitiveValues<string>("card_product_tokens", CardProductTokens);
-            writer.WriteEnumValue<ProductClassification>("classification", Classification);
-            writer.WriteObjectValue<ProductConfig>("config", Config);
+            writer.WriteEnumValue<Marqeta.Core.Sdk.Models.ProductClassification>("classification", Classification);
+            writer.WriteObjectValue<Marqeta.Core.Sdk.Models.ProductConfig>("config", Config);
             writer.WriteDateTimeOffsetValue("created_time", CreatedTime);
-            writer.WriteObjectValue<ProductCreditLine>("credit_line", CreditLine);
-            writer.WriteEnumValue<CurrencyCode>("currency_code", CurrencyCode);
+            writer.WriteObjectValue<Marqeta.Core.Sdk.Models.ProductCreditLine>("credit_line", CreditLine);
+            writer.WriteEnumValue<Marqeta.Core.Sdk.Models.CurrencyCode>("currency_code", CurrencyCode);
             writer.WriteStringValue("description", Description);
             writer.WriteObjectValue<Marqeta.Core.Sdk.Models.InterestCalculation>("interest_calculation", InterestCalculation);
-            writer.WriteObjectValue<ProductMinPaymentCalculation>("min_payment_calculation", MinPaymentCalculation);
+            writer.WriteObjectValue<Marqeta.Core.Sdk.Models.ProductMinPaymentCalculation>("min_payment_calculation", MinPaymentCalculation);
             writer.WriteDoubleValue("min_payment_flat_amount", MinPaymentFlatAmount);
             writer.WriteDoubleValue("min_payment_percentage", MinPaymentPercentage);
             writer.WriteStringValue("name", Name);
             writer.WriteStringValue("parent_product_token", ParentProductToken);
-            writer.WriteCollectionOfEnumValues<PaymentAllocationOrderEnum>("payment_allocation_order", PaymentAllocationOrder);
-            writer.WriteEnumValue<ProductSubType>("product_sub_type", ProductSubType);
-            writer.WriteEnumValue<ProductType>("product_type", ProductType);
-            writer.WriteEnumValue<ResourceStatus>("status", Status);
+            writer.WriteCollectionOfEnumValues<Marqeta.Core.Sdk.Models.PaymentAllocationOrderEnum>("payment_allocation_order", PaymentAllocationOrder);
+            writer.WriteEnumValue<Marqeta.Core.Sdk.Models.ProductSubType>("product_sub_type", ProductSubType);
+            writer.WriteEnumValue<Marqeta.Core.Sdk.Models.ProductType>("product_type", ProductType);
+            writer.WriteEnumValue<Marqeta.Core.Sdk.Models.ResourceStatus>("status", Status);
             writer.WriteStringValue("token", Token);
             writer.WriteDateTimeOffsetValue("updated_time", UpdatedTime);
-            writer.WriteCollectionOfEnumValues<BalanceType>("usage", Usage);
+            writer.WriteCollectionOfEnumValues<Marqeta.Core.Sdk.Models.BalanceType>("usage", Usage);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

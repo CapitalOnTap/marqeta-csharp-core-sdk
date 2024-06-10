@@ -10,24 +10,25 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Threading;
 using System;
-namespace Marqeta.Core.Sdk.Depositaccounts.Item {
+namespace Marqeta.Core.Sdk.Depositaccounts.Item
+{
     /// <summary>
     /// Builds and executes requests for operations under \depositaccounts\{token-id}
     /// </summary>
-    public class TokenItemRequestBuilder : BaseRequestBuilder 
+    public class TokenItemRequestBuilder : BaseRequestBuilder
     {
         /// <summary>The cdd property</summary>
-        public CddRequestBuilder Cdd
+        public Marqeta.Core.Sdk.Depositaccounts.Item.Cdd.CddRequestBuilder Cdd
         {
-            get => new CddRequestBuilder(PathParameters, RequestAdapter);
+            get => new Marqeta.Core.Sdk.Depositaccounts.Item.Cdd.CddRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The transitions property</summary>
-        public TransitionsRequestBuilder Transitions
+        public Marqeta.Core.Sdk.Depositaccounts.Item.Transitions.TransitionsRequestBuilder Transitions
         {
-            get => new TransitionsRequestBuilder(PathParameters, RequestAdapter);
+            get => new Marqeta.Core.Sdk.Depositaccounts.Item.Transitions.TransitionsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>
-        /// Instantiates a new <see cref="TokenItemRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Depositaccounts.Item.TokenItemRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
@@ -35,7 +36,7 @@ namespace Marqeta.Core.Sdk.Depositaccounts.Item {
         {
         }
         /// <summary>
-        /// Instantiates a new <see cref="TokenItemRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Depositaccounts.Item.TokenItemRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
@@ -45,51 +46,51 @@ namespace Marqeta.Core.Sdk.Depositaccounts.Item {
         /// <summary>
         /// Get direct deposit account.
         /// </summary>
-        /// <returns>A <see cref="Direct_deposit_account_response"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Models.Direct_deposit_account_response"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        /// <exception cref="ApiError">When receiving a 4XX or 5XX status code</exception>
+        /// <exception cref="Marqeta.Core.Sdk.Models.ApiError">When receiving a 4XX or 5XX status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<Direct_deposit_account_response?> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<Marqeta.Core.Sdk.Models.Direct_deposit_account_response?> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<Direct_deposit_account_response> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<Marqeta.Core.Sdk.Models.Direct_deposit_account_response> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
-                {"XXX", ApiError.CreateFromDiscriminatorValue},
+                { "XXX", Marqeta.Core.Sdk.Models.ApiError.CreateFromDiscriminatorValue },
             };
-            return await RequestAdapter.SendAsync<Direct_deposit_account_response>(requestInfo, Direct_deposit_account_response.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<Marqeta.Core.Sdk.Models.Direct_deposit_account_response>(requestInfo, Marqeta.Core.Sdk.Models.Direct_deposit_account_response.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Update direct deposit account.
         /// </summary>
-        /// <returns>A <see cref="Direct_deposit_account_response"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Models.Direct_deposit_account_response"/></returns>
         /// <param name="body">The request body</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        /// <exception cref="ApiError">When receiving a 4XX or 5XX status code</exception>
+        /// <exception cref="Marqeta.Core.Sdk.Models.ApiError">When receiving a 4XX or 5XX status code</exception>
         [Obsolete("")]
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<Direct_deposit_account_response?> PutAsync(DepositAccountUpdateRequest body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<Marqeta.Core.Sdk.Models.Direct_deposit_account_response?> PutAsync(Marqeta.Core.Sdk.Models.DepositAccountUpdateRequest body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<Direct_deposit_account_response> PutAsync(DepositAccountUpdateRequest body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<Marqeta.Core.Sdk.Models.Direct_deposit_account_response> PutAsync(Marqeta.Core.Sdk.Models.DepositAccountUpdateRequest body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             _ = body ?? throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPutRequestInformation(body, requestConfiguration);
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
-                {"XXX", ApiError.CreateFromDiscriminatorValue},
+                { "XXX", Marqeta.Core.Sdk.Models.ApiError.CreateFromDiscriminatorValue },
             };
-            return await RequestAdapter.SendAsync<Direct_deposit_account_response>(requestInfo, Direct_deposit_account_response.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<Marqeta.Core.Sdk.Models.Direct_deposit_account_response>(requestInfo, Marqeta.Core.Sdk.Models.Direct_deposit_account_response.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Get direct deposit account.
@@ -119,11 +120,11 @@ namespace Marqeta.Core.Sdk.Depositaccounts.Item {
         [Obsolete("")]
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToPutRequestInformation(DepositAccountUpdateRequest body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
+        public RequestInformation ToPutRequestInformation(Marqeta.Core.Sdk.Models.DepositAccountUpdateRequest body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
         {
 #nullable restore
 #else
-        public RequestInformation ToPutRequestInformation(DepositAccountUpdateRequest body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
+        public RequestInformation ToPutRequestInformation(Marqeta.Core.Sdk.Models.DepositAccountUpdateRequest body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
         {
 #endif
             _ = body ?? throw new ArgumentNullException(nameof(body));
@@ -136,11 +137,11 @@ namespace Marqeta.Core.Sdk.Depositaccounts.Item {
         /// <summary>
         /// Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
         /// </summary>
-        /// <returns>A <see cref="TokenItemRequestBuilder"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Depositaccounts.Item.TokenItemRequestBuilder"/></returns>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
-        public TokenItemRequestBuilder WithUrl(string rawUrl)
+        public Marqeta.Core.Sdk.Depositaccounts.Item.TokenItemRequestBuilder WithUrl(string rawUrl)
         {
-            return new TokenItemRequestBuilder(rawUrl, RequestAdapter);
+            return new Marqeta.Core.Sdk.Depositaccounts.Item.TokenItemRequestBuilder(rawUrl, RequestAdapter);
         }
     }
 }

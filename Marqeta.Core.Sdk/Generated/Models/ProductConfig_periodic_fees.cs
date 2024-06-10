@@ -4,20 +4,21 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System;
-namespace Marqeta.Core.Sdk.Models {
+namespace Marqeta.Core.Sdk.Models
+{
     /// <summary>
     /// Contains information on a periodic fee.
     /// </summary>
-    public class ProductConfig_periodic_fees : IAdditionalDataHolder, IParsable 
+    public class ProductConfig_periodic_fees : IAdditionalDataHolder, IParsable
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>How frequently the fee is charged.</summary>
-        public ProductConfig_periodic_fees_frequency? Frequency { get; set; }
+        public Marqeta.Core.Sdk.Models.ProductConfig_periodic_fees_frequency? Frequency { get; set; }
         /// <summary>Number of days after an account is activated that the initial fee is charged.For example, if the value in this field is `30`, then the initial fee is charged 30 days after an account is activated.</summary>
         public int? NumberOfDaysPostActivation { get; set; }
         /// <summary>
-        /// Instantiates a new <see cref="ProductConfig_periodic_fees"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Models.ProductConfig_periodic_fees"/> and sets the default values.
         /// </summary>
         public ProductConfig_periodic_fees()
         {
@@ -26,12 +27,12 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="ProductConfig_periodic_fees"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Models.ProductConfig_periodic_fees"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static ProductConfig_periodic_fees CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static Marqeta.Core.Sdk.Models.ProductConfig_periodic_fees CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-            return new ProductConfig_periodic_fees();
+            return new Marqeta.Core.Sdk.Models.ProductConfig_periodic_fees();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -41,8 +42,8 @@ namespace Marqeta.Core.Sdk.Models {
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                {"frequency", n => { Frequency = n.GetEnumValue<ProductConfig_periodic_fees_frequency>(); } },
-                {"number_of_days_post_activation", n => { NumberOfDaysPostActivation = n.GetIntValue(); } },
+                { "frequency", n => { Frequency = n.GetEnumValue<Marqeta.Core.Sdk.Models.ProductConfig_periodic_fees_frequency>(); } },
+                { "number_of_days_post_activation", n => { NumberOfDaysPostActivation = n.GetIntValue(); } },
             };
         }
         /// <summary>
@@ -52,7 +53,7 @@ namespace Marqeta.Core.Sdk.Models {
         public virtual void Serialize(ISerializationWriter writer)
         {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
-            writer.WriteEnumValue<ProductConfig_periodic_fees_frequency>("frequency", Frequency);
+            writer.WriteEnumValue<Marqeta.Core.Sdk.Models.ProductConfig_periodic_fees_frequency>("frequency", Frequency);
             writer.WriteIntValue("number_of_days_post_activation", NumberOfDaysPostActivation);
             writer.WriteAdditionalData(AdditionalData);
         }

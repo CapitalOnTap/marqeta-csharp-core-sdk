@@ -4,18 +4,19 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System;
-namespace Marqeta.Core.Sdk.Models {
+namespace Marqeta.Core.Sdk.Models
+{
     /// <summary>
     /// Contains information about merchant onboarding.
     /// </summary>
-    public class Special : IAdditionalDataHolder, IParsable 
+    public class Special : IAdditionalDataHolder, IParsable
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>If set to `true`, cards of this card product type can be used for merchant onboarding.</summary>
         public bool? MerchantOnBoarding { get; set; }
         /// <summary>
-        /// Instantiates a new <see cref="Special"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Models.Special"/> and sets the default values.
         /// </summary>
         public Special()
         {
@@ -24,12 +25,12 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="Special"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Models.Special"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static Special CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static Marqeta.Core.Sdk.Models.Special CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-            return new Special();
+            return new Marqeta.Core.Sdk.Models.Special();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -39,7 +40,7 @@ namespace Marqeta.Core.Sdk.Models {
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                {"merchant_on_boarding", n => { MerchantOnBoarding = n.GetBoolValue(); } },
+                { "merchant_on_boarding", n => { MerchantOnBoarding = n.GetBoolValue(); } },
             };
         }
         /// <summary>

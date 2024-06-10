@@ -4,18 +4,19 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System;
-namespace Marqeta.Core.Sdk.Models {
+namespace Marqeta.Core.Sdk.Models
+{
     /// <summary>
     /// Request details for the APR for a risk tier.
     /// </summary>
-    public class PolicyAprTierReq : IAdditionalDataHolder, IParsable 
+    public class PolicyAprTierReq : IAdditionalDataHolder, IParsable
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Number of percentage points added to the prime rate, used to calculate a variable APR value.</summary>
         public double? MarginRate { get; set; }
         /// <summary>
-        /// Instantiates a new <see cref="PolicyAprTierReq"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Models.PolicyAprTierReq"/> and sets the default values.
         /// </summary>
         public PolicyAprTierReq()
         {
@@ -24,12 +25,12 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="PolicyAprTierReq"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Models.PolicyAprTierReq"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static PolicyAprTierReq CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static Marqeta.Core.Sdk.Models.PolicyAprTierReq CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-            return new PolicyAprTierReq();
+            return new Marqeta.Core.Sdk.Models.PolicyAprTierReq();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -39,7 +40,7 @@ namespace Marqeta.Core.Sdk.Models {
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                {"margin_rate", n => { MarginRate = n.GetDoubleValue(); } },
+                { "margin_rate", n => { MarginRate = n.GetDoubleValue(); } },
             };
         }
         /// <summary>

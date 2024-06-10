@@ -4,11 +4,12 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System;
-namespace Marqeta.Core.Sdk.Models {
+namespace Marqeta.Core.Sdk.Models
+{
     /// <summary>
     /// Contains details on a credit balance refund.
     /// </summary>
-    public class AccountCreditBalanceRefundResponse : IAdditionalDataHolder, IParsable 
+    public class AccountCreditBalanceRefundResponse : IAdditionalDataHolder, IParsable
     {
         /// <summary>Unique identifier of the credit account that needs the credit balance refund.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -33,9 +34,9 @@ namespace Marqeta.Core.Sdk.Models {
         public string Description { get; set; }
 #endif
         /// <summary>Method of the refund.</summary>
-        public RefundMethod? Method { get; set; }
+        public Marqeta.Core.Sdk.Models.RefundMethod? Method { get; set; }
         /// <summary>Current status of the payment or refund.</summary>
-        public PaymentStatus? Status { get; set; }
+        public Marqeta.Core.Sdk.Models.PaymentStatus? Status { get; set; }
         /// <summary>Unique identifier of the credit balance refund.If in the `detail_object`, unique identifier of the detail object.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -47,7 +48,7 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>Date and time when the credit balance refund was last updated.</summary>
         public DateTimeOffset? UpdatedTime { get; set; }
         /// <summary>
-        /// Instantiates a new <see cref="AccountCreditBalanceRefundResponse"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Models.AccountCreditBalanceRefundResponse"/> and sets the default values.
         /// </summary>
         public AccountCreditBalanceRefundResponse()
         {
@@ -56,12 +57,12 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="AccountCreditBalanceRefundResponse"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Models.AccountCreditBalanceRefundResponse"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static AccountCreditBalanceRefundResponse CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static Marqeta.Core.Sdk.Models.AccountCreditBalanceRefundResponse CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-            return new AccountCreditBalanceRefundResponse();
+            return new Marqeta.Core.Sdk.Models.AccountCreditBalanceRefundResponse();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -71,14 +72,14 @@ namespace Marqeta.Core.Sdk.Models {
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                {"account_token", n => { AccountToken = n.GetStringValue(); } },
-                {"amount", n => { Amount = n.GetDoubleValue(); } },
-                {"created_time", n => { CreatedTime = n.GetDateTimeOffsetValue(); } },
-                {"description", n => { Description = n.GetStringValue(); } },
-                {"method", n => { Method = n.GetEnumValue<RefundMethod>(); } },
-                {"status", n => { Status = n.GetEnumValue<PaymentStatus>(); } },
-                {"token", n => { Token = n.GetStringValue(); } },
-                {"updated_time", n => { UpdatedTime = n.GetDateTimeOffsetValue(); } },
+                { "account_token", n => { AccountToken = n.GetStringValue(); } },
+                { "amount", n => { Amount = n.GetDoubleValue(); } },
+                { "created_time", n => { CreatedTime = n.GetDateTimeOffsetValue(); } },
+                { "description", n => { Description = n.GetStringValue(); } },
+                { "method", n => { Method = n.GetEnumValue<Marqeta.Core.Sdk.Models.RefundMethod>(); } },
+                { "status", n => { Status = n.GetEnumValue<Marqeta.Core.Sdk.Models.PaymentStatus>(); } },
+                { "token", n => { Token = n.GetStringValue(); } },
+                { "updated_time", n => { UpdatedTime = n.GetDateTimeOffsetValue(); } },
             };
         }
         /// <summary>
@@ -92,8 +93,8 @@ namespace Marqeta.Core.Sdk.Models {
             writer.WriteDoubleValue("amount", Amount);
             writer.WriteDateTimeOffsetValue("created_time", CreatedTime);
             writer.WriteStringValue("description", Description);
-            writer.WriteEnumValue<RefundMethod>("method", Method);
-            writer.WriteEnumValue<PaymentStatus>("status", Status);
+            writer.WriteEnumValue<Marqeta.Core.Sdk.Models.RefundMethod>("method", Method);
+            writer.WriteEnumValue<Marqeta.Core.Sdk.Models.PaymentStatus>("status", Status);
             writer.WriteStringValue("token", Token);
             writer.WriteDateTimeOffsetValue("updated_time", UpdatedTime);
             writer.WriteAdditionalData(AdditionalData);

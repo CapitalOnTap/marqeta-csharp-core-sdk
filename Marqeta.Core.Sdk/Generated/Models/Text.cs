@@ -4,40 +4,41 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System;
-namespace Marqeta.Core.Sdk.Models {
+namespace Marqeta.Core.Sdk.Models
+{
     /// <summary>
     /// Specifies personalized text that appears on the card.
     /// </summary>
-    public class Text : IAdditionalDataHolder, IParsable 
+    public class Text : IAdditionalDataHolder, IParsable
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The name_line_1 property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public Text_value? NameLine1 { get; set; }
+        public Marqeta.Core.Sdk.Models.Text_value? NameLine1 { get; set; }
 #nullable restore
 #else
-        public Text_value NameLine1 { get; set; }
+        public Marqeta.Core.Sdk.Models.Text_value NameLine1 { get; set; }
 #endif
         /// <summary>The name_line_2 property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public Text_value? NameLine2 { get; set; }
+        public Marqeta.Core.Sdk.Models.Text_value? NameLine2 { get; set; }
 #nullable restore
 #else
-        public Text_value NameLine2 { get; set; }
+        public Marqeta.Core.Sdk.Models.Text_value NameLine2 { get; set; }
 #endif
         /// <summary>The name_line_3 property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public Text_value? NameLine3 { get; set; }
+        public Marqeta.Core.Sdk.Models.Text_value? NameLine3 { get; set; }
 #nullable restore
 #else
-        public Text_value NameLine3 { get; set; }
+        public Marqeta.Core.Sdk.Models.Text_value NameLine3 { get; set; }
 #endif
         /// <summary>
-        /// Instantiates a new <see cref="Text"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Models.Text"/> and sets the default values.
         /// </summary>
         public Text()
         {
@@ -46,12 +47,12 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="Text"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Models.Text"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static Text CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static Marqeta.Core.Sdk.Models.Text CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-            return new Text();
+            return new Marqeta.Core.Sdk.Models.Text();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -61,9 +62,9 @@ namespace Marqeta.Core.Sdk.Models {
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                {"name_line_1", n => { NameLine1 = n.GetObjectValue<Text_value>(Text_value.CreateFromDiscriminatorValue); } },
-                {"name_line_2", n => { NameLine2 = n.GetObjectValue<Text_value>(Text_value.CreateFromDiscriminatorValue); } },
-                {"name_line_3", n => { NameLine3 = n.GetObjectValue<Text_value>(Text_value.CreateFromDiscriminatorValue); } },
+                { "name_line_1", n => { NameLine1 = n.GetObjectValue<Marqeta.Core.Sdk.Models.Text_value>(Marqeta.Core.Sdk.Models.Text_value.CreateFromDiscriminatorValue); } },
+                { "name_line_2", n => { NameLine2 = n.GetObjectValue<Marqeta.Core.Sdk.Models.Text_value>(Marqeta.Core.Sdk.Models.Text_value.CreateFromDiscriminatorValue); } },
+                { "name_line_3", n => { NameLine3 = n.GetObjectValue<Marqeta.Core.Sdk.Models.Text_value>(Marqeta.Core.Sdk.Models.Text_value.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -73,9 +74,9 @@ namespace Marqeta.Core.Sdk.Models {
         public virtual void Serialize(ISerializationWriter writer)
         {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<Text_value>("name_line_1", NameLine1);
-            writer.WriteObjectValue<Text_value>("name_line_2", NameLine2);
-            writer.WriteObjectValue<Text_value>("name_line_3", NameLine3);
+            writer.WriteObjectValue<Marqeta.Core.Sdk.Models.Text_value>("name_line_1", NameLine1);
+            writer.WriteObjectValue<Marqeta.Core.Sdk.Models.Text_value>("name_line_2", NameLine2);
+            writer.WriteObjectValue<Marqeta.Core.Sdk.Models.Text_value>("name_line_3", NameLine3);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

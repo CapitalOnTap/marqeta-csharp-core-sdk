@@ -4,34 +4,35 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System;
-namespace Marqeta.Core.Sdk.Models {
+namespace Marqeta.Core.Sdk.Models
+{
     /// <summary>
     /// Determines physical characteristics of a card and shipment information.
     /// </summary>
-    public class CardFulfillmentResponse : IAdditionalDataHolder, IParsable 
+    public class CardFulfillmentResponse : IAdditionalDataHolder, IParsable
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Descriptive reason for the card fulfillment.</summary>
-        public CardFulfillmentResponse_card_fulfillment_reason? CardFulfillmentReason { get; set; }
+        public Marqeta.Core.Sdk.Models.CardFulfillmentResponse_card_fulfillment_reason? CardFulfillmentReason { get; set; }
         /// <summary>Specifies personalized attributes to be added to the card.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public Card_personalization? CardPersonalization { get; set; }
+        public Marqeta.Core.Sdk.Models.Card_personalization? CardPersonalization { get; set; }
 #nullable restore
 #else
-        public Card_personalization CardPersonalization { get; set; }
+        public Marqeta.Core.Sdk.Models.Card_personalization CardPersonalization { get; set; }
 #endif
         /// <summary>Specifies shipping details for the order.This object is returned if it exists in the resource.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public ShippingInformationResponse? Shipping { get; set; }
+        public Marqeta.Core.Sdk.Models.ShippingInformationResponse? Shipping { get; set; }
 #nullable restore
 #else
-        public ShippingInformationResponse Shipping { get; set; }
+        public Marqeta.Core.Sdk.Models.ShippingInformationResponse Shipping { get; set; }
 #endif
         /// <summary>
-        /// Instantiates a new <see cref="CardFulfillmentResponse"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Models.CardFulfillmentResponse"/> and sets the default values.
         /// </summary>
         public CardFulfillmentResponse()
         {
@@ -40,12 +41,12 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="CardFulfillmentResponse"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Models.CardFulfillmentResponse"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static CardFulfillmentResponse CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static Marqeta.Core.Sdk.Models.CardFulfillmentResponse CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-            return new CardFulfillmentResponse();
+            return new Marqeta.Core.Sdk.Models.CardFulfillmentResponse();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -55,9 +56,9 @@ namespace Marqeta.Core.Sdk.Models {
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                {"card_fulfillment_reason", n => { CardFulfillmentReason = n.GetEnumValue<CardFulfillmentResponse_card_fulfillment_reason>(); } },
-                {"card_personalization", n => { CardPersonalization = n.GetObjectValue<Card_personalization>(Card_personalization.CreateFromDiscriminatorValue); } },
-                {"shipping", n => { Shipping = n.GetObjectValue<ShippingInformationResponse>(ShippingInformationResponse.CreateFromDiscriminatorValue); } },
+                { "card_fulfillment_reason", n => { CardFulfillmentReason = n.GetEnumValue<Marqeta.Core.Sdk.Models.CardFulfillmentResponse_card_fulfillment_reason>(); } },
+                { "card_personalization", n => { CardPersonalization = n.GetObjectValue<Marqeta.Core.Sdk.Models.Card_personalization>(Marqeta.Core.Sdk.Models.Card_personalization.CreateFromDiscriminatorValue); } },
+                { "shipping", n => { Shipping = n.GetObjectValue<Marqeta.Core.Sdk.Models.ShippingInformationResponse>(Marqeta.Core.Sdk.Models.ShippingInformationResponse.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -67,9 +68,9 @@ namespace Marqeta.Core.Sdk.Models {
         public virtual void Serialize(ISerializationWriter writer)
         {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
-            writer.WriteEnumValue<CardFulfillmentResponse_card_fulfillment_reason>("card_fulfillment_reason", CardFulfillmentReason);
-            writer.WriteObjectValue<Card_personalization>("card_personalization", CardPersonalization);
-            writer.WriteObjectValue<ShippingInformationResponse>("shipping", Shipping);
+            writer.WriteEnumValue<Marqeta.Core.Sdk.Models.CardFulfillmentResponse_card_fulfillment_reason>("card_fulfillment_reason", CardFulfillmentReason);
+            writer.WriteObjectValue<Marqeta.Core.Sdk.Models.Card_personalization>("card_personalization", CardPersonalization);
+            writer.WriteObjectValue<Marqeta.Core.Sdk.Models.ShippingInformationResponse>("shipping", Shipping);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

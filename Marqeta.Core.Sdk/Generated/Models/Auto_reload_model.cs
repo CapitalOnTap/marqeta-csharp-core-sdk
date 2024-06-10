@@ -4,11 +4,12 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System;
-namespace Marqeta.Core.Sdk.Models {
+namespace Marqeta.Core.Sdk.Models
+{
     /// <summary>
     /// Contains information about an auto reload.See &lt;&lt;/core-api/auto-reload, Auto Reloads&gt;&gt; for more information.Returned if an auto reload was executed.
     /// </summary>
-    public class Auto_reload_model : IAdditionalDataHolder, IParsable 
+    public class Auto_reload_model : IAdditionalDataHolder, IParsable
     {
         /// <summary>Specifies whether the auto reload is active.Only one auto reload per level, per object, can be active.</summary>
         public bool? Active { get; set; }
@@ -17,10 +18,10 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>Specifies the scope of the auto reload.Input no more than one field.If no value is supplied, the auto reload applies at the program level.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public Auto_reload_association? Association { get; set; }
+        public Marqeta.Core.Sdk.Models.Auto_reload_association? Association { get; set; }
 #nullable restore
 #else
-        public Auto_reload_association Association { get; set; }
+        public Marqeta.Core.Sdk.Models.Auto_reload_association Association { get; set; }
 #endif
         /// <summary>Three-digit link:https://www.iso.org/iso-4217-currency-codes.html[ISO 4217 currency code, window=&quot;_blank&quot;].</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -49,10 +50,10 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>Defines the balance threshold and reload amounts.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public Order_scope? OrderScope { get; set; }
+        public Marqeta.Core.Sdk.Models.Order_scope? OrderScope { get; set; }
 #nullable restore
 #else
-        public Order_scope OrderScope { get; set; }
+        public Marqeta.Core.Sdk.Models.Order_scope OrderScope { get; set; }
 #endif
         /// <summary>Unique identifier of the auto reload.If you do not include a token, the system will generate one automatically.This token is necessary for use in other API calls, so we recommend that rather than let the system generate one, you use a simple string that is easy to remember.This value cannot be updated.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -63,7 +64,7 @@ namespace Marqeta.Core.Sdk.Models {
         public string Token { get; set; }
 #endif
         /// <summary>
-        /// Instantiates a new <see cref="Auto_reload_model"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Models.Auto_reload_model"/> and sets the default values.
         /// </summary>
         public Auto_reload_model()
         {
@@ -72,12 +73,12 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="Auto_reload_model"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Models.Auto_reload_model"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static Auto_reload_model CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static Marqeta.Core.Sdk.Models.Auto_reload_model CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-            return new Auto_reload_model();
+            return new Marqeta.Core.Sdk.Models.Auto_reload_model();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -87,13 +88,13 @@ namespace Marqeta.Core.Sdk.Models {
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                {"active", n => { Active = n.GetBoolValue(); } },
-                {"association", n => { Association = n.GetObjectValue<Auto_reload_association>(Auto_reload_association.CreateFromDiscriminatorValue); } },
-                {"currency_code", n => { CurrencyCode = n.GetStringValue(); } },
-                {"funding_source_address_token", n => { FundingSourceAddressToken = n.GetStringValue(); } },
-                {"funding_source_token", n => { FundingSourceToken = n.GetStringValue(); } },
-                {"order_scope", n => { OrderScope = n.GetObjectValue<Order_scope>(Order_scope.CreateFromDiscriminatorValue); } },
-                {"token", n => { Token = n.GetStringValue(); } },
+                { "active", n => { Active = n.GetBoolValue(); } },
+                { "association", n => { Association = n.GetObjectValue<Marqeta.Core.Sdk.Models.Auto_reload_association>(Marqeta.Core.Sdk.Models.Auto_reload_association.CreateFromDiscriminatorValue); } },
+                { "currency_code", n => { CurrencyCode = n.GetStringValue(); } },
+                { "funding_source_address_token", n => { FundingSourceAddressToken = n.GetStringValue(); } },
+                { "funding_source_token", n => { FundingSourceToken = n.GetStringValue(); } },
+                { "order_scope", n => { OrderScope = n.GetObjectValue<Marqeta.Core.Sdk.Models.Order_scope>(Marqeta.Core.Sdk.Models.Order_scope.CreateFromDiscriminatorValue); } },
+                { "token", n => { Token = n.GetStringValue(); } },
             };
         }
         /// <summary>
@@ -104,11 +105,11 @@ namespace Marqeta.Core.Sdk.Models {
         {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
             writer.WriteBoolValue("active", Active);
-            writer.WriteObjectValue<Auto_reload_association>("association", Association);
+            writer.WriteObjectValue<Marqeta.Core.Sdk.Models.Auto_reload_association>("association", Association);
             writer.WriteStringValue("currency_code", CurrencyCode);
             writer.WriteStringValue("funding_source_address_token", FundingSourceAddressToken);
             writer.WriteStringValue("funding_source_token", FundingSourceToken);
-            writer.WriteObjectValue<Order_scope>("order_scope", OrderScope);
+            writer.WriteObjectValue<Marqeta.Core.Sdk.Models.Order_scope>("order_scope", OrderScope);
             writer.WriteStringValue("token", Token);
             writer.WriteAdditionalData(AdditionalData);
         }

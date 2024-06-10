@@ -4,11 +4,12 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System;
-namespace Marqeta.Core.Sdk.Models {
+namespace Marqeta.Core.Sdk.Models
+{
     /// <summary>
     /// Contains information on how long after the date of issue for when the cards are valid.If this field is not specified, the card uses the `config.card_life_cycle.expiration_offset` of the bulk card order or card product as appropriate.
     /// </summary>
-    public class ExpirationOffset : IAdditionalDataHolder, IParsable 
+    public class ExpirationOffset : IAdditionalDataHolder, IParsable
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
@@ -23,7 +24,7 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>Specifies the number of time units (as defined by the `unit` field in this object) that this card is valid.In other words, cards expire `value` x `unit` after the date of issue.This number is rounded as follows:* *YEARS* - Rounds up to the last second of the last day of the month of expiration.For example, if the issue date is 1 Jan 2021 and `value = 1`, the cards expire on the last day of Jan 2022.* *MONTHS* - Rounds up to the last second of the last day of the month of expiration.For example, if the issue date is 1 May 2022 and `value = 1`, the cards expire on the last day of June 2022.* *DAYS* - Rounds up to the last second of the day of expiration.* *HOURS*, *MINUTES*, *SECONDS* - No rounding.</summary>
         public int? Value { get; set; }
         /// <summary>
-        /// Instantiates a new <see cref="ExpirationOffset"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Models.ExpirationOffset"/> and sets the default values.
         /// </summary>
         public ExpirationOffset()
         {
@@ -32,12 +33,12 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="ExpirationOffset"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Models.ExpirationOffset"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static ExpirationOffset CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static Marqeta.Core.Sdk.Models.ExpirationOffset CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-            return new ExpirationOffset();
+            return new Marqeta.Core.Sdk.Models.ExpirationOffset();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -47,8 +48,8 @@ namespace Marqeta.Core.Sdk.Models {
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                {"unit", n => { Unit = n.GetStringValue(); } },
-                {"value", n => { Value = n.GetIntValue(); } },
+                { "unit", n => { Unit = n.GetStringValue(); } },
+                { "value", n => { Value = n.GetIntValue(); } },
             };
         }
         /// <summary>

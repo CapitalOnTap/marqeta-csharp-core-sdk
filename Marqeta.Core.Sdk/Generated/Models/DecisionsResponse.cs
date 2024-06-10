@@ -5,11 +5,12 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System;
-namespace Marqeta.Core.Sdk.Models {
+namespace Marqeta.Core.Sdk.Models
+{
     /// <summary>
     /// Contains information on the decision model returned by the issuing bank if a decision has been rendered.Returned when retrieving an application after a decision has been rendered.
     /// </summary>
-    public class DecisionsResponse : PostDecisionsResponse, IParsable 
+    public class DecisionsResponse : Marqeta.Core.Sdk.Models.PostDecisionsResponse, IParsable
     {
         /// <summary>Indicates the version of the Notice of Adverse Action (NOAA) template used.Can have these possible values:* `AA0` - score denial with score disclosure* `AA1` - individual reason with score disclosure* `AA2` - individual reason without score disclosure* `AA3` - locked and frozen* `AA4` - fraud related</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -20,7 +21,7 @@ namespace Marqeta.Core.Sdk.Models {
         public string AdverseActionTemplateCode { get; set; }
 #endif
         /// <summary>The tier of the card product.</summary>
-        public DecisionsResponse_card_product_level? CardProductLevel { get; set; }
+        public Marqeta.Core.Sdk.Models.DecisionsResponse_card_product_level? CardProductLevel { get; set; }
         /// <summary>Date and time when the decision model was created on the Marqeta platform, in UTC.</summary>
         public DateTimeOffset? CreatedDate { get; set; }
         /// <summary>Contains information on the credit bureau.</summary>
@@ -76,12 +77,12 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="DecisionsResponse"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Models.DecisionsResponse"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static new DecisionsResponse CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static new Marqeta.Core.Sdk.Models.DecisionsResponse CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-            return new DecisionsResponse();
+            return new Marqeta.Core.Sdk.Models.DecisionsResponse();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -91,22 +92,22 @@ namespace Marqeta.Core.Sdk.Models {
         {
             return new Dictionary<string, Action<IParseNode>>(base.GetFieldDeserializers())
             {
-                {"adverse_action_template_code", n => { AdverseActionTemplateCode = n.GetStringValue(); } },
-                {"card_product_level", n => { CardProductLevel = n.GetEnumValue<DecisionsResponse_card_product_level>(); } },
-                {"created_date", n => { CreatedDate = n.GetDateTimeOffsetValue(); } },
-                {"credit_bureau", n => { CreditBureau = n.GetObjectValue<Marqeta.Core.Sdk.Models.CreditBureau>(Marqeta.Core.Sdk.Models.CreditBureau.CreateFromDiscriminatorValue); } },
-                {"credit_limit", n => { CreditLimit = n.GetIntValue(); } },
-                {"credit_score", n => { CreditScore = n.GetIntValue(); } },
-                {"credit_score_date", n => { CreditScoreDate = n.GetDateValue(); } },
-                {"decision_date", n => { DecisionDate = n.GetDateTimeOffsetValue(); } },
-                {"denial_reasons", n => { DenialReasons = n.GetCollectionOfPrimitiveValues<string>()?.ToList(); } },
-                {"expire_date", n => { ExpireDate = n.GetDateValue(); } },
-                {"margin", n => { Margin = n.GetDecimalValue(); } },
-                {"prime_rate", n => { PrimeRate = n.GetDecimalValue(); } },
-                {"purchase_apr", n => { PurchaseApr = n.GetDecimalValue(); } },
-                {"received_best_rate", n => { ReceivedBestRate = n.GetBoolValue(); } },
-                {"score_factors", n => { ScoreFactors = n.GetCollectionOfPrimitiveValues<string>()?.ToList(); } },
-                {"score_range", n => { ScoreRange = n.GetStringValue(); } },
+                { "adverse_action_template_code", n => { AdverseActionTemplateCode = n.GetStringValue(); } },
+                { "card_product_level", n => { CardProductLevel = n.GetEnumValue<Marqeta.Core.Sdk.Models.DecisionsResponse_card_product_level>(); } },
+                { "created_date", n => { CreatedDate = n.GetDateTimeOffsetValue(); } },
+                { "credit_bureau", n => { CreditBureau = n.GetObjectValue<Marqeta.Core.Sdk.Models.CreditBureau>(Marqeta.Core.Sdk.Models.CreditBureau.CreateFromDiscriminatorValue); } },
+                { "credit_limit", n => { CreditLimit = n.GetIntValue(); } },
+                { "credit_score", n => { CreditScore = n.GetIntValue(); } },
+                { "credit_score_date", n => { CreditScoreDate = n.GetDateValue(); } },
+                { "decision_date", n => { DecisionDate = n.GetDateTimeOffsetValue(); } },
+                { "denial_reasons", n => { DenialReasons = n.GetCollectionOfPrimitiveValues<string>()?.ToList(); } },
+                { "expire_date", n => { ExpireDate = n.GetDateValue(); } },
+                { "margin", n => { Margin = n.GetDecimalValue(); } },
+                { "prime_rate", n => { PrimeRate = n.GetDecimalValue(); } },
+                { "purchase_apr", n => { PurchaseApr = n.GetDecimalValue(); } },
+                { "received_best_rate", n => { ReceivedBestRate = n.GetBoolValue(); } },
+                { "score_factors", n => { ScoreFactors = n.GetCollectionOfPrimitiveValues<string>()?.ToList(); } },
+                { "score_range", n => { ScoreRange = n.GetStringValue(); } },
             };
         }
         /// <summary>
@@ -118,7 +119,7 @@ namespace Marqeta.Core.Sdk.Models {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
             base.Serialize(writer);
             writer.WriteStringValue("adverse_action_template_code", AdverseActionTemplateCode);
-            writer.WriteEnumValue<DecisionsResponse_card_product_level>("card_product_level", CardProductLevel);
+            writer.WriteEnumValue<Marqeta.Core.Sdk.Models.DecisionsResponse_card_product_level>("card_product_level", CardProductLevel);
             writer.WriteDateTimeOffsetValue("created_date", CreatedDate);
             writer.WriteObjectValue<Marqeta.Core.Sdk.Models.CreditBureau>("credit_bureau", CreditBureau);
             writer.WriteIntValue("credit_limit", CreditLimit);

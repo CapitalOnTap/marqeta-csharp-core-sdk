@@ -4,27 +4,28 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System;
-namespace Marqeta.Core.Sdk.Models {
+namespace Marqeta.Core.Sdk.Models
+{
     /// <summary>
     /// Transactions are represented by the `transaction` object.The Marqeta platform creates a separate `transaction` object for each transaction message received from the card network.The attributes of a given `transaction` object depend on the transaction type.This section documents all fields that might be included in a `transaction` object.
     /// </summary>
-    public class Transaction_model : IAdditionalDataHolder, IParsable 
+    public class Transaction_model : IAdditionalDataHolder, IParsable
     {
         /// <summary>Contains details about account funding transactions.Account funding transactions move money into a cardholder&apos;s general purpose account (GPA).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public Account_funding? AccountFunding { get; set; }
+        public Marqeta.Core.Sdk.Models.Account_funding? AccountFunding { get; set; }
 #nullable restore
 #else
-        public Account_funding AccountFunding { get; set; }
+        public Marqeta.Core.Sdk.Models.Account_funding AccountFunding { get; set; }
 #endif
         /// <summary>Contains name verification data: the full name entered by the cardholder, name data held by the Marqeta platform, and an assertion by the Marqeta platform as to whether the two sets of data match.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public Account_name_verification_model? AccountNameVerification { get; set; }
+        public Marqeta.Core.Sdk.Models.Account_name_verification_model? AccountNameVerification { get; set; }
 #nullable restore
 #else
-        public Account_name_verification_model AccountNameVerification { get; set; }
+        public Marqeta.Core.Sdk.Models.Account_name_verification_model AccountNameVerification { get; set; }
 #endif
         /// <summary>Contains information about the merchant&apos;s financial institution.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -65,10 +66,10 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>Contains address verification data consisting of address data entered by the cardholder, address data held by the Marqeta platform, and an assertion by the Marqeta platform as to whether the two sets of data match.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public Address_verification_model? AddressVerification { get; set; }
+        public Marqeta.Core.Sdk.Models.Address_verification_model? AddressVerification { get; set; }
 #nullable restore
 #else
-        public Address_verification_model AddressVerification { get; set; }
+        public Marqeta.Core.Sdk.Models.Address_verification_model AddressVerification { get; set; }
 #endif
         /// <summary>The advice_reason_code property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -101,18 +102,18 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>The atc_information property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public Atc_information? AtcInformation { get; set; }
+        public Marqeta.Core.Sdk.Models.Atc_information? AtcInformation { get; set; }
 #nullable restore
 #else
-        public Atc_information AtcInformation { get; set; }
+        public Marqeta.Core.Sdk.Models.Atc_information AtcInformation { get; set; }
 #endif
         /// <summary>Contains information about an auto reload.See &lt;&lt;/core-api/auto-reload, Auto Reloads&gt;&gt; for more information.Returned if an auto reload was executed.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public Auto_reload_model? AutoReload { get; set; }
+        public Marqeta.Core.Sdk.Models.Auto_reload_model? AutoReload { get; set; }
 #nullable restore
 #else
-        public Auto_reload_model AutoReload { get; set; }
+        public Marqeta.Core.Sdk.Models.Auto_reload_model AutoReload { get; set; }
 #endif
         /// <summary>The bank_transfer_token property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -133,18 +134,18 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>The billpay property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public BillPayResponse? Billpay { get; set; }
+        public Marqeta.Core.Sdk.Models.BillPayResponse? Billpay { get; set; }
 #nullable restore
 #else
-        public BillPayResponse Billpay { get; set; }
+        public Marqeta.Core.Sdk.Models.BillPayResponse Billpay { get; set; }
 #endif
         /// <summary>Contains customer-provided information about the business that funded the transaction.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public Business_metadata? Business { get; set; }
+        public Marqeta.Core.Sdk.Models.Business_metadata? Business { get; set; }
 #nullable restore
 #else
-        public Business_metadata Business { get; set; }
+        public Marqeta.Core.Sdk.Models.Business_metadata Business { get; set; }
 #endif
         /// <summary>Unique identifier of the business that owns the account that funded the transaction.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -157,34 +158,34 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>Contains information about the card used in the transaction.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public Card_response? Card { get; set; }
+        public Marqeta.Core.Sdk.Models.Card_response? Card { get; set; }
 #nullable restore
 #else
-        public Card_response Card { get; set; }
+        public Marqeta.Core.Sdk.Models.Card_response Card { get; set; }
 #endif
         /// <summary>Contains information about the merchant.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public Transaction_card_acceptor? CardAcceptor { get; set; }
+        public Marqeta.Core.Sdk.Models.Transaction_card_acceptor? CardAcceptor { get; set; }
 #nullable restore
 #else
-        public Transaction_card_acceptor CardAcceptor { get; set; }
+        public Marqeta.Core.Sdk.Models.Transaction_card_acceptor CardAcceptor { get; set; }
 #endif
         /// <summary>Contains authentication data for 3D Secure and digital wallet token transactions:* `electronic_commerce_indicator` – The level of verification performed.* `verification_result` – The result of the verification.* `verification_value_created_by` – The transaction participant who determined the verification result.* `three_ds_message_version` – The 3D Secure message version used for authentication.* `authentication_method` – The 3D Secure authentication method.* `authentication_status` – The 3D Secure authentication status.* `acquirer_exemption` – Indicates a 3D Secure authentication exemption from the acquirer.* `issuer_exemption` – Indicates a 3D Secure authentication exemption from the issuer.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public Cardholder_authentication_data? CardholderAuthenticationData { get; set; }
+        public Marqeta.Core.Sdk.Models.Cardholder_authentication_data? CardholderAuthenticationData { get; set; }
 #nullable restore
 #else
-        public Cardholder_authentication_data CardholderAuthenticationData { get; set; }
+        public Marqeta.Core.Sdk.Models.Cardholder_authentication_data CardholderAuthenticationData { get; set; }
 #endif
         /// <summary>Contains information about a cardholder.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public User_card_holder_response? CardHolderModel { get; set; }
+        public Marqeta.Core.Sdk.Models.User_card_holder_response? CardHolderModel { get; set; }
 #nullable restore
 #else
-        public User_card_holder_response CardHolderModel { get; set; }
+        public Marqeta.Core.Sdk.Models.User_card_holder_response CardHolderModel { get; set; }
 #endif
         /// <summary>Unique identifier of the card product.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -197,10 +198,10 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>Contains information about a verification check performed on the card&apos;s security code.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public Card_security_code_verification? CardSecurityCodeVerification { get; set; }
+        public Marqeta.Core.Sdk.Models.Card_security_code_verification? CardSecurityCodeVerification { get; set; }
 #nullable restore
 #else
-        public Card_security_code_verification CardSecurityCodeVerification { get; set; }
+        public Marqeta.Core.Sdk.Models.Card_security_code_verification CardSecurityCodeVerification { get; set; }
 #endif
         /// <summary>Unique identifier of the card.Useful when a single account holder has multiple cards.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -215,10 +216,10 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>Contains the chargeback object associated with this transaction if a chargeback has been initiated.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public Chargeback_response? Chargeback { get; set; }
+        public Marqeta.Core.Sdk.Models.Chargeback_response? Chargeback { get; set; }
 #nullable restore
 #else
-        public Chargeback_response Chargeback { get; set; }
+        public Marqeta.Core.Sdk.Models.Chargeback_response Chargeback { get; set; }
 #endif
         /// <summary>A sequence number that identifies a specific clearing message among multiple clearing messages for an authorization.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -241,10 +242,10 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>Contains information about currency conversion.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public Currency_conversion? CurrencyConversion { get; set; }
+        public Marqeta.Core.Sdk.Models.Currency_conversion? CurrencyConversion { get; set; }
 #nullable restore
 #else
-        public Currency_conversion CurrencyConversion { get; set; }
+        public Marqeta.Core.Sdk.Models.Currency_conversion CurrencyConversion { get; set; }
 #endif
         /// <summary>The deferred_settlement_days property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -257,34 +258,34 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>Contains information about the digital wallet that funded the transaction.Returned for all transactions funded by a digital wallet or related to digital wallet token provisioning.For more on digital wallets, see the &lt;&lt;/core-api/digital-wallets-management, Digital Wallets Management&gt;&gt; API reference and &lt;&lt;/developer-guides/digital-wallets-and-tokenization, Digital Wallets and Tokenization&gt;&gt; developer guide.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public Digital_wallet_token? DigitalWalletToken { get; set; }
+        public Marqeta.Core.Sdk.Models.Digital_wallet_token? DigitalWalletToken { get; set; }
 #nullable restore
 #else
-        public Digital_wallet_token DigitalWalletToken { get; set; }
+        public Marqeta.Core.Sdk.Models.Digital_wallet_token DigitalWalletToken { get; set; }
 #endif
         /// <summary>The digital_wallet_token_transaction_service_provider_info property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public Digital_service_provider? DigitalWalletTokenTransactionServiceProviderInfo { get; set; }
+        public Marqeta.Core.Sdk.Models.Digital_service_provider? DigitalWalletTokenTransactionServiceProviderInfo { get; set; }
 #nullable restore
 #else
-        public Digital_service_provider DigitalWalletTokenTransactionServiceProviderInfo { get; set; }
+        public Marqeta.Core.Sdk.Models.Digital_service_provider DigitalWalletTokenTransactionServiceProviderInfo { get; set; }
 #endif
         /// <summary>Contains information about a direct deposit.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public DepositDepositResponse? DirectDeposit { get; set; }
+        public Marqeta.Core.Sdk.Models.DepositDepositResponse? DirectDeposit { get; set; }
 #nullable restore
 #else
-        public DepositDepositResponse DirectDeposit { get; set; }
+        public Marqeta.Core.Sdk.Models.DepositDepositResponse DirectDeposit { get; set; }
 #endif
         /// <summary>Contains information about a disputed transaction.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public DisputeModel? Dispute { get; set; }
+        public Marqeta.Core.Sdk.Models.DisputeModel? Dispute { get; set; }
 #nullable restore
 #else
-        public DisputeModel Dispute { get; set; }
+        public Marqeta.Core.Sdk.Models.DisputeModel Dispute { get; set; }
 #endif
         /// <summary>Duration of the transaction on Marqeta&apos;s servers, in milliseconds.</summary>
         public int? Duration { get; set; }
@@ -307,26 +308,26 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>List of fees associated with the transaction.This array is returned if it exists in the resource.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<Network_fee_model>? Fees { get; set; }
+        public List<Marqeta.Core.Sdk.Models.Network_fee_model>? Fees { get; set; }
 #nullable restore
 #else
-        public List<Network_fee_model> Fees { get; set; }
+        public List<Marqeta.Core.Sdk.Models.Network_fee_model> Fees { get; set; }
 #endif
         /// <summary>Contains information about a fee charge, including the amount, currency code, and user or business token.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public Fee_transfer_response? FeeTransfer { get; set; }
+        public Marqeta.Core.Sdk.Models.Fee_transfer_response? FeeTransfer { get; set; }
 #nullable restore
 #else
-        public Fee_transfer_response FeeTransfer { get; set; }
+        public Marqeta.Core.Sdk.Models.Fee_transfer_response FeeTransfer { get; set; }
 #endif
         /// <summary>Contains one or more fraud determinations by the card network that apply to either the transaction or the cardholder&apos;s account.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public Fraud_view? Fraud { get; set; }
+        public Marqeta.Core.Sdk.Models.Fraud_view? Fraud { get; set; }
 #nullable restore
 #else
-        public Fraud_view Fraud { get; set; }
+        public Marqeta.Core.Sdk.Models.Fraud_view Fraud { get; set; }
 #endif
         /// <summary>Specifies the account type for ATM transactions.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -339,26 +340,26 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>Returns general purpose account (GPA) balances for a user or business.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public Cardholder_balance? Gpa { get; set; }
+        public Marqeta.Core.Sdk.Models.Cardholder_balance? Gpa { get; set; }
 #nullable restore
 #else
-        public Cardholder_balance Gpa { get; set; }
+        public Marqeta.Core.Sdk.Models.Cardholder_balance Gpa { get; set; }
 #endif
         /// <summary>Contains information about a GPA order, including fees, funding sources, and addresses.See &lt;&lt;/core-api/gpa-orders, GPA Orders&gt;&gt; for more information.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public Gpa_response? GpaOrder { get; set; }
+        public Marqeta.Core.Sdk.Models.Gpa_response? GpaOrder { get; set; }
 #nullable restore
 #else
-        public Gpa_response GpaOrder { get; set; }
+        public Marqeta.Core.Sdk.Models.Gpa_response GpaOrder { get; set; }
 #endif
         /// <summary>Contains information about a GPA unload order.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public Gpa_returns? GpaOrderUnload { get; set; }
+        public Marqeta.Core.Sdk.Models.Gpa_returns? GpaOrderUnload { get; set; }
 #nullable restore
 #else
-        public Gpa_returns GpaOrderUnload { get; set; }
+        public Marqeta.Core.Sdk.Models.Gpa_returns GpaOrderUnload { get; set; }
 #endif
         /// <summary>Sequential identifier of the transaction.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -385,7 +386,7 @@ namespace Marqeta.Core.Sdk.Models {
         public string InterchangeRateDescriptor { get; set; }
 #endif
         /// <summary>The international service assessment indicator indicates if an ISA fee is applicable to the transaction.</summary>
-        public Transaction_model_isaIndicator? IsaIndicator { get; set; }
+        public Marqeta.Core.Sdk.Models.Transaction_model_isaIndicator? IsaIndicator { get; set; }
         /// <summary>Indicates the final clearing event for an authorization.If the final cleared amount is lower than the authorized amount, you must release the hold on the funds per the value in the `amount_to_be_released` field.</summary>
         public bool? IsFinalClearing { get; set; }
         /// <summary>Indicates if the transaction is a pre-authorization.</summary>
@@ -413,10 +414,10 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>The merchant property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public Merchant_response_model? Merchant { get; set; }
+        public Marqeta.Core.Sdk.Models.Merchant_response_model? Merchant { get; set; }
 #nullable restore
 #else
-        public Merchant_response_model Merchant { get; set; }
+        public Marqeta.Core.Sdk.Models.Merchant_response_model Merchant { get; set; }
 #endif
         /// <summary>Unique network identification value formed by combining the 6- to 9-character Mastercard Banknet Reference Number and the 4-digit settlement date for recurring payments and other merchant-initiated transactions.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -429,10 +430,10 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>The msa_order_unload property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public Msa_returns? MsaOrderUnload { get; set; }
+        public Marqeta.Core.Sdk.Models.Msa_returns? MsaOrderUnload { get; set; }
 #nullable restore
 #else
-        public Msa_returns MsaOrderUnload { get; set; }
+        public Marqeta.Core.Sdk.Models.Msa_returns MsaOrderUnload { get; set; }
 #endif
         /// <summary>If an authorization has multiple clearing transactions, this field displays their total number.For example, if an authorization has four clearing transactions, the sequence count is `04`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -469,10 +470,10 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>Contains network-related metadata for the transaction, including details about the card program and the card product.Returned if provided by the card network</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public Network_metadata? NetworkMetadata { get; set; }
+        public Marqeta.Core.Sdk.Models.Network_metadata? NetworkMetadata { get; set; }
 #nullable restore
 #else
-        public Network_metadata NetworkMetadata { get; set; }
+        public Marqeta.Core.Sdk.Models.Network_metadata NetworkMetadata { get; set; }
 #endif
         /// <summary>Network-assigned unique identifier of the transaction.Useful for settlement and reconciliation.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -485,21 +486,21 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>Contains information about an original credit transaction (OCT), which enables the cardholder to receive funds on the specified card from an external source via the card network.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public Original_credit? OriginalCredit { get; set; }
+        public Marqeta.Core.Sdk.Models.Original_credit? OriginalCredit { get; set; }
 #nullable restore
 #else
-        public Original_credit OriginalCredit { get; set; }
+        public Marqeta.Core.Sdk.Models.Original_credit OriginalCredit { get; set; }
 #endif
         /// <summary>Contains information about a peer transfer, including sender and recipient tokens, transfer amount, and currency code.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public Peer_transfer_response? PeerTransfer { get; set; }
+        public Marqeta.Core.Sdk.Models.Peer_transfer_response? PeerTransfer { get; set; }
 #nullable restore
 #else
-        public Peer_transfer_response PeerTransfer { get; set; }
+        public Marqeta.Core.Sdk.Models.Peer_transfer_response PeerTransfer { get; set; }
 #endif
         /// <summary>Indicates whether the transaction is credit or debit.</summary>
-        public Transaction_model_polarity? Polarity { get; set; }
+        public Marqeta.Core.Sdk.Models.Transaction_model_polarity? Polarity { get; set; }
         /// <summary>Contains information about the point of sale, including details on how the card was presented.Returned if provided by the card network, and the request uses Transaction Model v2 of the Marqeta Core API.Not returned for Transaction Model v1 requests.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -519,10 +520,10 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>Returned for `authorization.clearing` transaction types following a financial advice.Contains information about the preceding transaction.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public Preceding_transaction? PrecedingTransaction { get; set; }
+        public Marqeta.Core.Sdk.Models.Preceding_transaction? PrecedingTransaction { get; set; }
 #nullable restore
 #else
-        public Preceding_transaction PrecedingTransaction { get; set; }
+        public Marqeta.Core.Sdk.Models.Preceding_transaction PrecedingTransaction { get; set; }
 #endif
         /// <summary>Information about the program on the Marqeta platform.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -535,18 +536,18 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>Contains information about a program transfer, which moves funds from an account holder&apos;s GPA to a program funding source.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public Program_transfer_response? ProgramTransfer { get; set; }
+        public Marqeta.Core.Sdk.Models.Program_transfer_response? ProgramTransfer { get; set; }
 #nullable restore
 #else
-        public Program_transfer_response ProgramTransfer { get; set; }
+        public Marqeta.Core.Sdk.Models.Program_transfer_response ProgramTransfer { get; set; }
 #endif
         /// <summary>Contains information about a real-time fee group.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public Real_time_fee_group? RealTimeFeeGroup { get; set; }
+        public Marqeta.Core.Sdk.Models.Real_time_fee_group? RealTimeFeeGroup { get; set; }
 #nullable restore
 #else
-        public Real_time_fee_group RealTimeFeeGroup { get; set; }
+        public Marqeta.Core.Sdk.Models.Real_time_fee_group RealTimeFeeGroup { get; set; }
 #endif
         /// <summary>Merchant-requested amount, including any fees.</summary>
         public double? RequestAmount { get; set; }
@@ -593,14 +594,14 @@ namespace Marqeta.Core.Sdk.Models {
         public string StandinReason { get; set; }
 #endif
         /// <summary>Current state of the transaction.For more information about the `state` field, see &lt;&lt;/developer-guides/about-transactions#_the_transaction_lifecycle, The transaction lifecycle&gt;&gt;.</summary>
-        public Transaction_model_state? State { get; set; }
+        public Marqeta.Core.Sdk.Models.Transaction_model_state? State { get; set; }
         /// <summary>The store property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public Store_response_model? Store { get; set; }
+        public Marqeta.Core.Sdk.Models.Store_response_model? Store { get; set; }
 #nullable restore
 #else
-        public Store_response_model Store { get; set; }
+        public Marqeta.Core.Sdk.Models.Store_response_model Store { get; set; }
 #endif
         /// <summary>Indicates which subnetwork was used to complete the transaction.Possible values include the following:* *VISANET* – Used for VisaNet signature-based transactions.* *VISANETDEBIT* – Used for VisaNet Debit PIN-based transaction.* *VISAINTERLINK* – Used for Visa Interlink PIN-based transactions.* *VISAPLUS* – Used for ATM withdrawals on Visa.* *MAESTRO* – Used for PIN-based transactions on Mastercard.* *CIRRUS* – Used for ATM withdrawals on Mastercard.* *MASTERCARDDEBIT* – Used for signature-based transactions on Mastercard.* *GATEWAY_JIT* – Used for Gateway JIT Funding transactions.* *MANAGED_JIT* – Used for Managed JIT Funding transactions or for transactions that occur while Commando Mode is enabled.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -621,28 +622,28 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>Additional transaction attributes.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public Transaction_model_transaction_attributes? TransactionAttributes { get; set; }
+        public Marqeta.Core.Sdk.Models.Transaction_model_transaction_attributes? TransactionAttributes { get; set; }
 #nullable restore
 #else
-        public Transaction_model_transaction_attributes TransactionAttributes { get; set; }
+        public Marqeta.Core.Sdk.Models.Transaction_model_transaction_attributes TransactionAttributes { get; set; }
 #endif
         /// <summary>Contains merchant-provided metadata related to the transaction, including details about lodging- and transit-related purchases.May be returned if the request uses Transaction Model v2 of the Marqeta Core API.Not returned for Transaction Model v1 requests.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public Transaction_metadata? TransactionMetadata { get; set; }
+        public Marqeta.Core.Sdk.Models.Transaction_metadata? TransactionMetadata { get; set; }
 #nullable restore
 #else
-        public Transaction_metadata TransactionMetadata { get; set; }
+        public Marqeta.Core.Sdk.Models.Transaction_metadata TransactionMetadata { get; set; }
 #endif
         /// <summary>Transaction event type.For more information about the `type` field, see &lt;&lt;/core-api/event-types#_transaction_events, Transaction events&gt;&gt;.</summary>
-        public Transaction_model_type? Type { get; set; }
+        public Marqeta.Core.Sdk.Models.Transaction_model_type? Type { get; set; }
         /// <summary>Contains customer-provided information about the cardholder that performed the transaction.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public Cardholder_metadata? User { get; set; }
+        public Marqeta.Core.Sdk.Models.Cardholder_metadata? User { get; set; }
 #nullable restore
 #else
-        public Cardholder_metadata User { get; set; }
+        public Marqeta.Core.Sdk.Models.Cardholder_metadata User { get; set; }
 #endif
         /// <summary>Unique identifier of the user who owns the account that funded the transaction; subsequent related transactions retain the same `user_token`, even if the card used to complete the transaction moves to another user.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -655,7 +656,7 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>Date and time when the user initiated the transaction, in UTC.For example, when a merchant performed the original authorization for a refund.</summary>
         public DateTimeOffset? UserTransactionTime { get; set; }
         /// <summary>
-        /// Instantiates a new <see cref="Transaction_model"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Models.Transaction_model"/> and sets the default values.
         /// </summary>
         public Transaction_model()
         {
@@ -664,12 +665,12 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="Transaction_model"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Models.Transaction_model"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static Transaction_model CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static Marqeta.Core.Sdk.Models.Transaction_model CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-            return new Transaction_model();
+            return new Marqeta.Core.Sdk.Models.Transaction_model();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -679,99 +680,99 @@ namespace Marqeta.Core.Sdk.Models {
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                {"account_funding", n => { AccountFunding = n.GetObjectValue<Account_funding>(Account_funding.CreateFromDiscriminatorValue); } },
-                {"account_name_verification", n => { AccountNameVerification = n.GetObjectValue<Account_name_verification_model>(Account_name_verification_model.CreateFromDiscriminatorValue); } },
-                {"acquirer", n => { Acquirer = n.GetObjectValue<Marqeta.Core.Sdk.Models.Acquirer>(Marqeta.Core.Sdk.Models.Acquirer.CreateFromDiscriminatorValue); } },
-                {"acquirer_fee_amount", n => { AcquirerFeeAmount = n.GetDoubleValue(); } },
-                {"acquirer_reference_data", n => { AcquirerReferenceData = n.GetStringValue(); } },
-                {"acquirer_reference_id", n => { AcquirerReferenceId = n.GetStringValue(); } },
-                {"acting_user_token", n => { ActingUserToken = n.GetStringValue(); } },
-                {"address_verification", n => { AddressVerification = n.GetObjectValue<Address_verification_model>(Address_verification_model.CreateFromDiscriminatorValue); } },
-                {"advice_reason_code", n => { AdviceReasonCode = n.GetStringValue(); } },
-                {"advice_reason_details", n => { AdviceReasonDetails = n.GetStringValue(); } },
-                {"amount", n => { Amount = n.GetDoubleValue(); } },
-                {"amount_to_be_released", n => { AmountToBeReleased = n.GetDoubleValue(); } },
-                {"approval_code", n => { ApprovalCode = n.GetStringValue(); } },
-                {"atc_information", n => { AtcInformation = n.GetObjectValue<Atc_information>(Atc_information.CreateFromDiscriminatorValue); } },
-                {"auto_reload", n => { AutoReload = n.GetObjectValue<Auto_reload_model>(Auto_reload_model.CreateFromDiscriminatorValue); } },
-                {"bank_transfer_token", n => { BankTransferToken = n.GetStringValue(); } },
-                {"batch_number", n => { BatchNumber = n.GetStringValue(); } },
-                {"billpay", n => { Billpay = n.GetObjectValue<BillPayResponse>(BillPayResponse.CreateFromDiscriminatorValue); } },
-                {"business", n => { Business = n.GetObjectValue<Business_metadata>(Business_metadata.CreateFromDiscriminatorValue); } },
-                {"business_token", n => { BusinessToken = n.GetStringValue(); } },
-                {"card", n => { Card = n.GetObjectValue<Card_response>(Card_response.CreateFromDiscriminatorValue); } },
-                {"card_acceptor", n => { CardAcceptor = n.GetObjectValue<Transaction_card_acceptor>(Transaction_card_acceptor.CreateFromDiscriminatorValue); } },
-                {"card_holder_model", n => { CardHolderModel = n.GetObjectValue<User_card_holder_response>(User_card_holder_response.CreateFromDiscriminatorValue); } },
-                {"card_product_token", n => { CardProductToken = n.GetStringValue(); } },
-                {"card_security_code_verification", n => { CardSecurityCodeVerification = n.GetObjectValue<Card_security_code_verification>(Card_security_code_verification.CreateFromDiscriminatorValue); } },
-                {"card_token", n => { CardToken = n.GetStringValue(); } },
-                {"cardholder_authentication_data", n => { CardholderAuthenticationData = n.GetObjectValue<Cardholder_authentication_data>(Cardholder_authentication_data.CreateFromDiscriminatorValue); } },
-                {"cash_back_amount", n => { CashBackAmount = n.GetDoubleValue(); } },
-                {"chargeback", n => { Chargeback = n.GetObjectValue<Chargeback_response>(Chargeback_response.CreateFromDiscriminatorValue); } },
-                {"clearing_record_sequence_number", n => { ClearingRecordSequenceNumber = n.GetStringValue(); } },
-                {"created_time", n => { CreatedTime = n.GetDateTimeOffsetValue(); } },
-                {"currency_code", n => { CurrencyCode = n.GetStringValue(); } },
-                {"currency_conversion", n => { CurrencyConversion = n.GetObjectValue<Currency_conversion>(Currency_conversion.CreateFromDiscriminatorValue); } },
-                {"deferred_settlement_days", n => { DeferredSettlementDays = n.GetStringValue(); } },
-                {"digital_wallet_token", n => { DigitalWalletToken = n.GetObjectValue<Digital_wallet_token>(Digital_wallet_token.CreateFromDiscriminatorValue); } },
-                {"digital_wallet_token_transaction_service_provider_info", n => { DigitalWalletTokenTransactionServiceProviderInfo = n.GetObjectValue<Digital_service_provider>(Digital_service_provider.CreateFromDiscriminatorValue); } },
-                {"direct_deposit", n => { DirectDeposit = n.GetObjectValue<DepositDepositResponse>(DepositDepositResponse.CreateFromDiscriminatorValue); } },
-                {"dispute", n => { Dispute = n.GetObjectValue<DisputeModel>(DisputeModel.CreateFromDiscriminatorValue); } },
-                {"duration", n => { Duration = n.GetIntValue(); } },
-                {"enhanced_data_token", n => { EnhancedDataToken = n.GetStringValue(); } },
-                {"fee", n => { Fee = n.GetObjectValue<Marqeta.Core.Sdk.Models.Fee>(Marqeta.Core.Sdk.Models.Fee.CreateFromDiscriminatorValue); } },
-                {"fee_transfer", n => { FeeTransfer = n.GetObjectValue<Fee_transfer_response>(Fee_transfer_response.CreateFromDiscriminatorValue); } },
-                {"fees", n => { Fees = n.GetCollectionOfObjectValues<Network_fee_model>(Network_fee_model.CreateFromDiscriminatorValue)?.ToList(); } },
-                {"fraud", n => { Fraud = n.GetObjectValue<Fraud_view>(Fraud_view.CreateFromDiscriminatorValue); } },
-                {"from_account", n => { FromAccount = n.GetStringValue(); } },
-                {"gpa", n => { Gpa = n.GetObjectValue<Cardholder_balance>(Cardholder_balance.CreateFromDiscriminatorValue); } },
-                {"gpa_order", n => { GpaOrder = n.GetObjectValue<Gpa_response>(Gpa_response.CreateFromDiscriminatorValue); } },
-                {"gpa_order_unload", n => { GpaOrderUnload = n.GetObjectValue<Gpa_returns>(Gpa_returns.CreateFromDiscriminatorValue); } },
-                {"identifier", n => { Identifier = n.GetStringValue(); } },
-                {"incremental_authorization_transaction_tokens", n => { IncrementalAuthorizationTransactionTokens = n.GetCollectionOfPrimitiveValues<string>()?.ToList(); } },
-                {"interchange_rate_descriptor", n => { InterchangeRateDescriptor = n.GetStringValue(); } },
-                {"is_final_clearing", n => { IsFinalClearing = n.GetBoolValue(); } },
-                {"is_preauthorization", n => { IsPreauthorization = n.GetBoolValue(); } },
-                {"isaIndicator", n => { IsaIndicator = n.GetEnumValue<Transaction_model_isaIndicator>(); } },
-                {"issuer_interchange_amount", n => { IssuerInterchangeAmount = n.GetDoubleValue(); } },
-                {"issuer_payment_node", n => { IssuerPaymentNode = n.GetStringValue(); } },
-                {"issuer_received_time", n => { IssuerReceivedTime = n.GetStringValue(); } },
-                {"local_transaction_date", n => { LocalTransactionDate = n.GetDateTimeOffsetValue(); } },
-                {"merchant", n => { Merchant = n.GetObjectValue<Merchant_response_model>(Merchant_response_model.CreateFromDiscriminatorValue); } },
-                {"merchant_initiated_original_trace_id", n => { MerchantInitiatedOriginalTraceId = n.GetStringValue(); } },
-                {"msa_order_unload", n => { MsaOrderUnload = n.GetObjectValue<Msa_returns>(Msa_returns.CreateFromDiscriminatorValue); } },
-                {"multi_clearing_sequence_count", n => { MultiClearingSequenceCount = n.GetStringValue(); } },
-                {"multi_clearing_sequence_number", n => { MultiClearingSequenceNumber = n.GetStringValue(); } },
-                {"national_net_cpd_of_original", n => { NationalNetCpdOfOriginal = n.GetStringValue(); } },
-                {"network", n => { Network = n.GetStringValue(); } },
-                {"network_metadata", n => { NetworkMetadata = n.GetObjectValue<Network_metadata>(Network_metadata.CreateFromDiscriminatorValue); } },
-                {"network_reference_id", n => { NetworkReferenceId = n.GetStringValue(); } },
-                {"original_credit", n => { OriginalCredit = n.GetObjectValue<Original_credit>(Original_credit.CreateFromDiscriminatorValue); } },
-                {"peer_transfer", n => { PeerTransfer = n.GetObjectValue<Peer_transfer_response>(Peer_transfer_response.CreateFromDiscriminatorValue); } },
-                {"polarity", n => { Polarity = n.GetEnumValue<Transaction_model_polarity>(); } },
-                {"pos", n => { Pos = n.GetObjectValue<Marqeta.Core.Sdk.Models.Pos>(Marqeta.Core.Sdk.Models.Pos.CreateFromDiscriminatorValue); } },
-                {"preceding_related_transaction_token", n => { PrecedingRelatedTransactionToken = n.GetStringValue(); } },
-                {"preceding_transaction", n => { PrecedingTransaction = n.GetObjectValue<Preceding_transaction>(Preceding_transaction.CreateFromDiscriminatorValue); } },
-                {"program", n => { Program = n.GetObjectValue<Marqeta.Core.Sdk.Models.Program>(Marqeta.Core.Sdk.Models.Program.CreateFromDiscriminatorValue); } },
-                {"program_transfer", n => { ProgramTransfer = n.GetObjectValue<Program_transfer_response>(Program_transfer_response.CreateFromDiscriminatorValue); } },
-                {"real_time_fee_group", n => { RealTimeFeeGroup = n.GetObjectValue<Real_time_fee_group>(Real_time_fee_group.CreateFromDiscriminatorValue); } },
-                {"request_amount", n => { RequestAmount = n.GetDoubleValue(); } },
-                {"response", n => { Response = n.GetObjectValue<Marqeta.Core.Sdk.Models.Response>(Marqeta.Core.Sdk.Models.Response.CreateFromDiscriminatorValue); } },
-                {"settlement_date", n => { SettlementDate = n.GetDateTimeOffsetValue(); } },
-                {"settlement_indicator", n => { SettlementIndicator = n.GetStringValue(); } },
-                {"standin_approved_by", n => { StandinApprovedBy = n.GetStringValue(); } },
-                {"standin_by", n => { StandinBy = n.GetStringValue(); } },
-                {"standin_reason", n => { StandinReason = n.GetStringValue(); } },
-                {"state", n => { State = n.GetEnumValue<Transaction_model_state>(); } },
-                {"store", n => { Store = n.GetObjectValue<Store_response_model>(Store_response_model.CreateFromDiscriminatorValue); } },
-                {"subnetwork", n => { Subnetwork = n.GetStringValue(); } },
-                {"token", n => { Token = n.GetStringValue(); } },
-                {"transaction_attributes", n => { TransactionAttributes = n.GetObjectValue<Transaction_model_transaction_attributes>(Transaction_model_transaction_attributes.CreateFromDiscriminatorValue); } },
-                {"transaction_metadata", n => { TransactionMetadata = n.GetObjectValue<Transaction_metadata>(Transaction_metadata.CreateFromDiscriminatorValue); } },
-                {"type", n => { Type = n.GetEnumValue<Transaction_model_type>(); } },
-                {"user", n => { User = n.GetObjectValue<Cardholder_metadata>(Cardholder_metadata.CreateFromDiscriminatorValue); } },
-                {"user_token", n => { UserToken = n.GetStringValue(); } },
-                {"user_transaction_time", n => { UserTransactionTime = n.GetDateTimeOffsetValue(); } },
+                { "account_funding", n => { AccountFunding = n.GetObjectValue<Marqeta.Core.Sdk.Models.Account_funding>(Marqeta.Core.Sdk.Models.Account_funding.CreateFromDiscriminatorValue); } },
+                { "account_name_verification", n => { AccountNameVerification = n.GetObjectValue<Marqeta.Core.Sdk.Models.Account_name_verification_model>(Marqeta.Core.Sdk.Models.Account_name_verification_model.CreateFromDiscriminatorValue); } },
+                { "acquirer", n => { Acquirer = n.GetObjectValue<Marqeta.Core.Sdk.Models.Acquirer>(Marqeta.Core.Sdk.Models.Acquirer.CreateFromDiscriminatorValue); } },
+                { "acquirer_fee_amount", n => { AcquirerFeeAmount = n.GetDoubleValue(); } },
+                { "acquirer_reference_data", n => { AcquirerReferenceData = n.GetStringValue(); } },
+                { "acquirer_reference_id", n => { AcquirerReferenceId = n.GetStringValue(); } },
+                { "acting_user_token", n => { ActingUserToken = n.GetStringValue(); } },
+                { "address_verification", n => { AddressVerification = n.GetObjectValue<Marqeta.Core.Sdk.Models.Address_verification_model>(Marqeta.Core.Sdk.Models.Address_verification_model.CreateFromDiscriminatorValue); } },
+                { "advice_reason_code", n => { AdviceReasonCode = n.GetStringValue(); } },
+                { "advice_reason_details", n => { AdviceReasonDetails = n.GetStringValue(); } },
+                { "amount", n => { Amount = n.GetDoubleValue(); } },
+                { "amount_to_be_released", n => { AmountToBeReleased = n.GetDoubleValue(); } },
+                { "approval_code", n => { ApprovalCode = n.GetStringValue(); } },
+                { "atc_information", n => { AtcInformation = n.GetObjectValue<Marqeta.Core.Sdk.Models.Atc_information>(Marqeta.Core.Sdk.Models.Atc_information.CreateFromDiscriminatorValue); } },
+                { "auto_reload", n => { AutoReload = n.GetObjectValue<Marqeta.Core.Sdk.Models.Auto_reload_model>(Marqeta.Core.Sdk.Models.Auto_reload_model.CreateFromDiscriminatorValue); } },
+                { "bank_transfer_token", n => { BankTransferToken = n.GetStringValue(); } },
+                { "batch_number", n => { BatchNumber = n.GetStringValue(); } },
+                { "billpay", n => { Billpay = n.GetObjectValue<Marqeta.Core.Sdk.Models.BillPayResponse>(Marqeta.Core.Sdk.Models.BillPayResponse.CreateFromDiscriminatorValue); } },
+                { "business", n => { Business = n.GetObjectValue<Marqeta.Core.Sdk.Models.Business_metadata>(Marqeta.Core.Sdk.Models.Business_metadata.CreateFromDiscriminatorValue); } },
+                { "business_token", n => { BusinessToken = n.GetStringValue(); } },
+                { "card", n => { Card = n.GetObjectValue<Marqeta.Core.Sdk.Models.Card_response>(Marqeta.Core.Sdk.Models.Card_response.CreateFromDiscriminatorValue); } },
+                { "card_acceptor", n => { CardAcceptor = n.GetObjectValue<Marqeta.Core.Sdk.Models.Transaction_card_acceptor>(Marqeta.Core.Sdk.Models.Transaction_card_acceptor.CreateFromDiscriminatorValue); } },
+                { "card_holder_model", n => { CardHolderModel = n.GetObjectValue<Marqeta.Core.Sdk.Models.User_card_holder_response>(Marqeta.Core.Sdk.Models.User_card_holder_response.CreateFromDiscriminatorValue); } },
+                { "card_product_token", n => { CardProductToken = n.GetStringValue(); } },
+                { "card_security_code_verification", n => { CardSecurityCodeVerification = n.GetObjectValue<Marqeta.Core.Sdk.Models.Card_security_code_verification>(Marqeta.Core.Sdk.Models.Card_security_code_verification.CreateFromDiscriminatorValue); } },
+                { "card_token", n => { CardToken = n.GetStringValue(); } },
+                { "cardholder_authentication_data", n => { CardholderAuthenticationData = n.GetObjectValue<Marqeta.Core.Sdk.Models.Cardholder_authentication_data>(Marqeta.Core.Sdk.Models.Cardholder_authentication_data.CreateFromDiscriminatorValue); } },
+                { "cash_back_amount", n => { CashBackAmount = n.GetDoubleValue(); } },
+                { "chargeback", n => { Chargeback = n.GetObjectValue<Marqeta.Core.Sdk.Models.Chargeback_response>(Marqeta.Core.Sdk.Models.Chargeback_response.CreateFromDiscriminatorValue); } },
+                { "clearing_record_sequence_number", n => { ClearingRecordSequenceNumber = n.GetStringValue(); } },
+                { "created_time", n => { CreatedTime = n.GetDateTimeOffsetValue(); } },
+                { "currency_code", n => { CurrencyCode = n.GetStringValue(); } },
+                { "currency_conversion", n => { CurrencyConversion = n.GetObjectValue<Marqeta.Core.Sdk.Models.Currency_conversion>(Marqeta.Core.Sdk.Models.Currency_conversion.CreateFromDiscriminatorValue); } },
+                { "deferred_settlement_days", n => { DeferredSettlementDays = n.GetStringValue(); } },
+                { "digital_wallet_token", n => { DigitalWalletToken = n.GetObjectValue<Marqeta.Core.Sdk.Models.Digital_wallet_token>(Marqeta.Core.Sdk.Models.Digital_wallet_token.CreateFromDiscriminatorValue); } },
+                { "digital_wallet_token_transaction_service_provider_info", n => { DigitalWalletTokenTransactionServiceProviderInfo = n.GetObjectValue<Marqeta.Core.Sdk.Models.Digital_service_provider>(Marqeta.Core.Sdk.Models.Digital_service_provider.CreateFromDiscriminatorValue); } },
+                { "direct_deposit", n => { DirectDeposit = n.GetObjectValue<Marqeta.Core.Sdk.Models.DepositDepositResponse>(Marqeta.Core.Sdk.Models.DepositDepositResponse.CreateFromDiscriminatorValue); } },
+                { "dispute", n => { Dispute = n.GetObjectValue<Marqeta.Core.Sdk.Models.DisputeModel>(Marqeta.Core.Sdk.Models.DisputeModel.CreateFromDiscriminatorValue); } },
+                { "duration", n => { Duration = n.GetIntValue(); } },
+                { "enhanced_data_token", n => { EnhancedDataToken = n.GetStringValue(); } },
+                { "fee", n => { Fee = n.GetObjectValue<Marqeta.Core.Sdk.Models.Fee>(Marqeta.Core.Sdk.Models.Fee.CreateFromDiscriminatorValue); } },
+                { "fee_transfer", n => { FeeTransfer = n.GetObjectValue<Marqeta.Core.Sdk.Models.Fee_transfer_response>(Marqeta.Core.Sdk.Models.Fee_transfer_response.CreateFromDiscriminatorValue); } },
+                { "fees", n => { Fees = n.GetCollectionOfObjectValues<Marqeta.Core.Sdk.Models.Network_fee_model>(Marqeta.Core.Sdk.Models.Network_fee_model.CreateFromDiscriminatorValue)?.ToList(); } },
+                { "fraud", n => { Fraud = n.GetObjectValue<Marqeta.Core.Sdk.Models.Fraud_view>(Marqeta.Core.Sdk.Models.Fraud_view.CreateFromDiscriminatorValue); } },
+                { "from_account", n => { FromAccount = n.GetStringValue(); } },
+                { "gpa", n => { Gpa = n.GetObjectValue<Marqeta.Core.Sdk.Models.Cardholder_balance>(Marqeta.Core.Sdk.Models.Cardholder_balance.CreateFromDiscriminatorValue); } },
+                { "gpa_order", n => { GpaOrder = n.GetObjectValue<Marqeta.Core.Sdk.Models.Gpa_response>(Marqeta.Core.Sdk.Models.Gpa_response.CreateFromDiscriminatorValue); } },
+                { "gpa_order_unload", n => { GpaOrderUnload = n.GetObjectValue<Marqeta.Core.Sdk.Models.Gpa_returns>(Marqeta.Core.Sdk.Models.Gpa_returns.CreateFromDiscriminatorValue); } },
+                { "identifier", n => { Identifier = n.GetStringValue(); } },
+                { "incremental_authorization_transaction_tokens", n => { IncrementalAuthorizationTransactionTokens = n.GetCollectionOfPrimitiveValues<string>()?.ToList(); } },
+                { "interchange_rate_descriptor", n => { InterchangeRateDescriptor = n.GetStringValue(); } },
+                { "is_final_clearing", n => { IsFinalClearing = n.GetBoolValue(); } },
+                { "is_preauthorization", n => { IsPreauthorization = n.GetBoolValue(); } },
+                { "isaIndicator", n => { IsaIndicator = n.GetEnumValue<Marqeta.Core.Sdk.Models.Transaction_model_isaIndicator>(); } },
+                { "issuer_interchange_amount", n => { IssuerInterchangeAmount = n.GetDoubleValue(); } },
+                { "issuer_payment_node", n => { IssuerPaymentNode = n.GetStringValue(); } },
+                { "issuer_received_time", n => { IssuerReceivedTime = n.GetStringValue(); } },
+                { "local_transaction_date", n => { LocalTransactionDate = n.GetDateTimeOffsetValue(); } },
+                { "merchant", n => { Merchant = n.GetObjectValue<Marqeta.Core.Sdk.Models.Merchant_response_model>(Marqeta.Core.Sdk.Models.Merchant_response_model.CreateFromDiscriminatorValue); } },
+                { "merchant_initiated_original_trace_id", n => { MerchantInitiatedOriginalTraceId = n.GetStringValue(); } },
+                { "msa_order_unload", n => { MsaOrderUnload = n.GetObjectValue<Marqeta.Core.Sdk.Models.Msa_returns>(Marqeta.Core.Sdk.Models.Msa_returns.CreateFromDiscriminatorValue); } },
+                { "multi_clearing_sequence_count", n => { MultiClearingSequenceCount = n.GetStringValue(); } },
+                { "multi_clearing_sequence_number", n => { MultiClearingSequenceNumber = n.GetStringValue(); } },
+                { "national_net_cpd_of_original", n => { NationalNetCpdOfOriginal = n.GetStringValue(); } },
+                { "network", n => { Network = n.GetStringValue(); } },
+                { "network_metadata", n => { NetworkMetadata = n.GetObjectValue<Marqeta.Core.Sdk.Models.Network_metadata>(Marqeta.Core.Sdk.Models.Network_metadata.CreateFromDiscriminatorValue); } },
+                { "network_reference_id", n => { NetworkReferenceId = n.GetStringValue(); } },
+                { "original_credit", n => { OriginalCredit = n.GetObjectValue<Marqeta.Core.Sdk.Models.Original_credit>(Marqeta.Core.Sdk.Models.Original_credit.CreateFromDiscriminatorValue); } },
+                { "peer_transfer", n => { PeerTransfer = n.GetObjectValue<Marqeta.Core.Sdk.Models.Peer_transfer_response>(Marqeta.Core.Sdk.Models.Peer_transfer_response.CreateFromDiscriminatorValue); } },
+                { "polarity", n => { Polarity = n.GetEnumValue<Marqeta.Core.Sdk.Models.Transaction_model_polarity>(); } },
+                { "pos", n => { Pos = n.GetObjectValue<Marqeta.Core.Sdk.Models.Pos>(Marqeta.Core.Sdk.Models.Pos.CreateFromDiscriminatorValue); } },
+                { "preceding_related_transaction_token", n => { PrecedingRelatedTransactionToken = n.GetStringValue(); } },
+                { "preceding_transaction", n => { PrecedingTransaction = n.GetObjectValue<Marqeta.Core.Sdk.Models.Preceding_transaction>(Marqeta.Core.Sdk.Models.Preceding_transaction.CreateFromDiscriminatorValue); } },
+                { "program", n => { Program = n.GetObjectValue<Marqeta.Core.Sdk.Models.Program>(Marqeta.Core.Sdk.Models.Program.CreateFromDiscriminatorValue); } },
+                { "program_transfer", n => { ProgramTransfer = n.GetObjectValue<Marqeta.Core.Sdk.Models.Program_transfer_response>(Marqeta.Core.Sdk.Models.Program_transfer_response.CreateFromDiscriminatorValue); } },
+                { "real_time_fee_group", n => { RealTimeFeeGroup = n.GetObjectValue<Marqeta.Core.Sdk.Models.Real_time_fee_group>(Marqeta.Core.Sdk.Models.Real_time_fee_group.CreateFromDiscriminatorValue); } },
+                { "request_amount", n => { RequestAmount = n.GetDoubleValue(); } },
+                { "response", n => { Response = n.GetObjectValue<Marqeta.Core.Sdk.Models.Response>(Marqeta.Core.Sdk.Models.Response.CreateFromDiscriminatorValue); } },
+                { "settlement_date", n => { SettlementDate = n.GetDateTimeOffsetValue(); } },
+                { "settlement_indicator", n => { SettlementIndicator = n.GetStringValue(); } },
+                { "standin_approved_by", n => { StandinApprovedBy = n.GetStringValue(); } },
+                { "standin_by", n => { StandinBy = n.GetStringValue(); } },
+                { "standin_reason", n => { StandinReason = n.GetStringValue(); } },
+                { "state", n => { State = n.GetEnumValue<Marqeta.Core.Sdk.Models.Transaction_model_state>(); } },
+                { "store", n => { Store = n.GetObjectValue<Marqeta.Core.Sdk.Models.Store_response_model>(Marqeta.Core.Sdk.Models.Store_response_model.CreateFromDiscriminatorValue); } },
+                { "subnetwork", n => { Subnetwork = n.GetStringValue(); } },
+                { "token", n => { Token = n.GetStringValue(); } },
+                { "transaction_attributes", n => { TransactionAttributes = n.GetObjectValue<Marqeta.Core.Sdk.Models.Transaction_model_transaction_attributes>(Marqeta.Core.Sdk.Models.Transaction_model_transaction_attributes.CreateFromDiscriminatorValue); } },
+                { "transaction_metadata", n => { TransactionMetadata = n.GetObjectValue<Marqeta.Core.Sdk.Models.Transaction_metadata>(Marqeta.Core.Sdk.Models.Transaction_metadata.CreateFromDiscriminatorValue); } },
+                { "type", n => { Type = n.GetEnumValue<Marqeta.Core.Sdk.Models.Transaction_model_type>(); } },
+                { "user", n => { User = n.GetObjectValue<Marqeta.Core.Sdk.Models.Cardholder_metadata>(Marqeta.Core.Sdk.Models.Cardholder_metadata.CreateFromDiscriminatorValue); } },
+                { "user_token", n => { UserToken = n.GetStringValue(); } },
+                { "user_transaction_time", n => { UserTransactionTime = n.GetDateTimeOffsetValue(); } },
             };
         }
         /// <summary>
@@ -781,82 +782,82 @@ namespace Marqeta.Core.Sdk.Models {
         public virtual void Serialize(ISerializationWriter writer)
         {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<Account_funding>("account_funding", AccountFunding);
-            writer.WriteObjectValue<Account_name_verification_model>("account_name_verification", AccountNameVerification);
+            writer.WriteObjectValue<Marqeta.Core.Sdk.Models.Account_funding>("account_funding", AccountFunding);
+            writer.WriteObjectValue<Marqeta.Core.Sdk.Models.Account_name_verification_model>("account_name_verification", AccountNameVerification);
             writer.WriteObjectValue<Marqeta.Core.Sdk.Models.Acquirer>("acquirer", Acquirer);
             writer.WriteDoubleValue("acquirer_fee_amount", AcquirerFeeAmount);
             writer.WriteStringValue("acquirer_reference_data", AcquirerReferenceData);
             writer.WriteStringValue("acquirer_reference_id", AcquirerReferenceId);
             writer.WriteStringValue("acting_user_token", ActingUserToken);
-            writer.WriteObjectValue<Address_verification_model>("address_verification", AddressVerification);
+            writer.WriteObjectValue<Marqeta.Core.Sdk.Models.Address_verification_model>("address_verification", AddressVerification);
             writer.WriteStringValue("advice_reason_code", AdviceReasonCode);
             writer.WriteStringValue("advice_reason_details", AdviceReasonDetails);
             writer.WriteDoubleValue("amount", Amount);
             writer.WriteDoubleValue("amount_to_be_released", AmountToBeReleased);
             writer.WriteStringValue("approval_code", ApprovalCode);
-            writer.WriteObjectValue<Atc_information>("atc_information", AtcInformation);
-            writer.WriteObjectValue<Auto_reload_model>("auto_reload", AutoReload);
+            writer.WriteObjectValue<Marqeta.Core.Sdk.Models.Atc_information>("atc_information", AtcInformation);
+            writer.WriteObjectValue<Marqeta.Core.Sdk.Models.Auto_reload_model>("auto_reload", AutoReload);
             writer.WriteStringValue("bank_transfer_token", BankTransferToken);
             writer.WriteStringValue("batch_number", BatchNumber);
-            writer.WriteObjectValue<BillPayResponse>("billpay", Billpay);
-            writer.WriteObjectValue<Business_metadata>("business", Business);
+            writer.WriteObjectValue<Marqeta.Core.Sdk.Models.BillPayResponse>("billpay", Billpay);
+            writer.WriteObjectValue<Marqeta.Core.Sdk.Models.Business_metadata>("business", Business);
             writer.WriteStringValue("business_token", BusinessToken);
-            writer.WriteObjectValue<Card_response>("card", Card);
-            writer.WriteObjectValue<Transaction_card_acceptor>("card_acceptor", CardAcceptor);
-            writer.WriteObjectValue<Cardholder_authentication_data>("cardholder_authentication_data", CardholderAuthenticationData);
-            writer.WriteObjectValue<User_card_holder_response>("card_holder_model", CardHolderModel);
+            writer.WriteObjectValue<Marqeta.Core.Sdk.Models.Card_response>("card", Card);
+            writer.WriteObjectValue<Marqeta.Core.Sdk.Models.Transaction_card_acceptor>("card_acceptor", CardAcceptor);
+            writer.WriteObjectValue<Marqeta.Core.Sdk.Models.Cardholder_authentication_data>("cardholder_authentication_data", CardholderAuthenticationData);
+            writer.WriteObjectValue<Marqeta.Core.Sdk.Models.User_card_holder_response>("card_holder_model", CardHolderModel);
             writer.WriteStringValue("card_product_token", CardProductToken);
-            writer.WriteObjectValue<Card_security_code_verification>("card_security_code_verification", CardSecurityCodeVerification);
+            writer.WriteObjectValue<Marqeta.Core.Sdk.Models.Card_security_code_verification>("card_security_code_verification", CardSecurityCodeVerification);
             writer.WriteStringValue("card_token", CardToken);
             writer.WriteDoubleValue("cash_back_amount", CashBackAmount);
-            writer.WriteObjectValue<Chargeback_response>("chargeback", Chargeback);
+            writer.WriteObjectValue<Marqeta.Core.Sdk.Models.Chargeback_response>("chargeback", Chargeback);
             writer.WriteStringValue("clearing_record_sequence_number", ClearingRecordSequenceNumber);
             writer.WriteDateTimeOffsetValue("created_time", CreatedTime);
             writer.WriteStringValue("currency_code", CurrencyCode);
-            writer.WriteObjectValue<Currency_conversion>("currency_conversion", CurrencyConversion);
+            writer.WriteObjectValue<Marqeta.Core.Sdk.Models.Currency_conversion>("currency_conversion", CurrencyConversion);
             writer.WriteStringValue("deferred_settlement_days", DeferredSettlementDays);
-            writer.WriteObjectValue<Digital_wallet_token>("digital_wallet_token", DigitalWalletToken);
-            writer.WriteObjectValue<Digital_service_provider>("digital_wallet_token_transaction_service_provider_info", DigitalWalletTokenTransactionServiceProviderInfo);
-            writer.WriteObjectValue<DepositDepositResponse>("direct_deposit", DirectDeposit);
-            writer.WriteObjectValue<DisputeModel>("dispute", Dispute);
+            writer.WriteObjectValue<Marqeta.Core.Sdk.Models.Digital_wallet_token>("digital_wallet_token", DigitalWalletToken);
+            writer.WriteObjectValue<Marqeta.Core.Sdk.Models.Digital_service_provider>("digital_wallet_token_transaction_service_provider_info", DigitalWalletTokenTransactionServiceProviderInfo);
+            writer.WriteObjectValue<Marqeta.Core.Sdk.Models.DepositDepositResponse>("direct_deposit", DirectDeposit);
+            writer.WriteObjectValue<Marqeta.Core.Sdk.Models.DisputeModel>("dispute", Dispute);
             writer.WriteIntValue("duration", Duration);
             writer.WriteStringValue("enhanced_data_token", EnhancedDataToken);
             writer.WriteObjectValue<Marqeta.Core.Sdk.Models.Fee>("fee", Fee);
-            writer.WriteCollectionOfObjectValues<Network_fee_model>("fees", Fees);
-            writer.WriteObjectValue<Fee_transfer_response>("fee_transfer", FeeTransfer);
-            writer.WriteObjectValue<Fraud_view>("fraud", Fraud);
+            writer.WriteCollectionOfObjectValues<Marqeta.Core.Sdk.Models.Network_fee_model>("fees", Fees);
+            writer.WriteObjectValue<Marqeta.Core.Sdk.Models.Fee_transfer_response>("fee_transfer", FeeTransfer);
+            writer.WriteObjectValue<Marqeta.Core.Sdk.Models.Fraud_view>("fraud", Fraud);
             writer.WriteStringValue("from_account", FromAccount);
-            writer.WriteObjectValue<Cardholder_balance>("gpa", Gpa);
-            writer.WriteObjectValue<Gpa_response>("gpa_order", GpaOrder);
-            writer.WriteObjectValue<Gpa_returns>("gpa_order_unload", GpaOrderUnload);
+            writer.WriteObjectValue<Marqeta.Core.Sdk.Models.Cardholder_balance>("gpa", Gpa);
+            writer.WriteObjectValue<Marqeta.Core.Sdk.Models.Gpa_response>("gpa_order", GpaOrder);
+            writer.WriteObjectValue<Marqeta.Core.Sdk.Models.Gpa_returns>("gpa_order_unload", GpaOrderUnload);
             writer.WriteStringValue("identifier", Identifier);
             writer.WriteCollectionOfPrimitiveValues<string>("incremental_authorization_transaction_tokens", IncrementalAuthorizationTransactionTokens);
             writer.WriteStringValue("interchange_rate_descriptor", InterchangeRateDescriptor);
-            writer.WriteEnumValue<Transaction_model_isaIndicator>("isaIndicator", IsaIndicator);
+            writer.WriteEnumValue<Marqeta.Core.Sdk.Models.Transaction_model_isaIndicator>("isaIndicator", IsaIndicator);
             writer.WriteBoolValue("is_final_clearing", IsFinalClearing);
             writer.WriteBoolValue("is_preauthorization", IsPreauthorization);
             writer.WriteDoubleValue("issuer_interchange_amount", IssuerInterchangeAmount);
             writer.WriteStringValue("issuer_payment_node", IssuerPaymentNode);
             writer.WriteStringValue("issuer_received_time", IssuerReceivedTime);
             writer.WriteDateTimeOffsetValue("local_transaction_date", LocalTransactionDate);
-            writer.WriteObjectValue<Merchant_response_model>("merchant", Merchant);
+            writer.WriteObjectValue<Marqeta.Core.Sdk.Models.Merchant_response_model>("merchant", Merchant);
             writer.WriteStringValue("merchant_initiated_original_trace_id", MerchantInitiatedOriginalTraceId);
-            writer.WriteObjectValue<Msa_returns>("msa_order_unload", MsaOrderUnload);
+            writer.WriteObjectValue<Marqeta.Core.Sdk.Models.Msa_returns>("msa_order_unload", MsaOrderUnload);
             writer.WriteStringValue("multi_clearing_sequence_count", MultiClearingSequenceCount);
             writer.WriteStringValue("multi_clearing_sequence_number", MultiClearingSequenceNumber);
             writer.WriteStringValue("national_net_cpd_of_original", NationalNetCpdOfOriginal);
             writer.WriteStringValue("network", Network);
-            writer.WriteObjectValue<Network_metadata>("network_metadata", NetworkMetadata);
+            writer.WriteObjectValue<Marqeta.Core.Sdk.Models.Network_metadata>("network_metadata", NetworkMetadata);
             writer.WriteStringValue("network_reference_id", NetworkReferenceId);
-            writer.WriteObjectValue<Original_credit>("original_credit", OriginalCredit);
-            writer.WriteObjectValue<Peer_transfer_response>("peer_transfer", PeerTransfer);
-            writer.WriteEnumValue<Transaction_model_polarity>("polarity", Polarity);
+            writer.WriteObjectValue<Marqeta.Core.Sdk.Models.Original_credit>("original_credit", OriginalCredit);
+            writer.WriteObjectValue<Marqeta.Core.Sdk.Models.Peer_transfer_response>("peer_transfer", PeerTransfer);
+            writer.WriteEnumValue<Marqeta.Core.Sdk.Models.Transaction_model_polarity>("polarity", Polarity);
             writer.WriteObjectValue<Marqeta.Core.Sdk.Models.Pos>("pos", Pos);
             writer.WriteStringValue("preceding_related_transaction_token", PrecedingRelatedTransactionToken);
-            writer.WriteObjectValue<Preceding_transaction>("preceding_transaction", PrecedingTransaction);
+            writer.WriteObjectValue<Marqeta.Core.Sdk.Models.Preceding_transaction>("preceding_transaction", PrecedingTransaction);
             writer.WriteObjectValue<Marqeta.Core.Sdk.Models.Program>("program", Program);
-            writer.WriteObjectValue<Program_transfer_response>("program_transfer", ProgramTransfer);
-            writer.WriteObjectValue<Real_time_fee_group>("real_time_fee_group", RealTimeFeeGroup);
+            writer.WriteObjectValue<Marqeta.Core.Sdk.Models.Program_transfer_response>("program_transfer", ProgramTransfer);
+            writer.WriteObjectValue<Marqeta.Core.Sdk.Models.Real_time_fee_group>("real_time_fee_group", RealTimeFeeGroup);
             writer.WriteDoubleValue("request_amount", RequestAmount);
             writer.WriteObjectValue<Marqeta.Core.Sdk.Models.Response>("response", Response);
             writer.WriteDateTimeOffsetValue("settlement_date", SettlementDate);
@@ -864,14 +865,14 @@ namespace Marqeta.Core.Sdk.Models {
             writer.WriteStringValue("standin_approved_by", StandinApprovedBy);
             writer.WriteStringValue("standin_by", StandinBy);
             writer.WriteStringValue("standin_reason", StandinReason);
-            writer.WriteEnumValue<Transaction_model_state>("state", State);
-            writer.WriteObjectValue<Store_response_model>("store", Store);
+            writer.WriteEnumValue<Marqeta.Core.Sdk.Models.Transaction_model_state>("state", State);
+            writer.WriteObjectValue<Marqeta.Core.Sdk.Models.Store_response_model>("store", Store);
             writer.WriteStringValue("subnetwork", Subnetwork);
             writer.WriteStringValue("token", Token);
-            writer.WriteObjectValue<Transaction_model_transaction_attributes>("transaction_attributes", TransactionAttributes);
-            writer.WriteObjectValue<Transaction_metadata>("transaction_metadata", TransactionMetadata);
-            writer.WriteEnumValue<Transaction_model_type>("type", Type);
-            writer.WriteObjectValue<Cardholder_metadata>("user", User);
+            writer.WriteObjectValue<Marqeta.Core.Sdk.Models.Transaction_model_transaction_attributes>("transaction_attributes", TransactionAttributes);
+            writer.WriteObjectValue<Marqeta.Core.Sdk.Models.Transaction_metadata>("transaction_metadata", TransactionMetadata);
+            writer.WriteEnumValue<Marqeta.Core.Sdk.Models.Transaction_model_type>("type", Type);
+            writer.WriteObjectValue<Marqeta.Core.Sdk.Models.Cardholder_metadata>("user", User);
             writer.WriteStringValue("user_token", UserToken);
             writer.WriteDateTimeOffsetValue("user_transaction_time", UserTransactionTime);
             writer.WriteAdditionalData(AdditionalData);

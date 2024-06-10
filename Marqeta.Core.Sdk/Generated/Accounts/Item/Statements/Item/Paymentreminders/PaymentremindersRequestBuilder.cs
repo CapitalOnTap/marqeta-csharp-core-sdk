@@ -9,26 +9,27 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Threading;
 using System;
-namespace Marqeta.Core.Sdk.Accounts.Item.Statements.Item.Paymentreminders {
+namespace Marqeta.Core.Sdk.Accounts.Item.Statements.Item.Paymentreminders
+{
     /// <summary>
     /// Builds and executes requests for operations under \accounts\{account_token}\statements\{statement_summary_token}\paymentreminders
     /// </summary>
-    public class PaymentremindersRequestBuilder : BaseRequestBuilder 
+    public class PaymentremindersRequestBuilder : BaseRequestBuilder
     {
         /// <summary>Gets an item from the Marqeta.Core.Sdk.accounts.item.statements.item.paymentreminders.item collection</summary>
         /// <param name="position">Unique identifier of the payment reminder you want to retrieve.Send a `GET` request to `/credit/accounts/{account_token}/statements/{statement_summary_token}/paymentreminders/{token}` to retrieve existing payment reminder tokens.</param>
-        /// <returns>A <see cref="WithTokenItemRequestBuilder"/></returns>
-        public WithTokenItemRequestBuilder this[string position]
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Accounts.Item.Statements.Item.Paymentreminders.Item.WithTokenItemRequestBuilder"/></returns>
+        public Marqeta.Core.Sdk.Accounts.Item.Statements.Item.Paymentreminders.Item.WithTokenItemRequestBuilder this[string position]
         {
             get
             {
                 var urlTplParams = new Dictionary<string, object>(PathParameters);
                 urlTplParams.Add("token", position);
-                return new WithTokenItemRequestBuilder(urlTplParams, RequestAdapter);
+                return new Marqeta.Core.Sdk.Accounts.Item.Statements.Item.Paymentreminders.Item.WithTokenItemRequestBuilder(urlTplParams, RequestAdapter);
             }
         }
         /// <summary>
-        /// Instantiates a new <see cref="PaymentremindersRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Accounts.Item.Statements.Item.Paymentreminders.PaymentremindersRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
@@ -36,7 +37,7 @@ namespace Marqeta.Core.Sdk.Accounts.Item.Statements.Item.Paymentreminders {
         {
         }
         /// <summary>
-        /// Instantiates a new <see cref="PaymentremindersRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Accounts.Item.Statements.Item.Paymentreminders.PaymentremindersRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
@@ -46,25 +47,25 @@ namespace Marqeta.Core.Sdk.Accounts.Item.Statements.Item.Paymentreminders {
         /// <summary>
         /// Retrieve an array of payment reminder details for a specific statement summary token.
         /// </summary>
-        /// <returns>A <see cref="PaymentReminderPage"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Models.PaymentReminderPage"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        /// <exception cref="ApiError">When receiving a 4XX or 5XX status code</exception>
+        /// <exception cref="Marqeta.Core.Sdk.Models.ApiError">When receiving a 4XX or 5XX status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<PaymentReminderPage?> GetAsync(Action<RequestConfiguration<PaymentremindersRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<Marqeta.Core.Sdk.Models.PaymentReminderPage?> GetAsync(Action<RequestConfiguration<Marqeta.Core.Sdk.Accounts.Item.Statements.Item.Paymentreminders.PaymentremindersRequestBuilder.PaymentremindersRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<PaymentReminderPage> GetAsync(Action<RequestConfiguration<PaymentremindersRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<Marqeta.Core.Sdk.Models.PaymentReminderPage> GetAsync(Action<RequestConfiguration<Marqeta.Core.Sdk.Accounts.Item.Statements.Item.Paymentreminders.PaymentremindersRequestBuilder.PaymentremindersRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
-                {"XXX", ApiError.CreateFromDiscriminatorValue},
+                { "XXX", Marqeta.Core.Sdk.Models.ApiError.CreateFromDiscriminatorValue },
             };
-            return await RequestAdapter.SendAsync<PaymentReminderPage>(requestInfo, PaymentReminderPage.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<Marqeta.Core.Sdk.Models.PaymentReminderPage>(requestInfo, Marqeta.Core.Sdk.Models.PaymentReminderPage.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Retrieve an array of payment reminder details for a specific statement summary token.
@@ -73,11 +74,11 @@ namespace Marqeta.Core.Sdk.Accounts.Item.Statements.Item.Paymentreminders {
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<PaymentremindersRequestBuilderGetQueryParameters>>? requestConfiguration = default)
+        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<Marqeta.Core.Sdk.Accounts.Item.Statements.Item.Paymentreminders.PaymentremindersRequestBuilder.PaymentremindersRequestBuilderGetQueryParameters>>? requestConfiguration = default)
         {
 #nullable restore
 #else
-        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<PaymentremindersRequestBuilderGetQueryParameters>> requestConfiguration = default)
+        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<Marqeta.Core.Sdk.Accounts.Item.Statements.Item.Paymentreminders.PaymentremindersRequestBuilder.PaymentremindersRequestBuilderGetQueryParameters>> requestConfiguration = default)
         {
 #endif
             var requestInfo = new RequestInformation(Method.GET, UrlTemplate, PathParameters);
@@ -88,11 +89,11 @@ namespace Marqeta.Core.Sdk.Accounts.Item.Statements.Item.Paymentreminders {
         /// <summary>
         /// Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
         /// </summary>
-        /// <returns>A <see cref="PaymentremindersRequestBuilder"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Accounts.Item.Statements.Item.Paymentreminders.PaymentremindersRequestBuilder"/></returns>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
-        public PaymentremindersRequestBuilder WithUrl(string rawUrl)
+        public Marqeta.Core.Sdk.Accounts.Item.Statements.Item.Paymentreminders.PaymentremindersRequestBuilder WithUrl(string rawUrl)
         {
-            return new PaymentremindersRequestBuilder(rawUrl, RequestAdapter);
+            return new Marqeta.Core.Sdk.Accounts.Item.Statements.Item.Paymentreminders.PaymentremindersRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
         /// Retrieve an array of payment reminder details for a specific statement summary token.
@@ -104,7 +105,7 @@ namespace Marqeta.Core.Sdk.Accounts.Item.Statements.Item.Paymentreminders {
             public int? Count { get; set; }
             /// <summary>Field on which to sort.Prefix the field name with a hyphen (`-`) to sort in descending order.Omit the hyphen to sort in ascending order.*NOTE:*You must sort using system field names such as `createdTime`, and not by the field names appearing in response bodies such as `created_time`.</summary>
             [QueryParameter("sort_by")]
-            public GetSort_byQueryParameterType? SortBy { get; set; }
+            public Marqeta.Core.Sdk.Accounts.Item.Statements.Item.Paymentreminders.GetSort_byQueryParameterType? SortBy { get; set; }
             /// <summary>Sort order index of the first resource in the returned array.</summary>
             [QueryParameter("start_index")]
             public int? StartIndex { get; set; }

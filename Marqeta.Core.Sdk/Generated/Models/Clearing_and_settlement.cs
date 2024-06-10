@@ -4,33 +4,34 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System;
-namespace Marqeta.Core.Sdk.Models {
+namespace Marqeta.Core.Sdk.Models
+{
     /// <summary>
     /// Specifies the destination for overdraft funds.
     /// </summary>
-    public class Clearing_and_settlement : IAdditionalDataHolder, IParsable 
+    public class Clearing_and_settlement : IAdditionalDataHolder, IParsable
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Specifies the destination for overdraft funds.This field does not apply if JIT Funding is enabled.</summary>
-        public Clearing_and_settlement_overdraft_destination? OverdraftDestination { get; set; }
+        public Marqeta.Core.Sdk.Models.Clearing_and_settlement_overdraft_destination? OverdraftDestination { get; set; }
         /// <summary>
-        /// Instantiates a new <see cref="Clearing_and_settlement"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Models.Clearing_and_settlement"/> and sets the default values.
         /// </summary>
         public Clearing_and_settlement()
         {
             AdditionalData = new Dictionary<string, object>();
-            OverdraftDestination = Clearing_and_settlement_overdraft_destination.GPA;
+            OverdraftDestination = Marqeta.Core.Sdk.Models.Clearing_and_settlement_overdraft_destination.GPA;
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="Clearing_and_settlement"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Models.Clearing_and_settlement"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static Clearing_and_settlement CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static Marqeta.Core.Sdk.Models.Clearing_and_settlement CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-            return new Clearing_and_settlement();
+            return new Marqeta.Core.Sdk.Models.Clearing_and_settlement();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -40,7 +41,7 @@ namespace Marqeta.Core.Sdk.Models {
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                {"overdraft_destination", n => { OverdraftDestination = n.GetEnumValue<Clearing_and_settlement_overdraft_destination>(); } },
+                { "overdraft_destination", n => { OverdraftDestination = n.GetEnumValue<Marqeta.Core.Sdk.Models.Clearing_and_settlement_overdraft_destination>(); } },
             };
         }
         /// <summary>
@@ -50,7 +51,7 @@ namespace Marqeta.Core.Sdk.Models {
         public virtual void Serialize(ISerializationWriter writer)
         {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
-            writer.WriteEnumValue<Clearing_and_settlement_overdraft_destination>("overdraft_destination", OverdraftDestination);
+            writer.WriteEnumValue<Marqeta.Core.Sdk.Models.Clearing_and_settlement_overdraft_destination>("overdraft_destination", OverdraftDestination);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

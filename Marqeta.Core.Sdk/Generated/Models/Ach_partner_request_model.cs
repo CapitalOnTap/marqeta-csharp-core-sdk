@@ -4,9 +4,10 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System;
-namespace Marqeta.Core.Sdk.Models {
+namespace Marqeta.Core.Sdk.Models
+{
     #pragma warning disable CS1591
-    public class Ach_partner_request_model : IAdditionalDataHolder, IParsable 
+    public class Ach_partner_request_model : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -30,7 +31,7 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>If there are multiple funding sources, this field specifies which source is used by default in funding calls.If there is only one funding source, the system ignores this field and always uses that source.</summary>
         public bool? IsDefaultAccount { get; set; }
         /// <summary>Name of the partner who validated the account holder.Returned when a third-party partner was used for account validation.</summary>
-        public Ach_partner_request_model_partner? Partner { get; set; }
+        public Marqeta.Core.Sdk.Models.Ach_partner_request_model_partner? Partner { get; set; }
         /// <summary>Supplied by the account validation partner, this value is a reference to the account holder&apos;s details, such as the account number and routing number.Returned when a third-party partner was used for account validation.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -56,7 +57,7 @@ namespace Marqeta.Core.Sdk.Models {
         public string UserToken { get; set; }
 #endif
         /// <summary>
-        /// Instantiates a new <see cref="Ach_partner_request_model"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Models.Ach_partner_request_model"/> and sets the default values.
         /// </summary>
         public Ach_partner_request_model()
         {
@@ -65,12 +66,12 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="Ach_partner_request_model"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Models.Ach_partner_request_model"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static Ach_partner_request_model CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static Marqeta.Core.Sdk.Models.Ach_partner_request_model CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-            return new Ach_partner_request_model();
+            return new Marqeta.Core.Sdk.Models.Ach_partner_request_model();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -80,13 +81,13 @@ namespace Marqeta.Core.Sdk.Models {
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                {"business_token", n => { BusinessToken = n.GetStringValue(); } },
-                {"idempotentHash", n => { IdempotentHash = n.GetStringValue(); } },
-                {"is_default_account", n => { IsDefaultAccount = n.GetBoolValue(); } },
-                {"partner", n => { Partner = n.GetEnumValue<Ach_partner_request_model_partner>(); } },
-                {"partner_account_link_reference_token", n => { PartnerAccountLinkReferenceToken = n.GetStringValue(); } },
-                {"token", n => { Token = n.GetStringValue(); } },
-                {"user_token", n => { UserToken = n.GetStringValue(); } },
+                { "business_token", n => { BusinessToken = n.GetStringValue(); } },
+                { "idempotentHash", n => { IdempotentHash = n.GetStringValue(); } },
+                { "is_default_account", n => { IsDefaultAccount = n.GetBoolValue(); } },
+                { "partner", n => { Partner = n.GetEnumValue<Marqeta.Core.Sdk.Models.Ach_partner_request_model_partner>(); } },
+                { "partner_account_link_reference_token", n => { PartnerAccountLinkReferenceToken = n.GetStringValue(); } },
+                { "token", n => { Token = n.GetStringValue(); } },
+                { "user_token", n => { UserToken = n.GetStringValue(); } },
             };
         }
         /// <summary>
@@ -99,7 +100,7 @@ namespace Marqeta.Core.Sdk.Models {
             writer.WriteStringValue("business_token", BusinessToken);
             writer.WriteStringValue("idempotentHash", IdempotentHash);
             writer.WriteBoolValue("is_default_account", IsDefaultAccount);
-            writer.WriteEnumValue<Ach_partner_request_model_partner>("partner", Partner);
+            writer.WriteEnumValue<Marqeta.Core.Sdk.Models.Ach_partner_request_model_partner>("partner", Partner);
             writer.WriteStringValue("partner_account_link_reference_token", PartnerAccountLinkReferenceToken);
             writer.WriteStringValue("token", Token);
             writer.WriteStringValue("user_token", UserToken);

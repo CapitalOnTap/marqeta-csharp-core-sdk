@@ -4,9 +4,10 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System;
-namespace Marqeta.Core.Sdk.Models {
+namespace Marqeta.Core.Sdk.Models
+{
     #pragma warning disable CS1591
-    public class Transaction_options : IAdditionalDataHolder, IParsable 
+    public class Transaction_options : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -62,7 +63,7 @@ namespace Marqeta.Core.Sdk.Models {
         public string TransactionToken { get; set; }
 #endif
         /// <summary>
-        /// Instantiates a new <see cref="Transaction_options"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Models.Transaction_options"/> and sets the default values.
         /// </summary>
         public Transaction_options()
         {
@@ -71,12 +72,12 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="Transaction_options"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Models.Transaction_options"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static Transaction_options CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static Marqeta.Core.Sdk.Models.Transaction_options CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-            return new Transaction_options();
+            return new Marqeta.Core.Sdk.Models.Transaction_options();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -86,16 +87,16 @@ namespace Marqeta.Core.Sdk.Models {
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                {"additional_data", n => { AdditionalDataProperty = n.GetStringValue(); } },
-                {"card_expiration_date_yymm", n => { CardExpirationDateYymm = n.GetStringValue(); } },
-                {"database_transaction_timeout", n => { DatabaseTransactionTimeout = n.GetIntValue(); } },
-                {"encryption_key_id", n => { EncryptionKeyId = n.GetStringValue(); } },
-                {"is_async", n => { IsAsync = n.GetBoolValue(); } },
-                {"pre_auth_time_limit", n => { PreAuthTimeLimit = n.GetStringValue(); } },
-                {"send_expiration_date", n => { SendExpirationDate = n.GetBoolValue(); } },
-                {"send_track_data", n => { SendTrackData = n.GetBoolValue(); } },
-                {"transaction_timeout_threshold_seconds", n => { TransactionTimeoutThresholdSeconds = n.GetLongValue(); } },
-                {"transaction_token", n => { TransactionToken = n.GetStringValue(); } },
+                { "additional_data", n => { AdditionalDataProperty = n.GetStringValue(); } },
+                { "card_expiration_date_yymm", n => { CardExpirationDateYymm = n.GetStringValue(); } },
+                { "database_transaction_timeout", n => { DatabaseTransactionTimeout = n.GetIntValue(); } },
+                { "encryption_key_id", n => { EncryptionKeyId = n.GetStringValue(); } },
+                { "is_async", n => { IsAsync = n.GetBoolValue(); } },
+                { "pre_auth_time_limit", n => { PreAuthTimeLimit = n.GetStringValue(); } },
+                { "send_expiration_date", n => { SendExpirationDate = n.GetBoolValue(); } },
+                { "send_track_data", n => { SendTrackData = n.GetBoolValue(); } },
+                { "transaction_timeout_threshold_seconds", n => { TransactionTimeoutThresholdSeconds = n.GetLongValue(); } },
+                { "transaction_token", n => { TransactionToken = n.GetStringValue(); } },
             };
         }
         /// <summary>

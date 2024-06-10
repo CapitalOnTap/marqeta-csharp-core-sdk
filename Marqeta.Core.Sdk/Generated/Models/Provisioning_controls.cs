@@ -4,9 +4,10 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System;
-namespace Marqeta.Core.Sdk.Models {
+namespace Marqeta.Core.Sdk.Models
+{
     #pragma warning disable CS1591
-    public class Provisioning_controls : IAdditionalDataHolder, IParsable 
+    public class Provisioning_controls : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -22,37 +23,37 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>The in_app_provisioning property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public In_app_provisioning? InAppProvisioning { get; set; }
+        public Marqeta.Core.Sdk.Models.In_app_provisioning? InAppProvisioning { get; set; }
 #nullable restore
 #else
-        public In_app_provisioning InAppProvisioning { get; set; }
+        public Marqeta.Core.Sdk.Models.In_app_provisioning InAppProvisioning { get; set; }
 #endif
         /// <summary>The manual_entry property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public Manual_entry? ManualEntry { get; set; }
+        public Marqeta.Core.Sdk.Models.Manual_entry? ManualEntry { get; set; }
 #nullable restore
 #else
-        public Manual_entry ManualEntry { get; set; }
+        public Marqeta.Core.Sdk.Models.Manual_entry ManualEntry { get; set; }
 #endif
         /// <summary>The wallet_provider_card_on_file property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public Wallet_provider_card_on_file? WalletProviderCardOnFile { get; set; }
+        public Marqeta.Core.Sdk.Models.Wallet_provider_card_on_file? WalletProviderCardOnFile { get; set; }
 #nullable restore
 #else
-        public Wallet_provider_card_on_file WalletProviderCardOnFile { get; set; }
+        public Marqeta.Core.Sdk.Models.Wallet_provider_card_on_file WalletProviderCardOnFile { get; set; }
 #endif
         /// <summary>The web_push_provisioning property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public Web_push_provisioning? WebPushProvisioning { get; set; }
+        public Marqeta.Core.Sdk.Models.Web_push_provisioning? WebPushProvisioning { get; set; }
 #nullable restore
 #else
-        public Web_push_provisioning WebPushProvisioning { get; set; }
+        public Marqeta.Core.Sdk.Models.Web_push_provisioning WebPushProvisioning { get; set; }
 #endif
         /// <summary>
-        /// Instantiates a new <see cref="Provisioning_controls"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Models.Provisioning_controls"/> and sets the default values.
         /// </summary>
         public Provisioning_controls()
         {
@@ -61,12 +62,12 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="Provisioning_controls"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Models.Provisioning_controls"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static Provisioning_controls CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static Marqeta.Core.Sdk.Models.Provisioning_controls CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-            return new Provisioning_controls();
+            return new Marqeta.Core.Sdk.Models.Provisioning_controls();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -76,14 +77,14 @@ namespace Marqeta.Core.Sdk.Models {
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                {"dwt_use_card_status_during_auth", n => { DwtUseCardStatusDuringAuth = n.GetBoolValue(); } },
-                {"dwt_verify_atc_during_auth", n => { DwtVerifyAtcDuringAuth = n.GetBoolValue(); } },
-                {"enable_discretionary_data_during_tar", n => { EnableDiscretionaryDataDuringTar = n.GetBoolValue(); } },
-                {"force_yellow_path_for_card_product", n => { ForceYellowPathForCardProduct = n.GetBoolValue(); } },
-                {"in_app_provisioning", n => { InAppProvisioning = n.GetObjectValue<In_app_provisioning>(In_app_provisioning.CreateFromDiscriminatorValue); } },
-                {"manual_entry", n => { ManualEntry = n.GetObjectValue<Manual_entry>(Manual_entry.CreateFromDiscriminatorValue); } },
-                {"wallet_provider_card_on_file", n => { WalletProviderCardOnFile = n.GetObjectValue<Wallet_provider_card_on_file>(Wallet_provider_card_on_file.CreateFromDiscriminatorValue); } },
-                {"web_push_provisioning", n => { WebPushProvisioning = n.GetObjectValue<Web_push_provisioning>(Web_push_provisioning.CreateFromDiscriminatorValue); } },
+                { "dwt_use_card_status_during_auth", n => { DwtUseCardStatusDuringAuth = n.GetBoolValue(); } },
+                { "dwt_verify_atc_during_auth", n => { DwtVerifyAtcDuringAuth = n.GetBoolValue(); } },
+                { "enable_discretionary_data_during_tar", n => { EnableDiscretionaryDataDuringTar = n.GetBoolValue(); } },
+                { "force_yellow_path_for_card_product", n => { ForceYellowPathForCardProduct = n.GetBoolValue(); } },
+                { "in_app_provisioning", n => { InAppProvisioning = n.GetObjectValue<Marqeta.Core.Sdk.Models.In_app_provisioning>(Marqeta.Core.Sdk.Models.In_app_provisioning.CreateFromDiscriminatorValue); } },
+                { "manual_entry", n => { ManualEntry = n.GetObjectValue<Marqeta.Core.Sdk.Models.Manual_entry>(Marqeta.Core.Sdk.Models.Manual_entry.CreateFromDiscriminatorValue); } },
+                { "wallet_provider_card_on_file", n => { WalletProviderCardOnFile = n.GetObjectValue<Marqeta.Core.Sdk.Models.Wallet_provider_card_on_file>(Marqeta.Core.Sdk.Models.Wallet_provider_card_on_file.CreateFromDiscriminatorValue); } },
+                { "web_push_provisioning", n => { WebPushProvisioning = n.GetObjectValue<Marqeta.Core.Sdk.Models.Web_push_provisioning>(Marqeta.Core.Sdk.Models.Web_push_provisioning.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -97,10 +98,10 @@ namespace Marqeta.Core.Sdk.Models {
             writer.WriteBoolValue("dwt_verify_atc_during_auth", DwtVerifyAtcDuringAuth);
             writer.WriteBoolValue("enable_discretionary_data_during_tar", EnableDiscretionaryDataDuringTar);
             writer.WriteBoolValue("force_yellow_path_for_card_product", ForceYellowPathForCardProduct);
-            writer.WriteObjectValue<In_app_provisioning>("in_app_provisioning", InAppProvisioning);
-            writer.WriteObjectValue<Manual_entry>("manual_entry", ManualEntry);
-            writer.WriteObjectValue<Wallet_provider_card_on_file>("wallet_provider_card_on_file", WalletProviderCardOnFile);
-            writer.WriteObjectValue<Web_push_provisioning>("web_push_provisioning", WebPushProvisioning);
+            writer.WriteObjectValue<Marqeta.Core.Sdk.Models.In_app_provisioning>("in_app_provisioning", InAppProvisioning);
+            writer.WriteObjectValue<Marqeta.Core.Sdk.Models.Manual_entry>("manual_entry", ManualEntry);
+            writer.WriteObjectValue<Marqeta.Core.Sdk.Models.Wallet_provider_card_on_file>("wallet_provider_card_on_file", WalletProviderCardOnFile);
+            writer.WriteObjectValue<Marqeta.Core.Sdk.Models.Web_push_provisioning>("web_push_provisioning", WebPushProvisioning);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

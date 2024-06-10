@@ -4,11 +4,12 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System;
-namespace Marqeta.Core.Sdk.Models {
+namespace Marqeta.Core.Sdk.Models
+{
     /// <summary>
     /// Contains configurations for a minimum payment override on a credit account, which overrides the minimum payment configurations on the associated credit product.
     /// </summary>
-    public class AccountConfigMinPayment : IAdditionalDataHolder, IParsable 
+    public class AccountConfigMinPayment : IAdditionalDataHolder, IParsable
     {
         /// <summary>Whether the minimum payment override is currently active.</summary>
         public bool? Active { get; set; }
@@ -23,7 +24,7 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>Date and time when the minimum payment override starts, in UTC.</summary>
         public DateTimeOffset? OverrideStartTime { get; set; }
         /// <summary>
-        /// Instantiates a new <see cref="AccountConfigMinPayment"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Models.AccountConfigMinPayment"/> and sets the default values.
         /// </summary>
         public AccountConfigMinPayment()
         {
@@ -32,12 +33,12 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="AccountConfigMinPayment"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Models.AccountConfigMinPayment"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static AccountConfigMinPayment CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static Marqeta.Core.Sdk.Models.AccountConfigMinPayment CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-            return new AccountConfigMinPayment();
+            return new Marqeta.Core.Sdk.Models.AccountConfigMinPayment();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -47,11 +48,11 @@ namespace Marqeta.Core.Sdk.Models {
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                {"active", n => { Active = n.GetBoolValue(); } },
-                {"min_payment_flat_amount", n => { MinPaymentFlatAmount = n.GetDoubleValue(); } },
-                {"min_payment_percentage", n => { MinPaymentPercentage = n.GetDoubleValue(); } },
-                {"override_end_time", n => { OverrideEndTime = n.GetDateTimeOffsetValue(); } },
-                {"override_start_time", n => { OverrideStartTime = n.GetDateTimeOffsetValue(); } },
+                { "active", n => { Active = n.GetBoolValue(); } },
+                { "min_payment_flat_amount", n => { MinPaymentFlatAmount = n.GetDoubleValue(); } },
+                { "min_payment_percentage", n => { MinPaymentPercentage = n.GetDoubleValue(); } },
+                { "override_end_time", n => { OverrideEndTime = n.GetDateTimeOffsetValue(); } },
+                { "override_start_time", n => { OverrideStartTime = n.GetDateTimeOffsetValue(); } },
             };
         }
         /// <summary>

@@ -6,26 +6,27 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using System;
-namespace Marqeta.Core.Sdk.Velocitycontrols.Cardgroup {
+namespace Marqeta.Core.Sdk.Velocitycontrols.Cardgroup
+{
     /// <summary>
     /// Builds and executes requests for operations under \velocitycontrols\cardgroup
     /// </summary>
-    public class CardgroupRequestBuilder : BaseRequestBuilder 
+    public class CardgroupRequestBuilder : BaseRequestBuilder
     {
         /// <summary>Gets an item from the Marqeta.Core.Sdk.velocitycontrols.cardgroup.item collection</summary>
         /// <param name="position">Unique identifier of the card group for which to retrieve balances.</param>
-        /// <returns>A <see cref="WithCard_group_tokenItemRequestBuilder"/></returns>
-        public WithCard_group_tokenItemRequestBuilder this[string position]
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Velocitycontrols.Cardgroup.Item.WithCard_group_tokenItemRequestBuilder"/></returns>
+        public Marqeta.Core.Sdk.Velocitycontrols.Cardgroup.Item.WithCard_group_tokenItemRequestBuilder this[string position]
         {
             get
             {
                 var urlTplParams = new Dictionary<string, object>(PathParameters);
                 urlTplParams.Add("card_group_token", position);
-                return new WithCard_group_tokenItemRequestBuilder(urlTplParams, RequestAdapter);
+                return new Marqeta.Core.Sdk.Velocitycontrols.Cardgroup.Item.WithCard_group_tokenItemRequestBuilder(urlTplParams, RequestAdapter);
             }
         }
         /// <summary>
-        /// Instantiates a new <see cref="CardgroupRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Velocitycontrols.Cardgroup.CardgroupRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
@@ -33,7 +34,7 @@ namespace Marqeta.Core.Sdk.Velocitycontrols.Cardgroup {
         {
         }
         /// <summary>
-        /// Instantiates a new <see cref="CardgroupRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Velocitycontrols.Cardgroup.CardgroupRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>

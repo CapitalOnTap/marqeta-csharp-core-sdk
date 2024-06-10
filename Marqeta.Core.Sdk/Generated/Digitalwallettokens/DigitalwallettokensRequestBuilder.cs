@@ -10,31 +10,32 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Threading;
 using System;
-namespace Marqeta.Core.Sdk.Digitalwallettokens {
+namespace Marqeta.Core.Sdk.Digitalwallettokens
+{
     /// <summary>
     /// Builds and executes requests for operations under \digitalwallettokens
     /// </summary>
-    public class DigitalwallettokensRequestBuilder : BaseRequestBuilder 
+    public class DigitalwallettokensRequestBuilder : BaseRequestBuilder
     {
         /// <summary>The card property</summary>
-        public CardRequestBuilder Card
+        public Marqeta.Core.Sdk.Digitalwallettokens.Card.CardRequestBuilder Card
         {
-            get => new CardRequestBuilder(PathParameters, RequestAdapter);
+            get => new Marqeta.Core.Sdk.Digitalwallettokens.Card.CardRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>Gets an item from the Marqeta.Core.Sdk.digitalwallettokens.item collection</summary>
         /// <param name="position">Unique identifier of the digital wallet token (DWT).</param>
-        /// <returns>A <see cref="WithTokenItemRequestBuilder"/></returns>
-        public WithTokenItemRequestBuilder this[string position]
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Digitalwallettokens.Item.WithTokenItemRequestBuilder"/></returns>
+        public Marqeta.Core.Sdk.Digitalwallettokens.Item.WithTokenItemRequestBuilder this[string position]
         {
             get
             {
                 var urlTplParams = new Dictionary<string, object>(PathParameters);
                 urlTplParams.Add("token", position);
-                return new WithTokenItemRequestBuilder(urlTplParams, RequestAdapter);
+                return new Marqeta.Core.Sdk.Digitalwallettokens.Item.WithTokenItemRequestBuilder(urlTplParams, RequestAdapter);
             }
         }
         /// <summary>
-        /// Instantiates a new <see cref="DigitalwallettokensRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Digitalwallettokens.DigitalwallettokensRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
@@ -42,7 +43,7 @@ namespace Marqeta.Core.Sdk.Digitalwallettokens {
         {
         }
         /// <summary>
-        /// Instantiates a new <see cref="DigitalwallettokensRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Digitalwallettokens.DigitalwallettokensRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
@@ -52,25 +53,25 @@ namespace Marqeta.Core.Sdk.Digitalwallettokens {
         /// <summary>
         /// Use this endpoint to retrieve a list of digital wallet tokens.
         /// </summary>
-        /// <returns>A <see cref="DigitalWalletTokenListResponse"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Models.DigitalWalletTokenListResponse"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        /// <exception cref="ApiError">When receiving a 4XX or 5XX status code</exception>
+        /// <exception cref="Marqeta.Core.Sdk.Models.ApiError">When receiving a 4XX or 5XX status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<DigitalWalletTokenListResponse?> GetAsync(Action<RequestConfiguration<DigitalwallettokensRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<Marqeta.Core.Sdk.Models.DigitalWalletTokenListResponse?> GetAsync(Action<RequestConfiguration<Marqeta.Core.Sdk.Digitalwallettokens.DigitalwallettokensRequestBuilder.DigitalwallettokensRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<DigitalWalletTokenListResponse> GetAsync(Action<RequestConfiguration<DigitalwallettokensRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<Marqeta.Core.Sdk.Models.DigitalWalletTokenListResponse> GetAsync(Action<RequestConfiguration<Marqeta.Core.Sdk.Digitalwallettokens.DigitalwallettokensRequestBuilder.DigitalwallettokensRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
-                {"XXX", ApiError.CreateFromDiscriminatorValue},
+                { "XXX", Marqeta.Core.Sdk.Models.ApiError.CreateFromDiscriminatorValue },
             };
-            return await RequestAdapter.SendAsync<DigitalWalletTokenListResponse>(requestInfo, DigitalWalletTokenListResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<Marqeta.Core.Sdk.Models.DigitalWalletTokenListResponse>(requestInfo, Marqeta.Core.Sdk.Models.DigitalWalletTokenListResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Use this endpoint to retrieve a list of digital wallet tokens.
@@ -79,11 +80,11 @@ namespace Marqeta.Core.Sdk.Digitalwallettokens {
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<DigitalwallettokensRequestBuilderGetQueryParameters>>? requestConfiguration = default)
+        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<Marqeta.Core.Sdk.Digitalwallettokens.DigitalwallettokensRequestBuilder.DigitalwallettokensRequestBuilderGetQueryParameters>>? requestConfiguration = default)
         {
 #nullable restore
 #else
-        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<DigitalwallettokensRequestBuilderGetQueryParameters>> requestConfiguration = default)
+        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<Marqeta.Core.Sdk.Digitalwallettokens.DigitalwallettokensRequestBuilder.DigitalwallettokensRequestBuilderGetQueryParameters>> requestConfiguration = default)
         {
 #endif
             var requestInfo = new RequestInformation(Method.GET, UrlTemplate, PathParameters);
@@ -94,11 +95,11 @@ namespace Marqeta.Core.Sdk.Digitalwallettokens {
         /// <summary>
         /// Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
         /// </summary>
-        /// <returns>A <see cref="DigitalwallettokensRequestBuilder"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Digitalwallettokens.DigitalwallettokensRequestBuilder"/></returns>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
-        public DigitalwallettokensRequestBuilder WithUrl(string rawUrl)
+        public Marqeta.Core.Sdk.Digitalwallettokens.DigitalwallettokensRequestBuilder WithUrl(string rawUrl)
         {
-            return new DigitalwallettokensRequestBuilder(rawUrl, RequestAdapter);
+            return new Marqeta.Core.Sdk.Digitalwallettokens.DigitalwallettokensRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
         /// Use this endpoint to retrieve a list of digital wallet tokens.
@@ -120,7 +121,7 @@ namespace Marqeta.Core.Sdk.Digitalwallettokens {
             public int? Count { get; set; }
             /// <summary>An optional embedded user object.</summary>
             [QueryParameter("embed")]
-            public GetEmbedQueryParameterType? Embed { get; set; }
+            public Marqeta.Core.Sdk.Digitalwallettokens.GetEmbedQueryParameterType? Embed { get; set; }
             /// <summary>Expiration date of the digital wallet token.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable

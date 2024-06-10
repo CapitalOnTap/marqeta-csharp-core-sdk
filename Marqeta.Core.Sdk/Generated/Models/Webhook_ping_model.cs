@@ -4,9 +4,10 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System;
-namespace Marqeta.Core.Sdk.Models {
+namespace Marqeta.Core.Sdk.Models
+{
     #pragma warning disable CS1591
-    public class Webhook_ping_model : IAdditionalDataHolder, IParsable 
+    public class Webhook_ping_model : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -14,13 +15,13 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>Array of ping requests to your webhook endpoint.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<Echo_ping_request>? Pings { get; set; }
+        public List<Marqeta.Core.Sdk.Models.Echo_ping_request>? Pings { get; set; }
 #nullable restore
 #else
-        public List<Echo_ping_request> Pings { get; set; }
+        public List<Marqeta.Core.Sdk.Models.Echo_ping_request> Pings { get; set; }
 #endif
         /// <summary>
-        /// Instantiates a new <see cref="Webhook_ping_model"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Models.Webhook_ping_model"/> and sets the default values.
         /// </summary>
         public Webhook_ping_model()
         {
@@ -29,12 +30,12 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="Webhook_ping_model"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Models.Webhook_ping_model"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static Webhook_ping_model CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static Marqeta.Core.Sdk.Models.Webhook_ping_model CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-            return new Webhook_ping_model();
+            return new Marqeta.Core.Sdk.Models.Webhook_ping_model();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -44,7 +45,7 @@ namespace Marqeta.Core.Sdk.Models {
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                {"pings", n => { Pings = n.GetCollectionOfObjectValues<Echo_ping_request>(Echo_ping_request.CreateFromDiscriminatorValue)?.ToList(); } },
+                { "pings", n => { Pings = n.GetCollectionOfObjectValues<Marqeta.Core.Sdk.Models.Echo_ping_request>(Marqeta.Core.Sdk.Models.Echo_ping_request.CreateFromDiscriminatorValue)?.ToList(); } },
             };
         }
         /// <summary>
@@ -54,7 +55,7 @@ namespace Marqeta.Core.Sdk.Models {
         public virtual void Serialize(ISerializationWriter writer)
         {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
-            writer.WriteCollectionOfObjectValues<Echo_ping_request>("pings", Pings);
+            writer.WriteCollectionOfObjectValues<Marqeta.Core.Sdk.Models.Echo_ping_request>("pings", Pings);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

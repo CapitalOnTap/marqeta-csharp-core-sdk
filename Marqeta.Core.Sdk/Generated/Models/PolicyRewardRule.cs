@@ -4,34 +4,35 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System;
-namespace Marqeta.Core.Sdk.Models {
+namespace Marqeta.Core.Sdk.Models
+{
     /// <summary>
     /// Contains information on a reward rule.
     /// </summary>
-    public class PolicyRewardRule : IAdditionalDataHolder, IParsable 
+    public class PolicyRewardRule : IAdditionalDataHolder, IParsable
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Contains information on the rules defined for a reward program.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public PolicyRewardRuleFilters? Filters { get; set; }
+        public Marqeta.Core.Sdk.Models.PolicyRewardRuleFilters? Filters { get; set; }
 #nullable restore
 #else
-        public PolicyRewardRuleFilters Filters { get; set; }
+        public Marqeta.Core.Sdk.Models.PolicyRewardRuleFilters Filters { get; set; }
 #endif
         /// <summary>Contains information on the outcome of a reward rule.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public PolicyRewardRuleOutcome? Outcome { get; set; }
+        public Marqeta.Core.Sdk.Models.PolicyRewardRuleOutcome? Outcome { get; set; }
 #nullable restore
 #else
-        public PolicyRewardRuleOutcome Outcome { get; set; }
+        public Marqeta.Core.Sdk.Models.PolicyRewardRuleOutcome Outcome { get; set; }
 #endif
         /// <summary>Type of reward rule.</summary>
-        public PolicyRewardRuleType? Type { get; set; }
+        public Marqeta.Core.Sdk.Models.PolicyRewardRuleType? Type { get; set; }
         /// <summary>
-        /// Instantiates a new <see cref="PolicyRewardRule"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Models.PolicyRewardRule"/> and sets the default values.
         /// </summary>
         public PolicyRewardRule()
         {
@@ -40,12 +41,12 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="PolicyRewardRule"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Models.PolicyRewardRule"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static PolicyRewardRule CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static Marqeta.Core.Sdk.Models.PolicyRewardRule CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-            return new PolicyRewardRule();
+            return new Marqeta.Core.Sdk.Models.PolicyRewardRule();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -55,9 +56,9 @@ namespace Marqeta.Core.Sdk.Models {
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                {"filters", n => { Filters = n.GetObjectValue<PolicyRewardRuleFilters>(PolicyRewardRuleFilters.CreateFromDiscriminatorValue); } },
-                {"outcome", n => { Outcome = n.GetObjectValue<PolicyRewardRuleOutcome>(PolicyRewardRuleOutcome.CreateFromDiscriminatorValue); } },
-                {"type", n => { Type = n.GetEnumValue<PolicyRewardRuleType>(); } },
+                { "filters", n => { Filters = n.GetObjectValue<Marqeta.Core.Sdk.Models.PolicyRewardRuleFilters>(Marqeta.Core.Sdk.Models.PolicyRewardRuleFilters.CreateFromDiscriminatorValue); } },
+                { "outcome", n => { Outcome = n.GetObjectValue<Marqeta.Core.Sdk.Models.PolicyRewardRuleOutcome>(Marqeta.Core.Sdk.Models.PolicyRewardRuleOutcome.CreateFromDiscriminatorValue); } },
+                { "type", n => { Type = n.GetEnumValue<Marqeta.Core.Sdk.Models.PolicyRewardRuleType>(); } },
             };
         }
         /// <summary>
@@ -67,9 +68,9 @@ namespace Marqeta.Core.Sdk.Models {
         public virtual void Serialize(ISerializationWriter writer)
         {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<PolicyRewardRuleFilters>("filters", Filters);
-            writer.WriteObjectValue<PolicyRewardRuleOutcome>("outcome", Outcome);
-            writer.WriteEnumValue<PolicyRewardRuleType>("type", Type);
+            writer.WriteObjectValue<Marqeta.Core.Sdk.Models.PolicyRewardRuleFilters>("filters", Filters);
+            writer.WriteObjectValue<Marqeta.Core.Sdk.Models.PolicyRewardRuleOutcome>("outcome", Outcome);
+            writer.WriteEnumValue<Marqeta.Core.Sdk.Models.PolicyRewardRuleType>("type", Type);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

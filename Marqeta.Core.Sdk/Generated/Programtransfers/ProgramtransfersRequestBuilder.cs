@@ -10,31 +10,32 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Threading;
 using System;
-namespace Marqeta.Core.Sdk.Programtransfers {
+namespace Marqeta.Core.Sdk.Programtransfers
+{
     /// <summary>
     /// Builds and executes requests for operations under \programtransfers
     /// </summary>
-    public class ProgramtransfersRequestBuilder : BaseRequestBuilder 
+    public class ProgramtransfersRequestBuilder : BaseRequestBuilder
     {
         /// <summary>The types property</summary>
-        public TypesRequestBuilder Types
+        public Marqeta.Core.Sdk.Programtransfers.Types.TypesRequestBuilder Types
         {
-            get => new TypesRequestBuilder(PathParameters, RequestAdapter);
+            get => new Marqeta.Core.Sdk.Programtransfers.Types.TypesRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>Gets an item from the Marqeta.Core.Sdk.programtransfers.item collection</summary>
         /// <param name="position">Unique identifier of the program transfer.</param>
-        /// <returns>A <see cref="WithTokenItemRequestBuilder"/></returns>
-        public WithTokenItemRequestBuilder this[string position]
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Programtransfers.Item.WithTokenItemRequestBuilder"/></returns>
+        public Marqeta.Core.Sdk.Programtransfers.Item.WithTokenItemRequestBuilder this[string position]
         {
             get
             {
                 var urlTplParams = new Dictionary<string, object>(PathParameters);
                 urlTplParams.Add("token", position);
-                return new WithTokenItemRequestBuilder(urlTplParams, RequestAdapter);
+                return new Marqeta.Core.Sdk.Programtransfers.Item.WithTokenItemRequestBuilder(urlTplParams, RequestAdapter);
             }
         }
         /// <summary>
-        /// Instantiates a new <see cref="ProgramtransfersRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Programtransfers.ProgramtransfersRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
@@ -42,7 +43,7 @@ namespace Marqeta.Core.Sdk.Programtransfers {
         {
         }
         /// <summary>
-        /// Instantiates a new <see cref="ProgramtransfersRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Programtransfers.ProgramtransfersRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
@@ -52,50 +53,50 @@ namespace Marqeta.Core.Sdk.Programtransfers {
         /// <summary>
         /// Use this endpoint to list all program transfers.To narrow your result set to program transfers of a particular type or that are associated with a particular account holder, include the appropriate parameters from the following URL Query Parameters table.This endpoint also supports &lt;&lt;/core-api/field-filtering, field filtering&gt;&gt;, &lt;&lt;/core-api/sorting-and-pagination, pagination&gt;&gt;, and &lt;&lt;/core-api/sorting-and-pagination, sorting&gt;&gt;.
         /// </summary>
-        /// <returns>A <see cref="ProgramTransferListResponse"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Models.ProgramTransferListResponse"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        /// <exception cref="ApiError">When receiving a 4XX or 5XX status code</exception>
+        /// <exception cref="Marqeta.Core.Sdk.Models.ApiError">When receiving a 4XX or 5XX status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<ProgramTransferListResponse?> GetAsync(Action<RequestConfiguration<ProgramtransfersRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<Marqeta.Core.Sdk.Models.ProgramTransferListResponse?> GetAsync(Action<RequestConfiguration<Marqeta.Core.Sdk.Programtransfers.ProgramtransfersRequestBuilder.ProgramtransfersRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<ProgramTransferListResponse> GetAsync(Action<RequestConfiguration<ProgramtransfersRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<Marqeta.Core.Sdk.Models.ProgramTransferListResponse> GetAsync(Action<RequestConfiguration<Marqeta.Core.Sdk.Programtransfers.ProgramtransfersRequestBuilder.ProgramtransfersRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
-                {"XXX", ApiError.CreateFromDiscriminatorValue},
+                { "XXX", Marqeta.Core.Sdk.Models.ApiError.CreateFromDiscriminatorValue },
             };
-            return await RequestAdapter.SendAsync<ProgramTransferListResponse>(requestInfo, ProgramTransferListResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<Marqeta.Core.Sdk.Models.ProgramTransferListResponse>(requestInfo, Marqeta.Core.Sdk.Models.ProgramTransferListResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Use this endpoint to create a program transfer.Add the program transfer details to the body of the request in link:http://www.json.org/[JSON, window=&quot;_blank&quot;] format.Include either `user_token` or `business_token` in the message body to specify the account holder whose general purpose account (GPA) will be debited by the program transfer.The user or business must already exist.[NOTE]If the GPA has insufficient funds to cover both the amount of the program transfer and all attached fees, then no funds are transferred.
         /// </summary>
-        /// <returns>A <see cref="Program_transfer_response"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Models.Program_transfer_response"/></returns>
         /// <param name="body">The request body</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        /// <exception cref="ApiError">When receiving a 4XX or 5XX status code</exception>
+        /// <exception cref="Marqeta.Core.Sdk.Models.ApiError">When receiving a 4XX or 5XX status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<Program_transfer_response?> PostAsync(Program_transfer body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<Marqeta.Core.Sdk.Models.Program_transfer_response?> PostAsync(Marqeta.Core.Sdk.Models.Program_transfer body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<Program_transfer_response> PostAsync(Program_transfer body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<Marqeta.Core.Sdk.Models.Program_transfer_response> PostAsync(Marqeta.Core.Sdk.Models.Program_transfer body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             _ = body ?? throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPostRequestInformation(body, requestConfiguration);
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
-                {"XXX", ApiError.CreateFromDiscriminatorValue},
+                { "XXX", Marqeta.Core.Sdk.Models.ApiError.CreateFromDiscriminatorValue },
             };
-            return await RequestAdapter.SendAsync<Program_transfer_response>(requestInfo, Program_transfer_response.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<Marqeta.Core.Sdk.Models.Program_transfer_response>(requestInfo, Marqeta.Core.Sdk.Models.Program_transfer_response.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Use this endpoint to list all program transfers.To narrow your result set to program transfers of a particular type or that are associated with a particular account holder, include the appropriate parameters from the following URL Query Parameters table.This endpoint also supports &lt;&lt;/core-api/field-filtering, field filtering&gt;&gt;, &lt;&lt;/core-api/sorting-and-pagination, pagination&gt;&gt;, and &lt;&lt;/core-api/sorting-and-pagination, sorting&gt;&gt;.
@@ -104,11 +105,11 @@ namespace Marqeta.Core.Sdk.Programtransfers {
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<ProgramtransfersRequestBuilderGetQueryParameters>>? requestConfiguration = default)
+        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<Marqeta.Core.Sdk.Programtransfers.ProgramtransfersRequestBuilder.ProgramtransfersRequestBuilderGetQueryParameters>>? requestConfiguration = default)
         {
 #nullable restore
 #else
-        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<ProgramtransfersRequestBuilderGetQueryParameters>> requestConfiguration = default)
+        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<Marqeta.Core.Sdk.Programtransfers.ProgramtransfersRequestBuilder.ProgramtransfersRequestBuilderGetQueryParameters>> requestConfiguration = default)
         {
 #endif
             var requestInfo = new RequestInformation(Method.GET, UrlTemplate, PathParameters);
@@ -124,11 +125,11 @@ namespace Marqeta.Core.Sdk.Programtransfers {
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToPostRequestInformation(Program_transfer body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
+        public RequestInformation ToPostRequestInformation(Marqeta.Core.Sdk.Models.Program_transfer body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
         {
 #nullable restore
 #else
-        public RequestInformation ToPostRequestInformation(Program_transfer body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
+        public RequestInformation ToPostRequestInformation(Marqeta.Core.Sdk.Models.Program_transfer body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
         {
 #endif
             _ = body ?? throw new ArgumentNullException(nameof(body));
@@ -141,11 +142,11 @@ namespace Marqeta.Core.Sdk.Programtransfers {
         /// <summary>
         /// Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
         /// </summary>
-        /// <returns>A <see cref="ProgramtransfersRequestBuilder"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Programtransfers.ProgramtransfersRequestBuilder"/></returns>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
-        public ProgramtransfersRequestBuilder WithUrl(string rawUrl)
+        public Marqeta.Core.Sdk.Programtransfers.ProgramtransfersRequestBuilder WithUrl(string rawUrl)
         {
-            return new ProgramtransfersRequestBuilder(rawUrl, RequestAdapter);
+            return new Marqeta.Core.Sdk.Programtransfers.ProgramtransfersRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
         /// Use this endpoint to list all program transfers.To narrow your result set to program transfers of a particular type or that are associated with a particular account holder, include the appropriate parameters from the following URL Query Parameters table.This endpoint also supports &lt;&lt;/core-api/field-filtering, field filtering&gt;&gt;, &lt;&lt;/core-api/sorting-and-pagination, pagination&gt;&gt;, and &lt;&lt;/core-api/sorting-and-pagination, sorting&gt;&gt;.

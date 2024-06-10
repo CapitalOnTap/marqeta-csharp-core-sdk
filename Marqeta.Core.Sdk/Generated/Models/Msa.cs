@@ -4,9 +4,10 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System;
-namespace Marqeta.Core.Sdk.Models {
+namespace Marqeta.Core.Sdk.Models
+{
     #pragma warning disable CS1591
-    public class Msa : IAdditionalDataHolder, IParsable 
+    public class Msa : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -24,7 +25,7 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>The trigger_amount property</summary>
         public double? TriggerAmount { get; set; }
         /// <summary>
-        /// Instantiates a new <see cref="Msa"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Models.Msa"/> and sets the default values.
         /// </summary>
         public Msa()
         {
@@ -33,12 +34,12 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="Msa"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Models.Msa"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static Msa CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static Marqeta.Core.Sdk.Models.Msa CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-            return new Msa();
+            return new Marqeta.Core.Sdk.Models.Msa();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -48,9 +49,9 @@ namespace Marqeta.Core.Sdk.Models {
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                {"campaign_token", n => { CampaignToken = n.GetStringValue(); } },
-                {"reload_amount", n => { ReloadAmount = n.GetDoubleValue(); } },
-                {"trigger_amount", n => { TriggerAmount = n.GetDoubleValue(); } },
+                { "campaign_token", n => { CampaignToken = n.GetStringValue(); } },
+                { "reload_amount", n => { ReloadAmount = n.GetDoubleValue(); } },
+                { "trigger_amount", n => { TriggerAmount = n.GetDoubleValue(); } },
             };
         }
         /// <summary>

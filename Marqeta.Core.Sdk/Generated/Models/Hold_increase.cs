@@ -4,35 +4,36 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System;
-namespace Marqeta.Core.Sdk.Models {
+namespace Marqeta.Core.Sdk.Models
+{
     /// <summary>
     /// Controls automatic increases to the authorization amount for MCCs specified in this group.
     /// </summary>
-    public class Hold_increase : IAdditionalDataHolder, IParsable 
+    public class Hold_increase : IAdditionalDataHolder, IParsable
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Controls whether the `value` field represents a fixed amount or a percentage of the authorization amount.</summary>
-        public Hold_increase_type? Type { get; set; }
+        public Marqeta.Core.Sdk.Models.Hold_increase_type? Type { get; set; }
         /// <summary>Specifies the amount of the automatic increase to the authorization amount.The `type` field controls whether this amount is a fixed amount or a percentage.</summary>
         public double? Value { get; set; }
         /// <summary>
-        /// Instantiates a new <see cref="Hold_increase"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Models.Hold_increase"/> and sets the default values.
         /// </summary>
         public Hold_increase()
         {
             AdditionalData = new Dictionary<string, object>();
-            Type = Hold_increase_type.AMOUNT;
+            Type = Marqeta.Core.Sdk.Models.Hold_increase_type.AMOUNT;
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="Hold_increase"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Models.Hold_increase"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static Hold_increase CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static Marqeta.Core.Sdk.Models.Hold_increase CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-            return new Hold_increase();
+            return new Marqeta.Core.Sdk.Models.Hold_increase();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -42,8 +43,8 @@ namespace Marqeta.Core.Sdk.Models {
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                {"type", n => { Type = n.GetEnumValue<Hold_increase_type>(); } },
-                {"value", n => { Value = n.GetDoubleValue(); } },
+                { "type", n => { Type = n.GetEnumValue<Marqeta.Core.Sdk.Models.Hold_increase_type>(); } },
+                { "value", n => { Value = n.GetDoubleValue(); } },
             };
         }
         /// <summary>
@@ -53,7 +54,7 @@ namespace Marqeta.Core.Sdk.Models {
         public virtual void Serialize(ISerializationWriter writer)
         {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
-            writer.WriteEnumValue<Hold_increase_type>("type", Type);
+            writer.WriteEnumValue<Marqeta.Core.Sdk.Models.Hold_increase_type>("type", Type);
             writer.WriteDoubleValue("value", Value);
             writer.WriteAdditionalData(AdditionalData);
         }

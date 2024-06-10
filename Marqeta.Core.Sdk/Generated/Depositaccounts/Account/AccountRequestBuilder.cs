@@ -6,26 +6,27 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using System;
-namespace Marqeta.Core.Sdk.Depositaccounts.Account {
+namespace Marqeta.Core.Sdk.Depositaccounts.Account
+{
     /// <summary>
     /// Builds and executes requests for operations under \depositaccounts\account
     /// </summary>
-    public class AccountRequestBuilder : BaseRequestBuilder 
+    public class AccountRequestBuilder : BaseRequestBuilder
     {
         /// <summary>Gets an item from the Marqeta.Core.Sdk.depositaccounts.account.item collection</summary>
         /// <param name="position">Get user associated with direct deposit account number</param>
-        /// <returns>A <see cref="WithAccount_numberItemRequestBuilder"/></returns>
-        public WithAccount_numberItemRequestBuilder this[string position]
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Depositaccounts.Account.Item.WithAccount_numberItemRequestBuilder"/></returns>
+        public Marqeta.Core.Sdk.Depositaccounts.Account.Item.WithAccount_numberItemRequestBuilder this[string position]
         {
             get
             {
                 var urlTplParams = new Dictionary<string, object>(PathParameters);
                 urlTplParams.Add("account_number", position);
-                return new WithAccount_numberItemRequestBuilder(urlTplParams, RequestAdapter);
+                return new Marqeta.Core.Sdk.Depositaccounts.Account.Item.WithAccount_numberItemRequestBuilder(urlTplParams, RequestAdapter);
             }
         }
         /// <summary>
-        /// Instantiates a new <see cref="AccountRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Depositaccounts.Account.AccountRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
@@ -33,7 +34,7 @@ namespace Marqeta.Core.Sdk.Depositaccounts.Account {
         {
         }
         /// <summary>
-        /// Instantiates a new <see cref="AccountRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Depositaccounts.Account.AccountRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>

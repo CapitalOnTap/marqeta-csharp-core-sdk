@@ -4,32 +4,33 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System;
-namespace Marqeta.Core.Sdk.Models {
+namespace Marqeta.Core.Sdk.Models
+{
     /// <summary>
     /// Contains name verification data: the full name entered by the cardholder, name data held by the Marqeta platform, and an assertion by the Marqeta platform as to whether the two sets of data match.
     /// </summary>
-    public class Account_name_verification_model : IAdditionalDataHolder, IParsable 
+    public class Account_name_verification_model : IAdditionalDataHolder, IParsable
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Contains the name of the cardholder for account name verification.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public Ani_information? OnFile { get; set; }
+        public Marqeta.Core.Sdk.Models.Ani_information? OnFile { get; set; }
 #nullable restore
 #else
-        public Ani_information OnFile { get; set; }
+        public Marqeta.Core.Sdk.Models.Ani_information OnFile { get; set; }
 #endif
         /// <summary>Contains the name of the cardholder for account name verification.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public Ani_information? Request { get; set; }
+        public Marqeta.Core.Sdk.Models.Ani_information? Request { get; set; }
 #nullable restore
 #else
-        public Ani_information Request { get; set; }
+        public Marqeta.Core.Sdk.Models.Ani_information Request { get; set; }
 #endif
         /// <summary>The request_type property</summary>
-        public Account_name_verification_model_request_type? RequestType { get; set; }
+        public Marqeta.Core.Sdk.Models.Account_name_verification_model_request_type? RequestType { get; set; }
         /// <summary>Response codes and memos for account name verification, address verification, card security verification, and transactions.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -39,7 +40,7 @@ namespace Marqeta.Core.Sdk.Models {
         public Marqeta.Core.Sdk.Models.Response Response { get; set; }
 #endif
         /// <summary>
-        /// Instantiates a new <see cref="Account_name_verification_model"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Models.Account_name_verification_model"/> and sets the default values.
         /// </summary>
         public Account_name_verification_model()
         {
@@ -48,12 +49,12 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="Account_name_verification_model"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Models.Account_name_verification_model"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static Account_name_verification_model CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static Marqeta.Core.Sdk.Models.Account_name_verification_model CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-            return new Account_name_verification_model();
+            return new Marqeta.Core.Sdk.Models.Account_name_verification_model();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -63,10 +64,10 @@ namespace Marqeta.Core.Sdk.Models {
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                {"on_file", n => { OnFile = n.GetObjectValue<Ani_information>(Ani_information.CreateFromDiscriminatorValue); } },
-                {"request", n => { Request = n.GetObjectValue<Ani_information>(Ani_information.CreateFromDiscriminatorValue); } },
-                {"request_type", n => { RequestType = n.GetEnumValue<Account_name_verification_model_request_type>(); } },
-                {"response", n => { Response = n.GetObjectValue<Marqeta.Core.Sdk.Models.Response>(Marqeta.Core.Sdk.Models.Response.CreateFromDiscriminatorValue); } },
+                { "on_file", n => { OnFile = n.GetObjectValue<Marqeta.Core.Sdk.Models.Ani_information>(Marqeta.Core.Sdk.Models.Ani_information.CreateFromDiscriminatorValue); } },
+                { "request", n => { Request = n.GetObjectValue<Marqeta.Core.Sdk.Models.Ani_information>(Marqeta.Core.Sdk.Models.Ani_information.CreateFromDiscriminatorValue); } },
+                { "request_type", n => { RequestType = n.GetEnumValue<Marqeta.Core.Sdk.Models.Account_name_verification_model_request_type>(); } },
+                { "response", n => { Response = n.GetObjectValue<Marqeta.Core.Sdk.Models.Response>(Marqeta.Core.Sdk.Models.Response.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -76,9 +77,9 @@ namespace Marqeta.Core.Sdk.Models {
         public virtual void Serialize(ISerializationWriter writer)
         {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<Ani_information>("on_file", OnFile);
-            writer.WriteObjectValue<Ani_information>("request", Request);
-            writer.WriteEnumValue<Account_name_verification_model_request_type>("request_type", RequestType);
+            writer.WriteObjectValue<Marqeta.Core.Sdk.Models.Ani_information>("on_file", OnFile);
+            writer.WriteObjectValue<Marqeta.Core.Sdk.Models.Ani_information>("request", Request);
+            writer.WriteEnumValue<Marqeta.Core.Sdk.Models.Account_name_verification_model_request_type>("request_type", RequestType);
             writer.WriteObjectValue<Marqeta.Core.Sdk.Models.Response>("response", Response);
             writer.WriteAdditionalData(AdditionalData);
         }

@@ -4,80 +4,81 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System;
-namespace Marqeta.Core.Sdk.Models {
+namespace Marqeta.Core.Sdk.Models
+{
     /// <summary>
     /// Account documents response.
     /// </summary>
-    public class AccountDocumentsResponse : IAdditionalDataHolder, IParsable 
+    public class AccountDocumentsResponse : IAdditionalDataHolder, IParsable
     {
         /// <summary>Account document response.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public AccountDocumentResponse? AccountStatement { get; set; }
+        public Marqeta.Core.Sdk.Models.AccountDocumentResponse? AccountStatement { get; set; }
 #nullable restore
 #else
-        public AccountDocumentResponse AccountStatement { get; set; }
+        public Marqeta.Core.Sdk.Models.AccountDocumentResponse AccountStatement { get; set; }
 #endif
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Account document response.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public AccountDocumentResponse? BenefitsDisclosure { get; set; }
+        public Marqeta.Core.Sdk.Models.AccountDocumentResponse? BenefitsDisclosure { get; set; }
 #nullable restore
 #else
-        public AccountDocumentResponse BenefitsDisclosure { get; set; }
+        public Marqeta.Core.Sdk.Models.AccountDocumentResponse BenefitsDisclosure { get; set; }
 #endif
         /// <summary>Account document response.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public AccountDocumentResponse? CardMemberAgreement { get; set; }
+        public Marqeta.Core.Sdk.Models.AccountDocumentResponse? CardMemberAgreement { get; set; }
 #nullable restore
 #else
-        public AccountDocumentResponse CardMemberAgreement { get; set; }
+        public Marqeta.Core.Sdk.Models.AccountDocumentResponse CardMemberAgreement { get; set; }
 #endif
         /// <summary>Account document response.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public AccountDocumentResponse? EDisclosure { get; set; }
+        public Marqeta.Core.Sdk.Models.AccountDocumentResponse? EDisclosure { get; set; }
 #nullable restore
 #else
-        public AccountDocumentResponse EDisclosure { get; set; }
+        public Marqeta.Core.Sdk.Models.AccountDocumentResponse EDisclosure { get; set; }
 #endif
         /// <summary>Account document response.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public AccountDocumentResponse? PrivacyPolicy { get; set; }
+        public Marqeta.Core.Sdk.Models.AccountDocumentResponse? PrivacyPolicy { get; set; }
 #nullable restore
 #else
-        public AccountDocumentResponse PrivacyPolicy { get; set; }
+        public Marqeta.Core.Sdk.Models.AccountDocumentResponse PrivacyPolicy { get; set; }
 #endif
         /// <summary>Account document response.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public AccountDocumentResponse? RewardsDisclosure { get; set; }
+        public Marqeta.Core.Sdk.Models.AccountDocumentResponse? RewardsDisclosure { get; set; }
 #nullable restore
 #else
-        public AccountDocumentResponse RewardsDisclosure { get; set; }
+        public Marqeta.Core.Sdk.Models.AccountDocumentResponse RewardsDisclosure { get; set; }
 #endif
         /// <summary>Account document response.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public AccountDocumentResponse? SummaryOfCreditTerms { get; set; }
+        public Marqeta.Core.Sdk.Models.AccountDocumentResponse? SummaryOfCreditTerms { get; set; }
 #nullable restore
 #else
-        public AccountDocumentResponse SummaryOfCreditTerms { get; set; }
+        public Marqeta.Core.Sdk.Models.AccountDocumentResponse SummaryOfCreditTerms { get; set; }
 #endif
         /// <summary>Account document response.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public AccountDocumentResponse? TermsSchedule { get; set; }
+        public Marqeta.Core.Sdk.Models.AccountDocumentResponse? TermsSchedule { get; set; }
 #nullable restore
 #else
-        public AccountDocumentResponse TermsSchedule { get; set; }
+        public Marqeta.Core.Sdk.Models.AccountDocumentResponse TermsSchedule { get; set; }
 #endif
         /// <summary>
-        /// Instantiates a new <see cref="AccountDocumentsResponse"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Models.AccountDocumentsResponse"/> and sets the default values.
         /// </summary>
         public AccountDocumentsResponse()
         {
@@ -86,12 +87,12 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="AccountDocumentsResponse"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Models.AccountDocumentsResponse"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static AccountDocumentsResponse CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static Marqeta.Core.Sdk.Models.AccountDocumentsResponse CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-            return new AccountDocumentsResponse();
+            return new Marqeta.Core.Sdk.Models.AccountDocumentsResponse();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -101,14 +102,14 @@ namespace Marqeta.Core.Sdk.Models {
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                {"account_statement", n => { AccountStatement = n.GetObjectValue<AccountDocumentResponse>(AccountDocumentResponse.CreateFromDiscriminatorValue); } },
-                {"benefits_disclosure", n => { BenefitsDisclosure = n.GetObjectValue<AccountDocumentResponse>(AccountDocumentResponse.CreateFromDiscriminatorValue); } },
-                {"card_member_agreement", n => { CardMemberAgreement = n.GetObjectValue<AccountDocumentResponse>(AccountDocumentResponse.CreateFromDiscriminatorValue); } },
-                {"e_disclosure", n => { EDisclosure = n.GetObjectValue<AccountDocumentResponse>(AccountDocumentResponse.CreateFromDiscriminatorValue); } },
-                {"privacy_policy", n => { PrivacyPolicy = n.GetObjectValue<AccountDocumentResponse>(AccountDocumentResponse.CreateFromDiscriminatorValue); } },
-                {"rewards_disclosure", n => { RewardsDisclosure = n.GetObjectValue<AccountDocumentResponse>(AccountDocumentResponse.CreateFromDiscriminatorValue); } },
-                {"summary_of_credit_terms", n => { SummaryOfCreditTerms = n.GetObjectValue<AccountDocumentResponse>(AccountDocumentResponse.CreateFromDiscriminatorValue); } },
-                {"terms_schedule", n => { TermsSchedule = n.GetObjectValue<AccountDocumentResponse>(AccountDocumentResponse.CreateFromDiscriminatorValue); } },
+                { "account_statement", n => { AccountStatement = n.GetObjectValue<Marqeta.Core.Sdk.Models.AccountDocumentResponse>(Marqeta.Core.Sdk.Models.AccountDocumentResponse.CreateFromDiscriminatorValue); } },
+                { "benefits_disclosure", n => { BenefitsDisclosure = n.GetObjectValue<Marqeta.Core.Sdk.Models.AccountDocumentResponse>(Marqeta.Core.Sdk.Models.AccountDocumentResponse.CreateFromDiscriminatorValue); } },
+                { "card_member_agreement", n => { CardMemberAgreement = n.GetObjectValue<Marqeta.Core.Sdk.Models.AccountDocumentResponse>(Marqeta.Core.Sdk.Models.AccountDocumentResponse.CreateFromDiscriminatorValue); } },
+                { "e_disclosure", n => { EDisclosure = n.GetObjectValue<Marqeta.Core.Sdk.Models.AccountDocumentResponse>(Marqeta.Core.Sdk.Models.AccountDocumentResponse.CreateFromDiscriminatorValue); } },
+                { "privacy_policy", n => { PrivacyPolicy = n.GetObjectValue<Marqeta.Core.Sdk.Models.AccountDocumentResponse>(Marqeta.Core.Sdk.Models.AccountDocumentResponse.CreateFromDiscriminatorValue); } },
+                { "rewards_disclosure", n => { RewardsDisclosure = n.GetObjectValue<Marqeta.Core.Sdk.Models.AccountDocumentResponse>(Marqeta.Core.Sdk.Models.AccountDocumentResponse.CreateFromDiscriminatorValue); } },
+                { "summary_of_credit_terms", n => { SummaryOfCreditTerms = n.GetObjectValue<Marqeta.Core.Sdk.Models.AccountDocumentResponse>(Marqeta.Core.Sdk.Models.AccountDocumentResponse.CreateFromDiscriminatorValue); } },
+                { "terms_schedule", n => { TermsSchedule = n.GetObjectValue<Marqeta.Core.Sdk.Models.AccountDocumentResponse>(Marqeta.Core.Sdk.Models.AccountDocumentResponse.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -118,14 +119,14 @@ namespace Marqeta.Core.Sdk.Models {
         public virtual void Serialize(ISerializationWriter writer)
         {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<AccountDocumentResponse>("account_statement", AccountStatement);
-            writer.WriteObjectValue<AccountDocumentResponse>("benefits_disclosure", BenefitsDisclosure);
-            writer.WriteObjectValue<AccountDocumentResponse>("card_member_agreement", CardMemberAgreement);
-            writer.WriteObjectValue<AccountDocumentResponse>("e_disclosure", EDisclosure);
-            writer.WriteObjectValue<AccountDocumentResponse>("privacy_policy", PrivacyPolicy);
-            writer.WriteObjectValue<AccountDocumentResponse>("rewards_disclosure", RewardsDisclosure);
-            writer.WriteObjectValue<AccountDocumentResponse>("summary_of_credit_terms", SummaryOfCreditTerms);
-            writer.WriteObjectValue<AccountDocumentResponse>("terms_schedule", TermsSchedule);
+            writer.WriteObjectValue<Marqeta.Core.Sdk.Models.AccountDocumentResponse>("account_statement", AccountStatement);
+            writer.WriteObjectValue<Marqeta.Core.Sdk.Models.AccountDocumentResponse>("benefits_disclosure", BenefitsDisclosure);
+            writer.WriteObjectValue<Marqeta.Core.Sdk.Models.AccountDocumentResponse>("card_member_agreement", CardMemberAgreement);
+            writer.WriteObjectValue<Marqeta.Core.Sdk.Models.AccountDocumentResponse>("e_disclosure", EDisclosure);
+            writer.WriteObjectValue<Marqeta.Core.Sdk.Models.AccountDocumentResponse>("privacy_policy", PrivacyPolicy);
+            writer.WriteObjectValue<Marqeta.Core.Sdk.Models.AccountDocumentResponse>("rewards_disclosure", RewardsDisclosure);
+            writer.WriteObjectValue<Marqeta.Core.Sdk.Models.AccountDocumentResponse>("summary_of_credit_terms", SummaryOfCreditTerms);
+            writer.WriteObjectValue<Marqeta.Core.Sdk.Models.AccountDocumentResponse>("terms_schedule", TermsSchedule);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

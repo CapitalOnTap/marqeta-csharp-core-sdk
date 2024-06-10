@@ -4,56 +4,57 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System;
-namespace Marqeta.Core.Sdk.Models {
+namespace Marqeta.Core.Sdk.Models
+{
     /// <summary>
     /// Contains information on the fees in an account&apos;s fee policy.
     /// </summary>
-    public class PolicyFeeAccount : IAdditionalDataHolder, IParsable 
+    public class PolicyFeeAccount : IAdditionalDataHolder, IParsable
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Contains information on a specific periodic fee in a fee policy.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public PolicyFeePeriodic? AnnualFee { get; set; }
+        public Marqeta.Core.Sdk.Models.PolicyFeePeriodic? AnnualFee { get; set; }
 #nullable restore
 #else
-        public PolicyFeePeriodic AnnualFee { get; set; }
+        public Marqeta.Core.Sdk.Models.PolicyFeePeriodic AnnualFee { get; set; }
 #endif
         /// <summary>Contains information on a specific fee in a fee policy.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public PolicyFeeForeignTransaction? ForeignTransactionFee { get; set; }
+        public Marqeta.Core.Sdk.Models.PolicyFeeForeignTransaction? ForeignTransactionFee { get; set; }
 #nullable restore
 #else
-        public PolicyFeeForeignTransaction ForeignTransactionFee { get; set; }
+        public Marqeta.Core.Sdk.Models.PolicyFeeForeignTransaction ForeignTransactionFee { get; set; }
 #endif
         /// <summary>Contains information on a specific fee in a fee policy.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public PolicyFeePayment? LatePayment { get; set; }
+        public Marqeta.Core.Sdk.Models.PolicyFeePayment? LatePayment { get; set; }
 #nullable restore
 #else
-        public PolicyFeePayment LatePayment { get; set; }
+        public Marqeta.Core.Sdk.Models.PolicyFeePayment LatePayment { get; set; }
 #endif
         /// <summary>Contains information on a specific periodic fee in a fee policy.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public PolicyFeePeriodic? MonthlyFee { get; set; }
+        public Marqeta.Core.Sdk.Models.PolicyFeePeriodic? MonthlyFee { get; set; }
 #nullable restore
 #else
-        public PolicyFeePeriodic MonthlyFee { get; set; }
+        public Marqeta.Core.Sdk.Models.PolicyFeePeriodic MonthlyFee { get; set; }
 #endif
         /// <summary>Contains information on a specific fee in a fee policy.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public PolicyFeePayment? ReturnedPayment { get; set; }
+        public Marqeta.Core.Sdk.Models.PolicyFeePayment? ReturnedPayment { get; set; }
 #nullable restore
 #else
-        public PolicyFeePayment ReturnedPayment { get; set; }
+        public Marqeta.Core.Sdk.Models.PolicyFeePayment ReturnedPayment { get; set; }
 #endif
         /// <summary>
-        /// Instantiates a new <see cref="PolicyFeeAccount"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Models.PolicyFeeAccount"/> and sets the default values.
         /// </summary>
         public PolicyFeeAccount()
         {
@@ -62,12 +63,12 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="PolicyFeeAccount"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Models.PolicyFeeAccount"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static PolicyFeeAccount CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static Marqeta.Core.Sdk.Models.PolicyFeeAccount CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-            return new PolicyFeeAccount();
+            return new Marqeta.Core.Sdk.Models.PolicyFeeAccount();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -77,11 +78,11 @@ namespace Marqeta.Core.Sdk.Models {
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                {"annual_fee", n => { AnnualFee = n.GetObjectValue<PolicyFeePeriodic>(PolicyFeePeriodic.CreateFromDiscriminatorValue); } },
-                {"foreign_transaction_fee", n => { ForeignTransactionFee = n.GetObjectValue<PolicyFeeForeignTransaction>(PolicyFeeForeignTransaction.CreateFromDiscriminatorValue); } },
-                {"late_payment", n => { LatePayment = n.GetObjectValue<PolicyFeePayment>(PolicyFeePayment.CreateFromDiscriminatorValue); } },
-                {"monthly_fee", n => { MonthlyFee = n.GetObjectValue<PolicyFeePeriodic>(PolicyFeePeriodic.CreateFromDiscriminatorValue); } },
-                {"returned_payment", n => { ReturnedPayment = n.GetObjectValue<PolicyFeePayment>(PolicyFeePayment.CreateFromDiscriminatorValue); } },
+                { "annual_fee", n => { AnnualFee = n.GetObjectValue<Marqeta.Core.Sdk.Models.PolicyFeePeriodic>(Marqeta.Core.Sdk.Models.PolicyFeePeriodic.CreateFromDiscriminatorValue); } },
+                { "foreign_transaction_fee", n => { ForeignTransactionFee = n.GetObjectValue<Marqeta.Core.Sdk.Models.PolicyFeeForeignTransaction>(Marqeta.Core.Sdk.Models.PolicyFeeForeignTransaction.CreateFromDiscriminatorValue); } },
+                { "late_payment", n => { LatePayment = n.GetObjectValue<Marqeta.Core.Sdk.Models.PolicyFeePayment>(Marqeta.Core.Sdk.Models.PolicyFeePayment.CreateFromDiscriminatorValue); } },
+                { "monthly_fee", n => { MonthlyFee = n.GetObjectValue<Marqeta.Core.Sdk.Models.PolicyFeePeriodic>(Marqeta.Core.Sdk.Models.PolicyFeePeriodic.CreateFromDiscriminatorValue); } },
+                { "returned_payment", n => { ReturnedPayment = n.GetObjectValue<Marqeta.Core.Sdk.Models.PolicyFeePayment>(Marqeta.Core.Sdk.Models.PolicyFeePayment.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -91,11 +92,11 @@ namespace Marqeta.Core.Sdk.Models {
         public virtual void Serialize(ISerializationWriter writer)
         {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<PolicyFeePeriodic>("annual_fee", AnnualFee);
-            writer.WriteObjectValue<PolicyFeeForeignTransaction>("foreign_transaction_fee", ForeignTransactionFee);
-            writer.WriteObjectValue<PolicyFeePayment>("late_payment", LatePayment);
-            writer.WriteObjectValue<PolicyFeePeriodic>("monthly_fee", MonthlyFee);
-            writer.WriteObjectValue<PolicyFeePayment>("returned_payment", ReturnedPayment);
+            writer.WriteObjectValue<Marqeta.Core.Sdk.Models.PolicyFeePeriodic>("annual_fee", AnnualFee);
+            writer.WriteObjectValue<Marqeta.Core.Sdk.Models.PolicyFeeForeignTransaction>("foreign_transaction_fee", ForeignTransactionFee);
+            writer.WriteObjectValue<Marqeta.Core.Sdk.Models.PolicyFeePayment>("late_payment", LatePayment);
+            writer.WriteObjectValue<Marqeta.Core.Sdk.Models.PolicyFeePeriodic>("monthly_fee", MonthlyFee);
+            writer.WriteObjectValue<Marqeta.Core.Sdk.Models.PolicyFeePayment>("returned_payment", ReturnedPayment);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

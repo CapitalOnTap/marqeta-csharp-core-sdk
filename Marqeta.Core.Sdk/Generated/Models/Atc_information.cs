@@ -4,9 +4,10 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System;
-namespace Marqeta.Core.Sdk.Models {
+namespace Marqeta.Core.Sdk.Models
+{
     #pragma warning disable CS1591
-    public class Atc_information : IAdditionalDataHolder, IParsable 
+    public class Atc_information : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -24,7 +25,7 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>The atc_value property</summary>
         public double? AtcValue { get; set; }
         /// <summary>
-        /// Instantiates a new <see cref="Atc_information"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Models.Atc_information"/> and sets the default values.
         /// </summary>
         public Atc_information()
         {
@@ -33,12 +34,12 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="Atc_information"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Models.Atc_information"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static Atc_information CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static Marqeta.Core.Sdk.Models.Atc_information CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-            return new Atc_information();
+            return new Marqeta.Core.Sdk.Models.Atc_information();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -48,9 +49,9 @@ namespace Marqeta.Core.Sdk.Models {
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                {"atc_discrepancy_indicator", n => { AtcDiscrepancyIndicator = n.GetStringValue(); } },
-                {"atc_discrepancy_value", n => { AtcDiscrepancyValue = n.GetDoubleValue(); } },
-                {"atc_value", n => { AtcValue = n.GetDoubleValue(); } },
+                { "atc_discrepancy_indicator", n => { AtcDiscrepancyIndicator = n.GetStringValue(); } },
+                { "atc_discrepancy_value", n => { AtcDiscrepancyValue = n.GetDoubleValue(); } },
+                { "atc_value", n => { AtcValue = n.GetDoubleValue(); } },
             };
         }
         /// <summary>

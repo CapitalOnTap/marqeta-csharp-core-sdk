@@ -4,9 +4,10 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System;
-namespace Marqeta.Core.Sdk.Models {
+namespace Marqeta.Core.Sdk.Models
+{
     #pragma warning disable CS1591
-    public class Unload_request_model : IAdditionalDataHolder, IParsable 
+    public class Unload_request_model : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -54,7 +55,7 @@ namespace Marqeta.Core.Sdk.Models {
         public string Token { get; set; }
 #endif
         /// <summary>
-        /// Instantiates a new <see cref="Unload_request_model"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Models.Unload_request_model"/> and sets the default values.
         /// </summary>
         public Unload_request_model()
         {
@@ -63,12 +64,12 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="Unload_request_model"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Models.Unload_request_model"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static Unload_request_model CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static Marqeta.Core.Sdk.Models.Unload_request_model CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-            return new Unload_request_model();
+            return new Marqeta.Core.Sdk.Models.Unload_request_model();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -78,12 +79,12 @@ namespace Marqeta.Core.Sdk.Models {
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                {"amount", n => { Amount = n.GetDoubleValue(); } },
-                {"funding_source_address_token", n => { FundingSourceAddressToken = n.GetStringValue(); } },
-                {"memo", n => { Memo = n.GetStringValue(); } },
-                {"original_order_token", n => { OriginalOrderToken = n.GetStringValue(); } },
-                {"tags", n => { Tags = n.GetStringValue(); } },
-                {"token", n => { Token = n.GetStringValue(); } },
+                { "amount", n => { Amount = n.GetDoubleValue(); } },
+                { "funding_source_address_token", n => { FundingSourceAddressToken = n.GetStringValue(); } },
+                { "memo", n => { Memo = n.GetStringValue(); } },
+                { "original_order_token", n => { OriginalOrderToken = n.GetStringValue(); } },
+                { "tags", n => { Tags = n.GetStringValue(); } },
+                { "token", n => { Token = n.GetStringValue(); } },
             };
         }
         /// <summary>

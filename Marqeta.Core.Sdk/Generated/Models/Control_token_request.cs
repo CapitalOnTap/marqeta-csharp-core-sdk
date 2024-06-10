@@ -4,9 +4,10 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System;
-namespace Marqeta.Core.Sdk.Models {
+namespace Marqeta.Core.Sdk.Models
+{
     #pragma warning disable CS1591
-    public class Control_token_request : IAdditionalDataHolder, IParsable 
+    public class Control_token_request : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -20,9 +21,9 @@ namespace Marqeta.Core.Sdk.Models {
         public string CardToken { get; set; }
 #endif
         /// <summary>Specifies the type of action completed by this request.*WARNING:* Sending a request to this endpoint with a `REVEAL_PIN` control token requires PCI DSS compliance.The lifespan of the control token depends on the token type:* *SET_PIN:* 60 minutes* *REVEAL_PIN:* 5 minutes</summary>
-        public Control_token_request_controltoken_type? ControltokenType { get; set; }
+        public Marqeta.Core.Sdk.Models.Control_token_request_controltoken_type? ControltokenType { get; set; }
         /// <summary>
-        /// Instantiates a new <see cref="Control_token_request"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Models.Control_token_request"/> and sets the default values.
         /// </summary>
         public Control_token_request()
         {
@@ -31,12 +32,12 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="Control_token_request"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Models.Control_token_request"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static Control_token_request CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static Marqeta.Core.Sdk.Models.Control_token_request CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-            return new Control_token_request();
+            return new Marqeta.Core.Sdk.Models.Control_token_request();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -46,8 +47,8 @@ namespace Marqeta.Core.Sdk.Models {
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                {"card_token", n => { CardToken = n.GetStringValue(); } },
-                {"controltoken_type", n => { ControltokenType = n.GetEnumValue<Control_token_request_controltoken_type>(); } },
+                { "card_token", n => { CardToken = n.GetStringValue(); } },
+                { "controltoken_type", n => { ControltokenType = n.GetEnumValue<Marqeta.Core.Sdk.Models.Control_token_request_controltoken_type>(); } },
             };
         }
         /// <summary>
@@ -58,7 +59,7 @@ namespace Marqeta.Core.Sdk.Models {
         {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("card_token", CardToken);
-            writer.WriteEnumValue<Control_token_request_controltoken_type>("controltoken_type", ControltokenType);
+            writer.WriteEnumValue<Marqeta.Core.Sdk.Models.Control_token_request_controltoken_type>("controltoken_type", ControltokenType);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

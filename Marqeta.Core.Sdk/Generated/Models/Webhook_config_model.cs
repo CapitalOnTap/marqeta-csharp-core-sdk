@@ -4,11 +4,12 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System;
-namespace Marqeta.Core.Sdk.Models {
+namespace Marqeta.Core.Sdk.Models
+{
     /// <summary>
     /// Contains the configuration information for the webhook.
     /// </summary>
-    public class Webhook_config_model : IAdditionalDataHolder, IParsable 
+    public class Webhook_config_model : IAdditionalDataHolder, IParsable
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
@@ -31,10 +32,10 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>Custom headers to be passed along with the request.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public Webhook_config_model_custom_header? CustomHeader { get; set; }
+        public Marqeta.Core.Sdk.Models.Webhook_config_model_custom_header? CustomHeader { get; set; }
 #nullable restore
 #else
-        public Webhook_config_model_custom_header CustomHeader { get; set; }
+        public Marqeta.Core.Sdk.Models.Webhook_config_model_custom_header CustomHeader { get; set; }
 #endif
         /// <summary>Randomly chosen string used for implementing HMAC-SHA1.HMAC-SHA1 provides an added layer of security by authenticating the message and validating message integrity.Using this functionality requires that your webhook endpoint verify the message signature.For information about implementing this functionality, see &lt;&lt;/developer-guides/signature-verification, Signature Verification&gt;&gt;.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -55,7 +56,7 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>Set to `true` to use MTLS for the webhook.</summary>
         public bool? UseMtls { get; set; }
         /// <summary>
-        /// Instantiates a new <see cref="Webhook_config_model"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Models.Webhook_config_model"/> and sets the default values.
         /// </summary>
         public Webhook_config_model()
         {
@@ -64,12 +65,12 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="Webhook_config_model"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Models.Webhook_config_model"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static Webhook_config_model CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static Marqeta.Core.Sdk.Models.Webhook_config_model CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-            return new Webhook_config_model();
+            return new Marqeta.Core.Sdk.Models.Webhook_config_model();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -79,12 +80,12 @@ namespace Marqeta.Core.Sdk.Models {
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                {"basic_auth_password", n => { BasicAuthPassword = n.GetStringValue(); } },
-                {"basic_auth_username", n => { BasicAuthUsername = n.GetStringValue(); } },
-                {"custom_header", n => { CustomHeader = n.GetObjectValue<Webhook_config_model_custom_header>(Webhook_config_model_custom_header.CreateFromDiscriminatorValue); } },
-                {"secret", n => { Secret = n.GetStringValue(); } },
-                {"url", n => { Url = n.GetStringValue(); } },
-                {"use_mtls", n => { UseMtls = n.GetBoolValue(); } },
+                { "basic_auth_password", n => { BasicAuthPassword = n.GetStringValue(); } },
+                { "basic_auth_username", n => { BasicAuthUsername = n.GetStringValue(); } },
+                { "custom_header", n => { CustomHeader = n.GetObjectValue<Marqeta.Core.Sdk.Models.Webhook_config_model_custom_header>(Marqeta.Core.Sdk.Models.Webhook_config_model_custom_header.CreateFromDiscriminatorValue); } },
+                { "secret", n => { Secret = n.GetStringValue(); } },
+                { "url", n => { Url = n.GetStringValue(); } },
+                { "use_mtls", n => { UseMtls = n.GetBoolValue(); } },
             };
         }
         /// <summary>
@@ -96,7 +97,7 @@ namespace Marqeta.Core.Sdk.Models {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("basic_auth_password", BasicAuthPassword);
             writer.WriteStringValue("basic_auth_username", BasicAuthUsername);
-            writer.WriteObjectValue<Webhook_config_model_custom_header>("custom_header", CustomHeader);
+            writer.WriteObjectValue<Marqeta.Core.Sdk.Models.Webhook_config_model_custom_header>("custom_header", CustomHeader);
             writer.WriteStringValue("secret", Secret);
             writer.WriteStringValue("url", Url);
             writer.WriteBoolValue("use_mtls", UseMtls);

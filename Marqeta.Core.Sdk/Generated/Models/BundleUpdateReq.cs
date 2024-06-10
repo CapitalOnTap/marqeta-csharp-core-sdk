@@ -4,11 +4,12 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System;
-namespace Marqeta.Core.Sdk.Models {
+namespace Marqeta.Core.Sdk.Models
+{
     /// <summary>
     /// Specifies bundles for a credit program.
     /// </summary>
-    public class BundleUpdateReq : IAdditionalDataHolder, IParsable 
+    public class BundleUpdateReq : IAdditionalDataHolder, IParsable
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
@@ -77,7 +78,7 @@ namespace Marqeta.Core.Sdk.Models {
         public string RewardPolicyToken { get; set; }
 #endif
         /// <summary>
-        /// Instantiates a new <see cref="BundleUpdateReq"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Models.BundleUpdateReq"/> and sets the default values.
         /// </summary>
         public BundleUpdateReq()
         {
@@ -86,12 +87,12 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="BundleUpdateReq"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Models.BundleUpdateReq"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static BundleUpdateReq CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static Marqeta.Core.Sdk.Models.BundleUpdateReq CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-            return new BundleUpdateReq();
+            return new Marqeta.Core.Sdk.Models.BundleUpdateReq();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -101,14 +102,14 @@ namespace Marqeta.Core.Sdk.Models {
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                {"apr_policy_token", n => { AprPolicyToken = n.GetStringValue(); } },
-                {"credit_product_policy_token", n => { CreditProductPolicyToken = n.GetStringValue(); } },
-                {"description", n => { Description = n.GetStringValue(); } },
-                {"document_policy_token", n => { DocumentPolicyToken = n.GetStringValue(); } },
-                {"fee_policy_token", n => { FeePolicyToken = n.GetStringValue(); } },
-                {"name", n => { Name = n.GetStringValue(); } },
-                {"offer_policy_token", n => { OfferPolicyToken = n.GetStringValue(); } },
-                {"reward_policy_token", n => { RewardPolicyToken = n.GetStringValue(); } },
+                { "apr_policy_token", n => { AprPolicyToken = n.GetStringValue(); } },
+                { "credit_product_policy_token", n => { CreditProductPolicyToken = n.GetStringValue(); } },
+                { "description", n => { Description = n.GetStringValue(); } },
+                { "document_policy_token", n => { DocumentPolicyToken = n.GetStringValue(); } },
+                { "fee_policy_token", n => { FeePolicyToken = n.GetStringValue(); } },
+                { "name", n => { Name = n.GetStringValue(); } },
+                { "offer_policy_token", n => { OfferPolicyToken = n.GetStringValue(); } },
+                { "reward_policy_token", n => { RewardPolicyToken = n.GetStringValue(); } },
             };
         }
         /// <summary>

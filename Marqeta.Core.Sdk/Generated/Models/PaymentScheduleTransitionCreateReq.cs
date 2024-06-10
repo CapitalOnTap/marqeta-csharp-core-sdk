@@ -4,16 +4,17 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System;
-namespace Marqeta.Core.Sdk.Models {
+namespace Marqeta.Core.Sdk.Models
+{
     /// <summary>
     /// Details to create a payment schedule transition
     /// </summary>
-    public class PaymentScheduleTransitionCreateReq : IAdditionalDataHolder, IParsable 
+    public class PaymentScheduleTransitionCreateReq : IAdditionalDataHolder, IParsable
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Status of the payment schedule.</summary>
-        public PaymentScheduleStatus? Status { get; set; }
+        public Marqeta.Core.Sdk.Models.PaymentScheduleStatus? Status { get; set; }
         /// <summary>Unique identifier of the payment schedule transition.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -23,7 +24,7 @@ namespace Marqeta.Core.Sdk.Models {
         public string Token { get; set; }
 #endif
         /// <summary>
-        /// Instantiates a new <see cref="PaymentScheduleTransitionCreateReq"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Models.PaymentScheduleTransitionCreateReq"/> and sets the default values.
         /// </summary>
         public PaymentScheduleTransitionCreateReq()
         {
@@ -32,12 +33,12 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="PaymentScheduleTransitionCreateReq"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Models.PaymentScheduleTransitionCreateReq"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static PaymentScheduleTransitionCreateReq CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static Marqeta.Core.Sdk.Models.PaymentScheduleTransitionCreateReq CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-            return new PaymentScheduleTransitionCreateReq();
+            return new Marqeta.Core.Sdk.Models.PaymentScheduleTransitionCreateReq();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -47,8 +48,8 @@ namespace Marqeta.Core.Sdk.Models {
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                {"status", n => { Status = n.GetEnumValue<PaymentScheduleStatus>(); } },
-                {"token", n => { Token = n.GetStringValue(); } },
+                { "status", n => { Status = n.GetEnumValue<Marqeta.Core.Sdk.Models.PaymentScheduleStatus>(); } },
+                { "token", n => { Token = n.GetStringValue(); } },
             };
         }
         /// <summary>
@@ -58,7 +59,7 @@ namespace Marqeta.Core.Sdk.Models {
         public virtual void Serialize(ISerializationWriter writer)
         {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
-            writer.WriteEnumValue<PaymentScheduleStatus>("status", Status);
+            writer.WriteEnumValue<Marqeta.Core.Sdk.Models.PaymentScheduleStatus>("status", Status);
             writer.WriteStringValue("token", Token);
             writer.WriteAdditionalData(AdditionalData);
         }

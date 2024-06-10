@@ -4,11 +4,12 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System;
-namespace Marqeta.Core.Sdk.Models {
+namespace Marqeta.Core.Sdk.Models
+{
     /// <summary>
     /// Contains information about a GPA unload order.
     /// </summary>
-    public class Gpa_returns : IAdditionalDataHolder, IParsable 
+    public class Gpa_returns : IAdditionalDataHolder, IParsable
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
@@ -43,10 +44,10 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>Contains information about the JIT Funding load event, in which funds are loaded into an account.This object is returned if your program uses JIT Funding.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public Jit_funding_api? JitFunding { get; set; }
+        public Marqeta.Core.Sdk.Models.Jit_funding_api? JitFunding { get; set; }
 #nullable restore
 #else
-        public Jit_funding_api JitFunding { get; set; }
+        public Marqeta.Core.Sdk.Models.Jit_funding_api JitFunding { get; set; }
 #endif
         /// <summary>Date and time when the GPA unload order was last modified, in UTC.</summary>
         public DateTimeOffset? LastModifiedTime { get; set; }
@@ -107,7 +108,7 @@ namespace Marqeta.Core.Sdk.Models {
         public string TransactionToken { get; set; }
 #endif
         /// <summary>
-        /// Instantiates a new <see cref="Gpa_returns"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Models.Gpa_returns"/> and sets the default values.
         /// </summary>
         public Gpa_returns()
         {
@@ -116,12 +117,12 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="Gpa_returns"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Models.Gpa_returns"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static Gpa_returns CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static Marqeta.Core.Sdk.Models.Gpa_returns CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-            return new Gpa_returns();
+            return new Marqeta.Core.Sdk.Models.Gpa_returns();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -131,20 +132,20 @@ namespace Marqeta.Core.Sdk.Models {
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                {"amount", n => { Amount = n.GetDoubleValue(); } },
-                {"created_time", n => { CreatedTime = n.GetDateTimeOffsetValue(); } },
-                {"funding", n => { Funding = n.GetObjectValue<Marqeta.Core.Sdk.Models.Funding>(Marqeta.Core.Sdk.Models.Funding.CreateFromDiscriminatorValue); } },
-                {"funding_source_address_token", n => { FundingSourceAddressToken = n.GetStringValue(); } },
-                {"funding_source_token", n => { FundingSourceToken = n.GetStringValue(); } },
-                {"jit_funding", n => { JitFunding = n.GetObjectValue<Jit_funding_api>(Jit_funding_api.CreateFromDiscriminatorValue); } },
-                {"last_modified_time", n => { LastModifiedTime = n.GetDateTimeOffsetValue(); } },
-                {"memo", n => { Memo = n.GetStringValue(); } },
-                {"original_order_token", n => { OriginalOrderToken = n.GetStringValue(); } },
-                {"response", n => { Response = n.GetObjectValue<Marqeta.Core.Sdk.Models.Response>(Marqeta.Core.Sdk.Models.Response.CreateFromDiscriminatorValue); } },
-                {"state", n => { State = n.GetStringValue(); } },
-                {"tags", n => { Tags = n.GetStringValue(); } },
-                {"token", n => { Token = n.GetStringValue(); } },
-                {"transaction_token", n => { TransactionToken = n.GetStringValue(); } },
+                { "amount", n => { Amount = n.GetDoubleValue(); } },
+                { "created_time", n => { CreatedTime = n.GetDateTimeOffsetValue(); } },
+                { "funding", n => { Funding = n.GetObjectValue<Marqeta.Core.Sdk.Models.Funding>(Marqeta.Core.Sdk.Models.Funding.CreateFromDiscriminatorValue); } },
+                { "funding_source_address_token", n => { FundingSourceAddressToken = n.GetStringValue(); } },
+                { "funding_source_token", n => { FundingSourceToken = n.GetStringValue(); } },
+                { "jit_funding", n => { JitFunding = n.GetObjectValue<Marqeta.Core.Sdk.Models.Jit_funding_api>(Marqeta.Core.Sdk.Models.Jit_funding_api.CreateFromDiscriminatorValue); } },
+                { "last_modified_time", n => { LastModifiedTime = n.GetDateTimeOffsetValue(); } },
+                { "memo", n => { Memo = n.GetStringValue(); } },
+                { "original_order_token", n => { OriginalOrderToken = n.GetStringValue(); } },
+                { "response", n => { Response = n.GetObjectValue<Marqeta.Core.Sdk.Models.Response>(Marqeta.Core.Sdk.Models.Response.CreateFromDiscriminatorValue); } },
+                { "state", n => { State = n.GetStringValue(); } },
+                { "tags", n => { Tags = n.GetStringValue(); } },
+                { "token", n => { Token = n.GetStringValue(); } },
+                { "transaction_token", n => { TransactionToken = n.GetStringValue(); } },
             };
         }
         /// <summary>
@@ -159,7 +160,7 @@ namespace Marqeta.Core.Sdk.Models {
             writer.WriteObjectValue<Marqeta.Core.Sdk.Models.Funding>("funding", Funding);
             writer.WriteStringValue("funding_source_address_token", FundingSourceAddressToken);
             writer.WriteStringValue("funding_source_token", FundingSourceToken);
-            writer.WriteObjectValue<Jit_funding_api>("jit_funding", JitFunding);
+            writer.WriteObjectValue<Marqeta.Core.Sdk.Models.Jit_funding_api>("jit_funding", JitFunding);
             writer.WriteDateTimeOffsetValue("last_modified_time", LastModifiedTime);
             writer.WriteStringValue("memo", Memo);
             writer.WriteStringValue("original_order_token", OriginalOrderToken);

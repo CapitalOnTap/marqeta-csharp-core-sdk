@@ -4,11 +4,12 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System;
-namespace Marqeta.Core.Sdk.Models {
+namespace Marqeta.Core.Sdk.Models
+{
     /// <summary>
     /// Return paginated entities.
     /// </summary>
-    public class AbstractPage : IAdditionalDataHolder, IParsable 
+    public class AbstractPage : IAdditionalDataHolder, IParsable
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
@@ -21,7 +22,7 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>Sort order index of the first resource in the returned array.</summary>
         public long? StartIndex { get; set; }
         /// <summary>
-        /// Instantiates a new <see cref="AbstractPage"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Models.AbstractPage"/> and sets the default values.
         /// </summary>
         public AbstractPage()
         {
@@ -30,12 +31,12 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="AbstractPage"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Models.AbstractPage"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static AbstractPage CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static Marqeta.Core.Sdk.Models.AbstractPage CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-            return new AbstractPage();
+            return new Marqeta.Core.Sdk.Models.AbstractPage();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -45,10 +46,10 @@ namespace Marqeta.Core.Sdk.Models {
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                {"count", n => { Count = n.GetIntValue(); } },
-                {"end_index", n => { EndIndex = n.GetLongValue(); } },
-                {"is_more", n => { IsMore = n.GetBoolValue(); } },
-                {"start_index", n => { StartIndex = n.GetLongValue(); } },
+                { "count", n => { Count = n.GetIntValue(); } },
+                { "end_index", n => { EndIndex = n.GetLongValue(); } },
+                { "is_more", n => { IsMore = n.GetBoolValue(); } },
+                { "start_index", n => { StartIndex = n.GetLongValue(); } },
             };
         }
         /// <summary>

@@ -4,14 +4,15 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System;
-namespace Marqeta.Core.Sdk.Models {
+namespace Marqeta.Core.Sdk.Models
+{
     /// <summary>
     /// of the fraud object
     /// </summary>
-    public class FraudFeedbackRequest : IAdditionalDataHolder, IParsable 
+    public class FraudFeedbackRequest : IAdditionalDataHolder, IParsable
     {
         /// <summary>This is the party making a call.</summary>
-        public FraudFeedbackRequest_actor? Actor { get; set; }
+        public Marqeta.Core.Sdk.Models.FraudFeedbackRequest_actor? Actor { get; set; }
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The amount property</summary>
@@ -25,7 +26,7 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>The is_fraud property</summary>
         public bool? IsFraud { get; set; }
         /// <summary>This is the value of the status of the fraud.</summary>
-        public FraudFeedbackRequest_status? Status { get; set; }
+        public Marqeta.Core.Sdk.Models.FraudFeedbackRequest_status? Status { get; set; }
         /// <summary>The transaction_token property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -35,7 +36,7 @@ namespace Marqeta.Core.Sdk.Models {
         public string TransactionToken { get; set; }
 #endif
         /// <summary>
-        /// Instantiates a new <see cref="FraudFeedbackRequest"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Models.FraudFeedbackRequest"/> and sets the default values.
         /// </summary>
         public FraudFeedbackRequest()
         {
@@ -44,12 +45,12 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="FraudFeedbackRequest"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Models.FraudFeedbackRequest"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static FraudFeedbackRequest CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static Marqeta.Core.Sdk.Models.FraudFeedbackRequest CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-            return new FraudFeedbackRequest();
+            return new Marqeta.Core.Sdk.Models.FraudFeedbackRequest();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -59,11 +60,11 @@ namespace Marqeta.Core.Sdk.Models {
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                {"actor", n => { Actor = n.GetEnumValue<FraudFeedbackRequest_actor>(); } },
-                {"amount", n => { Amount = n.GetStringValue(); } },
-                {"is_fraud", n => { IsFraud = n.GetBoolValue(); } },
-                {"status", n => { Status = n.GetEnumValue<FraudFeedbackRequest_status>(); } },
-                {"transaction_token", n => { TransactionToken = n.GetStringValue(); } },
+                { "actor", n => { Actor = n.GetEnumValue<Marqeta.Core.Sdk.Models.FraudFeedbackRequest_actor>(); } },
+                { "amount", n => { Amount = n.GetStringValue(); } },
+                { "is_fraud", n => { IsFraud = n.GetBoolValue(); } },
+                { "status", n => { Status = n.GetEnumValue<Marqeta.Core.Sdk.Models.FraudFeedbackRequest_status>(); } },
+                { "transaction_token", n => { TransactionToken = n.GetStringValue(); } },
             };
         }
         /// <summary>
@@ -73,10 +74,10 @@ namespace Marqeta.Core.Sdk.Models {
         public virtual void Serialize(ISerializationWriter writer)
         {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
-            writer.WriteEnumValue<FraudFeedbackRequest_actor>("actor", Actor);
+            writer.WriteEnumValue<Marqeta.Core.Sdk.Models.FraudFeedbackRequest_actor>("actor", Actor);
             writer.WriteStringValue("amount", Amount);
             writer.WriteBoolValue("is_fraud", IsFraud);
-            writer.WriteEnumValue<FraudFeedbackRequest_status>("status", Status);
+            writer.WriteEnumValue<Marqeta.Core.Sdk.Models.FraudFeedbackRequest_status>("status", Status);
             writer.WriteStringValue("transaction_token", TransactionToken);
             writer.WriteAdditionalData(AdditionalData);
         }

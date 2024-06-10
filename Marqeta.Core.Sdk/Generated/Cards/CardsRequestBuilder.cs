@@ -12,41 +12,42 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Threading;
 using System;
-namespace Marqeta.Core.Sdk.Cards {
+namespace Marqeta.Core.Sdk.Cards
+{
     /// <summary>
     /// Builds and executes requests for operations under \cards
     /// </summary>
-    public class CardsRequestBuilder : BaseRequestBuilder 
+    public class CardsRequestBuilder : BaseRequestBuilder
     {
         /// <summary>The barcode property</summary>
-        public BarcodeRequestBuilder Barcode
+        public Marqeta.Core.Sdk.Cards.Barcode.BarcodeRequestBuilder Barcode
         {
-            get => new BarcodeRequestBuilder(PathParameters, RequestAdapter);
+            get => new Marqeta.Core.Sdk.Cards.Barcode.BarcodeRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The getbypan property</summary>
-        public GetbypanRequestBuilder Getbypan
+        public Marqeta.Core.Sdk.Cards.Getbypan.GetbypanRequestBuilder Getbypan
         {
-            get => new GetbypanRequestBuilder(PathParameters, RequestAdapter);
+            get => new Marqeta.Core.Sdk.Cards.Getbypan.GetbypanRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The user property</summary>
-        public UserRequestBuilder User
+        public Marqeta.Core.Sdk.Cards.User.UserRequestBuilder User
         {
-            get => new UserRequestBuilder(PathParameters, RequestAdapter);
+            get => new Marqeta.Core.Sdk.Cards.User.UserRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>Gets an item from the Marqeta.Core.Sdk.cards.item collection</summary>
         /// <param name="position">Unique identifier of the card you want to retrieve.</param>
-        /// <returns>A <see cref="WithTokenItemRequestBuilder"/></returns>
-        public WithTokenItemRequestBuilder this[string position]
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Cards.Item.WithTokenItemRequestBuilder"/></returns>
+        public Marqeta.Core.Sdk.Cards.Item.WithTokenItemRequestBuilder this[string position]
         {
             get
             {
                 var urlTplParams = new Dictionary<string, object>(PathParameters);
                 urlTplParams.Add("token", position);
-                return new WithTokenItemRequestBuilder(urlTplParams, RequestAdapter);
+                return new Marqeta.Core.Sdk.Cards.Item.WithTokenItemRequestBuilder(urlTplParams, RequestAdapter);
             }
         }
         /// <summary>
-        /// Instantiates a new <see cref="CardsRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Cards.CardsRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
@@ -54,7 +55,7 @@ namespace Marqeta.Core.Sdk.Cards {
         {
         }
         /// <summary>
-        /// Instantiates a new <see cref="CardsRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Cards.CardsRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
@@ -64,50 +65,50 @@ namespace Marqeta.Core.Sdk.Cards {
         /// <summary>
         /// Retrieves an array of cards whose primary account numbers (PANs) end in the four digits specified by the `last_four` query parameter.This endpoint supports &lt;&lt;/core-api/field-filtering, field filtering&gt;&gt;, &lt;&lt;/core-api/object-expansion, object expansion&gt;&gt;, &lt;&lt;/core-api/sorting-and-pagination, sorting, and pagination&gt;&gt;.
         /// </summary>
-        /// <returns>A <see cref="CardListResponse"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Models.CardListResponse"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        /// <exception cref="ApiError">When receiving a 4XX or 5XX status code</exception>
+        /// <exception cref="Marqeta.Core.Sdk.Models.ApiError">When receiving a 4XX or 5XX status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<CardListResponse?> GetAsync(Action<RequestConfiguration<CardsRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<Marqeta.Core.Sdk.Models.CardListResponse?> GetAsync(Action<RequestConfiguration<Marqeta.Core.Sdk.Cards.CardsRequestBuilder.CardsRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<CardListResponse> GetAsync(Action<RequestConfiguration<CardsRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<Marqeta.Core.Sdk.Models.CardListResponse> GetAsync(Action<RequestConfiguration<Marqeta.Core.Sdk.Cards.CardsRequestBuilder.CardsRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
-                {"XXX", ApiError.CreateFromDiscriminatorValue},
+                { "XXX", Marqeta.Core.Sdk.Models.ApiError.CreateFromDiscriminatorValue },
             };
-            return await RequestAdapter.SendAsync<CardListResponse>(requestInfo, CardListResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<Marqeta.Core.Sdk.Models.CardListResponse>(requestInfo, Marqeta.Core.Sdk.Models.CardListResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Creates a card.Create the user and card product before you create the card.You create a card using the `user_token` of the user who will own the card and the `card_product_token` of the card product that will control the card.[TIP]By default, newly created cards are inactive and must be explicitly activated (see &lt;&lt;/core-api/cards#_create_card_transition, Create Card Transition&gt;&gt; for information on activating cards).To create cards that are activated upon issue, configure your card product&apos;s `config.card_life_cycle.activate_upon_issue` field (see &lt;&lt;/core-api/card-products, Card Products&gt;&gt;).Send a `POST` request to `/pins/controltoken` to set the card&apos;s personal identification number (PIN) if your program requires PIN numbers (for example, for Europay Mastercard and Visa cards); this action updates the `pin_is_set` field to `true`.See &lt;&lt;/core-api/pins#_create_or_update_pin, Create or Update PIN&gt;&gt; for details.You can use optional query parameters to show the primary account number (PAN) and card verification value (CVV2) number in the response.If `show_pan` and `show_cvv_number` are set to `true`, the fulfillment state of the card is `DIGITALLY_PRESENTED` instead of the typical initial state of `ISSUED`.This fulfillment state does not affect the delivery of physical cards.This endpoint requires PCI DSS compliance if `show_pan` and `show_cvv_number` are set to `true`.You must comply with PCI DSS data security requirements if you store, transmit, or process sensitive card data.
         /// </summary>
-        /// <returns>A <see cref="Card_response"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Models.Card_response"/></returns>
         /// <param name="body">The request body</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        /// <exception cref="ApiError">When receiving a 4XX or 5XX status code</exception>
+        /// <exception cref="Marqeta.Core.Sdk.Models.ApiError">When receiving a 4XX or 5XX status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<Card_response?> PostAsync(Card_request body, Action<RequestConfiguration<CardsRequestBuilderPostQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<Marqeta.Core.Sdk.Models.Card_response?> PostAsync(Marqeta.Core.Sdk.Models.Card_request body, Action<RequestConfiguration<Marqeta.Core.Sdk.Cards.CardsRequestBuilder.CardsRequestBuilderPostQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<Card_response> PostAsync(Card_request body, Action<RequestConfiguration<CardsRequestBuilderPostQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<Marqeta.Core.Sdk.Models.Card_response> PostAsync(Marqeta.Core.Sdk.Models.Card_request body, Action<RequestConfiguration<Marqeta.Core.Sdk.Cards.CardsRequestBuilder.CardsRequestBuilderPostQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             _ = body ?? throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPostRequestInformation(body, requestConfiguration);
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
-                {"XXX", ApiError.CreateFromDiscriminatorValue},
+                { "XXX", Marqeta.Core.Sdk.Models.ApiError.CreateFromDiscriminatorValue },
             };
-            return await RequestAdapter.SendAsync<Card_response>(requestInfo, Card_response.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<Marqeta.Core.Sdk.Models.Card_response>(requestInfo, Marqeta.Core.Sdk.Models.Card_response.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Retrieves an array of cards whose primary account numbers (PANs) end in the four digits specified by the `last_four` query parameter.This endpoint supports &lt;&lt;/core-api/field-filtering, field filtering&gt;&gt;, &lt;&lt;/core-api/object-expansion, object expansion&gt;&gt;, &lt;&lt;/core-api/sorting-and-pagination, sorting, and pagination&gt;&gt;.
@@ -116,11 +117,11 @@ namespace Marqeta.Core.Sdk.Cards {
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<CardsRequestBuilderGetQueryParameters>>? requestConfiguration = default)
+        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<Marqeta.Core.Sdk.Cards.CardsRequestBuilder.CardsRequestBuilderGetQueryParameters>>? requestConfiguration = default)
         {
 #nullable restore
 #else
-        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<CardsRequestBuilderGetQueryParameters>> requestConfiguration = default)
+        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<Marqeta.Core.Sdk.Cards.CardsRequestBuilder.CardsRequestBuilderGetQueryParameters>> requestConfiguration = default)
         {
 #endif
             var requestInfo = new RequestInformation(Method.GET, "{+baseurl}/cards?last_four={last_four}{&count*,fields*,sort_by*,start_index*}", PathParameters);
@@ -136,11 +137,11 @@ namespace Marqeta.Core.Sdk.Cards {
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToPostRequestInformation(Card_request body, Action<RequestConfiguration<CardsRequestBuilderPostQueryParameters>>? requestConfiguration = default)
+        public RequestInformation ToPostRequestInformation(Marqeta.Core.Sdk.Models.Card_request body, Action<RequestConfiguration<Marqeta.Core.Sdk.Cards.CardsRequestBuilder.CardsRequestBuilderPostQueryParameters>>? requestConfiguration = default)
         {
 #nullable restore
 #else
-        public RequestInformation ToPostRequestInformation(Card_request body, Action<RequestConfiguration<CardsRequestBuilderPostQueryParameters>> requestConfiguration = default)
+        public RequestInformation ToPostRequestInformation(Marqeta.Core.Sdk.Models.Card_request body, Action<RequestConfiguration<Marqeta.Core.Sdk.Cards.CardsRequestBuilder.CardsRequestBuilderPostQueryParameters>> requestConfiguration = default)
         {
 #endif
             _ = body ?? throw new ArgumentNullException(nameof(body));
@@ -153,11 +154,11 @@ namespace Marqeta.Core.Sdk.Cards {
         /// <summary>
         /// Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
         /// </summary>
-        /// <returns>A <see cref="CardsRequestBuilder"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Cards.CardsRequestBuilder"/></returns>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
-        public CardsRequestBuilder WithUrl(string rawUrl)
+        public Marqeta.Core.Sdk.Cards.CardsRequestBuilder WithUrl(string rawUrl)
         {
-            return new CardsRequestBuilder(rawUrl, RequestAdapter);
+            return new Marqeta.Core.Sdk.Cards.CardsRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
         /// Retrieves an array of cards whose primary account numbers (PANs) end in the four digits specified by the `last_four` query parameter.This endpoint supports &lt;&lt;/core-api/field-filtering, field filtering&gt;&gt;, &lt;&lt;/core-api/object-expansion, object expansion&gt;&gt;, &lt;&lt;/core-api/sorting-and-pagination, sorting, and pagination&gt;&gt;.

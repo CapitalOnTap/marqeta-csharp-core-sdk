@@ -4,9 +4,10 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System;
-namespace Marqeta.Core.Sdk.Models {
+namespace Marqeta.Core.Sdk.Models
+{
     #pragma warning disable CS1591
-    public class Gateway_program_funding_source_request : IAdditionalDataHolder, IParsable 
+    public class Gateway_program_funding_source_request : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
     {
         /// <summary>Indicates whether the program gateway funding source is active.</summary>
@@ -32,10 +33,10 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>Additional custom information included in the HTTP header.For example, this might contain security information, along with Basic Authentication, when making a JIT Funding request.Custom headers also appear in the associated webhook&apos;s notifications.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public Gateway_program_funding_source_request_custom_header? CustomHeader { get; set; }
+        public Marqeta.Core.Sdk.Models.Gateway_program_funding_source_request_custom_header? CustomHeader { get; set; }
 #nullable restore
 #else
-        public Gateway_program_funding_source_request_custom_header CustomHeader { get; set; }
+        public Marqeta.Core.Sdk.Models.Gateway_program_funding_source_request_custom_header CustomHeader { get; set; }
 #endif
         /// <summary>Name of the program gateway funding source.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -66,7 +67,7 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>Specifies whether or not to use mutual transport layer security (mTLS) authentication for the funding request.</summary>
         public bool? UseMtls { get; set; }
         /// <summary>
-        /// Instantiates a new <see cref="Gateway_program_funding_source_request"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Models.Gateway_program_funding_source_request"/> and sets the default values.
         /// </summary>
         public Gateway_program_funding_source_request()
         {
@@ -75,12 +76,12 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="Gateway_program_funding_source_request"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Models.Gateway_program_funding_source_request"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static Gateway_program_funding_source_request CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static Marqeta.Core.Sdk.Models.Gateway_program_funding_source_request CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-            return new Gateway_program_funding_source_request();
+            return new Marqeta.Core.Sdk.Models.Gateway_program_funding_source_request();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -90,15 +91,15 @@ namespace Marqeta.Core.Sdk.Models {
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                {"active", n => { Active = n.GetBoolValue(); } },
-                {"basic_auth_password", n => { BasicAuthPassword = n.GetStringValue(); } },
-                {"basic_auth_username", n => { BasicAuthUsername = n.GetStringValue(); } },
-                {"custom_header", n => { CustomHeader = n.GetObjectValue<Gateway_program_funding_source_request_custom_header>(Gateway_program_funding_source_request_custom_header.CreateFromDiscriminatorValue); } },
-                {"name", n => { Name = n.GetStringValue(); } },
-                {"timeout_millis", n => { TimeoutMillis = n.GetLongValue(); } },
-                {"token", n => { Token = n.GetStringValue(); } },
-                {"url", n => { Url = n.GetStringValue(); } },
-                {"use_mtls", n => { UseMtls = n.GetBoolValue(); } },
+                { "active", n => { Active = n.GetBoolValue(); } },
+                { "basic_auth_password", n => { BasicAuthPassword = n.GetStringValue(); } },
+                { "basic_auth_username", n => { BasicAuthUsername = n.GetStringValue(); } },
+                { "custom_header", n => { CustomHeader = n.GetObjectValue<Marqeta.Core.Sdk.Models.Gateway_program_funding_source_request_custom_header>(Marqeta.Core.Sdk.Models.Gateway_program_funding_source_request_custom_header.CreateFromDiscriminatorValue); } },
+                { "name", n => { Name = n.GetStringValue(); } },
+                { "timeout_millis", n => { TimeoutMillis = n.GetLongValue(); } },
+                { "token", n => { Token = n.GetStringValue(); } },
+                { "url", n => { Url = n.GetStringValue(); } },
+                { "use_mtls", n => { UseMtls = n.GetBoolValue(); } },
             };
         }
         /// <summary>
@@ -111,7 +112,7 @@ namespace Marqeta.Core.Sdk.Models {
             writer.WriteBoolValue("active", Active);
             writer.WriteStringValue("basic_auth_password", BasicAuthPassword);
             writer.WriteStringValue("basic_auth_username", BasicAuthUsername);
-            writer.WriteObjectValue<Gateway_program_funding_source_request_custom_header>("custom_header", CustomHeader);
+            writer.WriteObjectValue<Marqeta.Core.Sdk.Models.Gateway_program_funding_source_request_custom_header>("custom_header", CustomHeader);
             writer.WriteStringValue("name", Name);
             writer.WriteLongValue("timeout_millis", TimeoutMillis);
             writer.WriteStringValue("token", Token);

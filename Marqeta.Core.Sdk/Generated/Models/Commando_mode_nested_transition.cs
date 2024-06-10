@@ -4,16 +4,17 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System;
-namespace Marqeta.Core.Sdk.Models {
+namespace Marqeta.Core.Sdk.Models
+{
     /// <summary>
     /// Describes the Commando Mode control set&apos;s `current_state` object.
     /// </summary>
-    public class Commando_mode_nested_transition : IAdditionalDataHolder, IParsable 
+    public class Commando_mode_nested_transition : IAdditionalDataHolder, IParsable
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Mechanism that changed the Commando Mode control set&apos;s state.</summary>
-        public Commando_mode_nested_transition_channel? Channel { get; set; }
+        public Marqeta.Core.Sdk.Models.Commando_mode_nested_transition_channel? Channel { get; set; }
         /// <summary>Indicates whether Commando Mode is enabled.* If `commando_enabled` is `true` and `COMMANDO_MANUAL` is configured, all transactions are processed via Commando Mode.* If `commando_enabled` is `true` and `COMMANDO_AUTO` is configured, Commando Mode is ready to intervene only when a transaction times out or encounters an error.</summary>
         public bool? CommandoEnabled { get; set; }
         /// <summary>Describes the reason why the current state of the Commando Mode control set was last changed.</summary>
@@ -33,7 +34,7 @@ namespace Marqeta.Core.Sdk.Models {
         public string Username { get; set; }
 #endif
         /// <summary>
-        /// Instantiates a new <see cref="Commando_mode_nested_transition"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Models.Commando_mode_nested_transition"/> and sets the default values.
         /// </summary>
         public Commando_mode_nested_transition()
         {
@@ -42,12 +43,12 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="Commando_mode_nested_transition"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Models.Commando_mode_nested_transition"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static Commando_mode_nested_transition CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static Marqeta.Core.Sdk.Models.Commando_mode_nested_transition CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-            return new Commando_mode_nested_transition();
+            return new Marqeta.Core.Sdk.Models.Commando_mode_nested_transition();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -57,10 +58,10 @@ namespace Marqeta.Core.Sdk.Models {
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                {"channel", n => { Channel = n.GetEnumValue<Commando_mode_nested_transition_channel>(); } },
-                {"commando_enabled", n => { CommandoEnabled = n.GetBoolValue(); } },
-                {"reason", n => { Reason = n.GetStringValue(); } },
-                {"username", n => { Username = n.GetStringValue(); } },
+                { "channel", n => { Channel = n.GetEnumValue<Marqeta.Core.Sdk.Models.Commando_mode_nested_transition_channel>(); } },
+                { "commando_enabled", n => { CommandoEnabled = n.GetBoolValue(); } },
+                { "reason", n => { Reason = n.GetStringValue(); } },
+                { "username", n => { Username = n.GetStringValue(); } },
             };
         }
         /// <summary>
@@ -70,7 +71,7 @@ namespace Marqeta.Core.Sdk.Models {
         public virtual void Serialize(ISerializationWriter writer)
         {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
-            writer.WriteEnumValue<Commando_mode_nested_transition_channel>("channel", Channel);
+            writer.WriteEnumValue<Marqeta.Core.Sdk.Models.Commando_mode_nested_transition_channel>("channel", Channel);
             writer.WriteBoolValue("commando_enabled", CommandoEnabled);
             writer.WriteStringValue("reason", Reason);
             writer.WriteStringValue("username", Username);

@@ -4,18 +4,19 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System;
-namespace Marqeta.Core.Sdk.Models {
+namespace Marqeta.Core.Sdk.Models
+{
     /// <summary>
     /// Information about a transaction dispute creation request.
     /// </summary>
-    public class DisputeCreateReq : IAdditionalDataHolder, IParsable 
+    public class DisputeCreateReq : IAdditionalDataHolder, IParsable
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Amount of the dispute.Max value is equal to the value of the original transaction.</summary>
         public double? Amount { get; set; }
         /// <summary>Category to which the dispute belongs.</summary>
-        public DisputeCategory? Category { get; set; }
+        public Marqeta.Core.Sdk.Models.DisputeCategory? Category { get; set; }
         /// <summary>Unique identifier of the journal entry (`authorization.clearing` type only) in dispute.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -41,7 +42,7 @@ namespace Marqeta.Core.Sdk.Models {
         public string Token { get; set; }
 #endif
         /// <summary>
-        /// Instantiates a new <see cref="DisputeCreateReq"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Models.DisputeCreateReq"/> and sets the default values.
         /// </summary>
         public DisputeCreateReq()
         {
@@ -50,12 +51,12 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="DisputeCreateReq"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Models.DisputeCreateReq"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static DisputeCreateReq CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static Marqeta.Core.Sdk.Models.DisputeCreateReq CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-            return new DisputeCreateReq();
+            return new Marqeta.Core.Sdk.Models.DisputeCreateReq();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -65,11 +66,11 @@ namespace Marqeta.Core.Sdk.Models {
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                {"amount", n => { Amount = n.GetDoubleValue(); } },
-                {"category", n => { Category = n.GetEnumValue<DisputeCategory>(); } },
-                {"ledger_entry_token", n => { LedgerEntryToken = n.GetStringValue(); } },
-                {"notes", n => { Notes = n.GetStringValue(); } },
-                {"token", n => { Token = n.GetStringValue(); } },
+                { "amount", n => { Amount = n.GetDoubleValue(); } },
+                { "category", n => { Category = n.GetEnumValue<Marqeta.Core.Sdk.Models.DisputeCategory>(); } },
+                { "ledger_entry_token", n => { LedgerEntryToken = n.GetStringValue(); } },
+                { "notes", n => { Notes = n.GetStringValue(); } },
+                { "token", n => { Token = n.GetStringValue(); } },
             };
         }
         /// <summary>
@@ -80,7 +81,7 @@ namespace Marqeta.Core.Sdk.Models {
         {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
             writer.WriteDoubleValue("amount", Amount);
-            writer.WriteEnumValue<DisputeCategory>("category", Category);
+            writer.WriteEnumValue<Marqeta.Core.Sdk.Models.DisputeCategory>("category", Category);
             writer.WriteStringValue("ledger_entry_token", LedgerEntryToken);
             writer.WriteStringValue("notes", Notes);
             writer.WriteStringValue("token", Token);

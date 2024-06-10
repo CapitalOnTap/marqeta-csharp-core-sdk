@@ -4,11 +4,12 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System;
-namespace Marqeta.Core.Sdk.Models {
+namespace Marqeta.Core.Sdk.Models
+{
     /// <summary>
     /// Contains details of the delinquency state of an account.
     /// </summary>
-    public class DelinquencyStateResponse : IAdditionalDataHolder, IParsable 
+    public class DelinquencyStateResponse : IAdditionalDataHolder, IParsable
     {
         /// <summary>Unique identifier of the credit account.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -23,10 +24,10 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>One or more delinquency buckets for an account.Each delinquency bucket represents a billing cycle during which the account was delinquent.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<DelinquencyBucketResponse>? Buckets { get; set; }
+        public List<Marqeta.Core.Sdk.Models.DelinquencyBucketResponse>? Buckets { get; set; }
 #nullable restore
 #else
-        public List<DelinquencyBucketResponse> Buckets { get; set; }
+        public List<Marqeta.Core.Sdk.Models.DelinquencyBucketResponse> Buckets { get; set; }
 #endif
         /// <summary>Amount that is due for the current billing cycle.</summary>
         public double? CurrentDue { get; set; }
@@ -43,7 +44,7 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>Total amount that is past due.</summary>
         public double? TotalPastDue { get; set; }
         /// <summary>
-        /// Instantiates a new <see cref="DelinquencyStateResponse"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Models.DelinquencyStateResponse"/> and sets the default values.
         /// </summary>
         public DelinquencyStateResponse()
         {
@@ -52,12 +53,12 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="DelinquencyStateResponse"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Models.DelinquencyStateResponse"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static DelinquencyStateResponse CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static Marqeta.Core.Sdk.Models.DelinquencyStateResponse CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-            return new DelinquencyStateResponse();
+            return new Marqeta.Core.Sdk.Models.DelinquencyStateResponse();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -67,15 +68,15 @@ namespace Marqeta.Core.Sdk.Models {
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                {"account_token", n => { AccountToken = n.GetStringValue(); } },
-                {"buckets", n => { Buckets = n.GetCollectionOfObjectValues<DelinquencyBucketResponse>(DelinquencyBucketResponse.CreateFromDiscriminatorValue)?.ToList(); } },
-                {"current_due", n => { CurrentDue = n.GetDoubleValue(); } },
-                {"date_account_current", n => { DateAccountCurrent = n.GetDateTimeOffsetValue(); } },
-                {"date_account_delinquent", n => { DateAccountDelinquent = n.GetDateTimeOffsetValue(); } },
-                {"is_delinquent", n => { IsDelinquent = n.GetBoolValue(); } },
-                {"total_days_past_due", n => { TotalDaysPastDue = n.GetIntValue(); } },
-                {"total_due", n => { TotalDue = n.GetDoubleValue(); } },
-                {"total_past_due", n => { TotalPastDue = n.GetDoubleValue(); } },
+                { "account_token", n => { AccountToken = n.GetStringValue(); } },
+                { "buckets", n => { Buckets = n.GetCollectionOfObjectValues<Marqeta.Core.Sdk.Models.DelinquencyBucketResponse>(Marqeta.Core.Sdk.Models.DelinquencyBucketResponse.CreateFromDiscriminatorValue)?.ToList(); } },
+                { "current_due", n => { CurrentDue = n.GetDoubleValue(); } },
+                { "date_account_current", n => { DateAccountCurrent = n.GetDateTimeOffsetValue(); } },
+                { "date_account_delinquent", n => { DateAccountDelinquent = n.GetDateTimeOffsetValue(); } },
+                { "is_delinquent", n => { IsDelinquent = n.GetBoolValue(); } },
+                { "total_days_past_due", n => { TotalDaysPastDue = n.GetIntValue(); } },
+                { "total_due", n => { TotalDue = n.GetDoubleValue(); } },
+                { "total_past_due", n => { TotalPastDue = n.GetDoubleValue(); } },
             };
         }
         /// <summary>
@@ -86,7 +87,7 @@ namespace Marqeta.Core.Sdk.Models {
         {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("account_token", AccountToken);
-            writer.WriteCollectionOfObjectValues<DelinquencyBucketResponse>("buckets", Buckets);
+            writer.WriteCollectionOfObjectValues<Marqeta.Core.Sdk.Models.DelinquencyBucketResponse>("buckets", Buckets);
             writer.WriteDoubleValue("current_due", CurrentDue);
             writer.WriteDateTimeOffsetValue("date_account_current", DateAccountCurrent);
             writer.WriteDateTimeOffsetValue("date_account_delinquent", DateAccountDelinquent);

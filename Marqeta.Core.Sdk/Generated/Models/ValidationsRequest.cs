@@ -4,24 +4,25 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System;
-namespace Marqeta.Core.Sdk.Models {
+namespace Marqeta.Core.Sdk.Models
+{
     /// <summary>
     /// Contains information about the user.
     /// </summary>
-    public class ValidationsRequest : IAdditionalDataHolder, IParsable 
+    public class ValidationsRequest : IAdditionalDataHolder, IParsable
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Contains information about the user.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UserValidationRequest? User { get; set; }
+        public Marqeta.Core.Sdk.Models.UserValidationRequest? User { get; set; }
 #nullable restore
 #else
-        public UserValidationRequest User { get; set; }
+        public Marqeta.Core.Sdk.Models.UserValidationRequest User { get; set; }
 #endif
         /// <summary>
-        /// Instantiates a new <see cref="ValidationsRequest"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Models.ValidationsRequest"/> and sets the default values.
         /// </summary>
         public ValidationsRequest()
         {
@@ -30,12 +31,12 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="ValidationsRequest"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Models.ValidationsRequest"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static ValidationsRequest CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static Marqeta.Core.Sdk.Models.ValidationsRequest CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-            return new ValidationsRequest();
+            return new Marqeta.Core.Sdk.Models.ValidationsRequest();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -45,7 +46,7 @@ namespace Marqeta.Core.Sdk.Models {
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                {"user", n => { User = n.GetObjectValue<UserValidationRequest>(UserValidationRequest.CreateFromDiscriminatorValue); } },
+                { "user", n => { User = n.GetObjectValue<Marqeta.Core.Sdk.Models.UserValidationRequest>(Marqeta.Core.Sdk.Models.UserValidationRequest.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -55,7 +56,7 @@ namespace Marqeta.Core.Sdk.Models {
         public virtual void Serialize(ISerializationWriter writer)
         {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<UserValidationRequest>("user", User);
+            writer.WriteObjectValue<Marqeta.Core.Sdk.Models.UserValidationRequest>("user", User);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

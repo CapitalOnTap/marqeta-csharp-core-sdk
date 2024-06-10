@@ -4,11 +4,12 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System;
-namespace Marqeta.Core.Sdk.Models {
+namespace Marqeta.Core.Sdk.Models
+{
     /// <summary>
     /// Contains information about a verification check performed on the card&apos;s security code.
     /// </summary>
-    public class Card_security_code_verification : IAdditionalDataHolder, IParsable 
+    public class Card_security_code_verification : IAdditionalDataHolder, IParsable
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
@@ -21,9 +22,9 @@ namespace Marqeta.Core.Sdk.Models {
         public Marqeta.Core.Sdk.Models.Response Response { get; set; }
 #endif
         /// <summary>Indicates the type of security code.Can have these possible values:* *CVV1* – the security code stored in the magnetic stripe on the card.* *CVV2* – the security code printed on the card.* *ICVV* – the security code stored on the chip of the card.* *DCVV* – a dynamic security code used in some contactless payments when a card or device is tapped against the card reader.</summary>
-        public Card_security_code_verification_type? Type { get; set; }
+        public Marqeta.Core.Sdk.Models.Card_security_code_verification_type? Type { get; set; }
         /// <summary>
-        /// Instantiates a new <see cref="Card_security_code_verification"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Models.Card_security_code_verification"/> and sets the default values.
         /// </summary>
         public Card_security_code_verification()
         {
@@ -32,12 +33,12 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="Card_security_code_verification"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Models.Card_security_code_verification"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static Card_security_code_verification CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static Marqeta.Core.Sdk.Models.Card_security_code_verification CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-            return new Card_security_code_verification();
+            return new Marqeta.Core.Sdk.Models.Card_security_code_verification();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -47,8 +48,8 @@ namespace Marqeta.Core.Sdk.Models {
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                {"response", n => { Response = n.GetObjectValue<Marqeta.Core.Sdk.Models.Response>(Marqeta.Core.Sdk.Models.Response.CreateFromDiscriminatorValue); } },
-                {"type", n => { Type = n.GetEnumValue<Card_security_code_verification_type>(); } },
+                { "response", n => { Response = n.GetObjectValue<Marqeta.Core.Sdk.Models.Response>(Marqeta.Core.Sdk.Models.Response.CreateFromDiscriminatorValue); } },
+                { "type", n => { Type = n.GetEnumValue<Marqeta.Core.Sdk.Models.Card_security_code_verification_type>(); } },
             };
         }
         /// <summary>
@@ -59,7 +60,7 @@ namespace Marqeta.Core.Sdk.Models {
         {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
             writer.WriteObjectValue<Marqeta.Core.Sdk.Models.Response>("response", Response);
-            writer.WriteEnumValue<Card_security_code_verification_type>("type", Type);
+            writer.WriteEnumValue<Marqeta.Core.Sdk.Models.Card_security_code_verification_type>("type", Type);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

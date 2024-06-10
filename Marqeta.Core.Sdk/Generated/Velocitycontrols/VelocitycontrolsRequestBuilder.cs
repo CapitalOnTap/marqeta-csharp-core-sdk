@@ -11,36 +11,37 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Threading;
 using System;
-namespace Marqeta.Core.Sdk.Velocitycontrols {
+namespace Marqeta.Core.Sdk.Velocitycontrols
+{
     /// <summary>
     /// Builds and executes requests for operations under \velocitycontrols
     /// </summary>
-    public class VelocitycontrolsRequestBuilder : BaseRequestBuilder 
+    public class VelocitycontrolsRequestBuilder : BaseRequestBuilder
     {
         /// <summary>The cardgroup property</summary>
-        public CardgroupRequestBuilder Cardgroup
+        public Marqeta.Core.Sdk.Velocitycontrols.Cardgroup.CardgroupRequestBuilder Cardgroup
         {
-            get => new CardgroupRequestBuilder(PathParameters, RequestAdapter);
+            get => new Marqeta.Core.Sdk.Velocitycontrols.Cardgroup.CardgroupRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The user property</summary>
-        public UserRequestBuilder User
+        public Marqeta.Core.Sdk.Velocitycontrols.User.UserRequestBuilder User
         {
-            get => new UserRequestBuilder(PathParameters, RequestAdapter);
+            get => new Marqeta.Core.Sdk.Velocitycontrols.User.UserRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>Gets an item from the Marqeta.Core.Sdk.velocitycontrols.item collection</summary>
         /// <param name="position">Unique identifier of the velocity control resource.</param>
-        /// <returns>A <see cref="WithTokenItemRequestBuilder"/></returns>
-        public WithTokenItemRequestBuilder this[string position]
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Velocitycontrols.Item.WithTokenItemRequestBuilder"/></returns>
+        public Marqeta.Core.Sdk.Velocitycontrols.Item.WithTokenItemRequestBuilder this[string position]
         {
             get
             {
                 var urlTplParams = new Dictionary<string, object>(PathParameters);
                 urlTplParams.Add("token", position);
-                return new WithTokenItemRequestBuilder(urlTplParams, RequestAdapter);
+                return new Marqeta.Core.Sdk.Velocitycontrols.Item.WithTokenItemRequestBuilder(urlTplParams, RequestAdapter);
             }
         }
         /// <summary>
-        /// Instantiates a new <see cref="VelocitycontrolsRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Velocitycontrols.VelocitycontrolsRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
@@ -48,7 +49,7 @@ namespace Marqeta.Core.Sdk.Velocitycontrols {
         {
         }
         /// <summary>
-        /// Instantiates a new <see cref="VelocitycontrolsRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Velocitycontrols.VelocitycontrolsRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
@@ -58,50 +59,50 @@ namespace Marqeta.Core.Sdk.Velocitycontrols {
         /// <summary>
         /// Retrieves a list of all the velocity controls associated with a specific user or card product, or lists all the velocity controls defined for your program.Include either a `user` or a `card_product` query parameter to indicate the user or card product whose associated velocity controls you want to retrieve (do not include both).To list all velocity controls for your program, omit the `user` and `card_product` query parameters from your request.This endpoint supports &lt;&lt;/core-api/field-filtering, field filtering&gt;&gt; and &lt;&lt;/core-api/sorting-and-pagination, pagination&gt;&gt;.
         /// </summary>
-        /// <returns>A <see cref="VelocityControlListResponse"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Models.VelocityControlListResponse"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        /// <exception cref="ApiError">When receiving a 4XX or 5XX status code</exception>
+        /// <exception cref="Marqeta.Core.Sdk.Models.ApiError">When receiving a 4XX or 5XX status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<VelocityControlListResponse?> GetAsync(Action<RequestConfiguration<VelocitycontrolsRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<Marqeta.Core.Sdk.Models.VelocityControlListResponse?> GetAsync(Action<RequestConfiguration<Marqeta.Core.Sdk.Velocitycontrols.VelocitycontrolsRequestBuilder.VelocitycontrolsRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<VelocityControlListResponse> GetAsync(Action<RequestConfiguration<VelocitycontrolsRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<Marqeta.Core.Sdk.Models.VelocityControlListResponse> GetAsync(Action<RequestConfiguration<Marqeta.Core.Sdk.Velocitycontrols.VelocitycontrolsRequestBuilder.VelocitycontrolsRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
-                {"XXX", ApiError.CreateFromDiscriminatorValue},
+                { "XXX", Marqeta.Core.Sdk.Models.ApiError.CreateFromDiscriminatorValue },
             };
-            return await RequestAdapter.SendAsync<VelocityControlListResponse>(requestInfo, VelocityControlListResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<Marqeta.Core.Sdk.Models.VelocityControlListResponse>(requestInfo, Marqeta.Core.Sdk.Models.VelocityControlListResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Limits how much and how frequently a user can spend funds.If multiple velocity controls apply to the same user, the user cannot exceed any of the defined spending limits.[TIP]You can create program-level controls in the sandbox environment.However, you must work with your Marqeta representative to create program-level controls in a production environment.
         /// </summary>
-        /// <returns>A <see cref="Velocity_control_response"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Models.Velocity_control_response"/></returns>
         /// <param name="body">The request body</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        /// <exception cref="ApiError">When receiving a 4XX or 5XX status code</exception>
+        /// <exception cref="Marqeta.Core.Sdk.Models.ApiError">When receiving a 4XX or 5XX status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<Velocity_control_response?> PostAsync(Velocity_control_request body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<Marqeta.Core.Sdk.Models.Velocity_control_response?> PostAsync(Marqeta.Core.Sdk.Models.Velocity_control_request body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<Velocity_control_response> PostAsync(Velocity_control_request body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<Marqeta.Core.Sdk.Models.Velocity_control_response> PostAsync(Marqeta.Core.Sdk.Models.Velocity_control_request body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             _ = body ?? throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPostRequestInformation(body, requestConfiguration);
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
-                {"XXX", ApiError.CreateFromDiscriminatorValue},
+                { "XXX", Marqeta.Core.Sdk.Models.ApiError.CreateFromDiscriminatorValue },
             };
-            return await RequestAdapter.SendAsync<Velocity_control_response>(requestInfo, Velocity_control_response.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<Marqeta.Core.Sdk.Models.Velocity_control_response>(requestInfo, Marqeta.Core.Sdk.Models.Velocity_control_response.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Retrieves a list of all the velocity controls associated with a specific user or card product, or lists all the velocity controls defined for your program.Include either a `user` or a `card_product` query parameter to indicate the user or card product whose associated velocity controls you want to retrieve (do not include both).To list all velocity controls for your program, omit the `user` and `card_product` query parameters from your request.This endpoint supports &lt;&lt;/core-api/field-filtering, field filtering&gt;&gt; and &lt;&lt;/core-api/sorting-and-pagination, pagination&gt;&gt;.
@@ -110,11 +111,11 @@ namespace Marqeta.Core.Sdk.Velocitycontrols {
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<VelocitycontrolsRequestBuilderGetQueryParameters>>? requestConfiguration = default)
+        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<Marqeta.Core.Sdk.Velocitycontrols.VelocitycontrolsRequestBuilder.VelocitycontrolsRequestBuilderGetQueryParameters>>? requestConfiguration = default)
         {
 #nullable restore
 #else
-        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<VelocitycontrolsRequestBuilderGetQueryParameters>> requestConfiguration = default)
+        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<Marqeta.Core.Sdk.Velocitycontrols.VelocitycontrolsRequestBuilder.VelocitycontrolsRequestBuilderGetQueryParameters>> requestConfiguration = default)
         {
 #endif
             var requestInfo = new RequestInformation(Method.GET, UrlTemplate, PathParameters);
@@ -130,11 +131,11 @@ namespace Marqeta.Core.Sdk.Velocitycontrols {
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToPostRequestInformation(Velocity_control_request body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
+        public RequestInformation ToPostRequestInformation(Marqeta.Core.Sdk.Models.Velocity_control_request body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
         {
 #nullable restore
 #else
-        public RequestInformation ToPostRequestInformation(Velocity_control_request body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
+        public RequestInformation ToPostRequestInformation(Marqeta.Core.Sdk.Models.Velocity_control_request body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
         {
 #endif
             _ = body ?? throw new ArgumentNullException(nameof(body));
@@ -147,11 +148,11 @@ namespace Marqeta.Core.Sdk.Velocitycontrols {
         /// <summary>
         /// Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
         /// </summary>
-        /// <returns>A <see cref="VelocitycontrolsRequestBuilder"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Velocitycontrols.VelocitycontrolsRequestBuilder"/></returns>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
-        public VelocitycontrolsRequestBuilder WithUrl(string rawUrl)
+        public Marqeta.Core.Sdk.Velocitycontrols.VelocitycontrolsRequestBuilder WithUrl(string rawUrl)
         {
-            return new VelocitycontrolsRequestBuilder(rawUrl, RequestAdapter);
+            return new Marqeta.Core.Sdk.Velocitycontrols.VelocitycontrolsRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
         /// Retrieves a list of all the velocity controls associated with a specific user or card product, or lists all the velocity controls defined for your program.Include either a `user` or a `card_product` query parameter to indicate the user or card product whose associated velocity controls you want to retrieve (do not include both).To list all velocity controls for your program, omit the `user` and `card_product` query parameters from your request.This endpoint supports &lt;&lt;/core-api/field-filtering, field filtering&gt;&gt; and &lt;&lt;/core-api/sorting-and-pagination, pagination&gt;&gt;.

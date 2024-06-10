@@ -4,11 +4,12 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System;
-namespace Marqeta.Core.Sdk.Models {
+namespace Marqeta.Core.Sdk.Models
+{
     /// <summary>
     /// Defines the group of merchants to which the velocity control applies.If no fields are populated, the velocity control applies to all merchants.
     /// </summary>
-    public class MerchantScope : IAdditionalDataHolder, IParsable 
+    public class MerchantScope : IAdditionalDataHolder, IParsable
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
@@ -21,9 +22,9 @@ namespace Marqeta.Core.Sdk.Models {
         public string Attribute { get; set; }
 #endif
         /// <summary>Scope of the merchant category.Can be either &apos;mcc&apos; or &apos;mcc_group&apos;.</summary>
-        public MerchantScope_scope? Scope { get; set; }
+        public Marqeta.Core.Sdk.Models.MerchantScope_scope? Scope { get; set; }
         /// <summary>
-        /// Instantiates a new <see cref="MerchantScope"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Models.MerchantScope"/> and sets the default values.
         /// </summary>
         public MerchantScope()
         {
@@ -32,12 +33,12 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="MerchantScope"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Models.MerchantScope"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static MerchantScope CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static Marqeta.Core.Sdk.Models.MerchantScope CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-            return new MerchantScope();
+            return new Marqeta.Core.Sdk.Models.MerchantScope();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -47,8 +48,8 @@ namespace Marqeta.Core.Sdk.Models {
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                {"attribute", n => { Attribute = n.GetStringValue(); } },
-                {"scope", n => { Scope = n.GetEnumValue<MerchantScope_scope>(); } },
+                { "attribute", n => { Attribute = n.GetStringValue(); } },
+                { "scope", n => { Scope = n.GetEnumValue<Marqeta.Core.Sdk.Models.MerchantScope_scope>(); } },
             };
         }
         /// <summary>
@@ -59,7 +60,7 @@ namespace Marqeta.Core.Sdk.Models {
         {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("attribute", Attribute);
-            writer.WriteEnumValue<MerchantScope_scope>("scope", Scope);
+            writer.WriteEnumValue<Marqeta.Core.Sdk.Models.MerchantScope_scope>("scope", Scope);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

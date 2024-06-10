@@ -4,11 +4,12 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System;
-namespace Marqeta.Core.Sdk.Models {
+namespace Marqeta.Core.Sdk.Models
+{
     /// <summary>
     /// Contains information relevant to creating an account adjustment.
     /// </summary>
-    public class AccountAdjustmentReq : IAdditionalDataHolder, IParsable 
+    public class AccountAdjustmentReq : IAdditionalDataHolder, IParsable
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
@@ -37,7 +38,7 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>Unique identifier of the original journal entry needing the adjustment.Required when adjusting an existing journal entry.</summary>
         public Guid? OriginalLedgerEntryToken { get; set; }
         /// <summary>Reason for the adjustment.* `DISPUTE` - The adjustment occurred because a dispute was initiated.* `DISPUTE_RESOLUTION` - The adjustment occurred because of the result of a dispute resolution.* `RETURNED_OR_CANCELED_PAYMENT` - The adjustment occurred because a payment was returned or canceled.* `OTHER` - Any other reason the adjustment occurred. For example, a waived fee or account write-off.</summary>
-        public AccountAdjustmentReq_reason? Reason { get; set; }
+        public Marqeta.Core.Sdk.Models.AccountAdjustmentReq_reason? Reason { get; set; }
         /// <summary>Unique identifier of the adjustment.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -47,7 +48,7 @@ namespace Marqeta.Core.Sdk.Models {
         public string Token { get; set; }
 #endif
         /// <summary>
-        /// Instantiates a new <see cref="AccountAdjustmentReq"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Models.AccountAdjustmentReq"/> and sets the default values.
         /// </summary>
         public AccountAdjustmentReq()
         {
@@ -57,12 +58,12 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="AccountAdjustmentReq"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Models.AccountAdjustmentReq"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static AccountAdjustmentReq CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static Marqeta.Core.Sdk.Models.AccountAdjustmentReq CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-            return new AccountAdjustmentReq();
+            return new Marqeta.Core.Sdk.Models.AccountAdjustmentReq();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -72,14 +73,14 @@ namespace Marqeta.Core.Sdk.Models {
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                {"amount", n => { Amount = n.GetDoubleValue(); } },
-                {"currency_code", n => { CurrencyCode = n.GetEnumValue<CurrencyCode>(); } },
-                {"description", n => { Description = n.GetStringValue(); } },
-                {"external_adjustment_id", n => { ExternalAdjustmentId = n.GetGuidValue(); } },
-                {"note", n => { Note = n.GetStringValue(); } },
-                {"original_ledger_entry_token", n => { OriginalLedgerEntryToken = n.GetGuidValue(); } },
-                {"reason", n => { Reason = n.GetEnumValue<AccountAdjustmentReq_reason>(); } },
-                {"token", n => { Token = n.GetStringValue(); } },
+                { "amount", n => { Amount = n.GetDoubleValue(); } },
+                { "currency_code", n => { CurrencyCode = n.GetEnumValue<Marqeta.Core.Sdk.Models.CurrencyCode>(); } },
+                { "description", n => { Description = n.GetStringValue(); } },
+                { "external_adjustment_id", n => { ExternalAdjustmentId = n.GetGuidValue(); } },
+                { "note", n => { Note = n.GetStringValue(); } },
+                { "original_ledger_entry_token", n => { OriginalLedgerEntryToken = n.GetGuidValue(); } },
+                { "reason", n => { Reason = n.GetEnumValue<Marqeta.Core.Sdk.Models.AccountAdjustmentReq_reason>(); } },
+                { "token", n => { Token = n.GetStringValue(); } },
             };
         }
         /// <summary>
@@ -90,12 +91,12 @@ namespace Marqeta.Core.Sdk.Models {
         {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
             writer.WriteDoubleValue("amount", Amount);
-            writer.WriteEnumValue<CurrencyCode>("currency_code", CurrencyCode);
+            writer.WriteEnumValue<Marqeta.Core.Sdk.Models.CurrencyCode>("currency_code", CurrencyCode);
             writer.WriteStringValue("description", Description);
             writer.WriteGuidValue("external_adjustment_id", ExternalAdjustmentId);
             writer.WriteStringValue("note", Note);
             writer.WriteGuidValue("original_ledger_entry_token", OriginalLedgerEntryToken);
-            writer.WriteEnumValue<AccountAdjustmentReq_reason>("reason", Reason);
+            writer.WriteEnumValue<Marqeta.Core.Sdk.Models.AccountAdjustmentReq_reason>("reason", Reason);
             writer.WriteStringValue("token", Token);
             writer.WriteAdditionalData(AdditionalData);
         }

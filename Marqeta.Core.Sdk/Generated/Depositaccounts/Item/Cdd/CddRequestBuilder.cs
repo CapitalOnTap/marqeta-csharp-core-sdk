@@ -9,26 +9,27 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Threading;
 using System;
-namespace Marqeta.Core.Sdk.Depositaccounts.Item.Cdd {
+namespace Marqeta.Core.Sdk.Depositaccounts.Item.Cdd
+{
     /// <summary>
     /// Builds and executes requests for operations under \depositaccounts\{token-id}\cdd
     /// </summary>
-    public class CddRequestBuilder : BaseRequestBuilder 
+    public class CddRequestBuilder : BaseRequestBuilder
     {
         /// <summary>Gets an item from the Marqeta.Core.Sdk.depositaccounts.item.cdd.item collection</summary>
         /// <param name="position">Unique identifier of the item</param>
-        /// <returns>A <see cref="WithCddtokenItemRequestBuilder"/></returns>
-        public WithCddtokenItemRequestBuilder this[string position]
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Depositaccounts.Item.Cdd.Item.WithCddtokenItemRequestBuilder"/></returns>
+        public Marqeta.Core.Sdk.Depositaccounts.Item.Cdd.Item.WithCddtokenItemRequestBuilder this[string position]
         {
             get
             {
                 var urlTplParams = new Dictionary<string, object>(PathParameters);
                 urlTplParams.Add("cddtoken", position);
-                return new WithCddtokenItemRequestBuilder(urlTplParams, RequestAdapter);
+                return new Marqeta.Core.Sdk.Depositaccounts.Item.Cdd.Item.WithCddtokenItemRequestBuilder(urlTplParams, RequestAdapter);
             }
         }
         /// <summary>
-        /// Instantiates a new <see cref="CddRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Depositaccounts.Item.Cdd.CddRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
@@ -36,7 +37,7 @@ namespace Marqeta.Core.Sdk.Depositaccounts.Item.Cdd {
         {
         }
         /// <summary>
-        /// Instantiates a new <see cref="CddRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Depositaccounts.Item.Cdd.CddRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
@@ -46,25 +47,25 @@ namespace Marqeta.Core.Sdk.Depositaccounts.Item.Cdd {
         /// <summary>
         /// Get direct deposit account transition list for card holder.
         /// </summary>
-        /// <returns>A <see cref="Customer_due_diligence_response"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Models.Customer_due_diligence_response"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        /// <exception cref="ApiError">When receiving a 4XX or 5XX status code</exception>
+        /// <exception cref="Marqeta.Core.Sdk.Models.ApiError">When receiving a 4XX or 5XX status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<Customer_due_diligence_response?> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<Marqeta.Core.Sdk.Models.Customer_due_diligence_response?> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<Customer_due_diligence_response> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<Marqeta.Core.Sdk.Models.Customer_due_diligence_response> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
-                {"XXX", ApiError.CreateFromDiscriminatorValue},
+                { "XXX", Marqeta.Core.Sdk.Models.ApiError.CreateFromDiscriminatorValue },
             };
-            return await RequestAdapter.SendAsync<Customer_due_diligence_response>(requestInfo, Customer_due_diligence_response.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<Marqeta.Core.Sdk.Models.Customer_due_diligence_response>(requestInfo, Marqeta.Core.Sdk.Models.Customer_due_diligence_response.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Get direct deposit account transition list for card holder.
@@ -88,11 +89,11 @@ namespace Marqeta.Core.Sdk.Depositaccounts.Item.Cdd {
         /// <summary>
         /// Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
         /// </summary>
-        /// <returns>A <see cref="CddRequestBuilder"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Depositaccounts.Item.Cdd.CddRequestBuilder"/></returns>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
-        public CddRequestBuilder WithUrl(string rawUrl)
+        public Marqeta.Core.Sdk.Depositaccounts.Item.Cdd.CddRequestBuilder WithUrl(string rawUrl)
         {
-            return new CddRequestBuilder(rawUrl, RequestAdapter);
+            return new Marqeta.Core.Sdk.Depositaccounts.Item.Cdd.CddRequestBuilder(rawUrl, RequestAdapter);
         }
     }
 }

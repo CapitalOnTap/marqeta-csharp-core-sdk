@@ -4,11 +4,12 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System;
-namespace Marqeta.Core.Sdk.Models {
+namespace Marqeta.Core.Sdk.Models
+{
     /// <summary>
     /// Contains information about the merchant.
     /// </summary>
-    public class Transaction_card_acceptor : IAdditionalDataHolder, IParsable 
+    public class Transaction_card_acceptor : IAdditionalDataHolder, IParsable
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
@@ -143,10 +144,10 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>Contains information about the point of sale, including details on how the card was presented.Returned if provided by the card network, and the request uses Transaction Model v1 of the Marqeta Core API.Not returned for Transaction Model v2 requests.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public Terminal_model? Poi { get; set; }
+        public Marqeta.Core.Sdk.Models.Terminal_model? Poi { get; set; }
 #nullable restore
 #else
-        public Terminal_model Poi { get; set; }
+        public Marqeta.Core.Sdk.Models.Terminal_model Poi { get; set; }
 #endif
         /// <summary>Card acceptor&apos;s postal code.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -197,7 +198,7 @@ namespace Marqeta.Core.Sdk.Models {
         public string Url { get; set; }
 #endif
         /// <summary>
-        /// Instantiates a new <see cref="Transaction_card_acceptor"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Models.Transaction_card_acceptor"/> and sets the default values.
         /// </summary>
         public Transaction_card_acceptor()
         {
@@ -206,12 +207,12 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="Transaction_card_acceptor"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Models.Transaction_card_acceptor"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static Transaction_card_acceptor CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static Marqeta.Core.Sdk.Models.Transaction_card_acceptor CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-            return new Transaction_card_acceptor();
+            return new Marqeta.Core.Sdk.Models.Transaction_card_acceptor();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -221,29 +222,29 @@ namespace Marqeta.Core.Sdk.Models {
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                {"address", n => { Address = n.GetStringValue(); } },
-                {"city", n => { City = n.GetStringValue(); } },
-                {"country_code", n => { CountryCode = n.GetStringValue(); } },
-                {"country_of_origin", n => { CountryOfOrigin = n.GetStringValue(); } },
-                {"customer_service_phone", n => { CustomerServicePhone = n.GetStringValue(); } },
-                {"independent_sales_organization_id", n => { IndependentSalesOrganizationId = n.GetStringValue(); } },
-                {"mcc", n => { Mcc = n.GetStringValue(); } },
-                {"mcc_groups", n => { MccGroups = n.GetCollectionOfPrimitiveValues<string>()?.ToList(); } },
-                {"merchant_tax_id", n => { MerchantTaxId = n.GetStringValue(); } },
-                {"mid", n => { Mid = n.GetStringValue(); } },
-                {"name", n => { Name = n.GetStringValue(); } },
-                {"network_assigned_id", n => { NetworkAssignedId = n.GetStringValue(); } },
-                {"network_mid", n => { NetworkMid = n.GetStringValue(); } },
-                {"payment_facilitator_id", n => { PaymentFacilitatorId = n.GetStringValue(); } },
-                {"payment_facilitator_name", n => { PaymentFacilitatorName = n.GetStringValue(); } },
-                {"phone", n => { Phone = n.GetStringValue(); } },
-                {"poi", n => { Poi = n.GetObjectValue<Terminal_model>(Terminal_model.CreateFromDiscriminatorValue); } },
-                {"postal_code", n => { PostalCode = n.GetStringValue(); } },
-                {"special_merchant_id", n => { SpecialMerchantId = n.GetStringValue(); } },
-                {"state", n => { State = n.GetStringValue(); } },
-                {"sub_merchant_id", n => { SubMerchantId = n.GetStringValue(); } },
-                {"transfer_service_provider_name", n => { TransferServiceProviderName = n.GetStringValue(); } },
-                {"url", n => { Url = n.GetStringValue(); } },
+                { "address", n => { Address = n.GetStringValue(); } },
+                { "city", n => { City = n.GetStringValue(); } },
+                { "country_code", n => { CountryCode = n.GetStringValue(); } },
+                { "country_of_origin", n => { CountryOfOrigin = n.GetStringValue(); } },
+                { "customer_service_phone", n => { CustomerServicePhone = n.GetStringValue(); } },
+                { "independent_sales_organization_id", n => { IndependentSalesOrganizationId = n.GetStringValue(); } },
+                { "mcc", n => { Mcc = n.GetStringValue(); } },
+                { "mcc_groups", n => { MccGroups = n.GetCollectionOfPrimitiveValues<string>()?.ToList(); } },
+                { "merchant_tax_id", n => { MerchantTaxId = n.GetStringValue(); } },
+                { "mid", n => { Mid = n.GetStringValue(); } },
+                { "name", n => { Name = n.GetStringValue(); } },
+                { "network_assigned_id", n => { NetworkAssignedId = n.GetStringValue(); } },
+                { "network_mid", n => { NetworkMid = n.GetStringValue(); } },
+                { "payment_facilitator_id", n => { PaymentFacilitatorId = n.GetStringValue(); } },
+                { "payment_facilitator_name", n => { PaymentFacilitatorName = n.GetStringValue(); } },
+                { "phone", n => { Phone = n.GetStringValue(); } },
+                { "poi", n => { Poi = n.GetObjectValue<Marqeta.Core.Sdk.Models.Terminal_model>(Marqeta.Core.Sdk.Models.Terminal_model.CreateFromDiscriminatorValue); } },
+                { "postal_code", n => { PostalCode = n.GetStringValue(); } },
+                { "special_merchant_id", n => { SpecialMerchantId = n.GetStringValue(); } },
+                { "state", n => { State = n.GetStringValue(); } },
+                { "sub_merchant_id", n => { SubMerchantId = n.GetStringValue(); } },
+                { "transfer_service_provider_name", n => { TransferServiceProviderName = n.GetStringValue(); } },
+                { "url", n => { Url = n.GetStringValue(); } },
             };
         }
         /// <summary>
@@ -269,7 +270,7 @@ namespace Marqeta.Core.Sdk.Models {
             writer.WriteStringValue("payment_facilitator_id", PaymentFacilitatorId);
             writer.WriteStringValue("payment_facilitator_name", PaymentFacilitatorName);
             writer.WriteStringValue("phone", Phone);
-            writer.WriteObjectValue<Terminal_model>("poi", Poi);
+            writer.WriteObjectValue<Marqeta.Core.Sdk.Models.Terminal_model>("poi", Poi);
             writer.WriteStringValue("postal_code", PostalCode);
             writer.WriteStringValue("special_merchant_id", SpecialMerchantId);
             writer.WriteStringValue("state", State);

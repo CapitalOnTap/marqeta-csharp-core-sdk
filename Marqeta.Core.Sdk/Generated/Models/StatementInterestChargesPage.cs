@@ -4,11 +4,12 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System;
-namespace Marqeta.Core.Sdk.Models {
+namespace Marqeta.Core.Sdk.Models
+{
     /// <summary>
     /// Return paginated statement interest charges.
     /// </summary>
-    public class StatementInterestChargesPage : IAdditionalDataHolder, IParsable 
+    public class StatementInterestChargesPage : IAdditionalDataHolder, IParsable
     {
         /// <summary>Unique identifier of the credit account on which the statement interest charge is generated.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -23,10 +24,10 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>Contains one or more interest charges on a statement.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<StatementInterestCharge>? Data { get; set; }
+        public List<Marqeta.Core.Sdk.Models.StatementInterestCharge>? Data { get; set; }
 #nullable restore
 #else
-        public List<StatementInterestCharge> Data { get; set; }
+        public List<Marqeta.Core.Sdk.Models.StatementInterestCharge> Data { get; set; }
 #endif
         /// <summary>Unique identifier of the statement summary.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -37,7 +38,7 @@ namespace Marqeta.Core.Sdk.Models {
         public string StatementSummaryToken { get; set; }
 #endif
         /// <summary>
-        /// Instantiates a new <see cref="StatementInterestChargesPage"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Models.StatementInterestChargesPage"/> and sets the default values.
         /// </summary>
         public StatementInterestChargesPage()
         {
@@ -46,12 +47,12 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="StatementInterestChargesPage"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Models.StatementInterestChargesPage"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static StatementInterestChargesPage CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static Marqeta.Core.Sdk.Models.StatementInterestChargesPage CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-            return new StatementInterestChargesPage();
+            return new Marqeta.Core.Sdk.Models.StatementInterestChargesPage();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -61,9 +62,9 @@ namespace Marqeta.Core.Sdk.Models {
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                {"account_token", n => { AccountToken = n.GetStringValue(); } },
-                {"data", n => { Data = n.GetCollectionOfObjectValues<StatementInterestCharge>(StatementInterestCharge.CreateFromDiscriminatorValue)?.ToList(); } },
-                {"statement_summary_token", n => { StatementSummaryToken = n.GetStringValue(); } },
+                { "account_token", n => { AccountToken = n.GetStringValue(); } },
+                { "data", n => { Data = n.GetCollectionOfObjectValues<Marqeta.Core.Sdk.Models.StatementInterestCharge>(Marqeta.Core.Sdk.Models.StatementInterestCharge.CreateFromDiscriminatorValue)?.ToList(); } },
+                { "statement_summary_token", n => { StatementSummaryToken = n.GetStringValue(); } },
             };
         }
         /// <summary>
@@ -74,7 +75,7 @@ namespace Marqeta.Core.Sdk.Models {
         {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("account_token", AccountToken);
-            writer.WriteCollectionOfObjectValues<StatementInterestCharge>("data", Data);
+            writer.WriteCollectionOfObjectValues<Marqeta.Core.Sdk.Models.StatementInterestCharge>("data", Data);
             writer.WriteStringValue("statement_summary_token", StatementSummaryToken);
             writer.WriteAdditionalData(AdditionalData);
         }

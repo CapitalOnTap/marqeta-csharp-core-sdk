@@ -4,9 +4,10 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System;
-namespace Marqeta.Core.Sdk.Models {
+namespace Marqeta.Core.Sdk.Models
+{
     #pragma warning disable CS1591
-    public class Token_request : IAdditionalDataHolder, IParsable 
+    public class Token_request : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
     {
         /// <summary>Payment card account number.</summary>
@@ -78,7 +79,7 @@ namespace Marqeta.Core.Sdk.Models {
         public string Zip { get; set; }
 #endif
         /// <summary>
-        /// Instantiates a new <see cref="Token_request"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Models.Token_request"/> and sets the default values.
         /// </summary>
         public Token_request()
         {
@@ -87,12 +88,12 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="Token_request"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Models.Token_request"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static Token_request CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static Marqeta.Core.Sdk.Models.Token_request CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-            return new Token_request();
+            return new Marqeta.Core.Sdk.Models.Token_request();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -102,15 +103,15 @@ namespace Marqeta.Core.Sdk.Models {
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                {"account_number", n => { AccountNumber = n.GetStringValue(); } },
-                {"business_token", n => { BusinessToken = n.GetStringValue(); } },
-                {"cvv_number", n => { CvvNumber = n.GetStringValue(); } },
-                {"exp_date", n => { ExpDate = n.GetStringValue(); } },
-                {"is_default_account", n => { IsDefaultAccount = n.GetBoolValue(); } },
-                {"postal_code", n => { PostalCode = n.GetStringValue(); } },
-                {"token", n => { Token = n.GetStringValue(); } },
-                {"user_token", n => { UserToken = n.GetStringValue(); } },
-                {"zip", n => { Zip = n.GetStringValue(); } },
+                { "account_number", n => { AccountNumber = n.GetStringValue(); } },
+                { "business_token", n => { BusinessToken = n.GetStringValue(); } },
+                { "cvv_number", n => { CvvNumber = n.GetStringValue(); } },
+                { "exp_date", n => { ExpDate = n.GetStringValue(); } },
+                { "is_default_account", n => { IsDefaultAccount = n.GetBoolValue(); } },
+                { "postal_code", n => { PostalCode = n.GetStringValue(); } },
+                { "token", n => { Token = n.GetStringValue(); } },
+                { "user_token", n => { UserToken = n.GetStringValue(); } },
+                { "zip", n => { Zip = n.GetStringValue(); } },
             };
         }
         /// <summary>

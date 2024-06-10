@@ -4,24 +4,25 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System;
-namespace Marqeta.Core.Sdk.Models {
+namespace Marqeta.Core.Sdk.Models
+{
     /// <summary>
     /// Contains information on the dynamic merchant category code (MCC) for a reward.
     /// </summary>
-    public class MccDynamicFilter : IAdditionalDataHolder, IParsable 
+    public class MccDynamicFilter : IAdditionalDataHolder, IParsable
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>One or more dynamic MCCs.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<DynamicMccType?>? Includes { get; set; }
+        public List<Marqeta.Core.Sdk.Models.DynamicMccType?>? Includes { get; set; }
 #nullable restore
 #else
-        public List<DynamicMccType?> Includes { get; set; }
+        public List<Marqeta.Core.Sdk.Models.DynamicMccType?> Includes { get; set; }
 #endif
         /// <summary>
-        /// Instantiates a new <see cref="MccDynamicFilter"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Models.MccDynamicFilter"/> and sets the default values.
         /// </summary>
         public MccDynamicFilter()
         {
@@ -30,12 +31,12 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="MccDynamicFilter"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Models.MccDynamicFilter"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static MccDynamicFilter CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static Marqeta.Core.Sdk.Models.MccDynamicFilter CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-            return new MccDynamicFilter();
+            return new Marqeta.Core.Sdk.Models.MccDynamicFilter();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -45,7 +46,7 @@ namespace Marqeta.Core.Sdk.Models {
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                {"includes", n => { Includes = n.GetCollectionOfEnumValues<DynamicMccType>()?.ToList(); } },
+                { "includes", n => { Includes = n.GetCollectionOfEnumValues<Marqeta.Core.Sdk.Models.DynamicMccType>()?.ToList(); } },
             };
         }
         /// <summary>
@@ -55,7 +56,7 @@ namespace Marqeta.Core.Sdk.Models {
         public virtual void Serialize(ISerializationWriter writer)
         {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
-            writer.WriteCollectionOfEnumValues<DynamicMccType>("includes", Includes);
+            writer.WriteCollectionOfEnumValues<Marqeta.Core.Sdk.Models.DynamicMccType>("includes", Includes);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

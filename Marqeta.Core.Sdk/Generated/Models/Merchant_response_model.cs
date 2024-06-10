@@ -4,9 +4,10 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System;
-namespace Marqeta.Core.Sdk.Models {
+namespace Marqeta.Core.Sdk.Models
+{
     #pragma warning disable CS1591
-    public class Merchant_response_model : IAdditionalDataHolder, IParsable 
+    public class Merchant_response_model : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
     {
         /// <summary>The active property</summary>
@@ -120,7 +121,7 @@ namespace Marqeta.Core.Sdk.Models {
         public string Zip { get; set; }
 #endif
         /// <summary>
-        /// Instantiates a new <see cref="Merchant_response_model"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Models.Merchant_response_model"/> and sets the default values.
         /// </summary>
         public Merchant_response_model()
         {
@@ -129,12 +130,12 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="Merchant_response_model"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Models.Merchant_response_model"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static Merchant_response_model CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static Marqeta.Core.Sdk.Models.Merchant_response_model CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-            return new Merchant_response_model();
+            return new Marqeta.Core.Sdk.Models.Merchant_response_model();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -144,24 +145,24 @@ namespace Marqeta.Core.Sdk.Models {
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                {"active", n => { Active = n.GetBoolValue(); } },
-                {"address1", n => { Address1 = n.GetStringValue(); } },
-                {"address2", n => { Address2 = n.GetStringValue(); } },
-                {"city", n => { City = n.GetStringValue(); } },
-                {"contact", n => { Contact = n.GetStringValue(); } },
-                {"contact_email", n => { ContactEmail = n.GetStringValue(); } },
-                {"country", n => { Country = n.GetStringValue(); } },
-                {"created_time", n => { CreatedTime = n.GetDateTimeOffsetValue(); } },
-                {"last_modified_time", n => { LastModifiedTime = n.GetDateTimeOffsetValue(); } },
-                {"latitude", n => { Latitude = n.GetFloatValue(); } },
-                {"longitude", n => { Longitude = n.GetFloatValue(); } },
-                {"name", n => { Name = n.GetStringValue(); } },
-                {"partial_auth_flag", n => { PartialAuthFlag = n.GetBoolValue(); } },
-                {"phone", n => { Phone = n.GetStringValue(); } },
-                {"province", n => { Province = n.GetStringValue(); } },
-                {"state", n => { State = n.GetStringValue(); } },
-                {"token", n => { Token = n.GetStringValue(); } },
-                {"zip", n => { Zip = n.GetStringValue(); } },
+                { "active", n => { Active = n.GetBoolValue(); } },
+                { "address1", n => { Address1 = n.GetStringValue(); } },
+                { "address2", n => { Address2 = n.GetStringValue(); } },
+                { "city", n => { City = n.GetStringValue(); } },
+                { "contact", n => { Contact = n.GetStringValue(); } },
+                { "contact_email", n => { ContactEmail = n.GetStringValue(); } },
+                { "country", n => { Country = n.GetStringValue(); } },
+                { "created_time", n => { CreatedTime = n.GetDateTimeOffsetValue(); } },
+                { "last_modified_time", n => { LastModifiedTime = n.GetDateTimeOffsetValue(); } },
+                { "latitude", n => { Latitude = n.GetFloatValue(); } },
+                { "longitude", n => { Longitude = n.GetFloatValue(); } },
+                { "name", n => { Name = n.GetStringValue(); } },
+                { "partial_auth_flag", n => { PartialAuthFlag = n.GetBoolValue(); } },
+                { "phone", n => { Phone = n.GetStringValue(); } },
+                { "province", n => { Province = n.GetStringValue(); } },
+                { "state", n => { State = n.GetStringValue(); } },
+                { "token", n => { Token = n.GetStringValue(); } },
+                { "zip", n => { Zip = n.GetStringValue(); } },
             };
         }
         /// <summary>

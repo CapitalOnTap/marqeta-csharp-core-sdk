@@ -4,9 +4,10 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System;
-namespace Marqeta.Core.Sdk.Models {
+namespace Marqeta.Core.Sdk.Models
+{
     #pragma warning disable CS1591
-    public class Jit_funding_programgateway_funding_source : IAdditionalDataHolder, IParsable 
+    public class Jit_funding_programgateway_funding_source : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -24,9 +25,9 @@ namespace Marqeta.Core.Sdk.Models {
         public string FundingSourceToken { get; set; }
 #endif
         /// <summary>Specifies the return destination for refunds in the case of a transaction reversal.In most cases, you should set the value to `GATEWAY`, which returns funds to the program gateway funding source.Setting to `GPA` returns the funds to the user&apos;s GPA, which creates a positive account balance and introduces the potential of a transaction being authorized without a JIT Funding request being sent to the gateway.</summary>
-        public Jit_funding_programgateway_funding_source_refunds_destination? RefundsDestination { get; set; }
+        public Marqeta.Core.Sdk.Models.Jit_funding_programgateway_funding_source_refunds_destination? RefundsDestination { get; set; }
         /// <summary>
-        /// Instantiates a new <see cref="Jit_funding_programgateway_funding_source"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Models.Jit_funding_programgateway_funding_source"/> and sets the default values.
         /// </summary>
         public Jit_funding_programgateway_funding_source()
         {
@@ -35,12 +36,12 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="Jit_funding_programgateway_funding_source"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Models.Jit_funding_programgateway_funding_source"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static Jit_funding_programgateway_funding_source CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static Marqeta.Core.Sdk.Models.Jit_funding_programgateway_funding_source CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-            return new Jit_funding_programgateway_funding_source();
+            return new Marqeta.Core.Sdk.Models.Jit_funding_programgateway_funding_source();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -50,10 +51,10 @@ namespace Marqeta.Core.Sdk.Models {
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                {"always_fund", n => { AlwaysFund = n.GetBoolValue(); } },
-                {"enabled", n => { Enabled = n.GetBoolValue(); } },
-                {"funding_source_token", n => { FundingSourceToken = n.GetStringValue(); } },
-                {"refunds_destination", n => { RefundsDestination = n.GetEnumValue<Jit_funding_programgateway_funding_source_refunds_destination>(); } },
+                { "always_fund", n => { AlwaysFund = n.GetBoolValue(); } },
+                { "enabled", n => { Enabled = n.GetBoolValue(); } },
+                { "funding_source_token", n => { FundingSourceToken = n.GetStringValue(); } },
+                { "refunds_destination", n => { RefundsDestination = n.GetEnumValue<Marqeta.Core.Sdk.Models.Jit_funding_programgateway_funding_source_refunds_destination>(); } },
             };
         }
         /// <summary>
@@ -66,7 +67,7 @@ namespace Marqeta.Core.Sdk.Models {
             writer.WriteBoolValue("always_fund", AlwaysFund);
             writer.WriteBoolValue("enabled", Enabled);
             writer.WriteStringValue("funding_source_token", FundingSourceToken);
-            writer.WriteEnumValue<Jit_funding_programgateway_funding_source_refunds_destination>("refunds_destination", RefundsDestination);
+            writer.WriteEnumValue<Marqeta.Core.Sdk.Models.Jit_funding_programgateway_funding_source_refunds_destination>("refunds_destination", RefundsDestination);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

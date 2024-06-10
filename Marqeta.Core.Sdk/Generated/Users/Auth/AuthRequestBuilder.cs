@@ -12,49 +12,50 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using System;
-namespace Marqeta.Core.Sdk.Users.Auth {
+namespace Marqeta.Core.Sdk.Users.Auth
+{
     /// <summary>
     /// Builds and executes requests for operations under \users\auth
     /// </summary>
-    public class AuthRequestBuilder : BaseRequestBuilder 
+    public class AuthRequestBuilder : BaseRequestBuilder
     {
         /// <summary>The changepassword property</summary>
-        public ChangepasswordRequestBuilder Changepassword
+        public Marqeta.Core.Sdk.Users.Auth.Changepassword.ChangepasswordRequestBuilder Changepassword
         {
-            get => new ChangepasswordRequestBuilder(PathParameters, RequestAdapter);
+            get => new Marqeta.Core.Sdk.Users.Auth.Changepassword.ChangepasswordRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The clientaccesstoken property</summary>
-        public ClientaccesstokenRequestBuilder Clientaccesstoken
+        public Marqeta.Core.Sdk.Users.Auth.Clientaccesstoken.ClientaccesstokenRequestBuilder Clientaccesstoken
         {
-            get => new ClientaccesstokenRequestBuilder(PathParameters, RequestAdapter);
+            get => new Marqeta.Core.Sdk.Users.Auth.Clientaccesstoken.ClientaccesstokenRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The login property</summary>
-        public LoginRequestBuilder Login
+        public Marqeta.Core.Sdk.Users.Auth.Login.LoginRequestBuilder Login
         {
-            get => new LoginRequestBuilder(PathParameters, RequestAdapter);
+            get => new Marqeta.Core.Sdk.Users.Auth.Login.LoginRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The logout property</summary>
-        public LogoutRequestBuilder Logout
+        public Marqeta.Core.Sdk.Users.Auth.Logout.LogoutRequestBuilder Logout
         {
-            get => new LogoutRequestBuilder(PathParameters, RequestAdapter);
+            get => new Marqeta.Core.Sdk.Users.Auth.Logout.LogoutRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The onetime property</summary>
-        public OnetimeRequestBuilder Onetime
+        public Marqeta.Core.Sdk.Users.Auth.Onetime.OnetimeRequestBuilder Onetime
         {
-            get => new OnetimeRequestBuilder(PathParameters, RequestAdapter);
+            get => new Marqeta.Core.Sdk.Users.Auth.Onetime.OnetimeRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The resetpassword property</summary>
-        public ResetpasswordRequestBuilder Resetpassword
+        public Marqeta.Core.Sdk.Users.Auth.Resetpassword.ResetpasswordRequestBuilder Resetpassword
         {
-            get => new ResetpasswordRequestBuilder(PathParameters, RequestAdapter);
+            get => new Marqeta.Core.Sdk.Users.Auth.Resetpassword.ResetpasswordRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The verifyemail property</summary>
-        public VerifyemailRequestBuilder Verifyemail
+        public Marqeta.Core.Sdk.Users.Auth.Verifyemail.VerifyemailRequestBuilder Verifyemail
         {
-            get => new VerifyemailRequestBuilder(PathParameters, RequestAdapter);
+            get => new Marqeta.Core.Sdk.Users.Auth.Verifyemail.VerifyemailRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>
-        /// Instantiates a new <see cref="AuthRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Users.Auth.AuthRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
@@ -62,7 +63,7 @@ namespace Marqeta.Core.Sdk.Users.Auth {
         {
         }
         /// <summary>
-        /// Instantiates a new <see cref="AuthRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Users.Auth.AuthRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>

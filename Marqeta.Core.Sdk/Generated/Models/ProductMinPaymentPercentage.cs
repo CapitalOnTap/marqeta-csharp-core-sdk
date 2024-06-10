@@ -4,26 +4,27 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System;
-namespace Marqeta.Core.Sdk.Models {
+namespace Marqeta.Core.Sdk.Models
+{
     /// <summary>
     /// Contains information used to calculate the minimum payment percentage.
     /// </summary>
-    public class ProductMinPaymentPercentage : IAdditionalDataHolder, IParsable 
+    public class ProductMinPaymentPercentage : IAdditionalDataHolder, IParsable
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>One or more fee types to include when calculating the minimum payment.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<ProductFeeType?>? IncludeFeesCharged { get; set; }
+        public List<Marqeta.Core.Sdk.Models.ProductFeeType?>? IncludeFeesCharged { get; set; }
 #nullable restore
 #else
-        public List<ProductFeeType?> IncludeFeesCharged { get; set; }
+        public List<Marqeta.Core.Sdk.Models.ProductFeeType?> IncludeFeesCharged { get; set; }
 #endif
         /// <summary>Minimum payment, expressed as a percentage of the total statement balance, due on the payment due day.</summary>
         public double? PercentageOfBalance { get; set; }
         /// <summary>
-        /// Instantiates a new <see cref="ProductMinPaymentPercentage"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Models.ProductMinPaymentPercentage"/> and sets the default values.
         /// </summary>
         public ProductMinPaymentPercentage()
         {
@@ -32,12 +33,12 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="ProductMinPaymentPercentage"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Models.ProductMinPaymentPercentage"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static ProductMinPaymentPercentage CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static Marqeta.Core.Sdk.Models.ProductMinPaymentPercentage CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-            return new ProductMinPaymentPercentage();
+            return new Marqeta.Core.Sdk.Models.ProductMinPaymentPercentage();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -47,8 +48,8 @@ namespace Marqeta.Core.Sdk.Models {
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                {"include_fees_charged", n => { IncludeFeesCharged = n.GetCollectionOfEnumValues<ProductFeeType>()?.ToList(); } },
-                {"percentage_of_balance", n => { PercentageOfBalance = n.GetDoubleValue(); } },
+                { "include_fees_charged", n => { IncludeFeesCharged = n.GetCollectionOfEnumValues<Marqeta.Core.Sdk.Models.ProductFeeType>()?.ToList(); } },
+                { "percentage_of_balance", n => { PercentageOfBalance = n.GetDoubleValue(); } },
             };
         }
         /// <summary>
@@ -58,7 +59,7 @@ namespace Marqeta.Core.Sdk.Models {
         public virtual void Serialize(ISerializationWriter writer)
         {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
-            writer.WriteCollectionOfEnumValues<ProductFeeType>("include_fees_charged", IncludeFeesCharged);
+            writer.WriteCollectionOfEnumValues<Marqeta.Core.Sdk.Models.ProductFeeType>("include_fees_charged", IncludeFeesCharged);
             writer.WriteDoubleValue("percentage_of_balance", PercentageOfBalance);
             writer.WriteAdditionalData(AdditionalData);
         }
