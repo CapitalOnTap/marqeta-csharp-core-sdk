@@ -6,19 +6,20 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using System;
-namespace Marqeta.Core.Sdk.Fundingsources.Item {
+namespace Marqeta.Core.Sdk.Fundingsources.Item
+{
     /// <summary>
     /// Builds and executes requests for operations under \fundingsources\{funding_source_token}
     /// </summary>
-    public class WithFunding_source_tokenItemRequestBuilder : BaseRequestBuilder 
+    public class WithFunding_source_tokenItemRequestBuilder : BaseRequestBuilder
     {
         /// <summary>The default property</summary>
-        public DefaultRequestBuilder Default
+        public Marqeta.Core.Sdk.Fundingsources.Item.Default.DefaultRequestBuilder Default
         {
-            get => new DefaultRequestBuilder(PathParameters, RequestAdapter);
+            get => new Marqeta.Core.Sdk.Fundingsources.Item.Default.DefaultRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>
-        /// Instantiates a new <see cref="WithFunding_source_tokenItemRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Fundingsources.Item.WithFunding_source_tokenItemRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
@@ -26,7 +27,7 @@ namespace Marqeta.Core.Sdk.Fundingsources.Item {
         {
         }
         /// <summary>
-        /// Instantiates a new <see cref="WithFunding_source_tokenItemRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Fundingsources.Item.WithFunding_source_tokenItemRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>

@@ -8,14 +8,15 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Threading;
 using System;
-namespace Marqeta.Core.Sdk.Webhooks.Item.Ping {
+namespace Marqeta.Core.Sdk.Webhooks.Item.Ping
+{
     /// <summary>
     /// Builds and executes requests for operations under \webhooks\{token}\ping
     /// </summary>
-    public class PingRequestBuilder : BaseRequestBuilder 
+    public class PingRequestBuilder : BaseRequestBuilder
     {
         /// <summary>
-        /// Instantiates a new <see cref="PingRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Webhooks.Item.Ping.PingRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
@@ -23,7 +24,7 @@ namespace Marqeta.Core.Sdk.Webhooks.Item.Ping {
         {
         }
         /// <summary>
-        /// Instantiates a new <see cref="PingRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Webhooks.Item.Ping.PingRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
@@ -33,25 +34,25 @@ namespace Marqeta.Core.Sdk.Webhooks.Item.Ping {
         /// <summary>
         /// Pings your webhook endpoint.Send a ping request to your webhook endpoint to validate credentials and connectivity.Your webhook endpoint must be configured to respond.=== Configuring your webhook endpointWhen the Marqeta platform receives the ping request, it sends a `POST` request containing the following body to the URL of your webhook endpoint:[#ping-webhook-sample][source,json]----{  &quot;pings&quot;: [    {      &quot;token&quot;: &quot;marqeta&quot;,      &quot;payload&quot;: &quot;healthcheck&quot;    }  ]}----To indicate that it is functioning properly, your webhook endpoint must respond with a status code of `200` (see &lt;&lt;/developer-guides/signature-verification, Signature Verification&gt;&gt; for a code example that identifies a ping request).The response can optionally include a link:http://www.json.org/[JSON, window=&quot;_blank&quot;]-formatted body, for example:[#ping-webhook-sample-2][source,json]----{&quot;my_endpoint_status&quot;: &quot;alive&quot;}----The Marqeta platform then responds to its requestor by echoing, as-is, the response code and body received from your webhook endpoint.=== Using the ping facilityTo ping a webhook endpoint, send a `POST` request to `/webhooks/{token}/ping` and use the `token` path parameter to specify which webhook you want to reach.Include an empty, link:http://www.json.org/[JSON, window=&quot;_blank&quot;]-formatted body in the request, that is:[#ping-webhook-sample-3][source,json]----{}----The following chain of actions occurs during the successful execution of a ping operation:. The Marqeta platform receives the ping request (`POST` to `/webhooks/{token}/ping`).. The Marqeta platform sends a request to your webhook endpoint.. Your webhook endpoint responds with a status code of &quot;200&quot; and an optional body.. The Marqeta platform responds to its requestor by echoing, as-is, the response code and body it received from your webhook endpoint.[NOTE]If the customer-hosted endpoint fails to respond within five seconds, the Marqeta platform times out the request and responds with the following message body (where `&lt;optional message&gt;` represents additional details you can choose to include in the response):[#ping-webhook-sample-4][source,json]----{  &quot;error_message&quot;: &quot;Webhook operation failed &quot; + &lt;optional message&gt;,  &quot;error_code&quot;: &quot;422600&quot;}----Failed pings are not automatically retried.
         /// </summary>
-        /// <returns>A <see cref="Webhook_ping_model"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Models.Webhook_ping_model"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        /// <exception cref="ApiError">When receiving a 4XX or 5XX status code</exception>
+        /// <exception cref="Marqeta.Core.Sdk.Models.ApiError">When receiving a 4XX or 5XX status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<Webhook_ping_model?> PostAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<Marqeta.Core.Sdk.Models.Webhook_ping_model?> PostAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<Webhook_ping_model> PostAsync(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<Marqeta.Core.Sdk.Models.Webhook_ping_model> PostAsync(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             var requestInfo = ToPostRequestInformation(requestConfiguration);
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
-                {"XXX", ApiError.CreateFromDiscriminatorValue},
+                { "XXX", Marqeta.Core.Sdk.Models.ApiError.CreateFromDiscriminatorValue },
             };
-            return await RequestAdapter.SendAsync<Webhook_ping_model>(requestInfo, Webhook_ping_model.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<Marqeta.Core.Sdk.Models.Webhook_ping_model>(requestInfo, Marqeta.Core.Sdk.Models.Webhook_ping_model.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Pings your webhook endpoint.Send a ping request to your webhook endpoint to validate credentials and connectivity.Your webhook endpoint must be configured to respond.=== Configuring your webhook endpointWhen the Marqeta platform receives the ping request, it sends a `POST` request containing the following body to the URL of your webhook endpoint:[#ping-webhook-sample][source,json]----{  &quot;pings&quot;: [    {      &quot;token&quot;: &quot;marqeta&quot;,      &quot;payload&quot;: &quot;healthcheck&quot;    }  ]}----To indicate that it is functioning properly, your webhook endpoint must respond with a status code of `200` (see &lt;&lt;/developer-guides/signature-verification, Signature Verification&gt;&gt; for a code example that identifies a ping request).The response can optionally include a link:http://www.json.org/[JSON, window=&quot;_blank&quot;]-formatted body, for example:[#ping-webhook-sample-2][source,json]----{&quot;my_endpoint_status&quot;: &quot;alive&quot;}----The Marqeta platform then responds to its requestor by echoing, as-is, the response code and body received from your webhook endpoint.=== Using the ping facilityTo ping a webhook endpoint, send a `POST` request to `/webhooks/{token}/ping` and use the `token` path parameter to specify which webhook you want to reach.Include an empty, link:http://www.json.org/[JSON, window=&quot;_blank&quot;]-formatted body in the request, that is:[#ping-webhook-sample-3][source,json]----{}----The following chain of actions occurs during the successful execution of a ping operation:. The Marqeta platform receives the ping request (`POST` to `/webhooks/{token}/ping`).. The Marqeta platform sends a request to your webhook endpoint.. Your webhook endpoint responds with a status code of &quot;200&quot; and an optional body.. The Marqeta platform responds to its requestor by echoing, as-is, the response code and body it received from your webhook endpoint.[NOTE]If the customer-hosted endpoint fails to respond within five seconds, the Marqeta platform times out the request and responds with the following message body (where `&lt;optional message&gt;` represents additional details you can choose to include in the response):[#ping-webhook-sample-4][source,json]----{  &quot;error_message&quot;: &quot;Webhook operation failed &quot; + &lt;optional message&gt;,  &quot;error_code&quot;: &quot;422600&quot;}----Failed pings are not automatically retried.
@@ -75,11 +76,11 @@ namespace Marqeta.Core.Sdk.Webhooks.Item.Ping {
         /// <summary>
         /// Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
         /// </summary>
-        /// <returns>A <see cref="PingRequestBuilder"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Webhooks.Item.Ping.PingRequestBuilder"/></returns>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
-        public PingRequestBuilder WithUrl(string rawUrl)
+        public Marqeta.Core.Sdk.Webhooks.Item.Ping.PingRequestBuilder WithUrl(string rawUrl)
         {
-            return new PingRequestBuilder(rawUrl, RequestAdapter);
+            return new Marqeta.Core.Sdk.Webhooks.Item.Ping.PingRequestBuilder(rawUrl, RequestAdapter);
         }
     }
 }

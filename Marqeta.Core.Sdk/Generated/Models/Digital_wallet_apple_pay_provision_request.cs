@@ -4,9 +4,10 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System;
-namespace Marqeta.Core.Sdk.Models {
+namespace Marqeta.Core.Sdk.Models
+{
     #pragma warning disable CS1591
-    public class Digital_wallet_apple_pay_provision_request : IAdditionalDataHolder, IParsable 
+    public class Digital_wallet_apple_pay_provision_request : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -28,7 +29,7 @@ namespace Marqeta.Core.Sdk.Models {
         public List<string> Certificates { get; set; }
 #endif
         /// <summary>Type of device into which the digital wallet token will be provisioned.</summary>
-        public Digital_wallet_apple_pay_provision_request_device_type? DeviceType { get; set; }
+        public Marqeta.Core.Sdk.Models.Digital_wallet_apple_pay_provision_request_device_type? DeviceType { get; set; }
         /// <summary>One-time-use nonce provided by Apple for security purposes.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -54,7 +55,7 @@ namespace Marqeta.Core.Sdk.Models {
         public string ProvisioningAppVersion { get; set; }
 #endif
         /// <summary>
-        /// Instantiates a new <see cref="Digital_wallet_apple_pay_provision_request"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Models.Digital_wallet_apple_pay_provision_request"/> and sets the default values.
         /// </summary>
         public Digital_wallet_apple_pay_provision_request()
         {
@@ -63,12 +64,12 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="Digital_wallet_apple_pay_provision_request"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Models.Digital_wallet_apple_pay_provision_request"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static Digital_wallet_apple_pay_provision_request CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static Marqeta.Core.Sdk.Models.Digital_wallet_apple_pay_provision_request CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-            return new Digital_wallet_apple_pay_provision_request();
+            return new Marqeta.Core.Sdk.Models.Digital_wallet_apple_pay_provision_request();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -78,12 +79,12 @@ namespace Marqeta.Core.Sdk.Models {
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                {"card_token", n => { CardToken = n.GetStringValue(); } },
-                {"certificates", n => { Certificates = n.GetCollectionOfPrimitiveValues<string>()?.ToList(); } },
-                {"device_type", n => { DeviceType = n.GetEnumValue<Digital_wallet_apple_pay_provision_request_device_type>(); } },
-                {"nonce", n => { Nonce = n.GetStringValue(); } },
-                {"nonce_signature", n => { NonceSignature = n.GetStringValue(); } },
-                {"provisioning_app_version", n => { ProvisioningAppVersion = n.GetStringValue(); } },
+                { "card_token", n => { CardToken = n.GetStringValue(); } },
+                { "certificates", n => { Certificates = n.GetCollectionOfPrimitiveValues<string>()?.ToList(); } },
+                { "device_type", n => { DeviceType = n.GetEnumValue<Marqeta.Core.Sdk.Models.Digital_wallet_apple_pay_provision_request_device_type>(); } },
+                { "nonce", n => { Nonce = n.GetStringValue(); } },
+                { "nonce_signature", n => { NonceSignature = n.GetStringValue(); } },
+                { "provisioning_app_version", n => { ProvisioningAppVersion = n.GetStringValue(); } },
             };
         }
         /// <summary>
@@ -95,7 +96,7 @@ namespace Marqeta.Core.Sdk.Models {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("card_token", CardToken);
             writer.WriteCollectionOfPrimitiveValues<string>("certificates", Certificates);
-            writer.WriteEnumValue<Digital_wallet_apple_pay_provision_request_device_type>("device_type", DeviceType);
+            writer.WriteEnumValue<Marqeta.Core.Sdk.Models.Digital_wallet_apple_pay_provision_request_device_type>("device_type", DeviceType);
             writer.WriteStringValue("nonce", Nonce);
             writer.WriteStringValue("nonce_signature", NonceSignature);
             writer.WriteStringValue("provisioning_app_version", ProvisioningAppVersion);

@@ -10,24 +10,25 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Threading;
 using System;
-namespace Marqeta.Core.Sdk.Businesses.Item {
+namespace Marqeta.Core.Sdk.Businesses.Item
+{
     /// <summary>
     /// Builds and executes requests for operations under \businesses\{parent_token-id}
     /// </summary>
-    public class Parent_tokenItemRequestBuilder : BaseRequestBuilder 
+    public class Parent_tokenItemRequestBuilder : BaseRequestBuilder
     {
         /// <summary>The children property</summary>
-        public ChildrenRequestBuilder Children
+        public Marqeta.Core.Sdk.Businesses.Item.Children.ChildrenRequestBuilder Children
         {
-            get => new ChildrenRequestBuilder(PathParameters, RequestAdapter);
+            get => new Marqeta.Core.Sdk.Businesses.Item.Children.ChildrenRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The ssn property</summary>
-        public SsnRequestBuilder Ssn
+        public Marqeta.Core.Sdk.Businesses.Item.Ssn.SsnRequestBuilder Ssn
         {
-            get => new SsnRequestBuilder(PathParameters, RequestAdapter);
+            get => new Marqeta.Core.Sdk.Businesses.Item.Ssn.SsnRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>
-        /// Instantiates a new <see cref="Parent_tokenItemRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Businesses.Item.Parent_tokenItemRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
@@ -35,7 +36,7 @@ namespace Marqeta.Core.Sdk.Businesses.Item {
         {
         }
         /// <summary>
-        /// Instantiates a new <see cref="Parent_tokenItemRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Businesses.Item.Parent_tokenItemRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
@@ -45,50 +46,50 @@ namespace Marqeta.Core.Sdk.Businesses.Item {
         /// <summary>
         /// To retrieve a specific business, send a `GET` request to the `/businesses/{token}` endpoint.Include the business `token` path parameter to specify the business to return.This endpoint supports &lt;&lt;/core-api/field-filtering, field filtering&gt;&gt; and &lt;&lt;/core-api/sorting-and-pagination, sorting and pagination&gt;&gt;.
         /// </summary>
-        /// <returns>A <see cref="Business_card_holder_response"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Models.Business_card_holder_response"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        /// <exception cref="ApiError">When receiving a 4XX or 5XX status code</exception>
+        /// <exception cref="Marqeta.Core.Sdk.Models.ApiError">When receiving a 4XX or 5XX status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<Business_card_holder_response?> GetAsync(Action<RequestConfiguration<Parent_tokenItemRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<Marqeta.Core.Sdk.Models.Business_card_holder_response?> GetAsync(Action<RequestConfiguration<Marqeta.Core.Sdk.Businesses.Item.Parent_tokenItemRequestBuilder.Parent_tokenItemRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<Business_card_holder_response> GetAsync(Action<RequestConfiguration<Parent_tokenItemRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<Marqeta.Core.Sdk.Models.Business_card_holder_response> GetAsync(Action<RequestConfiguration<Marqeta.Core.Sdk.Businesses.Item.Parent_tokenItemRequestBuilder.Parent_tokenItemRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
-                {"XXX", ApiError.CreateFromDiscriminatorValue},
+                { "XXX", Marqeta.Core.Sdk.Models.ApiError.CreateFromDiscriminatorValue },
             };
-            return await RequestAdapter.SendAsync<Business_card_holder_response>(requestInfo, Business_card_holder_response.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<Marqeta.Core.Sdk.Models.Business_card_holder_response>(requestInfo, Marqeta.Core.Sdk.Models.Business_card_holder_response.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// To update a business, send a `PUT` request to `/businesses/{token}`.Use the `token` path parameter to specify the business to update.Include the business details to update in link:http://www.json.org/[JSON, window=&quot;_blank&quot;] format in the body of the request.Only values of parameters in the request are modified; all others are left unchanged.
         /// </summary>
-        /// <returns>A <see cref="Business_cardholder"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Models.Business_cardholder"/></returns>
         /// <param name="body">The request body</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        /// <exception cref="ApiError">When receiving a 4XX or 5XX status code</exception>
+        /// <exception cref="Marqeta.Core.Sdk.Models.ApiError">When receiving a 4XX or 5XX status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<Business_cardholder?> PutAsync(Business_card_holder_update body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<Marqeta.Core.Sdk.Models.Business_cardholder?> PutAsync(Marqeta.Core.Sdk.Models.Business_card_holder_update body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<Business_cardholder> PutAsync(Business_card_holder_update body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<Marqeta.Core.Sdk.Models.Business_cardholder> PutAsync(Marqeta.Core.Sdk.Models.Business_card_holder_update body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             _ = body ?? throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPutRequestInformation(body, requestConfiguration);
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
-                {"XXX", ApiError.CreateFromDiscriminatorValue},
+                { "XXX", Marqeta.Core.Sdk.Models.ApiError.CreateFromDiscriminatorValue },
             };
-            return await RequestAdapter.SendAsync<Business_cardholder>(requestInfo, Business_cardholder.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<Marqeta.Core.Sdk.Models.Business_cardholder>(requestInfo, Marqeta.Core.Sdk.Models.Business_cardholder.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// To retrieve a specific business, send a `GET` request to the `/businesses/{token}` endpoint.Include the business `token` path parameter to specify the business to return.This endpoint supports &lt;&lt;/core-api/field-filtering, field filtering&gt;&gt; and &lt;&lt;/core-api/sorting-and-pagination, sorting and pagination&gt;&gt;.
@@ -97,11 +98,11 @@ namespace Marqeta.Core.Sdk.Businesses.Item {
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<Parent_tokenItemRequestBuilderGetQueryParameters>>? requestConfiguration = default)
+        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<Marqeta.Core.Sdk.Businesses.Item.Parent_tokenItemRequestBuilder.Parent_tokenItemRequestBuilderGetQueryParameters>>? requestConfiguration = default)
         {
 #nullable restore
 #else
-        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<Parent_tokenItemRequestBuilderGetQueryParameters>> requestConfiguration = default)
+        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<Marqeta.Core.Sdk.Businesses.Item.Parent_tokenItemRequestBuilder.Parent_tokenItemRequestBuilderGetQueryParameters>> requestConfiguration = default)
         {
 #endif
             var requestInfo = new RequestInformation(Method.GET, UrlTemplate, PathParameters);
@@ -117,11 +118,11 @@ namespace Marqeta.Core.Sdk.Businesses.Item {
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToPutRequestInformation(Business_card_holder_update body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
+        public RequestInformation ToPutRequestInformation(Marqeta.Core.Sdk.Models.Business_card_holder_update body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
         {
 #nullable restore
 #else
-        public RequestInformation ToPutRequestInformation(Business_card_holder_update body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
+        public RequestInformation ToPutRequestInformation(Marqeta.Core.Sdk.Models.Business_card_holder_update body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
         {
 #endif
             _ = body ?? throw new ArgumentNullException(nameof(body));
@@ -134,11 +135,11 @@ namespace Marqeta.Core.Sdk.Businesses.Item {
         /// <summary>
         /// Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
         /// </summary>
-        /// <returns>A <see cref="Parent_tokenItemRequestBuilder"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Businesses.Item.Parent_tokenItemRequestBuilder"/></returns>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
-        public Parent_tokenItemRequestBuilder WithUrl(string rawUrl)
+        public Marqeta.Core.Sdk.Businesses.Item.Parent_tokenItemRequestBuilder WithUrl(string rawUrl)
         {
-            return new Parent_tokenItemRequestBuilder(rawUrl, RequestAdapter);
+            return new Marqeta.Core.Sdk.Businesses.Item.Parent_tokenItemRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
         /// To retrieve a specific business, send a `GET` request to the `/businesses/{token}` endpoint.Include the business `token` path parameter to specify the business to return.This endpoint supports &lt;&lt;/core-api/field-filtering, field filtering&gt;&gt; and &lt;&lt;/core-api/sorting-and-pagination, sorting and pagination&gt;&gt;.

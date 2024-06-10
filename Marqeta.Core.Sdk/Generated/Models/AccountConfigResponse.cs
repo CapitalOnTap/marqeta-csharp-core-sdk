@@ -4,35 +4,36 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System;
-namespace Marqeta.Core.Sdk.Models {
+namespace Marqeta.Core.Sdk.Models
+{
     /// <summary>
     /// Contains information returned when configuring an account&apos;s billing cycle day, payment due day, fees, and more.
     /// </summary>
-    public class AccountConfigResponse : IAdditionalDataHolder, IParsable 
+    public class AccountConfigResponse : IAdditionalDataHolder, IParsable
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Day of month the billing cycle starts. If an override value is not provided, the default value is derived from the bundle.</summary>
         public int? BillingCycleDay { get; set; }
         /// <summary>Level of the credit card.</summary>
-        public AccountConfigResponse_card_level? CardLevel { get; set; }
+        public Marqeta.Core.Sdk.Models.AccountConfigResponse_card_level? CardLevel { get; set; }
         /// <summary>A value of `true` indicates that the account holder consents to receiving disclosures and statements electronically.</summary>
         public bool? EDisclosureActive { get; set; }
         /// <summary>Contains one or more fees associated with the credit account.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<ConfigFeeScheduleResponse>? Fees { get; set; }
+        public List<Marqeta.Core.Sdk.Models.ConfigFeeScheduleResponse>? Fees { get; set; }
 #nullable restore
 #else
-        public List<ConfigFeeScheduleResponse> Fees { get; set; }
+        public List<Marqeta.Core.Sdk.Models.ConfigFeeScheduleResponse> Fees { get; set; }
 #endif
         /// <summary>Contains configurations for a minimum payment override on a credit account, which overrides the minimum payment configurations on the associated credit product.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public AccountConfigMinPayment? MinPayment { get; set; }
+        public Marqeta.Core.Sdk.Models.AccountConfigMinPayment? MinPayment { get; set; }
 #nullable restore
 #else
-        public AccountConfigMinPayment MinPayment { get; set; }
+        public Marqeta.Core.Sdk.Models.AccountConfigMinPayment MinPayment { get; set; }
 #endif
         /// <summary>Day of month the payment for the previous billing cycle is due.</summary>
         [Obsolete("")]
@@ -40,36 +41,36 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>Contains configurations for a payment hold.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public AccountConfigPaymentHolds? PaymentHolds { get; set; }
+        public Marqeta.Core.Sdk.Models.AccountConfigPaymentHolds? PaymentHolds { get; set; }
 #nullable restore
 #else
-        public AccountConfigPaymentHolds PaymentHolds { get; set; }
+        public Marqeta.Core.Sdk.Models.AccountConfigPaymentHolds PaymentHolds { get; set; }
 #endif
         /// <summary>Contains one or more rewards associated with the credit account.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<AccountReward>? Rewards { get; set; }
+        public List<Marqeta.Core.Sdk.Models.AccountReward>? Rewards { get; set; }
 #nullable restore
 #else
-        public List<AccountReward> Rewards { get; set; }
+        public List<Marqeta.Core.Sdk.Models.AccountReward> Rewards { get; set; }
 #endif
         /// <summary>
-        /// Instantiates a new <see cref="AccountConfigResponse"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Models.AccountConfigResponse"/> and sets the default values.
         /// </summary>
         public AccountConfigResponse()
         {
             AdditionalData = new Dictionary<string, object>();
-            CardLevel = AccountConfigResponse_card_level.NA;
+            CardLevel = Marqeta.Core.Sdk.Models.AccountConfigResponse_card_level.NA;
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="AccountConfigResponse"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Models.AccountConfigResponse"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static AccountConfigResponse CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static Marqeta.Core.Sdk.Models.AccountConfigResponse CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-            return new AccountConfigResponse();
+            return new Marqeta.Core.Sdk.Models.AccountConfigResponse();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -79,14 +80,14 @@ namespace Marqeta.Core.Sdk.Models {
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                {"billing_cycle_day", n => { BillingCycleDay = n.GetIntValue(); } },
-                {"card_level", n => { CardLevel = n.GetEnumValue<AccountConfigResponse_card_level>(); } },
-                {"e_disclosure_active", n => { EDisclosureActive = n.GetBoolValue(); } },
-                {"fees", n => { Fees = n.GetCollectionOfObjectValues<ConfigFeeScheduleResponse>(ConfigFeeScheduleResponse.CreateFromDiscriminatorValue)?.ToList(); } },
-                {"min_payment", n => { MinPayment = n.GetObjectValue<AccountConfigMinPayment>(AccountConfigMinPayment.CreateFromDiscriminatorValue); } },
-                {"payment_due_day", n => { PaymentDueDay = n.GetIntValue(); } },
-                {"payment_holds", n => { PaymentHolds = n.GetObjectValue<AccountConfigPaymentHolds>(AccountConfigPaymentHolds.CreateFromDiscriminatorValue); } },
-                {"rewards", n => { Rewards = n.GetCollectionOfObjectValues<AccountReward>(AccountReward.CreateFromDiscriminatorValue)?.ToList(); } },
+                { "billing_cycle_day", n => { BillingCycleDay = n.GetIntValue(); } },
+                { "card_level", n => { CardLevel = n.GetEnumValue<Marqeta.Core.Sdk.Models.AccountConfigResponse_card_level>(); } },
+                { "e_disclosure_active", n => { EDisclosureActive = n.GetBoolValue(); } },
+                { "fees", n => { Fees = n.GetCollectionOfObjectValues<Marqeta.Core.Sdk.Models.ConfigFeeScheduleResponse>(Marqeta.Core.Sdk.Models.ConfigFeeScheduleResponse.CreateFromDiscriminatorValue)?.ToList(); } },
+                { "min_payment", n => { MinPayment = n.GetObjectValue<Marqeta.Core.Sdk.Models.AccountConfigMinPayment>(Marqeta.Core.Sdk.Models.AccountConfigMinPayment.CreateFromDiscriminatorValue); } },
+                { "payment_due_day", n => { PaymentDueDay = n.GetIntValue(); } },
+                { "payment_holds", n => { PaymentHolds = n.GetObjectValue<Marqeta.Core.Sdk.Models.AccountConfigPaymentHolds>(Marqeta.Core.Sdk.Models.AccountConfigPaymentHolds.CreateFromDiscriminatorValue); } },
+                { "rewards", n => { Rewards = n.GetCollectionOfObjectValues<Marqeta.Core.Sdk.Models.AccountReward>(Marqeta.Core.Sdk.Models.AccountReward.CreateFromDiscriminatorValue)?.ToList(); } },
             };
         }
         /// <summary>
@@ -97,13 +98,13 @@ namespace Marqeta.Core.Sdk.Models {
         {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
             writer.WriteIntValue("billing_cycle_day", BillingCycleDay);
-            writer.WriteEnumValue<AccountConfigResponse_card_level>("card_level", CardLevel);
+            writer.WriteEnumValue<Marqeta.Core.Sdk.Models.AccountConfigResponse_card_level>("card_level", CardLevel);
             writer.WriteBoolValue("e_disclosure_active", EDisclosureActive);
-            writer.WriteCollectionOfObjectValues<ConfigFeeScheduleResponse>("fees", Fees);
-            writer.WriteObjectValue<AccountConfigMinPayment>("min_payment", MinPayment);
+            writer.WriteCollectionOfObjectValues<Marqeta.Core.Sdk.Models.ConfigFeeScheduleResponse>("fees", Fees);
+            writer.WriteObjectValue<Marqeta.Core.Sdk.Models.AccountConfigMinPayment>("min_payment", MinPayment);
             writer.WriteIntValue("payment_due_day", PaymentDueDay);
-            writer.WriteObjectValue<AccountConfigPaymentHolds>("payment_holds", PaymentHolds);
-            writer.WriteCollectionOfObjectValues<AccountReward>("rewards", Rewards);
+            writer.WriteObjectValue<Marqeta.Core.Sdk.Models.AccountConfigPaymentHolds>("payment_holds", PaymentHolds);
+            writer.WriteCollectionOfObjectValues<Marqeta.Core.Sdk.Models.AccountReward>("rewards", Rewards);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

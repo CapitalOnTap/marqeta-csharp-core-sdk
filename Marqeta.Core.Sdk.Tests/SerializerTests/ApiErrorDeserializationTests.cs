@@ -1,3 +1,4 @@
+using System.Threading.Tasks;
 using Marqeta.Core.Sdk.Models;
 using Marqeta.Core.Sdk.Serialization.Json;
 using Microsoft.Kiota.Abstractions;
@@ -21,9 +22,9 @@ namespace Marqeta.Core.Sdk.Tests.SerializerTests
         [InlineData("{\"error_message\": \"Hello\", \"message\": \"world\"}", null, "Hello", "world")]
         [InlineData("{\"message\": \"world\"}", null, null, "world")]
         [InlineData("{\"error_code\": \"123456\", \"message\": \"world\"}", "123456", null, "world")]
-        public void TestDeserialization(string json, string expectedErrorCode,string expectedErrorMessage, string expectedMessage)
+        public async Task TestDeserialization(string json, string expectedErrorCode,string expectedErrorMessage, string expectedMessage)
         {
-            var apiError = KiotaSerializer.Deserialize<ApiError>("application/json", json);
+            var apiError = await KiotaSerializer.DeserializeAsync<ApiError>("application/json", json);
             Assert.Equal(expectedErrorCode, apiError.ErrorCode);
             Assert.Equal(expectedErrorMessage, apiError.ErrorMessage);
             Assert.Equal(expectedMessage, apiError.MessageEscaped);

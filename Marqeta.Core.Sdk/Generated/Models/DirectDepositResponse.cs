@@ -4,9 +4,10 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System;
-namespace Marqeta.Core.Sdk.Models {
+namespace Marqeta.Core.Sdk.Models
+{
     #pragma warning disable CS1591
-    public class DirectDepositResponse : IAdditionalDataHolder, IParsable 
+    public class DirectDepositResponse : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -102,7 +103,7 @@ namespace Marqeta.Core.Sdk.Models {
         public string StandardEntryClassCode { get; set; }
 #endif
         /// <summary>The state property</summary>
-        public DirectDepositResponse_state? State { get; set; }
+        public Marqeta.Core.Sdk.Models.DirectDepositResponse_state? State { get; set; }
         /// <summary>The state_reason property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -136,7 +137,7 @@ namespace Marqeta.Core.Sdk.Models {
         public string TraceNumber { get; set; }
 #endif
         /// <summary>The type property</summary>
-        public DirectDepositResponse_type? Type { get; set; }
+        public Marqeta.Core.Sdk.Models.DirectDepositResponse_type? Type { get; set; }
         /// <summary>The user_token property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -146,7 +147,7 @@ namespace Marqeta.Core.Sdk.Models {
         public string UserToken { get; set; }
 #endif
         /// <summary>
-        /// Instantiates a new <see cref="DirectDepositResponse"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Models.DirectDepositResponse"/> and sets the default values.
         /// </summary>
         public DirectDepositResponse()
         {
@@ -155,12 +156,12 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="DirectDepositResponse"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Models.DirectDepositResponse"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static DirectDepositResponse CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static Marqeta.Core.Sdk.Models.DirectDepositResponse CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-            return new DirectDepositResponse();
+            return new Marqeta.Core.Sdk.Models.DirectDepositResponse();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -170,28 +171,28 @@ namespace Marqeta.Core.Sdk.Models {
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                {"amount", n => { Amount = n.GetDoubleValue(); } },
-                {"business_token", n => { BusinessToken = n.GetStringValue(); } },
-                {"company_discretionary_data", n => { CompanyDiscretionaryData = n.GetStringValue(); } },
-                {"company_entry_description", n => { CompanyEntryDescription = n.GetStringValue(); } },
-                {"company_identification", n => { CompanyIdentification = n.GetStringValue(); } },
-                {"company_name", n => { CompanyName = n.GetStringValue(); } },
-                {"created_time", n => { CreatedTime = n.GetDateTimeOffsetValue(); } },
-                {"direct_deposit_account_token", n => { DirectDepositAccountToken = n.GetStringValue(); } },
-                {"early_direct_deposit", n => { EarlyDirectDeposit = n.GetBoolValue(); } },
-                {"individual_identification_number", n => { IndividualIdentificationNumber = n.GetStringValue(); } },
-                {"individual_name", n => { IndividualName = n.GetStringValue(); } },
-                {"last_modified_time", n => { LastModifiedTime = n.GetDateTimeOffsetValue(); } },
-                {"originator_status_code", n => { OriginatorStatusCode = n.GetStringValue(); } },
-                {"settlement_date", n => { SettlementDate = n.GetDateTimeOffsetValue(); } },
-                {"standard_entry_class_code", n => { StandardEntryClassCode = n.GetStringValue(); } },
-                {"state", n => { State = n.GetEnumValue<DirectDepositResponse_state>(); } },
-                {"state_reason", n => { StateReason = n.GetStringValue(); } },
-                {"state_reason_code", n => { StateReasonCode = n.GetStringValue(); } },
-                {"token", n => { Token = n.GetStringValue(); } },
-                {"trace_number", n => { TraceNumber = n.GetStringValue(); } },
-                {"type", n => { Type = n.GetEnumValue<DirectDepositResponse_type>(); } },
-                {"user_token", n => { UserToken = n.GetStringValue(); } },
+                { "amount", n => { Amount = n.GetDoubleValue(); } },
+                { "business_token", n => { BusinessToken = n.GetStringValue(); } },
+                { "company_discretionary_data", n => { CompanyDiscretionaryData = n.GetStringValue(); } },
+                { "company_entry_description", n => { CompanyEntryDescription = n.GetStringValue(); } },
+                { "company_identification", n => { CompanyIdentification = n.GetStringValue(); } },
+                { "company_name", n => { CompanyName = n.GetStringValue(); } },
+                { "created_time", n => { CreatedTime = n.GetDateTimeOffsetValue(); } },
+                { "direct_deposit_account_token", n => { DirectDepositAccountToken = n.GetStringValue(); } },
+                { "early_direct_deposit", n => { EarlyDirectDeposit = n.GetBoolValue(); } },
+                { "individual_identification_number", n => { IndividualIdentificationNumber = n.GetStringValue(); } },
+                { "individual_name", n => { IndividualName = n.GetStringValue(); } },
+                { "last_modified_time", n => { LastModifiedTime = n.GetDateTimeOffsetValue(); } },
+                { "originator_status_code", n => { OriginatorStatusCode = n.GetStringValue(); } },
+                { "settlement_date", n => { SettlementDate = n.GetDateTimeOffsetValue(); } },
+                { "standard_entry_class_code", n => { StandardEntryClassCode = n.GetStringValue(); } },
+                { "state", n => { State = n.GetEnumValue<Marqeta.Core.Sdk.Models.DirectDepositResponse_state>(); } },
+                { "state_reason", n => { StateReason = n.GetStringValue(); } },
+                { "state_reason_code", n => { StateReasonCode = n.GetStringValue(); } },
+                { "token", n => { Token = n.GetStringValue(); } },
+                { "trace_number", n => { TraceNumber = n.GetStringValue(); } },
+                { "type", n => { Type = n.GetEnumValue<Marqeta.Core.Sdk.Models.DirectDepositResponse_type>(); } },
+                { "user_token", n => { UserToken = n.GetStringValue(); } },
             };
         }
         /// <summary>
@@ -216,12 +217,12 @@ namespace Marqeta.Core.Sdk.Models {
             writer.WriteStringValue("originator_status_code", OriginatorStatusCode);
             writer.WriteDateTimeOffsetValue("settlement_date", SettlementDate);
             writer.WriteStringValue("standard_entry_class_code", StandardEntryClassCode);
-            writer.WriteEnumValue<DirectDepositResponse_state>("state", State);
+            writer.WriteEnumValue<Marqeta.Core.Sdk.Models.DirectDepositResponse_state>("state", State);
             writer.WriteStringValue("state_reason", StateReason);
             writer.WriteStringValue("state_reason_code", StateReasonCode);
             writer.WriteStringValue("token", Token);
             writer.WriteStringValue("trace_number", TraceNumber);
-            writer.WriteEnumValue<DirectDepositResponse_type>("type", Type);
+            writer.WriteEnumValue<Marqeta.Core.Sdk.Models.DirectDepositResponse_type>("type", Type);
             writer.WriteStringValue("user_token", UserToken);
             writer.WriteAdditionalData(AdditionalData);
         }

@@ -6,26 +6,27 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using System;
-namespace Marqeta.Core.Sdk.Cards.Barcode {
+namespace Marqeta.Core.Sdk.Cards.Barcode
+{
     /// <summary>
     /// Builds and executes requests for operations under \cards\barcode
     /// </summary>
-    public class BarcodeRequestBuilder : BaseRequestBuilder 
+    public class BarcodeRequestBuilder : BaseRequestBuilder
     {
         /// <summary>Gets an item from the Marqeta.Core.Sdk.cards.barcode.item collection</summary>
         /// <param name="position">Barcode of the card to retrieve.</param>
-        /// <returns>A <see cref="WithBarcodeItemRequestBuilder"/></returns>
-        public WithBarcodeItemRequestBuilder this[string position]
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Cards.Barcode.Item.WithBarcodeItemRequestBuilder"/></returns>
+        public Marqeta.Core.Sdk.Cards.Barcode.Item.WithBarcodeItemRequestBuilder this[string position]
         {
             get
             {
                 var urlTplParams = new Dictionary<string, object>(PathParameters);
                 urlTplParams.Add("barcode", position);
-                return new WithBarcodeItemRequestBuilder(urlTplParams, RequestAdapter);
+                return new Marqeta.Core.Sdk.Cards.Barcode.Item.WithBarcodeItemRequestBuilder(urlTplParams, RequestAdapter);
             }
         }
         /// <summary>
-        /// Instantiates a new <see cref="BarcodeRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Cards.Barcode.BarcodeRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
@@ -33,7 +34,7 @@ namespace Marqeta.Core.Sdk.Cards.Barcode {
         {
         }
         /// <summary>
-        /// Instantiates a new <see cref="BarcodeRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Cards.Barcode.BarcodeRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>

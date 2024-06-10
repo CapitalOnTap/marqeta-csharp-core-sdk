@@ -4,11 +4,12 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System;
-namespace Marqeta.Core.Sdk.Models {
+namespace Marqeta.Core.Sdk.Models
+{
     /// <summary>
     /// Details of a payment reminder.
     /// </summary>
-    public class PaymentReminderResponse : IAdditionalDataHolder, IParsable 
+    public class PaymentReminderResponse : IAdditionalDataHolder, IParsable
     {
         /// <summary>Token of the associated account.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -41,7 +42,7 @@ namespace Marqeta.Core.Sdk.Models {
         public string Token { get; set; }
 #endif
         /// <summary>
-        /// Instantiates a new <see cref="PaymentReminderResponse"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Models.PaymentReminderResponse"/> and sets the default values.
         /// </summary>
         public PaymentReminderResponse()
         {
@@ -50,12 +51,12 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="PaymentReminderResponse"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Models.PaymentReminderResponse"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static PaymentReminderResponse CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static Marqeta.Core.Sdk.Models.PaymentReminderResponse CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-            return new PaymentReminderResponse();
+            return new Marqeta.Core.Sdk.Models.PaymentReminderResponse();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -65,14 +66,14 @@ namespace Marqeta.Core.Sdk.Models {
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                {"account_token", n => { AccountToken = n.GetStringValue(); } },
-                {"created_time", n => { CreatedTime = n.GetDateTimeOffsetValue(); } },
-                {"days_until_due", n => { DaysUntilDue = n.GetIntValue(); } },
-                {"payment_cutoff_date", n => { PaymentCutoffDate = n.GetDateTimeOffsetValue(); } },
-                {"payment_due_date", n => { PaymentDueDate = n.GetDateTimeOffsetValue(); } },
-                {"remaining_minimum_payment_due", n => { RemainingMinimumPaymentDue = n.GetDoubleValue(); } },
-                {"statement_summary_token", n => { StatementSummaryToken = n.GetGuidValue(); } },
-                {"token", n => { Token = n.GetStringValue(); } },
+                { "account_token", n => { AccountToken = n.GetStringValue(); } },
+                { "created_time", n => { CreatedTime = n.GetDateTimeOffsetValue(); } },
+                { "days_until_due", n => { DaysUntilDue = n.GetIntValue(); } },
+                { "payment_cutoff_date", n => { PaymentCutoffDate = n.GetDateTimeOffsetValue(); } },
+                { "payment_due_date", n => { PaymentDueDate = n.GetDateTimeOffsetValue(); } },
+                { "remaining_minimum_payment_due", n => { RemainingMinimumPaymentDue = n.GetDoubleValue(); } },
+                { "statement_summary_token", n => { StatementSummaryToken = n.GetGuidValue(); } },
+                { "token", n => { Token = n.GetStringValue(); } },
             };
         }
         /// <summary>

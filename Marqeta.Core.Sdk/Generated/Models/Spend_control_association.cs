@@ -4,11 +4,12 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System;
-namespace Marqeta.Core.Sdk.Models {
+namespace Marqeta.Core.Sdk.Models
+{
     /// <summary>
     /// Defines the group of users to which the velocity control applies.
     /// </summary>
-    public class Spend_control_association : IAdditionalDataHolder, IParsable 
+    public class Spend_control_association : IAdditionalDataHolder, IParsable
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
@@ -29,7 +30,7 @@ namespace Marqeta.Core.Sdk.Models {
         public string UserToken { get; set; }
 #endif
         /// <summary>
-        /// Instantiates a new <see cref="Spend_control_association"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Models.Spend_control_association"/> and sets the default values.
         /// </summary>
         public Spend_control_association()
         {
@@ -38,12 +39,12 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="Spend_control_association"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Models.Spend_control_association"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static Spend_control_association CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static Marqeta.Core.Sdk.Models.Spend_control_association CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-            return new Spend_control_association();
+            return new Marqeta.Core.Sdk.Models.Spend_control_association();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -53,8 +54,8 @@ namespace Marqeta.Core.Sdk.Models {
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                {"card_product_token", n => { CardProductToken = n.GetStringValue(); } },
-                {"user_token", n => { UserToken = n.GetStringValue(); } },
+                { "card_product_token", n => { CardProductToken = n.GetStringValue(); } },
+                { "user_token", n => { UserToken = n.GetStringValue(); } },
             };
         }
         /// <summary>

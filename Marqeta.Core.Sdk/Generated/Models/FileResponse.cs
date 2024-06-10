@@ -4,9 +4,10 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System;
-namespace Marqeta.Core.Sdk.Models {
+namespace Marqeta.Core.Sdk.Models
+{
     #pragma warning disable CS1591
-    public class FileResponse : IAdditionalDataHolder, IParsable 
+    public class FileResponse : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -16,10 +17,10 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>Contains links to the file in different formats.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public FileLinks? Links { get; set; }
+        public Marqeta.Core.Sdk.Models.FileLinks? Links { get; set; }
 #nullable restore
 #else
-        public FileLinks Links { get; set; }
+        public Marqeta.Core.Sdk.Models.FileLinks Links { get; set; }
 #endif
         /// <summary>Unique identifier used to acknowledge that the file has been disclosed to the applicant.If the file was already disclosed, a null value is returned.*NOTE*: The tracking token is only valid for 14 calendar days.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -30,7 +31,7 @@ namespace Marqeta.Core.Sdk.Models {
         public string TrackingToken { get; set; }
 #endif
         /// <summary>
-        /// Instantiates a new <see cref="FileResponse"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Models.FileResponse"/> and sets the default values.
         /// </summary>
         public FileResponse()
         {
@@ -39,12 +40,12 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="FileResponse"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Models.FileResponse"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static FileResponse CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static Marqeta.Core.Sdk.Models.FileResponse CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-            return new FileResponse();
+            return new Marqeta.Core.Sdk.Models.FileResponse();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -54,9 +55,9 @@ namespace Marqeta.Core.Sdk.Models {
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                {"file_type", n => { FileType = n.GetEnumValue<FileType>(); } },
-                {"links", n => { Links = n.GetObjectValue<FileLinks>(FileLinks.CreateFromDiscriminatorValue); } },
-                {"tracking_token", n => { TrackingToken = n.GetStringValue(); } },
+                { "file_type", n => { FileType = n.GetEnumValue<Marqeta.Core.Sdk.Models.FileType>(); } },
+                { "links", n => { Links = n.GetObjectValue<Marqeta.Core.Sdk.Models.FileLinks>(Marqeta.Core.Sdk.Models.FileLinks.CreateFromDiscriminatorValue); } },
+                { "tracking_token", n => { TrackingToken = n.GetStringValue(); } },
             };
         }
         /// <summary>
@@ -66,8 +67,8 @@ namespace Marqeta.Core.Sdk.Models {
         public virtual void Serialize(ISerializationWriter writer)
         {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
-            writer.WriteEnumValue<FileType>("file_type", FileType);
-            writer.WriteObjectValue<FileLinks>("links", Links);
+            writer.WriteEnumValue<Marqeta.Core.Sdk.Models.FileType>("file_type", FileType);
+            writer.WriteObjectValue<Marqeta.Core.Sdk.Models.FileLinks>("links", Links);
             writer.WriteStringValue("tracking_token", TrackingToken);
             writer.WriteAdditionalData(AdditionalData);
         }

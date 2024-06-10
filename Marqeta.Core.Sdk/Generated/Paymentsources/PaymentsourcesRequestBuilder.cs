@@ -9,26 +9,27 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Threading;
 using System;
-namespace Marqeta.Core.Sdk.Paymentsources {
+namespace Marqeta.Core.Sdk.Paymentsources
+{
     /// <summary>
     /// Builds and executes requests for operations under \paymentsources
     /// </summary>
-    public class PaymentsourcesRequestBuilder : BaseRequestBuilder 
+    public class PaymentsourcesRequestBuilder : BaseRequestBuilder
     {
         /// <summary>Gets an item from the Marqeta.Core.Sdk.paymentsources.item collection</summary>
         /// <param name="position">Unique identifier of the payment source to retrieve.Send a `GET` request to `/credit/paymentsources` to retrieve existing payment source tokens.</param>
-        /// <returns>A <see cref="WithTokenItemRequestBuilder"/></returns>
-        public WithTokenItemRequestBuilder this[string position]
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Paymentsources.Item.WithTokenItemRequestBuilder"/></returns>
+        public Marqeta.Core.Sdk.Paymentsources.Item.WithTokenItemRequestBuilder this[string position]
         {
             get
             {
                 var urlTplParams = new Dictionary<string, object>(PathParameters);
                 urlTplParams.Add("token", position);
-                return new WithTokenItemRequestBuilder(urlTplParams, RequestAdapter);
+                return new Marqeta.Core.Sdk.Paymentsources.Item.WithTokenItemRequestBuilder(urlTplParams, RequestAdapter);
             }
         }
         /// <summary>
-        /// Instantiates a new <see cref="PaymentsourcesRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Paymentsources.PaymentsourcesRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
@@ -36,7 +37,7 @@ namespace Marqeta.Core.Sdk.Paymentsources {
         {
         }
         /// <summary>
-        /// Instantiates a new <see cref="PaymentsourcesRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Paymentsources.PaymentsourcesRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
@@ -46,50 +47,50 @@ namespace Marqeta.Core.Sdk.Paymentsources {
         /// <summary>
         /// Retrieve an array of payment sources.This endpoint supports &lt;&lt;/core-api/sorting-and-pagination, sorting and pagination&gt;&gt;.
         /// </summary>
-        /// <returns>A <see cref="PaymentSourcePage"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Models.PaymentSourcePage"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        /// <exception cref="ApiError">When receiving a 4XX or 5XX status code</exception>
+        /// <exception cref="Marqeta.Core.Sdk.Models.ApiError">When receiving a 4XX or 5XX status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<PaymentSourcePage?> GetAsync(Action<RequestConfiguration<PaymentsourcesRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<Marqeta.Core.Sdk.Models.PaymentSourcePage?> GetAsync(Action<RequestConfiguration<Marqeta.Core.Sdk.Paymentsources.PaymentsourcesRequestBuilder.PaymentsourcesRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<PaymentSourcePage> GetAsync(Action<RequestConfiguration<PaymentsourcesRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<Marqeta.Core.Sdk.Models.PaymentSourcePage> GetAsync(Action<RequestConfiguration<Marqeta.Core.Sdk.Paymentsources.PaymentsourcesRequestBuilder.PaymentsourcesRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
-                {"XXX", ApiError.CreateFromDiscriminatorValue},
+                { "XXX", Marqeta.Core.Sdk.Models.ApiError.CreateFromDiscriminatorValue },
             };
-            return await RequestAdapter.SendAsync<PaymentSourcePage>(requestInfo, PaymentSourcePage.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<Marqeta.Core.Sdk.Models.PaymentSourcePage>(requestInfo, Marqeta.Core.Sdk.Models.PaymentSourcePage.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Create a payment source from which to make payments.
         /// </summary>
-        /// <returns>A <see cref="PaymentSourceResponse"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Models.PaymentSourceResponse"/></returns>
         /// <param name="body">Contains information about a payment source.</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        /// <exception cref="ApiError">When receiving a 4XX or 5XX status code</exception>
+        /// <exception cref="Marqeta.Core.Sdk.Models.ApiError">When receiving a 4XX or 5XX status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<PaymentSourceResponse?> PostAsync(PaymentSourceCreateReq body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<Marqeta.Core.Sdk.Models.PaymentSourceResponse?> PostAsync(Marqeta.Core.Sdk.Models.PaymentSourceCreateReq body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<PaymentSourceResponse> PostAsync(PaymentSourceCreateReq body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<Marqeta.Core.Sdk.Models.PaymentSourceResponse> PostAsync(Marqeta.Core.Sdk.Models.PaymentSourceCreateReq body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             _ = body ?? throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPostRequestInformation(body, requestConfiguration);
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
-                {"XXX", ApiError.CreateFromDiscriminatorValue},
+                { "XXX", Marqeta.Core.Sdk.Models.ApiError.CreateFromDiscriminatorValue },
             };
-            return await RequestAdapter.SendAsync<PaymentSourceResponse>(requestInfo, PaymentSourceResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<Marqeta.Core.Sdk.Models.PaymentSourceResponse>(requestInfo, Marqeta.Core.Sdk.Models.PaymentSourceResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Retrieve an array of payment sources.This endpoint supports &lt;&lt;/core-api/sorting-and-pagination, sorting and pagination&gt;&gt;.
@@ -98,11 +99,11 @@ namespace Marqeta.Core.Sdk.Paymentsources {
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<PaymentsourcesRequestBuilderGetQueryParameters>>? requestConfiguration = default)
+        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<Marqeta.Core.Sdk.Paymentsources.PaymentsourcesRequestBuilder.PaymentsourcesRequestBuilderGetQueryParameters>>? requestConfiguration = default)
         {
 #nullable restore
 #else
-        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<PaymentsourcesRequestBuilderGetQueryParameters>> requestConfiguration = default)
+        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<Marqeta.Core.Sdk.Paymentsources.PaymentsourcesRequestBuilder.PaymentsourcesRequestBuilderGetQueryParameters>> requestConfiguration = default)
         {
 #endif
             var requestInfo = new RequestInformation(Method.GET, UrlTemplate, PathParameters);
@@ -118,11 +119,11 @@ namespace Marqeta.Core.Sdk.Paymentsources {
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToPostRequestInformation(PaymentSourceCreateReq body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
+        public RequestInformation ToPostRequestInformation(Marqeta.Core.Sdk.Models.PaymentSourceCreateReq body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
         {
 #nullable restore
 #else
-        public RequestInformation ToPostRequestInformation(PaymentSourceCreateReq body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
+        public RequestInformation ToPostRequestInformation(Marqeta.Core.Sdk.Models.PaymentSourceCreateReq body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
         {
 #endif
             _ = body ?? throw new ArgumentNullException(nameof(body));
@@ -135,11 +136,11 @@ namespace Marqeta.Core.Sdk.Paymentsources {
         /// <summary>
         /// Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
         /// </summary>
-        /// <returns>A <see cref="PaymentsourcesRequestBuilder"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Paymentsources.PaymentsourcesRequestBuilder"/></returns>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
-        public PaymentsourcesRequestBuilder WithUrl(string rawUrl)
+        public Marqeta.Core.Sdk.Paymentsources.PaymentsourcesRequestBuilder WithUrl(string rawUrl)
         {
-            return new PaymentsourcesRequestBuilder(rawUrl, RequestAdapter);
+            return new Marqeta.Core.Sdk.Paymentsources.PaymentsourcesRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
         /// Retrieve an array of payment sources.This endpoint supports &lt;&lt;/core-api/sorting-and-pagination, sorting and pagination&gt;&gt;.
@@ -171,7 +172,7 @@ namespace Marqeta.Core.Sdk.Paymentsources {
             public int? Count { get; set; }
             /// <summary>Field on which to sort.Prefix the field name with a hyphen (`-`) to sort in descending order.Omit the hyphen to sort in ascending order.*NOTE:*You must sort using system field names such as `lastModifiedTime`, and not by the field names appearing in response bodies such as `last_modified_time`.</summary>
             [QueryParameter("sort_by")]
-            public GetSort_byQueryParameterType? SortBy { get; set; }
+            public Marqeta.Core.Sdk.Paymentsources.GetSort_byQueryParameterType? SortBy { get; set; }
             /// <summary>Sort order index of the first resource in the returned array.</summary>
             [QueryParameter("start_index")]
             public int? StartIndex { get; set; }

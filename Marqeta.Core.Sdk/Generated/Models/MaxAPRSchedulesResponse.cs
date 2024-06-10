@@ -4,9 +4,10 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System;
-namespace Marqeta.Core.Sdk.Models {
+namespace Marqeta.Core.Sdk.Models
+{
     #pragma warning disable CS1591
-    public class MaxAPRSchedulesResponse : IAdditionalDataHolder, IParsable 
+    public class MaxAPRSchedulesResponse : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -14,13 +15,13 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>Date and time when the override APR ends, in UTC.</summary>
         public DateTimeOffset? EndDate { get; set; }
         /// <summary>Reason for the override APR.</summary>
-        public MaxAPRSchedulesResponse_reason? Reason { get; set; }
+        public Marqeta.Core.Sdk.Models.MaxAPRSchedulesResponse_reason? Reason { get; set; }
         /// <summary>Date and time when the override APR goes into effect, in UTC.</summary>
         public DateTimeOffset? StartDate { get; set; }
         /// <summary>The APR percentage value. This is the value of the fixed rate during the override period. The APR value must adhere to the constraints of the main schedule, such as maximum allowable values.</summary>
         public double? Value { get; set; }
         /// <summary>
-        /// Instantiates a new <see cref="MaxAPRSchedulesResponse"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Models.MaxAPRSchedulesResponse"/> and sets the default values.
         /// </summary>
         public MaxAPRSchedulesResponse()
         {
@@ -29,12 +30,12 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="MaxAPRSchedulesResponse"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Models.MaxAPRSchedulesResponse"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static MaxAPRSchedulesResponse CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static Marqeta.Core.Sdk.Models.MaxAPRSchedulesResponse CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-            return new MaxAPRSchedulesResponse();
+            return new Marqeta.Core.Sdk.Models.MaxAPRSchedulesResponse();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -44,10 +45,10 @@ namespace Marqeta.Core.Sdk.Models {
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                {"end_date", n => { EndDate = n.GetDateTimeOffsetValue(); } },
-                {"reason", n => { Reason = n.GetEnumValue<MaxAPRSchedulesResponse_reason>(); } },
-                {"start_date", n => { StartDate = n.GetDateTimeOffsetValue(); } },
-                {"value", n => { Value = n.GetDoubleValue(); } },
+                { "end_date", n => { EndDate = n.GetDateTimeOffsetValue(); } },
+                { "reason", n => { Reason = n.GetEnumValue<Marqeta.Core.Sdk.Models.MaxAPRSchedulesResponse_reason>(); } },
+                { "start_date", n => { StartDate = n.GetDateTimeOffsetValue(); } },
+                { "value", n => { Value = n.GetDoubleValue(); } },
             };
         }
         /// <summary>
@@ -58,7 +59,7 @@ namespace Marqeta.Core.Sdk.Models {
         {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
             writer.WriteDateTimeOffsetValue("end_date", EndDate);
-            writer.WriteEnumValue<MaxAPRSchedulesResponse_reason>("reason", Reason);
+            writer.WriteEnumValue<Marqeta.Core.Sdk.Models.MaxAPRSchedulesResponse_reason>("reason", Reason);
             writer.WriteDateTimeOffsetValue("start_date", StartDate);
             writer.WriteDoubleValue("value", Value);
             writer.WriteAdditionalData(AdditionalData);

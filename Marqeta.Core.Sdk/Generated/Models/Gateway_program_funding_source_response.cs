@@ -4,9 +4,10 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System;
-namespace Marqeta.Core.Sdk.Models {
+namespace Marqeta.Core.Sdk.Models
+{
     #pragma warning disable CS1591
-    public class Gateway_program_funding_source_response : IAdditionalDataHolder, IParsable 
+    public class Gateway_program_funding_source_response : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
     {
         /// <summary>Bank account number.</summary>
@@ -42,10 +43,10 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>Additional custom information included in the HTTP header.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public Gateway_program_funding_source_response_custom_header? CustomHeader { get; set; }
+        public Marqeta.Core.Sdk.Models.Gateway_program_funding_source_response_custom_header? CustomHeader { get; set; }
 #nullable restore
 #else
-        public Gateway_program_funding_source_response_custom_header CustomHeader { get; set; }
+        public Marqeta.Core.Sdk.Models.Gateway_program_funding_source_response_custom_header CustomHeader { get; set; }
 #endif
         /// <summary>Date and time when the resource was last modified, in UTC.</summary>
         public DateTimeOffset? LastModifiedTime { get; set; }
@@ -86,7 +87,7 @@ namespace Marqeta.Core.Sdk.Models {
         public string Version { get; set; }
 #endif
         /// <summary>
-        /// Instantiates a new <see cref="Gateway_program_funding_source_response"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Models.Gateway_program_funding_source_response"/> and sets the default values.
         /// </summary>
         public Gateway_program_funding_source_response()
         {
@@ -95,12 +96,12 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="Gateway_program_funding_source_response"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Models.Gateway_program_funding_source_response"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static Gateway_program_funding_source_response CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static Marqeta.Core.Sdk.Models.Gateway_program_funding_source_response CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-            return new Gateway_program_funding_source_response();
+            return new Marqeta.Core.Sdk.Models.Gateway_program_funding_source_response();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -110,19 +111,19 @@ namespace Marqeta.Core.Sdk.Models {
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                {"account", n => { Account = n.GetStringValue(); } },
-                {"active", n => { Active = n.GetBoolValue(); } },
-                {"basic_auth_password", n => { BasicAuthPassword = n.GetStringValue(); } },
-                {"basic_auth_username", n => { BasicAuthUsername = n.GetStringValue(); } },
-                {"created_time", n => { CreatedTime = n.GetDateTimeOffsetValue(); } },
-                {"custom_header", n => { CustomHeader = n.GetObjectValue<Gateway_program_funding_source_response_custom_header>(Gateway_program_funding_source_response_custom_header.CreateFromDiscriminatorValue); } },
-                {"last_modified_time", n => { LastModifiedTime = n.GetDateTimeOffsetValue(); } },
-                {"name", n => { Name = n.GetStringValue(); } },
-                {"timeout_millis", n => { TimeoutMillis = n.GetLongValue(); } },
-                {"token", n => { Token = n.GetStringValue(); } },
-                {"url", n => { Url = n.GetStringValue(); } },
-                {"use_mtls", n => { UseMtls = n.GetBoolValue(); } },
-                {"version", n => { Version = n.GetStringValue(); } },
+                { "account", n => { Account = n.GetStringValue(); } },
+                { "active", n => { Active = n.GetBoolValue(); } },
+                { "basic_auth_password", n => { BasicAuthPassword = n.GetStringValue(); } },
+                { "basic_auth_username", n => { BasicAuthUsername = n.GetStringValue(); } },
+                { "created_time", n => { CreatedTime = n.GetDateTimeOffsetValue(); } },
+                { "custom_header", n => { CustomHeader = n.GetObjectValue<Marqeta.Core.Sdk.Models.Gateway_program_funding_source_response_custom_header>(Marqeta.Core.Sdk.Models.Gateway_program_funding_source_response_custom_header.CreateFromDiscriminatorValue); } },
+                { "last_modified_time", n => { LastModifiedTime = n.GetDateTimeOffsetValue(); } },
+                { "name", n => { Name = n.GetStringValue(); } },
+                { "timeout_millis", n => { TimeoutMillis = n.GetLongValue(); } },
+                { "token", n => { Token = n.GetStringValue(); } },
+                { "url", n => { Url = n.GetStringValue(); } },
+                { "use_mtls", n => { UseMtls = n.GetBoolValue(); } },
+                { "version", n => { Version = n.GetStringValue(); } },
             };
         }
         /// <summary>
@@ -137,7 +138,7 @@ namespace Marqeta.Core.Sdk.Models {
             writer.WriteStringValue("basic_auth_password", BasicAuthPassword);
             writer.WriteStringValue("basic_auth_username", BasicAuthUsername);
             writer.WriteDateTimeOffsetValue("created_time", CreatedTime);
-            writer.WriteObjectValue<Gateway_program_funding_source_response_custom_header>("custom_header", CustomHeader);
+            writer.WriteObjectValue<Marqeta.Core.Sdk.Models.Gateway_program_funding_source_response_custom_header>("custom_header", CustomHeader);
             writer.WriteDateTimeOffsetValue("last_modified_time", LastModifiedTime);
             writer.WriteStringValue("name", Name);
             writer.WriteLongValue("timeout_millis", TimeoutMillis);

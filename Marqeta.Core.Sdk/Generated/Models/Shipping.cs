@@ -4,11 +4,12 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System;
-namespace Marqeta.Core.Sdk.Models {
+namespace Marqeta.Core.Sdk.Models
+{
     /// <summary>
     /// Specifies shipping details for the order.
     /// </summary>
-    public class Shipping : IAdditionalDataHolder, IParsable 
+    public class Shipping : IAdditionalDataHolder, IParsable
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
@@ -21,25 +22,25 @@ namespace Marqeta.Core.Sdk.Models {
         public string CareOfLine { get; set; }
 #endif
         /// <summary>Specifies the shipping service.</summary>
-        public Shipping_method? Method { get; set; }
+        public Marqeta.Core.Sdk.Models.Shipping_method? Method { get; set; }
         /// <summary>Specifies a fulfillment shipping or return address.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public Fulfillment_address_request? RecipientAddress { get; set; }
+        public Marqeta.Core.Sdk.Models.Fulfillment_address_request? RecipientAddress { get; set; }
 #nullable restore
 #else
-        public Fulfillment_address_request RecipientAddress { get; set; }
+        public Marqeta.Core.Sdk.Models.Fulfillment_address_request RecipientAddress { get; set; }
 #endif
         /// <summary>Specifies a fulfillment shipping or return address.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public Fulfillment_address_request? ReturnAddress { get; set; }
+        public Marqeta.Core.Sdk.Models.Fulfillment_address_request? ReturnAddress { get; set; }
 #nullable restore
 #else
-        public Fulfillment_address_request ReturnAddress { get; set; }
+        public Marqeta.Core.Sdk.Models.Fulfillment_address_request ReturnAddress { get; set; }
 #endif
         /// <summary>
-        /// Instantiates a new <see cref="Shipping"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Models.Shipping"/> and sets the default values.
         /// </summary>
         public Shipping()
         {
@@ -48,12 +49,12 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="Shipping"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Models.Shipping"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static Shipping CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static Marqeta.Core.Sdk.Models.Shipping CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-            return new Shipping();
+            return new Marqeta.Core.Sdk.Models.Shipping();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -63,10 +64,10 @@ namespace Marqeta.Core.Sdk.Models {
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                {"care_of_line", n => { CareOfLine = n.GetStringValue(); } },
-                {"method", n => { Method = n.GetEnumValue<Shipping_method>(); } },
-                {"recipient_address", n => { RecipientAddress = n.GetObjectValue<Fulfillment_address_request>(Fulfillment_address_request.CreateFromDiscriminatorValue); } },
-                {"return_address", n => { ReturnAddress = n.GetObjectValue<Fulfillment_address_request>(Fulfillment_address_request.CreateFromDiscriminatorValue); } },
+                { "care_of_line", n => { CareOfLine = n.GetStringValue(); } },
+                { "method", n => { Method = n.GetEnumValue<Marqeta.Core.Sdk.Models.Shipping_method>(); } },
+                { "recipient_address", n => { RecipientAddress = n.GetObjectValue<Marqeta.Core.Sdk.Models.Fulfillment_address_request>(Marqeta.Core.Sdk.Models.Fulfillment_address_request.CreateFromDiscriminatorValue); } },
+                { "return_address", n => { ReturnAddress = n.GetObjectValue<Marqeta.Core.Sdk.Models.Fulfillment_address_request>(Marqeta.Core.Sdk.Models.Fulfillment_address_request.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -77,9 +78,9 @@ namespace Marqeta.Core.Sdk.Models {
         {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("care_of_line", CareOfLine);
-            writer.WriteEnumValue<Shipping_method>("method", Method);
-            writer.WriteObjectValue<Fulfillment_address_request>("recipient_address", RecipientAddress);
-            writer.WriteObjectValue<Fulfillment_address_request>("return_address", ReturnAddress);
+            writer.WriteEnumValue<Marqeta.Core.Sdk.Models.Shipping_method>("method", Method);
+            writer.WriteObjectValue<Marqeta.Core.Sdk.Models.Fulfillment_address_request>("recipient_address", RecipientAddress);
+            writer.WriteObjectValue<Marqeta.Core.Sdk.Models.Fulfillment_address_request>("return_address", ReturnAddress);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

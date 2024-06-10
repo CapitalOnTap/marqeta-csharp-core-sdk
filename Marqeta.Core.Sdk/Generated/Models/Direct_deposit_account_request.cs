@@ -4,9 +4,10 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System;
-namespace Marqeta.Core.Sdk.Models {
+namespace Marqeta.Core.Sdk.Models
+{
     #pragma warning disable CS1591
-    public class Direct_deposit_account_request : IAdditionalDataHolder, IParsable 
+    public class Direct_deposit_account_request : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -24,10 +25,10 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>Required if account type = Checking</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<Customer_due_diligence_request>? CustomerDueDiligence { get; set; }
+        public List<Marqeta.Core.Sdk.Models.Customer_due_diligence_request>? CustomerDueDiligence { get; set; }
 #nullable restore
 #else
-        public List<Customer_due_diligence_request> CustomerDueDiligence { get; set; }
+        public List<Marqeta.Core.Sdk.Models.Customer_due_diligence_request> CustomerDueDiligence { get; set; }
 #endif
         /// <summary>The token property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -38,7 +39,7 @@ namespace Marqeta.Core.Sdk.Models {
         public string Token { get; set; }
 #endif
         /// <summary>The type property</summary>
-        public Direct_deposit_account_request_type? Type { get; set; }
+        public Marqeta.Core.Sdk.Models.Direct_deposit_account_request_type? Type { get; set; }
         /// <summary>Required if &apos;business_token&apos; is null</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -48,7 +49,7 @@ namespace Marqeta.Core.Sdk.Models {
         public string UserToken { get; set; }
 #endif
         /// <summary>
-        /// Instantiates a new <see cref="Direct_deposit_account_request"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Models.Direct_deposit_account_request"/> and sets the default values.
         /// </summary>
         public Direct_deposit_account_request()
         {
@@ -57,12 +58,12 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="Direct_deposit_account_request"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Models.Direct_deposit_account_request"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static Direct_deposit_account_request CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static Marqeta.Core.Sdk.Models.Direct_deposit_account_request CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-            return new Direct_deposit_account_request();
+            return new Marqeta.Core.Sdk.Models.Direct_deposit_account_request();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -72,12 +73,12 @@ namespace Marqeta.Core.Sdk.Models {
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                {"allow_immediate_credit", n => { AllowImmediateCredit = n.GetBoolValue(); } },
-                {"business_token", n => { BusinessToken = n.GetStringValue(); } },
-                {"customer_due_diligence", n => { CustomerDueDiligence = n.GetCollectionOfObjectValues<Customer_due_diligence_request>(Customer_due_diligence_request.CreateFromDiscriminatorValue)?.ToList(); } },
-                {"token", n => { Token = n.GetStringValue(); } },
-                {"type", n => { Type = n.GetEnumValue<Direct_deposit_account_request_type>(); } },
-                {"user_token", n => { UserToken = n.GetStringValue(); } },
+                { "allow_immediate_credit", n => { AllowImmediateCredit = n.GetBoolValue(); } },
+                { "business_token", n => { BusinessToken = n.GetStringValue(); } },
+                { "customer_due_diligence", n => { CustomerDueDiligence = n.GetCollectionOfObjectValues<Marqeta.Core.Sdk.Models.Customer_due_diligence_request>(Marqeta.Core.Sdk.Models.Customer_due_diligence_request.CreateFromDiscriminatorValue)?.ToList(); } },
+                { "token", n => { Token = n.GetStringValue(); } },
+                { "type", n => { Type = n.GetEnumValue<Marqeta.Core.Sdk.Models.Direct_deposit_account_request_type>(); } },
+                { "user_token", n => { UserToken = n.GetStringValue(); } },
             };
         }
         /// <summary>
@@ -89,9 +90,9 @@ namespace Marqeta.Core.Sdk.Models {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
             writer.WriteBoolValue("allow_immediate_credit", AllowImmediateCredit);
             writer.WriteStringValue("business_token", BusinessToken);
-            writer.WriteCollectionOfObjectValues<Customer_due_diligence_request>("customer_due_diligence", CustomerDueDiligence);
+            writer.WriteCollectionOfObjectValues<Marqeta.Core.Sdk.Models.Customer_due_diligence_request>("customer_due_diligence", CustomerDueDiligence);
             writer.WriteStringValue("token", Token);
-            writer.WriteEnumValue<Direct_deposit_account_request_type>("type", Type);
+            writer.WriteEnumValue<Marqeta.Core.Sdk.Models.Direct_deposit_account_request_type>("type", Type);
             writer.WriteStringValue("user_token", UserToken);
             writer.WriteAdditionalData(AdditionalData);
         }

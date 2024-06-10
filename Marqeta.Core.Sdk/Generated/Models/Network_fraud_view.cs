@@ -4,11 +4,12 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System;
-namespace Marqeta.Core.Sdk.Models {
+namespace Marqeta.Core.Sdk.Models
+{
     /// <summary>
     /// Contains network-provided information about fraud determinations.
     /// </summary>
-    public class Network_fraud_view : IAdditionalDataHolder, IParsable 
+    public class Network_fraud_view : IAdditionalDataHolder, IParsable
     {
         /// <summary>_(Visa only)_ Account holder risk condition code evaluated by the card network.A higher score indicates a greater likelihood that the card number is compromised.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -47,7 +48,7 @@ namespace Marqeta.Core.Sdk.Models {
         public string TransactionRiskScoreReasonDescription { get; set; }
 #endif
         /// <summary>
-        /// Instantiates a new <see cref="Network_fraud_view"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Models.Network_fraud_view"/> and sets the default values.
         /// </summary>
         public Network_fraud_view()
         {
@@ -56,12 +57,12 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="Network_fraud_view"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Models.Network_fraud_view"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static Network_fraud_view CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static Marqeta.Core.Sdk.Models.Network_fraud_view CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-            return new Network_fraud_view();
+            return new Marqeta.Core.Sdk.Models.Network_fraud_view();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -71,11 +72,11 @@ namespace Marqeta.Core.Sdk.Models {
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                {"account_risk_score", n => { AccountRiskScore = n.GetStringValue(); } },
-                {"account_risk_score_reason_code", n => { AccountRiskScoreReasonCode = n.GetStringValue(); } },
-                {"transaction_risk_score", n => { TransactionRiskScore = n.GetIntValue(); } },
-                {"transaction_risk_score_reason_code", n => { TransactionRiskScoreReasonCode = n.GetStringValue(); } },
-                {"transaction_risk_score_reason_description", n => { TransactionRiskScoreReasonDescription = n.GetStringValue(); } },
+                { "account_risk_score", n => { AccountRiskScore = n.GetStringValue(); } },
+                { "account_risk_score_reason_code", n => { AccountRiskScoreReasonCode = n.GetStringValue(); } },
+                { "transaction_risk_score", n => { TransactionRiskScore = n.GetIntValue(); } },
+                { "transaction_risk_score_reason_code", n => { TransactionRiskScoreReasonCode = n.GetStringValue(); } },
+                { "transaction_risk_score_reason_description", n => { TransactionRiskScoreReasonDescription = n.GetStringValue(); } },
             };
         }
         /// <summary>

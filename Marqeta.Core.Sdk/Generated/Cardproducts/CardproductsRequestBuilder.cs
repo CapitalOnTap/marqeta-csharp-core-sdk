@@ -9,26 +9,27 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Threading;
 using System;
-namespace Marqeta.Core.Sdk.Cardproducts {
+namespace Marqeta.Core.Sdk.Cardproducts
+{
     /// <summary>
     /// Builds and executes requests for operations under \cardproducts
     /// </summary>
-    public class CardproductsRequestBuilder : BaseRequestBuilder 
+    public class CardproductsRequestBuilder : BaseRequestBuilder
     {
         /// <summary>Gets an item from the Marqeta.Core.Sdk.cardproducts.item collection</summary>
         /// <param name="position">Unique identifier of the card product to retrieve.</param>
-        /// <returns>A <see cref="WithTokenItemRequestBuilder"/></returns>
-        public WithTokenItemRequestBuilder this[string position]
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Cardproducts.Item.WithTokenItemRequestBuilder"/></returns>
+        public Marqeta.Core.Sdk.Cardproducts.Item.WithTokenItemRequestBuilder this[string position]
         {
             get
             {
                 var urlTplParams = new Dictionary<string, object>(PathParameters);
                 urlTplParams.Add("token", position);
-                return new WithTokenItemRequestBuilder(urlTplParams, RequestAdapter);
+                return new Marqeta.Core.Sdk.Cardproducts.Item.WithTokenItemRequestBuilder(urlTplParams, RequestAdapter);
             }
         }
         /// <summary>
-        /// Instantiates a new <see cref="CardproductsRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Cardproducts.CardproductsRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
@@ -36,7 +37,7 @@ namespace Marqeta.Core.Sdk.Cardproducts {
         {
         }
         /// <summary>
-        /// Instantiates a new <see cref="CardproductsRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Cardproducts.CardproductsRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
@@ -46,50 +47,50 @@ namespace Marqeta.Core.Sdk.Cardproducts {
         /// <summary>
         /// Use this endpoint to list existing card products.This endpoint supports &lt;&lt;/core-api/sorting-and-pagination, pagination&gt;&gt;.
         /// </summary>
-        /// <returns>A <see cref="CardProductListResponse"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Models.CardProductListResponse"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        /// <exception cref="ApiError">When receiving a 4XX or 5XX status code</exception>
+        /// <exception cref="Marqeta.Core.Sdk.Models.ApiError">When receiving a 4XX or 5XX status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<CardProductListResponse?> GetAsync(Action<RequestConfiguration<CardproductsRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<Marqeta.Core.Sdk.Models.CardProductListResponse?> GetAsync(Action<RequestConfiguration<Marqeta.Core.Sdk.Cardproducts.CardproductsRequestBuilder.CardproductsRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<CardProductListResponse> GetAsync(Action<RequestConfiguration<CardproductsRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<Marqeta.Core.Sdk.Models.CardProductListResponse> GetAsync(Action<RequestConfiguration<Marqeta.Core.Sdk.Cardproducts.CardproductsRequestBuilder.CardproductsRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
-                {"XXX", ApiError.CreateFromDiscriminatorValue},
+                { "XXX", Marqeta.Core.Sdk.Models.ApiError.CreateFromDiscriminatorValue },
             };
-            return await RequestAdapter.SendAsync<CardProductListResponse>(requestInfo, CardProductListResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<Marqeta.Core.Sdk.Models.CardProductListResponse>(requestInfo, Marqeta.Core.Sdk.Models.CardProductListResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Use this endpoint to create a card product.The card product request contains a set of fields that provide basic information about the card product, such as name, active status, and start and end dates.Configuration information is contained in the `config` object, which contains sub-elements whose fields control the features and behavior of the card product.The elements are referred to collectively as the card product &quot;configuration,&quot; and as such are contained in a `config` object.
         /// </summary>
-        /// <returns>A <see cref="Card_product_response"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Models.Card_product_response"/></returns>
         /// <param name="body">The request body</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        /// <exception cref="ApiError">When receiving a 4XX or 5XX status code</exception>
+        /// <exception cref="Marqeta.Core.Sdk.Models.ApiError">When receiving a 4XX or 5XX status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<Card_product_response?> PostAsync(Card_product_request body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<Marqeta.Core.Sdk.Models.Card_product_response?> PostAsync(Marqeta.Core.Sdk.Models.Card_product_request body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<Card_product_response> PostAsync(Card_product_request body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<Marqeta.Core.Sdk.Models.Card_product_response> PostAsync(Marqeta.Core.Sdk.Models.Card_product_request body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             _ = body ?? throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPostRequestInformation(body, requestConfiguration);
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
-                {"XXX", ApiError.CreateFromDiscriminatorValue},
+                { "XXX", Marqeta.Core.Sdk.Models.ApiError.CreateFromDiscriminatorValue },
             };
-            return await RequestAdapter.SendAsync<Card_product_response>(requestInfo, Card_product_response.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<Marqeta.Core.Sdk.Models.Card_product_response>(requestInfo, Marqeta.Core.Sdk.Models.Card_product_response.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Use this endpoint to list existing card products.This endpoint supports &lt;&lt;/core-api/sorting-and-pagination, pagination&gt;&gt;.
@@ -98,11 +99,11 @@ namespace Marqeta.Core.Sdk.Cardproducts {
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<CardproductsRequestBuilderGetQueryParameters>>? requestConfiguration = default)
+        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<Marqeta.Core.Sdk.Cardproducts.CardproductsRequestBuilder.CardproductsRequestBuilderGetQueryParameters>>? requestConfiguration = default)
         {
 #nullable restore
 #else
-        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<CardproductsRequestBuilderGetQueryParameters>> requestConfiguration = default)
+        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<Marqeta.Core.Sdk.Cardproducts.CardproductsRequestBuilder.CardproductsRequestBuilderGetQueryParameters>> requestConfiguration = default)
         {
 #endif
             var requestInfo = new RequestInformation(Method.GET, UrlTemplate, PathParameters);
@@ -118,11 +119,11 @@ namespace Marqeta.Core.Sdk.Cardproducts {
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToPostRequestInformation(Card_product_request body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
+        public RequestInformation ToPostRequestInformation(Marqeta.Core.Sdk.Models.Card_product_request body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
         {
 #nullable restore
 #else
-        public RequestInformation ToPostRequestInformation(Card_product_request body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
+        public RequestInformation ToPostRequestInformation(Marqeta.Core.Sdk.Models.Card_product_request body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
         {
 #endif
             _ = body ?? throw new ArgumentNullException(nameof(body));
@@ -135,11 +136,11 @@ namespace Marqeta.Core.Sdk.Cardproducts {
         /// <summary>
         /// Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
         /// </summary>
-        /// <returns>A <see cref="CardproductsRequestBuilder"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Cardproducts.CardproductsRequestBuilder"/></returns>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
-        public CardproductsRequestBuilder WithUrl(string rawUrl)
+        public Marqeta.Core.Sdk.Cardproducts.CardproductsRequestBuilder WithUrl(string rawUrl)
         {
-            return new CardproductsRequestBuilder(rawUrl, RequestAdapter);
+            return new Marqeta.Core.Sdk.Cardproducts.CardproductsRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
         /// Use this endpoint to list existing card products.This endpoint supports &lt;&lt;/core-api/sorting-and-pagination, pagination&gt;&gt;.

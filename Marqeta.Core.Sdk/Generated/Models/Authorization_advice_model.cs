@@ -4,9 +4,10 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System;
-namespace Marqeta.Core.Sdk.Models {
+namespace Marqeta.Core.Sdk.Models
+{
     #pragma warning disable CS1591
-    public class Authorization_advice_model : IAdditionalDataHolder, IParsable 
+    public class Authorization_advice_model : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -16,10 +17,10 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>The network_fees property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<Network_fee_model>? NetworkFees { get; set; }
+        public List<Marqeta.Core.Sdk.Models.Network_fee_model>? NetworkFees { get; set; }
 #nullable restore
 #else
-        public List<Network_fee_model> NetworkFees { get; set; }
+        public List<Marqeta.Core.Sdk.Models.Network_fee_model> NetworkFees { get; set; }
 #endif
         /// <summary>The original_transaction_token property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -32,10 +33,10 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>The transaction_options property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public Transaction_options? TransactionOptions { get; set; }
+        public Marqeta.Core.Sdk.Models.Transaction_options? TransactionOptions { get; set; }
 #nullable restore
 #else
-        public Transaction_options TransactionOptions { get; set; }
+        public Marqeta.Core.Sdk.Models.Transaction_options TransactionOptions { get; set; }
 #endif
         /// <summary>The webhook property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -46,7 +47,7 @@ namespace Marqeta.Core.Sdk.Models {
         public Marqeta.Core.Sdk.Models.Webhook Webhook { get; set; }
 #endif
         /// <summary>
-        /// Instantiates a new <see cref="Authorization_advice_model"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Models.Authorization_advice_model"/> and sets the default values.
         /// </summary>
         public Authorization_advice_model()
         {
@@ -55,12 +56,12 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="Authorization_advice_model"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Models.Authorization_advice_model"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static Authorization_advice_model CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static Marqeta.Core.Sdk.Models.Authorization_advice_model CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-            return new Authorization_advice_model();
+            return new Marqeta.Core.Sdk.Models.Authorization_advice_model();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -70,11 +71,11 @@ namespace Marqeta.Core.Sdk.Models {
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                {"amount", n => { Amount = n.GetDoubleValue(); } },
-                {"network_fees", n => { NetworkFees = n.GetCollectionOfObjectValues<Network_fee_model>(Network_fee_model.CreateFromDiscriminatorValue)?.ToList(); } },
-                {"original_transaction_token", n => { OriginalTransactionToken = n.GetStringValue(); } },
-                {"transaction_options", n => { TransactionOptions = n.GetObjectValue<Transaction_options>(Transaction_options.CreateFromDiscriminatorValue); } },
-                {"webhook", n => { Webhook = n.GetObjectValue<Marqeta.Core.Sdk.Models.Webhook>(Marqeta.Core.Sdk.Models.Webhook.CreateFromDiscriminatorValue); } },
+                { "amount", n => { Amount = n.GetDoubleValue(); } },
+                { "network_fees", n => { NetworkFees = n.GetCollectionOfObjectValues<Marqeta.Core.Sdk.Models.Network_fee_model>(Marqeta.Core.Sdk.Models.Network_fee_model.CreateFromDiscriminatorValue)?.ToList(); } },
+                { "original_transaction_token", n => { OriginalTransactionToken = n.GetStringValue(); } },
+                { "transaction_options", n => { TransactionOptions = n.GetObjectValue<Marqeta.Core.Sdk.Models.Transaction_options>(Marqeta.Core.Sdk.Models.Transaction_options.CreateFromDiscriminatorValue); } },
+                { "webhook", n => { Webhook = n.GetObjectValue<Marqeta.Core.Sdk.Models.Webhook>(Marqeta.Core.Sdk.Models.Webhook.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -85,9 +86,9 @@ namespace Marqeta.Core.Sdk.Models {
         {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
             writer.WriteDoubleValue("amount", Amount);
-            writer.WriteCollectionOfObjectValues<Network_fee_model>("network_fees", NetworkFees);
+            writer.WriteCollectionOfObjectValues<Marqeta.Core.Sdk.Models.Network_fee_model>("network_fees", NetworkFees);
             writer.WriteStringValue("original_transaction_token", OriginalTransactionToken);
-            writer.WriteObjectValue<Transaction_options>("transaction_options", TransactionOptions);
+            writer.WriteObjectValue<Marqeta.Core.Sdk.Models.Transaction_options>("transaction_options", TransactionOptions);
             writer.WriteObjectValue<Marqeta.Core.Sdk.Models.Webhook>("webhook", Webhook);
             writer.WriteAdditionalData(AdditionalData);
         }

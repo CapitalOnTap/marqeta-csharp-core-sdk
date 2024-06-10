@@ -4,9 +4,10 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System;
-namespace Marqeta.Core.Sdk.Models {
+namespace Marqeta.Core.Sdk.Models
+{
     #pragma warning disable CS1591
-    public class Base_ach_request_model : IAdditionalDataHolder, IParsable 
+    public class Base_ach_request_model : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
     {
         /// <summary>ACH account number.</summary>
@@ -18,7 +19,7 @@ namespace Marqeta.Core.Sdk.Models {
         public string AccountNumber { get; set; }
 #endif
         /// <summary>Type of account.</summary>
-        public Base_ach_request_model_account_type? AccountType { get; set; }
+        public Marqeta.Core.Sdk.Models.Base_ach_request_model_account_type? AccountType { get; set; }
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Name of the bank holding the account.</summary>
@@ -66,7 +67,7 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>Allows the ACH funding source to be used, regardless of its verification status.Set this field to `true` if you can attest that you have verified the account on your own and that it will not be returned by the Federal Reserve.*NOTE:* When using `PLAID` to validate a funding source, this field is always set to `true`.</summary>
         public bool? VerificationOverride { get; set; }
         /// <summary>
-        /// Instantiates a new <see cref="Base_ach_request_model"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Models.Base_ach_request_model"/> and sets the default values.
         /// </summary>
         public Base_ach_request_model()
         {
@@ -75,12 +76,12 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="Base_ach_request_model"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Models.Base_ach_request_model"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static Base_ach_request_model CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static Marqeta.Core.Sdk.Models.Base_ach_request_model CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-            return new Base_ach_request_model();
+            return new Marqeta.Core.Sdk.Models.Base_ach_request_model();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -90,15 +91,15 @@ namespace Marqeta.Core.Sdk.Models {
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                {"account_number", n => { AccountNumber = n.GetStringValue(); } },
-                {"account_type", n => { AccountType = n.GetEnumValue<Base_ach_request_model_account_type>(); } },
-                {"bank_name", n => { BankName = n.GetStringValue(); } },
-                {"is_default_account", n => { IsDefaultAccount = n.GetBoolValue(); } },
-                {"name_on_account", n => { NameOnAccount = n.GetStringValue(); } },
-                {"routing_number", n => { RoutingNumber = n.GetStringValue(); } },
-                {"token", n => { Token = n.GetStringValue(); } },
-                {"verification_notes", n => { VerificationNotes = n.GetStringValue(); } },
-                {"verification_override", n => { VerificationOverride = n.GetBoolValue(); } },
+                { "account_number", n => { AccountNumber = n.GetStringValue(); } },
+                { "account_type", n => { AccountType = n.GetEnumValue<Marqeta.Core.Sdk.Models.Base_ach_request_model_account_type>(); } },
+                { "bank_name", n => { BankName = n.GetStringValue(); } },
+                { "is_default_account", n => { IsDefaultAccount = n.GetBoolValue(); } },
+                { "name_on_account", n => { NameOnAccount = n.GetStringValue(); } },
+                { "routing_number", n => { RoutingNumber = n.GetStringValue(); } },
+                { "token", n => { Token = n.GetStringValue(); } },
+                { "verification_notes", n => { VerificationNotes = n.GetStringValue(); } },
+                { "verification_override", n => { VerificationOverride = n.GetBoolValue(); } },
             };
         }
         /// <summary>
@@ -109,7 +110,7 @@ namespace Marqeta.Core.Sdk.Models {
         {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("account_number", AccountNumber);
-            writer.WriteEnumValue<Base_ach_request_model_account_type>("account_type", AccountType);
+            writer.WriteEnumValue<Marqeta.Core.Sdk.Models.Base_ach_request_model_account_type>("account_type", AccountType);
             writer.WriteStringValue("bank_name", BankName);
             writer.WriteBoolValue("is_default_account", IsDefaultAccount);
             writer.WriteStringValue("name_on_account", NameOnAccount);

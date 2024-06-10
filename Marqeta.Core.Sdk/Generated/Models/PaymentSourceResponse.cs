@@ -4,11 +4,12 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System;
-namespace Marqeta.Core.Sdk.Models {
+namespace Marqeta.Core.Sdk.Models
+{
     /// <summary>
     /// Contains information about a payment source.
     /// </summary>
-    public class PaymentSourceResponse : IAdditionalDataHolder, IParsable 
+    public class PaymentSourceResponse : IAdditionalDataHolder, IParsable
     {
         /// <summary>Last four digits of the payment source account number.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -57,7 +58,7 @@ namespace Marqeta.Core.Sdk.Models {
         public string Name { get; set; }
 #endif
         /// <summary>Type of payment source owner.</summary>
-        public PaymentSourceResponse_owner? Owner { get; set; }
+        public Marqeta.Core.Sdk.Models.PaymentSourceResponse_owner? Owner { get; set; }
         /// <summary>Routing number of the payment source.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -67,9 +68,9 @@ namespace Marqeta.Core.Sdk.Models {
         public string RoutingNumber { get; set; }
 #endif
         /// <summary>Type of payment source.</summary>
-        public PaymentSourceResponse_source_type? SourceType { get; set; }
+        public Marqeta.Core.Sdk.Models.PaymentSourceResponse_source_type? SourceType { get; set; }
         /// <summary>Current status of the payment source.</summary>
-        public PaymentSourceStatusEnum? Status { get; set; }
+        public Marqeta.Core.Sdk.Models.PaymentSourceStatusEnum? Status { get; set; }
         /// <summary>Unique identifier of the payment source.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -95,9 +96,9 @@ namespace Marqeta.Core.Sdk.Models {
         public string VerificationNotes { get; set; }
 #endif
         /// <summary>Status of the verification for the payment source.</summary>
-        public PaymentSourceResponse_verification_status? VerificationStatus { get; set; }
+        public Marqeta.Core.Sdk.Models.PaymentSourceResponse_verification_status? VerificationStatus { get; set; }
         /// <summary>
-        /// Instantiates a new <see cref="PaymentSourceResponse"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Models.PaymentSourceResponse"/> and sets the default values.
         /// </summary>
         public PaymentSourceResponse()
         {
@@ -106,12 +107,12 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="PaymentSourceResponse"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Models.PaymentSourceResponse"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static PaymentSourceResponse CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static Marqeta.Core.Sdk.Models.PaymentSourceResponse CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-            return new PaymentSourceResponse();
+            return new Marqeta.Core.Sdk.Models.PaymentSourceResponse();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -121,21 +122,21 @@ namespace Marqeta.Core.Sdk.Models {
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                {"account_suffix", n => { AccountSuffix = n.GetStringValue(); } },
-                {"account_token", n => { AccountToken = n.GetStringValue(); } },
-                {"bank_name", n => { BankName = n.GetStringValue(); } },
-                {"business_token", n => { BusinessToken = n.GetStringValue(); } },
-                {"created_time", n => { CreatedTime = n.GetDateTimeOffsetValue(); } },
-                {"last_modified_time", n => { LastModifiedTime = n.GetDateTimeOffsetValue(); } },
-                {"name", n => { Name = n.GetStringValue(); } },
-                {"owner", n => { Owner = n.GetEnumValue<PaymentSourceResponse_owner>(); } },
-                {"routing_number", n => { RoutingNumber = n.GetStringValue(); } },
-                {"source_type", n => { SourceType = n.GetEnumValue<PaymentSourceResponse_source_type>(); } },
-                {"status", n => { Status = n.GetEnumValue<PaymentSourceStatusEnum>(); } },
-                {"token", n => { Token = n.GetStringValue(); } },
-                {"user_token", n => { UserToken = n.GetStringValue(); } },
-                {"verification_notes", n => { VerificationNotes = n.GetStringValue(); } },
-                {"verification_status", n => { VerificationStatus = n.GetEnumValue<PaymentSourceResponse_verification_status>(); } },
+                { "account_suffix", n => { AccountSuffix = n.GetStringValue(); } },
+                { "account_token", n => { AccountToken = n.GetStringValue(); } },
+                { "bank_name", n => { BankName = n.GetStringValue(); } },
+                { "business_token", n => { BusinessToken = n.GetStringValue(); } },
+                { "created_time", n => { CreatedTime = n.GetDateTimeOffsetValue(); } },
+                { "last_modified_time", n => { LastModifiedTime = n.GetDateTimeOffsetValue(); } },
+                { "name", n => { Name = n.GetStringValue(); } },
+                { "owner", n => { Owner = n.GetEnumValue<Marqeta.Core.Sdk.Models.PaymentSourceResponse_owner>(); } },
+                { "routing_number", n => { RoutingNumber = n.GetStringValue(); } },
+                { "source_type", n => { SourceType = n.GetEnumValue<Marqeta.Core.Sdk.Models.PaymentSourceResponse_source_type>(); } },
+                { "status", n => { Status = n.GetEnumValue<Marqeta.Core.Sdk.Models.PaymentSourceStatusEnum>(); } },
+                { "token", n => { Token = n.GetStringValue(); } },
+                { "user_token", n => { UserToken = n.GetStringValue(); } },
+                { "verification_notes", n => { VerificationNotes = n.GetStringValue(); } },
+                { "verification_status", n => { VerificationStatus = n.GetEnumValue<Marqeta.Core.Sdk.Models.PaymentSourceResponse_verification_status>(); } },
             };
         }
         /// <summary>
@@ -152,14 +153,14 @@ namespace Marqeta.Core.Sdk.Models {
             writer.WriteDateTimeOffsetValue("created_time", CreatedTime);
             writer.WriteDateTimeOffsetValue("last_modified_time", LastModifiedTime);
             writer.WriteStringValue("name", Name);
-            writer.WriteEnumValue<PaymentSourceResponse_owner>("owner", Owner);
+            writer.WriteEnumValue<Marqeta.Core.Sdk.Models.PaymentSourceResponse_owner>("owner", Owner);
             writer.WriteStringValue("routing_number", RoutingNumber);
-            writer.WriteEnumValue<PaymentSourceResponse_source_type>("source_type", SourceType);
-            writer.WriteEnumValue<PaymentSourceStatusEnum>("status", Status);
+            writer.WriteEnumValue<Marqeta.Core.Sdk.Models.PaymentSourceResponse_source_type>("source_type", SourceType);
+            writer.WriteEnumValue<Marqeta.Core.Sdk.Models.PaymentSourceStatusEnum>("status", Status);
             writer.WriteStringValue("token", Token);
             writer.WriteStringValue("user_token", UserToken);
             writer.WriteStringValue("verification_notes", VerificationNotes);
-            writer.WriteEnumValue<PaymentSourceResponse_verification_status>("verification_status", VerificationStatus);
+            writer.WriteEnumValue<Marqeta.Core.Sdk.Models.PaymentSourceResponse_verification_status>("verification_status", VerificationStatus);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

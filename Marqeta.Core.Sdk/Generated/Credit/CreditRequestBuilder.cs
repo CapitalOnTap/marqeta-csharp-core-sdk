@@ -6,19 +6,20 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using System;
-namespace Marqeta.Core.Sdk.Credit {
+namespace Marqeta.Core.Sdk.Credit
+{
     /// <summary>
     /// Builds and executes requests for operations under \credit
     /// </summary>
-    public class CreditRequestBuilder : BaseRequestBuilder 
+    public class CreditRequestBuilder : BaseRequestBuilder
     {
         /// <summary>The applications property</summary>
-        public ApplicationsRequestBuilder Applications
+        public Marqeta.Core.Sdk.Credit.Applications.ApplicationsRequestBuilder Applications
         {
-            get => new ApplicationsRequestBuilder(PathParameters, RequestAdapter);
+            get => new Marqeta.Core.Sdk.Credit.Applications.ApplicationsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>
-        /// Instantiates a new <see cref="CreditRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Credit.CreditRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
@@ -26,7 +27,7 @@ namespace Marqeta.Core.Sdk.Credit {
         {
         }
         /// <summary>
-        /// Instantiates a new <see cref="CreditRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Credit.CreditRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>

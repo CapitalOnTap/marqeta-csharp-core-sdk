@@ -4,11 +4,12 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System;
-namespace Marqeta.Core.Sdk.Models {
+namespace Marqeta.Core.Sdk.Models
+{
     /// <summary>
     /// Response containing payment details with transition history
     /// </summary>
-    public class PaymentDetailResponse : IAdditionalDataHolder, IParsable 
+    public class PaymentDetailResponse : IAdditionalDataHolder, IParsable
     {
         /// <summary>Unique identifier of the credit account on which the payment is made.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -23,10 +24,10 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>List of objects which contain information on how payment is allocated.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<PaymentAllocationResponse>? Allocations { get; set; }
+        public List<Marqeta.Core.Sdk.Models.PaymentAllocationResponse>? Allocations { get; set; }
 #nullable restore
 #else
-        public List<PaymentAllocationResponse> Allocations { get; set; }
+        public List<Marqeta.Core.Sdk.Models.PaymentAllocationResponse> Allocations { get; set; }
 #endif
         /// <summary>Total amount of the payment.</summary>
         public double? Amount { get; set; }
@@ -57,7 +58,7 @@ namespace Marqeta.Core.Sdk.Models {
         public string Metadata { get; set; }
 #endif
         /// <summary>Method of payment.</summary>
-        public PaymentDetailResponse_method? Method { get; set; }
+        public Marqeta.Core.Sdk.Models.PaymentDetailResponse_method? Method { get; set; }
         /// <summary>Whether the available credit is on hold for this payment.</summary>
         public bool? OnHold { get; set; }
         /// <summary>Unique identifier of the payment schedule.</summary>
@@ -79,10 +80,10 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>Contains details for a refund.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RefundDetailsResponse? RefundDetails { get; set; }
+        public Marqeta.Core.Sdk.Models.RefundDetailsResponse? RefundDetails { get; set; }
 #nullable restore
 #else
-        public RefundDetailsResponse RefundDetails { get; set; }
+        public Marqeta.Core.Sdk.Models.RefundDetailsResponse RefundDetails { get; set; }
 #endif
         /// <summary>Contains information on a returned payment.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -93,7 +94,7 @@ namespace Marqeta.Core.Sdk.Models {
         public Marqeta.Core.Sdk.Models.ReturnedDetails ReturnedDetails { get; set; }
 #endif
         /// <summary>Current status of the payment or refund.</summary>
-        public PaymentStatus? Status { get; set; }
+        public Marqeta.Core.Sdk.Models.PaymentStatus? Status { get; set; }
         /// <summary>Unique identifier of the payment.If in the `detail_object`, unique identifier of the detail object.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -105,15 +106,15 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>Contains one or more `transitions` objects, which contain information on a payment status transition.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<PaymentTransitionResponse>? Transitions { get; set; }
+        public List<Marqeta.Core.Sdk.Models.PaymentTransitionResponse>? Transitions { get; set; }
 #nullable restore
 #else
-        public List<PaymentTransitionResponse> Transitions { get; set; }
+        public List<Marqeta.Core.Sdk.Models.PaymentTransitionResponse> Transitions { get; set; }
 #endif
         /// <summary>Date and time when the payment was last updated on Marqeta&apos;s credit platform, in UTC.</summary>
         public DateTimeOffset? UpdatedTime { get; set; }
         /// <summary>
-        /// Instantiates a new <see cref="PaymentDetailResponse"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Models.PaymentDetailResponse"/> and sets the default values.
         /// </summary>
         public PaymentDetailResponse()
         {
@@ -123,12 +124,12 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="PaymentDetailResponse"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Models.PaymentDetailResponse"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static PaymentDetailResponse CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static Marqeta.Core.Sdk.Models.PaymentDetailResponse CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-            return new PaymentDetailResponse();
+            return new Marqeta.Core.Sdk.Models.PaymentDetailResponse();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -138,26 +139,26 @@ namespace Marqeta.Core.Sdk.Models {
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                {"account_token", n => { AccountToken = n.GetStringValue(); } },
-                {"allocations", n => { Allocations = n.GetCollectionOfObjectValues<PaymentAllocationResponse>(PaymentAllocationResponse.CreateFromDiscriminatorValue)?.ToList(); } },
-                {"amount", n => { Amount = n.GetDoubleValue(); } },
-                {"created_time", n => { CreatedTime = n.GetDateTimeOffsetValue(); } },
-                {"currency_code", n => { CurrencyCode = n.GetEnumValue<CurrencyCode>(); } },
-                {"description", n => { Description = n.GetStringValue(); } },
-                {"hold_days", n => { HoldDays = n.GetIntValue(); } },
-                {"hold_end_time", n => { HoldEndTime = n.GetDateTimeOffsetValue(); } },
-                {"is_manually_released", n => { IsManuallyReleased = n.GetBoolValue(); } },
-                {"metadata", n => { Metadata = n.GetStringValue(); } },
-                {"method", n => { Method = n.GetEnumValue<PaymentDetailResponse_method>(); } },
-                {"on_hold", n => { OnHold = n.GetBoolValue(); } },
-                {"payment_schedule_token", n => { PaymentScheduleToken = n.GetStringValue(); } },
-                {"payment_source_token", n => { PaymentSourceToken = n.GetStringValue(); } },
-                {"refund_details", n => { RefundDetails = n.GetObjectValue<RefundDetailsResponse>(RefundDetailsResponse.CreateFromDiscriminatorValue); } },
-                {"returned_details", n => { ReturnedDetails = n.GetObjectValue<Marqeta.Core.Sdk.Models.ReturnedDetails>(Marqeta.Core.Sdk.Models.ReturnedDetails.CreateFromDiscriminatorValue); } },
-                {"status", n => { Status = n.GetEnumValue<PaymentStatus>(); } },
-                {"token", n => { Token = n.GetStringValue(); } },
-                {"transitions", n => { Transitions = n.GetCollectionOfObjectValues<PaymentTransitionResponse>(PaymentTransitionResponse.CreateFromDiscriminatorValue)?.ToList(); } },
-                {"updated_time", n => { UpdatedTime = n.GetDateTimeOffsetValue(); } },
+                { "account_token", n => { AccountToken = n.GetStringValue(); } },
+                { "allocations", n => { Allocations = n.GetCollectionOfObjectValues<Marqeta.Core.Sdk.Models.PaymentAllocationResponse>(Marqeta.Core.Sdk.Models.PaymentAllocationResponse.CreateFromDiscriminatorValue)?.ToList(); } },
+                { "amount", n => { Amount = n.GetDoubleValue(); } },
+                { "created_time", n => { CreatedTime = n.GetDateTimeOffsetValue(); } },
+                { "currency_code", n => { CurrencyCode = n.GetEnumValue<Marqeta.Core.Sdk.Models.CurrencyCode>(); } },
+                { "description", n => { Description = n.GetStringValue(); } },
+                { "hold_days", n => { HoldDays = n.GetIntValue(); } },
+                { "hold_end_time", n => { HoldEndTime = n.GetDateTimeOffsetValue(); } },
+                { "is_manually_released", n => { IsManuallyReleased = n.GetBoolValue(); } },
+                { "metadata", n => { Metadata = n.GetStringValue(); } },
+                { "method", n => { Method = n.GetEnumValue<Marqeta.Core.Sdk.Models.PaymentDetailResponse_method>(); } },
+                { "on_hold", n => { OnHold = n.GetBoolValue(); } },
+                { "payment_schedule_token", n => { PaymentScheduleToken = n.GetStringValue(); } },
+                { "payment_source_token", n => { PaymentSourceToken = n.GetStringValue(); } },
+                { "refund_details", n => { RefundDetails = n.GetObjectValue<Marqeta.Core.Sdk.Models.RefundDetailsResponse>(Marqeta.Core.Sdk.Models.RefundDetailsResponse.CreateFromDiscriminatorValue); } },
+                { "returned_details", n => { ReturnedDetails = n.GetObjectValue<Marqeta.Core.Sdk.Models.ReturnedDetails>(Marqeta.Core.Sdk.Models.ReturnedDetails.CreateFromDiscriminatorValue); } },
+                { "status", n => { Status = n.GetEnumValue<Marqeta.Core.Sdk.Models.PaymentStatus>(); } },
+                { "token", n => { Token = n.GetStringValue(); } },
+                { "transitions", n => { Transitions = n.GetCollectionOfObjectValues<Marqeta.Core.Sdk.Models.PaymentTransitionResponse>(Marqeta.Core.Sdk.Models.PaymentTransitionResponse.CreateFromDiscriminatorValue)?.ToList(); } },
+                { "updated_time", n => { UpdatedTime = n.GetDateTimeOffsetValue(); } },
             };
         }
         /// <summary>
@@ -168,24 +169,24 @@ namespace Marqeta.Core.Sdk.Models {
         {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("account_token", AccountToken);
-            writer.WriteCollectionOfObjectValues<PaymentAllocationResponse>("allocations", Allocations);
+            writer.WriteCollectionOfObjectValues<Marqeta.Core.Sdk.Models.PaymentAllocationResponse>("allocations", Allocations);
             writer.WriteDoubleValue("amount", Amount);
             writer.WriteDateTimeOffsetValue("created_time", CreatedTime);
-            writer.WriteEnumValue<CurrencyCode>("currency_code", CurrencyCode);
+            writer.WriteEnumValue<Marqeta.Core.Sdk.Models.CurrencyCode>("currency_code", CurrencyCode);
             writer.WriteStringValue("description", Description);
             writer.WriteIntValue("hold_days", HoldDays);
             writer.WriteDateTimeOffsetValue("hold_end_time", HoldEndTime);
             writer.WriteBoolValue("is_manually_released", IsManuallyReleased);
             writer.WriteStringValue("metadata", Metadata);
-            writer.WriteEnumValue<PaymentDetailResponse_method>("method", Method);
+            writer.WriteEnumValue<Marqeta.Core.Sdk.Models.PaymentDetailResponse_method>("method", Method);
             writer.WriteBoolValue("on_hold", OnHold);
             writer.WriteStringValue("payment_schedule_token", PaymentScheduleToken);
             writer.WriteStringValue("payment_source_token", PaymentSourceToken);
-            writer.WriteObjectValue<RefundDetailsResponse>("refund_details", RefundDetails);
+            writer.WriteObjectValue<Marqeta.Core.Sdk.Models.RefundDetailsResponse>("refund_details", RefundDetails);
             writer.WriteObjectValue<Marqeta.Core.Sdk.Models.ReturnedDetails>("returned_details", ReturnedDetails);
-            writer.WriteEnumValue<PaymentStatus>("status", Status);
+            writer.WriteEnumValue<Marqeta.Core.Sdk.Models.PaymentStatus>("status", Status);
             writer.WriteStringValue("token", Token);
-            writer.WriteCollectionOfObjectValues<PaymentTransitionResponse>("transitions", Transitions);
+            writer.WriteCollectionOfObjectValues<Marqeta.Core.Sdk.Models.PaymentTransitionResponse>("transitions", Transitions);
             writer.WriteDateTimeOffsetValue("updated_time", UpdatedTime);
             writer.WriteAdditionalData(AdditionalData);
         }

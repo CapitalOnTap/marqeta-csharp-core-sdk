@@ -4,11 +4,12 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System;
-namespace Marqeta.Core.Sdk.Models {
+namespace Marqeta.Core.Sdk.Models
+{
     /// <summary>
     /// Link to balances of related user GPAs.
     /// </summary>
-    public class Link : IAdditionalDataHolder, IParsable 
+    public class Link : IAdditionalDataHolder, IParsable
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
@@ -37,7 +38,7 @@ namespace Marqeta.Core.Sdk.Models {
         public string Rel { get; set; }
 #endif
         /// <summary>
-        /// Instantiates a new <see cref="Link"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Models.Link"/> and sets the default values.
         /// </summary>
         public Link()
         {
@@ -46,12 +47,12 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="Link"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Models.Link"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static Link CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static Marqeta.Core.Sdk.Models.Link CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-            return new Link();
+            return new Marqeta.Core.Sdk.Models.Link();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -61,9 +62,9 @@ namespace Marqeta.Core.Sdk.Models {
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                {"href", n => { Href = n.GetStringValue(); } },
-                {"method", n => { Method = n.GetStringValue(); } },
-                {"rel", n => { Rel = n.GetStringValue(); } },
+                { "href", n => { Href = n.GetStringValue(); } },
+                { "method", n => { Method = n.GetStringValue(); } },
+                { "rel", n => { Rel = n.GetStringValue(); } },
             };
         }
         /// <summary>

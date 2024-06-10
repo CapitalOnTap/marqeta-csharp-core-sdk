@@ -4,11 +4,12 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System;
-namespace Marqeta.Core.Sdk.Models {
+namespace Marqeta.Core.Sdk.Models
+{
     /// <summary>
     /// Contains details for a refund.
     /// </summary>
-    public class RefundDetails : IAdditionalDataHolder, IParsable 
+    public class RefundDetails : IAdditionalDataHolder, IParsable
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
@@ -21,9 +22,9 @@ namespace Marqeta.Core.Sdk.Models {
         public string Description { get; set; }
 #endif
         /// <summary>Method of the refund.</summary>
-        public RefundMethod? Method { get; set; }
+        public Marqeta.Core.Sdk.Models.RefundMethod? Method { get; set; }
         /// <summary>
-        /// Instantiates a new <see cref="RefundDetails"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Models.RefundDetails"/> and sets the default values.
         /// </summary>
         public RefundDetails()
         {
@@ -32,12 +33,12 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="RefundDetails"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Models.RefundDetails"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static RefundDetails CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static Marqeta.Core.Sdk.Models.RefundDetails CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-            return new RefundDetails();
+            return new Marqeta.Core.Sdk.Models.RefundDetails();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -47,8 +48,8 @@ namespace Marqeta.Core.Sdk.Models {
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                {"description", n => { Description = n.GetStringValue(); } },
-                {"method", n => { Method = n.GetEnumValue<RefundMethod>(); } },
+                { "description", n => { Description = n.GetStringValue(); } },
+                { "method", n => { Method = n.GetEnumValue<Marqeta.Core.Sdk.Models.RefundMethod>(); } },
             };
         }
         /// <summary>
@@ -59,7 +60,7 @@ namespace Marqeta.Core.Sdk.Models {
         {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("description", Description);
-            writer.WriteEnumValue<RefundMethod>("method", Method);
+            writer.WriteEnumValue<Marqeta.Core.Sdk.Models.RefundMethod>("method", Method);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

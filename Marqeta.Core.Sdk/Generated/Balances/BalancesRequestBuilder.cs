@@ -6,26 +6,27 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using System;
-namespace Marqeta.Core.Sdk.Balances {
+namespace Marqeta.Core.Sdk.Balances
+{
     /// <summary>
     /// Builds and executes requests for operations under \balances
     /// </summary>
-    public class BalancesRequestBuilder : BaseRequestBuilder 
+    public class BalancesRequestBuilder : BaseRequestBuilder
     {
         /// <summary>Gets an item from the Marqeta.Core.Sdk.balances.item collection</summary>
         /// <param name="position">Unique identifier of the user or business for which you want to return GPA balances.</param>
-        /// <returns>A <see cref="WithTokenItemRequestBuilder"/></returns>
-        public WithTokenItemRequestBuilder this[string position]
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Balances.Item.WithTokenItemRequestBuilder"/></returns>
+        public Marqeta.Core.Sdk.Balances.Item.WithTokenItemRequestBuilder this[string position]
         {
             get
             {
                 var urlTplParams = new Dictionary<string, object>(PathParameters);
                 urlTplParams.Add("token", position);
-                return new WithTokenItemRequestBuilder(urlTplParams, RequestAdapter);
+                return new Marqeta.Core.Sdk.Balances.Item.WithTokenItemRequestBuilder(urlTplParams, RequestAdapter);
             }
         }
         /// <summary>
-        /// Instantiates a new <see cref="BalancesRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Balances.BalancesRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
@@ -33,7 +34,7 @@ namespace Marqeta.Core.Sdk.Balances {
         {
         }
         /// <summary>
-        /// Instantiates a new <see cref="BalancesRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Balances.BalancesRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>

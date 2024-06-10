@@ -4,11 +4,12 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System;
-namespace Marqeta.Core.Sdk.Models {
+namespace Marqeta.Core.Sdk.Models
+{
     /// <summary>
     /// Contains a cardholder&apos;s login access information.
     /// </summary>
-    public class Access_token_response : IAdditionalDataHolder, IParsable 
+    public class Access_token_response : IAdditionalDataHolder, IParsable
     {
         /// <summary>The accesstoken_id property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -65,7 +66,7 @@ namespace Marqeta.Core.Sdk.Models {
         public string UserToken { get; set; }
 #endif
         /// <summary>
-        /// Instantiates a new <see cref="Access_token_response"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Models.Access_token_response"/> and sets the default values.
         /// </summary>
         public Access_token_response()
         {
@@ -74,12 +75,12 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="Access_token_response"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Models.Access_token_response"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static Access_token_response CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static Marqeta.Core.Sdk.Models.Access_token_response CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-            return new Access_token_response();
+            return new Marqeta.Core.Sdk.Models.Access_token_response();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -89,14 +90,14 @@ namespace Marqeta.Core.Sdk.Models {
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                {"accesstoken_id", n => { AccesstokenId = n.GetStringValue(); } },
-                {"application", n => { Application = n.GetObjectValue<Marqeta.Core.Sdk.Models.Application>(Marqeta.Core.Sdk.Models.Application.CreateFromDiscriminatorValue); } },
-                {"expires", n => { Expires = n.GetDateTimeOffsetValue(); } },
-                {"master_roles", n => { MasterRoles = n.GetCollectionOfPrimitiveValues<string>()?.ToList(); } },
-                {"one_time", n => { OneTime = n.GetBoolValue(); } },
-                {"token", n => { Token = n.GetStringValue(); } },
-                {"token_type", n => { TokenType = n.GetStringValue(); } },
-                {"user_token", n => { UserToken = n.GetStringValue(); } },
+                { "accesstoken_id", n => { AccesstokenId = n.GetStringValue(); } },
+                { "application", n => { Application = n.GetObjectValue<Marqeta.Core.Sdk.Models.Application>(Marqeta.Core.Sdk.Models.Application.CreateFromDiscriminatorValue); } },
+                { "expires", n => { Expires = n.GetDateTimeOffsetValue(); } },
+                { "master_roles", n => { MasterRoles = n.GetCollectionOfPrimitiveValues<string>()?.ToList(); } },
+                { "one_time", n => { OneTime = n.GetBoolValue(); } },
+                { "token", n => { Token = n.GetStringValue(); } },
+                { "token_type", n => { TokenType = n.GetStringValue(); } },
+                { "user_token", n => { UserToken = n.GetStringValue(); } },
             };
         }
         /// <summary>

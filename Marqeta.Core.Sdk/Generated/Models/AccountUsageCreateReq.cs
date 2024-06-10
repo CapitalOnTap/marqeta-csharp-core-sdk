@@ -4,34 +4,35 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System;
-namespace Marqeta.Core.Sdk.Models {
+namespace Marqeta.Core.Sdk.Models
+{
     /// <summary>
     /// Contains information on how a credit account is used and what types of balances are permitted on the account.
     /// </summary>
-    public class AccountUsageCreateReq : IAdditionalDataHolder, IParsable 
+    public class AccountUsageCreateReq : IAdditionalDataHolder, IParsable
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Contains one or more annual percentage rates (APRs) associated with the type of balance on the credit account.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<AprScheduleCreateReq>? Aprs { get; set; }
+        public List<Marqeta.Core.Sdk.Models.AprScheduleCreateReq>? Aprs { get; set; }
 #nullable restore
 #else
-        public List<AprScheduleCreateReq> Aprs { get; set; }
+        public List<Marqeta.Core.Sdk.Models.AprScheduleCreateReq> Aprs { get; set; }
 #endif
         /// <summary>Contains one or more fees associated with the usage type.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<AccountFee>? Fees { get; set; }
+        public List<Marqeta.Core.Sdk.Models.AccountFee>? Fees { get; set; }
 #nullable restore
 #else
-        public List<AccountFee> Fees { get; set; }
+        public List<Marqeta.Core.Sdk.Models.AccountFee> Fees { get; set; }
 #endif
         /// <summary>Type of balance.* `PURCHASE` - The balance on purchases.</summary>
-        public BalanceType? Type { get; set; }
+        public Marqeta.Core.Sdk.Models.BalanceType? Type { get; set; }
         /// <summary>
-        /// Instantiates a new <see cref="AccountUsageCreateReq"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Models.AccountUsageCreateReq"/> and sets the default values.
         /// </summary>
         public AccountUsageCreateReq()
         {
@@ -40,12 +41,12 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="AccountUsageCreateReq"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Models.AccountUsageCreateReq"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static AccountUsageCreateReq CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static Marqeta.Core.Sdk.Models.AccountUsageCreateReq CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-            return new AccountUsageCreateReq();
+            return new Marqeta.Core.Sdk.Models.AccountUsageCreateReq();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -55,9 +56,9 @@ namespace Marqeta.Core.Sdk.Models {
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                {"aprs", n => { Aprs = n.GetCollectionOfObjectValues<AprScheduleCreateReq>(AprScheduleCreateReq.CreateFromDiscriminatorValue)?.ToList(); } },
-                {"fees", n => { Fees = n.GetCollectionOfObjectValues<AccountFee>(AccountFee.CreateFromDiscriminatorValue)?.ToList(); } },
-                {"type", n => { Type = n.GetEnumValue<BalanceType>(); } },
+                { "aprs", n => { Aprs = n.GetCollectionOfObjectValues<Marqeta.Core.Sdk.Models.AprScheduleCreateReq>(Marqeta.Core.Sdk.Models.AprScheduleCreateReq.CreateFromDiscriminatorValue)?.ToList(); } },
+                { "fees", n => { Fees = n.GetCollectionOfObjectValues<Marqeta.Core.Sdk.Models.AccountFee>(Marqeta.Core.Sdk.Models.AccountFee.CreateFromDiscriminatorValue)?.ToList(); } },
+                { "type", n => { Type = n.GetEnumValue<Marqeta.Core.Sdk.Models.BalanceType>(); } },
             };
         }
         /// <summary>
@@ -67,9 +68,9 @@ namespace Marqeta.Core.Sdk.Models {
         public virtual void Serialize(ISerializationWriter writer)
         {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
-            writer.WriteCollectionOfObjectValues<AprScheduleCreateReq>("aprs", Aprs);
-            writer.WriteCollectionOfObjectValues<AccountFee>("fees", Fees);
-            writer.WriteEnumValue<BalanceType>("type", Type);
+            writer.WriteCollectionOfObjectValues<Marqeta.Core.Sdk.Models.AprScheduleCreateReq>("aprs", Aprs);
+            writer.WriteCollectionOfObjectValues<Marqeta.Core.Sdk.Models.AccountFee>("fees", Fees);
+            writer.WriteEnumValue<Marqeta.Core.Sdk.Models.BalanceType>("type", Type);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

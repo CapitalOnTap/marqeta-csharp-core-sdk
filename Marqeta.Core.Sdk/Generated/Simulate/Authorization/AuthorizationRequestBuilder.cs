@@ -9,19 +9,20 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Threading;
 using System;
-namespace Marqeta.Core.Sdk.Simulate.Authorization {
+namespace Marqeta.Core.Sdk.Simulate.Authorization
+{
     /// <summary>
     /// Builds and executes requests for operations under \simulate\authorization
     /// </summary>
-    public class AuthorizationRequestBuilder : BaseRequestBuilder 
+    public class AuthorizationRequestBuilder : BaseRequestBuilder
     {
         /// <summary>The advice property</summary>
-        public AdviceRequestBuilder Advice
+        public Marqeta.Core.Sdk.Simulate.Authorization.Advice.AdviceRequestBuilder Advice
         {
-            get => new AdviceRequestBuilder(PathParameters, RequestAdapter);
+            get => new Marqeta.Core.Sdk.Simulate.Authorization.Advice.AdviceRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>
-        /// Instantiates a new <see cref="AuthorizationRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Simulate.Authorization.AuthorizationRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
@@ -29,7 +30,7 @@ namespace Marqeta.Core.Sdk.Simulate.Authorization {
         {
         }
         /// <summary>
-        /// Instantiates a new <see cref="AuthorizationRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Simulate.Authorization.AuthorizationRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
@@ -39,27 +40,27 @@ namespace Marqeta.Core.Sdk.Simulate.Authorization {
         /// <summary>
         /// Simulates an authorization
         /// </summary>
-        /// <returns>A <see cref="Simulation_response_model"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Models.Simulation_response_model"/></returns>
         /// <param name="body">The request body</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        /// <exception cref="ApiError">When receiving a 4XX or 5XX status code</exception>
+        /// <exception cref="Marqeta.Core.Sdk.Models.ApiError">When receiving a 4XX or 5XX status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<Simulation_response_model?> PostAsync(Auth_request_model body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<Marqeta.Core.Sdk.Models.Simulation_response_model?> PostAsync(Marqeta.Core.Sdk.Models.Auth_request_model body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<Simulation_response_model> PostAsync(Auth_request_model body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<Marqeta.Core.Sdk.Models.Simulation_response_model> PostAsync(Marqeta.Core.Sdk.Models.Auth_request_model body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             _ = body ?? throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPostRequestInformation(body, requestConfiguration);
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
-                {"XXX", ApiError.CreateFromDiscriminatorValue},
+                { "XXX", Marqeta.Core.Sdk.Models.ApiError.CreateFromDiscriminatorValue },
             };
-            return await RequestAdapter.SendAsync<Simulation_response_model>(requestInfo, Simulation_response_model.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<Marqeta.Core.Sdk.Models.Simulation_response_model>(requestInfo, Marqeta.Core.Sdk.Models.Simulation_response_model.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Simulates an authorization
@@ -69,11 +70,11 @@ namespace Marqeta.Core.Sdk.Simulate.Authorization {
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToPostRequestInformation(Auth_request_model body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
+        public RequestInformation ToPostRequestInformation(Marqeta.Core.Sdk.Models.Auth_request_model body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
         {
 #nullable restore
 #else
-        public RequestInformation ToPostRequestInformation(Auth_request_model body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
+        public RequestInformation ToPostRequestInformation(Marqeta.Core.Sdk.Models.Auth_request_model body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
         {
 #endif
             _ = body ?? throw new ArgumentNullException(nameof(body));
@@ -86,11 +87,11 @@ namespace Marqeta.Core.Sdk.Simulate.Authorization {
         /// <summary>
         /// Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
         /// </summary>
-        /// <returns>A <see cref="AuthorizationRequestBuilder"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Simulate.Authorization.AuthorizationRequestBuilder"/></returns>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
-        public AuthorizationRequestBuilder WithUrl(string rawUrl)
+        public Marqeta.Core.Sdk.Simulate.Authorization.AuthorizationRequestBuilder WithUrl(string rawUrl)
         {
-            return new AuthorizationRequestBuilder(rawUrl, RequestAdapter);
+            return new Marqeta.Core.Sdk.Simulate.Authorization.AuthorizationRequestBuilder(rawUrl, RequestAdapter);
         }
     }
 }

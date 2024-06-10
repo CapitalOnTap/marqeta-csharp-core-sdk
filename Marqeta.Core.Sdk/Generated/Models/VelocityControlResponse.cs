@@ -4,9 +4,10 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System;
-namespace Marqeta.Core.Sdk.Models {
+namespace Marqeta.Core.Sdk.Models
+{
     #pragma warning disable CS1591
-    public class VelocityControlResponse : IAdditionalDataHolder, IParsable 
+    public class VelocityControlResponse : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
     {
         /// <summary>Indicates whether the velocity control is active.</summary>
@@ -62,7 +63,7 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>Start day of the velocity window defined by the `velocity_window` field.Default value is `1`</summary>
         public int? VelocityWindowStartDay { get; set; }
         /// <summary>
-        /// Instantiates a new <see cref="VelocityControlResponse"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Models.VelocityControlResponse"/> and sets the default values.
         /// </summary>
         public VelocityControlResponse()
         {
@@ -71,12 +72,12 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="VelocityControlResponse"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Models.VelocityControlResponse"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static VelocityControlResponse CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static Marqeta.Core.Sdk.Models.VelocityControlResponse CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-            return new VelocityControlResponse();
+            return new Marqeta.Core.Sdk.Models.VelocityControlResponse();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -86,16 +87,16 @@ namespace Marqeta.Core.Sdk.Models {
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                {"active", n => { Active = n.GetBoolValue(); } },
-                {"amount_limit", n => { AmountLimit = n.GetDoubleValue(); } },
-                {"association", n => { Association = n.GetObjectValue<Marqeta.Core.Sdk.Models.Association>(Marqeta.Core.Sdk.Models.Association.CreateFromDiscriminatorValue); } },
-                {"currency_code", n => { CurrencyCode = n.GetStringValue(); } },
-                {"merchant_scope", n => { MerchantScope = n.GetObjectValue<Marqeta.Core.Sdk.Models.MerchantScope>(Marqeta.Core.Sdk.Models.MerchantScope.CreateFromDiscriminatorValue); } },
-                {"name", n => { Name = n.GetStringValue(); } },
-                {"token", n => { Token = n.GetStringValue(); } },
-                {"usage_limit", n => { UsageLimit = n.GetIntValue(); } },
-                {"velocity_window", n => { VelocityWindow = n.GetEnumValue<VelocityWindow>(); } },
-                {"velocity_window_start_day", n => { VelocityWindowStartDay = n.GetIntValue(); } },
+                { "active", n => { Active = n.GetBoolValue(); } },
+                { "amount_limit", n => { AmountLimit = n.GetDoubleValue(); } },
+                { "association", n => { Association = n.GetObjectValue<Marqeta.Core.Sdk.Models.Association>(Marqeta.Core.Sdk.Models.Association.CreateFromDiscriminatorValue); } },
+                { "currency_code", n => { CurrencyCode = n.GetStringValue(); } },
+                { "merchant_scope", n => { MerchantScope = n.GetObjectValue<Marqeta.Core.Sdk.Models.MerchantScope>(Marqeta.Core.Sdk.Models.MerchantScope.CreateFromDiscriminatorValue); } },
+                { "name", n => { Name = n.GetStringValue(); } },
+                { "token", n => { Token = n.GetStringValue(); } },
+                { "usage_limit", n => { UsageLimit = n.GetIntValue(); } },
+                { "velocity_window", n => { VelocityWindow = n.GetEnumValue<Marqeta.Core.Sdk.Models.VelocityWindow>(); } },
+                { "velocity_window_start_day", n => { VelocityWindowStartDay = n.GetIntValue(); } },
             };
         }
         /// <summary>
@@ -113,7 +114,7 @@ namespace Marqeta.Core.Sdk.Models {
             writer.WriteStringValue("name", Name);
             writer.WriteStringValue("token", Token);
             writer.WriteIntValue("usage_limit", UsageLimit);
-            writer.WriteEnumValue<VelocityWindow>("velocity_window", VelocityWindow);
+            writer.WriteEnumValue<Marqeta.Core.Sdk.Models.VelocityWindow>("velocity_window", VelocityWindow);
             writer.WriteIntValue("velocity_window_start_day", VelocityWindowStartDay);
             writer.WriteAdditionalData(AdditionalData);
         }

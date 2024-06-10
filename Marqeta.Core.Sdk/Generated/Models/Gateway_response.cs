@@ -4,11 +4,12 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System;
-namespace Marqeta.Core.Sdk.Models {
+namespace Marqeta.Core.Sdk.Models
+{
     /// <summary>
     /// Contains information from the gateway in response to a funding request.
     /// </summary>
-    public class Gateway_response : IAdditionalDataHolder, IParsable 
+    public class Gateway_response : IAdditionalDataHolder, IParsable
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
@@ -23,13 +24,13 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>Contains the gateway&apos;s information about the JIT Funding transaction.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public Jit_program_response? Data { get; set; }
+        public Marqeta.Core.Sdk.Models.Jit_program_response? Data { get; set; }
 #nullable restore
 #else
-        public Jit_program_response Data { get; set; }
+        public Marqeta.Core.Sdk.Models.Jit_program_response Data { get; set; }
 #endif
         /// <summary>
-        /// Instantiates a new <see cref="Gateway_response"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Models.Gateway_response"/> and sets the default values.
         /// </summary>
         public Gateway_response()
         {
@@ -38,12 +39,12 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="Gateway_response"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Models.Gateway_response"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static Gateway_response CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static Marqeta.Core.Sdk.Models.Gateway_response CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-            return new Gateway_response();
+            return new Marqeta.Core.Sdk.Models.Gateway_response();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -53,8 +54,8 @@ namespace Marqeta.Core.Sdk.Models {
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                {"code", n => { Code = n.GetStringValue(); } },
-                {"data", n => { Data = n.GetObjectValue<Jit_program_response>(Jit_program_response.CreateFromDiscriminatorValue); } },
+                { "code", n => { Code = n.GetStringValue(); } },
+                { "data", n => { Data = n.GetObjectValue<Marqeta.Core.Sdk.Models.Jit_program_response>(Marqeta.Core.Sdk.Models.Jit_program_response.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -65,7 +66,7 @@ namespace Marqeta.Core.Sdk.Models {
         {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("code", Code);
-            writer.WriteObjectValue<Jit_program_response>("data", Data);
+            writer.WriteObjectValue<Marqeta.Core.Sdk.Models.Jit_program_response>("data", Data);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

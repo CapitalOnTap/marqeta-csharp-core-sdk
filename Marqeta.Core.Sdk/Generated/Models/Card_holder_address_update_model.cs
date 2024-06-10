@@ -4,9 +4,10 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System;
-namespace Marqeta.Core.Sdk.Models {
+namespace Marqeta.Core.Sdk.Models
+{
     #pragma warning disable CS1591
-    public class Card_holder_address_update_model : IAdditionalDataHolder, IParsable 
+    public class Card_holder_address_update_model : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
     {
         /// <summary>Specifies whether the address is active.</summary>
@@ -96,7 +97,7 @@ namespace Marqeta.Core.Sdk.Models {
         public string Zip { get; set; }
 #endif
         /// <summary>
-        /// Instantiates a new <see cref="Card_holder_address_update_model"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Models.Card_holder_address_update_model"/> and sets the default values.
         /// </summary>
         public Card_holder_address_update_model()
         {
@@ -105,12 +106,12 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="Card_holder_address_update_model"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Models.Card_holder_address_update_model"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static Card_holder_address_update_model CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static Marqeta.Core.Sdk.Models.Card_holder_address_update_model CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-            return new Card_holder_address_update_model();
+            return new Marqeta.Core.Sdk.Models.Card_holder_address_update_model();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -120,18 +121,18 @@ namespace Marqeta.Core.Sdk.Models {
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                {"active", n => { Active = n.GetBoolValue(); } },
-                {"address_1", n => { Address1 = n.GetStringValue(); } },
-                {"address_2", n => { Address2 = n.GetStringValue(); } },
-                {"city", n => { City = n.GetStringValue(); } },
-                {"country", n => { Country = n.GetStringValue(); } },
-                {"first_name", n => { FirstName = n.GetStringValue(); } },
-                {"is_default_address", n => { IsDefaultAddress = n.GetBoolValue(); } },
-                {"last_name", n => { LastName = n.GetStringValue(); } },
-                {"phone", n => { Phone = n.GetStringValue(); } },
-                {"postal_code", n => { PostalCode = n.GetStringValue(); } },
-                {"state", n => { State = n.GetStringValue(); } },
-                {"zip", n => { Zip = n.GetStringValue(); } },
+                { "active", n => { Active = n.GetBoolValue(); } },
+                { "address_1", n => { Address1 = n.GetStringValue(); } },
+                { "address_2", n => { Address2 = n.GetStringValue(); } },
+                { "city", n => { City = n.GetStringValue(); } },
+                { "country", n => { Country = n.GetStringValue(); } },
+                { "first_name", n => { FirstName = n.GetStringValue(); } },
+                { "is_default_address", n => { IsDefaultAddress = n.GetBoolValue(); } },
+                { "last_name", n => { LastName = n.GetStringValue(); } },
+                { "phone", n => { Phone = n.GetStringValue(); } },
+                { "postal_code", n => { PostalCode = n.GetStringValue(); } },
+                { "state", n => { State = n.GetStringValue(); } },
+                { "zip", n => { Zip = n.GetStringValue(); } },
             };
         }
         /// <summary>

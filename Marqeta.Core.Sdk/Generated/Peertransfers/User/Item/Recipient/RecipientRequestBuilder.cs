@@ -8,14 +8,15 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Threading;
 using System;
-namespace Marqeta.Core.Sdk.Peertransfers.User.Item.Recipient {
+namespace Marqeta.Core.Sdk.Peertransfers.User.Item.Recipient
+{
     /// <summary>
     /// Builds and executes requests for operations under \peertransfers\user\{user_or_business_token}\recipient
     /// </summary>
-    public class RecipientRequestBuilder : BaseRequestBuilder 
+    public class RecipientRequestBuilder : BaseRequestBuilder
     {
         /// <summary>
-        /// Instantiates a new <see cref="RecipientRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Peertransfers.User.Item.Recipient.RecipientRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
@@ -23,7 +24,7 @@ namespace Marqeta.Core.Sdk.Peertransfers.User.Item.Recipient {
         {
         }
         /// <summary>
-        /// Instantiates a new <see cref="RecipientRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Peertransfers.User.Item.Recipient.RecipientRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
@@ -33,25 +34,25 @@ namespace Marqeta.Core.Sdk.Peertransfers.User.Item.Recipient {
         /// <summary>
         /// Use this endpoint to list peer transfers sent by an account holder.Include a user or business token as a path parameter to identify the recipient.This endpoint supports &lt;&lt;/core-api/field-filtering, field filtering&gt;&gt; and &lt;&lt;/core-api/sorting-and-pagination, pagination&gt;&gt;.
         /// </summary>
-        /// <returns>A <see cref="Peer_transfer_response"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Models.Peer_transfer_response"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        /// <exception cref="ApiError">When receiving a 4XX or 5XX status code</exception>
+        /// <exception cref="Marqeta.Core.Sdk.Models.ApiError">When receiving a 4XX or 5XX status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<Peer_transfer_response?> GetAsync(Action<RequestConfiguration<RecipientRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<Marqeta.Core.Sdk.Models.Peer_transfer_response?> GetAsync(Action<RequestConfiguration<Marqeta.Core.Sdk.Peertransfers.User.Item.Recipient.RecipientRequestBuilder.RecipientRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<Peer_transfer_response> GetAsync(Action<RequestConfiguration<RecipientRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<Marqeta.Core.Sdk.Models.Peer_transfer_response> GetAsync(Action<RequestConfiguration<Marqeta.Core.Sdk.Peertransfers.User.Item.Recipient.RecipientRequestBuilder.RecipientRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
-                {"XXX", ApiError.CreateFromDiscriminatorValue},
+                { "XXX", Marqeta.Core.Sdk.Models.ApiError.CreateFromDiscriminatorValue },
             };
-            return await RequestAdapter.SendAsync<Peer_transfer_response>(requestInfo, Peer_transfer_response.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<Marqeta.Core.Sdk.Models.Peer_transfer_response>(requestInfo, Marqeta.Core.Sdk.Models.Peer_transfer_response.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Use this endpoint to list peer transfers sent by an account holder.Include a user or business token as a path parameter to identify the recipient.This endpoint supports &lt;&lt;/core-api/field-filtering, field filtering&gt;&gt; and &lt;&lt;/core-api/sorting-and-pagination, pagination&gt;&gt;.
@@ -60,11 +61,11 @@ namespace Marqeta.Core.Sdk.Peertransfers.User.Item.Recipient {
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<RecipientRequestBuilderGetQueryParameters>>? requestConfiguration = default)
+        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<Marqeta.Core.Sdk.Peertransfers.User.Item.Recipient.RecipientRequestBuilder.RecipientRequestBuilderGetQueryParameters>>? requestConfiguration = default)
         {
 #nullable restore
 #else
-        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<RecipientRequestBuilderGetQueryParameters>> requestConfiguration = default)
+        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<Marqeta.Core.Sdk.Peertransfers.User.Item.Recipient.RecipientRequestBuilder.RecipientRequestBuilderGetQueryParameters>> requestConfiguration = default)
         {
 #endif
             var requestInfo = new RequestInformation(Method.GET, UrlTemplate, PathParameters);
@@ -75,11 +76,11 @@ namespace Marqeta.Core.Sdk.Peertransfers.User.Item.Recipient {
         /// <summary>
         /// Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
         /// </summary>
-        /// <returns>A <see cref="RecipientRequestBuilder"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Peertransfers.User.Item.Recipient.RecipientRequestBuilder"/></returns>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
-        public RecipientRequestBuilder WithUrl(string rawUrl)
+        public Marqeta.Core.Sdk.Peertransfers.User.Item.Recipient.RecipientRequestBuilder WithUrl(string rawUrl)
         {
-            return new RecipientRequestBuilder(rawUrl, RequestAdapter);
+            return new Marqeta.Core.Sdk.Peertransfers.User.Item.Recipient.RecipientRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
         /// Use this endpoint to list peer transfers sent by an account holder.Include a user or business token as a path parameter to identify the recipient.This endpoint supports &lt;&lt;/core-api/field-filtering, field filtering&gt;&gt; and &lt;&lt;/core-api/sorting-and-pagination, pagination&gt;&gt;.

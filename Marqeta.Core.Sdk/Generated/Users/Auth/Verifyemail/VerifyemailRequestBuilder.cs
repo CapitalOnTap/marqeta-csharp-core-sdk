@@ -9,26 +9,27 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Threading;
 using System;
-namespace Marqeta.Core.Sdk.Users.Auth.Verifyemail {
+namespace Marqeta.Core.Sdk.Users.Auth.Verifyemail
+{
     /// <summary>
     /// Builds and executes requests for operations under \users\auth\verifyemail
     /// </summary>
-    public class VerifyemailRequestBuilder : BaseRequestBuilder 
+    public class VerifyemailRequestBuilder : BaseRequestBuilder
     {
         /// <summary>Gets an item from the Marqeta.Core.Sdk.users.auth.verifyemail.item collection</summary>
         /// <param name="position">Email verification token generated using the `POST /users/auth/verifyemail` operation.</param>
-        /// <returns>A <see cref="WithTokenItemRequestBuilder"/></returns>
-        public WithTokenItemRequestBuilder this[string position]
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Users.Auth.Verifyemail.Item.WithTokenItemRequestBuilder"/></returns>
+        public Marqeta.Core.Sdk.Users.Auth.Verifyemail.Item.WithTokenItemRequestBuilder this[string position]
         {
             get
             {
                 var urlTplParams = new Dictionary<string, object>(PathParameters);
                 urlTplParams.Add("token", position);
-                return new WithTokenItemRequestBuilder(urlTplParams, RequestAdapter);
+                return new Marqeta.Core.Sdk.Users.Auth.Verifyemail.Item.WithTokenItemRequestBuilder(urlTplParams, RequestAdapter);
             }
         }
         /// <summary>
-        /// Instantiates a new <see cref="VerifyemailRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Users.Auth.Verifyemail.VerifyemailRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
@@ -36,7 +37,7 @@ namespace Marqeta.Core.Sdk.Users.Auth.Verifyemail {
         {
         }
         /// <summary>
-        /// Instantiates a new <see cref="VerifyemailRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Users.Auth.Verifyemail.VerifyemailRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
@@ -48,7 +49,7 @@ namespace Marqeta.Core.Sdk.Users.Auth.Verifyemail {
         /// </summary>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        /// <exception cref="ApiError">When receiving a 4XX or 5XX status code</exception>
+        /// <exception cref="Marqeta.Core.Sdk.Models.ApiError">When receiving a 4XX or 5XX status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public async Task PostAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
@@ -61,7 +62,7 @@ namespace Marqeta.Core.Sdk.Users.Auth.Verifyemail {
             var requestInfo = ToPostRequestInformation(requestConfiguration);
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
-                {"XXX", ApiError.CreateFromDiscriminatorValue},
+                { "XXX", Marqeta.Core.Sdk.Models.ApiError.CreateFromDiscriminatorValue },
             };
             await RequestAdapter.SendNoContentAsync(requestInfo, errorMapping, cancellationToken).ConfigureAwait(false);
         }
@@ -87,11 +88,11 @@ namespace Marqeta.Core.Sdk.Users.Auth.Verifyemail {
         /// <summary>
         /// Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
         /// </summary>
-        /// <returns>A <see cref="VerifyemailRequestBuilder"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Users.Auth.Verifyemail.VerifyemailRequestBuilder"/></returns>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
-        public VerifyemailRequestBuilder WithUrl(string rawUrl)
+        public Marqeta.Core.Sdk.Users.Auth.Verifyemail.VerifyemailRequestBuilder WithUrl(string rawUrl)
         {
-            return new VerifyemailRequestBuilder(rawUrl, RequestAdapter);
+            return new Marqeta.Core.Sdk.Users.Auth.Verifyemail.VerifyemailRequestBuilder(rawUrl, RequestAdapter);
         }
     }
 }

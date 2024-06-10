@@ -4,19 +4,20 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System;
-namespace Marqeta.Core.Sdk.Models {
+namespace Marqeta.Core.Sdk.Models
+{
     /// <summary>
     /// Response details to update a fee policy.
     /// </summary>
-    public class PolicyFeeUpdateReq : IAdditionalDataHolder, IParsable 
+    public class PolicyFeeUpdateReq : IAdditionalDataHolder, IParsable
     {
         /// <summary>Contains information on the fees in an account&apos;s fee policy.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public PolicyFeeAccount? Account { get; set; }
+        public Marqeta.Core.Sdk.Models.PolicyFeeAccount? Account { get; set; }
 #nullable restore
 #else
-        public PolicyFeeAccount Account { get; set; }
+        public Marqeta.Core.Sdk.Models.PolicyFeeAccount Account { get; set; }
 #endif
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
@@ -39,10 +40,10 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>Contains information on a specific periodic fee in a fee policy.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public PolicyFeePeriodic? Periodic { get; set; }
+        public Marqeta.Core.Sdk.Models.PolicyFeePeriodic? Periodic { get; set; }
 #nullable restore
 #else
-        public PolicyFeePeriodic Periodic { get; set; }
+        public Marqeta.Core.Sdk.Models.PolicyFeePeriodic Periodic { get; set; }
 #endif
         /// <summary>Unique identifier of the fee policy.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -53,7 +54,7 @@ namespace Marqeta.Core.Sdk.Models {
         public string Token { get; set; }
 #endif
         /// <summary>
-        /// Instantiates a new <see cref="PolicyFeeUpdateReq"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Models.PolicyFeeUpdateReq"/> and sets the default values.
         /// </summary>
         public PolicyFeeUpdateReq()
         {
@@ -62,12 +63,12 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="PolicyFeeUpdateReq"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Models.PolicyFeeUpdateReq"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static PolicyFeeUpdateReq CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static Marqeta.Core.Sdk.Models.PolicyFeeUpdateReq CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-            return new PolicyFeeUpdateReq();
+            return new Marqeta.Core.Sdk.Models.PolicyFeeUpdateReq();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -77,11 +78,11 @@ namespace Marqeta.Core.Sdk.Models {
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                {"account", n => { Account = n.GetObjectValue<PolicyFeeAccount>(PolicyFeeAccount.CreateFromDiscriminatorValue); } },
-                {"description", n => { Description = n.GetStringValue(); } },
-                {"name", n => { Name = n.GetStringValue(); } },
-                {"periodic", n => { Periodic = n.GetObjectValue<PolicyFeePeriodic>(PolicyFeePeriodic.CreateFromDiscriminatorValue); } },
-                {"token", n => { Token = n.GetStringValue(); } },
+                { "account", n => { Account = n.GetObjectValue<Marqeta.Core.Sdk.Models.PolicyFeeAccount>(Marqeta.Core.Sdk.Models.PolicyFeeAccount.CreateFromDiscriminatorValue); } },
+                { "description", n => { Description = n.GetStringValue(); } },
+                { "name", n => { Name = n.GetStringValue(); } },
+                { "periodic", n => { Periodic = n.GetObjectValue<Marqeta.Core.Sdk.Models.PolicyFeePeriodic>(Marqeta.Core.Sdk.Models.PolicyFeePeriodic.CreateFromDiscriminatorValue); } },
+                { "token", n => { Token = n.GetStringValue(); } },
             };
         }
         /// <summary>
@@ -91,10 +92,10 @@ namespace Marqeta.Core.Sdk.Models {
         public virtual void Serialize(ISerializationWriter writer)
         {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<PolicyFeeAccount>("account", Account);
+            writer.WriteObjectValue<Marqeta.Core.Sdk.Models.PolicyFeeAccount>("account", Account);
             writer.WriteStringValue("description", Description);
             writer.WriteStringValue("name", Name);
-            writer.WriteObjectValue<PolicyFeePeriodic>("periodic", Periodic);
+            writer.WriteObjectValue<Marqeta.Core.Sdk.Models.PolicyFeePeriodic>("periodic", Periodic);
             writer.WriteStringValue("token", Token);
             writer.WriteAdditionalData(AdditionalData);
         }

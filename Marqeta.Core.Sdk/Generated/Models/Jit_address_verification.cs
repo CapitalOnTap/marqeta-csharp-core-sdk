@@ -4,40 +4,41 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System;
-namespace Marqeta.Core.Sdk.Models {
+namespace Marqeta.Core.Sdk.Models
+{
     /// <summary>
     /// Contains address verification data used to make JIT Funding decisions.
     /// </summary>
-    public class Jit_address_verification : IAdditionalDataHolder, IParsable 
+    public class Jit_address_verification : IAdditionalDataHolder, IParsable
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Contains address verification data consisting of address data entered by the cardholder, address data held by the Marqeta platform, and an assertion by the Marqeta platform as to whether the two sets of data match.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public Address_verification_source? Gateway { get; set; }
+        public Marqeta.Core.Sdk.Models.Address_verification_source? Gateway { get; set; }
 #nullable restore
 #else
-        public Address_verification_source Gateway { get; set; }
+        public Marqeta.Core.Sdk.Models.Address_verification_source Gateway { get; set; }
 #endif
         /// <summary>Contains address verification data consisting of address data entered by the cardholder, address data held by the Marqeta platform, and an assertion by the Marqeta platform as to whether the two sets of data match.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public Address_verification_source? Issuer { get; set; }
+        public Marqeta.Core.Sdk.Models.Address_verification_source? Issuer { get; set; }
 #nullable restore
 #else
-        public Address_verification_source Issuer { get; set; }
+        public Marqeta.Core.Sdk.Models.Address_verification_source Issuer { get; set; }
 #endif
         /// <summary>Contains address verification information.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public Avs_information? Request { get; set; }
+        public Marqeta.Core.Sdk.Models.Avs_information? Request { get; set; }
 #nullable restore
 #else
-        public Avs_information Request { get; set; }
+        public Marqeta.Core.Sdk.Models.Avs_information Request { get; set; }
 #endif
         /// <summary>
-        /// Instantiates a new <see cref="Jit_address_verification"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Models.Jit_address_verification"/> and sets the default values.
         /// </summary>
         public Jit_address_verification()
         {
@@ -46,12 +47,12 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="Jit_address_verification"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Models.Jit_address_verification"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static Jit_address_verification CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static Marqeta.Core.Sdk.Models.Jit_address_verification CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-            return new Jit_address_verification();
+            return new Marqeta.Core.Sdk.Models.Jit_address_verification();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -61,9 +62,9 @@ namespace Marqeta.Core.Sdk.Models {
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                {"gateway", n => { Gateway = n.GetObjectValue<Address_verification_source>(Address_verification_source.CreateFromDiscriminatorValue); } },
-                {"issuer", n => { Issuer = n.GetObjectValue<Address_verification_source>(Address_verification_source.CreateFromDiscriminatorValue); } },
-                {"request", n => { Request = n.GetObjectValue<Avs_information>(Avs_information.CreateFromDiscriminatorValue); } },
+                { "gateway", n => { Gateway = n.GetObjectValue<Marqeta.Core.Sdk.Models.Address_verification_source>(Marqeta.Core.Sdk.Models.Address_verification_source.CreateFromDiscriminatorValue); } },
+                { "issuer", n => { Issuer = n.GetObjectValue<Marqeta.Core.Sdk.Models.Address_verification_source>(Marqeta.Core.Sdk.Models.Address_verification_source.CreateFromDiscriminatorValue); } },
+                { "request", n => { Request = n.GetObjectValue<Marqeta.Core.Sdk.Models.Avs_information>(Marqeta.Core.Sdk.Models.Avs_information.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -73,9 +74,9 @@ namespace Marqeta.Core.Sdk.Models {
         public virtual void Serialize(ISerializationWriter writer)
         {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<Address_verification_source>("gateway", Gateway);
-            writer.WriteObjectValue<Address_verification_source>("issuer", Issuer);
-            writer.WriteObjectValue<Avs_information>("request", Request);
+            writer.WriteObjectValue<Marqeta.Core.Sdk.Models.Address_verification_source>("gateway", Gateway);
+            writer.WriteObjectValue<Marqeta.Core.Sdk.Models.Address_verification_source>("issuer", Issuer);
+            writer.WriteObjectValue<Marqeta.Core.Sdk.Models.Avs_information>("request", Request);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

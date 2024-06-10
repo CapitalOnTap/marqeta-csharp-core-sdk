@@ -4,9 +4,10 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System;
-namespace Marqeta.Core.Sdk.Models {
+namespace Marqeta.Core.Sdk.Models
+{
     #pragma warning disable CS1591
-    public class Pan_response : IAdditionalDataHolder, IParsable 
+    public class Pan_response : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -32,7 +33,7 @@ namespace Marqeta.Core.Sdk.Models {
         public string UserToken { get; set; }
 #endif
         /// <summary>
-        /// Instantiates a new <see cref="Pan_response"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Models.Pan_response"/> and sets the default values.
         /// </summary>
         public Pan_response()
         {
@@ -41,12 +42,12 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="Pan_response"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Models.Pan_response"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static Pan_response CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static Marqeta.Core.Sdk.Models.Pan_response CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-            return new Pan_response();
+            return new Marqeta.Core.Sdk.Models.Pan_response();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -56,10 +57,10 @@ namespace Marqeta.Core.Sdk.Models {
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                {"card_token", n => { CardToken = n.GetStringValue(); } },
-                {"created_time", n => { CreatedTime = n.GetDateTimeOffsetValue(); } },
-                {"last_modified_time", n => { LastModifiedTime = n.GetDateTimeOffsetValue(); } },
-                {"user_token", n => { UserToken = n.GetStringValue(); } },
+                { "card_token", n => { CardToken = n.GetStringValue(); } },
+                { "created_time", n => { CreatedTime = n.GetDateTimeOffsetValue(); } },
+                { "last_modified_time", n => { LastModifiedTime = n.GetDateTimeOffsetValue(); } },
+                { "user_token", n => { UserToken = n.GetStringValue(); } },
             };
         }
         /// <summary>

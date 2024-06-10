@@ -4,11 +4,12 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System;
-namespace Marqeta.Core.Sdk.Models {
+namespace Marqeta.Core.Sdk.Models
+{
     /// <summary>
     /// Contains information returned for account adjustment.
     /// </summary>
-    public class AccountAdjustmentResponse : IAdditionalDataHolder, IParsable 
+    public class AccountAdjustmentResponse : IAdditionalDataHolder, IParsable
     {
         /// <summary>Unique identifier of the credit account on which the adjustment was made.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -23,10 +24,10 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>Contains the adjustment&apos;s full details.The fields returned in this object depend on the adjustment type.Interest returns interest details.For the specific fields returned, see the `detail_object` fields marked &quot;Returned for interest journal entries&quot; in the &lt;&lt;/core-api/credit-account-journal-entries#getAccountJournalEntry, account journal entry response fields&gt;&gt;.Disputes return dispute details.For the specific fields returned, see the &lt;&lt;/core-api/credit-disputes#retrieveDispute, dispute response fields&gt;&gt;.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public AccountAdjustmentResponse_adjustment_detail_object? AdjustmentDetailObject { get; set; }
+        public Marqeta.Core.Sdk.Models.AccountAdjustmentResponse_adjustment_detail_object? AdjustmentDetailObject { get; set; }
 #nullable restore
 #else
-        public AccountAdjustmentResponse_adjustment_detail_object AdjustmentDetailObject { get; set; }
+        public Marqeta.Core.Sdk.Models.AccountAdjustmentResponse_adjustment_detail_object AdjustmentDetailObject { get; set; }
 #endif
         /// <summary>Amount of the adjustment.</summary>
         public double? Amount { get; set; }
@@ -63,14 +64,14 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>Unique identifier of the original journal entry needing the adjustment.</summary>
         public Guid? OriginalLedgerEntryToken { get; set; }
         /// <summary>Reason for the adjustment.* `DISPUTE` - The adjustment occurred because a dispute was initiated.* `DISPUTE_RESOLUTION` - The adjustment occurred because of the result of a dispute resolution.* `RETURNED_OR_CANCELED_PAYMENT` - The adjustment occurred because a payment was returned or canceled.* `OTHER` - Any other reason the adjustment occurred. For example, a waived fee.</summary>
-        public AccountAdjustmentResponse_reason? Reason { get; set; }
+        public Marqeta.Core.Sdk.Models.AccountAdjustmentResponse_reason? Reason { get; set; }
         /// <summary>Contains full details of the related dispute or returned payment.The fields returned in this object depend on whether a dispute or returned payment led to the interest adjustment.A dispute returns dispute details; a returned payment returns payment details.For more on the dispute details returned, see the &lt;&lt;/core-api/credit-disputes#retrieveDispute, dispute response fields&gt;&gt;.For more on the returned payment details returned, see the &lt;&lt;/core-api/credit-account-payments#retrievePayment, payment response fields&gt;&gt;.This field is returned for interest adjustments only.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public AccountAdjustmentResponse_related_detail_object? RelatedDetailObject { get; set; }
+        public Marqeta.Core.Sdk.Models.AccountAdjustmentResponse_related_detail_object? RelatedDetailObject { get; set; }
 #nullable restore
 #else
-        public AccountAdjustmentResponse_related_detail_object RelatedDetailObject { get; set; }
+        public Marqeta.Core.Sdk.Models.AccountAdjustmentResponse_related_detail_object RelatedDetailObject { get; set; }
 #endif
         /// <summary>Unique identifier of the dispute or returned payment that prompted the interest adjustment.This field is returned for interest adjustments only.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -89,9 +90,9 @@ namespace Marqeta.Core.Sdk.Models {
         public string Token { get; set; }
 #endif
         /// <summary>Type of adjustment.The adjustment is made on its correlating amount (for example, purchase adjustments are made on purchase amounts).You can use general adjustments for standalone adjustments made on the credit account balance itself, which includes account write-offs, credits, and more.</summary>
-        public AccountAdjustmentResponse_type? Type { get; set; }
+        public Marqeta.Core.Sdk.Models.AccountAdjustmentResponse_type? Type { get; set; }
         /// <summary>
-        /// Instantiates a new <see cref="AccountAdjustmentResponse"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Models.AccountAdjustmentResponse"/> and sets the default values.
         /// </summary>
         public AccountAdjustmentResponse()
         {
@@ -101,12 +102,12 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="AccountAdjustmentResponse"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Models.AccountAdjustmentResponse"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static AccountAdjustmentResponse CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static Marqeta.Core.Sdk.Models.AccountAdjustmentResponse CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-            return new AccountAdjustmentResponse();
+            return new Marqeta.Core.Sdk.Models.AccountAdjustmentResponse();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -116,21 +117,21 @@ namespace Marqeta.Core.Sdk.Models {
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                {"account_token", n => { AccountToken = n.GetStringValue(); } },
-                {"adjustment_detail_object", n => { AdjustmentDetailObject = n.GetObjectValue<AccountAdjustmentResponse_adjustment_detail_object>(AccountAdjustmentResponse_adjustment_detail_object.CreateFromDiscriminatorValue); } },
-                {"amount", n => { Amount = n.GetDoubleValue(); } },
-                {"created_time", n => { CreatedTime = n.GetDateTimeOffsetValue(); } },
-                {"currency_code", n => { CurrencyCode = n.GetEnumValue<CurrencyCode>(); } },
-                {"description", n => { Description = n.GetStringValue(); } },
-                {"detail_token", n => { DetailToken = n.GetStringValue(); } },
-                {"external_adjustment_id", n => { ExternalAdjustmentId = n.GetGuidValue(); } },
-                {"note", n => { Note = n.GetStringValue(); } },
-                {"original_ledger_entry_token", n => { OriginalLedgerEntryToken = n.GetGuidValue(); } },
-                {"reason", n => { Reason = n.GetEnumValue<AccountAdjustmentResponse_reason>(); } },
-                {"related_detail_object", n => { RelatedDetailObject = n.GetObjectValue<AccountAdjustmentResponse_related_detail_object>(AccountAdjustmentResponse_related_detail_object.CreateFromDiscriminatorValue); } },
-                {"related_detail_token", n => { RelatedDetailToken = n.GetStringValue(); } },
-                {"token", n => { Token = n.GetStringValue(); } },
-                {"type", n => { Type = n.GetEnumValue<AccountAdjustmentResponse_type>(); } },
+                { "account_token", n => { AccountToken = n.GetStringValue(); } },
+                { "adjustment_detail_object", n => { AdjustmentDetailObject = n.GetObjectValue<Marqeta.Core.Sdk.Models.AccountAdjustmentResponse_adjustment_detail_object>(Marqeta.Core.Sdk.Models.AccountAdjustmentResponse_adjustment_detail_object.CreateFromDiscriminatorValue); } },
+                { "amount", n => { Amount = n.GetDoubleValue(); } },
+                { "created_time", n => { CreatedTime = n.GetDateTimeOffsetValue(); } },
+                { "currency_code", n => { CurrencyCode = n.GetEnumValue<Marqeta.Core.Sdk.Models.CurrencyCode>(); } },
+                { "description", n => { Description = n.GetStringValue(); } },
+                { "detail_token", n => { DetailToken = n.GetStringValue(); } },
+                { "external_adjustment_id", n => { ExternalAdjustmentId = n.GetGuidValue(); } },
+                { "note", n => { Note = n.GetStringValue(); } },
+                { "original_ledger_entry_token", n => { OriginalLedgerEntryToken = n.GetGuidValue(); } },
+                { "reason", n => { Reason = n.GetEnumValue<Marqeta.Core.Sdk.Models.AccountAdjustmentResponse_reason>(); } },
+                { "related_detail_object", n => { RelatedDetailObject = n.GetObjectValue<Marqeta.Core.Sdk.Models.AccountAdjustmentResponse_related_detail_object>(Marqeta.Core.Sdk.Models.AccountAdjustmentResponse_related_detail_object.CreateFromDiscriminatorValue); } },
+                { "related_detail_token", n => { RelatedDetailToken = n.GetStringValue(); } },
+                { "token", n => { Token = n.GetStringValue(); } },
+                { "type", n => { Type = n.GetEnumValue<Marqeta.Core.Sdk.Models.AccountAdjustmentResponse_type>(); } },
             };
         }
         /// <summary>
@@ -141,20 +142,20 @@ namespace Marqeta.Core.Sdk.Models {
         {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("account_token", AccountToken);
-            writer.WriteObjectValue<AccountAdjustmentResponse_adjustment_detail_object>("adjustment_detail_object", AdjustmentDetailObject);
+            writer.WriteObjectValue<Marqeta.Core.Sdk.Models.AccountAdjustmentResponse_adjustment_detail_object>("adjustment_detail_object", AdjustmentDetailObject);
             writer.WriteDoubleValue("amount", Amount);
             writer.WriteDateTimeOffsetValue("created_time", CreatedTime);
-            writer.WriteEnumValue<CurrencyCode>("currency_code", CurrencyCode);
+            writer.WriteEnumValue<Marqeta.Core.Sdk.Models.CurrencyCode>("currency_code", CurrencyCode);
             writer.WriteStringValue("description", Description);
             writer.WriteStringValue("detail_token", DetailToken);
             writer.WriteGuidValue("external_adjustment_id", ExternalAdjustmentId);
             writer.WriteStringValue("note", Note);
             writer.WriteGuidValue("original_ledger_entry_token", OriginalLedgerEntryToken);
-            writer.WriteEnumValue<AccountAdjustmentResponse_reason>("reason", Reason);
-            writer.WriteObjectValue<AccountAdjustmentResponse_related_detail_object>("related_detail_object", RelatedDetailObject);
+            writer.WriteEnumValue<Marqeta.Core.Sdk.Models.AccountAdjustmentResponse_reason>("reason", Reason);
+            writer.WriteObjectValue<Marqeta.Core.Sdk.Models.AccountAdjustmentResponse_related_detail_object>("related_detail_object", RelatedDetailObject);
             writer.WriteStringValue("related_detail_token", RelatedDetailToken);
             writer.WriteStringValue("token", Token);
-            writer.WriteEnumValue<AccountAdjustmentResponse_type>("type", Type);
+            writer.WriteEnumValue<Marqeta.Core.Sdk.Models.AccountAdjustmentResponse_type>("type", Type);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

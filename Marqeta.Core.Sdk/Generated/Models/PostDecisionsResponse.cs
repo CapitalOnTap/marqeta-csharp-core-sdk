@@ -4,9 +4,10 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System;
-namespace Marqeta.Core.Sdk.Models {
+namespace Marqeta.Core.Sdk.Models
+{
     #pragma warning disable CS1591
-    public class PostDecisionsResponse : IAdditionalDataHolder, IParsable 
+    public class PostDecisionsResponse : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -28,7 +29,7 @@ namespace Marqeta.Core.Sdk.Models {
         public string DecisionId { get; set; }
 #endif
         /// <summary>Status of the decision on the application.</summary>
-        public PostDecisionsResponse_status? Status { get; set; }
+        public Marqeta.Core.Sdk.Models.PostDecisionsResponse_status? Status { get; set; }
         /// <summary>Date and time when the decision was submitted, in UTC.</summary>
         public DateTimeOffset? SubmittedDateTime { get; set; }
         /// <summary>Unique identifier of the decision model.See `decision_model.status` for the current state of the application.</summary>
@@ -48,7 +49,7 @@ namespace Marqeta.Core.Sdk.Models {
         public string UserToken { get; set; }
 #endif
         /// <summary>
-        /// Instantiates a new <see cref="PostDecisionsResponse"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Models.PostDecisionsResponse"/> and sets the default values.
         /// </summary>
         public PostDecisionsResponse()
         {
@@ -57,12 +58,12 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="PostDecisionsResponse"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Models.PostDecisionsResponse"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static PostDecisionsResponse CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static Marqeta.Core.Sdk.Models.PostDecisionsResponse CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-            return new PostDecisionsResponse();
+            return new Marqeta.Core.Sdk.Models.PostDecisionsResponse();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -72,12 +73,12 @@ namespace Marqeta.Core.Sdk.Models {
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                {"application_token", n => { ApplicationToken = n.GetStringValue(); } },
-                {"decision_id", n => { DecisionId = n.GetStringValue(); } },
-                {"status", n => { Status = n.GetEnumValue<PostDecisionsResponse_status>(); } },
-                {"submitted_date_time", n => { SubmittedDateTime = n.GetDateTimeOffsetValue(); } },
-                {"token", n => { Token = n.GetStringValue(); } },
-                {"user_token", n => { UserToken = n.GetStringValue(); } },
+                { "application_token", n => { ApplicationToken = n.GetStringValue(); } },
+                { "decision_id", n => { DecisionId = n.GetStringValue(); } },
+                { "status", n => { Status = n.GetEnumValue<Marqeta.Core.Sdk.Models.PostDecisionsResponse_status>(); } },
+                { "submitted_date_time", n => { SubmittedDateTime = n.GetDateTimeOffsetValue(); } },
+                { "token", n => { Token = n.GetStringValue(); } },
+                { "user_token", n => { UserToken = n.GetStringValue(); } },
             };
         }
         /// <summary>
@@ -89,7 +90,7 @@ namespace Marqeta.Core.Sdk.Models {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("application_token", ApplicationToken);
             writer.WriteStringValue("decision_id", DecisionId);
-            writer.WriteEnumValue<PostDecisionsResponse_status>("status", Status);
+            writer.WriteEnumValue<Marqeta.Core.Sdk.Models.PostDecisionsResponse_status>("status", Status);
             writer.WriteDateTimeOffsetValue("submitted_date_time", SubmittedDateTime);
             writer.WriteStringValue("token", Token);
             writer.WriteStringValue("user_token", UserToken);

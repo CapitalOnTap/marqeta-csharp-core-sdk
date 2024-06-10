@@ -64,274 +64,275 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using System;
-namespace Marqeta.Core.Sdk {
+namespace Marqeta.Core.Sdk
+{
     /// <summary>
     /// The main entry point of the SDK, exposes the configuration and the fluent API.
     /// </summary>
-    public class MarqetaClient : BaseRequestBuilder 
+    public class MarqetaClient : BaseRequestBuilder
     {
         /// <summary>The acceptedcountries property</summary>
-        public AcceptedcountriesRequestBuilder Acceptedcountries
+        public Marqeta.Core.Sdk.Acceptedcountries.AcceptedcountriesRequestBuilder Acceptedcountries
         {
-            get => new AcceptedcountriesRequestBuilder(PathParameters, RequestAdapter);
+            get => new Marqeta.Core.Sdk.Acceptedcountries.AcceptedcountriesRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The accountholdergroups property</summary>
-        public AccountholdergroupsRequestBuilder Accountholdergroups
+        public Marqeta.Core.Sdk.Accountholdergroups.AccountholdergroupsRequestBuilder Accountholdergroups
         {
-            get => new AccountholdergroupsRequestBuilder(PathParameters, RequestAdapter);
+            get => new Marqeta.Core.Sdk.Accountholdergroups.AccountholdergroupsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The accounts property</summary>
-        public AccountsRequestBuilder Accounts
+        public Marqeta.Core.Sdk.Accounts.AccountsRequestBuilder Accounts
         {
-            get => new AccountsRequestBuilder(PathParameters, RequestAdapter);
+            get => new Marqeta.Core.Sdk.Accounts.AccountsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The admin property</summary>
-        public AdminRequestBuilder Admin
+        public Marqeta.Core.Sdk.Admin.AdminRequestBuilder Admin
         {
-            get => new AdminRequestBuilder(PathParameters, RequestAdapter);
+            get => new Marqeta.Core.Sdk.Admin.AdminRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The authcontrols property</summary>
-        public AuthcontrolsRequestBuilder Authcontrols
+        public Marqeta.Core.Sdk.Authcontrols.AuthcontrolsRequestBuilder Authcontrols
         {
-            get => new AuthcontrolsRequestBuilder(PathParameters, RequestAdapter);
+            get => new Marqeta.Core.Sdk.Authcontrols.AuthcontrolsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The autoreloads property</summary>
-        public AutoreloadsRequestBuilder Autoreloads
+        public Marqeta.Core.Sdk.Autoreloads.AutoreloadsRequestBuilder Autoreloads
         {
-            get => new AutoreloadsRequestBuilder(PathParameters, RequestAdapter);
+            get => new Marqeta.Core.Sdk.Autoreloads.AutoreloadsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The balances property</summary>
-        public BalancesRequestBuilder Balances
+        public Marqeta.Core.Sdk.Balances.BalancesRequestBuilder Balances
         {
-            get => new BalancesRequestBuilder(PathParameters, RequestAdapter);
+            get => new Marqeta.Core.Sdk.Balances.BalancesRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The banktransfers property</summary>
-        public BanktransfersRequestBuilder Banktransfers
+        public Marqeta.Core.Sdk.Banktransfers.BanktransfersRequestBuilder Banktransfers
         {
-            get => new BanktransfersRequestBuilder(PathParameters, RequestAdapter);
+            get => new Marqeta.Core.Sdk.Banktransfers.BanktransfersRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The bulkissuances property</summary>
-        public BulkissuancesRequestBuilder Bulkissuances
+        public Marqeta.Core.Sdk.Bulkissuances.BulkissuancesRequestBuilder Bulkissuances
         {
-            get => new BulkissuancesRequestBuilder(PathParameters, RequestAdapter);
+            get => new Marqeta.Core.Sdk.Bulkissuances.BulkissuancesRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The bundles property</summary>
-        public BundlesRequestBuilder Bundles
+        public Marqeta.Core.Sdk.Bundles.BundlesRequestBuilder Bundles
         {
-            get => new BundlesRequestBuilder(PathParameters, RequestAdapter);
+            get => new Marqeta.Core.Sdk.Bundles.BundlesRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The businesses property</summary>
-        public BusinessesRequestBuilder Businesses
+        public Marqeta.Core.Sdk.Businesses.BusinessesRequestBuilder Businesses
         {
-            get => new BusinessesRequestBuilder(PathParameters, RequestAdapter);
+            get => new Marqeta.Core.Sdk.Businesses.BusinessesRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The businesstransitions property</summary>
-        public BusinesstransitionsRequestBuilder Businesstransitions
+        public Marqeta.Core.Sdk.Businesstransitions.BusinesstransitionsRequestBuilder Businesstransitions
         {
-            get => new BusinesstransitionsRequestBuilder(PathParameters, RequestAdapter);
+            get => new Marqeta.Core.Sdk.Businesstransitions.BusinesstransitionsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The cardgroups property</summary>
-        public CardgroupsRequestBuilder Cardgroups
+        public Marqeta.Core.Sdk.Cardgroups.CardgroupsRequestBuilder Cardgroups
         {
-            get => new CardgroupsRequestBuilder(PathParameters, RequestAdapter);
+            get => new Marqeta.Core.Sdk.Cardgroups.CardgroupsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The cardproducts property</summary>
-        public CardproductsRequestBuilder Cardproducts
+        public Marqeta.Core.Sdk.Cardproducts.CardproductsRequestBuilder Cardproducts
         {
-            get => new CardproductsRequestBuilder(PathParameters, RequestAdapter);
+            get => new Marqeta.Core.Sdk.Cardproducts.CardproductsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The cards property</summary>
-        public CardsRequestBuilder Cards
+        public Marqeta.Core.Sdk.Cards.CardsRequestBuilder Cards
         {
-            get => new CardsRequestBuilder(PathParameters, RequestAdapter);
+            get => new Marqeta.Core.Sdk.Cards.CardsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The cardtransitions property</summary>
-        public CardtransitionsRequestBuilder Cardtransitions
+        public Marqeta.Core.Sdk.Cardtransitions.CardtransitionsRequestBuilder Cardtransitions
         {
-            get => new CardtransitionsRequestBuilder(PathParameters, RequestAdapter);
+            get => new Marqeta.Core.Sdk.Cardtransitions.CardtransitionsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The commandomodes property</summary>
-        public CommandomodesRequestBuilder Commandomodes
+        public Marqeta.Core.Sdk.Commandomodes.CommandomodesRequestBuilder Commandomodes
         {
-            get => new CommandomodesRequestBuilder(PathParameters, RequestAdapter);
+            get => new Marqeta.Core.Sdk.Commandomodes.CommandomodesRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The credit property</summary>
-        public CreditRequestBuilder Credit
+        public Marqeta.Core.Sdk.Credit.CreditRequestBuilder Credit
         {
-            get => new CreditRequestBuilder(PathParameters, RequestAdapter);
+            get => new Marqeta.Core.Sdk.Credit.CreditRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The depositaccounts property</summary>
-        public DepositaccountsRequestBuilder Depositaccounts
+        public Marqeta.Core.Sdk.Depositaccounts.DepositaccountsRequestBuilder Depositaccounts
         {
-            get => new DepositaccountsRequestBuilder(PathParameters, RequestAdapter);
+            get => new Marqeta.Core.Sdk.Depositaccounts.DepositaccountsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The digitalwalletprovisionrequests property</summary>
-        public DigitalwalletprovisionrequestsRequestBuilder Digitalwalletprovisionrequests
+        public Marqeta.Core.Sdk.Digitalwalletprovisionrequests.DigitalwalletprovisionrequestsRequestBuilder Digitalwalletprovisionrequests
         {
-            get => new DigitalwalletprovisionrequestsRequestBuilder(PathParameters, RequestAdapter);
+            get => new Marqeta.Core.Sdk.Digitalwalletprovisionrequests.DigitalwalletprovisionrequestsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The digitalwallets property</summary>
-        public DigitalwalletsRequestBuilder Digitalwallets
+        public Marqeta.Core.Sdk.Digitalwallets.DigitalwalletsRequestBuilder Digitalwallets
         {
-            get => new DigitalwalletsRequestBuilder(PathParameters, RequestAdapter);
+            get => new Marqeta.Core.Sdk.Digitalwallets.DigitalwalletsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The digitalwallettokens property</summary>
-        public DigitalwallettokensRequestBuilder Digitalwallettokens
+        public Marqeta.Core.Sdk.Digitalwallettokens.DigitalwallettokensRequestBuilder Digitalwallettokens
         {
-            get => new DigitalwallettokensRequestBuilder(PathParameters, RequestAdapter);
+            get => new Marqeta.Core.Sdk.Digitalwallettokens.DigitalwallettokensRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The digitalwallettokentransitions property</summary>
-        public DigitalwallettokentransitionsRequestBuilder Digitalwallettokentransitions
+        public Marqeta.Core.Sdk.Digitalwallettokentransitions.DigitalwallettokentransitionsRequestBuilder Digitalwallettokentransitions
         {
-            get => new DigitalwallettokentransitionsRequestBuilder(PathParameters, RequestAdapter);
+            get => new Marqeta.Core.Sdk.Digitalwallettokentransitions.DigitalwallettokentransitionsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The directdeposits property</summary>
-        public DirectdepositsRequestBuilder Directdeposits
+        public Marqeta.Core.Sdk.Directdeposits.DirectdepositsRequestBuilder Directdeposits
         {
-            get => new DirectdepositsRequestBuilder(PathParameters, RequestAdapter);
+            get => new Marqeta.Core.Sdk.Directdeposits.DirectdepositsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The feecharges property</summary>
-        public FeechargesRequestBuilder Feecharges
+        public Marqeta.Core.Sdk.Feecharges.FeechargesRequestBuilder Feecharges
         {
-            get => new FeechargesRequestBuilder(PathParameters, RequestAdapter);
+            get => new Marqeta.Core.Sdk.Feecharges.FeechargesRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The feedback property</summary>
-        public FeedbackRequestBuilder Feedback
+        public Marqeta.Core.Sdk.Feedback.FeedbackRequestBuilder Feedback
         {
-            get => new FeedbackRequestBuilder(PathParameters, RequestAdapter);
+            get => new Marqeta.Core.Sdk.Feedback.FeedbackRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The feerefunds property</summary>
-        public FeerefundsRequestBuilder Feerefunds
+        public Marqeta.Core.Sdk.Feerefunds.FeerefundsRequestBuilder Feerefunds
         {
-            get => new FeerefundsRequestBuilder(PathParameters, RequestAdapter);
+            get => new Marqeta.Core.Sdk.Feerefunds.FeerefundsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The fees property</summary>
-        public FeesRequestBuilder Fees
+        public Marqeta.Core.Sdk.Fees.FeesRequestBuilder Fees
         {
-            get => new FeesRequestBuilder(PathParameters, RequestAdapter);
+            get => new Marqeta.Core.Sdk.Fees.FeesRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The fundingsources property</summary>
-        public FundingsourcesRequestBuilder Fundingsources
+        public Marqeta.Core.Sdk.Fundingsources.FundingsourcesRequestBuilder Fundingsources
         {
-            get => new FundingsourcesRequestBuilder(PathParameters, RequestAdapter);
+            get => new Marqeta.Core.Sdk.Fundingsources.FundingsourcesRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The gpaorders property</summary>
-        public GpaordersRequestBuilder Gpaorders
+        public Marqeta.Core.Sdk.Gpaorders.GpaordersRequestBuilder Gpaorders
         {
-            get => new GpaordersRequestBuilder(PathParameters, RequestAdapter);
+            get => new Marqeta.Core.Sdk.Gpaorders.GpaordersRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The kyc property</summary>
-        public KycRequestBuilder Kyc
+        public Marqeta.Core.Sdk.Kyc.KycRequestBuilder Kyc
         {
-            get => new KycRequestBuilder(PathParameters, RequestAdapter);
+            get => new Marqeta.Core.Sdk.Kyc.KycRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The mccgroups property</summary>
-        public MccgroupsRequestBuilder Mccgroups
+        public Marqeta.Core.Sdk.Mccgroups.MccgroupsRequestBuilder Mccgroups
         {
-            get => new MccgroupsRequestBuilder(PathParameters, RequestAdapter);
+            get => new Marqeta.Core.Sdk.Mccgroups.MccgroupsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The merchantgroups property</summary>
-        public MerchantgroupsRequestBuilder Merchantgroups
+        public Marqeta.Core.Sdk.Merchantgroups.MerchantgroupsRequestBuilder Merchantgroups
         {
-            get => new MerchantgroupsRequestBuilder(PathParameters, RequestAdapter);
+            get => new Marqeta.Core.Sdk.Merchantgroups.MerchantgroupsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The paymentsources property</summary>
-        public PaymentsourcesRequestBuilder Paymentsources
+        public Marqeta.Core.Sdk.Paymentsources.PaymentsourcesRequestBuilder Paymentsources
         {
-            get => new PaymentsourcesRequestBuilder(PathParameters, RequestAdapter);
+            get => new Marqeta.Core.Sdk.Paymentsources.PaymentsourcesRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The peertransfers property</summary>
-        public PeertransfersRequestBuilder Peertransfers
+        public Marqeta.Core.Sdk.Peertransfers.PeertransfersRequestBuilder Peertransfers
         {
-            get => new PeertransfersRequestBuilder(PathParameters, RequestAdapter);
+            get => new Marqeta.Core.Sdk.Peertransfers.PeertransfersRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The ping property</summary>
-        public PingRequestBuilder Ping
+        public Marqeta.Core.Sdk.Ping.PingRequestBuilder Ping
         {
-            get => new PingRequestBuilder(PathParameters, RequestAdapter);
+            get => new Marqeta.Core.Sdk.Ping.PingRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The pins property</summary>
-        public PinsRequestBuilder Pins
+        public Marqeta.Core.Sdk.Pins.PinsRequestBuilder Pins
         {
-            get => new PinsRequestBuilder(PathParameters, RequestAdapter);
+            get => new Marqeta.Core.Sdk.Pins.PinsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The policies property</summary>
-        public PoliciesRequestBuilder Policies
+        public Marqeta.Core.Sdk.Policies.PoliciesRequestBuilder Policies
         {
-            get => new PoliciesRequestBuilder(PathParameters, RequestAdapter);
+            get => new Marqeta.Core.Sdk.Policies.PoliciesRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The products property</summary>
-        public ProductsRequestBuilder Products
+        public Marqeta.Core.Sdk.Products.ProductsRequestBuilder Products
         {
-            get => new ProductsRequestBuilder(PathParameters, RequestAdapter);
+            get => new Marqeta.Core.Sdk.Products.ProductsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The programgateways property</summary>
-        public ProgramgatewaysRequestBuilder Programgateways
+        public Marqeta.Core.Sdk.Programgateways.ProgramgatewaysRequestBuilder Programgateways
         {
-            get => new ProgramgatewaysRequestBuilder(PathParameters, RequestAdapter);
+            get => new Marqeta.Core.Sdk.Programgateways.ProgramgatewaysRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The programreserve property</summary>
-        public ProgramreserveRequestBuilder Programreserve
+        public Marqeta.Core.Sdk.Programreserve.ProgramreserveRequestBuilder Programreserve
         {
-            get => new ProgramreserveRequestBuilder(PathParameters, RequestAdapter);
+            get => new Marqeta.Core.Sdk.Programreserve.ProgramreserveRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The programtransfers property</summary>
-        public ProgramtransfersRequestBuilder Programtransfers
+        public Marqeta.Core.Sdk.Programtransfers.ProgramtransfersRequestBuilder Programtransfers
         {
-            get => new ProgramtransfersRequestBuilder(PathParameters, RequestAdapter);
+            get => new Marqeta.Core.Sdk.Programtransfers.ProgramtransfersRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The pushtocards property</summary>
-        public PushtocardsRequestBuilder Pushtocards
+        public Marqeta.Core.Sdk.Pushtocards.PushtocardsRequestBuilder Pushtocards
         {
-            get => new PushtocardsRequestBuilder(PathParameters, RequestAdapter);
+            get => new Marqeta.Core.Sdk.Pushtocards.PushtocardsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The realtimefeegroups property</summary>
-        public RealtimefeegroupsRequestBuilder Realtimefeegroups
+        public Marqeta.Core.Sdk.Realtimefeegroups.RealtimefeegroupsRequestBuilder Realtimefeegroups
         {
-            get => new RealtimefeegroupsRequestBuilder(PathParameters, RequestAdapter);
+            get => new Marqeta.Core.Sdk.Realtimefeegroups.RealtimefeegroupsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The rewardprograms property</summary>
-        public RewardprogramsRequestBuilder Rewardprograms
+        public Marqeta.Core.Sdk.Rewardprograms.RewardprogramsRequestBuilder Rewardprograms
         {
-            get => new RewardprogramsRequestBuilder(PathParameters, RequestAdapter);
+            get => new Marqeta.Core.Sdk.Rewardprograms.RewardprogramsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The simulate property</summary>
-        public SimulateRequestBuilder Simulate
+        public Marqeta.Core.Sdk.Simulate.SimulateRequestBuilder Simulate
         {
-            get => new SimulateRequestBuilder(PathParameters, RequestAdapter);
+            get => new Marqeta.Core.Sdk.Simulate.SimulateRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The substatuses property</summary>
-        public SubstatusesRequestBuilder Substatuses
+        public Marqeta.Core.Sdk.Substatuses.SubstatusesRequestBuilder Substatuses
         {
-            get => new SubstatusesRequestBuilder(PathParameters, RequestAdapter);
+            get => new Marqeta.Core.Sdk.Substatuses.SubstatusesRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The transactions property</summary>
-        public TransactionsRequestBuilder Transactions
+        public Marqeta.Core.Sdk.Transactions.TransactionsRequestBuilder Transactions
         {
-            get => new TransactionsRequestBuilder(PathParameters, RequestAdapter);
+            get => new Marqeta.Core.Sdk.Transactions.TransactionsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The users property</summary>
-        public UsersRequestBuilder Users
+        public Marqeta.Core.Sdk.Users.UsersRequestBuilder Users
         {
-            get => new UsersRequestBuilder(PathParameters, RequestAdapter);
+            get => new Marqeta.Core.Sdk.Users.UsersRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The usertransitions property</summary>
-        public UsertransitionsRequestBuilder Usertransitions
+        public Marqeta.Core.Sdk.Usertransitions.UsertransitionsRequestBuilder Usertransitions
         {
-            get => new UsertransitionsRequestBuilder(PathParameters, RequestAdapter);
+            get => new Marqeta.Core.Sdk.Usertransitions.UsertransitionsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The velocitycontrols property</summary>
-        public VelocitycontrolsRequestBuilder Velocitycontrols
+        public Marqeta.Core.Sdk.Velocitycontrols.VelocitycontrolsRequestBuilder Velocitycontrols
         {
-            get => new VelocitycontrolsRequestBuilder(PathParameters, RequestAdapter);
+            get => new Marqeta.Core.Sdk.Velocitycontrols.VelocitycontrolsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The webhooks property</summary>
-        public WebhooksRequestBuilder Webhooks
+        public Marqeta.Core.Sdk.Webhooks.WebhooksRequestBuilder Webhooks
         {
-            get => new WebhooksRequestBuilder(PathParameters, RequestAdapter);
+            get => new Marqeta.Core.Sdk.Webhooks.WebhooksRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>
-        /// Instantiates a new <see cref="MarqetaClient"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.MarqetaClient"/> and sets the default values.
         /// </summary>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
         public MarqetaClient(IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}", new Dictionary<string, object>())

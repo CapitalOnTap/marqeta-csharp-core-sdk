@@ -4,11 +4,12 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System;
-namespace Marqeta.Core.Sdk.Models {
+namespace Marqeta.Core.Sdk.Models
+{
     /// <summary>
     /// Return details for a specific asset.
     /// </summary>
-    public class PolicyDocumentAssetResponse : IAdditionalDataHolder, IParsable 
+    public class PolicyDocumentAssetResponse : IAdditionalDataHolder, IParsable
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
@@ -25,13 +26,13 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>Contains one or more URLs for an asset.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public PolicyDocumentAssetURLs? AssetUrls { get; set; }
+        public Marqeta.Core.Sdk.Models.PolicyDocumentAssetURLs? AssetUrls { get; set; }
 #nullable restore
 #else
-        public PolicyDocumentAssetURLs AssetUrls { get; set; }
+        public Marqeta.Core.Sdk.Models.PolicyDocumentAssetURLs AssetUrls { get; set; }
 #endif
         /// <summary>
-        /// Instantiates a new <see cref="PolicyDocumentAssetResponse"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Models.PolicyDocumentAssetResponse"/> and sets the default values.
         /// </summary>
         public PolicyDocumentAssetResponse()
         {
@@ -40,12 +41,12 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="PolicyDocumentAssetResponse"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Models.PolicyDocumentAssetResponse"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static PolicyDocumentAssetResponse CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static Marqeta.Core.Sdk.Models.PolicyDocumentAssetResponse CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-            return new PolicyDocumentAssetResponse();
+            return new Marqeta.Core.Sdk.Models.PolicyDocumentAssetResponse();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -55,9 +56,9 @@ namespace Marqeta.Core.Sdk.Models {
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                {"asset_created_time", n => { AssetCreatedTime = n.GetDateTimeOffsetValue(); } },
-                {"asset_token", n => { AssetToken = n.GetStringValue(); } },
-                {"asset_urls", n => { AssetUrls = n.GetObjectValue<PolicyDocumentAssetURLs>(PolicyDocumentAssetURLs.CreateFromDiscriminatorValue); } },
+                { "asset_created_time", n => { AssetCreatedTime = n.GetDateTimeOffsetValue(); } },
+                { "asset_token", n => { AssetToken = n.GetStringValue(); } },
+                { "asset_urls", n => { AssetUrls = n.GetObjectValue<Marqeta.Core.Sdk.Models.PolicyDocumentAssetURLs>(Marqeta.Core.Sdk.Models.PolicyDocumentAssetURLs.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -69,7 +70,7 @@ namespace Marqeta.Core.Sdk.Models {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
             writer.WriteDateTimeOffsetValue("asset_created_time", AssetCreatedTime);
             writer.WriteStringValue("asset_token", AssetToken);
-            writer.WriteObjectValue<PolicyDocumentAssetURLs>("asset_urls", AssetUrls);
+            writer.WriteObjectValue<Marqeta.Core.Sdk.Models.PolicyDocumentAssetURLs>("asset_urls", AssetUrls);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

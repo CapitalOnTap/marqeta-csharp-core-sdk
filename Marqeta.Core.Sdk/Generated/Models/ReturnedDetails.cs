@@ -4,11 +4,12 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System;
-namespace Marqeta.Core.Sdk.Models {
+namespace Marqeta.Core.Sdk.Models
+{
     /// <summary>
     /// Contains information on a returned payment.
     /// </summary>
-    public class ReturnedDetails : IAdditionalDataHolder, IParsable 
+    public class ReturnedDetails : IAdditionalDataHolder, IParsable
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
@@ -29,7 +30,7 @@ namespace Marqeta.Core.Sdk.Models {
         public string ReturnReason { get; set; }
 #endif
         /// <summary>
-        /// Instantiates a new <see cref="ReturnedDetails"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Models.ReturnedDetails"/> and sets the default values.
         /// </summary>
         public ReturnedDetails()
         {
@@ -38,12 +39,12 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="ReturnedDetails"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Models.ReturnedDetails"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static ReturnedDetails CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static Marqeta.Core.Sdk.Models.ReturnedDetails CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-            return new ReturnedDetails();
+            return new Marqeta.Core.Sdk.Models.ReturnedDetails();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -53,8 +54,8 @@ namespace Marqeta.Core.Sdk.Models {
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                {"return_code", n => { ReturnCode = n.GetStringValue(); } },
-                {"return_reason", n => { ReturnReason = n.GetStringValue(); } },
+                { "return_code", n => { ReturnCode = n.GetStringValue(); } },
+                { "return_reason", n => { ReturnReason = n.GetStringValue(); } },
             };
         }
         /// <summary>

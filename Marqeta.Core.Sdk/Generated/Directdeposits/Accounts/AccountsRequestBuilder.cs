@@ -6,27 +6,28 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using System;
-namespace Marqeta.Core.Sdk.Directdeposits.Accounts {
+namespace Marqeta.Core.Sdk.Directdeposits.Accounts
+{
     /// <summary>
     /// Builds and executes requests for operations under \directdeposits\accounts
     /// </summary>
-    public class AccountsRequestBuilder : BaseRequestBuilder 
+    public class AccountsRequestBuilder : BaseRequestBuilder
     {
         /// <summary>Gets an item from the Marqeta.Core.Sdk.directdeposits.accounts.item collection</summary>
         /// <param name="position">Unique identifier of the item</param>
-        /// <returns>A <see cref="WithUser_or_business_tokenItemRequestBuilder"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Directdeposits.Accounts.Item.WithUser_or_business_tokenItemRequestBuilder"/></returns>
         [Obsolete("")]
-        public WithUser_or_business_tokenItemRequestBuilder this[string position]
+        public Marqeta.Core.Sdk.Directdeposits.Accounts.Item.WithUser_or_business_tokenItemRequestBuilder this[string position]
         {
             get
             {
                 var urlTplParams = new Dictionary<string, object>(PathParameters);
                 urlTplParams.Add("user_or_business_token", position);
-                return new WithUser_or_business_tokenItemRequestBuilder(urlTplParams, RequestAdapter);
+                return new Marqeta.Core.Sdk.Directdeposits.Accounts.Item.WithUser_or_business_tokenItemRequestBuilder(urlTplParams, RequestAdapter);
             }
         }
         /// <summary>
-        /// Instantiates a new <see cref="AccountsRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Directdeposits.Accounts.AccountsRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
@@ -34,7 +35,7 @@ namespace Marqeta.Core.Sdk.Directdeposits.Accounts {
         {
         }
         /// <summary>
-        /// Instantiates a new <see cref="AccountsRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Directdeposits.Accounts.AccountsRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>

@@ -4,9 +4,10 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System;
-namespace Marqeta.Core.Sdk.Models {
+namespace Marqeta.Core.Sdk.Models
+{
     #pragma warning disable CS1591
-    public class RewardProgramsResponse : IAdditionalDataHolder, IParsable 
+    public class RewardProgramsResponse : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
     {
         /// <summary>Unique identifier of the associated credit account.</summary>
@@ -52,7 +53,7 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>Date and time when the reward program was last updated on the Marqeta platform, in UTC.</summary>
         public DateTimeOffset? UpdatedTime { get; set; }
         /// <summary>
-        /// Instantiates a new <see cref="RewardProgramsResponse"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Models.RewardProgramsResponse"/> and sets the default values.
         /// </summary>
         public RewardProgramsResponse()
         {
@@ -61,12 +62,12 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="RewardProgramsResponse"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Models.RewardProgramsResponse"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static RewardProgramsResponse CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static Marqeta.Core.Sdk.Models.RewardProgramsResponse CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-            return new RewardProgramsResponse();
+            return new Marqeta.Core.Sdk.Models.RewardProgramsResponse();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -76,14 +77,14 @@ namespace Marqeta.Core.Sdk.Models {
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                {"account_token", n => { AccountToken = n.GetStringValue(); } },
-                {"bundle_token", n => { BundleToken = n.GetStringValue(); } },
-                {"calculation_type", n => { CalculationType = n.GetEnumValue<CalculationType>(); } },
-                {"created_time", n => { CreatedTime = n.GetDateTimeOffsetValue(); } },
-                {"is_active", n => { IsActive = n.GetBoolValue(); } },
-                {"note", n => { Note = n.GetStringValue(); } },
-                {"token", n => { Token = n.GetStringValue(); } },
-                {"updated_time", n => { UpdatedTime = n.GetDateTimeOffsetValue(); } },
+                { "account_token", n => { AccountToken = n.GetStringValue(); } },
+                { "bundle_token", n => { BundleToken = n.GetStringValue(); } },
+                { "calculation_type", n => { CalculationType = n.GetEnumValue<Marqeta.Core.Sdk.Models.CalculationType>(); } },
+                { "created_time", n => { CreatedTime = n.GetDateTimeOffsetValue(); } },
+                { "is_active", n => { IsActive = n.GetBoolValue(); } },
+                { "note", n => { Note = n.GetStringValue(); } },
+                { "token", n => { Token = n.GetStringValue(); } },
+                { "updated_time", n => { UpdatedTime = n.GetDateTimeOffsetValue(); } },
             };
         }
         /// <summary>
@@ -95,7 +96,7 @@ namespace Marqeta.Core.Sdk.Models {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("account_token", AccountToken);
             writer.WriteStringValue("bundle_token", BundleToken);
-            writer.WriteEnumValue<CalculationType>("calculation_type", CalculationType);
+            writer.WriteEnumValue<Marqeta.Core.Sdk.Models.CalculationType>("calculation_type", CalculationType);
             writer.WriteDateTimeOffsetValue("created_time", CreatedTime);
             writer.WriteBoolValue("is_active", IsActive);
             writer.WriteStringValue("note", Note);

@@ -4,9 +4,10 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System;
-namespace Marqeta.Core.Sdk.Models {
+namespace Marqeta.Core.Sdk.Models
+{
     #pragma warning disable CS1591
-    public class Manual_entry : IAdditionalDataHolder, IParsable 
+    public class Manual_entry : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -14,15 +15,15 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>The address_verification property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public Digital_wallet_token_address_verification? AddressVerification { get; set; }
+        public Marqeta.Core.Sdk.Models.Digital_wallet_token_address_verification? AddressVerification { get; set; }
 #nullable restore
 #else
-        public Digital_wallet_token_address_verification AddressVerification { get; set; }
+        public Marqeta.Core.Sdk.Models.Digital_wallet_token_address_verification AddressVerification { get; set; }
 #endif
         /// <summary>Specifies if manual entry is enabled.</summary>
         public bool? Enabled { get; set; }
         /// <summary>
-        /// Instantiates a new <see cref="Manual_entry"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Models.Manual_entry"/> and sets the default values.
         /// </summary>
         public Manual_entry()
         {
@@ -31,12 +32,12 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="Manual_entry"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Models.Manual_entry"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static Manual_entry CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static Marqeta.Core.Sdk.Models.Manual_entry CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-            return new Manual_entry();
+            return new Marqeta.Core.Sdk.Models.Manual_entry();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -46,8 +47,8 @@ namespace Marqeta.Core.Sdk.Models {
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                {"address_verification", n => { AddressVerification = n.GetObjectValue<Digital_wallet_token_address_verification>(Digital_wallet_token_address_verification.CreateFromDiscriminatorValue); } },
-                {"enabled", n => { Enabled = n.GetBoolValue(); } },
+                { "address_verification", n => { AddressVerification = n.GetObjectValue<Marqeta.Core.Sdk.Models.Digital_wallet_token_address_verification>(Marqeta.Core.Sdk.Models.Digital_wallet_token_address_verification.CreateFromDiscriminatorValue); } },
+                { "enabled", n => { Enabled = n.GetBoolValue(); } },
             };
         }
         /// <summary>
@@ -57,7 +58,7 @@ namespace Marqeta.Core.Sdk.Models {
         public virtual void Serialize(ISerializationWriter writer)
         {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<Digital_wallet_token_address_verification>("address_verification", AddressVerification);
+            writer.WriteObjectValue<Marqeta.Core.Sdk.Models.Digital_wallet_token_address_verification>("address_verification", AddressVerification);
             writer.WriteBoolValue("enabled", Enabled);
             writer.WriteAdditionalData(AdditionalData);
         }

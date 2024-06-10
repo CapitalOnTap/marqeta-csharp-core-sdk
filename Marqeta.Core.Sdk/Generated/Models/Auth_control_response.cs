@@ -4,9 +4,10 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System;
-namespace Marqeta.Core.Sdk.Models {
+namespace Marqeta.Core.Sdk.Models
+{
     #pragma warning disable CS1591
-    public class Auth_control_response : IAdditionalDataHolder, IParsable 
+    public class Auth_control_response : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
     {
         /// <summary>Indicates whether the authorization control is active.This field is returned if it exists in the resource.</summary>
@@ -16,20 +17,20 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>Defines the group of users to which the velocity control applies.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public Spend_control_association? Association { get; set; }
+        public Marqeta.Core.Sdk.Models.Spend_control_association? Association { get; set; }
 #nullable restore
 #else
-        public Spend_control_association Association { get; set; }
+        public Marqeta.Core.Sdk.Models.Spend_control_association Association { get; set; }
 #endif
         /// <summary>Date and time when the exception ends, in UTC.This field is returned if it exists in the resource.</summary>
         public DateTimeOffset? EndTime { get; set; }
         /// <summary>Defines the group of merchants to which the authorization control applies.This object is required if the `association` object is not included in your request.Your request can include both the `merchant_scope` and `association` objects.If you include this object in your request, you must populate one or more of its fields.If no fields are populated, the authorization control applies to all merchants.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public Auth_control_merchant_scope? MerchantScope { get; set; }
+        public Marqeta.Core.Sdk.Models.Auth_control_merchant_scope? MerchantScope { get; set; }
 #nullable restore
 #else
-        public Auth_control_merchant_scope MerchantScope { get; set; }
+        public Marqeta.Core.Sdk.Models.Auth_control_merchant_scope MerchantScope { get; set; }
 #endif
         /// <summary>Name of the authorization control.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -50,7 +51,7 @@ namespace Marqeta.Core.Sdk.Models {
         public string Token { get; set; }
 #endif
         /// <summary>
-        /// Instantiates a new <see cref="Auth_control_response"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Models.Auth_control_response"/> and sets the default values.
         /// </summary>
         public Auth_control_response()
         {
@@ -59,12 +60,12 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="Auth_control_response"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Models.Auth_control_response"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static Auth_control_response CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static Marqeta.Core.Sdk.Models.Auth_control_response CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-            return new Auth_control_response();
+            return new Marqeta.Core.Sdk.Models.Auth_control_response();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -74,13 +75,13 @@ namespace Marqeta.Core.Sdk.Models {
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                {"active", n => { Active = n.GetBoolValue(); } },
-                {"association", n => { Association = n.GetObjectValue<Spend_control_association>(Spend_control_association.CreateFromDiscriminatorValue); } },
-                {"end_time", n => { EndTime = n.GetDateTimeOffsetValue(); } },
-                {"merchant_scope", n => { MerchantScope = n.GetObjectValue<Auth_control_merchant_scope>(Auth_control_merchant_scope.CreateFromDiscriminatorValue); } },
-                {"name", n => { Name = n.GetStringValue(); } },
-                {"start_time", n => { StartTime = n.GetDateTimeOffsetValue(); } },
-                {"token", n => { Token = n.GetStringValue(); } },
+                { "active", n => { Active = n.GetBoolValue(); } },
+                { "association", n => { Association = n.GetObjectValue<Marqeta.Core.Sdk.Models.Spend_control_association>(Marqeta.Core.Sdk.Models.Spend_control_association.CreateFromDiscriminatorValue); } },
+                { "end_time", n => { EndTime = n.GetDateTimeOffsetValue(); } },
+                { "merchant_scope", n => { MerchantScope = n.GetObjectValue<Marqeta.Core.Sdk.Models.Auth_control_merchant_scope>(Marqeta.Core.Sdk.Models.Auth_control_merchant_scope.CreateFromDiscriminatorValue); } },
+                { "name", n => { Name = n.GetStringValue(); } },
+                { "start_time", n => { StartTime = n.GetDateTimeOffsetValue(); } },
+                { "token", n => { Token = n.GetStringValue(); } },
             };
         }
         /// <summary>
@@ -91,9 +92,9 @@ namespace Marqeta.Core.Sdk.Models {
         {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
             writer.WriteBoolValue("active", Active);
-            writer.WriteObjectValue<Spend_control_association>("association", Association);
+            writer.WriteObjectValue<Marqeta.Core.Sdk.Models.Spend_control_association>("association", Association);
             writer.WriteDateTimeOffsetValue("end_time", EndTime);
-            writer.WriteObjectValue<Auth_control_merchant_scope>("merchant_scope", MerchantScope);
+            writer.WriteObjectValue<Marqeta.Core.Sdk.Models.Auth_control_merchant_scope>("merchant_scope", MerchantScope);
             writer.WriteStringValue("name", Name);
             writer.WriteDateTimeOffsetValue("start_time", StartTime);
             writer.WriteStringValue("token", Token);

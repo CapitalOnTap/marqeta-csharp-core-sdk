@@ -4,9 +4,10 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System;
-namespace Marqeta.Core.Sdk.Models {
+namespace Marqeta.Core.Sdk.Models
+{
     #pragma warning disable CS1591
-    public class Digital_wallet_token_transition_response : IAdditionalDataHolder, IParsable 
+    public class Digital_wallet_token_transition_response : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -14,25 +15,25 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>Contains identifiers for swapping digital wallet tokens between cards.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public Card_swap_hash? CardSwap { get; set; }
+        public Marqeta.Core.Sdk.Models.Card_swap_hash? CardSwap { get; set; }
 #nullable restore
 #else
-        public Card_swap_hash CardSwap { get; set; }
+        public Marqeta.Core.Sdk.Models.Card_swap_hash CardSwap { get; set; }
 #endif
         /// <summary>Mechanism by which the transition was initiated.</summary>
-        public Digital_wallet_token_transition_response_channel? Channel { get; set; }
+        public Marqeta.Core.Sdk.Models.Digital_wallet_token_transition_response_channel? Channel { get; set; }
         /// <summary>Date and time when the digital wallet provisioning request was created, in UTC.</summary>
         public DateTimeOffset? CreatedTime { get; set; }
         /// <summary>Contains identifiers of the digital wallet token resource and the card resource.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public Digital_wallet_token_hash? DigitalWalletToken { get; set; }
+        public Marqeta.Core.Sdk.Models.Digital_wallet_token_hash? DigitalWalletToken { get; set; }
 #nullable restore
 #else
-        public Digital_wallet_token_hash DigitalWalletToken { get; set; }
+        public Marqeta.Core.Sdk.Models.Digital_wallet_token_hash DigitalWalletToken { get; set; }
 #endif
         /// <summary>Provisioning status of the digital wallet token.</summary>
-        public Digital_wallet_token_transition_response_fulfillment_status? FulfillmentStatus { get; set; }
+        public Marqeta.Core.Sdk.Models.Digital_wallet_token_transition_response_fulfillment_status? FulfillmentStatus { get; set; }
         /// <summary>Reason for the transition.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -42,9 +43,9 @@ namespace Marqeta.Core.Sdk.Models {
         public string Reason { get; set; }
 #endif
         /// <summary>Standard code describing the reason for the transition:* *00:* Object activated for the first time* *01:* Requested by you* *02:* Inactivity over time* *03:* This address cannot accept mail or the addressee is unknown* *04:* Negative account balance* *05:* Account under review* *06:* Suspicious activity was identified* *07:* Activity outside the program parameters was identified* *08:* Confirmed fraud was identified* *09:* Matched with an Office of Foreign Assets Control list* *10:* Card was reported lost* *11:* Card information was cloned* *12:* Account or card information was compromised* *13:* Temporary status change while on hold/leave* *14:* Initiated by Marqeta* *15:* Initiated by issuer* *16:* Card expired* *17:* Failed KYC* *18:* Changed to `ACTIVE` because information was properly validated* *19:* Changed to `ACTIVE` because account activity was properly validated* *20:* Change occurred prior to the normalization of reason codes* *21:* Initiated by a third party, often a digital wallet provider* *22:* PIN retry limit reached* *23:* Card was reported stolen* *24:* Address issue* *25:* Name issue* *26:* SSN issue* *27:* DOB issue* *28:* Email issue* *29:* Phone issue* *30:* Account/fulfillment mismatch* *31:* Other reason</summary>
-        public Digital_wallet_token_transition_response_reason_code? ReasonCode { get; set; }
+        public Marqeta.Core.Sdk.Models.Digital_wallet_token_transition_response_reason_code? ReasonCode { get; set; }
         /// <summary>Specifies the state to which the digital wallet token is transitioning.</summary>
-        public Digital_wallet_token_transition_response_state? State { get; set; }
+        public Marqeta.Core.Sdk.Models.Digital_wallet_token_transition_response_state? State { get; set; }
         /// <summary>Unique identifier of the digital wallet token transition, and not the identifier of the digital wallet token itself.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -62,7 +63,7 @@ namespace Marqeta.Core.Sdk.Models {
         public string Type { get; set; }
 #endif
         /// <summary>
-        /// Instantiates a new <see cref="Digital_wallet_token_transition_response"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Models.Digital_wallet_token_transition_response"/> and sets the default values.
         /// </summary>
         public Digital_wallet_token_transition_response()
         {
@@ -71,12 +72,12 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="Digital_wallet_token_transition_response"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Models.Digital_wallet_token_transition_response"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static Digital_wallet_token_transition_response CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static Marqeta.Core.Sdk.Models.Digital_wallet_token_transition_response CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-            return new Digital_wallet_token_transition_response();
+            return new Marqeta.Core.Sdk.Models.Digital_wallet_token_transition_response();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -86,16 +87,16 @@ namespace Marqeta.Core.Sdk.Models {
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                {"card_swap", n => { CardSwap = n.GetObjectValue<Card_swap_hash>(Card_swap_hash.CreateFromDiscriminatorValue); } },
-                {"channel", n => { Channel = n.GetEnumValue<Digital_wallet_token_transition_response_channel>(); } },
-                {"created_time", n => { CreatedTime = n.GetDateTimeOffsetValue(); } },
-                {"digital_wallet_token", n => { DigitalWalletToken = n.GetObjectValue<Digital_wallet_token_hash>(Digital_wallet_token_hash.CreateFromDiscriminatorValue); } },
-                {"fulfillment_status", n => { FulfillmentStatus = n.GetEnumValue<Digital_wallet_token_transition_response_fulfillment_status>(); } },
-                {"reason", n => { Reason = n.GetStringValue(); } },
-                {"reason_code", n => { ReasonCode = n.GetEnumValue<Digital_wallet_token_transition_response_reason_code>(); } },
-                {"state", n => { State = n.GetEnumValue<Digital_wallet_token_transition_response_state>(); } },
-                {"token", n => { Token = n.GetStringValue(); } },
-                {"type", n => { Type = n.GetStringValue(); } },
+                { "card_swap", n => { CardSwap = n.GetObjectValue<Marqeta.Core.Sdk.Models.Card_swap_hash>(Marqeta.Core.Sdk.Models.Card_swap_hash.CreateFromDiscriminatorValue); } },
+                { "channel", n => { Channel = n.GetEnumValue<Marqeta.Core.Sdk.Models.Digital_wallet_token_transition_response_channel>(); } },
+                { "created_time", n => { CreatedTime = n.GetDateTimeOffsetValue(); } },
+                { "digital_wallet_token", n => { DigitalWalletToken = n.GetObjectValue<Marqeta.Core.Sdk.Models.Digital_wallet_token_hash>(Marqeta.Core.Sdk.Models.Digital_wallet_token_hash.CreateFromDiscriminatorValue); } },
+                { "fulfillment_status", n => { FulfillmentStatus = n.GetEnumValue<Marqeta.Core.Sdk.Models.Digital_wallet_token_transition_response_fulfillment_status>(); } },
+                { "reason", n => { Reason = n.GetStringValue(); } },
+                { "reason_code", n => { ReasonCode = n.GetEnumValue<Marqeta.Core.Sdk.Models.Digital_wallet_token_transition_response_reason_code>(); } },
+                { "state", n => { State = n.GetEnumValue<Marqeta.Core.Sdk.Models.Digital_wallet_token_transition_response_state>(); } },
+                { "token", n => { Token = n.GetStringValue(); } },
+                { "type", n => { Type = n.GetStringValue(); } },
             };
         }
         /// <summary>
@@ -105,14 +106,14 @@ namespace Marqeta.Core.Sdk.Models {
         public virtual void Serialize(ISerializationWriter writer)
         {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<Card_swap_hash>("card_swap", CardSwap);
-            writer.WriteEnumValue<Digital_wallet_token_transition_response_channel>("channel", Channel);
+            writer.WriteObjectValue<Marqeta.Core.Sdk.Models.Card_swap_hash>("card_swap", CardSwap);
+            writer.WriteEnumValue<Marqeta.Core.Sdk.Models.Digital_wallet_token_transition_response_channel>("channel", Channel);
             writer.WriteDateTimeOffsetValue("created_time", CreatedTime);
-            writer.WriteObjectValue<Digital_wallet_token_hash>("digital_wallet_token", DigitalWalletToken);
-            writer.WriteEnumValue<Digital_wallet_token_transition_response_fulfillment_status>("fulfillment_status", FulfillmentStatus);
+            writer.WriteObjectValue<Marqeta.Core.Sdk.Models.Digital_wallet_token_hash>("digital_wallet_token", DigitalWalletToken);
+            writer.WriteEnumValue<Marqeta.Core.Sdk.Models.Digital_wallet_token_transition_response_fulfillment_status>("fulfillment_status", FulfillmentStatus);
             writer.WriteStringValue("reason", Reason);
-            writer.WriteEnumValue<Digital_wallet_token_transition_response_reason_code>("reason_code", ReasonCode);
-            writer.WriteEnumValue<Digital_wallet_token_transition_response_state>("state", State);
+            writer.WriteEnumValue<Marqeta.Core.Sdk.Models.Digital_wallet_token_transition_response_reason_code>("reason_code", ReasonCode);
+            writer.WriteEnumValue<Marqeta.Core.Sdk.Models.Digital_wallet_token_transition_response_state>("state", State);
             writer.WriteStringValue("token", Token);
             writer.WriteStringValue("type", Type);
             writer.WriteAdditionalData(AdditionalData);

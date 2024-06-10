@@ -8,14 +8,15 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Threading;
 using System;
-namespace Marqeta.Core.Sdk.Rewardprograms.Item.Journalentries {
+namespace Marqeta.Core.Sdk.Rewardprograms.Item.Journalentries
+{
     /// <summary>
     /// Builds and executes requests for operations under \rewardprograms\{token}\journalentries
     /// </summary>
-    public class JournalentriesRequestBuilder : BaseRequestBuilder 
+    public class JournalentriesRequestBuilder : BaseRequestBuilder
     {
         /// <summary>
-        /// Instantiates a new <see cref="JournalentriesRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Rewardprograms.Item.Journalentries.JournalentriesRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
@@ -23,7 +24,7 @@ namespace Marqeta.Core.Sdk.Rewardprograms.Item.Journalentries {
         {
         }
         /// <summary>
-        /// Instantiates a new <see cref="JournalentriesRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Rewardprograms.Item.Journalentries.JournalentriesRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
@@ -33,25 +34,25 @@ namespace Marqeta.Core.Sdk.Rewardprograms.Item.Journalentries {
         /// <summary>
         /// Retrieve an array of reward entries on a specific reward program by multiple journal entries.
         /// </summary>
-        /// <returns>A <see cref="RewardEntriesJournalEntriesPageResponse"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Models.RewardEntriesJournalEntriesPageResponse"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        /// <exception cref="ApiError">When receiving a 4XX or 5XX status code</exception>
+        /// <exception cref="Marqeta.Core.Sdk.Models.ApiError">When receiving a 4XX or 5XX status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<RewardEntriesJournalEntriesPageResponse?> GetAsync(Action<RequestConfiguration<JournalentriesRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<Marqeta.Core.Sdk.Models.RewardEntriesJournalEntriesPageResponse?> GetAsync(Action<RequestConfiguration<Marqeta.Core.Sdk.Rewardprograms.Item.Journalentries.JournalentriesRequestBuilder.JournalentriesRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<RewardEntriesJournalEntriesPageResponse> GetAsync(Action<RequestConfiguration<JournalentriesRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<Marqeta.Core.Sdk.Models.RewardEntriesJournalEntriesPageResponse> GetAsync(Action<RequestConfiguration<Marqeta.Core.Sdk.Rewardprograms.Item.Journalentries.JournalentriesRequestBuilder.JournalentriesRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
-                {"XXX", ApiError.CreateFromDiscriminatorValue},
+                { "XXX", Marqeta.Core.Sdk.Models.ApiError.CreateFromDiscriminatorValue },
             };
-            return await RequestAdapter.SendAsync<RewardEntriesJournalEntriesPageResponse>(requestInfo, RewardEntriesJournalEntriesPageResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<Marqeta.Core.Sdk.Models.RewardEntriesJournalEntriesPageResponse>(requestInfo, Marqeta.Core.Sdk.Models.RewardEntriesJournalEntriesPageResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Retrieve an array of reward entries on a specific reward program by multiple journal entries.
@@ -60,11 +61,11 @@ namespace Marqeta.Core.Sdk.Rewardprograms.Item.Journalentries {
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<JournalentriesRequestBuilderGetQueryParameters>>? requestConfiguration = default)
+        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<Marqeta.Core.Sdk.Rewardprograms.Item.Journalentries.JournalentriesRequestBuilder.JournalentriesRequestBuilderGetQueryParameters>>? requestConfiguration = default)
         {
 #nullable restore
 #else
-        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<JournalentriesRequestBuilderGetQueryParameters>> requestConfiguration = default)
+        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<Marqeta.Core.Sdk.Rewardprograms.Item.Journalentries.JournalentriesRequestBuilder.JournalentriesRequestBuilderGetQueryParameters>> requestConfiguration = default)
         {
 #endif
             var requestInfo = new RequestInformation(Method.GET, UrlTemplate, PathParameters);
@@ -75,11 +76,11 @@ namespace Marqeta.Core.Sdk.Rewardprograms.Item.Journalentries {
         /// <summary>
         /// Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
         /// </summary>
-        /// <returns>A <see cref="JournalentriesRequestBuilder"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Rewardprograms.Item.Journalentries.JournalentriesRequestBuilder"/></returns>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
-        public JournalentriesRequestBuilder WithUrl(string rawUrl)
+        public Marqeta.Core.Sdk.Rewardprograms.Item.Journalentries.JournalentriesRequestBuilder WithUrl(string rawUrl)
         {
-            return new JournalentriesRequestBuilder(rawUrl, RequestAdapter);
+            return new Marqeta.Core.Sdk.Rewardprograms.Item.Journalentries.JournalentriesRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
         /// Retrieve an array of reward entries on a specific reward program by multiple journal entries.
@@ -101,7 +102,7 @@ namespace Marqeta.Core.Sdk.Rewardprograms.Item.Journalentries {
 #endif
             /// <summary>Field on which to sort.Prefix the field name with a hyphen (`-`) to sort in descending order.Omit the hyphen to sort in ascending order.*NOTE*:You must sort using system field names such as `createdTime`, and not by the field names appearing in response bodies such as `created_time`.</summary>
             [QueryParameter("sort_by")]
-            public GetSort_byQueryParameterType? SortBy { get; set; }
+            public Marqeta.Core.Sdk.Rewardprograms.Item.Journalentries.GetSort_byQueryParameterType? SortBy { get; set; }
             /// <summary>Sort order index of the first resource in the returned array.</summary>
             [QueryParameter("start_index")]
             public long? StartIndex { get; set; }

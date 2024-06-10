@@ -4,9 +4,10 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System;
-namespace Marqeta.Core.Sdk.Models {
+namespace Marqeta.Core.Sdk.Models
+{
     #pragma warning disable CS1591
-    public class Bank_transfer_transition_response_model : IAdditionalDataHolder, IParsable 
+    public class Bank_transfer_transition_response_model : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -30,7 +31,7 @@ namespace Marqeta.Core.Sdk.Models {
         public string BatchNumber { get; set; }
 #endif
         /// <summary>Mechanism by which the transaction was initiated.</summary>
-        public Bank_transfer_transition_response_model_channel? Channel { get; set; }
+        public Marqeta.Core.Sdk.Models.Bank_transfer_transition_response_model_channel? Channel { get; set; }
         /// <summary>Date and time when the ACH transfer was created, in UTC.</summary>
         public DateTimeOffset? CreatedTime { get; set; }
         /// <summary>The effective_date property</summary>
@@ -72,7 +73,7 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>The reversal_after_45_days property</summary>
         public bool? ReversalAfter45Days { get; set; }
         /// <summary>New state of the ACH transfer.</summary>
-        public Bank_transfer_transition_response_model_status? Status { get; set; }
+        public Marqeta.Core.Sdk.Models.Bank_transfer_transition_response_model_status? Status { get; set; }
         /// <summary>Unique identifier of the bank transfer transition.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -98,7 +99,7 @@ namespace Marqeta.Core.Sdk.Models {
         public string TransactionToken { get; set; }
 #endif
         /// <summary>
-        /// Instantiates a new <see cref="Bank_transfer_transition_response_model"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Models.Bank_transfer_transition_response_model"/> and sets the default values.
         /// </summary>
         public Bank_transfer_transition_response_model()
         {
@@ -107,12 +108,12 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="Bank_transfer_transition_response_model"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Models.Bank_transfer_transition_response_model"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static Bank_transfer_transition_response_model CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static Marqeta.Core.Sdk.Models.Bank_transfer_transition_response_model CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-            return new Bank_transfer_transition_response_model();
+            return new Marqeta.Core.Sdk.Models.Bank_transfer_transition_response_model();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -122,22 +123,22 @@ namespace Marqeta.Core.Sdk.Models {
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                {"amount", n => { Amount = n.GetDoubleValue(); } },
-                {"bank_transfer_token", n => { BankTransferToken = n.GetStringValue(); } },
-                {"batch_number", n => { BatchNumber = n.GetStringValue(); } },
-                {"channel", n => { Channel = n.GetEnumValue<Bank_transfer_transition_response_model_channel>(); } },
-                {"created_time", n => { CreatedTime = n.GetDateTimeOffsetValue(); } },
-                {"effective_date", n => { EffectiveDate = n.GetDateTimeOffsetValue(); } },
-                {"last_modified_time", n => { LastModifiedTime = n.GetDateTimeOffsetValue(); } },
-                {"program_reserve_token", n => { ProgramReserveToken = n.GetStringValue(); } },
-                {"reason", n => { Reason = n.GetStringValue(); } },
-                {"return_code", n => { ReturnCode = n.GetStringValue(); } },
-                {"return_reason", n => { ReturnReason = n.GetStringValue(); } },
-                {"reversal_after_45_days", n => { ReversalAfter45Days = n.GetBoolValue(); } },
-                {"status", n => { Status = n.GetEnumValue<Bank_transfer_transition_response_model_status>(); } },
-                {"token", n => { Token = n.GetStringValue(); } },
-                {"transaction_jit_token", n => { TransactionJitToken = n.GetStringValue(); } },
-                {"transaction_token", n => { TransactionToken = n.GetStringValue(); } },
+                { "amount", n => { Amount = n.GetDoubleValue(); } },
+                { "bank_transfer_token", n => { BankTransferToken = n.GetStringValue(); } },
+                { "batch_number", n => { BatchNumber = n.GetStringValue(); } },
+                { "channel", n => { Channel = n.GetEnumValue<Marqeta.Core.Sdk.Models.Bank_transfer_transition_response_model_channel>(); } },
+                { "created_time", n => { CreatedTime = n.GetDateTimeOffsetValue(); } },
+                { "effective_date", n => { EffectiveDate = n.GetDateTimeOffsetValue(); } },
+                { "last_modified_time", n => { LastModifiedTime = n.GetDateTimeOffsetValue(); } },
+                { "program_reserve_token", n => { ProgramReserveToken = n.GetStringValue(); } },
+                { "reason", n => { Reason = n.GetStringValue(); } },
+                { "return_code", n => { ReturnCode = n.GetStringValue(); } },
+                { "return_reason", n => { ReturnReason = n.GetStringValue(); } },
+                { "reversal_after_45_days", n => { ReversalAfter45Days = n.GetBoolValue(); } },
+                { "status", n => { Status = n.GetEnumValue<Marqeta.Core.Sdk.Models.Bank_transfer_transition_response_model_status>(); } },
+                { "token", n => { Token = n.GetStringValue(); } },
+                { "transaction_jit_token", n => { TransactionJitToken = n.GetStringValue(); } },
+                { "transaction_token", n => { TransactionToken = n.GetStringValue(); } },
             };
         }
         /// <summary>
@@ -150,7 +151,7 @@ namespace Marqeta.Core.Sdk.Models {
             writer.WriteDoubleValue("amount", Amount);
             writer.WriteStringValue("bank_transfer_token", BankTransferToken);
             writer.WriteStringValue("batch_number", BatchNumber);
-            writer.WriteEnumValue<Bank_transfer_transition_response_model_channel>("channel", Channel);
+            writer.WriteEnumValue<Marqeta.Core.Sdk.Models.Bank_transfer_transition_response_model_channel>("channel", Channel);
             writer.WriteDateTimeOffsetValue("created_time", CreatedTime);
             writer.WriteDateTimeOffsetValue("effective_date", EffectiveDate);
             writer.WriteDateTimeOffsetValue("last_modified_time", LastModifiedTime);
@@ -159,7 +160,7 @@ namespace Marqeta.Core.Sdk.Models {
             writer.WriteStringValue("return_code", ReturnCode);
             writer.WriteStringValue("return_reason", ReturnReason);
             writer.WriteBoolValue("reversal_after_45_days", ReversalAfter45Days);
-            writer.WriteEnumValue<Bank_transfer_transition_response_model_status>("status", Status);
+            writer.WriteEnumValue<Marqeta.Core.Sdk.Models.Bank_transfer_transition_response_model_status>("status", Status);
             writer.WriteStringValue("token", Token);
             writer.WriteStringValue("transaction_jit_token", TransactionJitToken);
             writer.WriteStringValue("transaction_token", TransactionToken);

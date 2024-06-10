@@ -4,11 +4,12 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System;
-namespace Marqeta.Core.Sdk.Models {
+namespace Marqeta.Core.Sdk.Models
+{
     /// <summary>
     /// Contains information about Strong Customer Authentication (SCA) behavior for contactless point-of-sale (POS) and low-value payment (LVP) e-commerce transactions.
     /// </summary>
-    public class Strong_customer_authentication_limits : IAdditionalDataHolder, IParsable 
+    public class Strong_customer_authentication_limits : IAdditionalDataHolder, IParsable
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
@@ -53,7 +54,7 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>Specifies the maximum allowable amount for a single low-value payment (LVP) e-commerce transaction with transaction risk analysis (TRA) exemption sent by the merchant or acquirer.If the transaction amount exceeds the specified limit, then the transaction is either approved or it receives a strong customer authentication (SCA) challenge based on `sca_lvp_transaction_limit` and `sca_lvp_transactions_currency`.</summary>
         public double? ScaTraExemptionAmountLimit { get; set; }
         /// <summary>
-        /// Instantiates a new <see cref="Strong_customer_authentication_limits"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Models.Strong_customer_authentication_limits"/> and sets the default values.
         /// </summary>
         public Strong_customer_authentication_limits()
         {
@@ -62,12 +63,12 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="Strong_customer_authentication_limits"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Models.Strong_customer_authentication_limits"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static Strong_customer_authentication_limits CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static Marqeta.Core.Sdk.Models.Strong_customer_authentication_limits CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-            return new Strong_customer_authentication_limits();
+            return new Marqeta.Core.Sdk.Models.Strong_customer_authentication_limits();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -77,17 +78,17 @@ namespace Marqeta.Core.Sdk.Models {
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                {"cavv_authentication_amount_incremental_percentage", n => { CavvAuthenticationAmountIncrementalPercentage = n.GetStringValue(); } },
-                {"enable_cavv_authentication_amount_validation", n => { EnableCavvAuthenticationAmountValidation = n.GetBoolValue(); } },
-                {"sca_contactless_cumulative_amount_limit", n => { ScaContactlessCumulativeAmountLimit = n.GetDoubleValue(); } },
-                {"sca_contactless_transaction_limit", n => { ScaContactlessTransactionLimit = n.GetDoubleValue(); } },
-                {"sca_contactless_transactions_count_limit", n => { ScaContactlessTransactionsCountLimit = n.GetIntValue(); } },
-                {"sca_contactless_transactions_currency", n => { ScaContactlessTransactionsCurrency = n.GetStringValue(); } },
-                {"sca_lvp_cumulative_amount_limit", n => { ScaLvpCumulativeAmountLimit = n.GetDoubleValue(); } },
-                {"sca_lvp_transaction_limit", n => { ScaLvpTransactionLimit = n.GetDoubleValue(); } },
-                {"sca_lvp_transactions_count_limit", n => { ScaLvpTransactionsCountLimit = n.GetIntValue(); } },
-                {"sca_lvp_transactions_currency", n => { ScaLvpTransactionsCurrency = n.GetStringValue(); } },
-                {"sca_tra_exemption_amount_limit", n => { ScaTraExemptionAmountLimit = n.GetDoubleValue(); } },
+                { "cavv_authentication_amount_incremental_percentage", n => { CavvAuthenticationAmountIncrementalPercentage = n.GetStringValue(); } },
+                { "enable_cavv_authentication_amount_validation", n => { EnableCavvAuthenticationAmountValidation = n.GetBoolValue(); } },
+                { "sca_contactless_cumulative_amount_limit", n => { ScaContactlessCumulativeAmountLimit = n.GetDoubleValue(); } },
+                { "sca_contactless_transaction_limit", n => { ScaContactlessTransactionLimit = n.GetDoubleValue(); } },
+                { "sca_contactless_transactions_count_limit", n => { ScaContactlessTransactionsCountLimit = n.GetIntValue(); } },
+                { "sca_contactless_transactions_currency", n => { ScaContactlessTransactionsCurrency = n.GetStringValue(); } },
+                { "sca_lvp_cumulative_amount_limit", n => { ScaLvpCumulativeAmountLimit = n.GetDoubleValue(); } },
+                { "sca_lvp_transaction_limit", n => { ScaLvpTransactionLimit = n.GetDoubleValue(); } },
+                { "sca_lvp_transactions_count_limit", n => { ScaLvpTransactionsCountLimit = n.GetIntValue(); } },
+                { "sca_lvp_transactions_currency", n => { ScaLvpTransactionsCurrency = n.GetStringValue(); } },
+                { "sca_tra_exemption_amount_limit", n => { ScaTraExemptionAmountLimit = n.GetDoubleValue(); } },
             };
         }
         /// <summary>

@@ -4,11 +4,12 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System;
-namespace Marqeta.Core.Sdk.Models {
+namespace Marqeta.Core.Sdk.Models
+{
     /// <summary>
     /// Information about a credit card.
     /// </summary>
-    public class CardResponse : IAdditionalDataHolder, IParsable 
+    public class CardResponse : IAdditionalDataHolder, IParsable
     {
         /// <summary>Unique identifier of the associated credit account.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -41,7 +42,7 @@ namespace Marqeta.Core.Sdk.Models {
         public string UserToken { get; set; }
 #endif
         /// <summary>
-        /// Instantiates a new <see cref="CardResponse"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Models.CardResponse"/> and sets the default values.
         /// </summary>
         public CardResponse()
         {
@@ -50,12 +51,12 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="CardResponse"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Models.CardResponse"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static CardResponse CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static Marqeta.Core.Sdk.Models.CardResponse CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-            return new CardResponse();
+            return new Marqeta.Core.Sdk.Models.CardResponse();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -65,11 +66,11 @@ namespace Marqeta.Core.Sdk.Models {
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                {"account_token", n => { AccountToken = n.GetStringValue(); } },
-                {"created_time", n => { CreatedTime = n.GetDateTimeOffsetValue(); } },
-                {"token", n => { Token = n.GetStringValue(); } },
-                {"updated_time", n => { UpdatedTime = n.GetDateTimeOffsetValue(); } },
-                {"user_token", n => { UserToken = n.GetStringValue(); } },
+                { "account_token", n => { AccountToken = n.GetStringValue(); } },
+                { "created_time", n => { CreatedTime = n.GetDateTimeOffsetValue(); } },
+                { "token", n => { Token = n.GetStringValue(); } },
+                { "updated_time", n => { UpdatedTime = n.GetDateTimeOffsetValue(); } },
+                { "user_token", n => { UserToken = n.GetStringValue(); } },
             };
         }
         /// <summary>

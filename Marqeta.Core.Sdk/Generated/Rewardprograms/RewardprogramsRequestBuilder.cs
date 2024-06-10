@@ -10,31 +10,32 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Threading;
 using System;
-namespace Marqeta.Core.Sdk.Rewardprograms {
+namespace Marqeta.Core.Sdk.Rewardprograms
+{
     /// <summary>
     /// Builds and executes requests for operations under \rewardprograms
     /// </summary>
-    public class RewardprogramsRequestBuilder : BaseRequestBuilder 
+    public class RewardprogramsRequestBuilder : BaseRequestBuilder
     {
         /// <summary>The redemptions property</summary>
-        public RedemptionsRequestBuilder Redemptions
+        public Marqeta.Core.Sdk.Rewardprograms.Redemptions.RedemptionsRequestBuilder Redemptions
         {
-            get => new RedemptionsRequestBuilder(PathParameters, RequestAdapter);
+            get => new Marqeta.Core.Sdk.Rewardprograms.Redemptions.RedemptionsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>Gets an item from the Marqeta.Core.Sdk.rewardprograms.item collection</summary>
         /// <param name="position">Unique identifier of the reward program.</param>
-        /// <returns>A <see cref="WithTokenItemRequestBuilder"/></returns>
-        public WithTokenItemRequestBuilder this[string position]
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Rewardprograms.Item.WithTokenItemRequestBuilder"/></returns>
+        public Marqeta.Core.Sdk.Rewardprograms.Item.WithTokenItemRequestBuilder this[string position]
         {
             get
             {
                 var urlTplParams = new Dictionary<string, object>(PathParameters);
                 urlTplParams.Add("token", position);
-                return new WithTokenItemRequestBuilder(urlTplParams, RequestAdapter);
+                return new Marqeta.Core.Sdk.Rewardprograms.Item.WithTokenItemRequestBuilder(urlTplParams, RequestAdapter);
             }
         }
         /// <summary>
-        /// Instantiates a new <see cref="RewardprogramsRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Rewardprograms.RewardprogramsRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
@@ -42,7 +43,7 @@ namespace Marqeta.Core.Sdk.Rewardprograms {
         {
         }
         /// <summary>
-        /// Instantiates a new <see cref="RewardprogramsRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Rewardprograms.RewardprogramsRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
@@ -52,25 +53,25 @@ namespace Marqeta.Core.Sdk.Rewardprograms {
         /// <summary>
         /// Retrieve an array of reward programs.
         /// </summary>
-        /// <returns>A <see cref="RewardProgramsPageResponse"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Models.RewardProgramsPageResponse"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        /// <exception cref="ApiError">When receiving a 4XX or 5XX status code</exception>
+        /// <exception cref="Marqeta.Core.Sdk.Models.ApiError">When receiving a 4XX or 5XX status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<RewardProgramsPageResponse?> GetAsync(Action<RequestConfiguration<RewardprogramsRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<Marqeta.Core.Sdk.Models.RewardProgramsPageResponse?> GetAsync(Action<RequestConfiguration<Marqeta.Core.Sdk.Rewardprograms.RewardprogramsRequestBuilder.RewardprogramsRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<RewardProgramsPageResponse> GetAsync(Action<RequestConfiguration<RewardprogramsRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<Marqeta.Core.Sdk.Models.RewardProgramsPageResponse> GetAsync(Action<RequestConfiguration<Marqeta.Core.Sdk.Rewardprograms.RewardprogramsRequestBuilder.RewardprogramsRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
-                {"XXX", ApiError.CreateFromDiscriminatorValue},
+                { "XXX", Marqeta.Core.Sdk.Models.ApiError.CreateFromDiscriminatorValue },
             };
-            return await RequestAdapter.SendAsync<RewardProgramsPageResponse>(requestInfo, RewardProgramsPageResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<Marqeta.Core.Sdk.Models.RewardProgramsPageResponse>(requestInfo, Marqeta.Core.Sdk.Models.RewardProgramsPageResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Retrieve an array of reward programs.
@@ -79,11 +80,11 @@ namespace Marqeta.Core.Sdk.Rewardprograms {
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<RewardprogramsRequestBuilderGetQueryParameters>>? requestConfiguration = default)
+        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<Marqeta.Core.Sdk.Rewardprograms.RewardprogramsRequestBuilder.RewardprogramsRequestBuilderGetQueryParameters>>? requestConfiguration = default)
         {
 #nullable restore
 #else
-        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<RewardprogramsRequestBuilderGetQueryParameters>> requestConfiguration = default)
+        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<Marqeta.Core.Sdk.Rewardprograms.RewardprogramsRequestBuilder.RewardprogramsRequestBuilderGetQueryParameters>> requestConfiguration = default)
         {
 #endif
             var requestInfo = new RequestInformation(Method.GET, UrlTemplate, PathParameters);
@@ -94,11 +95,11 @@ namespace Marqeta.Core.Sdk.Rewardprograms {
         /// <summary>
         /// Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
         /// </summary>
-        /// <returns>A <see cref="RewardprogramsRequestBuilder"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Rewardprograms.RewardprogramsRequestBuilder"/></returns>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
-        public RewardprogramsRequestBuilder WithUrl(string rawUrl)
+        public Marqeta.Core.Sdk.Rewardprograms.RewardprogramsRequestBuilder WithUrl(string rawUrl)
         {
-            return new RewardprogramsRequestBuilder(rawUrl, RequestAdapter);
+            return new Marqeta.Core.Sdk.Rewardprograms.RewardprogramsRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
         /// Retrieve an array of reward programs.
@@ -123,7 +124,7 @@ namespace Marqeta.Core.Sdk.Rewardprograms {
             public bool? IsActive { get; set; }
             /// <summary>Field on which to sort.Prefix the field name with a hyphen (`-`) to sort in descending order.Omit the hyphen to sort in ascending order.*NOTE*:You must sort using system field names such as `updatedTime`, and not by the field names appearing in response bodies such as `updated_time`.</summary>
             [QueryParameter("sort_by")]
-            public GetSort_byQueryParameterType? SortBy { get; set; }
+            public Marqeta.Core.Sdk.Rewardprograms.GetSort_byQueryParameterType? SortBy { get; set; }
             /// <summary>Sort order index of the first resource in the returned array.</summary>
             [QueryParameter("start_index")]
             public long? StartIndex { get; set; }

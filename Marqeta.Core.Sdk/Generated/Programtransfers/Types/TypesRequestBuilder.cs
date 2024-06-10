@@ -9,26 +9,27 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Threading;
 using System;
-namespace Marqeta.Core.Sdk.Programtransfers.Types {
+namespace Marqeta.Core.Sdk.Programtransfers.Types
+{
     /// <summary>
     /// Builds and executes requests for operations under \programtransfers\types
     /// </summary>
-    public class TypesRequestBuilder : BaseRequestBuilder 
+    public class TypesRequestBuilder : BaseRequestBuilder
     {
         /// <summary>Gets an item from the Marqeta.Core.Sdk.programtransfers.types.item collection</summary>
         /// <param name="position">Unique identifier of the program transfer type.</param>
-        /// <returns>A <see cref="WithType_tokenItemRequestBuilder"/></returns>
-        public WithType_tokenItemRequestBuilder this[string position]
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Programtransfers.Types.Item.WithType_tokenItemRequestBuilder"/></returns>
+        public Marqeta.Core.Sdk.Programtransfers.Types.Item.WithType_tokenItemRequestBuilder this[string position]
         {
             get
             {
                 var urlTplParams = new Dictionary<string, object>(PathParameters);
                 urlTplParams.Add("type_token", position);
-                return new WithType_tokenItemRequestBuilder(urlTplParams, RequestAdapter);
+                return new Marqeta.Core.Sdk.Programtransfers.Types.Item.WithType_tokenItemRequestBuilder(urlTplParams, RequestAdapter);
             }
         }
         /// <summary>
-        /// Instantiates a new <see cref="TypesRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Programtransfers.Types.TypesRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
@@ -36,7 +37,7 @@ namespace Marqeta.Core.Sdk.Programtransfers.Types {
         {
         }
         /// <summary>
-        /// Instantiates a new <see cref="TypesRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Programtransfers.Types.TypesRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
@@ -46,50 +47,50 @@ namespace Marqeta.Core.Sdk.Programtransfers.Types {
         /// <summary>
         /// Use this endpoint to list all program transfer types.This endpoint supports &lt;&lt;/core-api/field-filtering, field filtering&gt;&gt;, &lt;&lt;/core-api/sorting-and-pagination, pagination&gt;&gt;, and &lt;&lt;/core-api/sorting-and-pagination, sorting&gt;&gt;.
         /// </summary>
-        /// <returns>A <see cref="ProgramTransferTypeListResponse"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Models.ProgramTransferTypeListResponse"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        /// <exception cref="ApiError">When receiving a 4XX or 5XX status code</exception>
+        /// <exception cref="Marqeta.Core.Sdk.Models.ApiError">When receiving a 4XX or 5XX status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<ProgramTransferTypeListResponse?> GetAsync(Action<RequestConfiguration<TypesRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<Marqeta.Core.Sdk.Models.ProgramTransferTypeListResponse?> GetAsync(Action<RequestConfiguration<Marqeta.Core.Sdk.Programtransfers.Types.TypesRequestBuilder.TypesRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<ProgramTransferTypeListResponse> GetAsync(Action<RequestConfiguration<TypesRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<Marqeta.Core.Sdk.Models.ProgramTransferTypeListResponse> GetAsync(Action<RequestConfiguration<Marqeta.Core.Sdk.Programtransfers.Types.TypesRequestBuilder.TypesRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
-                {"XXX", ApiError.CreateFromDiscriminatorValue},
+                { "XXX", Marqeta.Core.Sdk.Models.ApiError.CreateFromDiscriminatorValue },
             };
-            return await RequestAdapter.SendAsync<ProgramTransferTypeListResponse>(requestInfo, ProgramTransferTypeListResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<Marqeta.Core.Sdk.Models.ProgramTransferTypeListResponse>(requestInfo, Marqeta.Core.Sdk.Models.ProgramTransferTypeListResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Use this endpoint to create a program transfer type.Add the program transfer details to the body of the request in link:http://www.json.org/[JSON, window=&quot;_blank&quot;] format.You are required to pass in a `program_funding_source_token` to associate a program funding source with the program transfer type.You must therefore create a program funding source before creating a program transfer type.
         /// </summary>
-        /// <returns>A <see cref="Program_transfer_type_response"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Models.Program_transfer_type_response"/></returns>
         /// <param name="body">The request body</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        /// <exception cref="ApiError">When receiving a 4XX or 5XX status code</exception>
+        /// <exception cref="Marqeta.Core.Sdk.Models.ApiError">When receiving a 4XX or 5XX status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<Program_transfer_type_response?> PostAsync(Program_transfer_type_request body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<Marqeta.Core.Sdk.Models.Program_transfer_type_response?> PostAsync(Marqeta.Core.Sdk.Models.Program_transfer_type_request body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<Program_transfer_type_response> PostAsync(Program_transfer_type_request body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<Marqeta.Core.Sdk.Models.Program_transfer_type_response> PostAsync(Marqeta.Core.Sdk.Models.Program_transfer_type_request body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             _ = body ?? throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPostRequestInformation(body, requestConfiguration);
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
-                {"XXX", ApiError.CreateFromDiscriminatorValue},
+                { "XXX", Marqeta.Core.Sdk.Models.ApiError.CreateFromDiscriminatorValue },
             };
-            return await RequestAdapter.SendAsync<Program_transfer_type_response>(requestInfo, Program_transfer_type_response.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<Marqeta.Core.Sdk.Models.Program_transfer_type_response>(requestInfo, Marqeta.Core.Sdk.Models.Program_transfer_type_response.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Use this endpoint to list all program transfer types.This endpoint supports &lt;&lt;/core-api/field-filtering, field filtering&gt;&gt;, &lt;&lt;/core-api/sorting-and-pagination, pagination&gt;&gt;, and &lt;&lt;/core-api/sorting-and-pagination, sorting&gt;&gt;.
@@ -98,11 +99,11 @@ namespace Marqeta.Core.Sdk.Programtransfers.Types {
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<TypesRequestBuilderGetQueryParameters>>? requestConfiguration = default)
+        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<Marqeta.Core.Sdk.Programtransfers.Types.TypesRequestBuilder.TypesRequestBuilderGetQueryParameters>>? requestConfiguration = default)
         {
 #nullable restore
 #else
-        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<TypesRequestBuilderGetQueryParameters>> requestConfiguration = default)
+        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<Marqeta.Core.Sdk.Programtransfers.Types.TypesRequestBuilder.TypesRequestBuilderGetQueryParameters>> requestConfiguration = default)
         {
 #endif
             var requestInfo = new RequestInformation(Method.GET, UrlTemplate, PathParameters);
@@ -118,11 +119,11 @@ namespace Marqeta.Core.Sdk.Programtransfers.Types {
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToPostRequestInformation(Program_transfer_type_request body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
+        public RequestInformation ToPostRequestInformation(Marqeta.Core.Sdk.Models.Program_transfer_type_request body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
         {
 #nullable restore
 #else
-        public RequestInformation ToPostRequestInformation(Program_transfer_type_request body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
+        public RequestInformation ToPostRequestInformation(Marqeta.Core.Sdk.Models.Program_transfer_type_request body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
         {
 #endif
             _ = body ?? throw new ArgumentNullException(nameof(body));
@@ -135,11 +136,11 @@ namespace Marqeta.Core.Sdk.Programtransfers.Types {
         /// <summary>
         /// Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
         /// </summary>
-        /// <returns>A <see cref="TypesRequestBuilder"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Programtransfers.Types.TypesRequestBuilder"/></returns>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
-        public TypesRequestBuilder WithUrl(string rawUrl)
+        public Marqeta.Core.Sdk.Programtransfers.Types.TypesRequestBuilder WithUrl(string rawUrl)
         {
-            return new TypesRequestBuilder(rawUrl, RequestAdapter);
+            return new Marqeta.Core.Sdk.Programtransfers.Types.TypesRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
         /// Use this endpoint to list all program transfer types.This endpoint supports &lt;&lt;/core-api/field-filtering, field filtering&gt;&gt;, &lt;&lt;/core-api/sorting-and-pagination, pagination&gt;&gt;, and &lt;&lt;/core-api/sorting-and-pagination, sorting&gt;&gt;.

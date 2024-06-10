@@ -4,11 +4,12 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System;
-namespace Marqeta.Core.Sdk.Models {
+namespace Marqeta.Core.Sdk.Models
+{
     /// <summary>
     /// Contains information on a reward redemption.
     /// </summary>
-    public class RedemptionsResponse : IAdditionalDataHolder, IParsable 
+    public class RedemptionsResponse : IAdditionalDataHolder, IParsable
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
@@ -17,7 +18,7 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>Date and time when the reward redemption was created on the Marqeta platform, in UTC.</summary>
         public DateTimeOffset? CreatedTime { get; set; }
         /// <summary>Destination of the reward redemption.* `INVESTMENT` - The redemption is paid into an investment account.* `WALLET` - The redemption is paid into a digital wallet.* `ACH` - The redemption is paid into an ACH account.Required for external redemptions.</summary>
-        public DestinationType? Destination { get; set; }
+        public Marqeta.Core.Sdk.Models.DestinationType? Destination { get; set; }
         /// <summary>Date and time when the reward redemption was settled on your external platform.This field is returned if you handled the reward redemption outside of Marqeta&apos;s credit platform.</summary>
         public DateTimeOffset? ExternalSettlementDateTime { get; set; }
         /// <summary>A note providing information on the reward redemption.</summary>
@@ -39,10 +40,10 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>Contains one or more reward entries related to the redemption.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<RewardProgramsEntriesResponse>? RelatedRewardEntries { get; set; }
+        public List<Marqeta.Core.Sdk.Models.RewardProgramsEntriesResponse>? RelatedRewardEntries { get; set; }
 #nullable restore
 #else
-        public List<RewardProgramsEntriesResponse> RelatedRewardEntries { get; set; }
+        public List<Marqeta.Core.Sdk.Models.RewardProgramsEntriesResponse> RelatedRewardEntries { get; set; }
 #endif
         /// <summary>Unique identifier of the reward program for which to redeem rewards.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -61,7 +62,7 @@ namespace Marqeta.Core.Sdk.Models {
         public string SorRewardToken { get; set; }
 #endif
         /// <summary>Status of the redemption.If &lt;&lt;/core-api/reward-redemptions#postRedemptionTransition, transitioning the redemption&apos;s status&gt;&gt;:* `new_state` is the state to which you want to transition the redemption; must be `COMPLETED` or `RETURNED`.* `initial_status` is the initial status of the redemption prior to transition.</summary>
-        public RedemptionStatus? Status { get; set; }
+        public Marqeta.Core.Sdk.Models.RedemptionStatus? Status { get; set; }
         /// <summary>Unique identifier of the reward redemption.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -71,11 +72,11 @@ namespace Marqeta.Core.Sdk.Models {
         public string Token { get; set; }
 #endif
         /// <summary>Type of redemption.* `EXTERNAL` - You issue the redemption on your external platform; Marqeta adjusts the reward program balance on the system of record.* `STATEMENT_CREDIT` - Marqeta issues the redemption as a statement credit on the associated account. +*NOTE*: This creates a new journal entry on the account and cannot be undone.* `ACH` - The reward redemption is issued as an ACH transfer to the receiving account.</summary>
-        public RedemptionType? Type { get; set; }
+        public Marqeta.Core.Sdk.Models.RedemptionType? Type { get; set; }
         /// <summary>Date and time when the reward redemption was last updated on the Marqeta platform, in UTC.</summary>
         public DateTimeOffset? UpdatedTime { get; set; }
         /// <summary>
-        /// Instantiates a new <see cref="RedemptionsResponse"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Models.RedemptionsResponse"/> and sets the default values.
         /// </summary>
         public RedemptionsResponse()
         {
@@ -84,12 +85,12 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="RedemptionsResponse"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Models.RedemptionsResponse"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static RedemptionsResponse CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static Marqeta.Core.Sdk.Models.RedemptionsResponse CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-            return new RedemptionsResponse();
+            return new Marqeta.Core.Sdk.Models.RedemptionsResponse();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -99,19 +100,19 @@ namespace Marqeta.Core.Sdk.Models {
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                {"amount", n => { Amount = n.GetDecimalValue(); } },
-                {"created_time", n => { CreatedTime = n.GetDateTimeOffsetValue(); } },
-                {"destination", n => { Destination = n.GetEnumValue<DestinationType>(); } },
-                {"external_settlement_date_time", n => { ExternalSettlementDateTime = n.GetDateTimeOffsetValue(); } },
-                {"note", n => { Note = n.GetStringValue(); } },
-                {"receiving_account_token", n => { ReceivingAccountToken = n.GetStringValue(); } },
-                {"related_reward_entries", n => { RelatedRewardEntries = n.GetCollectionOfObjectValues<RewardProgramsEntriesResponse>(RewardProgramsEntriesResponse.CreateFromDiscriminatorValue)?.ToList(); } },
-                {"reward_program_token", n => { RewardProgramToken = n.GetStringValue(); } },
-                {"sor_reward_token", n => { SorRewardToken = n.GetStringValue(); } },
-                {"status", n => { Status = n.GetEnumValue<RedemptionStatus>(); } },
-                {"token", n => { Token = n.GetStringValue(); } },
-                {"type", n => { Type = n.GetEnumValue<RedemptionType>(); } },
-                {"updated_time", n => { UpdatedTime = n.GetDateTimeOffsetValue(); } },
+                { "amount", n => { Amount = n.GetDecimalValue(); } },
+                { "created_time", n => { CreatedTime = n.GetDateTimeOffsetValue(); } },
+                { "destination", n => { Destination = n.GetEnumValue<Marqeta.Core.Sdk.Models.DestinationType>(); } },
+                { "external_settlement_date_time", n => { ExternalSettlementDateTime = n.GetDateTimeOffsetValue(); } },
+                { "note", n => { Note = n.GetStringValue(); } },
+                { "receiving_account_token", n => { ReceivingAccountToken = n.GetStringValue(); } },
+                { "related_reward_entries", n => { RelatedRewardEntries = n.GetCollectionOfObjectValues<Marqeta.Core.Sdk.Models.RewardProgramsEntriesResponse>(Marqeta.Core.Sdk.Models.RewardProgramsEntriesResponse.CreateFromDiscriminatorValue)?.ToList(); } },
+                { "reward_program_token", n => { RewardProgramToken = n.GetStringValue(); } },
+                { "sor_reward_token", n => { SorRewardToken = n.GetStringValue(); } },
+                { "status", n => { Status = n.GetEnumValue<Marqeta.Core.Sdk.Models.RedemptionStatus>(); } },
+                { "token", n => { Token = n.GetStringValue(); } },
+                { "type", n => { Type = n.GetEnumValue<Marqeta.Core.Sdk.Models.RedemptionType>(); } },
+                { "updated_time", n => { UpdatedTime = n.GetDateTimeOffsetValue(); } },
             };
         }
         /// <summary>
@@ -123,16 +124,16 @@ namespace Marqeta.Core.Sdk.Models {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
             writer.WriteDecimalValue("amount", Amount);
             writer.WriteDateTimeOffsetValue("created_time", CreatedTime);
-            writer.WriteEnumValue<DestinationType>("destination", Destination);
+            writer.WriteEnumValue<Marqeta.Core.Sdk.Models.DestinationType>("destination", Destination);
             writer.WriteDateTimeOffsetValue("external_settlement_date_time", ExternalSettlementDateTime);
             writer.WriteStringValue("note", Note);
             writer.WriteStringValue("receiving_account_token", ReceivingAccountToken);
-            writer.WriteCollectionOfObjectValues<RewardProgramsEntriesResponse>("related_reward_entries", RelatedRewardEntries);
+            writer.WriteCollectionOfObjectValues<Marqeta.Core.Sdk.Models.RewardProgramsEntriesResponse>("related_reward_entries", RelatedRewardEntries);
             writer.WriteStringValue("reward_program_token", RewardProgramToken);
             writer.WriteStringValue("sor_reward_token", SorRewardToken);
-            writer.WriteEnumValue<RedemptionStatus>("status", Status);
+            writer.WriteEnumValue<Marqeta.Core.Sdk.Models.RedemptionStatus>("status", Status);
             writer.WriteStringValue("token", Token);
-            writer.WriteEnumValue<RedemptionType>("type", Type);
+            writer.WriteEnumValue<Marqeta.Core.Sdk.Models.RedemptionType>("type", Type);
             writer.WriteDateTimeOffsetValue("updated_time", UpdatedTime);
             writer.WriteAdditionalData(AdditionalData);
         }

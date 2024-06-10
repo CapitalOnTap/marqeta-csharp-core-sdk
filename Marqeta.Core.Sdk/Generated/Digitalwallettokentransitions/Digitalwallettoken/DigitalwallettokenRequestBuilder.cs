@@ -6,26 +6,27 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using System;
-namespace Marqeta.Core.Sdk.Digitalwallettokentransitions.Digitalwallettoken {
+namespace Marqeta.Core.Sdk.Digitalwallettokentransitions.Digitalwallettoken
+{
     /// <summary>
     /// Builds and executes requests for operations under \digitalwallettokentransitions\digitalwallettoken
     /// </summary>
-    public class DigitalwallettokenRequestBuilder : BaseRequestBuilder 
+    public class DigitalwallettokenRequestBuilder : BaseRequestBuilder
     {
         /// <summary>Gets an item from the Marqeta.Core.Sdk.digitalwallettokentransitions.digitalwallettoken.item collection</summary>
         /// <param name="position">Unique identifier of the digital wallet token (DWT).</param>
-        /// <returns>A <see cref="WithTokenItemRequestBuilder"/></returns>
-        public WithTokenItemRequestBuilder this[string position]
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Digitalwallettokentransitions.Digitalwallettoken.Item.WithTokenItemRequestBuilder"/></returns>
+        public Marqeta.Core.Sdk.Digitalwallettokentransitions.Digitalwallettoken.Item.WithTokenItemRequestBuilder this[string position]
         {
             get
             {
                 var urlTplParams = new Dictionary<string, object>(PathParameters);
                 urlTplParams.Add("token", position);
-                return new WithTokenItemRequestBuilder(urlTplParams, RequestAdapter);
+                return new Marqeta.Core.Sdk.Digitalwallettokentransitions.Digitalwallettoken.Item.WithTokenItemRequestBuilder(urlTplParams, RequestAdapter);
             }
         }
         /// <summary>
-        /// Instantiates a new <see cref="DigitalwallettokenRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Digitalwallettokentransitions.Digitalwallettoken.DigitalwallettokenRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
@@ -33,7 +34,7 @@ namespace Marqeta.Core.Sdk.Digitalwallettokentransitions.Digitalwallettoken {
         {
         }
         /// <summary>
-        /// Instantiates a new <see cref="DigitalwallettokenRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Digitalwallettokentransitions.Digitalwallettoken.DigitalwallettokenRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>

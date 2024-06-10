@@ -8,14 +8,15 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Threading;
 using System;
-namespace Marqeta.Core.Sdk.Bundles.Item.Promote {
+namespace Marqeta.Core.Sdk.Bundles.Item.Promote
+{
     /// <summary>
     /// Builds and executes requests for operations under \bundles\{token}\promote
     /// </summary>
-    public class PromoteRequestBuilder : BaseRequestBuilder 
+    public class PromoteRequestBuilder : BaseRequestBuilder
     {
         /// <summary>
-        /// Instantiates a new <see cref="PromoteRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Bundles.Item.Promote.PromoteRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
@@ -23,7 +24,7 @@ namespace Marqeta.Core.Sdk.Bundles.Item.Promote {
         {
         }
         /// <summary>
-        /// Instantiates a new <see cref="PromoteRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Bundles.Item.Promote.PromoteRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
@@ -33,25 +34,25 @@ namespace Marqeta.Core.Sdk.Bundles.Item.Promote {
         /// <summary>
         /// Promote a specific bundle, which replaces the current active bundle and activates the promoted bundle.
         /// </summary>
-        /// <returns>A <see cref="BundleResponse"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Models.BundleResponse"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        /// <exception cref="ApiError">When receiving a 4XX or 5XX status code</exception>
+        /// <exception cref="Marqeta.Core.Sdk.Models.ApiError">When receiving a 4XX or 5XX status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<BundleResponse?> PutAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<Marqeta.Core.Sdk.Models.BundleResponse?> PutAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<BundleResponse> PutAsync(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<Marqeta.Core.Sdk.Models.BundleResponse> PutAsync(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             var requestInfo = ToPutRequestInformation(requestConfiguration);
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
-                {"XXX", ApiError.CreateFromDiscriminatorValue},
+                { "XXX", Marqeta.Core.Sdk.Models.ApiError.CreateFromDiscriminatorValue },
             };
-            return await RequestAdapter.SendAsync<BundleResponse>(requestInfo, BundleResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<Marqeta.Core.Sdk.Models.BundleResponse>(requestInfo, Marqeta.Core.Sdk.Models.BundleResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Promote a specific bundle, which replaces the current active bundle and activates the promoted bundle.
@@ -75,11 +76,11 @@ namespace Marqeta.Core.Sdk.Bundles.Item.Promote {
         /// <summary>
         /// Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
         /// </summary>
-        /// <returns>A <see cref="PromoteRequestBuilder"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Bundles.Item.Promote.PromoteRequestBuilder"/></returns>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
-        public PromoteRequestBuilder WithUrl(string rawUrl)
+        public Marqeta.Core.Sdk.Bundles.Item.Promote.PromoteRequestBuilder WithUrl(string rawUrl)
         {
-            return new PromoteRequestBuilder(rawUrl, RequestAdapter);
+            return new Marqeta.Core.Sdk.Bundles.Item.Promote.PromoteRequestBuilder(rawUrl, RequestAdapter);
         }
     }
 }

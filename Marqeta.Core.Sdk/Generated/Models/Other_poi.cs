@@ -4,11 +4,12 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System;
-namespace Marqeta.Core.Sdk.Models {
+namespace Marqeta.Core.Sdk.Models
+{
     /// <summary>
     /// Allows for configuration of points of interaction other than ecommerce or ATMs, such as points of sale (POS).
     /// </summary>
-    public class Other_poi : IAdditionalDataHolder, IParsable 
+    public class Other_poi : IAdditionalDataHolder, IParsable
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
@@ -37,7 +38,7 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>The use_static_pin property</summary>
         public bool? UseStaticPin { get; set; }
         /// <summary>
-        /// Instantiates a new <see cref="Other_poi"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Models.Other_poi"/> and sets the default values.
         /// </summary>
         public Other_poi()
         {
@@ -46,12 +47,12 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="Other_poi"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Models.Other_poi"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static Other_poi CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static Marqeta.Core.Sdk.Models.Other_poi CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-            return new Other_poi();
+            return new Marqeta.Core.Sdk.Models.Other_poi();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -61,12 +62,12 @@ namespace Marqeta.Core.Sdk.Models {
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                {"allow", n => { Allow = n.GetBoolValue(); } },
-                {"card_presence_required", n => { CardPresenceRequired = n.GetBoolValue(); } },
-                {"cardholder_presence_required", n => { CardholderPresenceRequired = n.GetBoolValue(); } },
-                {"track1_discretionary_data", n => { Track1DiscretionaryData = n.GetStringValue(); } },
-                {"track2_discretionary_data", n => { Track2DiscretionaryData = n.GetStringValue(); } },
-                {"use_static_pin", n => { UseStaticPin = n.GetBoolValue(); } },
+                { "allow", n => { Allow = n.GetBoolValue(); } },
+                { "card_presence_required", n => { CardPresenceRequired = n.GetBoolValue(); } },
+                { "cardholder_presence_required", n => { CardholderPresenceRequired = n.GetBoolValue(); } },
+                { "track1_discretionary_data", n => { Track1DiscretionaryData = n.GetStringValue(); } },
+                { "track2_discretionary_data", n => { Track2DiscretionaryData = n.GetStringValue(); } },
+                { "use_static_pin", n => { UseStaticPin = n.GetBoolValue(); } },
             };
         }
         /// <summary>

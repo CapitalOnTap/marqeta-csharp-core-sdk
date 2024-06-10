@@ -7,24 +7,25 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using System;
-namespace Marqeta.Core.Sdk.Admin.Item {
+namespace Marqeta.Core.Sdk.Admin.Item
+{
     /// <summary>
     /// Builds and executes requests for operations under \admin\{short_code}
     /// </summary>
-    public class WithShort_codeItemRequestBuilder : BaseRequestBuilder 
+    public class WithShort_codeItemRequestBuilder : BaseRequestBuilder
     {
         /// <summary>The replayfailedstatement property</summary>
-        public ReplayfailedstatementRequestBuilder Replayfailedstatement
+        public Marqeta.Core.Sdk.Admin.Item.Replayfailedstatement.ReplayfailedstatementRequestBuilder Replayfailedstatement
         {
-            get => new ReplayfailedstatementRequestBuilder(PathParameters, RequestAdapter);
+            get => new Marqeta.Core.Sdk.Admin.Item.Replayfailedstatement.ReplayfailedstatementRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The retryachpayments property</summary>
-        public RetryachpaymentsRequestBuilder Retryachpayments
+        public Marqeta.Core.Sdk.Admin.Item.Retryachpayments.RetryachpaymentsRequestBuilder Retryachpayments
         {
-            get => new RetryachpaymentsRequestBuilder(PathParameters, RequestAdapter);
+            get => new Marqeta.Core.Sdk.Admin.Item.Retryachpayments.RetryachpaymentsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>
-        /// Instantiates a new <see cref="WithShort_codeItemRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Admin.Item.WithShort_codeItemRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
@@ -32,7 +33,7 @@ namespace Marqeta.Core.Sdk.Admin.Item {
         {
         }
         /// <summary>
-        /// Instantiates a new <see cref="WithShort_codeItemRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Admin.Item.WithShort_codeItemRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>

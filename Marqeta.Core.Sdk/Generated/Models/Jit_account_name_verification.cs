@@ -4,40 +4,41 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System;
-namespace Marqeta.Core.Sdk.Models {
+namespace Marqeta.Core.Sdk.Models
+{
     /// <summary>
     /// Contains account name verification data used to make JIT Funding decisions from one of the following objects:* The `gateway` object contains account name verification data from your JIT Funding gateway.* The `issuer` object contains account name verification data from the Marqeta platform.* The `request` object contains account name verification data as it appears in a JIT Funding request.
     /// </summary>
-    public class Jit_account_name_verification : IAdditionalDataHolder, IParsable 
+    public class Jit_account_name_verification : IAdditionalDataHolder, IParsable
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Contains account name verification data used to make JIT Funding decisions.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public Account_name_verification_source? Gateway { get; set; }
+        public Marqeta.Core.Sdk.Models.Account_name_verification_source? Gateway { get; set; }
 #nullable restore
 #else
-        public Account_name_verification_source Gateway { get; set; }
+        public Marqeta.Core.Sdk.Models.Account_name_verification_source Gateway { get; set; }
 #endif
         /// <summary>Contains account name verification data used to make JIT Funding decisions.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public Account_name_verification_source? Issuer { get; set; }
+        public Marqeta.Core.Sdk.Models.Account_name_verification_source? Issuer { get; set; }
 #nullable restore
 #else
-        public Account_name_verification_source Issuer { get; set; }
+        public Marqeta.Core.Sdk.Models.Account_name_verification_source Issuer { get; set; }
 #endif
         /// <summary>Contains account name verification data used to make JIT Funding decisions.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public Ani_information_1? Request { get; set; }
+        public Marqeta.Core.Sdk.Models.Ani_information_1? Request { get; set; }
 #nullable restore
 #else
-        public Ani_information_1 Request { get; set; }
+        public Marqeta.Core.Sdk.Models.Ani_information_1 Request { get; set; }
 #endif
         /// <summary>
-        /// Instantiates a new <see cref="Jit_account_name_verification"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Models.Jit_account_name_verification"/> and sets the default values.
         /// </summary>
         public Jit_account_name_verification()
         {
@@ -46,12 +47,12 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="Jit_account_name_verification"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Models.Jit_account_name_verification"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static Jit_account_name_verification CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static Marqeta.Core.Sdk.Models.Jit_account_name_verification CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-            return new Jit_account_name_verification();
+            return new Marqeta.Core.Sdk.Models.Jit_account_name_verification();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -61,9 +62,9 @@ namespace Marqeta.Core.Sdk.Models {
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                {"gateway", n => { Gateway = n.GetObjectValue<Account_name_verification_source>(Account_name_verification_source.CreateFromDiscriminatorValue); } },
-                {"issuer", n => { Issuer = n.GetObjectValue<Account_name_verification_source>(Account_name_verification_source.CreateFromDiscriminatorValue); } },
-                {"request", n => { Request = n.GetObjectValue<Ani_information_1>(Ani_information_1.CreateFromDiscriminatorValue); } },
+                { "gateway", n => { Gateway = n.GetObjectValue<Marqeta.Core.Sdk.Models.Account_name_verification_source>(Marqeta.Core.Sdk.Models.Account_name_verification_source.CreateFromDiscriminatorValue); } },
+                { "issuer", n => { Issuer = n.GetObjectValue<Marqeta.Core.Sdk.Models.Account_name_verification_source>(Marqeta.Core.Sdk.Models.Account_name_verification_source.CreateFromDiscriminatorValue); } },
+                { "request", n => { Request = n.GetObjectValue<Marqeta.Core.Sdk.Models.Ani_information_1>(Marqeta.Core.Sdk.Models.Ani_information_1.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -73,9 +74,9 @@ namespace Marqeta.Core.Sdk.Models {
         public virtual void Serialize(ISerializationWriter writer)
         {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<Account_name_verification_source>("gateway", Gateway);
-            writer.WriteObjectValue<Account_name_verification_source>("issuer", Issuer);
-            writer.WriteObjectValue<Ani_information_1>("request", Request);
+            writer.WriteObjectValue<Marqeta.Core.Sdk.Models.Account_name_verification_source>("gateway", Gateway);
+            writer.WriteObjectValue<Marqeta.Core.Sdk.Models.Account_name_verification_source>("issuer", Issuer);
+            writer.WriteObjectValue<Marqeta.Core.Sdk.Models.Ani_information_1>("request", Request);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

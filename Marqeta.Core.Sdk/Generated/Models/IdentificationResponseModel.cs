@@ -4,11 +4,12 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System;
-namespace Marqeta.Core.Sdk.Models {
+namespace Marqeta.Core.Sdk.Models
+{
     /// <summary>
     /// Contains identifications associated with the cardholder.
     /// </summary>
-    public class IdentificationResponseModel : IAdditionalDataHolder, IParsable 
+    public class IdentificationResponseModel : IAdditionalDataHolder, IParsable
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
@@ -21,7 +22,7 @@ namespace Marqeta.Core.Sdk.Models {
         public string ExpirationDate { get; set; }
 #endif
         /// <summary>Type of identification.</summary>
-        public IdentificationResponseModel_type? Type { get; set; }
+        public Marqeta.Core.Sdk.Models.IdentificationResponseModel_type? Type { get; set; }
         /// <summary>Number associated with the identification.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -31,7 +32,7 @@ namespace Marqeta.Core.Sdk.Models {
         public string Value { get; set; }
 #endif
         /// <summary>
-        /// Instantiates a new <see cref="IdentificationResponseModel"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Models.IdentificationResponseModel"/> and sets the default values.
         /// </summary>
         public IdentificationResponseModel()
         {
@@ -40,12 +41,12 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="IdentificationResponseModel"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Models.IdentificationResponseModel"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static IdentificationResponseModel CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static Marqeta.Core.Sdk.Models.IdentificationResponseModel CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-            return new IdentificationResponseModel();
+            return new Marqeta.Core.Sdk.Models.IdentificationResponseModel();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -55,9 +56,9 @@ namespace Marqeta.Core.Sdk.Models {
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                {"expiration_date", n => { ExpirationDate = n.GetStringValue(); } },
-                {"type", n => { Type = n.GetEnumValue<IdentificationResponseModel_type>(); } },
-                {"value", n => { Value = n.GetStringValue(); } },
+                { "expiration_date", n => { ExpirationDate = n.GetStringValue(); } },
+                { "type", n => { Type = n.GetEnumValue<Marqeta.Core.Sdk.Models.IdentificationResponseModel_type>(); } },
+                { "value", n => { Value = n.GetStringValue(); } },
             };
         }
         /// <summary>
@@ -68,7 +69,7 @@ namespace Marqeta.Core.Sdk.Models {
         {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("expiration_date", ExpirationDate);
-            writer.WriteEnumValue<IdentificationResponseModel_type>("type", Type);
+            writer.WriteEnumValue<Marqeta.Core.Sdk.Models.IdentificationResponseModel_type>("type", Type);
             writer.WriteStringValue("value", Value);
             writer.WriteAdditionalData(AdditionalData);
         }

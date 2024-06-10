@@ -4,11 +4,12 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System;
-namespace Marqeta.Core.Sdk.Models {
+namespace Marqeta.Core.Sdk.Models
+{
     /// <summary>
     /// Contains information about authorization decisions.
     /// </summary>
-    public class Selective_auth : IAdditionalDataHolder, IParsable 
+    public class Selective_auth : IAdditionalDataHolder, IParsable
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
@@ -19,7 +20,7 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>Specifies the selective authorization mode.* *0* — Inactive* *1* — Active (attempts to authorize a merchant that does not have a recognized MID by matching other pieces of information)* *2* — Logging and notification (checks the transaction and logs results, but does not authorize)Selective authorization applies to transactions that are limited to specific merchants.Matching requirements for authorization are set by the `dmd_location_sensitivity` field.</summary>
         public int? SaMode { get; set; }
         /// <summary>
-        /// Instantiates a new <see cref="Selective_auth"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Models.Selective_auth"/> and sets the default values.
         /// </summary>
         public Selective_auth()
         {
@@ -28,12 +29,12 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="Selective_auth"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Models.Selective_auth"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static Selective_auth CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static Marqeta.Core.Sdk.Models.Selective_auth CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-            return new Selective_auth();
+            return new Marqeta.Core.Sdk.Models.Selective_auth();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -43,9 +44,9 @@ namespace Marqeta.Core.Sdk.Models {
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                {"dmd_location_sensitivity", n => { DmdLocationSensitivity = n.GetIntValue(); } },
-                {"enable_regex_search_chain", n => { EnableRegexSearchChain = n.GetBoolValue(); } },
-                {"sa_mode", n => { SaMode = n.GetIntValue(); } },
+                { "dmd_location_sensitivity", n => { DmdLocationSensitivity = n.GetIntValue(); } },
+                { "enable_regex_search_chain", n => { EnableRegexSearchChain = n.GetBoolValue(); } },
+                { "sa_mode", n => { SaMode = n.GetIntValue(); } },
             };
         }
         /// <summary>

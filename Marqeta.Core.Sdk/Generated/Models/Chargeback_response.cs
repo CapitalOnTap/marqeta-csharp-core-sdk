@@ -4,18 +4,19 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System;
-namespace Marqeta.Core.Sdk.Models {
+namespace Marqeta.Core.Sdk.Models
+{
     /// <summary>
     /// Contains the chargeback object associated with this transaction if a chargeback has been initiated.
     /// </summary>
-    public class Chargeback_response : IAdditionalDataHolder, IParsable 
+    public class Chargeback_response : IAdditionalDataHolder, IParsable
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Amount of the chargeback.</summary>
         public double? Amount { get; set; }
         /// <summary>Channel the chargeback came through.</summary>
-        public Chargeback_response_channel? Channel { get; set; }
+        public Marqeta.Core.Sdk.Models.Chargeback_response_channel? Channel { get; set; }
         /// <summary>Date and time when the chargeback was created.Not returned for transactions when the associated chargeback is in the `INITIATED` state.</summary>
         public DateTimeOffset? CreatedTime { get; set; }
         /// <summary>Whether to credit the user for the chargeback amount.</summary>
@@ -31,7 +32,7 @@ namespace Marqeta.Core.Sdk.Models {
         public string Memo { get; set; }
 #endif
         /// <summary>Network handling the chargeback.</summary>
-        public Chargeback_response_network? Network { get; set; }
+        public Marqeta.Core.Sdk.Models.Chargeback_response_network? Network { get; set; }
         /// <summary>Network-assigned identifier of the chargeback.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -49,7 +50,7 @@ namespace Marqeta.Core.Sdk.Models {
         public string ReasonCode { get; set; }
 #endif
         /// <summary>State of the case.</summary>
-        public Chargeback_response_state? State { get; set; }
+        public Marqeta.Core.Sdk.Models.Chargeback_response_state? State { get; set; }
         /// <summary>Unique identifier of the chargeback.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -67,7 +68,7 @@ namespace Marqeta.Core.Sdk.Models {
         public string TransactionToken { get; set; }
 #endif
         /// <summary>
-        /// Instantiates a new <see cref="Chargeback_response"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Models.Chargeback_response"/> and sets the default values.
         /// </summary>
         public Chargeback_response()
         {
@@ -76,12 +77,12 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="Chargeback_response"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Models.Chargeback_response"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static Chargeback_response CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static Marqeta.Core.Sdk.Models.Chargeback_response CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-            return new Chargeback_response();
+            return new Marqeta.Core.Sdk.Models.Chargeback_response();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -91,18 +92,18 @@ namespace Marqeta.Core.Sdk.Models {
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                {"amount", n => { Amount = n.GetDoubleValue(); } },
-                {"channel", n => { Channel = n.GetEnumValue<Chargeback_response_channel>(); } },
-                {"created_time", n => { CreatedTime = n.GetDateTimeOffsetValue(); } },
-                {"credit_user", n => { CreditUser = n.GetBoolValue(); } },
-                {"last_modified_time", n => { LastModifiedTime = n.GetDateTimeOffsetValue(); } },
-                {"memo", n => { Memo = n.GetStringValue(); } },
-                {"network", n => { Network = n.GetEnumValue<Chargeback_response_network>(); } },
-                {"network_case_id", n => { NetworkCaseId = n.GetStringValue(); } },
-                {"reason_code", n => { ReasonCode = n.GetStringValue(); } },
-                {"state", n => { State = n.GetEnumValue<Chargeback_response_state>(); } },
-                {"token", n => { Token = n.GetStringValue(); } },
-                {"transaction_token", n => { TransactionToken = n.GetStringValue(); } },
+                { "amount", n => { Amount = n.GetDoubleValue(); } },
+                { "channel", n => { Channel = n.GetEnumValue<Marqeta.Core.Sdk.Models.Chargeback_response_channel>(); } },
+                { "created_time", n => { CreatedTime = n.GetDateTimeOffsetValue(); } },
+                { "credit_user", n => { CreditUser = n.GetBoolValue(); } },
+                { "last_modified_time", n => { LastModifiedTime = n.GetDateTimeOffsetValue(); } },
+                { "memo", n => { Memo = n.GetStringValue(); } },
+                { "network", n => { Network = n.GetEnumValue<Marqeta.Core.Sdk.Models.Chargeback_response_network>(); } },
+                { "network_case_id", n => { NetworkCaseId = n.GetStringValue(); } },
+                { "reason_code", n => { ReasonCode = n.GetStringValue(); } },
+                { "state", n => { State = n.GetEnumValue<Marqeta.Core.Sdk.Models.Chargeback_response_state>(); } },
+                { "token", n => { Token = n.GetStringValue(); } },
+                { "transaction_token", n => { TransactionToken = n.GetStringValue(); } },
             };
         }
         /// <summary>
@@ -113,15 +114,15 @@ namespace Marqeta.Core.Sdk.Models {
         {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
             writer.WriteDoubleValue("amount", Amount);
-            writer.WriteEnumValue<Chargeback_response_channel>("channel", Channel);
+            writer.WriteEnumValue<Marqeta.Core.Sdk.Models.Chargeback_response_channel>("channel", Channel);
             writer.WriteDateTimeOffsetValue("created_time", CreatedTime);
             writer.WriteBoolValue("credit_user", CreditUser);
             writer.WriteDateTimeOffsetValue("last_modified_time", LastModifiedTime);
             writer.WriteStringValue("memo", Memo);
-            writer.WriteEnumValue<Chargeback_response_network>("network", Network);
+            writer.WriteEnumValue<Marqeta.Core.Sdk.Models.Chargeback_response_network>("network", Network);
             writer.WriteStringValue("network_case_id", NetworkCaseId);
             writer.WriteStringValue("reason_code", ReasonCode);
-            writer.WriteEnumValue<Chargeback_response_state>("state", State);
+            writer.WriteEnumValue<Marqeta.Core.Sdk.Models.Chargeback_response_state>("state", State);
             writer.WriteStringValue("token", Token);
             writer.WriteStringValue("transaction_token", TransactionToken);
             writer.WriteAdditionalData(AdditionalData);

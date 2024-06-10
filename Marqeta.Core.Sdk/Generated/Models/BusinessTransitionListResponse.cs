@@ -4,9 +4,10 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System;
-namespace Marqeta.Core.Sdk.Models {
+namespace Marqeta.Core.Sdk.Models
+{
     #pragma warning disable CS1591
-    public class BusinessTransitionListResponse : IAdditionalDataHolder, IParsable 
+    public class BusinessTransitionListResponse : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -16,10 +17,10 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>Array of business transition objects.Objects are returned as appropriate to your query.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<BusinessTransitionResponse>? Data { get; set; }
+        public List<Marqeta.Core.Sdk.Models.BusinessTransitionResponse>? Data { get; set; }
 #nullable restore
 #else
-        public List<BusinessTransitionResponse> Data { get; set; }
+        public List<Marqeta.Core.Sdk.Models.BusinessTransitionResponse> Data { get; set; }
 #endif
         /// <summary>Sort order index of the last resource in the returned array.This field is returned if there are resources in your returned array.</summary>
         public int? EndIndex { get; set; }
@@ -28,7 +29,7 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>Sort order index of the first resource in the returned array.This field is returned if there are resources in your returned array.</summary>
         public int? StartIndex { get; set; }
         /// <summary>
-        /// Instantiates a new <see cref="BusinessTransitionListResponse"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Models.BusinessTransitionListResponse"/> and sets the default values.
         /// </summary>
         public BusinessTransitionListResponse()
         {
@@ -37,12 +38,12 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="BusinessTransitionListResponse"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Models.BusinessTransitionListResponse"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static BusinessTransitionListResponse CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static Marqeta.Core.Sdk.Models.BusinessTransitionListResponse CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-            return new BusinessTransitionListResponse();
+            return new Marqeta.Core.Sdk.Models.BusinessTransitionListResponse();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -52,11 +53,11 @@ namespace Marqeta.Core.Sdk.Models {
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                {"count", n => { Count = n.GetIntValue(); } },
-                {"data", n => { Data = n.GetCollectionOfObjectValues<BusinessTransitionResponse>(BusinessTransitionResponse.CreateFromDiscriminatorValue)?.ToList(); } },
-                {"end_index", n => { EndIndex = n.GetIntValue(); } },
-                {"is_more", n => { IsMore = n.GetBoolValue(); } },
-                {"start_index", n => { StartIndex = n.GetIntValue(); } },
+                { "count", n => { Count = n.GetIntValue(); } },
+                { "data", n => { Data = n.GetCollectionOfObjectValues<Marqeta.Core.Sdk.Models.BusinessTransitionResponse>(Marqeta.Core.Sdk.Models.BusinessTransitionResponse.CreateFromDiscriminatorValue)?.ToList(); } },
+                { "end_index", n => { EndIndex = n.GetIntValue(); } },
+                { "is_more", n => { IsMore = n.GetBoolValue(); } },
+                { "start_index", n => { StartIndex = n.GetIntValue(); } },
             };
         }
         /// <summary>
@@ -67,7 +68,7 @@ namespace Marqeta.Core.Sdk.Models {
         {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
             writer.WriteIntValue("count", Count);
-            writer.WriteCollectionOfObjectValues<BusinessTransitionResponse>("data", Data);
+            writer.WriteCollectionOfObjectValues<Marqeta.Core.Sdk.Models.BusinessTransitionResponse>("data", Data);
             writer.WriteIntValue("end_index", EndIndex);
             writer.WriteBoolValue("is_more", IsMore);
             writer.WriteIntValue("start_index", StartIndex);

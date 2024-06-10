@@ -4,28 +4,29 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System;
-namespace Marqeta.Core.Sdk.Models {
+namespace Marqeta.Core.Sdk.Models
+{
     #pragma warning disable CS1591
-    public class VelocityControlBalance : VelocityControlResponse, IParsable 
+    public class VelocityControlBalance : Marqeta.Core.Sdk.Models.VelocityControlResponse, IParsable
     #pragma warning restore CS1591
     {
         /// <summary>The available property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public VelocityControlBalance_available? Available { get; set; }
+        public Marqeta.Core.Sdk.Models.VelocityControlBalance_available? Available { get; set; }
 #nullable restore
 #else
-        public VelocityControlBalance_available Available { get; set; }
+        public Marqeta.Core.Sdk.Models.VelocityControlBalance_available Available { get; set; }
 #endif
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="VelocityControlBalance"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Models.VelocityControlBalance"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static new VelocityControlBalance CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static new Marqeta.Core.Sdk.Models.VelocityControlBalance CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-            return new VelocityControlBalance();
+            return new Marqeta.Core.Sdk.Models.VelocityControlBalance();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -35,7 +36,7 @@ namespace Marqeta.Core.Sdk.Models {
         {
             return new Dictionary<string, Action<IParseNode>>(base.GetFieldDeserializers())
             {
-                {"available", n => { Available = n.GetObjectValue<VelocityControlBalance_available>(VelocityControlBalance_available.CreateFromDiscriminatorValue); } },
+                { "available", n => { Available = n.GetObjectValue<Marqeta.Core.Sdk.Models.VelocityControlBalance_available>(Marqeta.Core.Sdk.Models.VelocityControlBalance_available.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -46,7 +47,7 @@ namespace Marqeta.Core.Sdk.Models {
         {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
             base.Serialize(writer);
-            writer.WriteObjectValue<VelocityControlBalance_available>("available", Available);
+            writer.WriteObjectValue<Marqeta.Core.Sdk.Models.VelocityControlBalance_available>("available", Available);
         }
     }
 }

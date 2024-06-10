@@ -8,14 +8,15 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Threading;
 using System;
-namespace Marqeta.Core.Sdk.Cardgroups.Item {
+namespace Marqeta.Core.Sdk.Cardgroups.Item
+{
     /// <summary>
     /// Builds and executes requests for operations under \cardgroups\{token}
     /// </summary>
-    public class WithTokenItemRequestBuilder : BaseRequestBuilder 
+    public class WithTokenItemRequestBuilder : BaseRequestBuilder
     {
         /// <summary>
-        /// Instantiates a new <see cref="WithTokenItemRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Cardgroups.Item.WithTokenItemRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
@@ -23,7 +24,7 @@ namespace Marqeta.Core.Sdk.Cardgroups.Item {
         {
         }
         /// <summary>
-        /// Instantiates a new <see cref="WithTokenItemRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Cardgroups.Item.WithTokenItemRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
@@ -36,7 +37,7 @@ namespace Marqeta.Core.Sdk.Cardgroups.Item {
         /// <returns>A <see cref="Marqeta.Core.Sdk.Models.CardGroup"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        /// <exception cref="ApiError">When receiving a 4XX or 5XX status code</exception>
+        /// <exception cref="Marqeta.Core.Sdk.Models.ApiError">When receiving a 4XX or 5XX status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public async Task<Marqeta.Core.Sdk.Models.CardGroup?> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
@@ -49,7 +50,7 @@ namespace Marqeta.Core.Sdk.Cardgroups.Item {
             var requestInfo = ToGetRequestInformation(requestConfiguration);
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
-                {"XXX", ApiError.CreateFromDiscriminatorValue},
+                { "XXX", Marqeta.Core.Sdk.Models.ApiError.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<Marqeta.Core.Sdk.Models.CardGroup>(requestInfo, Marqeta.Core.Sdk.Models.CardGroup.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
@@ -75,11 +76,11 @@ namespace Marqeta.Core.Sdk.Cardgroups.Item {
         /// <summary>
         /// Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
         /// </summary>
-        /// <returns>A <see cref="WithTokenItemRequestBuilder"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Cardgroups.Item.WithTokenItemRequestBuilder"/></returns>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
-        public WithTokenItemRequestBuilder WithUrl(string rawUrl)
+        public Marqeta.Core.Sdk.Cardgroups.Item.WithTokenItemRequestBuilder WithUrl(string rawUrl)
         {
-            return new WithTokenItemRequestBuilder(rawUrl, RequestAdapter);
+            return new Marqeta.Core.Sdk.Cardgroups.Item.WithTokenItemRequestBuilder(rawUrl, RequestAdapter);
         }
     }
 }

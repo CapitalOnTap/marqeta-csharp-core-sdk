@@ -10,31 +10,32 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Threading;
 using System;
-namespace Marqeta.Core.Sdk.Fundingsources.Program {
+namespace Marqeta.Core.Sdk.Fundingsources.Program
+{
     /// <summary>
     /// Builds and executes requests for operations under \fundingsources\program
     /// </summary>
-    public class ProgramRequestBuilder : BaseRequestBuilder 
+    public class ProgramRequestBuilder : BaseRequestBuilder
     {
         /// <summary>The ach property</summary>
-        public AchRequestBuilder Ach
+        public Marqeta.Core.Sdk.Fundingsources.Program.Ach.AchRequestBuilder Ach
         {
-            get => new AchRequestBuilder(PathParameters, RequestAdapter);
+            get => new Marqeta.Core.Sdk.Fundingsources.Program.Ach.AchRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>Gets an item from the Marqeta.Core.Sdk.fundingsources.program.item collection</summary>
         /// <param name="position">Unique identifier of the program funding source.</param>
-        /// <returns>A <see cref="WithTokenItemRequestBuilder"/></returns>
-        public WithTokenItemRequestBuilder this[string position]
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Fundingsources.Program.Item.WithTokenItemRequestBuilder"/></returns>
+        public Marqeta.Core.Sdk.Fundingsources.Program.Item.WithTokenItemRequestBuilder this[string position]
         {
             get
             {
                 var urlTplParams = new Dictionary<string, object>(PathParameters);
                 urlTplParams.Add("token", position);
-                return new WithTokenItemRequestBuilder(urlTplParams, RequestAdapter);
+                return new Marqeta.Core.Sdk.Fundingsources.Program.Item.WithTokenItemRequestBuilder(urlTplParams, RequestAdapter);
             }
         }
         /// <summary>
-        /// Instantiates a new <see cref="ProgramRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Fundingsources.Program.ProgramRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
@@ -42,7 +43,7 @@ namespace Marqeta.Core.Sdk.Fundingsources.Program {
         {
         }
         /// <summary>
-        /// Instantiates a new <see cref="ProgramRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Fundingsources.Program.ProgramRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
@@ -52,27 +53,27 @@ namespace Marqeta.Core.Sdk.Fundingsources.Program {
         /// <summary>
         /// Create a program funding source.
         /// </summary>
-        /// <returns>A <see cref="Program_funding_source_response"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Models.Program_funding_source_response"/></returns>
         /// <param name="body">The request body</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        /// <exception cref="ApiError">When receiving a 4XX or 5XX status code</exception>
+        /// <exception cref="Marqeta.Core.Sdk.Models.ApiError">When receiving a 4XX or 5XX status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<Program_funding_source_response?> PostAsync(Program_funding_source_request body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<Marqeta.Core.Sdk.Models.Program_funding_source_response?> PostAsync(Marqeta.Core.Sdk.Models.Program_funding_source_request body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<Program_funding_source_response> PostAsync(Program_funding_source_request body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<Marqeta.Core.Sdk.Models.Program_funding_source_response> PostAsync(Marqeta.Core.Sdk.Models.Program_funding_source_request body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             _ = body ?? throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPostRequestInformation(body, requestConfiguration);
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
-                {"XXX", ApiError.CreateFromDiscriminatorValue},
+                { "XXX", Marqeta.Core.Sdk.Models.ApiError.CreateFromDiscriminatorValue },
             };
-            return await RequestAdapter.SendAsync<Program_funding_source_response>(requestInfo, Program_funding_source_response.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<Marqeta.Core.Sdk.Models.Program_funding_source_response>(requestInfo, Marqeta.Core.Sdk.Models.Program_funding_source_response.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Create a program funding source.
@@ -82,11 +83,11 @@ namespace Marqeta.Core.Sdk.Fundingsources.Program {
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToPostRequestInformation(Program_funding_source_request body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
+        public RequestInformation ToPostRequestInformation(Marqeta.Core.Sdk.Models.Program_funding_source_request body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
         {
 #nullable restore
 #else
-        public RequestInformation ToPostRequestInformation(Program_funding_source_request body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
+        public RequestInformation ToPostRequestInformation(Marqeta.Core.Sdk.Models.Program_funding_source_request body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
         {
 #endif
             _ = body ?? throw new ArgumentNullException(nameof(body));
@@ -99,11 +100,11 @@ namespace Marqeta.Core.Sdk.Fundingsources.Program {
         /// <summary>
         /// Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
         /// </summary>
-        /// <returns>A <see cref="ProgramRequestBuilder"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Fundingsources.Program.ProgramRequestBuilder"/></returns>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
-        public ProgramRequestBuilder WithUrl(string rawUrl)
+        public Marqeta.Core.Sdk.Fundingsources.Program.ProgramRequestBuilder WithUrl(string rawUrl)
         {
-            return new ProgramRequestBuilder(rawUrl, RequestAdapter);
+            return new Marqeta.Core.Sdk.Fundingsources.Program.ProgramRequestBuilder(rawUrl, RequestAdapter);
         }
     }
 }

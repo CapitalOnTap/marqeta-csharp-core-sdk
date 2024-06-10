@@ -4,9 +4,10 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System;
-namespace Marqeta.Core.Sdk.Models {
+namespace Marqeta.Core.Sdk.Models
+{
     #pragma warning disable CS1591
-    public class Simulation_response_model : IAdditionalDataHolder, IParsable 
+    public class Simulation_response_model : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -14,21 +15,21 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>The raw_iso8583 property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public Simulation_response_model_raw_iso8583? RawIso8583 { get; set; }
+        public Marqeta.Core.Sdk.Models.Simulation_response_model_raw_iso8583? RawIso8583 { get; set; }
 #nullable restore
 #else
-        public Simulation_response_model_raw_iso8583 RawIso8583 { get; set; }
+        public Marqeta.Core.Sdk.Models.Simulation_response_model_raw_iso8583 RawIso8583 { get; set; }
 #endif
         /// <summary>Transactions are represented by the `transaction` object.The Marqeta platform creates a separate `transaction` object for each transaction message received from the card network.The attributes of a given `transaction` object depend on the transaction type.This section documents all fields that might be included in a `transaction` object.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public Transaction_model? Transaction { get; set; }
+        public Marqeta.Core.Sdk.Models.Transaction_model? Transaction { get; set; }
 #nullable restore
 #else
-        public Transaction_model Transaction { get; set; }
+        public Marqeta.Core.Sdk.Models.Transaction_model Transaction { get; set; }
 #endif
         /// <summary>
-        /// Instantiates a new <see cref="Simulation_response_model"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Models.Simulation_response_model"/> and sets the default values.
         /// </summary>
         public Simulation_response_model()
         {
@@ -37,12 +38,12 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="Simulation_response_model"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Models.Simulation_response_model"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static Simulation_response_model CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static Marqeta.Core.Sdk.Models.Simulation_response_model CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-            return new Simulation_response_model();
+            return new Marqeta.Core.Sdk.Models.Simulation_response_model();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -52,8 +53,8 @@ namespace Marqeta.Core.Sdk.Models {
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                {"raw_iso8583", n => { RawIso8583 = n.GetObjectValue<Simulation_response_model_raw_iso8583>(Simulation_response_model_raw_iso8583.CreateFromDiscriminatorValue); } },
-                {"transaction", n => { Transaction = n.GetObjectValue<Transaction_model>(Transaction_model.CreateFromDiscriminatorValue); } },
+                { "raw_iso8583", n => { RawIso8583 = n.GetObjectValue<Marqeta.Core.Sdk.Models.Simulation_response_model_raw_iso8583>(Marqeta.Core.Sdk.Models.Simulation_response_model_raw_iso8583.CreateFromDiscriminatorValue); } },
+                { "transaction", n => { Transaction = n.GetObjectValue<Marqeta.Core.Sdk.Models.Transaction_model>(Marqeta.Core.Sdk.Models.Transaction_model.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -63,8 +64,8 @@ namespace Marqeta.Core.Sdk.Models {
         public virtual void Serialize(ISerializationWriter writer)
         {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<Simulation_response_model_raw_iso8583>("raw_iso8583", RawIso8583);
-            writer.WriteObjectValue<Transaction_model>("transaction", Transaction);
+            writer.WriteObjectValue<Marqeta.Core.Sdk.Models.Simulation_response_model_raw_iso8583>("raw_iso8583", RawIso8583);
+            writer.WriteObjectValue<Marqeta.Core.Sdk.Models.Transaction_model>("transaction", Transaction);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

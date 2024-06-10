@@ -4,15 +4,16 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System;
-namespace Marqeta.Core.Sdk.Models {
+namespace Marqeta.Core.Sdk.Models
+{
     #pragma warning disable CS1591
-    public class DirectDepositTransitionRequest : IAdditionalDataHolder, IParsable 
+    public class DirectDepositTransitionRequest : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The channel property</summary>
-        public DirectDepositTransitionRequest_channel? Channel { get; set; }
+        public Marqeta.Core.Sdk.Models.DirectDepositTransitionRequest_channel? Channel { get; set; }
         /// <summary>The direct_deposit_token property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -38,9 +39,9 @@ namespace Marqeta.Core.Sdk.Models {
         public string Reason { get; set; }
 #endif
         /// <summary>The reason_code property</summary>
-        public DirectDepositTransitionRequest_reason_code? ReasonCode { get; set; }
+        public Marqeta.Core.Sdk.Models.DirectDepositTransitionRequest_reason_code? ReasonCode { get; set; }
         /// <summary>The state property</summary>
-        public DirectDepositTransitionRequest_state? State { get; set; }
+        public Marqeta.Core.Sdk.Models.DirectDepositTransitionRequest_state? State { get; set; }
         /// <summary>The token property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -50,7 +51,7 @@ namespace Marqeta.Core.Sdk.Models {
         public string Token { get; set; }
 #endif
         /// <summary>
-        /// Instantiates a new <see cref="DirectDepositTransitionRequest"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Models.DirectDepositTransitionRequest"/> and sets the default values.
         /// </summary>
         public DirectDepositTransitionRequest()
         {
@@ -59,12 +60,12 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="DirectDepositTransitionRequest"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Models.DirectDepositTransitionRequest"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static DirectDepositTransitionRequest CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static Marqeta.Core.Sdk.Models.DirectDepositTransitionRequest CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-            return new DirectDepositTransitionRequest();
+            return new Marqeta.Core.Sdk.Models.DirectDepositTransitionRequest();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -74,13 +75,13 @@ namespace Marqeta.Core.Sdk.Models {
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                {"channel", n => { Channel = n.GetEnumValue<DirectDepositTransitionRequest_channel>(); } },
-                {"direct_deposit_token", n => { DirectDepositToken = n.GetStringValue(); } },
-                {"idempotentHash", n => { IdempotentHash = n.GetStringValue(); } },
-                {"reason", n => { Reason = n.GetStringValue(); } },
-                {"reason_code", n => { ReasonCode = n.GetEnumValue<DirectDepositTransitionRequest_reason_code>(); } },
-                {"state", n => { State = n.GetEnumValue<DirectDepositTransitionRequest_state>(); } },
-                {"token", n => { Token = n.GetStringValue(); } },
+                { "channel", n => { Channel = n.GetEnumValue<Marqeta.Core.Sdk.Models.DirectDepositTransitionRequest_channel>(); } },
+                { "direct_deposit_token", n => { DirectDepositToken = n.GetStringValue(); } },
+                { "idempotentHash", n => { IdempotentHash = n.GetStringValue(); } },
+                { "reason", n => { Reason = n.GetStringValue(); } },
+                { "reason_code", n => { ReasonCode = n.GetEnumValue<Marqeta.Core.Sdk.Models.DirectDepositTransitionRequest_reason_code>(); } },
+                { "state", n => { State = n.GetEnumValue<Marqeta.Core.Sdk.Models.DirectDepositTransitionRequest_state>(); } },
+                { "token", n => { Token = n.GetStringValue(); } },
             };
         }
         /// <summary>
@@ -90,12 +91,12 @@ namespace Marqeta.Core.Sdk.Models {
         public virtual void Serialize(ISerializationWriter writer)
         {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
-            writer.WriteEnumValue<DirectDepositTransitionRequest_channel>("channel", Channel);
+            writer.WriteEnumValue<Marqeta.Core.Sdk.Models.DirectDepositTransitionRequest_channel>("channel", Channel);
             writer.WriteStringValue("direct_deposit_token", DirectDepositToken);
             writer.WriteStringValue("idempotentHash", IdempotentHash);
             writer.WriteStringValue("reason", Reason);
-            writer.WriteEnumValue<DirectDepositTransitionRequest_reason_code>("reason_code", ReasonCode);
-            writer.WriteEnumValue<DirectDepositTransitionRequest_state>("state", State);
+            writer.WriteEnumValue<Marqeta.Core.Sdk.Models.DirectDepositTransitionRequest_reason_code>("reason_code", ReasonCode);
+            writer.WriteEnumValue<Marqeta.Core.Sdk.Models.DirectDepositTransitionRequest_state>("state", State);
             writer.WriteStringValue("token", Token);
             writer.WriteAdditionalData(AdditionalData);
         }

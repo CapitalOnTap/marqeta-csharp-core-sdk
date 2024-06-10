@@ -4,11 +4,12 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System;
-namespace Marqeta.Core.Sdk.Models {
+namespace Marqeta.Core.Sdk.Models
+{
     /// <summary>
     /// Contains information about the user.
     /// </summary>
-    public class UserValidationRequest : IAdditionalDataHolder, IParsable 
+    public class UserValidationRequest : IAdditionalDataHolder, IParsable
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
@@ -39,7 +40,7 @@ namespace Marqeta.Core.Sdk.Models {
         public string Ssn { get; set; }
 #endif
         /// <summary>
-        /// Instantiates a new <see cref="UserValidationRequest"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Models.UserValidationRequest"/> and sets the default values.
         /// </summary>
         public UserValidationRequest()
         {
@@ -48,12 +49,12 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="UserValidationRequest"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Models.UserValidationRequest"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static UserValidationRequest CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static Marqeta.Core.Sdk.Models.UserValidationRequest CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-            return new UserValidationRequest();
+            return new Marqeta.Core.Sdk.Models.UserValidationRequest();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -63,10 +64,10 @@ namespace Marqeta.Core.Sdk.Models {
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                {"birth_date", n => { BirthDate = n.GetDateTimeOffsetValue(); } },
-                {"phone", n => { Phone = n.GetStringValue(); } },
-                {"random_name_line1_postfix", n => { RandomNameLine1Postfix = n.GetStringValue(); } },
-                {"ssn", n => { Ssn = n.GetStringValue(); } },
+                { "birth_date", n => { BirthDate = n.GetDateTimeOffsetValue(); } },
+                { "phone", n => { Phone = n.GetStringValue(); } },
+                { "random_name_line1_postfix", n => { RandomNameLine1Postfix = n.GetStringValue(); } },
+                { "ssn", n => { Ssn = n.GetStringValue(); } },
             };
         }
         /// <summary>

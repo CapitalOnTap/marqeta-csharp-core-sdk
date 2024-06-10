@@ -4,15 +4,16 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System;
-namespace Marqeta.Core.Sdk.Models {
+namespace Marqeta.Core.Sdk.Models
+{
     #pragma warning disable CS1591
-    public class ApplicationTransitionRequest : IAdditionalDataHolder, IParsable 
+    public class ApplicationTransitionRequest : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>State of the application.If manually &lt;&lt;/core-api/credit-applications#transitionApplication, transitioning an application state&gt;&gt;:* `application_state` is the state to which you want to transition the application status; must be `ACCEPTED` or `REJECTED`.* `original_status` returns the state of the application before it was manually transitioned.* `status` returns the state to which the application was transitioned.</summary>
-        public ApplicationResourceState? ApplicationState { get; set; }
+        public Marqeta.Core.Sdk.Models.ApplicationResourceState? ApplicationState { get; set; }
         /// <summary>The tracking token of the Benefits Disclosure.This is the `tracking_token` returned in the `BENEFITS_DISCLOSURE` object when sending a `GET` request to the `/credit/applications/files` endpoint before the user makes a decision on their approved application.Required if transitioning application state to `ACCEPTED`</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -54,7 +55,7 @@ namespace Marqeta.Core.Sdk.Models {
         public string Token { get; set; }
 #endif
         /// <summary>
-        /// Instantiates a new <see cref="ApplicationTransitionRequest"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Models.ApplicationTransitionRequest"/> and sets the default values.
         /// </summary>
         public ApplicationTransitionRequest()
         {
@@ -63,12 +64,12 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="ApplicationTransitionRequest"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Models.ApplicationTransitionRequest"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static ApplicationTransitionRequest CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static Marqeta.Core.Sdk.Models.ApplicationTransitionRequest CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-            return new ApplicationTransitionRequest();
+            return new Marqeta.Core.Sdk.Models.ApplicationTransitionRequest();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -78,12 +79,12 @@ namespace Marqeta.Core.Sdk.Models {
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                {"application_state", n => { ApplicationState = n.GetEnumValue<ApplicationResourceState>(); } },
-                {"benefits_disclosure_tracking_token", n => { BenefitsDisclosureTrackingToken = n.GetStringValue(); } },
-                {"card_member_agreement_tracking_token", n => { CardMemberAgreementTrackingToken = n.GetStringValue(); } },
-                {"rewards_disclosure_post_terms_tracking_token", n => { RewardsDisclosurePostTermsTrackingToken = n.GetStringValue(); } },
-                {"terms_schedule_tracking_token", n => { TermsScheduleTrackingToken = n.GetStringValue(); } },
-                {"token", n => { Token = n.GetStringValue(); } },
+                { "application_state", n => { ApplicationState = n.GetEnumValue<Marqeta.Core.Sdk.Models.ApplicationResourceState>(); } },
+                { "benefits_disclosure_tracking_token", n => { BenefitsDisclosureTrackingToken = n.GetStringValue(); } },
+                { "card_member_agreement_tracking_token", n => { CardMemberAgreementTrackingToken = n.GetStringValue(); } },
+                { "rewards_disclosure_post_terms_tracking_token", n => { RewardsDisclosurePostTermsTrackingToken = n.GetStringValue(); } },
+                { "terms_schedule_tracking_token", n => { TermsScheduleTrackingToken = n.GetStringValue(); } },
+                { "token", n => { Token = n.GetStringValue(); } },
             };
         }
         /// <summary>
@@ -93,7 +94,7 @@ namespace Marqeta.Core.Sdk.Models {
         public virtual void Serialize(ISerializationWriter writer)
         {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
-            writer.WriteEnumValue<ApplicationResourceState>("application_state", ApplicationState);
+            writer.WriteEnumValue<Marqeta.Core.Sdk.Models.ApplicationResourceState>("application_state", ApplicationState);
             writer.WriteStringValue("benefits_disclosure_tracking_token", BenefitsDisclosureTrackingToken);
             writer.WriteStringValue("card_member_agreement_tracking_token", CardMemberAgreementTrackingToken);
             writer.WriteStringValue("rewards_disclosure_post_terms_tracking_token", RewardsDisclosurePostTermsTrackingToken);

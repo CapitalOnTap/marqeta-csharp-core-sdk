@@ -4,21 +4,22 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System;
-namespace Marqeta.Core.Sdk.Models {
+namespace Marqeta.Core.Sdk.Models
+{
     /// <summary>
     /// Contains information about the digital wallet that funded the transaction.Returned for all transactions funded by a digital wallet or related to digital wallet token provisioning.For more on digital wallets, see the &lt;&lt;/core-api/digital-wallets-management, Digital Wallets Management&gt;&gt; API reference and &lt;&lt;/developer-guides/digital-wallets-and-tokenization, Digital Wallets and Tokenization&gt;&gt; developer guide.
     /// </summary>
-    public class Digital_wallet_token : IAdditionalDataHolder, IParsable 
+    public class Digital_wallet_token : IAdditionalDataHolder, IParsable
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Contains address verification information.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public Address_verification? AddressVerification { get; set; }
+        public Marqeta.Core.Sdk.Models.Address_verification? AddressVerification { get; set; }
 #nullable restore
 #else
-        public Address_verification AddressVerification { get; set; }
+        public Marqeta.Core.Sdk.Models.Address_verification AddressVerification { get; set; }
 #endif
         /// <summary>Unique identifier of the card.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -59,10 +60,10 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>Contains additional information about the digital wallet token.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public Digital_wallet_token_metadata? Metadata { get; set; }
+        public Marqeta.Core.Sdk.Models.Digital_wallet_token_metadata? Metadata { get; set; }
 #nullable restore
 #else
-        public Digital_wallet_token_metadata Metadata { get; set; }
+        public Marqeta.Core.Sdk.Models.Digital_wallet_token_metadata Metadata { get; set; }
 #endif
         /// <summary>State of the digital wallet token.For state descriptions, see &lt;&lt;/developer-guides/managing-the-digital-wallet-token-lifecycle#_transitioning_token_states, Transitioning Token States&gt;&gt;.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -91,37 +92,37 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>Contains information held and provided by the token service provider (card network).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public Token_service_provider? TokenServiceProvider { get; set; }
+        public Marqeta.Core.Sdk.Models.Token_service_provider? TokenServiceProvider { get; set; }
 #nullable restore
 #else
-        public Token_service_provider TokenServiceProvider { get; set; }
+        public Marqeta.Core.Sdk.Models.Token_service_provider TokenServiceProvider { get; set; }
 #endif
         /// <summary>Contains information about the device used in the transaction to enhance the risk decisioning process.Use this data to improve fraud prevention and dispute resolution.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public Transaction_device? TransactionDevice { get; set; }
+        public Marqeta.Core.Sdk.Models.Transaction_device? TransactionDevice { get; set; }
 #nullable restore
 #else
-        public Transaction_device TransactionDevice { get; set; }
+        public Marqeta.Core.Sdk.Models.Transaction_device TransactionDevice { get; set; }
 #endif
         /// <summary>Contains information about a cardholder.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public User_card_holder_response? User { get; set; }
+        public Marqeta.Core.Sdk.Models.User_card_holder_response? User { get; set; }
 #nullable restore
 #else
-        public User_card_holder_response User { get; set; }
+        public Marqeta.Core.Sdk.Models.User_card_holder_response User { get; set; }
 #endif
         /// <summary>Contains information held and provided by the digital wallet provider.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public Wallet_provider_profile? WalletProviderProfile { get; set; }
+        public Marqeta.Core.Sdk.Models.Wallet_provider_profile? WalletProviderProfile { get; set; }
 #nullable restore
 #else
-        public Wallet_provider_profile WalletProviderProfile { get; set; }
+        public Marqeta.Core.Sdk.Models.Wallet_provider_profile WalletProviderProfile { get; set; }
 #endif
         /// <summary>
-        /// Instantiates a new <see cref="Digital_wallet_token"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Models.Digital_wallet_token"/> and sets the default values.
         /// </summary>
         public Digital_wallet_token()
         {
@@ -130,12 +131,12 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="Digital_wallet_token"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Models.Digital_wallet_token"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static Digital_wallet_token CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static Marqeta.Core.Sdk.Models.Digital_wallet_token CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-            return new Digital_wallet_token();
+            return new Marqeta.Core.Sdk.Models.Digital_wallet_token();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -145,21 +146,21 @@ namespace Marqeta.Core.Sdk.Models {
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                {"address_verification", n => { AddressVerification = n.GetObjectValue<Address_verification>(Address_verification.CreateFromDiscriminatorValue); } },
-                {"card_token", n => { CardToken = n.GetStringValue(); } },
-                {"created_time", n => { CreatedTime = n.GetDateTimeOffsetValue(); } },
-                {"device", n => { Device = n.GetObjectValue<Marqeta.Core.Sdk.Models.Device>(Marqeta.Core.Sdk.Models.Device.CreateFromDiscriminatorValue); } },
-                {"fulfillment_status", n => { FulfillmentStatus = n.GetStringValue(); } },
-                {"issuer_eligibility_decision", n => { IssuerEligibilityDecision = n.GetStringValue(); } },
-                {"last_modified_time", n => { LastModifiedTime = n.GetDateTimeOffsetValue(); } },
-                {"metadata", n => { Metadata = n.GetObjectValue<Digital_wallet_token_metadata>(Digital_wallet_token_metadata.CreateFromDiscriminatorValue); } },
-                {"state", n => { State = n.GetStringValue(); } },
-                {"state_reason", n => { StateReason = n.GetStringValue(); } },
-                {"token", n => { Token = n.GetStringValue(); } },
-                {"token_service_provider", n => { TokenServiceProvider = n.GetObjectValue<Token_service_provider>(Token_service_provider.CreateFromDiscriminatorValue); } },
-                {"transaction_device", n => { TransactionDevice = n.GetObjectValue<Transaction_device>(Transaction_device.CreateFromDiscriminatorValue); } },
-                {"user", n => { User = n.GetObjectValue<User_card_holder_response>(User_card_holder_response.CreateFromDiscriminatorValue); } },
-                {"wallet_provider_profile", n => { WalletProviderProfile = n.GetObjectValue<Wallet_provider_profile>(Wallet_provider_profile.CreateFromDiscriminatorValue); } },
+                { "address_verification", n => { AddressVerification = n.GetObjectValue<Marqeta.Core.Sdk.Models.Address_verification>(Marqeta.Core.Sdk.Models.Address_verification.CreateFromDiscriminatorValue); } },
+                { "card_token", n => { CardToken = n.GetStringValue(); } },
+                { "created_time", n => { CreatedTime = n.GetDateTimeOffsetValue(); } },
+                { "device", n => { Device = n.GetObjectValue<Marqeta.Core.Sdk.Models.Device>(Marqeta.Core.Sdk.Models.Device.CreateFromDiscriminatorValue); } },
+                { "fulfillment_status", n => { FulfillmentStatus = n.GetStringValue(); } },
+                { "issuer_eligibility_decision", n => { IssuerEligibilityDecision = n.GetStringValue(); } },
+                { "last_modified_time", n => { LastModifiedTime = n.GetDateTimeOffsetValue(); } },
+                { "metadata", n => { Metadata = n.GetObjectValue<Marqeta.Core.Sdk.Models.Digital_wallet_token_metadata>(Marqeta.Core.Sdk.Models.Digital_wallet_token_metadata.CreateFromDiscriminatorValue); } },
+                { "state", n => { State = n.GetStringValue(); } },
+                { "state_reason", n => { StateReason = n.GetStringValue(); } },
+                { "token", n => { Token = n.GetStringValue(); } },
+                { "token_service_provider", n => { TokenServiceProvider = n.GetObjectValue<Marqeta.Core.Sdk.Models.Token_service_provider>(Marqeta.Core.Sdk.Models.Token_service_provider.CreateFromDiscriminatorValue); } },
+                { "transaction_device", n => { TransactionDevice = n.GetObjectValue<Marqeta.Core.Sdk.Models.Transaction_device>(Marqeta.Core.Sdk.Models.Transaction_device.CreateFromDiscriminatorValue); } },
+                { "user", n => { User = n.GetObjectValue<Marqeta.Core.Sdk.Models.User_card_holder_response>(Marqeta.Core.Sdk.Models.User_card_holder_response.CreateFromDiscriminatorValue); } },
+                { "wallet_provider_profile", n => { WalletProviderProfile = n.GetObjectValue<Marqeta.Core.Sdk.Models.Wallet_provider_profile>(Marqeta.Core.Sdk.Models.Wallet_provider_profile.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -169,21 +170,21 @@ namespace Marqeta.Core.Sdk.Models {
         public virtual void Serialize(ISerializationWriter writer)
         {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<Address_verification>("address_verification", AddressVerification);
+            writer.WriteObjectValue<Marqeta.Core.Sdk.Models.Address_verification>("address_verification", AddressVerification);
             writer.WriteStringValue("card_token", CardToken);
             writer.WriteDateTimeOffsetValue("created_time", CreatedTime);
             writer.WriteObjectValue<Marqeta.Core.Sdk.Models.Device>("device", Device);
             writer.WriteStringValue("fulfillment_status", FulfillmentStatus);
             writer.WriteStringValue("issuer_eligibility_decision", IssuerEligibilityDecision);
             writer.WriteDateTimeOffsetValue("last_modified_time", LastModifiedTime);
-            writer.WriteObjectValue<Digital_wallet_token_metadata>("metadata", Metadata);
+            writer.WriteObjectValue<Marqeta.Core.Sdk.Models.Digital_wallet_token_metadata>("metadata", Metadata);
             writer.WriteStringValue("state", State);
             writer.WriteStringValue("state_reason", StateReason);
             writer.WriteStringValue("token", Token);
-            writer.WriteObjectValue<Token_service_provider>("token_service_provider", TokenServiceProvider);
-            writer.WriteObjectValue<Transaction_device>("transaction_device", TransactionDevice);
-            writer.WriteObjectValue<User_card_holder_response>("user", User);
-            writer.WriteObjectValue<Wallet_provider_profile>("wallet_provider_profile", WalletProviderProfile);
+            writer.WriteObjectValue<Marqeta.Core.Sdk.Models.Token_service_provider>("token_service_provider", TokenServiceProvider);
+            writer.WriteObjectValue<Marqeta.Core.Sdk.Models.Transaction_device>("transaction_device", TransactionDevice);
+            writer.WriteObjectValue<Marqeta.Core.Sdk.Models.User_card_holder_response>("user", User);
+            writer.WriteObjectValue<Marqeta.Core.Sdk.Models.Wallet_provider_profile>("wallet_provider_profile", WalletProviderProfile);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

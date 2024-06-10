@@ -4,21 +4,22 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System;
-namespace Marqeta.Core.Sdk.Models {
+namespace Marqeta.Core.Sdk.Models
+{
     /// <summary>
     /// Contains information about the KYC verification result.
     /// </summary>
-    public class Result : IAdditionalDataHolder, IParsable 
+    public class Result : IAdditionalDataHolder, IParsable
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>An array of KYC verification result code objects.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<Result_code>? Codes { get; set; }
+        public List<Marqeta.Core.Sdk.Models.Result_code>? Codes { get; set; }
 #nullable restore
 #else
-        public List<Result_code> Codes { get; set; }
+        public List<Marqeta.Core.Sdk.Models.Result_code> Codes { get; set; }
 #endif
         /// <summary>KYC verification status.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -29,7 +30,7 @@ namespace Marqeta.Core.Sdk.Models {
         public string Status { get; set; }
 #endif
         /// <summary>
-        /// Instantiates a new <see cref="Result"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Models.Result"/> and sets the default values.
         /// </summary>
         public Result()
         {
@@ -38,12 +39,12 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="Result"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Models.Result"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static Result CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static Marqeta.Core.Sdk.Models.Result CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-            return new Result();
+            return new Marqeta.Core.Sdk.Models.Result();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -53,8 +54,8 @@ namespace Marqeta.Core.Sdk.Models {
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                {"codes", n => { Codes = n.GetCollectionOfObjectValues<Result_code>(Result_code.CreateFromDiscriminatorValue)?.ToList(); } },
-                {"status", n => { Status = n.GetStringValue(); } },
+                { "codes", n => { Codes = n.GetCollectionOfObjectValues<Marqeta.Core.Sdk.Models.Result_code>(Marqeta.Core.Sdk.Models.Result_code.CreateFromDiscriminatorValue)?.ToList(); } },
+                { "status", n => { Status = n.GetStringValue(); } },
             };
         }
         /// <summary>
@@ -64,7 +65,7 @@ namespace Marqeta.Core.Sdk.Models {
         public virtual void Serialize(ISerializationWriter writer)
         {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
-            writer.WriteCollectionOfObjectValues<Result_code>("codes", Codes);
+            writer.WriteCollectionOfObjectValues<Marqeta.Core.Sdk.Models.Result_code>("codes", Codes);
             writer.WriteStringValue("status", Status);
             writer.WriteAdditionalData(AdditionalData);
         }

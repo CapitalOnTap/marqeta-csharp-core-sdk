@@ -4,20 +4,21 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System;
-namespace Marqeta.Core.Sdk.Models {
+namespace Marqeta.Core.Sdk.Models
+{
     /// <summary>
     /// Object containing payment allocation information.
     /// </summary>
-    public class PaymentAllocationResponse : IAdditionalDataHolder, IParsable 
+    public class PaymentAllocationResponse : IAdditionalDataHolder, IParsable
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Total amount of the payment allocation.</summary>
         public double? Amount { get; set; }
         /// <summary>category a portion of the payment is allocated to.</summary>
-        public PaymentAllocationResponse_bucket? Bucket { get; set; }
+        public Marqeta.Core.Sdk.Models.PaymentAllocationResponse_bucket? Bucket { get; set; }
         /// <summary>
-        /// Instantiates a new <see cref="PaymentAllocationResponse"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Models.PaymentAllocationResponse"/> and sets the default values.
         /// </summary>
         public PaymentAllocationResponse()
         {
@@ -26,12 +27,12 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="PaymentAllocationResponse"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Models.PaymentAllocationResponse"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static PaymentAllocationResponse CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static Marqeta.Core.Sdk.Models.PaymentAllocationResponse CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-            return new PaymentAllocationResponse();
+            return new Marqeta.Core.Sdk.Models.PaymentAllocationResponse();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -41,8 +42,8 @@ namespace Marqeta.Core.Sdk.Models {
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                {"amount", n => { Amount = n.GetDoubleValue(); } },
-                {"bucket", n => { Bucket = n.GetEnumValue<PaymentAllocationResponse_bucket>(); } },
+                { "amount", n => { Amount = n.GetDoubleValue(); } },
+                { "bucket", n => { Bucket = n.GetEnumValue<Marqeta.Core.Sdk.Models.PaymentAllocationResponse_bucket>(); } },
             };
         }
         /// <summary>
@@ -53,7 +54,7 @@ namespace Marqeta.Core.Sdk.Models {
         {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
             writer.WriteDoubleValue("amount", Amount);
-            writer.WriteEnumValue<PaymentAllocationResponse_bucket>("bucket", Bucket);
+            writer.WriteEnumValue<Marqeta.Core.Sdk.Models.PaymentAllocationResponse_bucket>("bucket", Bucket);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

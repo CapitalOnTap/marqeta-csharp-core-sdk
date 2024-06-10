@@ -4,9 +4,10 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System;
-namespace Marqeta.Core.Sdk.Models {
+namespace Marqeta.Core.Sdk.Models
+{
     #pragma warning disable CS1591
-    public class AccountUpdateReq : IAdditionalDataHolder, IParsable 
+    public class AccountUpdateReq : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -14,31 +15,31 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>Contains information relevant for updating configurations for electronic disclosures, fees, payment holds, and minimum payment.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public AccountConfigUpdateReq? Config { get; set; }
+        public Marqeta.Core.Sdk.Models.AccountConfigUpdateReq? Config { get; set; }
 #nullable restore
 #else
-        public AccountConfigUpdateReq Config { get; set; }
+        public Marqeta.Core.Sdk.Models.AccountConfigUpdateReq Config { get; set; }
 #endif
         /// <summary>Contains information on the credit limit.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public AccountUpdateReq_credit_limit? CreditLimit { get; set; }
+        public Marqeta.Core.Sdk.Models.AccountUpdateReq_credit_limit? CreditLimit { get; set; }
 #nullable restore
 #else
-        public AccountUpdateReq_credit_limit CreditLimit { get; set; }
+        public Marqeta.Core.Sdk.Models.AccountUpdateReq_credit_limit CreditLimit { get; set; }
 #endif
         /// <summary>Type of cycle.* `BEGINNING_REVOLVING` - Account is beginning to revolve and just started carrying a balancefrom the previous month.* `REVOLVING` - Account is revolving and has been carrying a balance from month to month for more than one month.* `END_REVOLVING` - Account is no longer revolving and the previous month&apos;s balance is paid off.* `TRANSACTING` - Account is not revolving and the balance is paid off each month.</summary>
-        public CycleType? LatestStatementCycleType { get; set; }
+        public Marqeta.Core.Sdk.Models.CycleType? LatestStatementCycleType { get; set; }
         /// <summary>Contains one or more `usages` objects that contain information on how a credit account is used and what types of balances are permitted on the account.You can pass only one `usages` object per `usages.type`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<AccountUsageUpdateReq>? Usages { get; set; }
+        public List<Marqeta.Core.Sdk.Models.AccountUsageUpdateReq>? Usages { get; set; }
 #nullable restore
 #else
-        public List<AccountUsageUpdateReq> Usages { get; set; }
+        public List<Marqeta.Core.Sdk.Models.AccountUsageUpdateReq> Usages { get; set; }
 #endif
         /// <summary>
-        /// Instantiates a new <see cref="AccountUpdateReq"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Models.AccountUpdateReq"/> and sets the default values.
         /// </summary>
         public AccountUpdateReq()
         {
@@ -47,12 +48,12 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="AccountUpdateReq"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Models.AccountUpdateReq"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static AccountUpdateReq CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static Marqeta.Core.Sdk.Models.AccountUpdateReq CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-            return new AccountUpdateReq();
+            return new Marqeta.Core.Sdk.Models.AccountUpdateReq();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -62,10 +63,10 @@ namespace Marqeta.Core.Sdk.Models {
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                {"config", n => { Config = n.GetObjectValue<AccountConfigUpdateReq>(AccountConfigUpdateReq.CreateFromDiscriminatorValue); } },
-                {"credit_limit", n => { CreditLimit = n.GetObjectValue<AccountUpdateReq_credit_limit>(AccountUpdateReq_credit_limit.CreateFromDiscriminatorValue); } },
-                {"latest_statement_cycle_type", n => { LatestStatementCycleType = n.GetEnumValue<CycleType>(); } },
-                {"usages", n => { Usages = n.GetCollectionOfObjectValues<AccountUsageUpdateReq>(AccountUsageUpdateReq.CreateFromDiscriminatorValue)?.ToList(); } },
+                { "config", n => { Config = n.GetObjectValue<Marqeta.Core.Sdk.Models.AccountConfigUpdateReq>(Marqeta.Core.Sdk.Models.AccountConfigUpdateReq.CreateFromDiscriminatorValue); } },
+                { "credit_limit", n => { CreditLimit = n.GetObjectValue<Marqeta.Core.Sdk.Models.AccountUpdateReq_credit_limit>(Marqeta.Core.Sdk.Models.AccountUpdateReq_credit_limit.CreateFromDiscriminatorValue); } },
+                { "latest_statement_cycle_type", n => { LatestStatementCycleType = n.GetEnumValue<Marqeta.Core.Sdk.Models.CycleType>(); } },
+                { "usages", n => { Usages = n.GetCollectionOfObjectValues<Marqeta.Core.Sdk.Models.AccountUsageUpdateReq>(Marqeta.Core.Sdk.Models.AccountUsageUpdateReq.CreateFromDiscriminatorValue)?.ToList(); } },
             };
         }
         /// <summary>
@@ -75,10 +76,10 @@ namespace Marqeta.Core.Sdk.Models {
         public virtual void Serialize(ISerializationWriter writer)
         {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<AccountConfigUpdateReq>("config", Config);
-            writer.WriteObjectValue<AccountUpdateReq_credit_limit>("credit_limit", CreditLimit);
-            writer.WriteEnumValue<CycleType>("latest_statement_cycle_type", LatestStatementCycleType);
-            writer.WriteCollectionOfObjectValues<AccountUsageUpdateReq>("usages", Usages);
+            writer.WriteObjectValue<Marqeta.Core.Sdk.Models.AccountConfigUpdateReq>("config", Config);
+            writer.WriteObjectValue<Marqeta.Core.Sdk.Models.AccountUpdateReq_credit_limit>("credit_limit", CreditLimit);
+            writer.WriteEnumValue<Marqeta.Core.Sdk.Models.CycleType>("latest_statement_cycle_type", LatestStatementCycleType);
+            writer.WriteCollectionOfObjectValues<Marqeta.Core.Sdk.Models.AccountUsageUpdateReq>("usages", Usages);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

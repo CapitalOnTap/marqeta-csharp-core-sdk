@@ -4,11 +4,12 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System;
-namespace Marqeta.Core.Sdk.Models {
+namespace Marqeta.Core.Sdk.Models
+{
     /// <summary>
     /// Collection of statement files.
     /// </summary>
-    public class StatementFile : IAdditionalDataHolder, IParsable 
+    public class StatementFile : IAdditionalDataHolder, IParsable
     {
         /// <summary>Unique identifier of the credit account on which the statement PDF file is generated.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -43,9 +44,9 @@ namespace Marqeta.Core.Sdk.Models {
         public string Token { get; set; }
 #endif
         /// <summary>Type of file.</summary>
-        public StatementFile_type? Type { get; set; }
+        public Marqeta.Core.Sdk.Models.StatementFile_type? Type { get; set; }
         /// <summary>
-        /// Instantiates a new <see cref="StatementFile"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Models.StatementFile"/> and sets the default values.
         /// </summary>
         public StatementFile()
         {
@@ -54,12 +55,12 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="StatementFile"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Models.StatementFile"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static StatementFile CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static Marqeta.Core.Sdk.Models.StatementFile CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-            return new StatementFile();
+            return new Marqeta.Core.Sdk.Models.StatementFile();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -69,13 +70,13 @@ namespace Marqeta.Core.Sdk.Models {
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                {"account_token", n => { AccountToken = n.GetStringValue(); } },
-                {"closing_date", n => { ClosingDate = n.GetDateTimeOffsetValue(); } },
-                {"opening_date", n => { OpeningDate = n.GetDateTimeOffsetValue(); } },
-                {"signed_url", n => { SignedUrl = n.GetStringValue(); } },
-                {"statement_summary_token", n => { StatementSummaryToken = n.GetGuidValue(); } },
-                {"token", n => { Token = n.GetStringValue(); } },
-                {"type", n => { Type = n.GetEnumValue<StatementFile_type>(); } },
+                { "account_token", n => { AccountToken = n.GetStringValue(); } },
+                { "closing_date", n => { ClosingDate = n.GetDateTimeOffsetValue(); } },
+                { "opening_date", n => { OpeningDate = n.GetDateTimeOffsetValue(); } },
+                { "signed_url", n => { SignedUrl = n.GetStringValue(); } },
+                { "statement_summary_token", n => { StatementSummaryToken = n.GetGuidValue(); } },
+                { "token", n => { Token = n.GetStringValue(); } },
+                { "type", n => { Type = n.GetEnumValue<Marqeta.Core.Sdk.Models.StatementFile_type>(); } },
             };
         }
         /// <summary>
@@ -91,7 +92,7 @@ namespace Marqeta.Core.Sdk.Models {
             writer.WriteStringValue("signed_url", SignedUrl);
             writer.WriteGuidValue("statement_summary_token", StatementSummaryToken);
             writer.WriteStringValue("token", Token);
-            writer.WriteEnumValue<StatementFile_type>("type", Type);
+            writer.WriteEnumValue<Marqeta.Core.Sdk.Models.StatementFile_type>("type", Type);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

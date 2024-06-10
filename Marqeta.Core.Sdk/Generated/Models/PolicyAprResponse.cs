@@ -5,11 +5,12 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System;
-namespace Marqeta.Core.Sdk.Models {
+namespace Marqeta.Core.Sdk.Models
+{
     /// <summary>
     /// Contains information on an APR policy.
     /// </summary>
-    public class PolicyAprResponse : IAdditionalDataHolder, IParsable 
+    public class PolicyAprResponse : IAdditionalDataHolder, IParsable
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
@@ -36,10 +37,10 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>Contains information on the pricing strategy for purchases.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public PolicyAprPurchaseResponse? Purchases { get; set; }
+        public Marqeta.Core.Sdk.Models.PolicyAprPurchaseResponse? Purchases { get; set; }
 #nullable restore
 #else
-        public PolicyAprPurchaseResponse Purchases { get; set; }
+        public Marqeta.Core.Sdk.Models.PolicyAprPurchaseResponse Purchases { get; set; }
 #endif
         /// <summary>Unique identifier of the APR policy.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -52,7 +53,7 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>Date and time when the APR policy was last updated on Marqeta&apos;s credit platform, in UTC.</summary>
         public DateTimeOffset? UpdatedTime { get; set; }
         /// <summary>
-        /// Instantiates a new <see cref="PolicyAprResponse"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Models.PolicyAprResponse"/> and sets the default values.
         /// </summary>
         public PolicyAprResponse()
         {
@@ -61,12 +62,12 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="PolicyAprResponse"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Models.PolicyAprResponse"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static PolicyAprResponse CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static Marqeta.Core.Sdk.Models.PolicyAprResponse CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-            return new PolicyAprResponse();
+            return new Marqeta.Core.Sdk.Models.PolicyAprResponse();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -76,13 +77,13 @@ namespace Marqeta.Core.Sdk.Models {
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                {"created_time", n => { CreatedTime = n.GetDateTimeOffsetValue(); } },
-                {"description", n => { Description = n.GetStringValue(); } },
-                {"effective_date", n => { EffectiveDate = n.GetDateValue(); } },
-                {"name", n => { Name = n.GetStringValue(); } },
-                {"purchases", n => { Purchases = n.GetObjectValue<PolicyAprPurchaseResponse>(PolicyAprPurchaseResponse.CreateFromDiscriminatorValue); } },
-                {"token", n => { Token = n.GetStringValue(); } },
-                {"updated_time", n => { UpdatedTime = n.GetDateTimeOffsetValue(); } },
+                { "created_time", n => { CreatedTime = n.GetDateTimeOffsetValue(); } },
+                { "description", n => { Description = n.GetStringValue(); } },
+                { "effective_date", n => { EffectiveDate = n.GetDateValue(); } },
+                { "name", n => { Name = n.GetStringValue(); } },
+                { "purchases", n => { Purchases = n.GetObjectValue<Marqeta.Core.Sdk.Models.PolicyAprPurchaseResponse>(Marqeta.Core.Sdk.Models.PolicyAprPurchaseResponse.CreateFromDiscriminatorValue); } },
+                { "token", n => { Token = n.GetStringValue(); } },
+                { "updated_time", n => { UpdatedTime = n.GetDateTimeOffsetValue(); } },
             };
         }
         /// <summary>
@@ -96,7 +97,7 @@ namespace Marqeta.Core.Sdk.Models {
             writer.WriteStringValue("description", Description);
             writer.WriteDateValue("effective_date", EffectiveDate);
             writer.WriteStringValue("name", Name);
-            writer.WriteObjectValue<PolicyAprPurchaseResponse>("purchases", Purchases);
+            writer.WriteObjectValue<Marqeta.Core.Sdk.Models.PolicyAprPurchaseResponse>("purchases", Purchases);
             writer.WriteStringValue("token", Token);
             writer.WriteDateTimeOffsetValue("updated_time", UpdatedTime);
             writer.WriteAdditionalData(AdditionalData);

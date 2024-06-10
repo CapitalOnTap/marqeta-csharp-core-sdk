@@ -4,9 +4,10 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System;
-namespace Marqeta.Core.Sdk.Models {
+namespace Marqeta.Core.Sdk.Models
+{
     #pragma warning disable CS1591
-    public class RewardProgramsBalancesResponse : IAdditionalDataHolder, IParsable 
+    public class RewardProgramsBalancesResponse : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -32,7 +33,7 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>The total balance of the rewards accrued to date minus the rewards redeemed to date.</summary>
         public decimal? TotalRewardBalance { get; set; }
         /// <summary>
-        /// Instantiates a new <see cref="RewardProgramsBalancesResponse"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Models.RewardProgramsBalancesResponse"/> and sets the default values.
         /// </summary>
         public RewardProgramsBalancesResponse()
         {
@@ -41,12 +42,12 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="RewardProgramsBalancesResponse"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Models.RewardProgramsBalancesResponse"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static RewardProgramsBalancesResponse CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static Marqeta.Core.Sdk.Models.RewardProgramsBalancesResponse CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-            return new RewardProgramsBalancesResponse();
+            return new Marqeta.Core.Sdk.Models.RewardProgramsBalancesResponse();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -56,13 +57,13 @@ namespace Marqeta.Core.Sdk.Models {
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                {"billing_cycle_closing_date", n => { BillingCycleClosingDate = n.GetDateTimeOffsetValue(); } },
-                {"billing_cycle_opening_date", n => { BillingCycleOpeningDate = n.GetDateTimeOffsetValue(); } },
-                {"net_balance", n => { NetBalance = n.GetDecimalValue(); } },
-                {"pending_reward_balance", n => { PendingRewardBalance = n.GetDecimalValue(); } },
-                {"percentage", n => { Percentage = n.GetDecimalValue(); } },
-                {"reward_program_token", n => { RewardProgramToken = n.GetStringValue(); } },
-                {"total_reward_balance", n => { TotalRewardBalance = n.GetDecimalValue(); } },
+                { "billing_cycle_closing_date", n => { BillingCycleClosingDate = n.GetDateTimeOffsetValue(); } },
+                { "billing_cycle_opening_date", n => { BillingCycleOpeningDate = n.GetDateTimeOffsetValue(); } },
+                { "net_balance", n => { NetBalance = n.GetDecimalValue(); } },
+                { "pending_reward_balance", n => { PendingRewardBalance = n.GetDecimalValue(); } },
+                { "percentage", n => { Percentage = n.GetDecimalValue(); } },
+                { "reward_program_token", n => { RewardProgramToken = n.GetStringValue(); } },
+                { "total_reward_balance", n => { TotalRewardBalance = n.GetDecimalValue(); } },
             };
         }
         /// <summary>

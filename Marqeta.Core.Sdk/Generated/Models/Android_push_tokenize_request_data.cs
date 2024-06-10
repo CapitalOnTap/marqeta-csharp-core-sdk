@@ -4,11 +4,12 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System;
-namespace Marqeta.Core.Sdk.Models {
+namespace Marqeta.Core.Sdk.Models
+{
     /// <summary>
     /// Contains details about a card tokenization push request.
     /// </summary>
-    public class Android_push_tokenize_request_data : IAdditionalDataHolder, IParsable 
+    public class Android_push_tokenize_request_data : IAdditionalDataHolder, IParsable
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
@@ -55,13 +56,13 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>Specifies the cardholder address.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public AndroidPushTokenRequestAddress? UserAddress { get; set; }
+        public Marqeta.Core.Sdk.Models.AndroidPushTokenRequestAddress? UserAddress { get; set; }
 #nullable restore
 #else
-        public AndroidPushTokenRequestAddress UserAddress { get; set; }
+        public Marqeta.Core.Sdk.Models.AndroidPushTokenRequestAddress UserAddress { get; set; }
 #endif
         /// <summary>
-        /// Instantiates a new <see cref="Android_push_tokenize_request_data"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Models.Android_push_tokenize_request_data"/> and sets the default values.
         /// </summary>
         public Android_push_tokenize_request_data()
         {
@@ -70,12 +71,12 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="Android_push_tokenize_request_data"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Models.Android_push_tokenize_request_data"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static Android_push_tokenize_request_data CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static Marqeta.Core.Sdk.Models.Android_push_tokenize_request_data CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-            return new Android_push_tokenize_request_data();
+            return new Marqeta.Core.Sdk.Models.Android_push_tokenize_request_data();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -85,12 +86,12 @@ namespace Marqeta.Core.Sdk.Models {
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                {"display_name", n => { DisplayName = n.GetStringValue(); } },
-                {"last_digits", n => { LastDigits = n.GetStringValue(); } },
-                {"network", n => { Network = n.GetStringValue(); } },
-                {"opaque_payment_card", n => { OpaquePaymentCard = n.GetStringValue(); } },
-                {"token_service_provider", n => { TokenServiceProvider = n.GetStringValue(); } },
-                {"user_address", n => { UserAddress = n.GetObjectValue<AndroidPushTokenRequestAddress>(AndroidPushTokenRequestAddress.CreateFromDiscriminatorValue); } },
+                { "display_name", n => { DisplayName = n.GetStringValue(); } },
+                { "last_digits", n => { LastDigits = n.GetStringValue(); } },
+                { "network", n => { Network = n.GetStringValue(); } },
+                { "opaque_payment_card", n => { OpaquePaymentCard = n.GetStringValue(); } },
+                { "token_service_provider", n => { TokenServiceProvider = n.GetStringValue(); } },
+                { "user_address", n => { UserAddress = n.GetObjectValue<Marqeta.Core.Sdk.Models.AndroidPushTokenRequestAddress>(Marqeta.Core.Sdk.Models.AndroidPushTokenRequestAddress.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -105,7 +106,7 @@ namespace Marqeta.Core.Sdk.Models {
             writer.WriteStringValue("network", Network);
             writer.WriteStringValue("opaque_payment_card", OpaquePaymentCard);
             writer.WriteStringValue("token_service_provider", TokenServiceProvider);
-            writer.WriteObjectValue<AndroidPushTokenRequestAddress>("user_address", UserAddress);
+            writer.WriteObjectValue<Marqeta.Core.Sdk.Models.AndroidPushTokenRequestAddress>("user_address", UserAddress);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

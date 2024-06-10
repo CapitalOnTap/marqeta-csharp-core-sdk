@@ -8,14 +8,15 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Threading;
 using System;
-namespace Marqeta.Core.Sdk.Acceptedcountries.Item {
+namespace Marqeta.Core.Sdk.Acceptedcountries.Item
+{
     /// <summary>
     /// Builds and executes requests for operations under \acceptedcountries\{token}
     /// </summary>
-    public class WithTokenItemRequestBuilder : BaseRequestBuilder 
+    public class WithTokenItemRequestBuilder : BaseRequestBuilder
     {
         /// <summary>
-        /// Instantiates a new <see cref="WithTokenItemRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Acceptedcountries.Item.WithTokenItemRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
@@ -23,7 +24,7 @@ namespace Marqeta.Core.Sdk.Acceptedcountries.Item {
         {
         }
         /// <summary>
-        /// Instantiates a new <see cref="WithTokenItemRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Acceptedcountries.Item.WithTokenItemRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
@@ -33,25 +34,25 @@ namespace Marqeta.Core.Sdk.Acceptedcountries.Item {
         /// <summary>
         /// Retrieve a specific `acceptedcountries` object.Send a `GET` request to the `/acceptedcountries` endpoint to retrieve existing `acceptedcountries` object tokens.
         /// </summary>
-        /// <returns>A <see cref="Accepted_countries_model"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Models.Accepted_countries_model"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        /// <exception cref="ApiError">When receiving a 4XX or 5XX status code</exception>
+        /// <exception cref="Marqeta.Core.Sdk.Models.ApiError">When receiving a 4XX or 5XX status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<Accepted_countries_model?> GetAsync(Action<RequestConfiguration<WithTokenItemRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<Marqeta.Core.Sdk.Models.Accepted_countries_model?> GetAsync(Action<RequestConfiguration<Marqeta.Core.Sdk.Acceptedcountries.Item.WithTokenItemRequestBuilder.WithTokenItemRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<Accepted_countries_model> GetAsync(Action<RequestConfiguration<WithTokenItemRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<Marqeta.Core.Sdk.Models.Accepted_countries_model> GetAsync(Action<RequestConfiguration<Marqeta.Core.Sdk.Acceptedcountries.Item.WithTokenItemRequestBuilder.WithTokenItemRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
-                {"XXX", ApiError.CreateFromDiscriminatorValue},
+                { "XXX", Marqeta.Core.Sdk.Models.ApiError.CreateFromDiscriminatorValue },
             };
-            return await RequestAdapter.SendAsync<Accepted_countries_model>(requestInfo, Accepted_countries_model.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<Marqeta.Core.Sdk.Models.Accepted_countries_model>(requestInfo, Marqeta.Core.Sdk.Models.Accepted_countries_model.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Retrieve a specific `acceptedcountries` object.Send a `GET` request to the `/acceptedcountries` endpoint to retrieve existing `acceptedcountries` object tokens.
@@ -60,11 +61,11 @@ namespace Marqeta.Core.Sdk.Acceptedcountries.Item {
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<WithTokenItemRequestBuilderGetQueryParameters>>? requestConfiguration = default)
+        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<Marqeta.Core.Sdk.Acceptedcountries.Item.WithTokenItemRequestBuilder.WithTokenItemRequestBuilderGetQueryParameters>>? requestConfiguration = default)
         {
 #nullable restore
 #else
-        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<WithTokenItemRequestBuilderGetQueryParameters>> requestConfiguration = default)
+        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<Marqeta.Core.Sdk.Acceptedcountries.Item.WithTokenItemRequestBuilder.WithTokenItemRequestBuilderGetQueryParameters>> requestConfiguration = default)
         {
 #endif
             var requestInfo = new RequestInformation(Method.GET, UrlTemplate, PathParameters);
@@ -75,11 +76,11 @@ namespace Marqeta.Core.Sdk.Acceptedcountries.Item {
         /// <summary>
         /// Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
         /// </summary>
-        /// <returns>A <see cref="WithTokenItemRequestBuilder"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Acceptedcountries.Item.WithTokenItemRequestBuilder"/></returns>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
-        public WithTokenItemRequestBuilder WithUrl(string rawUrl)
+        public Marqeta.Core.Sdk.Acceptedcountries.Item.WithTokenItemRequestBuilder WithUrl(string rawUrl)
         {
-            return new WithTokenItemRequestBuilder(rawUrl, RequestAdapter);
+            return new Marqeta.Core.Sdk.Acceptedcountries.Item.WithTokenItemRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
         /// Retrieve a specific `acceptedcountries` object.Send a `GET` request to the `/acceptedcountries` endpoint to retrieve existing `acceptedcountries` object tokens.

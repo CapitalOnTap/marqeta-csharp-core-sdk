@@ -6,26 +6,27 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using System;
-namespace Marqeta.Core.Sdk.Kyc.Business {
+namespace Marqeta.Core.Sdk.Kyc.Business
+{
     /// <summary>
     /// Builds and executes requests for operations under \kyc\business
     /// </summary>
-    public class BusinessRequestBuilder : BaseRequestBuilder 
+    public class BusinessRequestBuilder : BaseRequestBuilder
     {
         /// <summary>Gets an item from the Marqeta.Core.Sdk.kyc.business.item collection</summary>
         /// <param name="position">The unique identifier of the business resource for which you want to retrieve KYC verification results.</param>
-        /// <returns>A <see cref="WithBusiness_tokenItemRequestBuilder"/></returns>
-        public WithBusiness_tokenItemRequestBuilder this[string position]
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Kyc.Business.Item.WithBusiness_tokenItemRequestBuilder"/></returns>
+        public Marqeta.Core.Sdk.Kyc.Business.Item.WithBusiness_tokenItemRequestBuilder this[string position]
         {
             get
             {
                 var urlTplParams = new Dictionary<string, object>(PathParameters);
                 urlTplParams.Add("business_token", position);
-                return new WithBusiness_tokenItemRequestBuilder(urlTplParams, RequestAdapter);
+                return new Marqeta.Core.Sdk.Kyc.Business.Item.WithBusiness_tokenItemRequestBuilder(urlTplParams, RequestAdapter);
             }
         }
         /// <summary>
-        /// Instantiates a new <see cref="BusinessRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Kyc.Business.BusinessRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
@@ -33,7 +34,7 @@ namespace Marqeta.Core.Sdk.Kyc.Business {
         {
         }
         /// <summary>
-        /// Instantiates a new <see cref="BusinessRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Kyc.Business.BusinessRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>

@@ -4,19 +4,20 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System;
-namespace Marqeta.Core.Sdk.Models {
+namespace Marqeta.Core.Sdk.Models
+{
     #pragma warning disable CS1591
-    public class Original_credit_sender_data : IAdditionalDataHolder, IParsable 
+    public class Original_credit_sender_data : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The deferred_hold_by property</summary>
-        public Original_credit_sender_data_deferred_hold_by? DeferredHoldBy { get; set; }
+        public Marqeta.Core.Sdk.Models.Original_credit_sender_data_deferred_hold_by? DeferredHoldBy { get; set; }
         /// <summary>The fast_funds_enabled property</summary>
         public bool? FastFundsEnabled { get; set; }
         /// <summary>The funding_source property</summary>
-        public Original_credit_sender_data_funding_source? FundingSource { get; set; }
+        public Marqeta.Core.Sdk.Models.Original_credit_sender_data_funding_source? FundingSource { get; set; }
         /// <summary>The sender_account_number property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -26,7 +27,7 @@ namespace Marqeta.Core.Sdk.Models {
         public string SenderAccountNumber { get; set; }
 #endif
         /// <summary>The sender_account_type property</summary>
-        public Original_credit_sender_data_sender_account_type? SenderAccountType { get; set; }
+        public Marqeta.Core.Sdk.Models.Original_credit_sender_data_sender_account_type? SenderAccountType { get; set; }
         /// <summary>The sender_address property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -76,7 +77,7 @@ namespace Marqeta.Core.Sdk.Models {
         public string SenderState { get; set; }
 #endif
         /// <summary>The transaction_purpose property</summary>
-        public Original_credit_sender_data_transaction_purpose? TransactionPurpose { get; set; }
+        public Marqeta.Core.Sdk.Models.Original_credit_sender_data_transaction_purpose? TransactionPurpose { get; set; }
         /// <summary>The unique_transaction_reference_number property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -94,7 +95,7 @@ namespace Marqeta.Core.Sdk.Models {
         public string VisaTransactionPurpose { get; set; }
 #endif
         /// <summary>
-        /// Instantiates a new <see cref="Original_credit_sender_data"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Models.Original_credit_sender_data"/> and sets the default values.
         /// </summary>
         public Original_credit_sender_data()
         {
@@ -103,12 +104,12 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="Original_credit_sender_data"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Models.Original_credit_sender_data"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static Original_credit_sender_data CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static Marqeta.Core.Sdk.Models.Original_credit_sender_data CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-            return new Original_credit_sender_data();
+            return new Marqeta.Core.Sdk.Models.Original_credit_sender_data();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -118,20 +119,20 @@ namespace Marqeta.Core.Sdk.Models {
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                {"deferred_hold_by", n => { DeferredHoldBy = n.GetEnumValue<Original_credit_sender_data_deferred_hold_by>(); } },
-                {"fast_funds_enabled", n => { FastFundsEnabled = n.GetBoolValue(); } },
-                {"funding_source", n => { FundingSource = n.GetEnumValue<Original_credit_sender_data_funding_source>(); } },
-                {"sender_account_number", n => { SenderAccountNumber = n.GetStringValue(); } },
-                {"sender_account_type", n => { SenderAccountType = n.GetEnumValue<Original_credit_sender_data_sender_account_type>(); } },
-                {"sender_address", n => { SenderAddress = n.GetStringValue(); } },
-                {"sender_city", n => { SenderCity = n.GetStringValue(); } },
-                {"sender_country", n => { SenderCountry = n.GetStringValue(); } },
-                {"sender_name", n => { SenderName = n.GetStringValue(); } },
-                {"sender_reference_number", n => { SenderReferenceNumber = n.GetStringValue(); } },
-                {"sender_state", n => { SenderState = n.GetStringValue(); } },
-                {"transaction_purpose", n => { TransactionPurpose = n.GetEnumValue<Original_credit_sender_data_transaction_purpose>(); } },
-                {"unique_transaction_reference_number", n => { UniqueTransactionReferenceNumber = n.GetStringValue(); } },
-                {"visa_transaction_purpose", n => { VisaTransactionPurpose = n.GetStringValue(); } },
+                { "deferred_hold_by", n => { DeferredHoldBy = n.GetEnumValue<Marqeta.Core.Sdk.Models.Original_credit_sender_data_deferred_hold_by>(); } },
+                { "fast_funds_enabled", n => { FastFundsEnabled = n.GetBoolValue(); } },
+                { "funding_source", n => { FundingSource = n.GetEnumValue<Marqeta.Core.Sdk.Models.Original_credit_sender_data_funding_source>(); } },
+                { "sender_account_number", n => { SenderAccountNumber = n.GetStringValue(); } },
+                { "sender_account_type", n => { SenderAccountType = n.GetEnumValue<Marqeta.Core.Sdk.Models.Original_credit_sender_data_sender_account_type>(); } },
+                { "sender_address", n => { SenderAddress = n.GetStringValue(); } },
+                { "sender_city", n => { SenderCity = n.GetStringValue(); } },
+                { "sender_country", n => { SenderCountry = n.GetStringValue(); } },
+                { "sender_name", n => { SenderName = n.GetStringValue(); } },
+                { "sender_reference_number", n => { SenderReferenceNumber = n.GetStringValue(); } },
+                { "sender_state", n => { SenderState = n.GetStringValue(); } },
+                { "transaction_purpose", n => { TransactionPurpose = n.GetEnumValue<Marqeta.Core.Sdk.Models.Original_credit_sender_data_transaction_purpose>(); } },
+                { "unique_transaction_reference_number", n => { UniqueTransactionReferenceNumber = n.GetStringValue(); } },
+                { "visa_transaction_purpose", n => { VisaTransactionPurpose = n.GetStringValue(); } },
             };
         }
         /// <summary>
@@ -141,18 +142,18 @@ namespace Marqeta.Core.Sdk.Models {
         public virtual void Serialize(ISerializationWriter writer)
         {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
-            writer.WriteEnumValue<Original_credit_sender_data_deferred_hold_by>("deferred_hold_by", DeferredHoldBy);
+            writer.WriteEnumValue<Marqeta.Core.Sdk.Models.Original_credit_sender_data_deferred_hold_by>("deferred_hold_by", DeferredHoldBy);
             writer.WriteBoolValue("fast_funds_enabled", FastFundsEnabled);
-            writer.WriteEnumValue<Original_credit_sender_data_funding_source>("funding_source", FundingSource);
+            writer.WriteEnumValue<Marqeta.Core.Sdk.Models.Original_credit_sender_data_funding_source>("funding_source", FundingSource);
             writer.WriteStringValue("sender_account_number", SenderAccountNumber);
-            writer.WriteEnumValue<Original_credit_sender_data_sender_account_type>("sender_account_type", SenderAccountType);
+            writer.WriteEnumValue<Marqeta.Core.Sdk.Models.Original_credit_sender_data_sender_account_type>("sender_account_type", SenderAccountType);
             writer.WriteStringValue("sender_address", SenderAddress);
             writer.WriteStringValue("sender_city", SenderCity);
             writer.WriteStringValue("sender_country", SenderCountry);
             writer.WriteStringValue("sender_name", SenderName);
             writer.WriteStringValue("sender_reference_number", SenderReferenceNumber);
             writer.WriteStringValue("sender_state", SenderState);
-            writer.WriteEnumValue<Original_credit_sender_data_transaction_purpose>("transaction_purpose", TransactionPurpose);
+            writer.WriteEnumValue<Marqeta.Core.Sdk.Models.Original_credit_sender_data_transaction_purpose>("transaction_purpose", TransactionPurpose);
             writer.WriteStringValue("unique_transaction_reference_number", UniqueTransactionReferenceNumber);
             writer.WriteStringValue("visa_transaction_purpose", VisaTransactionPurpose);
             writer.WriteAdditionalData(AdditionalData);

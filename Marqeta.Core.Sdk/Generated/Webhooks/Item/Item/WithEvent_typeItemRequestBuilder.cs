@@ -6,26 +6,27 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using System;
-namespace Marqeta.Core.Sdk.Webhooks.Item.Item {
+namespace Marqeta.Core.Sdk.Webhooks.Item.Item
+{
     /// <summary>
     /// Builds and executes requests for operations under \webhooks\{token}\{event_type}
     /// </summary>
-    public class WithEvent_typeItemRequestBuilder : BaseRequestBuilder 
+    public class WithEvent_typeItemRequestBuilder : BaseRequestBuilder
     {
         /// <summary>Gets an item from the Marqeta.Core.Sdk.webhooks.item.item.item collection</summary>
         /// <param name="position">Unique identifier of the event for which you want to resend a notification.</param>
-        /// <returns>A <see cref="WithEvent_tokenItemRequestBuilder"/></returns>
-        public WithEvent_tokenItemRequestBuilder this[string position]
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Webhooks.Item.Item.Item.WithEvent_tokenItemRequestBuilder"/></returns>
+        public Marqeta.Core.Sdk.Webhooks.Item.Item.Item.WithEvent_tokenItemRequestBuilder this[string position]
         {
             get
             {
                 var urlTplParams = new Dictionary<string, object>(PathParameters);
                 urlTplParams.Add("event_token", position);
-                return new WithEvent_tokenItemRequestBuilder(urlTplParams, RequestAdapter);
+                return new Marqeta.Core.Sdk.Webhooks.Item.Item.Item.WithEvent_tokenItemRequestBuilder(urlTplParams, RequestAdapter);
             }
         }
         /// <summary>
-        /// Instantiates a new <see cref="WithEvent_typeItemRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Webhooks.Item.Item.WithEvent_typeItemRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
@@ -33,7 +34,7 @@ namespace Marqeta.Core.Sdk.Webhooks.Item.Item {
         {
         }
         /// <summary>
-        /// Instantiates a new <see cref="WithEvent_typeItemRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Webhooks.Item.Item.WithEvent_typeItemRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>

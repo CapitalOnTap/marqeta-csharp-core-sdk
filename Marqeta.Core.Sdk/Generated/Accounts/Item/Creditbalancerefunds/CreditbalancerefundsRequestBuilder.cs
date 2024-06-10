@@ -8,14 +8,15 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Threading;
 using System;
-namespace Marqeta.Core.Sdk.Accounts.Item.Creditbalancerefunds {
+namespace Marqeta.Core.Sdk.Accounts.Item.Creditbalancerefunds
+{
     /// <summary>
     /// Builds and executes requests for operations under \accounts\{account_token}\creditbalancerefunds
     /// </summary>
-    public class CreditbalancerefundsRequestBuilder : BaseRequestBuilder 
+    public class CreditbalancerefundsRequestBuilder : BaseRequestBuilder
     {
         /// <summary>
-        /// Instantiates a new <see cref="CreditbalancerefundsRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Accounts.Item.Creditbalancerefunds.CreditbalancerefundsRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
@@ -23,7 +24,7 @@ namespace Marqeta.Core.Sdk.Accounts.Item.Creditbalancerefunds {
         {
         }
         /// <summary>
-        /// Instantiates a new <see cref="CreditbalancerefundsRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Accounts.Item.Creditbalancerefunds.CreditbalancerefundsRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
@@ -33,27 +34,27 @@ namespace Marqeta.Core.Sdk.Accounts.Item.Creditbalancerefunds {
         /// <summary>
         /// Create a new balance refund, which can be issued to the account holder if their credit account balance is negative.
         /// </summary>
-        /// <returns>A <see cref="AccountCreditBalanceRefundResponse"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Models.AccountCreditBalanceRefundResponse"/></returns>
         /// <param name="body">Contains details on a credit balance refund.</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        /// <exception cref="ApiError">When receiving a 4XX or 5XX status code</exception>
+        /// <exception cref="Marqeta.Core.Sdk.Models.ApiError">When receiving a 4XX or 5XX status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<AccountCreditBalanceRefundResponse?> PostAsync(AccountCreditBalanceRefundReq body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<Marqeta.Core.Sdk.Models.AccountCreditBalanceRefundResponse?> PostAsync(Marqeta.Core.Sdk.Models.AccountCreditBalanceRefundReq body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<AccountCreditBalanceRefundResponse> PostAsync(AccountCreditBalanceRefundReq body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<Marqeta.Core.Sdk.Models.AccountCreditBalanceRefundResponse> PostAsync(Marqeta.Core.Sdk.Models.AccountCreditBalanceRefundReq body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             _ = body ?? throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPostRequestInformation(body, requestConfiguration);
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
-                {"XXX", ApiError.CreateFromDiscriminatorValue},
+                { "XXX", Marqeta.Core.Sdk.Models.ApiError.CreateFromDiscriminatorValue },
             };
-            return await RequestAdapter.SendAsync<AccountCreditBalanceRefundResponse>(requestInfo, AccountCreditBalanceRefundResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<Marqeta.Core.Sdk.Models.AccountCreditBalanceRefundResponse>(requestInfo, Marqeta.Core.Sdk.Models.AccountCreditBalanceRefundResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Create a new balance refund, which can be issued to the account holder if their credit account balance is negative.
@@ -63,11 +64,11 @@ namespace Marqeta.Core.Sdk.Accounts.Item.Creditbalancerefunds {
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToPostRequestInformation(AccountCreditBalanceRefundReq body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
+        public RequestInformation ToPostRequestInformation(Marqeta.Core.Sdk.Models.AccountCreditBalanceRefundReq body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
         {
 #nullable restore
 #else
-        public RequestInformation ToPostRequestInformation(AccountCreditBalanceRefundReq body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
+        public RequestInformation ToPostRequestInformation(Marqeta.Core.Sdk.Models.AccountCreditBalanceRefundReq body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
         {
 #endif
             _ = body ?? throw new ArgumentNullException(nameof(body));
@@ -80,11 +81,11 @@ namespace Marqeta.Core.Sdk.Accounts.Item.Creditbalancerefunds {
         /// <summary>
         /// Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
         /// </summary>
-        /// <returns>A <see cref="CreditbalancerefundsRequestBuilder"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Accounts.Item.Creditbalancerefunds.CreditbalancerefundsRequestBuilder"/></returns>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
-        public CreditbalancerefundsRequestBuilder WithUrl(string rawUrl)
+        public Marqeta.Core.Sdk.Accounts.Item.Creditbalancerefunds.CreditbalancerefundsRequestBuilder WithUrl(string rawUrl)
         {
-            return new CreditbalancerefundsRequestBuilder(rawUrl, RequestAdapter);
+            return new Marqeta.Core.Sdk.Accounts.Item.Creditbalancerefunds.CreditbalancerefundsRequestBuilder(rawUrl, RequestAdapter);
         }
     }
 }

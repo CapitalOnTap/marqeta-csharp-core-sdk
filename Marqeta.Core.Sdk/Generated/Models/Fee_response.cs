@@ -4,11 +4,12 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System;
-namespace Marqeta.Core.Sdk.Models {
+namespace Marqeta.Core.Sdk.Models
+{
     /// <summary>
     /// Contains details about the fee.
     /// </summary>
-    public class Fee_response : IAdditionalDataHolder, IParsable 
+    public class Fee_response : IAdditionalDataHolder, IParsable
     {
         /// <summary>Specifies whether the fee is active.</summary>
         public bool? Active { get; set; }
@@ -37,10 +38,10 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>Describes the attributes of a fee.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public Fee_attributes? FeeAttributes { get; set; }
+        public Marqeta.Core.Sdk.Models.Fee_attributes? FeeAttributes { get; set; }
 #nullable restore
 #else
-        public Fee_attributes FeeAttributes { get; set; }
+        public Marqeta.Core.Sdk.Models.Fee_attributes FeeAttributes { get; set; }
 #endif
         /// <summary>Date and time when the `fees` object was last modified, in UTC.</summary>
         public DateTimeOffset? LastModifiedTime { get; set; }
@@ -77,7 +78,7 @@ namespace Marqeta.Core.Sdk.Models {
         public string Type { get; set; }
 #endif
         /// <summary>
-        /// Instantiates a new <see cref="Fee_response"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Models.Fee_response"/> and sets the default values.
         /// </summary>
         public Fee_response()
         {
@@ -86,12 +87,12 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="Fee_response"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Models.Fee_response"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static Fee_response CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static Marqeta.Core.Sdk.Models.Fee_response CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-            return new Fee_response();
+            return new Marqeta.Core.Sdk.Models.Fee_response();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -101,17 +102,17 @@ namespace Marqeta.Core.Sdk.Models {
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                {"active", n => { Active = n.GetBoolValue(); } },
-                {"amount", n => { Amount = n.GetDoubleValue(); } },
-                {"category", n => { Category = n.GetStringValue(); } },
-                {"created_time", n => { CreatedTime = n.GetDateTimeOffsetValue(); } },
-                {"currency_code", n => { CurrencyCode = n.GetStringValue(); } },
-                {"fee_attributes", n => { FeeAttributes = n.GetObjectValue<Fee_attributes>(Fee_attributes.CreateFromDiscriminatorValue); } },
-                {"last_modified_time", n => { LastModifiedTime = n.GetDateTimeOffsetValue(); } },
-                {"name", n => { Name = n.GetStringValue(); } },
-                {"tags", n => { Tags = n.GetStringValue(); } },
-                {"token", n => { Token = n.GetStringValue(); } },
-                {"type", n => { Type = n.GetStringValue(); } },
+                { "active", n => { Active = n.GetBoolValue(); } },
+                { "amount", n => { Amount = n.GetDoubleValue(); } },
+                { "category", n => { Category = n.GetStringValue(); } },
+                { "created_time", n => { CreatedTime = n.GetDateTimeOffsetValue(); } },
+                { "currency_code", n => { CurrencyCode = n.GetStringValue(); } },
+                { "fee_attributes", n => { FeeAttributes = n.GetObjectValue<Marqeta.Core.Sdk.Models.Fee_attributes>(Marqeta.Core.Sdk.Models.Fee_attributes.CreateFromDiscriminatorValue); } },
+                { "last_modified_time", n => { LastModifiedTime = n.GetDateTimeOffsetValue(); } },
+                { "name", n => { Name = n.GetStringValue(); } },
+                { "tags", n => { Tags = n.GetStringValue(); } },
+                { "token", n => { Token = n.GetStringValue(); } },
+                { "type", n => { Type = n.GetStringValue(); } },
             };
         }
         /// <summary>
@@ -126,7 +127,7 @@ namespace Marqeta.Core.Sdk.Models {
             writer.WriteStringValue("category", Category);
             writer.WriteDateTimeOffsetValue("created_time", CreatedTime);
             writer.WriteStringValue("currency_code", CurrencyCode);
-            writer.WriteObjectValue<Fee_attributes>("fee_attributes", FeeAttributes);
+            writer.WriteObjectValue<Marqeta.Core.Sdk.Models.Fee_attributes>("fee_attributes", FeeAttributes);
             writer.WriteDateTimeOffsetValue("last_modified_time", LastModifiedTime);
             writer.WriteStringValue("name", Name);
             writer.WriteStringValue("tags", Tags);

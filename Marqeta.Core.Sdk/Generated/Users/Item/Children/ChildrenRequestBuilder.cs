@@ -8,14 +8,15 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Threading;
 using System;
-namespace Marqeta.Core.Sdk.Users.Item.Children {
+namespace Marqeta.Core.Sdk.Users.Item.Children
+{
     /// <summary>
     /// Builds and executes requests for operations under \users\{parent_token-id}\children
     /// </summary>
-    public class ChildrenRequestBuilder : BaseRequestBuilder 
+    public class ChildrenRequestBuilder : BaseRequestBuilder
     {
         /// <summary>
-        /// Instantiates a new <see cref="ChildrenRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Users.Item.Children.ChildrenRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
@@ -23,7 +24,7 @@ namespace Marqeta.Core.Sdk.Users.Item.Children {
         {
         }
         /// <summary>
-        /// Instantiates a new <see cref="ChildrenRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Users.Item.Children.ChildrenRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
@@ -33,25 +34,25 @@ namespace Marqeta.Core.Sdk.Users.Item.Children {
         /// <summary>
         /// To retrieve users who are children of a parent user or business, send a `GET` request to the `/users/{parent_token}/children` endpoint.Include the parent&apos;s user or business token as a URL path parameter.The `business_token` field is conditionally returned in the response (it cannot be set through the API).You can use this field in conjunction with the `parent_token` field to determine whether the user has a parent or grandparent that is a business:[cols=&quot;1,1,1&quot;]|===| parent_token | business_token | Description| Not populated| Not populated| User does not have a parent.| Populated| Not populated| User&apos;s parent is a user.| Populated; matches `business_token`| Populated; matches `parent_token`| User&apos;s parent is a business.| Populated; does not match `business_token`| Populated; does not match `parent_token`| User&apos;s parent is a user and their grandparent is a business.|===This endpoint supports &lt;&lt;/core-api/field-filtering, field filtering&gt;&gt;.
         /// </summary>
-        /// <returns>A <see cref="UserCardHolderListResponse"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Models.UserCardHolderListResponse"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        /// <exception cref="ApiError">When receiving a 4XX or 5XX status code</exception>
+        /// <exception cref="Marqeta.Core.Sdk.Models.ApiError">When receiving a 4XX or 5XX status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<UserCardHolderListResponse?> GetAsync(Action<RequestConfiguration<ChildrenRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<Marqeta.Core.Sdk.Models.UserCardHolderListResponse?> GetAsync(Action<RequestConfiguration<Marqeta.Core.Sdk.Users.Item.Children.ChildrenRequestBuilder.ChildrenRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<UserCardHolderListResponse> GetAsync(Action<RequestConfiguration<ChildrenRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<Marqeta.Core.Sdk.Models.UserCardHolderListResponse> GetAsync(Action<RequestConfiguration<Marqeta.Core.Sdk.Users.Item.Children.ChildrenRequestBuilder.ChildrenRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
-                {"XXX", ApiError.CreateFromDiscriminatorValue},
+                { "XXX", Marqeta.Core.Sdk.Models.ApiError.CreateFromDiscriminatorValue },
             };
-            return await RequestAdapter.SendAsync<UserCardHolderListResponse>(requestInfo, UserCardHolderListResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<Marqeta.Core.Sdk.Models.UserCardHolderListResponse>(requestInfo, Marqeta.Core.Sdk.Models.UserCardHolderListResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// To retrieve users who are children of a parent user or business, send a `GET` request to the `/users/{parent_token}/children` endpoint.Include the parent&apos;s user or business token as a URL path parameter.The `business_token` field is conditionally returned in the response (it cannot be set through the API).You can use this field in conjunction with the `parent_token` field to determine whether the user has a parent or grandparent that is a business:[cols=&quot;1,1,1&quot;]|===| parent_token | business_token | Description| Not populated| Not populated| User does not have a parent.| Populated| Not populated| User&apos;s parent is a user.| Populated; matches `business_token`| Populated; matches `parent_token`| User&apos;s parent is a business.| Populated; does not match `business_token`| Populated; does not match `parent_token`| User&apos;s parent is a user and their grandparent is a business.|===This endpoint supports &lt;&lt;/core-api/field-filtering, field filtering&gt;&gt;.
@@ -60,11 +61,11 @@ namespace Marqeta.Core.Sdk.Users.Item.Children {
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<ChildrenRequestBuilderGetQueryParameters>>? requestConfiguration = default)
+        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<Marqeta.Core.Sdk.Users.Item.Children.ChildrenRequestBuilder.ChildrenRequestBuilderGetQueryParameters>>? requestConfiguration = default)
         {
 #nullable restore
 #else
-        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<ChildrenRequestBuilderGetQueryParameters>> requestConfiguration = default)
+        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<Marqeta.Core.Sdk.Users.Item.Children.ChildrenRequestBuilder.ChildrenRequestBuilderGetQueryParameters>> requestConfiguration = default)
         {
 #endif
             var requestInfo = new RequestInformation(Method.GET, UrlTemplate, PathParameters);
@@ -75,11 +76,11 @@ namespace Marqeta.Core.Sdk.Users.Item.Children {
         /// <summary>
         /// Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
         /// </summary>
-        /// <returns>A <see cref="ChildrenRequestBuilder"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Users.Item.Children.ChildrenRequestBuilder"/></returns>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
-        public ChildrenRequestBuilder WithUrl(string rawUrl)
+        public Marqeta.Core.Sdk.Users.Item.Children.ChildrenRequestBuilder WithUrl(string rawUrl)
         {
-            return new ChildrenRequestBuilder(rawUrl, RequestAdapter);
+            return new Marqeta.Core.Sdk.Users.Item.Children.ChildrenRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
         /// To retrieve users who are children of a parent user or business, send a `GET` request to the `/users/{parent_token}/children` endpoint.Include the parent&apos;s user or business token as a URL path parameter.The `business_token` field is conditionally returned in the response (it cannot be set through the API).You can use this field in conjunction with the `parent_token` field to determine whether the user has a parent or grandparent that is a business:[cols=&quot;1,1,1&quot;]|===| parent_token | business_token | Description| Not populated| Not populated| User does not have a parent.| Populated| Not populated| User&apos;s parent is a user.| Populated; matches `business_token`| Populated; matches `parent_token`| User&apos;s parent is a business.| Populated; does not match `business_token`| Populated; does not match `parent_token`| User&apos;s parent is a user and their grandparent is a business.|===This endpoint supports &lt;&lt;/core-api/field-filtering, field filtering&gt;&gt;.

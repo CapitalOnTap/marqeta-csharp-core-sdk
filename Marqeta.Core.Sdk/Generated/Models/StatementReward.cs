@@ -4,11 +4,12 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System;
-namespace Marqeta.Core.Sdk.Models {
+namespace Marqeta.Core.Sdk.Models
+{
     /// <summary>
     /// Contains information on statement rewards.
     /// </summary>
-    public class StatementReward : IAdditionalDataHolder, IParsable 
+    public class StatementReward : IAdditionalDataHolder, IParsable
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
@@ -27,7 +28,7 @@ namespace Marqeta.Core.Sdk.Models {
         public string Token { get; set; }
 #endif
         /// <summary>
-        /// Instantiates a new <see cref="StatementReward"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Models.StatementReward"/> and sets the default values.
         /// </summary>
         public StatementReward()
         {
@@ -36,12 +37,12 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="StatementReward"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Models.StatementReward"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static StatementReward CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static Marqeta.Core.Sdk.Models.StatementReward CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-            return new StatementReward();
+            return new Marqeta.Core.Sdk.Models.StatementReward();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -51,10 +52,10 @@ namespace Marqeta.Core.Sdk.Models {
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                {"created_time", n => { CreatedTime = n.GetDateTimeOffsetValue(); } },
-                {"current_billing_cycle_reward", n => { CurrentBillingCycleReward = n.GetDoubleValue(); } },
-                {"previous_billing_cycle_reward", n => { PreviousBillingCycleReward = n.GetDoubleValue(); } },
-                {"token", n => { Token = n.GetStringValue(); } },
+                { "created_time", n => { CreatedTime = n.GetDateTimeOffsetValue(); } },
+                { "current_billing_cycle_reward", n => { CurrentBillingCycleReward = n.GetDoubleValue(); } },
+                { "previous_billing_cycle_reward", n => { PreviousBillingCycleReward = n.GetDoubleValue(); } },
+                { "token", n => { Token = n.GetStringValue(); } },
             };
         }
         /// <summary>

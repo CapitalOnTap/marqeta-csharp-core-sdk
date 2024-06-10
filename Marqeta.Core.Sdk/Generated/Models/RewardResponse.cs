@@ -4,9 +4,10 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System;
-namespace Marqeta.Core.Sdk.Models {
+namespace Marqeta.Core.Sdk.Models
+{
     #pragma warning disable CS1591
-    public class RewardResponse : IAdditionalDataHolder, IParsable 
+    public class RewardResponse : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
     {
         /// <summary>Unique identifier of the account on which the reward exists.</summary>
@@ -36,7 +37,7 @@ namespace Marqeta.Core.Sdk.Models {
         public string Description { get; set; }
 #endif
         /// <summary>Method, either a flat amount or a percentage.*NOTE:*Only `FLAT` is currently supported.</summary>
-        public MethodObject? Method { get; set; }
+        public Marqeta.Core.Sdk.Models.MethodObject? Method { get; set; }
         /// <summary>Additional information about the reward.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -54,13 +55,13 @@ namespace Marqeta.Core.Sdk.Models {
         public string Token { get; set; }
 #endif
         /// <summary>Type of reward.</summary>
-        public RewardType? Type { get; set; }
+        public Marqeta.Core.Sdk.Models.RewardType? Type { get; set; }
         /// <summary>Date and time when the reward was last updated on Marqeta&apos;s credit platform, in UTC.</summary>
         public DateTimeOffset? UpdatedTime { get; set; }
         /// <summary>Value of the percentage or flat amount.Returned for auto-cash back reward types only.</summary>
         public double? Value { get; set; }
         /// <summary>
-        /// Instantiates a new <see cref="RewardResponse"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Models.RewardResponse"/> and sets the default values.
         /// </summary>
         public RewardResponse()
         {
@@ -70,12 +71,12 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="RewardResponse"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Models.RewardResponse"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static RewardResponse CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static Marqeta.Core.Sdk.Models.RewardResponse CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-            return new RewardResponse();
+            return new Marqeta.Core.Sdk.Models.RewardResponse();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -85,18 +86,18 @@ namespace Marqeta.Core.Sdk.Models {
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                {"account_token", n => { AccountToken = n.GetStringValue(); } },
-                {"amount", n => { Amount = n.GetDoubleValue(); } },
-                {"applied_to_amount", n => { AppliedToAmount = n.GetDoubleValue(); } },
-                {"created_time", n => { CreatedTime = n.GetDateTimeOffsetValue(); } },
-                {"currency_code", n => { CurrencyCode = n.GetEnumValue<CurrencyCode>(); } },
-                {"description", n => { Description = n.GetStringValue(); } },
-                {"method", n => { Method = n.GetEnumValue<MethodObject>(); } },
-                {"note", n => { Note = n.GetStringValue(); } },
-                {"token", n => { Token = n.GetStringValue(); } },
-                {"type", n => { Type = n.GetEnumValue<RewardType>(); } },
-                {"updated_time", n => { UpdatedTime = n.GetDateTimeOffsetValue(); } },
-                {"value", n => { Value = n.GetDoubleValue(); } },
+                { "account_token", n => { AccountToken = n.GetStringValue(); } },
+                { "amount", n => { Amount = n.GetDoubleValue(); } },
+                { "applied_to_amount", n => { AppliedToAmount = n.GetDoubleValue(); } },
+                { "created_time", n => { CreatedTime = n.GetDateTimeOffsetValue(); } },
+                { "currency_code", n => { CurrencyCode = n.GetEnumValue<Marqeta.Core.Sdk.Models.CurrencyCode>(); } },
+                { "description", n => { Description = n.GetStringValue(); } },
+                { "method", n => { Method = n.GetEnumValue<Marqeta.Core.Sdk.Models.MethodObject>(); } },
+                { "note", n => { Note = n.GetStringValue(); } },
+                { "token", n => { Token = n.GetStringValue(); } },
+                { "type", n => { Type = n.GetEnumValue<Marqeta.Core.Sdk.Models.RewardType>(); } },
+                { "updated_time", n => { UpdatedTime = n.GetDateTimeOffsetValue(); } },
+                { "value", n => { Value = n.GetDoubleValue(); } },
             };
         }
         /// <summary>
@@ -110,12 +111,12 @@ namespace Marqeta.Core.Sdk.Models {
             writer.WriteDoubleValue("amount", Amount);
             writer.WriteDoubleValue("applied_to_amount", AppliedToAmount);
             writer.WriteDateTimeOffsetValue("created_time", CreatedTime);
-            writer.WriteEnumValue<CurrencyCode>("currency_code", CurrencyCode);
+            writer.WriteEnumValue<Marqeta.Core.Sdk.Models.CurrencyCode>("currency_code", CurrencyCode);
             writer.WriteStringValue("description", Description);
-            writer.WriteEnumValue<MethodObject>("method", Method);
+            writer.WriteEnumValue<Marqeta.Core.Sdk.Models.MethodObject>("method", Method);
             writer.WriteStringValue("note", Note);
             writer.WriteStringValue("token", Token);
-            writer.WriteEnumValue<RewardType>("type", Type);
+            writer.WriteEnumValue<Marqeta.Core.Sdk.Models.RewardType>("type", Type);
             writer.WriteDateTimeOffsetValue("updated_time", UpdatedTime);
             writer.WriteDoubleValue("value", Value);
             writer.WriteAdditionalData(AdditionalData);

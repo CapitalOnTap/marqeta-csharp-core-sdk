@@ -4,9 +4,10 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System;
-namespace Marqeta.Core.Sdk.Models {
+namespace Marqeta.Core.Sdk.Models
+{
     #pragma warning disable CS1591
-    public class Push_to_card_response : IAdditionalDataHolder, IParsable 
+    public class Push_to_card_response : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -108,7 +109,7 @@ namespace Marqeta.Core.Sdk.Models {
         public string Token { get; set; }
 #endif
         /// <summary>
-        /// Instantiates a new <see cref="Push_to_card_response"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Models.Push_to_card_response"/> and sets the default values.
         /// </summary>
         public Push_to_card_response()
         {
@@ -117,12 +118,12 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="Push_to_card_response"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Models.Push_to_card_response"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static Push_to_card_response CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static Marqeta.Core.Sdk.Models.Push_to_card_response CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-            return new Push_to_card_response();
+            return new Marqeta.Core.Sdk.Models.Push_to_card_response();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -132,21 +133,21 @@ namespace Marqeta.Core.Sdk.Models {
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                {"address_1", n => { Address1 = n.GetStringValue(); } },
-                {"address_2", n => { Address2 = n.GetStringValue(); } },
-                {"city", n => { City = n.GetStringValue(); } },
-                {"country", n => { Country = n.GetStringValue(); } },
-                {"created_time", n => { CreatedTime = n.GetDateTimeOffsetValue(); } },
-                {"exp_date", n => { ExpDate = n.GetStringValue(); } },
-                {"fast_fund_transfer_eligible", n => { FastFundTransferEligible = n.GetBoolValue(); } },
-                {"gambling_fund_transfer_eligible", n => { GamblingFundTransferEligible = n.GetBoolValue(); } },
-                {"last_four", n => { LastFour = n.GetStringValue(); } },
-                {"last_modified_time", n => { LastModifiedTime = n.GetDateTimeOffsetValue(); } },
-                {"last_name", n => { LastName = n.GetStringValue(); } },
-                {"name_on_card", n => { NameOnCard = n.GetStringValue(); } },
-                {"postal_code", n => { PostalCode = n.GetStringValue(); } },
-                {"state", n => { State = n.GetStringValue(); } },
-                {"token", n => { Token = n.GetStringValue(); } },
+                { "address_1", n => { Address1 = n.GetStringValue(); } },
+                { "address_2", n => { Address2 = n.GetStringValue(); } },
+                { "city", n => { City = n.GetStringValue(); } },
+                { "country", n => { Country = n.GetStringValue(); } },
+                { "created_time", n => { CreatedTime = n.GetDateTimeOffsetValue(); } },
+                { "exp_date", n => { ExpDate = n.GetStringValue(); } },
+                { "fast_fund_transfer_eligible", n => { FastFundTransferEligible = n.GetBoolValue(); } },
+                { "gambling_fund_transfer_eligible", n => { GamblingFundTransferEligible = n.GetBoolValue(); } },
+                { "last_four", n => { LastFour = n.GetStringValue(); } },
+                { "last_modified_time", n => { LastModifiedTime = n.GetDateTimeOffsetValue(); } },
+                { "last_name", n => { LastName = n.GetStringValue(); } },
+                { "name_on_card", n => { NameOnCard = n.GetStringValue(); } },
+                { "postal_code", n => { PostalCode = n.GetStringValue(); } },
+                { "state", n => { State = n.GetStringValue(); } },
+                { "token", n => { Token = n.GetStringValue(); } },
             };
         }
         /// <summary>

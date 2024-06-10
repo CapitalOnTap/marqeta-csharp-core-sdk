@@ -4,11 +4,12 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System;
-namespace Marqeta.Core.Sdk.Models {
+namespace Marqeta.Core.Sdk.Models
+{
     /// <summary>
     /// Contains information about a direct deposit.
     /// </summary>
-    public class DepositDepositResponse : IAdditionalDataHolder, IParsable 
+    public class DepositDepositResponse : IAdditionalDataHolder, IParsable
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
@@ -93,7 +94,7 @@ namespace Marqeta.Core.Sdk.Models {
         public string StandardEntryClassCode { get; set; }
 #endif
         /// <summary>Current status of the direct deposit record.</summary>
-        public DepositDepositResponse_state? State { get; set; }
+        public Marqeta.Core.Sdk.Models.DepositDepositResponse_state? State { get; set; }
         /// <summary>Explanation for why the direct deposit record is in the current state.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -119,7 +120,7 @@ namespace Marqeta.Core.Sdk.Models {
         public string Token { get; set; }
 #endif
         /// <summary>Determines whether funds are being debited from or credited to the account.</summary>
-        public DepositDepositResponse_type? Type { get; set; }
+        public Marqeta.Core.Sdk.Models.DepositDepositResponse_type? Type { get; set; }
         /// <summary>The unique identifier of the user account holder.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -129,7 +130,7 @@ namespace Marqeta.Core.Sdk.Models {
         public string UserToken { get; set; }
 #endif
         /// <summary>
-        /// Instantiates a new <see cref="DepositDepositResponse"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Models.DepositDepositResponse"/> and sets the default values.
         /// </summary>
         public DepositDepositResponse()
         {
@@ -138,12 +139,12 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="DepositDepositResponse"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Models.DepositDepositResponse"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static DepositDepositResponse CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static Marqeta.Core.Sdk.Models.DepositDepositResponse CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-            return new DepositDepositResponse();
+            return new Marqeta.Core.Sdk.Models.DepositDepositResponse();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -153,25 +154,25 @@ namespace Marqeta.Core.Sdk.Models {
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                {"amount", n => { Amount = n.GetDoubleValue(); } },
-                {"business_token", n => { BusinessToken = n.GetStringValue(); } },
-                {"company_discretionary_data", n => { CompanyDiscretionaryData = n.GetStringValue(); } },
-                {"company_entry_description", n => { CompanyEntryDescription = n.GetStringValue(); } },
-                {"company_identification", n => { CompanyIdentification = n.GetStringValue(); } },
-                {"company_name", n => { CompanyName = n.GetStringValue(); } },
-                {"created_time", n => { CreatedTime = n.GetDateTimeOffsetValue(); } },
-                {"direct_deposit_account_token", n => { DirectDepositAccountToken = n.GetStringValue(); } },
-                {"individual_identification_number", n => { IndividualIdentificationNumber = n.GetStringValue(); } },
-                {"individual_name", n => { IndividualName = n.GetStringValue(); } },
-                {"last_modified_time", n => { LastModifiedTime = n.GetDateTimeOffsetValue(); } },
-                {"settlement_date", n => { SettlementDate = n.GetDateTimeOffsetValue(); } },
-                {"standard_entry_class_code", n => { StandardEntryClassCode = n.GetStringValue(); } },
-                {"state", n => { State = n.GetEnumValue<DepositDepositResponse_state>(); } },
-                {"state_reason", n => { StateReason = n.GetStringValue(); } },
-                {"state_reason_code", n => { StateReasonCode = n.GetStringValue(); } },
-                {"token", n => { Token = n.GetStringValue(); } },
-                {"type", n => { Type = n.GetEnumValue<DepositDepositResponse_type>(); } },
-                {"user_token", n => { UserToken = n.GetStringValue(); } },
+                { "amount", n => { Amount = n.GetDoubleValue(); } },
+                { "business_token", n => { BusinessToken = n.GetStringValue(); } },
+                { "company_discretionary_data", n => { CompanyDiscretionaryData = n.GetStringValue(); } },
+                { "company_entry_description", n => { CompanyEntryDescription = n.GetStringValue(); } },
+                { "company_identification", n => { CompanyIdentification = n.GetStringValue(); } },
+                { "company_name", n => { CompanyName = n.GetStringValue(); } },
+                { "created_time", n => { CreatedTime = n.GetDateTimeOffsetValue(); } },
+                { "direct_deposit_account_token", n => { DirectDepositAccountToken = n.GetStringValue(); } },
+                { "individual_identification_number", n => { IndividualIdentificationNumber = n.GetStringValue(); } },
+                { "individual_name", n => { IndividualName = n.GetStringValue(); } },
+                { "last_modified_time", n => { LastModifiedTime = n.GetDateTimeOffsetValue(); } },
+                { "settlement_date", n => { SettlementDate = n.GetDateTimeOffsetValue(); } },
+                { "standard_entry_class_code", n => { StandardEntryClassCode = n.GetStringValue(); } },
+                { "state", n => { State = n.GetEnumValue<Marqeta.Core.Sdk.Models.DepositDepositResponse_state>(); } },
+                { "state_reason", n => { StateReason = n.GetStringValue(); } },
+                { "state_reason_code", n => { StateReasonCode = n.GetStringValue(); } },
+                { "token", n => { Token = n.GetStringValue(); } },
+                { "type", n => { Type = n.GetEnumValue<Marqeta.Core.Sdk.Models.DepositDepositResponse_type>(); } },
+                { "user_token", n => { UserToken = n.GetStringValue(); } },
             };
         }
         /// <summary>
@@ -194,11 +195,11 @@ namespace Marqeta.Core.Sdk.Models {
             writer.WriteDateTimeOffsetValue("last_modified_time", LastModifiedTime);
             writer.WriteDateTimeOffsetValue("settlement_date", SettlementDate);
             writer.WriteStringValue("standard_entry_class_code", StandardEntryClassCode);
-            writer.WriteEnumValue<DepositDepositResponse_state>("state", State);
+            writer.WriteEnumValue<Marqeta.Core.Sdk.Models.DepositDepositResponse_state>("state", State);
             writer.WriteStringValue("state_reason", StateReason);
             writer.WriteStringValue("state_reason_code", StateReasonCode);
             writer.WriteStringValue("token", Token);
-            writer.WriteEnumValue<DepositDepositResponse_type>("type", Type);
+            writer.WriteEnumValue<Marqeta.Core.Sdk.Models.DepositDepositResponse_type>("type", Type);
             writer.WriteStringValue("user_token", UserToken);
             writer.WriteAdditionalData(AdditionalData);
         }

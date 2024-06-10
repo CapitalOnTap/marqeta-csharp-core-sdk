@@ -4,9 +4,10 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System;
-namespace Marqeta.Core.Sdk.Models {
+namespace Marqeta.Core.Sdk.Models
+{
     #pragma warning disable CS1591
-    public class Business_card_holder_response : IAdditionalDataHolder, IParsable 
+    public class Business_card_holder_response : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
     {
         /// <summary>Associates the specified account holder group with the business.This field is returned if it exists in the resource.</summary>
@@ -52,34 +53,34 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>Contains information about the beneficial owner of the business, if applicable.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public Beneficial_owner_response? BeneficialOwner1 { get; set; }
+        public Marqeta.Core.Sdk.Models.Beneficial_owner_response? BeneficialOwner1 { get; set; }
 #nullable restore
 #else
-        public Beneficial_owner_response BeneficialOwner1 { get; set; }
+        public Marqeta.Core.Sdk.Models.Beneficial_owner_response BeneficialOwner1 { get; set; }
 #endif
         /// <summary>Contains information about the beneficial owner of the business, if applicable.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public Beneficial_owner_response? BeneficialOwner2 { get; set; }
+        public Marqeta.Core.Sdk.Models.Beneficial_owner_response? BeneficialOwner2 { get; set; }
 #nullable restore
 #else
-        public Beneficial_owner_response BeneficialOwner2 { get; set; }
+        public Marqeta.Core.Sdk.Models.Beneficial_owner_response BeneficialOwner2 { get; set; }
 #endif
         /// <summary>Contains information about the beneficial owner of the business, if applicable.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public Beneficial_owner_response? BeneficialOwner3 { get; set; }
+        public Marqeta.Core.Sdk.Models.Beneficial_owner_response? BeneficialOwner3 { get; set; }
 #nullable restore
 #else
-        public Beneficial_owner_response BeneficialOwner3 { get; set; }
+        public Marqeta.Core.Sdk.Models.Beneficial_owner_response BeneficialOwner3 { get; set; }
 #endif
         /// <summary>Contains information about the beneficial owner of the business, if applicable.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public Beneficial_owner_response? BeneficialOwner4 { get; set; }
+        public Marqeta.Core.Sdk.Models.Beneficial_owner_response? BeneficialOwner4 { get; set; }
 #nullable restore
 #else
-        public Beneficial_owner_response BeneficialOwner4 { get; set; }
+        public Marqeta.Core.Sdk.Models.Beneficial_owner_response BeneficialOwner4 { get; set; }
 #endif
         /// <summary>Fictitious business name (&quot;Doing Business As&quot; or DBA).This field is returned if it exists in the resource.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -136,18 +137,18 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>One or more objects containing identifications associated with the business.Objects are returned if they exist in the resource.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<IdentificationResponseModel>? Identifications { get; set; }
+        public List<Marqeta.Core.Sdk.Models.IdentificationResponseModel>? Identifications { get; set; }
 #nullable restore
 #else
-        public List<IdentificationResponseModel> Identifications { get; set; }
+        public List<Marqeta.Core.Sdk.Models.IdentificationResponseModel> Identifications { get; set; }
 #endif
         /// <summary>Contains information about the organizational structure of the business.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public Business_incorporation_response? Incorporation { get; set; }
+        public Marqeta.Core.Sdk.Models.Business_incorporation_response? Incorporation { get; set; }
 #nullable restore
 #else
-        public Business_incorporation_response Incorporation { get; set; }
+        public Marqeta.Core.Sdk.Models.Business_incorporation_response Incorporation { get; set; }
 #endif
         /// <summary>Date on which the business office opened in its current location.This field is returned if it exists in the resource.</summary>
         public DateTimeOffset? InCurrentLocationSince { get; set; }
@@ -172,10 +173,10 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>Associates any additional metadata you provide with the business.Metadata is returned if it exists in the resource.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public Business_card_holder_response_metadata? Metadata { get; set; }
+        public Marqeta.Core.Sdk.Models.Business_card_holder_response_metadata? Metadata { get; set; }
 #nullable restore
 #else
-        public Business_card_holder_response_metadata Metadata { get; set; }
+        public Marqeta.Core.Sdk.Models.Business_card_holder_response_metadata Metadata { get; set; }
 #endif
         /// <summary>Any additional information pertaining to the business.This field is returned if it exists in the resource.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -188,10 +189,10 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>Address associated with the business.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public AddressResponseModel? OfficeLocation { get; set; }
+        public Marqeta.Core.Sdk.Models.AddressResponseModel? OfficeLocation { get; set; }
 #nullable restore
 #else
-        public AddressResponseModel OfficeLocation { get; set; }
+        public Marqeta.Core.Sdk.Models.AddressResponseModel OfficeLocation { get; set; }
 #endif
         /// <summary>Password for the business account on the Marqeta platform.This field is returned if it exists in the resource.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -212,23 +213,23 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>Describes the business&apos; primary contact person.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public PrimaryContactInfoModel? PrimaryContact { get; set; }
+        public Marqeta.Core.Sdk.Models.PrimaryContactInfoModel? PrimaryContact { get; set; }
 #nullable restore
 #else
-        public PrimaryContactInfoModel PrimaryContact { get; set; }
+        public Marqeta.Core.Sdk.Models.PrimaryContactInfoModel PrimaryContact { get; set; }
 #endif
         /// <summary>Indicates that the proprietor or officer of the business is also a beneficial owner.This field is returned if it exists in the resource.</summary>
         public bool? ProprietorIsBeneficialOwner { get; set; }
         /// <summary>Contains information about the proprietor or officer of the business.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public Business_proprietor_response? ProprietorOrOfficer { get; set; }
+        public Marqeta.Core.Sdk.Models.Business_proprietor_response? ProprietorOrOfficer { get; set; }
 #nullable restore
 #else
-        public Business_proprietor_response ProprietorOrOfficer { get; set; }
+        public Marqeta.Core.Sdk.Models.Business_proprietor_response ProprietorOrOfficer { get; set; }
 #endif
         /// <summary>Specifies the state of the business on the Marqeta platform.This field is returned if it exists in the resource.</summary>
-        public Business_card_holder_response_status? Status { get; set; }
+        public Marqeta.Core.Sdk.Models.Business_card_holder_response_status? Status { get; set; }
         /// <summary>Taxpayer identifier of the business.This field is returned if it exists in the resource.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -254,7 +255,7 @@ namespace Marqeta.Core.Sdk.Models {
         public string Website { get; set; }
 #endif
         /// <summary>
-        /// Instantiates a new <see cref="Business_card_holder_response"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Models.Business_card_holder_response"/> and sets the default values.
         /// </summary>
         public Business_card_holder_response()
         {
@@ -263,12 +264,12 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="Business_card_holder_response"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Models.Business_card_holder_response"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static Business_card_holder_response CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static Marqeta.Core.Sdk.Models.Business_card_holder_response CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-            return new Business_card_holder_response();
+            return new Marqeta.Core.Sdk.Models.Business_card_holder_response();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -278,43 +279,43 @@ namespace Marqeta.Core.Sdk.Models {
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                {"account_holder_group_token", n => { AccountHolderGroupToken = n.GetStringValue(); } },
-                {"active", n => { Active = n.GetBoolValue(); } },
-                {"attestation_consent", n => { AttestationConsent = n.GetBoolValue(); } },
-                {"attestation_date", n => { AttestationDate = n.GetDateTimeOffsetValue(); } },
-                {"attester_name", n => { AttesterName = n.GetStringValue(); } },
-                {"attester_title", n => { AttesterTitle = n.GetStringValue(); } },
-                {"authentication", n => { Authentication = n.GetObjectValue<Marqeta.Core.Sdk.Models.Authentication>(Marqeta.Core.Sdk.Models.Authentication.CreateFromDiscriminatorValue); } },
-                {"beneficial_owner1", n => { BeneficialOwner1 = n.GetObjectValue<Beneficial_owner_response>(Beneficial_owner_response.CreateFromDiscriminatorValue); } },
-                {"beneficial_owner2", n => { BeneficialOwner2 = n.GetObjectValue<Beneficial_owner_response>(Beneficial_owner_response.CreateFromDiscriminatorValue); } },
-                {"beneficial_owner3", n => { BeneficialOwner3 = n.GetObjectValue<Beneficial_owner_response>(Beneficial_owner_response.CreateFromDiscriminatorValue); } },
-                {"beneficial_owner4", n => { BeneficialOwner4 = n.GetObjectValue<Beneficial_owner_response>(Beneficial_owner_response.CreateFromDiscriminatorValue); } },
-                {"business_name_dba", n => { BusinessNameDba = n.GetStringValue(); } },
-                {"business_name_legal", n => { BusinessNameLegal = n.GetStringValue(); } },
-                {"business_type", n => { BusinessType = n.GetStringValue(); } },
-                {"created_time", n => { CreatedTime = n.GetDateTimeOffsetValue(); } },
-                {"date_established", n => { DateEstablished = n.GetDateTimeOffsetValue(); } },
-                {"duns_number", n => { DunsNumber = n.GetStringValue(); } },
-                {"general_business_description", n => { GeneralBusinessDescription = n.GetStringValue(); } },
-                {"history", n => { History = n.GetStringValue(); } },
-                {"identifications", n => { Identifications = n.GetCollectionOfObjectValues<IdentificationResponseModel>(IdentificationResponseModel.CreateFromDiscriminatorValue)?.ToList(); } },
-                {"in_current_location_since", n => { InCurrentLocationSince = n.GetDateTimeOffsetValue(); } },
-                {"incorporation", n => { Incorporation = n.GetObjectValue<Business_incorporation_response>(Business_incorporation_response.CreateFromDiscriminatorValue); } },
-                {"international_office_locations", n => { InternationalOfficeLocations = n.GetStringValue(); } },
-                {"ip_address", n => { IpAddress = n.GetStringValue(); } },
-                {"last_modified_time", n => { LastModifiedTime = n.GetDateTimeOffsetValue(); } },
-                {"metadata", n => { Metadata = n.GetObjectValue<Business_card_holder_response_metadata>(Business_card_holder_response_metadata.CreateFromDiscriminatorValue); } },
-                {"notes", n => { Notes = n.GetStringValue(); } },
-                {"office_location", n => { OfficeLocation = n.GetObjectValue<AddressResponseModel>(AddressResponseModel.CreateFromDiscriminatorValue); } },
-                {"password", n => { Password = n.GetStringValue(); } },
-                {"phone", n => { Phone = n.GetStringValue(); } },
-                {"primary_contact", n => { PrimaryContact = n.GetObjectValue<PrimaryContactInfoModel>(PrimaryContactInfoModel.CreateFromDiscriminatorValue); } },
-                {"proprietor_is_beneficial_owner", n => { ProprietorIsBeneficialOwner = n.GetBoolValue(); } },
-                {"proprietor_or_officer", n => { ProprietorOrOfficer = n.GetObjectValue<Business_proprietor_response>(Business_proprietor_response.CreateFromDiscriminatorValue); } },
-                {"status", n => { Status = n.GetEnumValue<Business_card_holder_response_status>(); } },
-                {"taxpayer_id", n => { TaxpayerId = n.GetStringValue(); } },
-                {"token", n => { Token = n.GetStringValue(); } },
-                {"website", n => { Website = n.GetStringValue(); } },
+                { "account_holder_group_token", n => { AccountHolderGroupToken = n.GetStringValue(); } },
+                { "active", n => { Active = n.GetBoolValue(); } },
+                { "attestation_consent", n => { AttestationConsent = n.GetBoolValue(); } },
+                { "attestation_date", n => { AttestationDate = n.GetDateTimeOffsetValue(); } },
+                { "attester_name", n => { AttesterName = n.GetStringValue(); } },
+                { "attester_title", n => { AttesterTitle = n.GetStringValue(); } },
+                { "authentication", n => { Authentication = n.GetObjectValue<Marqeta.Core.Sdk.Models.Authentication>(Marqeta.Core.Sdk.Models.Authentication.CreateFromDiscriminatorValue); } },
+                { "beneficial_owner1", n => { BeneficialOwner1 = n.GetObjectValue<Marqeta.Core.Sdk.Models.Beneficial_owner_response>(Marqeta.Core.Sdk.Models.Beneficial_owner_response.CreateFromDiscriminatorValue); } },
+                { "beneficial_owner2", n => { BeneficialOwner2 = n.GetObjectValue<Marqeta.Core.Sdk.Models.Beneficial_owner_response>(Marqeta.Core.Sdk.Models.Beneficial_owner_response.CreateFromDiscriminatorValue); } },
+                { "beneficial_owner3", n => { BeneficialOwner3 = n.GetObjectValue<Marqeta.Core.Sdk.Models.Beneficial_owner_response>(Marqeta.Core.Sdk.Models.Beneficial_owner_response.CreateFromDiscriminatorValue); } },
+                { "beneficial_owner4", n => { BeneficialOwner4 = n.GetObjectValue<Marqeta.Core.Sdk.Models.Beneficial_owner_response>(Marqeta.Core.Sdk.Models.Beneficial_owner_response.CreateFromDiscriminatorValue); } },
+                { "business_name_dba", n => { BusinessNameDba = n.GetStringValue(); } },
+                { "business_name_legal", n => { BusinessNameLegal = n.GetStringValue(); } },
+                { "business_type", n => { BusinessType = n.GetStringValue(); } },
+                { "created_time", n => { CreatedTime = n.GetDateTimeOffsetValue(); } },
+                { "date_established", n => { DateEstablished = n.GetDateTimeOffsetValue(); } },
+                { "duns_number", n => { DunsNumber = n.GetStringValue(); } },
+                { "general_business_description", n => { GeneralBusinessDescription = n.GetStringValue(); } },
+                { "history", n => { History = n.GetStringValue(); } },
+                { "identifications", n => { Identifications = n.GetCollectionOfObjectValues<Marqeta.Core.Sdk.Models.IdentificationResponseModel>(Marqeta.Core.Sdk.Models.IdentificationResponseModel.CreateFromDiscriminatorValue)?.ToList(); } },
+                { "in_current_location_since", n => { InCurrentLocationSince = n.GetDateTimeOffsetValue(); } },
+                { "incorporation", n => { Incorporation = n.GetObjectValue<Marqeta.Core.Sdk.Models.Business_incorporation_response>(Marqeta.Core.Sdk.Models.Business_incorporation_response.CreateFromDiscriminatorValue); } },
+                { "international_office_locations", n => { InternationalOfficeLocations = n.GetStringValue(); } },
+                { "ip_address", n => { IpAddress = n.GetStringValue(); } },
+                { "last_modified_time", n => { LastModifiedTime = n.GetDateTimeOffsetValue(); } },
+                { "metadata", n => { Metadata = n.GetObjectValue<Marqeta.Core.Sdk.Models.Business_card_holder_response_metadata>(Marqeta.Core.Sdk.Models.Business_card_holder_response_metadata.CreateFromDiscriminatorValue); } },
+                { "notes", n => { Notes = n.GetStringValue(); } },
+                { "office_location", n => { OfficeLocation = n.GetObjectValue<Marqeta.Core.Sdk.Models.AddressResponseModel>(Marqeta.Core.Sdk.Models.AddressResponseModel.CreateFromDiscriminatorValue); } },
+                { "password", n => { Password = n.GetStringValue(); } },
+                { "phone", n => { Phone = n.GetStringValue(); } },
+                { "primary_contact", n => { PrimaryContact = n.GetObjectValue<Marqeta.Core.Sdk.Models.PrimaryContactInfoModel>(Marqeta.Core.Sdk.Models.PrimaryContactInfoModel.CreateFromDiscriminatorValue); } },
+                { "proprietor_is_beneficial_owner", n => { ProprietorIsBeneficialOwner = n.GetBoolValue(); } },
+                { "proprietor_or_officer", n => { ProprietorOrOfficer = n.GetObjectValue<Marqeta.Core.Sdk.Models.Business_proprietor_response>(Marqeta.Core.Sdk.Models.Business_proprietor_response.CreateFromDiscriminatorValue); } },
+                { "status", n => { Status = n.GetEnumValue<Marqeta.Core.Sdk.Models.Business_card_holder_response_status>(); } },
+                { "taxpayer_id", n => { TaxpayerId = n.GetStringValue(); } },
+                { "token", n => { Token = n.GetStringValue(); } },
+                { "website", n => { Website = n.GetStringValue(); } },
             };
         }
         /// <summary>
@@ -331,10 +332,10 @@ namespace Marqeta.Core.Sdk.Models {
             writer.WriteStringValue("attester_name", AttesterName);
             writer.WriteStringValue("attester_title", AttesterTitle);
             writer.WriteObjectValue<Marqeta.Core.Sdk.Models.Authentication>("authentication", Authentication);
-            writer.WriteObjectValue<Beneficial_owner_response>("beneficial_owner1", BeneficialOwner1);
-            writer.WriteObjectValue<Beneficial_owner_response>("beneficial_owner2", BeneficialOwner2);
-            writer.WriteObjectValue<Beneficial_owner_response>("beneficial_owner3", BeneficialOwner3);
-            writer.WriteObjectValue<Beneficial_owner_response>("beneficial_owner4", BeneficialOwner4);
+            writer.WriteObjectValue<Marqeta.Core.Sdk.Models.Beneficial_owner_response>("beneficial_owner1", BeneficialOwner1);
+            writer.WriteObjectValue<Marqeta.Core.Sdk.Models.Beneficial_owner_response>("beneficial_owner2", BeneficialOwner2);
+            writer.WriteObjectValue<Marqeta.Core.Sdk.Models.Beneficial_owner_response>("beneficial_owner3", BeneficialOwner3);
+            writer.WriteObjectValue<Marqeta.Core.Sdk.Models.Beneficial_owner_response>("beneficial_owner4", BeneficialOwner4);
             writer.WriteStringValue("business_name_dba", BusinessNameDba);
             writer.WriteStringValue("business_name_legal", BusinessNameLegal);
             writer.WriteStringValue("business_type", BusinessType);
@@ -343,21 +344,21 @@ namespace Marqeta.Core.Sdk.Models {
             writer.WriteStringValue("duns_number", DunsNumber);
             writer.WriteStringValue("general_business_description", GeneralBusinessDescription);
             writer.WriteStringValue("history", History);
-            writer.WriteCollectionOfObjectValues<IdentificationResponseModel>("identifications", Identifications);
-            writer.WriteObjectValue<Business_incorporation_response>("incorporation", Incorporation);
+            writer.WriteCollectionOfObjectValues<Marqeta.Core.Sdk.Models.IdentificationResponseModel>("identifications", Identifications);
+            writer.WriteObjectValue<Marqeta.Core.Sdk.Models.Business_incorporation_response>("incorporation", Incorporation);
             writer.WriteDateTimeOffsetValue("in_current_location_since", InCurrentLocationSince);
             writer.WriteStringValue("international_office_locations", InternationalOfficeLocations);
             writer.WriteStringValue("ip_address", IpAddress);
             writer.WriteDateTimeOffsetValue("last_modified_time", LastModifiedTime);
-            writer.WriteObjectValue<Business_card_holder_response_metadata>("metadata", Metadata);
+            writer.WriteObjectValue<Marqeta.Core.Sdk.Models.Business_card_holder_response_metadata>("metadata", Metadata);
             writer.WriteStringValue("notes", Notes);
-            writer.WriteObjectValue<AddressResponseModel>("office_location", OfficeLocation);
+            writer.WriteObjectValue<Marqeta.Core.Sdk.Models.AddressResponseModel>("office_location", OfficeLocation);
             writer.WriteStringValue("password", Password);
             writer.WriteStringValue("phone", Phone);
-            writer.WriteObjectValue<PrimaryContactInfoModel>("primary_contact", PrimaryContact);
+            writer.WriteObjectValue<Marqeta.Core.Sdk.Models.PrimaryContactInfoModel>("primary_contact", PrimaryContact);
             writer.WriteBoolValue("proprietor_is_beneficial_owner", ProprietorIsBeneficialOwner);
-            writer.WriteObjectValue<Business_proprietor_response>("proprietor_or_officer", ProprietorOrOfficer);
-            writer.WriteEnumValue<Business_card_holder_response_status>("status", Status);
+            writer.WriteObjectValue<Marqeta.Core.Sdk.Models.Business_proprietor_response>("proprietor_or_officer", ProprietorOrOfficer);
+            writer.WriteEnumValue<Marqeta.Core.Sdk.Models.Business_card_holder_response_status>("status", Status);
             writer.WriteStringValue("taxpayer_id", TaxpayerId);
             writer.WriteStringValue("token", Token);
             writer.WriteStringValue("website", Website);

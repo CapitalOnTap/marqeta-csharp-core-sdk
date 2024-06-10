@@ -4,11 +4,12 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System;
-namespace Marqeta.Core.Sdk.Models {
+namespace Marqeta.Core.Sdk.Models
+{
     /// <summary>
     /// Contains information about the point of sale, including details on how the card was presented.Returned if provided by the card network, and the request uses Transaction Model v1 of the Marqeta Core API.Not returned for Transaction Model v2 requests.
     /// </summary>
-    public class Terminal_model : IAdditionalDataHolder, IParsable 
+    public class Terminal_model : IAdditionalDataHolder, IParsable
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
@@ -45,7 +46,7 @@ namespace Marqeta.Core.Sdk.Models {
         public string PinPresent { get; set; }
 #endif
         /// <summary>Indicates a higher-risk operation, such as a quasi-cash or cryptocurrency transaction.These transactions typically involve non-financial institutions.</summary>
-        public Terminal_model_special_condition_indicator? SpecialConditionIndicator { get; set; }
+        public Marqeta.Core.Sdk.Models.Terminal_model_special_condition_indicator? SpecialConditionIndicator { get; set; }
         /// <summary>Card acceptor or terminal identification number.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -63,7 +64,7 @@ namespace Marqeta.Core.Sdk.Models {
         public string TransactionInitiatedBy { get; set; }
 #endif
         /// <summary>
-        /// Instantiates a new <see cref="Terminal_model"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Models.Terminal_model"/> and sets the default values.
         /// </summary>
         public Terminal_model()
         {
@@ -72,12 +73,12 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="Terminal_model"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Models.Terminal_model"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static Terminal_model CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static Marqeta.Core.Sdk.Models.Terminal_model CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-            return new Terminal_model();
+            return new Marqeta.Core.Sdk.Models.Terminal_model();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -87,13 +88,13 @@ namespace Marqeta.Core.Sdk.Models {
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                {"card_presence", n => { CardPresence = n.GetStringValue(); } },
-                {"cardholder_presence", n => { CardholderPresence = n.GetStringValue(); } },
-                {"partial_approval_capable", n => { PartialApprovalCapable = n.GetStringValue(); } },
-                {"pin_present", n => { PinPresent = n.GetStringValue(); } },
-                {"special_condition_indicator", n => { SpecialConditionIndicator = n.GetEnumValue<Terminal_model_special_condition_indicator>(); } },
-                {"tid", n => { Tid = n.GetStringValue(); } },
-                {"transaction_initiated_by", n => { TransactionInitiatedBy = n.GetStringValue(); } },
+                { "card_presence", n => { CardPresence = n.GetStringValue(); } },
+                { "cardholder_presence", n => { CardholderPresence = n.GetStringValue(); } },
+                { "partial_approval_capable", n => { PartialApprovalCapable = n.GetStringValue(); } },
+                { "pin_present", n => { PinPresent = n.GetStringValue(); } },
+                { "special_condition_indicator", n => { SpecialConditionIndicator = n.GetEnumValue<Marqeta.Core.Sdk.Models.Terminal_model_special_condition_indicator>(); } },
+                { "tid", n => { Tid = n.GetStringValue(); } },
+                { "transaction_initiated_by", n => { TransactionInitiatedBy = n.GetStringValue(); } },
             };
         }
         /// <summary>
@@ -107,7 +108,7 @@ namespace Marqeta.Core.Sdk.Models {
             writer.WriteStringValue("card_presence", CardPresence);
             writer.WriteStringValue("partial_approval_capable", PartialApprovalCapable);
             writer.WriteStringValue("pin_present", PinPresent);
-            writer.WriteEnumValue<Terminal_model_special_condition_indicator>("special_condition_indicator", SpecialConditionIndicator);
+            writer.WriteEnumValue<Marqeta.Core.Sdk.Models.Terminal_model_special_condition_indicator>("special_condition_indicator", SpecialConditionIndicator);
             writer.WriteStringValue("tid", Tid);
             writer.WriteStringValue("transaction_initiated_by", TransactionInitiatedBy);
             writer.WriteAdditionalData(AdditionalData);

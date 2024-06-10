@@ -6,26 +6,27 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using System;
-namespace Marqeta.Core.Sdk.Peertransfers.User {
+namespace Marqeta.Core.Sdk.Peertransfers.User
+{
     /// <summary>
     /// Builds and executes requests for operations under \peertransfers\user
     /// </summary>
-    public class UserRequestBuilder : BaseRequestBuilder 
+    public class UserRequestBuilder : BaseRequestBuilder
     {
         /// <summary>Gets an item from the Marqeta.Core.Sdk.peertransfers.user.item collection</summary>
         /// <param name="position">Existing user or business token.Send a `GET` request to `/users` to retrieve user tokens or to `/businesses` to retrieve business tokens.</param>
-        /// <returns>A <see cref="WithUser_or_business_tokenItemRequestBuilder"/></returns>
-        public WithUser_or_business_tokenItemRequestBuilder this[string position]
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Peertransfers.User.Item.WithUser_or_business_tokenItemRequestBuilder"/></returns>
+        public Marqeta.Core.Sdk.Peertransfers.User.Item.WithUser_or_business_tokenItemRequestBuilder this[string position]
         {
             get
             {
                 var urlTplParams = new Dictionary<string, object>(PathParameters);
                 urlTplParams.Add("user_or_business_token", position);
-                return new WithUser_or_business_tokenItemRequestBuilder(urlTplParams, RequestAdapter);
+                return new Marqeta.Core.Sdk.Peertransfers.User.Item.WithUser_or_business_tokenItemRequestBuilder(urlTplParams, RequestAdapter);
             }
         }
         /// <summary>
-        /// Instantiates a new <see cref="UserRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Peertransfers.User.UserRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
@@ -33,7 +34,7 @@ namespace Marqeta.Core.Sdk.Peertransfers.User {
         {
         }
         /// <summary>
-        /// Instantiates a new <see cref="UserRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Peertransfers.User.UserRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>

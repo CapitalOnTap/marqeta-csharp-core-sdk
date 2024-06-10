@@ -4,11 +4,12 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System;
-namespace Marqeta.Core.Sdk.Models {
+namespace Marqeta.Core.Sdk.Models
+{
     /// <summary>
     /// Specifies a custom image to display in the return address window of the card carrier envelope.
     /// </summary>
-    public class Images_carrier_return_window : IAdditionalDataHolder, IParsable 
+    public class Images_carrier_return_window : IAdditionalDataHolder, IParsable
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
@@ -21,7 +22,7 @@ namespace Marqeta.Core.Sdk.Models {
         public string Name { get; set; }
 #endif
         /// <summary>
-        /// Instantiates a new <see cref="Images_carrier_return_window"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Models.Images_carrier_return_window"/> and sets the default values.
         /// </summary>
         public Images_carrier_return_window()
         {
@@ -30,12 +31,12 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="Images_carrier_return_window"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Models.Images_carrier_return_window"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static Images_carrier_return_window CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static Marqeta.Core.Sdk.Models.Images_carrier_return_window CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-            return new Images_carrier_return_window();
+            return new Marqeta.Core.Sdk.Models.Images_carrier_return_window();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -45,7 +46,7 @@ namespace Marqeta.Core.Sdk.Models {
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                {"name", n => { Name = n.GetStringValue(); } },
+                { "name", n => { Name = n.GetStringValue(); } },
             };
         }
         /// <summary>

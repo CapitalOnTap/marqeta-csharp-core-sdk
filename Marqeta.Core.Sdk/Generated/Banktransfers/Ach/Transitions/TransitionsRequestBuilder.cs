@@ -8,14 +8,15 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Threading;
 using System;
-namespace Marqeta.Core.Sdk.Banktransfers.Ach.Transitions {
+namespace Marqeta.Core.Sdk.Banktransfers.Ach.Transitions
+{
     /// <summary>
     /// Builds and executes requests for operations under \banktransfers\ach\transitions
     /// </summary>
-    public class TransitionsRequestBuilder : BaseRequestBuilder 
+    public class TransitionsRequestBuilder : BaseRequestBuilder
     {
         /// <summary>
-        /// Instantiates a new <see cref="TransitionsRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Banktransfers.Ach.Transitions.TransitionsRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
@@ -23,7 +24,7 @@ namespace Marqeta.Core.Sdk.Banktransfers.Ach.Transitions {
         {
         }
         /// <summary>
-        /// Instantiates a new <see cref="TransitionsRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Banktransfers.Ach.Transitions.TransitionsRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
@@ -33,50 +34,50 @@ namespace Marqeta.Core.Sdk.Banktransfers.Ach.Transitions {
         /// <summary>
         /// Retrieve a list of all ACH transfer transitions for a given ACH transfer.
         /// </summary>
-        /// <returns>A <see cref="BankTransferTransitionListResponse"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Models.BankTransferTransitionListResponse"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        /// <exception cref="ApiError">When receiving a 4XX or 5XX status code</exception>
+        /// <exception cref="Marqeta.Core.Sdk.Models.ApiError">When receiving a 4XX or 5XX status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<BankTransferTransitionListResponse?> GetAsync(Action<RequestConfiguration<TransitionsRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<Marqeta.Core.Sdk.Models.BankTransferTransitionListResponse?> GetAsync(Action<RequestConfiguration<Marqeta.Core.Sdk.Banktransfers.Ach.Transitions.TransitionsRequestBuilder.TransitionsRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<BankTransferTransitionListResponse> GetAsync(Action<RequestConfiguration<TransitionsRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<Marqeta.Core.Sdk.Models.BankTransferTransitionListResponse> GetAsync(Action<RequestConfiguration<Marqeta.Core.Sdk.Banktransfers.Ach.Transitions.TransitionsRequestBuilder.TransitionsRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
-                {"XXX", ApiError.CreateFromDiscriminatorValue},
+                { "XXX", Marqeta.Core.Sdk.Models.ApiError.CreateFromDiscriminatorValue },
             };
-            return await RequestAdapter.SendAsync<BankTransferTransitionListResponse>(requestInfo, BankTransferTransitionListResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<Marqeta.Core.Sdk.Models.BankTransferTransitionListResponse>(requestInfo, Marqeta.Core.Sdk.Models.BankTransferTransitionListResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Create an ACH transfer transition that updates the `status` of an ACH transfer.Each ACH transfer has a lifecycle of statuses, as shown in the following diagram:[#banktransfers-1-image]image::achtransfers1[alt=&apos;ACH transfer lifecycle&apos;, width=575][NOTE]You can create ACH transfer transitions in the sandbox environment.However, Marqeta transitions ACH transfers through their lifecycle in the production environment.
         /// </summary>
-        /// <returns>A <see cref="Bank_transfer_transition_response_model"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Models.Bank_transfer_transition_response_model"/></returns>
         /// <param name="body">The request body</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        /// <exception cref="ApiError">When receiving a 4XX or 5XX status code</exception>
+        /// <exception cref="Marqeta.Core.Sdk.Models.ApiError">When receiving a 4XX or 5XX status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<Bank_transfer_transition_response_model?> PostAsync(Bank_transfer_transition_request_model body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<Marqeta.Core.Sdk.Models.Bank_transfer_transition_response_model?> PostAsync(Marqeta.Core.Sdk.Models.Bank_transfer_transition_request_model body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<Bank_transfer_transition_response_model> PostAsync(Bank_transfer_transition_request_model body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<Marqeta.Core.Sdk.Models.Bank_transfer_transition_response_model> PostAsync(Marqeta.Core.Sdk.Models.Bank_transfer_transition_request_model body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             _ = body ?? throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPostRequestInformation(body, requestConfiguration);
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
-                {"XXX", ApiError.CreateFromDiscriminatorValue},
+                { "XXX", Marqeta.Core.Sdk.Models.ApiError.CreateFromDiscriminatorValue },
             };
-            return await RequestAdapter.SendAsync<Bank_transfer_transition_response_model>(requestInfo, Bank_transfer_transition_response_model.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<Marqeta.Core.Sdk.Models.Bank_transfer_transition_response_model>(requestInfo, Marqeta.Core.Sdk.Models.Bank_transfer_transition_response_model.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Retrieve a list of all ACH transfer transitions for a given ACH transfer.
@@ -85,11 +86,11 @@ namespace Marqeta.Core.Sdk.Banktransfers.Ach.Transitions {
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<TransitionsRequestBuilderGetQueryParameters>>? requestConfiguration = default)
+        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<Marqeta.Core.Sdk.Banktransfers.Ach.Transitions.TransitionsRequestBuilder.TransitionsRequestBuilderGetQueryParameters>>? requestConfiguration = default)
         {
 #nullable restore
 #else
-        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<TransitionsRequestBuilderGetQueryParameters>> requestConfiguration = default)
+        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<Marqeta.Core.Sdk.Banktransfers.Ach.Transitions.TransitionsRequestBuilder.TransitionsRequestBuilderGetQueryParameters>> requestConfiguration = default)
         {
 #endif
             var requestInfo = new RequestInformation(Method.GET, UrlTemplate, PathParameters);
@@ -105,11 +106,11 @@ namespace Marqeta.Core.Sdk.Banktransfers.Ach.Transitions {
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToPostRequestInformation(Bank_transfer_transition_request_model body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
+        public RequestInformation ToPostRequestInformation(Marqeta.Core.Sdk.Models.Bank_transfer_transition_request_model body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
         {
 #nullable restore
 #else
-        public RequestInformation ToPostRequestInformation(Bank_transfer_transition_request_model body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
+        public RequestInformation ToPostRequestInformation(Marqeta.Core.Sdk.Models.Bank_transfer_transition_request_model body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
         {
 #endif
             _ = body ?? throw new ArgumentNullException(nameof(body));
@@ -122,11 +123,11 @@ namespace Marqeta.Core.Sdk.Banktransfers.Ach.Transitions {
         /// <summary>
         /// Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
         /// </summary>
-        /// <returns>A <see cref="TransitionsRequestBuilder"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Banktransfers.Ach.Transitions.TransitionsRequestBuilder"/></returns>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
-        public TransitionsRequestBuilder WithUrl(string rawUrl)
+        public Marqeta.Core.Sdk.Banktransfers.Ach.Transitions.TransitionsRequestBuilder WithUrl(string rawUrl)
         {
-            return new TransitionsRequestBuilder(rawUrl, RequestAdapter);
+            return new Marqeta.Core.Sdk.Banktransfers.Ach.Transitions.TransitionsRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
         /// Retrieve a list of all ACH transfer transitions for a given ACH transfer.

@@ -4,28 +4,29 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System;
-namespace Marqeta.Core.Sdk.Models {
+namespace Marqeta.Core.Sdk.Models
+{
     /// <summary>
     /// Contains information used to calculate the minimum payment amount when expressed as a percentage.
     /// </summary>
-    public class PolicyProductMinPaymentPercentage : IAdditionalDataHolder, IParsable 
+    public class PolicyProductMinPaymentPercentage : IAdditionalDataHolder, IParsable
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>One or more fee types to include when calculating the minimum payment.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<PolicyProductMinPaymentPercentage_include_fees_charged?>? IncludeFeesCharged { get; set; }
+        public List<Marqeta.Core.Sdk.Models.PolicyProductMinPaymentPercentage_include_fees_charged?>? IncludeFeesCharged { get; set; }
 #nullable restore
 #else
-        public List<PolicyProductMinPaymentPercentage_include_fees_charged?> IncludeFeesCharged { get; set; }
+        public List<Marqeta.Core.Sdk.Models.PolicyProductMinPaymentPercentage_include_fees_charged?> IncludeFeesCharged { get; set; }
 #endif
         /// <summary>Whether to include the amount of interest charged when calculating the minimum payment.</summary>
         public bool? IncludeInterestCharged { get; set; }
         /// <summary>Minimum payment, expressed as a percentage of the total statement balance, due on the payment due day.</summary>
         public double? PercentageOfBalance { get; set; }
         /// <summary>
-        /// Instantiates a new <see cref="PolicyProductMinPaymentPercentage"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Models.PolicyProductMinPaymentPercentage"/> and sets the default values.
         /// </summary>
         public PolicyProductMinPaymentPercentage()
         {
@@ -34,12 +35,12 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="PolicyProductMinPaymentPercentage"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Models.PolicyProductMinPaymentPercentage"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static PolicyProductMinPaymentPercentage CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static Marqeta.Core.Sdk.Models.PolicyProductMinPaymentPercentage CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-            return new PolicyProductMinPaymentPercentage();
+            return new Marqeta.Core.Sdk.Models.PolicyProductMinPaymentPercentage();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -49,9 +50,9 @@ namespace Marqeta.Core.Sdk.Models {
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                {"include_fees_charged", n => { IncludeFeesCharged = n.GetCollectionOfEnumValues<PolicyProductMinPaymentPercentage_include_fees_charged>()?.ToList(); } },
-                {"include_interest_charged", n => { IncludeInterestCharged = n.GetBoolValue(); } },
-                {"percentage_of_balance", n => { PercentageOfBalance = n.GetDoubleValue(); } },
+                { "include_fees_charged", n => { IncludeFeesCharged = n.GetCollectionOfEnumValues<Marqeta.Core.Sdk.Models.PolicyProductMinPaymentPercentage_include_fees_charged>()?.ToList(); } },
+                { "include_interest_charged", n => { IncludeInterestCharged = n.GetBoolValue(); } },
+                { "percentage_of_balance", n => { PercentageOfBalance = n.GetDoubleValue(); } },
             };
         }
         /// <summary>
@@ -61,7 +62,7 @@ namespace Marqeta.Core.Sdk.Models {
         public virtual void Serialize(ISerializationWriter writer)
         {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
-            writer.WriteCollectionOfEnumValues<PolicyProductMinPaymentPercentage_include_fees_charged>("include_fees_charged", IncludeFeesCharged);
+            writer.WriteCollectionOfEnumValues<Marqeta.Core.Sdk.Models.PolicyProductMinPaymentPercentage_include_fees_charged>("include_fees_charged", IncludeFeesCharged);
             writer.WriteBoolValue("include_interest_charged", IncludeInterestCharged);
             writer.WriteDoubleValue("percentage_of_balance", PercentageOfBalance);
             writer.WriteAdditionalData(AdditionalData);

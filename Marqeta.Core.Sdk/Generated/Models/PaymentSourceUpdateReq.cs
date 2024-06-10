@@ -4,18 +4,19 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System;
-namespace Marqeta.Core.Sdk.Models {
+namespace Marqeta.Core.Sdk.Models
+{
     /// <summary>
     /// Request used to update the status of a payment source.
     /// </summary>
-    public class PaymentSourceUpdateReq : IAdditionalDataHolder, IParsable 
+    public class PaymentSourceUpdateReq : IAdditionalDataHolder, IParsable
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Current status of the payment source.</summary>
-        public PaymentSourceStatusEnum? Status { get; set; }
+        public Marqeta.Core.Sdk.Models.PaymentSourceStatusEnum? Status { get; set; }
         /// <summary>
-        /// Instantiates a new <see cref="PaymentSourceUpdateReq"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Models.PaymentSourceUpdateReq"/> and sets the default values.
         /// </summary>
         public PaymentSourceUpdateReq()
         {
@@ -24,12 +25,12 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="PaymentSourceUpdateReq"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Models.PaymentSourceUpdateReq"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static PaymentSourceUpdateReq CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static Marqeta.Core.Sdk.Models.PaymentSourceUpdateReq CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-            return new PaymentSourceUpdateReq();
+            return new Marqeta.Core.Sdk.Models.PaymentSourceUpdateReq();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -39,7 +40,7 @@ namespace Marqeta.Core.Sdk.Models {
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                {"status", n => { Status = n.GetEnumValue<PaymentSourceStatusEnum>(); } },
+                { "status", n => { Status = n.GetEnumValue<Marqeta.Core.Sdk.Models.PaymentSourceStatusEnum>(); } },
             };
         }
         /// <summary>
@@ -49,7 +50,7 @@ namespace Marqeta.Core.Sdk.Models {
         public virtual void Serialize(ISerializationWriter writer)
         {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
-            writer.WriteEnumValue<PaymentSourceStatusEnum>("status", Status);
+            writer.WriteEnumValue<Marqeta.Core.Sdk.Models.PaymentSourceStatusEnum>("status", Status);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

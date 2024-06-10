@@ -4,11 +4,12 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System;
-namespace Marqeta.Core.Sdk.Models {
+namespace Marqeta.Core.Sdk.Models
+{
     /// <summary>
     /// Contains information on a reward policy.
     /// </summary>
-    public class PolicyRewardResponse : IAdditionalDataHolder, IParsable 
+    public class PolicyRewardResponse : IAdditionalDataHolder, IParsable
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
@@ -33,10 +34,10 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>One or more reward rules</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<PolicyRewardRule>? Rules { get; set; }
+        public List<Marqeta.Core.Sdk.Models.PolicyRewardRule>? Rules { get; set; }
 #nullable restore
 #else
-        public List<PolicyRewardRule> Rules { get; set; }
+        public List<Marqeta.Core.Sdk.Models.PolicyRewardRule> Rules { get; set; }
 #endif
         /// <summary>Unique identifier of the reward policy.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -49,7 +50,7 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>Date and time when the reward policy was last updated on Marqeta&apos;s credit platform, in UTC.</summary>
         public DateTimeOffset? UpdatedTime { get; set; }
         /// <summary>
-        /// Instantiates a new <see cref="PolicyRewardResponse"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Models.PolicyRewardResponse"/> and sets the default values.
         /// </summary>
         public PolicyRewardResponse()
         {
@@ -58,12 +59,12 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="PolicyRewardResponse"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Models.PolicyRewardResponse"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static PolicyRewardResponse CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static Marqeta.Core.Sdk.Models.PolicyRewardResponse CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-            return new PolicyRewardResponse();
+            return new Marqeta.Core.Sdk.Models.PolicyRewardResponse();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -73,12 +74,12 @@ namespace Marqeta.Core.Sdk.Models {
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                {"created_time", n => { CreatedTime = n.GetDateTimeOffsetValue(); } },
-                {"description", n => { Description = n.GetStringValue(); } },
-                {"name", n => { Name = n.GetStringValue(); } },
-                {"rules", n => { Rules = n.GetCollectionOfObjectValues<PolicyRewardRule>(PolicyRewardRule.CreateFromDiscriminatorValue)?.ToList(); } },
-                {"token", n => { Token = n.GetStringValue(); } },
-                {"updated_time", n => { UpdatedTime = n.GetDateTimeOffsetValue(); } },
+                { "created_time", n => { CreatedTime = n.GetDateTimeOffsetValue(); } },
+                { "description", n => { Description = n.GetStringValue(); } },
+                { "name", n => { Name = n.GetStringValue(); } },
+                { "rules", n => { Rules = n.GetCollectionOfObjectValues<Marqeta.Core.Sdk.Models.PolicyRewardRule>(Marqeta.Core.Sdk.Models.PolicyRewardRule.CreateFromDiscriminatorValue)?.ToList(); } },
+                { "token", n => { Token = n.GetStringValue(); } },
+                { "updated_time", n => { UpdatedTime = n.GetDateTimeOffsetValue(); } },
             };
         }
         /// <summary>
@@ -91,7 +92,7 @@ namespace Marqeta.Core.Sdk.Models {
             writer.WriteDateTimeOffsetValue("created_time", CreatedTime);
             writer.WriteStringValue("description", Description);
             writer.WriteStringValue("name", Name);
-            writer.WriteCollectionOfObjectValues<PolicyRewardRule>("rules", Rules);
+            writer.WriteCollectionOfObjectValues<Marqeta.Core.Sdk.Models.PolicyRewardRule>("rules", Rules);
             writer.WriteStringValue("token", Token);
             writer.WriteDateTimeOffsetValue("updated_time", UpdatedTime);
             writer.WriteAdditionalData(AdditionalData);

@@ -4,9 +4,10 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System;
-namespace Marqeta.Core.Sdk.Models {
+namespace Marqeta.Core.Sdk.Models
+{
     #pragma warning disable CS1591
-    public class Avs_controls : IAdditionalDataHolder, IParsable 
+    public class Avs_controls : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -14,21 +15,21 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>The auth_messages property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public Avs_control_options? AuthMessages { get; set; }
+        public Marqeta.Core.Sdk.Models.Avs_control_options? AuthMessages { get; set; }
 #nullable restore
 #else
-        public Avs_control_options AuthMessages { get; set; }
+        public Marqeta.Core.Sdk.Models.Avs_control_options AuthMessages { get; set; }
 #endif
         /// <summary>The av_messages property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public Avs_control_options? AvMessages { get; set; }
+        public Marqeta.Core.Sdk.Models.Avs_control_options? AvMessages { get; set; }
 #nullable restore
 #else
-        public Avs_control_options AvMessages { get; set; }
+        public Marqeta.Core.Sdk.Models.Avs_control_options AvMessages { get; set; }
 #endif
         /// <summary>
-        /// Instantiates a new <see cref="Avs_controls"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Models.Avs_controls"/> and sets the default values.
         /// </summary>
         public Avs_controls()
         {
@@ -37,12 +38,12 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="Avs_controls"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Models.Avs_controls"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static Avs_controls CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static Marqeta.Core.Sdk.Models.Avs_controls CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-            return new Avs_controls();
+            return new Marqeta.Core.Sdk.Models.Avs_controls();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -52,8 +53,8 @@ namespace Marqeta.Core.Sdk.Models {
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                {"auth_messages", n => { AuthMessages = n.GetObjectValue<Avs_control_options>(Avs_control_options.CreateFromDiscriminatorValue); } },
-                {"av_messages", n => { AvMessages = n.GetObjectValue<Avs_control_options>(Avs_control_options.CreateFromDiscriminatorValue); } },
+                { "auth_messages", n => { AuthMessages = n.GetObjectValue<Marqeta.Core.Sdk.Models.Avs_control_options>(Marqeta.Core.Sdk.Models.Avs_control_options.CreateFromDiscriminatorValue); } },
+                { "av_messages", n => { AvMessages = n.GetObjectValue<Marqeta.Core.Sdk.Models.Avs_control_options>(Marqeta.Core.Sdk.Models.Avs_control_options.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -63,8 +64,8 @@ namespace Marqeta.Core.Sdk.Models {
         public virtual void Serialize(ISerializationWriter writer)
         {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<Avs_control_options>("auth_messages", AuthMessages);
-            writer.WriteObjectValue<Avs_control_options>("av_messages", AvMessages);
+            writer.WriteObjectValue<Marqeta.Core.Sdk.Models.Avs_control_options>("auth_messages", AuthMessages);
+            writer.WriteObjectValue<Marqeta.Core.Sdk.Models.Avs_control_options>("av_messages", AvMessages);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

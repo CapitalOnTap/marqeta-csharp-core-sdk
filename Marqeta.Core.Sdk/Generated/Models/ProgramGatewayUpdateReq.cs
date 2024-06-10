@@ -4,11 +4,12 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System;
-namespace Marqeta.Core.Sdk.Models {
+namespace Marqeta.Core.Sdk.Models
+{
     /// <summary>
     /// Contains information relevant to updating a Program Gateway.
     /// </summary>
-    public class ProgramGatewayUpdateReq : IAdditionalDataHolder, IParsable 
+    public class ProgramGatewayUpdateReq : IAdditionalDataHolder, IParsable
     {
         /// <summary>Indicates whether the Program Gateway is active.</summary>
         public bool? Active { get; set; }
@@ -33,10 +34,10 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>Additional custom information included in the HTTP header.For example, this might contain security information, along with Basic Authentication, when making a Program Gateway request.Custom headers also appear in the associated webhook&apos;s notifications.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public ProgramGatewayCustomHeaderCreateReq? CustomHeader { get; set; }
+        public Marqeta.Core.Sdk.Models.ProgramGatewayCustomHeaderCreateReq? CustomHeader { get; set; }
 #nullable restore
 #else
-        public ProgramGatewayCustomHeaderCreateReq CustomHeader { get; set; }
+        public Marqeta.Core.Sdk.Models.ProgramGatewayCustomHeaderCreateReq CustomHeader { get; set; }
 #endif
         /// <summary>Indicates whether the Program Gateway uses mutual Transport Layer Security (mTLS).</summary>
         public bool? Mtls { get; set; }
@@ -67,7 +68,7 @@ namespace Marqeta.Core.Sdk.Models {
         public string Url { get; set; }
 #endif
         /// <summary>
-        /// Instantiates a new <see cref="ProgramGatewayUpdateReq"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Models.ProgramGatewayUpdateReq"/> and sets the default values.
         /// </summary>
         public ProgramGatewayUpdateReq()
         {
@@ -76,12 +77,12 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="ProgramGatewayUpdateReq"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Models.ProgramGatewayUpdateReq"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static ProgramGatewayUpdateReq CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static Marqeta.Core.Sdk.Models.ProgramGatewayUpdateReq CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-            return new ProgramGatewayUpdateReq();
+            return new Marqeta.Core.Sdk.Models.ProgramGatewayUpdateReq();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -91,15 +92,15 @@ namespace Marqeta.Core.Sdk.Models {
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                {"active", n => { Active = n.GetBoolValue(); } },
-                {"basic_auth_password", n => { BasicAuthPassword = n.GetStringValue(); } },
-                {"basic_auth_username", n => { BasicAuthUsername = n.GetStringValue(); } },
-                {"custom_header", n => { CustomHeader = n.GetObjectValue<ProgramGatewayCustomHeaderCreateReq>(ProgramGatewayCustomHeaderCreateReq.CreateFromDiscriminatorValue); } },
-                {"mtls", n => { Mtls = n.GetBoolValue(); } },
-                {"name", n => { Name = n.GetStringValue(); } },
-                {"timeout_millis", n => { TimeoutMillis = n.GetIntValue(); } },
-                {"token", n => { Token = n.GetStringValue(); } },
-                {"url", n => { Url = n.GetStringValue(); } },
+                { "active", n => { Active = n.GetBoolValue(); } },
+                { "basic_auth_password", n => { BasicAuthPassword = n.GetStringValue(); } },
+                { "basic_auth_username", n => { BasicAuthUsername = n.GetStringValue(); } },
+                { "custom_header", n => { CustomHeader = n.GetObjectValue<Marqeta.Core.Sdk.Models.ProgramGatewayCustomHeaderCreateReq>(Marqeta.Core.Sdk.Models.ProgramGatewayCustomHeaderCreateReq.CreateFromDiscriminatorValue); } },
+                { "mtls", n => { Mtls = n.GetBoolValue(); } },
+                { "name", n => { Name = n.GetStringValue(); } },
+                { "timeout_millis", n => { TimeoutMillis = n.GetIntValue(); } },
+                { "token", n => { Token = n.GetStringValue(); } },
+                { "url", n => { Url = n.GetStringValue(); } },
             };
         }
         /// <summary>
@@ -112,7 +113,7 @@ namespace Marqeta.Core.Sdk.Models {
             writer.WriteBoolValue("active", Active);
             writer.WriteStringValue("basic_auth_password", BasicAuthPassword);
             writer.WriteStringValue("basic_auth_username", BasicAuthUsername);
-            writer.WriteObjectValue<ProgramGatewayCustomHeaderCreateReq>("custom_header", CustomHeader);
+            writer.WriteObjectValue<Marqeta.Core.Sdk.Models.ProgramGatewayCustomHeaderCreateReq>("custom_header", CustomHeader);
             writer.WriteBoolValue("mtls", Mtls);
             writer.WriteStringValue("name", Name);
             writer.WriteIntValue("timeout_millis", TimeoutMillis);

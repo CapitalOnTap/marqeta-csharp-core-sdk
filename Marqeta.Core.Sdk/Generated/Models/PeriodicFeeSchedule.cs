@@ -5,11 +5,12 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System;
-namespace Marqeta.Core.Sdk.Models {
+namespace Marqeta.Core.Sdk.Models
+{
     /// <summary>
     /// periodic fee schedules on account
     /// </summary>
-    public class PeriodicFeeSchedule : IAdditionalDataHolder, IParsable 
+    public class PeriodicFeeSchedule : IAdditionalDataHolder, IParsable
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
@@ -20,9 +21,9 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>date of the next time fee will be charged</summary>
         public Date? NextFeeImpactDate { get; set; }
         /// <summary>type of fee to be charged</summary>
-        public PeriodicFeeSchedule_type? Type { get; set; }
+        public Marqeta.Core.Sdk.Models.PeriodicFeeSchedule_type? Type { get; set; }
         /// <summary>
-        /// Instantiates a new <see cref="PeriodicFeeSchedule"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Models.PeriodicFeeSchedule"/> and sets the default values.
         /// </summary>
         public PeriodicFeeSchedule()
         {
@@ -31,12 +32,12 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="PeriodicFeeSchedule"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Models.PeriodicFeeSchedule"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static PeriodicFeeSchedule CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static Marqeta.Core.Sdk.Models.PeriodicFeeSchedule CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-            return new PeriodicFeeSchedule();
+            return new Marqeta.Core.Sdk.Models.PeriodicFeeSchedule();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -46,10 +47,10 @@ namespace Marqeta.Core.Sdk.Models {
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                {"amount", n => { Amount = n.GetDoubleValue(); } },
-                {"effective_date", n => { EffectiveDate = n.GetDateValue(); } },
-                {"next_fee_impact_date", n => { NextFeeImpactDate = n.GetDateValue(); } },
-                {"type", n => { Type = n.GetEnumValue<PeriodicFeeSchedule_type>(); } },
+                { "amount", n => { Amount = n.GetDoubleValue(); } },
+                { "effective_date", n => { EffectiveDate = n.GetDateValue(); } },
+                { "next_fee_impact_date", n => { NextFeeImpactDate = n.GetDateValue(); } },
+                { "type", n => { Type = n.GetEnumValue<Marqeta.Core.Sdk.Models.PeriodicFeeSchedule_type>(); } },
             };
         }
         /// <summary>
@@ -62,7 +63,7 @@ namespace Marqeta.Core.Sdk.Models {
             writer.WriteDoubleValue("amount", Amount);
             writer.WriteDateValue("effective_date", EffectiveDate);
             writer.WriteDateValue("next_fee_impact_date", NextFeeImpactDate);
-            writer.WriteEnumValue<PeriodicFeeSchedule_type>("type", Type);
+            writer.WriteEnumValue<Marqeta.Core.Sdk.Models.PeriodicFeeSchedule_type>("type", Type);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

@@ -4,11 +4,12 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System;
-namespace Marqeta.Core.Sdk.Models {
+namespace Marqeta.Core.Sdk.Models
+{
     /// <summary>
     /// Account document response.
     /// </summary>
-    public class AccountDocumentResponse : IAdditionalDataHolder, IParsable 
+    public class AccountDocumentResponse : IAdditionalDataHolder, IParsable
     {
         /// <summary>Date and time when the user accepted the document on Marqeta&apos;s credit platform, in UTC.</summary>
         public DateTimeOffset? AcceptedAt { get; set; }
@@ -25,15 +26,15 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>Contains one or more URLs for an asset.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public PolicyDocumentAssetURLs? AssetUrls { get; set; }
+        public Marqeta.Core.Sdk.Models.PolicyDocumentAssetURLs? AssetUrls { get; set; }
 #nullable restore
 #else
-        public PolicyDocumentAssetURLs AssetUrls { get; set; }
+        public Marqeta.Core.Sdk.Models.PolicyDocumentAssetURLs AssetUrls { get; set; }
 #endif
         /// <summary>Date and time when the document goes into effect on Marqeta&apos;s credit platform, in UTC.</summary>
         public DateTimeOffset? EffectiveFrom { get; set; }
         /// <summary>
-        /// Instantiates a new <see cref="AccountDocumentResponse"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Models.AccountDocumentResponse"/> and sets the default values.
         /// </summary>
         public AccountDocumentResponse()
         {
@@ -42,12 +43,12 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="AccountDocumentResponse"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Models.AccountDocumentResponse"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static AccountDocumentResponse CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static Marqeta.Core.Sdk.Models.AccountDocumentResponse CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-            return new AccountDocumentResponse();
+            return new Marqeta.Core.Sdk.Models.AccountDocumentResponse();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -57,10 +58,10 @@ namespace Marqeta.Core.Sdk.Models {
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                {"accepted_at", n => { AcceptedAt = n.GetDateTimeOffsetValue(); } },
-                {"asset_token", n => { AssetToken = n.GetStringValue(); } },
-                {"asset_urls", n => { AssetUrls = n.GetObjectValue<PolicyDocumentAssetURLs>(PolicyDocumentAssetURLs.CreateFromDiscriminatorValue); } },
-                {"effective_from", n => { EffectiveFrom = n.GetDateTimeOffsetValue(); } },
+                { "accepted_at", n => { AcceptedAt = n.GetDateTimeOffsetValue(); } },
+                { "asset_token", n => { AssetToken = n.GetStringValue(); } },
+                { "asset_urls", n => { AssetUrls = n.GetObjectValue<Marqeta.Core.Sdk.Models.PolicyDocumentAssetURLs>(Marqeta.Core.Sdk.Models.PolicyDocumentAssetURLs.CreateFromDiscriminatorValue); } },
+                { "effective_from", n => { EffectiveFrom = n.GetDateTimeOffsetValue(); } },
             };
         }
         /// <summary>
@@ -72,7 +73,7 @@ namespace Marqeta.Core.Sdk.Models {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
             writer.WriteDateTimeOffsetValue("accepted_at", AcceptedAt);
             writer.WriteStringValue("asset_token", AssetToken);
-            writer.WriteObjectValue<PolicyDocumentAssetURLs>("asset_urls", AssetUrls);
+            writer.WriteObjectValue<Marqeta.Core.Sdk.Models.PolicyDocumentAssetURLs>("asset_urls", AssetUrls);
             writer.WriteDateTimeOffsetValue("effective_from", EffectiveFrom);
             writer.WriteAdditionalData(AdditionalData);
         }

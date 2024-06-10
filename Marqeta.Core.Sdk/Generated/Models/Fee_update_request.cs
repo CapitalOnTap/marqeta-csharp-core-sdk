@@ -4,9 +4,10 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System;
-namespace Marqeta.Core.Sdk.Models {
+namespace Marqeta.Core.Sdk.Models
+{
     #pragma warning disable CS1591
-    public class Fee_update_request : IAdditionalDataHolder, IParsable 
+    public class Fee_update_request : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
     {
         /// <summary>Indicates whether the fee is active.</summary>
@@ -16,7 +17,7 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>Amount of the fee.</summary>
         public double? Amount { get; set; }
         /// <summary>The category property</summary>
-        public Fee_update_request_category? Category { get; set; }
+        public Marqeta.Core.Sdk.Models.Fee_update_request_category? Category { get; set; }
         /// <summary>Three-digit ISO 4217 currency code.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -28,10 +29,10 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>Describes the attributes of a fee.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public Fee_attributes? FeeAttributes { get; set; }
+        public Marqeta.Core.Sdk.Models.Fee_attributes? FeeAttributes { get; set; }
 #nullable restore
 #else
-        public Fee_attributes FeeAttributes { get; set; }
+        public Marqeta.Core.Sdk.Models.Fee_attributes FeeAttributes { get; set; }
 #endif
         /// <summary>Name of the fee request.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -50,9 +51,9 @@ namespace Marqeta.Core.Sdk.Models {
         public string Tags { get; set; }
 #endif
         /// <summary>The type property</summary>
-        public Fee_update_request_type? Type { get; set; }
+        public Marqeta.Core.Sdk.Models.Fee_update_request_type? Type { get; set; }
         /// <summary>
-        /// Instantiates a new <see cref="Fee_update_request"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Models.Fee_update_request"/> and sets the default values.
         /// </summary>
         public Fee_update_request()
         {
@@ -61,12 +62,12 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="Fee_update_request"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Models.Fee_update_request"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static Fee_update_request CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static Marqeta.Core.Sdk.Models.Fee_update_request CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-            return new Fee_update_request();
+            return new Marqeta.Core.Sdk.Models.Fee_update_request();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -76,14 +77,14 @@ namespace Marqeta.Core.Sdk.Models {
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                {"active", n => { Active = n.GetBoolValue(); } },
-                {"amount", n => { Amount = n.GetDoubleValue(); } },
-                {"category", n => { Category = n.GetEnumValue<Fee_update_request_category>(); } },
-                {"currency_code", n => { CurrencyCode = n.GetStringValue(); } },
-                {"fee_attributes", n => { FeeAttributes = n.GetObjectValue<Fee_attributes>(Fee_attributes.CreateFromDiscriminatorValue); } },
-                {"name", n => { Name = n.GetStringValue(); } },
-                {"tags", n => { Tags = n.GetStringValue(); } },
-                {"type", n => { Type = n.GetEnumValue<Fee_update_request_type>(); } },
+                { "active", n => { Active = n.GetBoolValue(); } },
+                { "amount", n => { Amount = n.GetDoubleValue(); } },
+                { "category", n => { Category = n.GetEnumValue<Marqeta.Core.Sdk.Models.Fee_update_request_category>(); } },
+                { "currency_code", n => { CurrencyCode = n.GetStringValue(); } },
+                { "fee_attributes", n => { FeeAttributes = n.GetObjectValue<Marqeta.Core.Sdk.Models.Fee_attributes>(Marqeta.Core.Sdk.Models.Fee_attributes.CreateFromDiscriminatorValue); } },
+                { "name", n => { Name = n.GetStringValue(); } },
+                { "tags", n => { Tags = n.GetStringValue(); } },
+                { "type", n => { Type = n.GetEnumValue<Marqeta.Core.Sdk.Models.Fee_update_request_type>(); } },
             };
         }
         /// <summary>
@@ -95,12 +96,12 @@ namespace Marqeta.Core.Sdk.Models {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
             writer.WriteBoolValue("active", Active);
             writer.WriteDoubleValue("amount", Amount);
-            writer.WriteEnumValue<Fee_update_request_category>("category", Category);
+            writer.WriteEnumValue<Marqeta.Core.Sdk.Models.Fee_update_request_category>("category", Category);
             writer.WriteStringValue("currency_code", CurrencyCode);
-            writer.WriteObjectValue<Fee_attributes>("fee_attributes", FeeAttributes);
+            writer.WriteObjectValue<Marqeta.Core.Sdk.Models.Fee_attributes>("fee_attributes", FeeAttributes);
             writer.WriteStringValue("name", Name);
             writer.WriteStringValue("tags", Tags);
-            writer.WriteEnumValue<Fee_update_request_type>("type", Type);
+            writer.WriteEnumValue<Marqeta.Core.Sdk.Models.Fee_update_request_type>("type", Type);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

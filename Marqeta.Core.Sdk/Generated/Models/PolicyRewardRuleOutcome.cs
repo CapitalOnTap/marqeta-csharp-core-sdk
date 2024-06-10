@@ -4,11 +4,12 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System;
-namespace Marqeta.Core.Sdk.Models {
+namespace Marqeta.Core.Sdk.Models
+{
     /// <summary>
     /// Contains information on the outcome of a reward rule.
     /// </summary>
-    public class PolicyRewardRuleOutcome : IAdditionalDataHolder, IParsable 
+    public class PolicyRewardRuleOutcome : IAdditionalDataHolder, IParsable
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
@@ -17,7 +18,7 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>Reward percentage applied when the balance for a billing cycle is within the range specified in the `filters.amount.greater_than` and `filters.amount.less_than` fields.For example, if the percentage is `1`, the account holder earns 1% of the account balance if they spend between the `greater_than` and `less_than` amounts during a billing cycle.</summary>
         public double? Percentage { get; set; }
         /// <summary>
-        /// Instantiates a new <see cref="PolicyRewardRuleOutcome"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Models.PolicyRewardRuleOutcome"/> and sets the default values.
         /// </summary>
         public PolicyRewardRuleOutcome()
         {
@@ -26,12 +27,12 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="PolicyRewardRuleOutcome"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Models.PolicyRewardRuleOutcome"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static PolicyRewardRuleOutcome CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static Marqeta.Core.Sdk.Models.PolicyRewardRuleOutcome CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-            return new PolicyRewardRuleOutcome();
+            return new Marqeta.Core.Sdk.Models.PolicyRewardRuleOutcome();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -41,8 +42,8 @@ namespace Marqeta.Core.Sdk.Models {
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                {"max_amount", n => { MaxAmount = n.GetDoubleValue(); } },
-                {"percentage", n => { Percentage = n.GetDoubleValue(); } },
+                { "max_amount", n => { MaxAmount = n.GetDoubleValue(); } },
+                { "percentage", n => { Percentage = n.GetDoubleValue(); } },
             };
         }
         /// <summary>

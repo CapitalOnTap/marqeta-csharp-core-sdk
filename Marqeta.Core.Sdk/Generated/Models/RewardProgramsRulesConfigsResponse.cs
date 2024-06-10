@@ -4,9 +4,10 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System;
-namespace Marqeta.Core.Sdk.Models {
+namespace Marqeta.Core.Sdk.Models
+{
     #pragma warning disable CS1591
-    public class RewardProgramsRulesConfigsResponse : IAdditionalDataHolder, IParsable 
+    public class RewardProgramsRulesConfigsResponse : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
     {
         /// <summary>Type of reward accrued.</summary>
@@ -50,7 +51,7 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>Date and time when the reward rules config was last updated on the Marqeta platform, in UTC.</summary>
         public DateTimeOffset? UpdatedTime { get; set; }
         /// <summary>
-        /// Instantiates a new <see cref="RewardProgramsRulesConfigsResponse"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Models.RewardProgramsRulesConfigsResponse"/> and sets the default values.
         /// </summary>
         public RewardProgramsRulesConfigsResponse()
         {
@@ -59,12 +60,12 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="RewardProgramsRulesConfigsResponse"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Models.RewardProgramsRulesConfigsResponse"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static RewardProgramsRulesConfigsResponse CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static Marqeta.Core.Sdk.Models.RewardProgramsRulesConfigsResponse CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-            return new RewardProgramsRulesConfigsResponse();
+            return new Marqeta.Core.Sdk.Models.RewardProgramsRulesConfigsResponse();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -74,16 +75,16 @@ namespace Marqeta.Core.Sdk.Models {
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                {"accrual_type", n => { AccrualType = n.GetEnumValue<AccrualType>(); } },
-                {"created_time", n => { CreatedTime = n.GetDateTimeOffsetValue(); } },
-                {"greater_than", n => { GreaterThan = n.GetDecimalValue(); } },
-                {"is_active", n => { IsActive = n.GetBoolValue(); } },
-                {"less_than", n => { LessThan = n.GetDecimalValue(); } },
-                {"mcc", n => { Mcc = n.GetStringValue(); } },
-                {"percentage", n => { Percentage = n.GetDecimalValue(); } },
-                {"reward_program_token", n => { RewardProgramToken = n.GetStringValue(); } },
-                {"token", n => { Token = n.GetStringValue(); } },
-                {"updated_time", n => { UpdatedTime = n.GetDateTimeOffsetValue(); } },
+                { "accrual_type", n => { AccrualType = n.GetEnumValue<Marqeta.Core.Sdk.Models.AccrualType>(); } },
+                { "created_time", n => { CreatedTime = n.GetDateTimeOffsetValue(); } },
+                { "greater_than", n => { GreaterThan = n.GetDecimalValue(); } },
+                { "is_active", n => { IsActive = n.GetBoolValue(); } },
+                { "less_than", n => { LessThan = n.GetDecimalValue(); } },
+                { "mcc", n => { Mcc = n.GetStringValue(); } },
+                { "percentage", n => { Percentage = n.GetDecimalValue(); } },
+                { "reward_program_token", n => { RewardProgramToken = n.GetStringValue(); } },
+                { "token", n => { Token = n.GetStringValue(); } },
+                { "updated_time", n => { UpdatedTime = n.GetDateTimeOffsetValue(); } },
             };
         }
         /// <summary>
@@ -93,7 +94,7 @@ namespace Marqeta.Core.Sdk.Models {
         public virtual void Serialize(ISerializationWriter writer)
         {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
-            writer.WriteEnumValue<AccrualType>("accrual_type", AccrualType);
+            writer.WriteEnumValue<Marqeta.Core.Sdk.Models.AccrualType>("accrual_type", AccrualType);
             writer.WriteDateTimeOffsetValue("created_time", CreatedTime);
             writer.WriteDecimalValue("greater_than", GreaterThan);
             writer.WriteBoolValue("is_active", IsActive);

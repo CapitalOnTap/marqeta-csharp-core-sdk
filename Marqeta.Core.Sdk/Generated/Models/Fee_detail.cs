@@ -4,11 +4,12 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System;
-namespace Marqeta.Core.Sdk.Models {
+namespace Marqeta.Core.Sdk.Models
+{
     /// <summary>
     /// Contains details about a fee.
     /// </summary>
-    public class Fee_detail : IAdditionalDataHolder, IParsable 
+    public class Fee_detail : IAdditionalDataHolder, IParsable
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
@@ -53,7 +54,7 @@ namespace Marqeta.Core.Sdk.Models {
         public string TransactionToken { get; set; }
 #endif
         /// <summary>
-        /// Instantiates a new <see cref="Fee_detail"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Models.Fee_detail"/> and sets the default values.
         /// </summary>
         public Fee_detail()
         {
@@ -62,12 +63,12 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="Fee_detail"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Models.Fee_detail"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static Fee_detail CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static Marqeta.Core.Sdk.Models.Fee_detail CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-            return new Fee_detail();
+            return new Marqeta.Core.Sdk.Models.Fee_detail();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -77,11 +78,11 @@ namespace Marqeta.Core.Sdk.Models {
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                {"fee", n => { Fee = n.GetObjectValue<Marqeta.Core.Sdk.Models.Fee>(Marqeta.Core.Sdk.Models.Fee.CreateFromDiscriminatorValue); } },
-                {"memo", n => { Memo = n.GetStringValue(); } },
-                {"tags", n => { Tags = n.GetStringValue(); } },
-                {"token", n => { Token = n.GetStringValue(); } },
-                {"transaction_token", n => { TransactionToken = n.GetStringValue(); } },
+                { "fee", n => { Fee = n.GetObjectValue<Marqeta.Core.Sdk.Models.Fee>(Marqeta.Core.Sdk.Models.Fee.CreateFromDiscriminatorValue); } },
+                { "memo", n => { Memo = n.GetStringValue(); } },
+                { "tags", n => { Tags = n.GetStringValue(); } },
+                { "token", n => { Token = n.GetStringValue(); } },
+                { "transaction_token", n => { TransactionToken = n.GetStringValue(); } },
             };
         }
         /// <summary>

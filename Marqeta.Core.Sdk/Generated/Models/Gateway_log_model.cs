@@ -4,11 +4,12 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System;
-namespace Marqeta.Core.Sdk.Models {
+namespace Marqeta.Core.Sdk.Models
+{
     /// <summary>
     /// Contains information from the JIT Funding gateway in response to a funding request.
     /// </summary>
-    public class Gateway_log_model : IAdditionalDataHolder, IParsable 
+    public class Gateway_log_model : IAdditionalDataHolder, IParsable
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
@@ -33,10 +34,10 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>Contains information from the gateway in response to a funding request.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public Gateway_response? Response { get; set; }
+        public Marqeta.Core.Sdk.Models.Gateway_response? Response { get; set; }
 #nullable restore
 #else
-        public Gateway_response Response { get; set; }
+        public Marqeta.Core.Sdk.Models.Gateway_response Response { get; set; }
 #endif
         /// <summary>Whether the gateway sent a response (`true`) or timed out (`false`).</summary>
         public bool? TimedOut { get; set; }
@@ -49,7 +50,7 @@ namespace Marqeta.Core.Sdk.Models {
         public string TransactionId { get; set; }
 #endif
         /// <summary>
-        /// Instantiates a new <see cref="Gateway_log_model"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Models.Gateway_log_model"/> and sets the default values.
         /// </summary>
         public Gateway_log_model()
         {
@@ -58,12 +59,12 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="Gateway_log_model"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Models.Gateway_log_model"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static Gateway_log_model CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static Marqeta.Core.Sdk.Models.Gateway_log_model CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-            return new Gateway_log_model();
+            return new Marqeta.Core.Sdk.Models.Gateway_log_model();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -73,12 +74,12 @@ namespace Marqeta.Core.Sdk.Models {
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                {"duration", n => { Duration = n.GetLongValue(); } },
-                {"message", n => { Message = n.GetStringValue(); } },
-                {"order_number", n => { OrderNumber = n.GetStringValue(); } },
-                {"response", n => { Response = n.GetObjectValue<Gateway_response>(Gateway_response.CreateFromDiscriminatorValue); } },
-                {"timed_out", n => { TimedOut = n.GetBoolValue(); } },
-                {"transaction_id", n => { TransactionId = n.GetStringValue(); } },
+                { "duration", n => { Duration = n.GetLongValue(); } },
+                { "message", n => { Message = n.GetStringValue(); } },
+                { "order_number", n => { OrderNumber = n.GetStringValue(); } },
+                { "response", n => { Response = n.GetObjectValue<Marqeta.Core.Sdk.Models.Gateway_response>(Marqeta.Core.Sdk.Models.Gateway_response.CreateFromDiscriminatorValue); } },
+                { "timed_out", n => { TimedOut = n.GetBoolValue(); } },
+                { "transaction_id", n => { TransactionId = n.GetStringValue(); } },
             };
         }
         /// <summary>
@@ -91,7 +92,7 @@ namespace Marqeta.Core.Sdk.Models {
             writer.WriteLongValue("duration", Duration);
             writer.WriteStringValue("message", Message);
             writer.WriteStringValue("order_number", OrderNumber);
-            writer.WriteObjectValue<Gateway_response>("response", Response);
+            writer.WriteObjectValue<Marqeta.Core.Sdk.Models.Gateway_response>("response", Response);
             writer.WriteBoolValue("timed_out", TimedOut);
             writer.WriteStringValue("transaction_id", TransactionId);
             writer.WriteAdditionalData(AdditionalData);

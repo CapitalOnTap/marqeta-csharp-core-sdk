@@ -4,9 +4,10 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System;
-namespace Marqeta.Core.Sdk.Models {
+namespace Marqeta.Core.Sdk.Models
+{
     #pragma warning disable CS1591
-    public class Jit_funding_paymentcard_funding_source : IAdditionalDataHolder, IParsable 
+    public class Jit_funding_paymentcard_funding_source : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -14,9 +15,9 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>Specifies whether JIT Funding is enabled or disabled for the payment card funding source.A value of `true` indicates that the payment card funding source is enabled and will be debited when swipes occur.</summary>
         public bool? Enabled { get; set; }
         /// <summary>Specifies the return destination for refunds in the case of a transaction reversal.</summary>
-        public Jit_funding_paymentcard_funding_source_refunds_destination? RefundsDestination { get; set; }
+        public Marqeta.Core.Sdk.Models.Jit_funding_paymentcard_funding_source_refunds_destination? RefundsDestination { get; set; }
         /// <summary>
-        /// Instantiates a new <see cref="Jit_funding_paymentcard_funding_source"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Models.Jit_funding_paymentcard_funding_source"/> and sets the default values.
         /// </summary>
         public Jit_funding_paymentcard_funding_source()
         {
@@ -25,12 +26,12 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="Jit_funding_paymentcard_funding_source"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Models.Jit_funding_paymentcard_funding_source"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static Jit_funding_paymentcard_funding_source CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static Marqeta.Core.Sdk.Models.Jit_funding_paymentcard_funding_source CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-            return new Jit_funding_paymentcard_funding_source();
+            return new Marqeta.Core.Sdk.Models.Jit_funding_paymentcard_funding_source();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -40,8 +41,8 @@ namespace Marqeta.Core.Sdk.Models {
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                {"enabled", n => { Enabled = n.GetBoolValue(); } },
-                {"refunds_destination", n => { RefundsDestination = n.GetEnumValue<Jit_funding_paymentcard_funding_source_refunds_destination>(); } },
+                { "enabled", n => { Enabled = n.GetBoolValue(); } },
+                { "refunds_destination", n => { RefundsDestination = n.GetEnumValue<Marqeta.Core.Sdk.Models.Jit_funding_paymentcard_funding_source_refunds_destination>(); } },
             };
         }
         /// <summary>
@@ -52,7 +53,7 @@ namespace Marqeta.Core.Sdk.Models {
         {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
             writer.WriteBoolValue("enabled", Enabled);
-            writer.WriteEnumValue<Jit_funding_paymentcard_funding_source_refunds_destination>("refunds_destination", RefundsDestination);
+            writer.WriteEnumValue<Marqeta.Core.Sdk.Models.Jit_funding_paymentcard_funding_source_refunds_destination>("refunds_destination", RefundsDestination);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

@@ -4,9 +4,10 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System;
-namespace Marqeta.Core.Sdk.Models {
+namespace Marqeta.Core.Sdk.Models
+{
     #pragma warning disable CS1591
-    public class Deposit_account : IAdditionalDataHolder, IParsable 
+    public class Deposit_account : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
     {
         /// <summary>The account_number property</summary>
@@ -54,7 +55,7 @@ namespace Marqeta.Core.Sdk.Models {
         public string UserToken { get; set; }
 #endif
         /// <summary>
-        /// Instantiates a new <see cref="Deposit_account"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Models.Deposit_account"/> and sets the default values.
         /// </summary>
         public Deposit_account()
         {
@@ -63,12 +64,12 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="Deposit_account"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Models.Deposit_account"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static Deposit_account CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static Marqeta.Core.Sdk.Models.Deposit_account CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-            return new Deposit_account();
+            return new Marqeta.Core.Sdk.Models.Deposit_account();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -78,12 +79,12 @@ namespace Marqeta.Core.Sdk.Models {
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                {"account_number", n => { AccountNumber = n.GetStringValue(); } },
-                {"allow_immediate_credit", n => { AllowImmediateCredit = n.GetBoolValue(); } },
-                {"business_token", n => { BusinessToken = n.GetStringValue(); } },
-                {"routing_number", n => { RoutingNumber = n.GetStringValue(); } },
-                {"token", n => { Token = n.GetStringValue(); } },
-                {"user_token", n => { UserToken = n.GetStringValue(); } },
+                { "account_number", n => { AccountNumber = n.GetStringValue(); } },
+                { "allow_immediate_credit", n => { AllowImmediateCredit = n.GetBoolValue(); } },
+                { "business_token", n => { BusinessToken = n.GetStringValue(); } },
+                { "routing_number", n => { RoutingNumber = n.GetStringValue(); } },
+                { "token", n => { Token = n.GetStringValue(); } },
+                { "user_token", n => { UserToken = n.GetStringValue(); } },
             };
         }
         /// <summary>

@@ -4,19 +4,20 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System;
-namespace Marqeta.Core.Sdk.Models {
+namespace Marqeta.Core.Sdk.Models
+{
     /// <summary>
     /// Request details for a fee policy.
     /// </summary>
-    public class PolicyFeeCreateReq : IAdditionalDataHolder, IParsable 
+    public class PolicyFeeCreateReq : IAdditionalDataHolder, IParsable
     {
         /// <summary>Contains information on the fees in an account&apos;s fee policy.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public PolicyFeeAccount? Account { get; set; }
+        public Marqeta.Core.Sdk.Models.PolicyFeeAccount? Account { get; set; }
 #nullable restore
 #else
-        public PolicyFeeAccount Account { get; set; }
+        public Marqeta.Core.Sdk.Models.PolicyFeeAccount Account { get; set; }
 #endif
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
@@ -45,7 +46,7 @@ namespace Marqeta.Core.Sdk.Models {
         public string Token { get; set; }
 #endif
         /// <summary>
-        /// Instantiates a new <see cref="PolicyFeeCreateReq"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Models.PolicyFeeCreateReq"/> and sets the default values.
         /// </summary>
         public PolicyFeeCreateReq()
         {
@@ -54,12 +55,12 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="PolicyFeeCreateReq"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Models.PolicyFeeCreateReq"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static PolicyFeeCreateReq CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static Marqeta.Core.Sdk.Models.PolicyFeeCreateReq CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-            return new PolicyFeeCreateReq();
+            return new Marqeta.Core.Sdk.Models.PolicyFeeCreateReq();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -69,10 +70,10 @@ namespace Marqeta.Core.Sdk.Models {
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                {"account", n => { Account = n.GetObjectValue<PolicyFeeAccount>(PolicyFeeAccount.CreateFromDiscriminatorValue); } },
-                {"description", n => { Description = n.GetStringValue(); } },
-                {"name", n => { Name = n.GetStringValue(); } },
-                {"token", n => { Token = n.GetStringValue(); } },
+                { "account", n => { Account = n.GetObjectValue<Marqeta.Core.Sdk.Models.PolicyFeeAccount>(Marqeta.Core.Sdk.Models.PolicyFeeAccount.CreateFromDiscriminatorValue); } },
+                { "description", n => { Description = n.GetStringValue(); } },
+                { "name", n => { Name = n.GetStringValue(); } },
+                { "token", n => { Token = n.GetStringValue(); } },
             };
         }
         /// <summary>
@@ -82,7 +83,7 @@ namespace Marqeta.Core.Sdk.Models {
         public virtual void Serialize(ISerializationWriter writer)
         {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<PolicyFeeAccount>("account", Account);
+            writer.WriteObjectValue<Marqeta.Core.Sdk.Models.PolicyFeeAccount>("account", Account);
             writer.WriteStringValue("description", Description);
             writer.WriteStringValue("name", Name);
             writer.WriteStringValue("token", Token);

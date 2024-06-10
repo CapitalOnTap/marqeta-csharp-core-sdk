@@ -10,31 +10,32 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Threading;
 using System;
-namespace Marqeta.Core.Sdk.Transactions {
+namespace Marqeta.Core.Sdk.Transactions
+{
     /// <summary>
     /// Builds and executes requests for operations under \transactions
     /// </summary>
-    public class TransactionsRequestBuilder : BaseRequestBuilder 
+    public class TransactionsRequestBuilder : BaseRequestBuilder
     {
         /// <summary>The fundingsource property</summary>
-        public FundingsourceRequestBuilder Fundingsource
+        public Marqeta.Core.Sdk.Transactions.Fundingsource.FundingsourceRequestBuilder Fundingsource
         {
-            get => new FundingsourceRequestBuilder(PathParameters, RequestAdapter);
+            get => new Marqeta.Core.Sdk.Transactions.Fundingsource.FundingsourceRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>Gets an item from the Marqeta.Core.Sdk.transactions.item collection</summary>
         /// <param name="position">The unique identifier of the transaction.</param>
-        /// <returns>A <see cref="WithTokenItemRequestBuilder"/></returns>
-        public WithTokenItemRequestBuilder this[string position]
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Transactions.Item.WithTokenItemRequestBuilder"/></returns>
+        public Marqeta.Core.Sdk.Transactions.Item.WithTokenItemRequestBuilder this[string position]
         {
             get
             {
                 var urlTplParams = new Dictionary<string, object>(PathParameters);
                 urlTplParams.Add("token", position);
-                return new WithTokenItemRequestBuilder(urlTplParams, RequestAdapter);
+                return new Marqeta.Core.Sdk.Transactions.Item.WithTokenItemRequestBuilder(urlTplParams, RequestAdapter);
             }
         }
         /// <summary>
-        /// Instantiates a new <see cref="TransactionsRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Transactions.TransactionsRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
@@ -42,7 +43,7 @@ namespace Marqeta.Core.Sdk.Transactions {
         {
         }
         /// <summary>
-        /// Instantiates a new <see cref="TransactionsRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Transactions.TransactionsRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
@@ -52,25 +53,25 @@ namespace Marqeta.Core.Sdk.Transactions {
         /// <summary>
         /// List all transactions.By default, this endpoint returns transactions conducted within the last 30 days.To return transactions older than 30 days, you must include the `start_date` and `end_date` query parameters in your request.By default, `GET /transactions` returns transactions having either `PENDING` or `COMPLETION` states.This endpoint supports &lt;&lt;/core-api/field-filtering, field filtering&gt;&gt; and &lt;&lt;/core-api/sorting-and-pagination, pagination&gt;&gt;.
         /// </summary>
-        /// <returns>A <see cref="TransactionModelListResponse"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Models.TransactionModelListResponse"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        /// <exception cref="ApiError">When receiving a 4XX or 5XX status code</exception>
+        /// <exception cref="Marqeta.Core.Sdk.Models.ApiError">When receiving a 4XX or 5XX status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<TransactionModelListResponse?> GetAsync(Action<RequestConfiguration<TransactionsRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<Marqeta.Core.Sdk.Models.TransactionModelListResponse?> GetAsync(Action<RequestConfiguration<Marqeta.Core.Sdk.Transactions.TransactionsRequestBuilder.TransactionsRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<TransactionModelListResponse> GetAsync(Action<RequestConfiguration<TransactionsRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<Marqeta.Core.Sdk.Models.TransactionModelListResponse> GetAsync(Action<RequestConfiguration<Marqeta.Core.Sdk.Transactions.TransactionsRequestBuilder.TransactionsRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
-                {"XXX", ApiError.CreateFromDiscriminatorValue},
+                { "XXX", Marqeta.Core.Sdk.Models.ApiError.CreateFromDiscriminatorValue },
             };
-            return await RequestAdapter.SendAsync<TransactionModelListResponse>(requestInfo, TransactionModelListResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<Marqeta.Core.Sdk.Models.TransactionModelListResponse>(requestInfo, Marqeta.Core.Sdk.Models.TransactionModelListResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// List all transactions.By default, this endpoint returns transactions conducted within the last 30 days.To return transactions older than 30 days, you must include the `start_date` and `end_date` query parameters in your request.By default, `GET /transactions` returns transactions having either `PENDING` or `COMPLETION` states.This endpoint supports &lt;&lt;/core-api/field-filtering, field filtering&gt;&gt; and &lt;&lt;/core-api/sorting-and-pagination, pagination&gt;&gt;.
@@ -79,11 +80,11 @@ namespace Marqeta.Core.Sdk.Transactions {
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<TransactionsRequestBuilderGetQueryParameters>>? requestConfiguration = default)
+        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<Marqeta.Core.Sdk.Transactions.TransactionsRequestBuilder.TransactionsRequestBuilderGetQueryParameters>>? requestConfiguration = default)
         {
 #nullable restore
 #else
-        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<TransactionsRequestBuilderGetQueryParameters>> requestConfiguration = default)
+        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<Marqeta.Core.Sdk.Transactions.TransactionsRequestBuilder.TransactionsRequestBuilderGetQueryParameters>> requestConfiguration = default)
         {
 #endif
             var requestInfo = new RequestInformation(Method.GET, UrlTemplate, PathParameters);
@@ -94,11 +95,11 @@ namespace Marqeta.Core.Sdk.Transactions {
         /// <summary>
         /// Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
         /// </summary>
-        /// <returns>A <see cref="TransactionsRequestBuilder"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Transactions.TransactionsRequestBuilder"/></returns>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
-        public TransactionsRequestBuilder WithUrl(string rawUrl)
+        public Marqeta.Core.Sdk.Transactions.TransactionsRequestBuilder WithUrl(string rawUrl)
         {
-            return new TransactionsRequestBuilder(rawUrl, RequestAdapter);
+            return new Marqeta.Core.Sdk.Transactions.TransactionsRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
         /// List all transactions.By default, this endpoint returns transactions conducted within the last 30 days.To return transactions older than 30 days, you must include the `start_date` and `end_date` query parameters in your request.By default, `GET /transactions` returns transactions having either `PENDING` or `COMPLETION` states.This endpoint supports &lt;&lt;/core-api/field-filtering, field filtering&gt;&gt; and &lt;&lt;/core-api/sorting-and-pagination, pagination&gt;&gt;.
@@ -160,7 +161,7 @@ namespace Marqeta.Core.Sdk.Transactions {
 #endif
             /// <summary>Field on which to sort.Use any field in the resource model, or one of the system fields `lastModifiedTime` or `createdTime`.Prefix the field name with a hyphen (`-`) to sort in descending order.Omit the hyphen to sort in ascending order.</summary>
             [QueryParameter("sort_by")]
-            public GetSort_byQueryParameterType? SortBy { get; set; }
+            public Marqeta.Core.Sdk.Transactions.GetSort_byQueryParameterType? SortBy { get; set; }
             /// <summary>The starting date (or date-time) of a date range from which to return transactions.To return transactions for a single day, enter the same date in both the `start_date` and `end_date` fields.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable

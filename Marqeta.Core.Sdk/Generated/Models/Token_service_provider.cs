@@ -4,11 +4,12 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System;
-namespace Marqeta.Core.Sdk.Models {
+namespace Marqeta.Core.Sdk.Models
+{
     /// <summary>
     /// Contains information held and provided by the token service provider (card network).
     /// </summary>
-    public class Token_service_provider : IAdditionalDataHolder, IParsable 
+    public class Token_service_provider : IAdditionalDataHolder, IParsable
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
@@ -101,7 +102,7 @@ namespace Marqeta.Core.Sdk.Models {
         public string TokenType { get; set; }
 #endif
         /// <summary>
-        /// Instantiates a new <see cref="Token_service_provider"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Models.Token_service_provider"/> and sets the default values.
         /// </summary>
         public Token_service_provider()
         {
@@ -110,12 +111,12 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="Token_service_provider"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Models.Token_service_provider"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static Token_service_provider CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static Marqeta.Core.Sdk.Models.Token_service_provider CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-            return new Token_service_provider();
+            return new Marqeta.Core.Sdk.Models.Token_service_provider();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -125,17 +126,17 @@ namespace Marqeta.Core.Sdk.Models {
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                {"correlation_id", n => { CorrelationId = n.GetStringValue(); } },
-                {"pan_reference_id", n => { PanReferenceId = n.GetStringValue(); } },
-                {"token_assurance_level", n => { TokenAssuranceLevel = n.GetStringValue(); } },
-                {"token_eligibility_decision", n => { TokenEligibilityDecision = n.GetStringValue(); } },
-                {"token_expiration", n => { TokenExpiration = n.GetStringValue(); } },
-                {"token_pan", n => { TokenPan = n.GetStringValue(); } },
-                {"token_reference_id", n => { TokenReferenceId = n.GetStringValue(); } },
-                {"token_requestor_id", n => { TokenRequestorId = n.GetStringValue(); } },
-                {"token_requestor_name", n => { TokenRequestorName = n.GetStringValue(); } },
-                {"token_score", n => { TokenScore = n.GetStringValue(); } },
-                {"token_type", n => { TokenType = n.GetStringValue(); } },
+                { "correlation_id", n => { CorrelationId = n.GetStringValue(); } },
+                { "pan_reference_id", n => { PanReferenceId = n.GetStringValue(); } },
+                { "token_assurance_level", n => { TokenAssuranceLevel = n.GetStringValue(); } },
+                { "token_eligibility_decision", n => { TokenEligibilityDecision = n.GetStringValue(); } },
+                { "token_expiration", n => { TokenExpiration = n.GetStringValue(); } },
+                { "token_pan", n => { TokenPan = n.GetStringValue(); } },
+                { "token_reference_id", n => { TokenReferenceId = n.GetStringValue(); } },
+                { "token_requestor_id", n => { TokenRequestorId = n.GetStringValue(); } },
+                { "token_requestor_name", n => { TokenRequestorName = n.GetStringValue(); } },
+                { "token_score", n => { TokenScore = n.GetStringValue(); } },
+                { "token_type", n => { TokenType = n.GetStringValue(); } },
             };
         }
         /// <summary>

@@ -4,9 +4,10 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System;
-namespace Marqeta.Core.Sdk.Models {
+namespace Marqeta.Core.Sdk.Models
+{
     #pragma warning disable CS1591
-    public class Msa_returns : IAdditionalDataHolder, IParsable 
+    public class Msa_returns : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
     {
         /// <summary>The active property</summary>
@@ -16,10 +17,10 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>The aggregated_balances property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public Msa_aggregated_balances? AggregatedBalances { get; set; }
+        public Marqeta.Core.Sdk.Models.Msa_aggregated_balances? AggregatedBalances { get; set; }
 #nullable restore
 #else
-        public Msa_aggregated_balances AggregatedBalances { get; set; }
+        public Marqeta.Core.Sdk.Models.Msa_aggregated_balances AggregatedBalances { get; set; }
 #endif
         /// <summary>The amount property</summary>
         public double? Amount { get; set; }
@@ -66,10 +67,10 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>The order_balances property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public Msa_balances? OrderBalances { get; set; }
+        public Marqeta.Core.Sdk.Models.Msa_balances? OrderBalances { get; set; }
 #nullable restore
 #else
-        public Msa_balances OrderBalances { get; set; }
+        public Marqeta.Core.Sdk.Models.Msa_balances OrderBalances { get; set; }
 #endif
         /// <summary>The original_order_token property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -112,7 +113,7 @@ namespace Marqeta.Core.Sdk.Models {
         public string UserToken { get; set; }
 #endif
         /// <summary>
-        /// Instantiates a new <see cref="Msa_returns"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Models.Msa_returns"/> and sets the default values.
         /// </summary>
         public Msa_returns()
         {
@@ -121,12 +122,12 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="Msa_returns"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Models.Msa_returns"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static Msa_returns CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static Marqeta.Core.Sdk.Models.Msa_returns CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-            return new Msa_returns();
+            return new Marqeta.Core.Sdk.Models.Msa_returns();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -136,26 +137,26 @@ namespace Marqeta.Core.Sdk.Models {
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                {"active", n => { Active = n.GetBoolValue(); } },
-                {"aggregated_balances", n => { AggregatedBalances = n.GetObjectValue<Msa_aggregated_balances>(Msa_aggregated_balances.CreateFromDiscriminatorValue); } },
-                {"amount", n => { Amount = n.GetDoubleValue(); } },
-                {"business_token", n => { BusinessToken = n.GetStringValue(); } },
-                {"campaign_token", n => { CampaignToken = n.GetStringValue(); } },
-                {"created_time", n => { CreatedTime = n.GetDateTimeOffsetValue(); } },
-                {"currency_code", n => { CurrencyCode = n.GetStringValue(); } },
-                {"end_date", n => { EndDate = n.GetDateTimeOffsetValue(); } },
-                {"funding", n => { Funding = n.GetObjectValue<Marqeta.Core.Sdk.Models.Funding>(Marqeta.Core.Sdk.Models.Funding.CreateFromDiscriminatorValue); } },
-                {"last_modified_time", n => { LastModifiedTime = n.GetDateTimeOffsetValue(); } },
-                {"last_transaction_date", n => { LastTransactionDate = n.GetDateTimeOffsetValue(); } },
-                {"order_balances", n => { OrderBalances = n.GetObjectValue<Msa_balances>(Msa_balances.CreateFromDiscriminatorValue); } },
-                {"original_order_token", n => { OriginalOrderToken = n.GetStringValue(); } },
-                {"reward_amount", n => { RewardAmount = n.GetDoubleValue(); } },
-                {"reward_trigger_amount", n => { RewardTriggerAmount = n.GetDoubleValue(); } },
-                {"start_date", n => { StartDate = n.GetDateTimeOffsetValue(); } },
-                {"token", n => { Token = n.GetStringValue(); } },
-                {"transaction_token", n => { TransactionToken = n.GetStringValue(); } },
-                {"unloaded_amount", n => { UnloadedAmount = n.GetDoubleValue(); } },
-                {"user_token", n => { UserToken = n.GetStringValue(); } },
+                { "active", n => { Active = n.GetBoolValue(); } },
+                { "aggregated_balances", n => { AggregatedBalances = n.GetObjectValue<Marqeta.Core.Sdk.Models.Msa_aggregated_balances>(Marqeta.Core.Sdk.Models.Msa_aggregated_balances.CreateFromDiscriminatorValue); } },
+                { "amount", n => { Amount = n.GetDoubleValue(); } },
+                { "business_token", n => { BusinessToken = n.GetStringValue(); } },
+                { "campaign_token", n => { CampaignToken = n.GetStringValue(); } },
+                { "created_time", n => { CreatedTime = n.GetDateTimeOffsetValue(); } },
+                { "currency_code", n => { CurrencyCode = n.GetStringValue(); } },
+                { "end_date", n => { EndDate = n.GetDateTimeOffsetValue(); } },
+                { "funding", n => { Funding = n.GetObjectValue<Marqeta.Core.Sdk.Models.Funding>(Marqeta.Core.Sdk.Models.Funding.CreateFromDiscriminatorValue); } },
+                { "last_modified_time", n => { LastModifiedTime = n.GetDateTimeOffsetValue(); } },
+                { "last_transaction_date", n => { LastTransactionDate = n.GetDateTimeOffsetValue(); } },
+                { "order_balances", n => { OrderBalances = n.GetObjectValue<Marqeta.Core.Sdk.Models.Msa_balances>(Marqeta.Core.Sdk.Models.Msa_balances.CreateFromDiscriminatorValue); } },
+                { "original_order_token", n => { OriginalOrderToken = n.GetStringValue(); } },
+                { "reward_amount", n => { RewardAmount = n.GetDoubleValue(); } },
+                { "reward_trigger_amount", n => { RewardTriggerAmount = n.GetDoubleValue(); } },
+                { "start_date", n => { StartDate = n.GetDateTimeOffsetValue(); } },
+                { "token", n => { Token = n.GetStringValue(); } },
+                { "transaction_token", n => { TransactionToken = n.GetStringValue(); } },
+                { "unloaded_amount", n => { UnloadedAmount = n.GetDoubleValue(); } },
+                { "user_token", n => { UserToken = n.GetStringValue(); } },
             };
         }
         /// <summary>
@@ -166,7 +167,7 @@ namespace Marqeta.Core.Sdk.Models {
         {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
             writer.WriteBoolValue("active", Active);
-            writer.WriteObjectValue<Msa_aggregated_balances>("aggregated_balances", AggregatedBalances);
+            writer.WriteObjectValue<Marqeta.Core.Sdk.Models.Msa_aggregated_balances>("aggregated_balances", AggregatedBalances);
             writer.WriteDoubleValue("amount", Amount);
             writer.WriteStringValue("business_token", BusinessToken);
             writer.WriteStringValue("campaign_token", CampaignToken);
@@ -176,7 +177,7 @@ namespace Marqeta.Core.Sdk.Models {
             writer.WriteObjectValue<Marqeta.Core.Sdk.Models.Funding>("funding", Funding);
             writer.WriteDateTimeOffsetValue("last_modified_time", LastModifiedTime);
             writer.WriteDateTimeOffsetValue("last_transaction_date", LastTransactionDate);
-            writer.WriteObjectValue<Msa_balances>("order_balances", OrderBalances);
+            writer.WriteObjectValue<Marqeta.Core.Sdk.Models.Msa_balances>("order_balances", OrderBalances);
             writer.WriteStringValue("original_order_token", OriginalOrderToken);
             writer.WriteDoubleValue("reward_amount", RewardAmount);
             writer.WriteDoubleValue("reward_trigger_amount", RewardTriggerAmount);

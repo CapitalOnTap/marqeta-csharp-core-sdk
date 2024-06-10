@@ -4,9 +4,10 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System;
-namespace Marqeta.Core.Sdk.Models {
+namespace Marqeta.Core.Sdk.Models
+{
     #pragma warning disable CS1591
-    public class BusinessTransitionRequest : IAdditionalDataHolder, IParsable 
+    public class BusinessTransitionRequest : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -20,7 +21,7 @@ namespace Marqeta.Core.Sdk.Models {
         public string BusinessToken { get; set; }
 #endif
         /// <summary>Mechanism by which the transaction was initiated.</summary>
-        public BusinessTransitionRequest_channel? Channel { get; set; }
+        public Marqeta.Core.Sdk.Models.BusinessTransitionRequest_channel? Channel { get; set; }
         /// <summary>Unique hashed value that identifies subsequent submissions of the business transition request.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -38,9 +39,9 @@ namespace Marqeta.Core.Sdk.Models {
         public string Reason { get; set; }
 #endif
         /// <summary>Identifies the standardized reason for the transition:*00:* Object activated for the first time.*01:* Requested by you.*02:* Inactivity over time.*03:* This address cannot accept mail or the addressee is unknown.*04:* Negative account balance.*05:* Account under review.*06:* Suspicious activity was identified.*07:* Activity outside the program parameters was identified.*08:* Confirmed fraud was identified.*09:* Matched with an Office of Foreign Assets Control list.*10:* Card was reported lost.*11:* Card information was cloned.*12:* Account or card information was compromised.*13:* Temporary status change while on hold/leave.*14:* Initiated by Marqeta.*15:* Initiated by issuer.*16:* Card expired.*17:* Failed KYC.*18:* Changed to `ACTIVE` because information was properly validated.*19:* Changed to `ACTIVE` because account activity was properly validated.*20:* Change occurred prior to the normalization of reason codes.*21:* Initiated by a third party, often a digital wallet provider.*22:* PIN retry limit reached.*23:* Card was reported stolen.*24:* Address issue.*25:* Name issue.*26:* SSN issue.*27:* DOB issue.*28:* Email issue.*29:* Phone issue.*30:* Account/fulfillment mismatch.*31:* Other reason.</summary>
-        public BusinessTransitionRequest_reason_code? ReasonCode { get; set; }
+        public Marqeta.Core.Sdk.Models.BusinessTransitionRequest_reason_code? ReasonCode { get; set; }
         /// <summary>Specifies the new status of the business.</summary>
-        public BusinessTransitionRequest_status? Status { get; set; }
+        public Marqeta.Core.Sdk.Models.BusinessTransitionRequest_status? Status { get; set; }
         /// <summary>Unique identifier of the business transition.If you do not include a token, the system generates one automatically.This token is referenced in other API calls, so we recommend that you define a simple string that is easy to remember.This value cannot be updated.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -50,7 +51,7 @@ namespace Marqeta.Core.Sdk.Models {
         public string Token { get; set; }
 #endif
         /// <summary>
-        /// Instantiates a new <see cref="BusinessTransitionRequest"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Models.BusinessTransitionRequest"/> and sets the default values.
         /// </summary>
         public BusinessTransitionRequest()
         {
@@ -59,12 +60,12 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="BusinessTransitionRequest"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Models.BusinessTransitionRequest"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static BusinessTransitionRequest CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static Marqeta.Core.Sdk.Models.BusinessTransitionRequest CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-            return new BusinessTransitionRequest();
+            return new Marqeta.Core.Sdk.Models.BusinessTransitionRequest();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -74,13 +75,13 @@ namespace Marqeta.Core.Sdk.Models {
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                {"business_token", n => { BusinessToken = n.GetStringValue(); } },
-                {"channel", n => { Channel = n.GetEnumValue<BusinessTransitionRequest_channel>(); } },
-                {"idempotentHash", n => { IdempotentHash = n.GetStringValue(); } },
-                {"reason", n => { Reason = n.GetStringValue(); } },
-                {"reason_code", n => { ReasonCode = n.GetEnumValue<BusinessTransitionRequest_reason_code>(); } },
-                {"status", n => { Status = n.GetEnumValue<BusinessTransitionRequest_status>(); } },
-                {"token", n => { Token = n.GetStringValue(); } },
+                { "business_token", n => { BusinessToken = n.GetStringValue(); } },
+                { "channel", n => { Channel = n.GetEnumValue<Marqeta.Core.Sdk.Models.BusinessTransitionRequest_channel>(); } },
+                { "idempotentHash", n => { IdempotentHash = n.GetStringValue(); } },
+                { "reason", n => { Reason = n.GetStringValue(); } },
+                { "reason_code", n => { ReasonCode = n.GetEnumValue<Marqeta.Core.Sdk.Models.BusinessTransitionRequest_reason_code>(); } },
+                { "status", n => { Status = n.GetEnumValue<Marqeta.Core.Sdk.Models.BusinessTransitionRequest_status>(); } },
+                { "token", n => { Token = n.GetStringValue(); } },
             };
         }
         /// <summary>
@@ -91,11 +92,11 @@ namespace Marqeta.Core.Sdk.Models {
         {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("business_token", BusinessToken);
-            writer.WriteEnumValue<BusinessTransitionRequest_channel>("channel", Channel);
+            writer.WriteEnumValue<Marqeta.Core.Sdk.Models.BusinessTransitionRequest_channel>("channel", Channel);
             writer.WriteStringValue("idempotentHash", IdempotentHash);
             writer.WriteStringValue("reason", Reason);
-            writer.WriteEnumValue<BusinessTransitionRequest_reason_code>("reason_code", ReasonCode);
-            writer.WriteEnumValue<BusinessTransitionRequest_status>("status", Status);
+            writer.WriteEnumValue<Marqeta.Core.Sdk.Models.BusinessTransitionRequest_reason_code>("reason_code", ReasonCode);
+            writer.WriteEnumValue<Marqeta.Core.Sdk.Models.BusinessTransitionRequest_status>("status", Status);
             writer.WriteStringValue("token", Token);
             writer.WriteAdditionalData(AdditionalData);
         }

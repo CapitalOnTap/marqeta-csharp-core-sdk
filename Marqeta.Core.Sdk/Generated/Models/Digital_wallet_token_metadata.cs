@@ -4,11 +4,12 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System;
-namespace Marqeta.Core.Sdk.Models {
+namespace Marqeta.Core.Sdk.Models
+{
     /// <summary>
     /// Contains additional information about the digital wallet token.
     /// </summary>
-    public class Digital_wallet_token_metadata : IAdditionalDataHolder, IParsable 
+    public class Digital_wallet_token_metadata : IAdditionalDataHolder, IParsable
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
@@ -29,7 +30,7 @@ namespace Marqeta.Core.Sdk.Models {
         public string IssuerProductConfigId { get; set; }
 #endif
         /// <summary>
-        /// Instantiates a new <see cref="Digital_wallet_token_metadata"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Models.Digital_wallet_token_metadata"/> and sets the default values.
         /// </summary>
         public Digital_wallet_token_metadata()
         {
@@ -38,12 +39,12 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="Digital_wallet_token_metadata"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Models.Digital_wallet_token_metadata"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static Digital_wallet_token_metadata CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static Marqeta.Core.Sdk.Models.Digital_wallet_token_metadata CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-            return new Digital_wallet_token_metadata();
+            return new Marqeta.Core.Sdk.Models.Digital_wallet_token_metadata();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -53,8 +54,8 @@ namespace Marqeta.Core.Sdk.Models {
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                {"cardproduct_preferred_notification_language", n => { CardproductPreferredNotificationLanguage = n.GetStringValue(); } },
-                {"issuer_product_config_id", n => { IssuerProductConfigId = n.GetStringValue(); } },
+                { "cardproduct_preferred_notification_language", n => { CardproductPreferredNotificationLanguage = n.GetStringValue(); } },
+                { "issuer_product_config_id", n => { IssuerProductConfigId = n.GetStringValue(); } },
             };
         }
         /// <summary>

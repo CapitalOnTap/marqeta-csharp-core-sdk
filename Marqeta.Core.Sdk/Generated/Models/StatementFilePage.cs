@@ -4,11 +4,12 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System;
-namespace Marqeta.Core.Sdk.Models {
+namespace Marqeta.Core.Sdk.Models
+{
     /// <summary>
     /// Returns paginated statement files.
     /// </summary>
-    public class StatementFilePage : IAdditionalDataHolder, IParsable 
+    public class StatementFilePage : IAdditionalDataHolder, IParsable
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
@@ -17,10 +18,10 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>List of statement files.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<StatementFile>? Data { get; set; }
+        public List<Marqeta.Core.Sdk.Models.StatementFile>? Data { get; set; }
 #nullable restore
 #else
-        public List<StatementFile> Data { get; set; }
+        public List<Marqeta.Core.Sdk.Models.StatementFile> Data { get; set; }
 #endif
         /// <summary>Sort order index of the last resource in the returned array.</summary>
         public int? EndIndex { get; set; }
@@ -29,7 +30,7 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>Sort order index of the first resource in the returned array.</summary>
         public int? StartIndex { get; set; }
         /// <summary>
-        /// Instantiates a new <see cref="StatementFilePage"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Models.StatementFilePage"/> and sets the default values.
         /// </summary>
         public StatementFilePage()
         {
@@ -38,12 +39,12 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="StatementFilePage"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Models.StatementFilePage"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static StatementFilePage CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static Marqeta.Core.Sdk.Models.StatementFilePage CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-            return new StatementFilePage();
+            return new Marqeta.Core.Sdk.Models.StatementFilePage();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -53,11 +54,11 @@ namespace Marqeta.Core.Sdk.Models {
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                {"count", n => { Count = n.GetIntValue(); } },
-                {"data", n => { Data = n.GetCollectionOfObjectValues<StatementFile>(StatementFile.CreateFromDiscriminatorValue)?.ToList(); } },
-                {"end_index", n => { EndIndex = n.GetIntValue(); } },
-                {"is_more", n => { IsMore = n.GetBoolValue(); } },
-                {"start_index", n => { StartIndex = n.GetIntValue(); } },
+                { "count", n => { Count = n.GetIntValue(); } },
+                { "data", n => { Data = n.GetCollectionOfObjectValues<Marqeta.Core.Sdk.Models.StatementFile>(Marqeta.Core.Sdk.Models.StatementFile.CreateFromDiscriminatorValue)?.ToList(); } },
+                { "end_index", n => { EndIndex = n.GetIntValue(); } },
+                { "is_more", n => { IsMore = n.GetBoolValue(); } },
+                { "start_index", n => { StartIndex = n.GetIntValue(); } },
             };
         }
         /// <summary>
@@ -68,7 +69,7 @@ namespace Marqeta.Core.Sdk.Models {
         {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
             writer.WriteIntValue("count", Count);
-            writer.WriteCollectionOfObjectValues<StatementFile>("data", Data);
+            writer.WriteCollectionOfObjectValues<Marqeta.Core.Sdk.Models.StatementFile>("data", Data);
             writer.WriteIntValue("end_index", EndIndex);
             writer.WriteBoolValue("is_more", IsMore);
             writer.WriteIntValue("start_index", StartIndex);

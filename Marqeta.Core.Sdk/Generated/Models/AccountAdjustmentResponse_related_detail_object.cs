@@ -4,16 +4,17 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System;
-namespace Marqeta.Core.Sdk.Models {
+namespace Marqeta.Core.Sdk.Models
+{
     /// <summary>
     /// Contains full details of the related dispute or returned payment.The fields returned in this object depend on whether a dispute or returned payment led to the interest adjustment.A dispute returns dispute details; a returned payment returns payment details.For more on the dispute details returned, see the &lt;&lt;/core-api/credit-disputes#retrieveDispute, dispute response fields&gt;&gt;.For more on the returned payment details returned, see the &lt;&lt;/core-api/credit-account-payments#retrievePayment, payment response fields&gt;&gt;.This field is returned for interest adjustments only.
     /// </summary>
-    public class AccountAdjustmentResponse_related_detail_object : IAdditionalDataHolder, IParsable 
+    public class AccountAdjustmentResponse_related_detail_object : IAdditionalDataHolder, IParsable
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>
-        /// Instantiates a new <see cref="AccountAdjustmentResponse_related_detail_object"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Models.AccountAdjustmentResponse_related_detail_object"/> and sets the default values.
         /// </summary>
         public AccountAdjustmentResponse_related_detail_object()
         {
@@ -22,12 +23,12 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="AccountAdjustmentResponse_related_detail_object"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Models.AccountAdjustmentResponse_related_detail_object"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static AccountAdjustmentResponse_related_detail_object CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static Marqeta.Core.Sdk.Models.AccountAdjustmentResponse_related_detail_object CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-            return new AccountAdjustmentResponse_related_detail_object();
+            return new Marqeta.Core.Sdk.Models.AccountAdjustmentResponse_related_detail_object();
         }
         /// <summary>
         /// The deserialization information for the current model

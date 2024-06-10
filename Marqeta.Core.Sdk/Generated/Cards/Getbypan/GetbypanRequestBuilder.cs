@@ -8,14 +8,15 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Threading;
 using System;
-namespace Marqeta.Core.Sdk.Cards.Getbypan {
+namespace Marqeta.Core.Sdk.Cards.Getbypan
+{
     /// <summary>
     /// Builds and executes requests for operations under \cards\getbypan
     /// </summary>
-    public class GetbypanRequestBuilder : BaseRequestBuilder 
+    public class GetbypanRequestBuilder : BaseRequestBuilder
     {
         /// <summary>
-        /// Instantiates a new <see cref="GetbypanRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Cards.Getbypan.GetbypanRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
@@ -23,7 +24,7 @@ namespace Marqeta.Core.Sdk.Cards.Getbypan {
         {
         }
         /// <summary>
-        /// Instantiates a new <see cref="GetbypanRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Cards.Getbypan.GetbypanRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
@@ -33,27 +34,27 @@ namespace Marqeta.Core.Sdk.Cards.Getbypan {
         /// <summary>
         /// Retrieves the `user_token` and `card_token` for a primary account number (PAN).In the case of a reissued card, where multiple cards share the same PAN, the information for the most recently issued card is returned.This request is useful in IVR scenarios where a user has telephoned and identifies the card by the PAN.The retrieval of these tokens is implemented as a `POST` request because supplying the PAN in the request body is more secure than supplying it in the URL (as would be required with a `GET`).[WARNING]Sending a request to this endpoint requires PCI DSS compliance.You must comply with PCI DSS data security requirements if you want to store, transmit, or process sensitive card data such as the cardholder&apos;s primary account number (PAN), personal identification number (PIN), and card expiration date.
         /// </summary>
-        /// <returns>A <see cref="Pan_response"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Models.Pan_response"/></returns>
         /// <param name="body">The request body</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        /// <exception cref="ApiError">When receiving a 4XX or 5XX status code</exception>
+        /// <exception cref="Marqeta.Core.Sdk.Models.ApiError">When receiving a 4XX or 5XX status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<Pan_response?> PostAsync(Pan_request body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<Marqeta.Core.Sdk.Models.Pan_response?> PostAsync(Marqeta.Core.Sdk.Models.Pan_request body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<Pan_response> PostAsync(Pan_request body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<Marqeta.Core.Sdk.Models.Pan_response> PostAsync(Marqeta.Core.Sdk.Models.Pan_request body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             _ = body ?? throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPostRequestInformation(body, requestConfiguration);
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
-                {"XXX", ApiError.CreateFromDiscriminatorValue},
+                { "XXX", Marqeta.Core.Sdk.Models.ApiError.CreateFromDiscriminatorValue },
             };
-            return await RequestAdapter.SendAsync<Pan_response>(requestInfo, Pan_response.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<Marqeta.Core.Sdk.Models.Pan_response>(requestInfo, Marqeta.Core.Sdk.Models.Pan_response.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Retrieves the `user_token` and `card_token` for a primary account number (PAN).In the case of a reissued card, where multiple cards share the same PAN, the information for the most recently issued card is returned.This request is useful in IVR scenarios where a user has telephoned and identifies the card by the PAN.The retrieval of these tokens is implemented as a `POST` request because supplying the PAN in the request body is more secure than supplying it in the URL (as would be required with a `GET`).[WARNING]Sending a request to this endpoint requires PCI DSS compliance.You must comply with PCI DSS data security requirements if you want to store, transmit, or process sensitive card data such as the cardholder&apos;s primary account number (PAN), personal identification number (PIN), and card expiration date.
@@ -63,11 +64,11 @@ namespace Marqeta.Core.Sdk.Cards.Getbypan {
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToPostRequestInformation(Pan_request body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
+        public RequestInformation ToPostRequestInformation(Marqeta.Core.Sdk.Models.Pan_request body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
         {
 #nullable restore
 #else
-        public RequestInformation ToPostRequestInformation(Pan_request body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
+        public RequestInformation ToPostRequestInformation(Marqeta.Core.Sdk.Models.Pan_request body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
         {
 #endif
             _ = body ?? throw new ArgumentNullException(nameof(body));
@@ -80,11 +81,11 @@ namespace Marqeta.Core.Sdk.Cards.Getbypan {
         /// <summary>
         /// Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
         /// </summary>
-        /// <returns>A <see cref="GetbypanRequestBuilder"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Cards.Getbypan.GetbypanRequestBuilder"/></returns>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
-        public GetbypanRequestBuilder WithUrl(string rawUrl)
+        public Marqeta.Core.Sdk.Cards.Getbypan.GetbypanRequestBuilder WithUrl(string rawUrl)
         {
-            return new GetbypanRequestBuilder(rawUrl, RequestAdapter);
+            return new Marqeta.Core.Sdk.Cards.Getbypan.GetbypanRequestBuilder(rawUrl, RequestAdapter);
         }
     }
 }

@@ -8,14 +8,15 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Threading;
 using System;
-namespace Marqeta.Core.Sdk.Commandomodes.Item.Transitions {
+namespace Marqeta.Core.Sdk.Commandomodes.Item.Transitions
+{
     /// <summary>
     /// Builds and executes requests for operations under \commandomodes\{commandomode_token-id}\transitions
     /// </summary>
-    public class TransitionsRequestBuilder : BaseRequestBuilder 
+    public class TransitionsRequestBuilder : BaseRequestBuilder
     {
         /// <summary>
-        /// Instantiates a new <see cref="TransitionsRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Commandomodes.Item.Transitions.TransitionsRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
@@ -23,7 +24,7 @@ namespace Marqeta.Core.Sdk.Commandomodes.Item.Transitions {
         {
         }
         /// <summary>
-        /// Instantiates a new <see cref="TransitionsRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Commandomodes.Item.Transitions.TransitionsRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
@@ -33,25 +34,25 @@ namespace Marqeta.Core.Sdk.Commandomodes.Item.Transitions {
         /// <summary>
         /// Retrieve a list of Commando Mode transitions for a specific control set.This endpoint supports &lt;&lt;/core-api/field-filtering, field filtering&gt;&gt; and &lt;&lt;/core-api/sorting-and-pagination, pagination&gt;&gt;.
         /// </summary>
-        /// <returns>A <see cref="CommandoModeTransitionListResponse"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Models.CommandoModeTransitionListResponse"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        /// <exception cref="ApiError">When receiving a 4XX or 5XX status code</exception>
+        /// <exception cref="Marqeta.Core.Sdk.Models.ApiError">When receiving a 4XX or 5XX status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<CommandoModeTransitionListResponse?> GetAsync(Action<RequestConfiguration<TransitionsRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<Marqeta.Core.Sdk.Models.CommandoModeTransitionListResponse?> GetAsync(Action<RequestConfiguration<Marqeta.Core.Sdk.Commandomodes.Item.Transitions.TransitionsRequestBuilder.TransitionsRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<CommandoModeTransitionListResponse> GetAsync(Action<RequestConfiguration<TransitionsRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<Marqeta.Core.Sdk.Models.CommandoModeTransitionListResponse> GetAsync(Action<RequestConfiguration<Marqeta.Core.Sdk.Commandomodes.Item.Transitions.TransitionsRequestBuilder.TransitionsRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
-                {"XXX", ApiError.CreateFromDiscriminatorValue},
+                { "XXX", Marqeta.Core.Sdk.Models.ApiError.CreateFromDiscriminatorValue },
             };
-            return await RequestAdapter.SendAsync<CommandoModeTransitionListResponse>(requestInfo, CommandoModeTransitionListResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<Marqeta.Core.Sdk.Models.CommandoModeTransitionListResponse>(requestInfo, Marqeta.Core.Sdk.Models.CommandoModeTransitionListResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Retrieve a list of Commando Mode transitions for a specific control set.This endpoint supports &lt;&lt;/core-api/field-filtering, field filtering&gt;&gt; and &lt;&lt;/core-api/sorting-and-pagination, pagination&gt;&gt;.
@@ -60,11 +61,11 @@ namespace Marqeta.Core.Sdk.Commandomodes.Item.Transitions {
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<TransitionsRequestBuilderGetQueryParameters>>? requestConfiguration = default)
+        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<Marqeta.Core.Sdk.Commandomodes.Item.Transitions.TransitionsRequestBuilder.TransitionsRequestBuilderGetQueryParameters>>? requestConfiguration = default)
         {
 #nullable restore
 #else
-        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<TransitionsRequestBuilderGetQueryParameters>> requestConfiguration = default)
+        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<Marqeta.Core.Sdk.Commandomodes.Item.Transitions.TransitionsRequestBuilder.TransitionsRequestBuilderGetQueryParameters>> requestConfiguration = default)
         {
 #endif
             var requestInfo = new RequestInformation(Method.GET, UrlTemplate, PathParameters);
@@ -75,11 +76,11 @@ namespace Marqeta.Core.Sdk.Commandomodes.Item.Transitions {
         /// <summary>
         /// Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
         /// </summary>
-        /// <returns>A <see cref="TransitionsRequestBuilder"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Commandomodes.Item.Transitions.TransitionsRequestBuilder"/></returns>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
-        public TransitionsRequestBuilder WithUrl(string rawUrl)
+        public Marqeta.Core.Sdk.Commandomodes.Item.Transitions.TransitionsRequestBuilder WithUrl(string rawUrl)
         {
-            return new TransitionsRequestBuilder(rawUrl, RequestAdapter);
+            return new Marqeta.Core.Sdk.Commandomodes.Item.Transitions.TransitionsRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
         /// Retrieve a list of Commando Mode transitions for a specific control set.This endpoint supports &lt;&lt;/core-api/field-filtering, field filtering&gt;&gt; and &lt;&lt;/core-api/sorting-and-pagination, pagination&gt;&gt;.

@@ -4,9 +4,10 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System;
-namespace Marqeta.Core.Sdk.Models {
+namespace Marqeta.Core.Sdk.Models
+{
     #pragma warning disable CS1591
-    public class Kyc_response : IAdditionalDataHolder, IParsable 
+    public class Kyc_response : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -66,7 +67,7 @@ namespace Marqeta.Core.Sdk.Models {
         public string UserToken { get; set; }
 #endif
         /// <summary>
-        /// Instantiates a new <see cref="Kyc_response"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Models.Kyc_response"/> and sets the default values.
         /// </summary>
         public Kyc_response()
         {
@@ -75,12 +76,12 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="Kyc_response"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Models.Kyc_response"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static Kyc_response CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static Marqeta.Core.Sdk.Models.Kyc_response CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-            return new Kyc_response();
+            return new Marqeta.Core.Sdk.Models.Kyc_response();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -90,15 +91,15 @@ namespace Marqeta.Core.Sdk.Models {
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                {"business_token", n => { BusinessToken = n.GetStringValue(); } },
-                {"created_time", n => { CreatedTime = n.GetDateTimeOffsetValue(); } },
-                {"last_modified_time", n => { LastModifiedTime = n.GetDateTimeOffsetValue(); } },
-                {"manual_override", n => { ManualOverride = n.GetBoolValue(); } },
-                {"notes", n => { Notes = n.GetStringValue(); } },
-                {"reference_id", n => { ReferenceId = n.GetStringValue(); } },
-                {"result", n => { Result = n.GetObjectValue<Marqeta.Core.Sdk.Models.Result>(Marqeta.Core.Sdk.Models.Result.CreateFromDiscriminatorValue); } },
-                {"token", n => { Token = n.GetStringValue(); } },
-                {"user_token", n => { UserToken = n.GetStringValue(); } },
+                { "business_token", n => { BusinessToken = n.GetStringValue(); } },
+                { "created_time", n => { CreatedTime = n.GetDateTimeOffsetValue(); } },
+                { "last_modified_time", n => { LastModifiedTime = n.GetDateTimeOffsetValue(); } },
+                { "manual_override", n => { ManualOverride = n.GetBoolValue(); } },
+                { "notes", n => { Notes = n.GetStringValue(); } },
+                { "reference_id", n => { ReferenceId = n.GetStringValue(); } },
+                { "result", n => { Result = n.GetObjectValue<Marqeta.Core.Sdk.Models.Result>(Marqeta.Core.Sdk.Models.Result.CreateFromDiscriminatorValue); } },
+                { "token", n => { Token = n.GetStringValue(); } },
+                { "user_token", n => { UserToken = n.GetStringValue(); } },
             };
         }
         /// <summary>

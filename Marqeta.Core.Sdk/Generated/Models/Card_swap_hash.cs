@@ -4,11 +4,12 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System;
-namespace Marqeta.Core.Sdk.Models {
+namespace Marqeta.Core.Sdk.Models
+{
     /// <summary>
     /// Contains identifiers for swapping digital wallet tokens between cards.
     /// </summary>
-    public class Card_swap_hash : IAdditionalDataHolder, IParsable 
+    public class Card_swap_hash : IAdditionalDataHolder, IParsable
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
@@ -29,7 +30,7 @@ namespace Marqeta.Core.Sdk.Models {
         public string PreviousCardToken { get; set; }
 #endif
         /// <summary>
-        /// Instantiates a new <see cref="Card_swap_hash"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Models.Card_swap_hash"/> and sets the default values.
         /// </summary>
         public Card_swap_hash()
         {
@@ -38,12 +39,12 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="Card_swap_hash"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Models.Card_swap_hash"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static Card_swap_hash CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static Marqeta.Core.Sdk.Models.Card_swap_hash CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-            return new Card_swap_hash();
+            return new Marqeta.Core.Sdk.Models.Card_swap_hash();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -53,8 +54,8 @@ namespace Marqeta.Core.Sdk.Models {
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                {"new_card_token", n => { NewCardToken = n.GetStringValue(); } },
-                {"previous_card_token", n => { PreviousCardToken = n.GetStringValue(); } },
+                { "new_card_token", n => { NewCardToken = n.GetStringValue(); } },
+                { "previous_card_token", n => { PreviousCardToken = n.GetStringValue(); } },
             };
         }
         /// <summary>

@@ -4,11 +4,12 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System;
-namespace Marqeta.Core.Sdk.Models {
+namespace Marqeta.Core.Sdk.Models
+{
     /// <summary>
     /// Contains information from the card network about currency conversion at the time of settlement, including the original currency of the transaction, the amount of the transaction in the original currency, and the conversion rate.
     /// </summary>
-    public class Settlement_data : IAdditionalDataHolder, IParsable 
+    public class Settlement_data : IAdditionalDataHolder, IParsable
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
@@ -25,7 +26,7 @@ namespace Marqeta.Core.Sdk.Models {
         public string CurrencyCode { get; set; }
 #endif
         /// <summary>
-        /// Instantiates a new <see cref="Settlement_data"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Models.Settlement_data"/> and sets the default values.
         /// </summary>
         public Settlement_data()
         {
@@ -34,12 +35,12 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="Settlement_data"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Models.Settlement_data"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static Settlement_data CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static Marqeta.Core.Sdk.Models.Settlement_data CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-            return new Settlement_data();
+            return new Marqeta.Core.Sdk.Models.Settlement_data();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -49,9 +50,9 @@ namespace Marqeta.Core.Sdk.Models {
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                {"amount", n => { Amount = n.GetDoubleValue(); } },
-                {"conversion_rate", n => { ConversionRate = n.GetDoubleValue(); } },
-                {"currency_code", n => { CurrencyCode = n.GetStringValue(); } },
+                { "amount", n => { Amount = n.GetDoubleValue(); } },
+                { "conversion_rate", n => { ConversionRate = n.GetDoubleValue(); } },
+                { "currency_code", n => { CurrencyCode = n.GetStringValue(); } },
             };
         }
         /// <summary>

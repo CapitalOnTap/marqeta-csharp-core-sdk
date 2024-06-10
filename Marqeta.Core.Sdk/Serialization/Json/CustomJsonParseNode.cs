@@ -1,9 +1,7 @@
 ﻿using System.Diagnostics;
-using System.Diagnostics.CodeAnalysis;
 using System.Reflection;
 using System.Runtime.Serialization;
 using System.Text.Json;
-using System.Text.Json.Serialization;
 using System.Xml;
 using Microsoft.Kiota.Abstractions;
 using Microsoft.Kiota.Abstractions.Extensions;
@@ -20,7 +18,7 @@ namespace Marqeta.Core.Sdk.Serialization.Json;
 /// which causes inconsistencies
 /// Changes will be marked with a MODIFIED comment 
 /// Current changes:
-///     <see cref="GetEnumValue{T}"/> throws a <see cref="ArgumentOutOfRangeException"/> instead of null
+///     <see cref="GetEnumValue{T}"/> throws an <see cref="ArgumentOutOfRangeException"/> instead of null
 /// </summary>
 public class CustomJsonParseNode : IParseNode
 {
@@ -178,18 +176,26 @@ public class CustomJsonParseNode : IParseNode
             
         var type = typeof(T);
         rawValue = ToEnumRawName<T>(rawValue!);
-        if (type.GetCustomAttributes<FlagsAttribute>().Any())
+        if (typeof(T).IsDefined(typeof(FlagsAttribute)))
         {
-            return (T)(object)rawValue!
-                .Split(',')
-                .Select(x => Enum.TryParse<T>(x, true, out var result) ? result : (T?)null)
-                .Where(x => !x.Equals(null))
-                .Select(x => (int)(object)x!)
-                .Sum();
+            var valueSpan = rawValue.AsSpan();
+            var value = 0;
+            while(valueSpan.Length > 0)
+            {
+                var commaIndex = valueSpan.IndexOf(',');
+                var valueNameSpan = commaIndex < 0 ? valueSpan : valueSpan.Slice(0, commaIndex);
+#if NET6_0_OR_GREATER
+                if(Enum.TryParse<T>(valueNameSpan, true, out var result))
+#else
+                if(Enum.TryParse<T>(valueNameSpan.ToString(), true, out var result))
+#endif
+                    value |= (int)(object)result;
+                valueSpan = commaIndex < 0 ? ReadOnlySpan<char>.Empty : valueSpan.Slice(commaIndex + 1);
+            }
+            return (T)(object)value;
         }
         else
-            return Enum.TryParse<T>(rawValue, true, out var result)
-                ? result :
+            return Enum.TryParse<T>(rawValue, true,out var result) ? result :
                 // MODIFICATION: We want to throw an exception rather than return null
                 throw new ArgumentOutOfRangeException(type.FullName, rawValue, "Unable to parse enum value");
     }
@@ -412,7 +418,7 @@ public class CustomJsonParseNode : IParseNode
     /// Get the object of type <typeparam name="T"/>from the json node
     /// </summary>
     /// <param name="factory">The factory to use to create the model object.</param>
-    /// <returns>A object of the specified type</returns>
+    /// <returns>An object of the specified type</returns>
     public T GetObjectValue<T>(ParsableFactory<T> factory) where T : IParsable
     {
         // until interface exposes GetUntypedValue()
@@ -532,10 +538,14 @@ public class CustomJsonParseNode : IParseNode
         private static string ToEnumRawName<T>(string value) where T : struct, Enum
 #endif
     {
-        if (typeof(T).GetFields().FirstOrDefault(member =>
-                member.GetCustomAttribute<EnumMemberAttribute>() is { } attr &&
-                value.Equals(attr.Value, StringComparison.Ordinal))?.Name is { } strValue)
-            return strValue;
+        foreach (var field in typeof(T).GetFields())
+        {
+            if (field.GetCustomAttribute<EnumMemberAttribute>() is { } attr &&
+                value.Equals(attr.Value, StringComparison.Ordinal))
+            {
+                return field.Name;
+            }
+        }
 
         return value;
     }

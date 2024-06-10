@@ -4,20 +4,21 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System;
-namespace Marqeta.Core.Sdk.Models {
+namespace Marqeta.Core.Sdk.Models
+{
     /// <summary>
     /// Contains information on a specific fee in a fee policy.
     /// </summary>
-    public class PolicyFeePayment : IAdditionalDataHolder, IParsable 
+    public class PolicyFeePayment : IAdditionalDataHolder, IParsable
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Method used to calculate the fee value.</summary>
-        public PolicyFeePayment_default_method? DefaultMethod { get; set; }
+        public Marqeta.Core.Sdk.Models.PolicyFeePayment_default_method? DefaultMethod { get; set; }
         /// <summary>Amount of the fee.</summary>
         public double? DefaultValue { get; set; }
         /// <summary>
-        /// Instantiates a new <see cref="PolicyFeePayment"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Models.PolicyFeePayment"/> and sets the default values.
         /// </summary>
         public PolicyFeePayment()
         {
@@ -26,12 +27,12 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="PolicyFeePayment"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Models.PolicyFeePayment"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static PolicyFeePayment CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static Marqeta.Core.Sdk.Models.PolicyFeePayment CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-            return new PolicyFeePayment();
+            return new Marqeta.Core.Sdk.Models.PolicyFeePayment();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -41,8 +42,8 @@ namespace Marqeta.Core.Sdk.Models {
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                {"default_method", n => { DefaultMethod = n.GetEnumValue<PolicyFeePayment_default_method>(); } },
-                {"default_value", n => { DefaultValue = n.GetDoubleValue(); } },
+                { "default_method", n => { DefaultMethod = n.GetEnumValue<Marqeta.Core.Sdk.Models.PolicyFeePayment_default_method>(); } },
+                { "default_value", n => { DefaultValue = n.GetDoubleValue(); } },
             };
         }
         /// <summary>
@@ -52,7 +53,7 @@ namespace Marqeta.Core.Sdk.Models {
         public virtual void Serialize(ISerializationWriter writer)
         {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
-            writer.WriteEnumValue<PolicyFeePayment_default_method>("default_method", DefaultMethod);
+            writer.WriteEnumValue<Marqeta.Core.Sdk.Models.PolicyFeePayment_default_method>("default_method", DefaultMethod);
             writer.WriteDoubleValue("default_value", DefaultValue);
             writer.WriteAdditionalData(AdditionalData);
         }

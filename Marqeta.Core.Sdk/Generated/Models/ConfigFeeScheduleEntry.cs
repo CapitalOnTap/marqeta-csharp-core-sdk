@@ -4,22 +4,23 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System;
-namespace Marqeta.Core.Sdk.Models {
+namespace Marqeta.Core.Sdk.Models
+{
     /// <summary>
     /// Contains information on a fee schedule.
     /// </summary>
-    public class ConfigFeeScheduleEntry : IAdditionalDataHolder, IParsable 
+    public class ConfigFeeScheduleEntry : IAdditionalDataHolder, IParsable
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Date and time when the fee goes into effect, in UTC.</summary>
         public DateTimeOffset? EffectiveDate { get; set; }
         /// <summary>Method used to calculate the fee value.</summary>
-        public FeeMethod? Method { get; set; }
+        public Marqeta.Core.Sdk.Models.FeeMethod? Method { get; set; }
         /// <summary>Amount of the fee.</summary>
         public double? Value { get; set; }
         /// <summary>
-        /// Instantiates a new <see cref="ConfigFeeScheduleEntry"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Models.ConfigFeeScheduleEntry"/> and sets the default values.
         /// </summary>
         public ConfigFeeScheduleEntry()
         {
@@ -28,12 +29,12 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="ConfigFeeScheduleEntry"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Models.ConfigFeeScheduleEntry"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static ConfigFeeScheduleEntry CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static Marqeta.Core.Sdk.Models.ConfigFeeScheduleEntry CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-            return new ConfigFeeScheduleEntry();
+            return new Marqeta.Core.Sdk.Models.ConfigFeeScheduleEntry();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -43,9 +44,9 @@ namespace Marqeta.Core.Sdk.Models {
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                {"effective_date", n => { EffectiveDate = n.GetDateTimeOffsetValue(); } },
-                {"method", n => { Method = n.GetEnumValue<FeeMethod>(); } },
-                {"value", n => { Value = n.GetDoubleValue(); } },
+                { "effective_date", n => { EffectiveDate = n.GetDateTimeOffsetValue(); } },
+                { "method", n => { Method = n.GetEnumValue<Marqeta.Core.Sdk.Models.FeeMethod>(); } },
+                { "value", n => { Value = n.GetDoubleValue(); } },
             };
         }
         /// <summary>
@@ -56,7 +57,7 @@ namespace Marqeta.Core.Sdk.Models {
         {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
             writer.WriteDateTimeOffsetValue("effective_date", EffectiveDate);
-            writer.WriteEnumValue<FeeMethod>("method", Method);
+            writer.WriteEnumValue<Marqeta.Core.Sdk.Models.FeeMethod>("method", Method);
             writer.WriteDoubleValue("value", Value);
             writer.WriteAdditionalData(AdditionalData);
         }

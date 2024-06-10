@@ -10,39 +10,40 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using System;
-namespace Marqeta.Core.Sdk.Policies {
+namespace Marqeta.Core.Sdk.Policies
+{
     /// <summary>
     /// Builds and executes requests for operations under \policies
     /// </summary>
-    public class PoliciesRequestBuilder : BaseRequestBuilder 
+    public class PoliciesRequestBuilder : BaseRequestBuilder
     {
         /// <summary>The aprs property</summary>
-        public AprsRequestBuilder Aprs
+        public Marqeta.Core.Sdk.Policies.Aprs.AprsRequestBuilder Aprs
         {
-            get => new AprsRequestBuilder(PathParameters, RequestAdapter);
+            get => new Marqeta.Core.Sdk.Policies.Aprs.AprsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The documents property</summary>
-        public DocumentsRequestBuilder Documents
+        public Marqeta.Core.Sdk.Policies.Documents.DocumentsRequestBuilder Documents
         {
-            get => new DocumentsRequestBuilder(PathParameters, RequestAdapter);
+            get => new Marqeta.Core.Sdk.Policies.Documents.DocumentsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The fees property</summary>
-        public FeesRequestBuilder Fees
+        public Marqeta.Core.Sdk.Policies.Fees.FeesRequestBuilder Fees
         {
-            get => new FeesRequestBuilder(PathParameters, RequestAdapter);
+            get => new Marqeta.Core.Sdk.Policies.Fees.FeesRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The products property</summary>
-        public ProductsRequestBuilder Products
+        public Marqeta.Core.Sdk.Policies.Products.ProductsRequestBuilder Products
         {
-            get => new ProductsRequestBuilder(PathParameters, RequestAdapter);
+            get => new Marqeta.Core.Sdk.Policies.Products.ProductsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The rewards property</summary>
-        public RewardsRequestBuilder Rewards
+        public Marqeta.Core.Sdk.Policies.Rewards.RewardsRequestBuilder Rewards
         {
-            get => new RewardsRequestBuilder(PathParameters, RequestAdapter);
+            get => new Marqeta.Core.Sdk.Policies.Rewards.RewardsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>
-        /// Instantiates a new <see cref="PoliciesRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Policies.PoliciesRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
@@ -50,7 +51,7 @@ namespace Marqeta.Core.Sdk.Policies {
         {
         }
         /// <summary>
-        /// Instantiates a new <see cref="PoliciesRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Policies.PoliciesRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>

@@ -4,24 +4,25 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System;
-namespace Marqeta.Core.Sdk.Models {
+namespace Marqeta.Core.Sdk.Models
+{
     /// <summary>
     /// Contains information about the organizational structure of the business.This object is required for KYC verification (US-based accounts only).
     /// </summary>
-    public class Business_incorporation : IAdditionalDataHolder, IParsable 
+    public class Business_incorporation : IAdditionalDataHolder, IParsable
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Address associated with the business.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public AddressRequestModel? AddressRegisteredUnder { get; set; }
+        public Marqeta.Core.Sdk.Models.AddressRequestModel? AddressRegisteredUnder { get; set; }
 #nullable restore
 #else
-        public AddressRequestModel AddressRegisteredUnder { get; set; }
+        public Marqeta.Core.Sdk.Models.AddressRequestModel AddressRegisteredUnder { get; set; }
 #endif
         /// <summary>Organizational structure of the business, such as corporation or sole proprietorship.This field is required for KYC verification (US-based accounts only).</summary>
-        public Business_incorporation_incorporation_type? IncorporationType { get; set; }
+        public Marqeta.Core.Sdk.Models.Business_incorporation_incorporation_type? IncorporationType { get; set; }
         /// <summary>A value of `true` indicates that the business is publicly held.</summary>
         public bool? IsPublic { get; set; }
         /// <summary>Name under which the business is registered.</summary>
@@ -49,7 +50,7 @@ namespace Marqeta.Core.Sdk.Models {
         public string StockSymbol { get; set; }
 #endif
         /// <summary>
-        /// Instantiates a new <see cref="Business_incorporation"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Models.Business_incorporation"/> and sets the default values.
         /// </summary>
         public Business_incorporation()
         {
@@ -58,12 +59,12 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="Business_incorporation"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Models.Business_incorporation"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static Business_incorporation CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static Marqeta.Core.Sdk.Models.Business_incorporation CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-            return new Business_incorporation();
+            return new Marqeta.Core.Sdk.Models.Business_incorporation();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -73,12 +74,12 @@ namespace Marqeta.Core.Sdk.Models {
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                {"address_registered_under", n => { AddressRegisteredUnder = n.GetObjectValue<AddressRequestModel>(AddressRequestModel.CreateFromDiscriminatorValue); } },
-                {"incorporation_type", n => { IncorporationType = n.GetEnumValue<Business_incorporation_incorporation_type>(); } },
-                {"is_public", n => { IsPublic = n.GetBoolValue(); } },
-                {"name_registered_under", n => { NameRegisteredUnder = n.GetStringValue(); } },
-                {"state_of_incorporation", n => { StateOfIncorporation = n.GetStringValue(); } },
-                {"stock_symbol", n => { StockSymbol = n.GetStringValue(); } },
+                { "address_registered_under", n => { AddressRegisteredUnder = n.GetObjectValue<Marqeta.Core.Sdk.Models.AddressRequestModel>(Marqeta.Core.Sdk.Models.AddressRequestModel.CreateFromDiscriminatorValue); } },
+                { "incorporation_type", n => { IncorporationType = n.GetEnumValue<Marqeta.Core.Sdk.Models.Business_incorporation_incorporation_type>(); } },
+                { "is_public", n => { IsPublic = n.GetBoolValue(); } },
+                { "name_registered_under", n => { NameRegisteredUnder = n.GetStringValue(); } },
+                { "state_of_incorporation", n => { StateOfIncorporation = n.GetStringValue(); } },
+                { "stock_symbol", n => { StockSymbol = n.GetStringValue(); } },
             };
         }
         /// <summary>
@@ -88,8 +89,8 @@ namespace Marqeta.Core.Sdk.Models {
         public virtual void Serialize(ISerializationWriter writer)
         {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<AddressRequestModel>("address_registered_under", AddressRegisteredUnder);
-            writer.WriteEnumValue<Business_incorporation_incorporation_type>("incorporation_type", IncorporationType);
+            writer.WriteObjectValue<Marqeta.Core.Sdk.Models.AddressRequestModel>("address_registered_under", AddressRegisteredUnder);
+            writer.WriteEnumValue<Marqeta.Core.Sdk.Models.Business_incorporation_incorporation_type>("incorporation_type", IncorporationType);
             writer.WriteBoolValue("is_public", IsPublic);
             writer.WriteStringValue("name_registered_under", NameRegisteredUnder);
             writer.WriteStringValue("state_of_incorporation", StateOfIncorporation);

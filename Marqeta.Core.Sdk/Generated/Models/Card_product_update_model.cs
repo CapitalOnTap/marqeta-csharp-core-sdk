@@ -5,9 +5,10 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System;
-namespace Marqeta.Core.Sdk.Models {
+namespace Marqeta.Core.Sdk.Models
+{
     #pragma warning disable CS1591
-    public class Card_product_update_model : IAdditionalDataHolder, IParsable 
+    public class Card_product_update_model : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
     {
         /// <summary>Indicates whether the card product is active.*NOTE:* This field has no effect on the ability to create cards from this card product.Use the `config.fulfillment.allow_card_creation` field to allow/disallow card creation.</summary>
@@ -17,10 +18,10 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>Defines the characteristics of the card product.Configurations are conditionally required based on program setup.For more information, contact your Marqeta representative.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public Card_product_config? Config { get; set; }
+        public Marqeta.Core.Sdk.Models.Card_product_config? Config { get; set; }
 #nullable restore
 #else
-        public Card_product_config Config { get; set; }
+        public Marqeta.Core.Sdk.Models.Card_product_config Config { get; set; }
 #endif
         /// <summary>End date of the range over which the card product can be active.</summary>
         public Date? EndDate { get; set; }
@@ -35,7 +36,7 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>Date the card product becomes active.If the start date has passed and the card is set to `active = false`, then the card will not be activated.</summary>
         public Date? StartDate { get; set; }
         /// <summary>
-        /// Instantiates a new <see cref="Card_product_update_model"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Models.Card_product_update_model"/> and sets the default values.
         /// </summary>
         public Card_product_update_model()
         {
@@ -44,12 +45,12 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="Card_product_update_model"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Models.Card_product_update_model"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static Card_product_update_model CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static Marqeta.Core.Sdk.Models.Card_product_update_model CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-            return new Card_product_update_model();
+            return new Marqeta.Core.Sdk.Models.Card_product_update_model();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -59,11 +60,11 @@ namespace Marqeta.Core.Sdk.Models {
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                {"active", n => { Active = n.GetBoolValue(); } },
-                {"config", n => { Config = n.GetObjectValue<Card_product_config>(Card_product_config.CreateFromDiscriminatorValue); } },
-                {"end_date", n => { EndDate = n.GetDateValue(); } },
-                {"name", n => { Name = n.GetStringValue(); } },
-                {"start_date", n => { StartDate = n.GetDateValue(); } },
+                { "active", n => { Active = n.GetBoolValue(); } },
+                { "config", n => { Config = n.GetObjectValue<Marqeta.Core.Sdk.Models.Card_product_config>(Marqeta.Core.Sdk.Models.Card_product_config.CreateFromDiscriminatorValue); } },
+                { "end_date", n => { EndDate = n.GetDateValue(); } },
+                { "name", n => { Name = n.GetStringValue(); } },
+                { "start_date", n => { StartDate = n.GetDateValue(); } },
             };
         }
         /// <summary>
@@ -74,7 +75,7 @@ namespace Marqeta.Core.Sdk.Models {
         {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
             writer.WriteBoolValue("active", Active);
-            writer.WriteObjectValue<Card_product_config>("config", Config);
+            writer.WriteObjectValue<Marqeta.Core.Sdk.Models.Card_product_config>("config", Config);
             writer.WriteDateValue("end_date", EndDate);
             writer.WriteStringValue("name", Name);
             writer.WriteDateValue("start_date", StartDate);

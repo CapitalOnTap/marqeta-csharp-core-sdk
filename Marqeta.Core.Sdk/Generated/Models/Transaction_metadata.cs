@@ -4,11 +4,12 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System;
-namespace Marqeta.Core.Sdk.Models {
+namespace Marqeta.Core.Sdk.Models
+{
     /// <summary>
     /// Contains merchant-provided metadata related to the transaction, including details about lodging- and transit-related purchases.May be returned if the request uses Transaction Model v2 of the Marqeta Core API.Not returned for Transaction Model v1 requests.
     /// </summary>
-    public class Transaction_metadata : IAdditionalDataHolder, IParsable 
+    public class Transaction_metadata : IAdditionalDataHolder, IParsable
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
@@ -31,11 +32,11 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>Date and time when the lodging check-in or vehicle rental began.</summary>
         public DateTimeOffset? LodgingAutoRentalStartDate { get; set; }
         /// <summary>Indicates the type of mail or telephone order transaction.</summary>
-        public Transaction_metadata_moto_indicator? MotoIndicator { get; set; }
+        public Marqeta.Core.Sdk.Models.Transaction_metadata_moto_indicator? MotoIndicator { get; set; }
         /// <summary>The one_leg_out property</summary>
         public bool? OneLegOut { get; set; }
         /// <summary>Channel from which the transaction was originated.</summary>
-        public Transaction_metadata_payment_channel? PaymentChannel { get; set; }
+        public Marqeta.Core.Sdk.Models.Transaction_metadata_payment_channel? PaymentChannel { get; set; }
         /// <summary>The special_purchase_id property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -45,7 +46,7 @@ namespace Marqeta.Core.Sdk.Models {
         public string SpecialPurchaseId { get; set; }
 #endif
         /// <summary>Industry for which the transaction was originated.</summary>
-        public Transaction_metadata_transaction_category? TransactionCategory { get; set; }
+        public Marqeta.Core.Sdk.Models.Transaction_metadata_transaction_category? TransactionCategory { get; set; }
         /// <summary>Contains merchant-provided, transit-related metadata related to the transaction.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -55,7 +56,7 @@ namespace Marqeta.Core.Sdk.Models {
         public Marqeta.Core.Sdk.Models.Transit Transit { get; set; }
 #endif
         /// <summary>
-        /// Instantiates a new <see cref="Transaction_metadata"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Models.Transaction_metadata"/> and sets the default values.
         /// </summary>
         public Transaction_metadata()
         {
@@ -64,12 +65,12 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="Transaction_metadata"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Models.Transaction_metadata"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static Transaction_metadata CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static Marqeta.Core.Sdk.Models.Transaction_metadata CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-            return new Transaction_metadata();
+            return new Marqeta.Core.Sdk.Models.Transaction_metadata();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -79,18 +80,18 @@ namespace Marqeta.Core.Sdk.Models {
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                {"airline", n => { Airline = n.GetObjectValue<Marqeta.Core.Sdk.Models.Airline>(Marqeta.Core.Sdk.Models.Airline.CreateFromDiscriminatorValue); } },
-                {"authorization_life_cycle", n => { AuthorizationLifeCycle = n.GetIntValue(); } },
-                {"cross_border_transaction", n => { CrossBorderTransaction = n.GetBoolValue(); } },
-                {"is_deferred_authorization", n => { IsDeferredAuthorization = n.GetBoolValue(); } },
-                {"is_lodging_auto_rental", n => { IsLodgingAutoRental = n.GetBoolValue(); } },
-                {"lodging_auto_rental_start_date", n => { LodgingAutoRentalStartDate = n.GetDateTimeOffsetValue(); } },
-                {"moto_indicator", n => { MotoIndicator = n.GetEnumValue<Transaction_metadata_moto_indicator>(); } },
-                {"one_leg_out", n => { OneLegOut = n.GetBoolValue(); } },
-                {"payment_channel", n => { PaymentChannel = n.GetEnumValue<Transaction_metadata_payment_channel>(); } },
-                {"special_purchase_id", n => { SpecialPurchaseId = n.GetStringValue(); } },
-                {"transaction_category", n => { TransactionCategory = n.GetEnumValue<Transaction_metadata_transaction_category>(); } },
-                {"transit", n => { Transit = n.GetObjectValue<Marqeta.Core.Sdk.Models.Transit>(Marqeta.Core.Sdk.Models.Transit.CreateFromDiscriminatorValue); } },
+                { "airline", n => { Airline = n.GetObjectValue<Marqeta.Core.Sdk.Models.Airline>(Marqeta.Core.Sdk.Models.Airline.CreateFromDiscriminatorValue); } },
+                { "authorization_life_cycle", n => { AuthorizationLifeCycle = n.GetIntValue(); } },
+                { "cross_border_transaction", n => { CrossBorderTransaction = n.GetBoolValue(); } },
+                { "is_deferred_authorization", n => { IsDeferredAuthorization = n.GetBoolValue(); } },
+                { "is_lodging_auto_rental", n => { IsLodgingAutoRental = n.GetBoolValue(); } },
+                { "lodging_auto_rental_start_date", n => { LodgingAutoRentalStartDate = n.GetDateTimeOffsetValue(); } },
+                { "moto_indicator", n => { MotoIndicator = n.GetEnumValue<Marqeta.Core.Sdk.Models.Transaction_metadata_moto_indicator>(); } },
+                { "one_leg_out", n => { OneLegOut = n.GetBoolValue(); } },
+                { "payment_channel", n => { PaymentChannel = n.GetEnumValue<Marqeta.Core.Sdk.Models.Transaction_metadata_payment_channel>(); } },
+                { "special_purchase_id", n => { SpecialPurchaseId = n.GetStringValue(); } },
+                { "transaction_category", n => { TransactionCategory = n.GetEnumValue<Marqeta.Core.Sdk.Models.Transaction_metadata_transaction_category>(); } },
+                { "transit", n => { Transit = n.GetObjectValue<Marqeta.Core.Sdk.Models.Transit>(Marqeta.Core.Sdk.Models.Transit.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -106,11 +107,11 @@ namespace Marqeta.Core.Sdk.Models {
             writer.WriteBoolValue("is_deferred_authorization", IsDeferredAuthorization);
             writer.WriteBoolValue("is_lodging_auto_rental", IsLodgingAutoRental);
             writer.WriteDateTimeOffsetValue("lodging_auto_rental_start_date", LodgingAutoRentalStartDate);
-            writer.WriteEnumValue<Transaction_metadata_moto_indicator>("moto_indicator", MotoIndicator);
+            writer.WriteEnumValue<Marqeta.Core.Sdk.Models.Transaction_metadata_moto_indicator>("moto_indicator", MotoIndicator);
             writer.WriteBoolValue("one_leg_out", OneLegOut);
-            writer.WriteEnumValue<Transaction_metadata_payment_channel>("payment_channel", PaymentChannel);
+            writer.WriteEnumValue<Marqeta.Core.Sdk.Models.Transaction_metadata_payment_channel>("payment_channel", PaymentChannel);
             writer.WriteStringValue("special_purchase_id", SpecialPurchaseId);
-            writer.WriteEnumValue<Transaction_metadata_transaction_category>("transaction_category", TransactionCategory);
+            writer.WriteEnumValue<Marqeta.Core.Sdk.Models.Transaction_metadata_transaction_category>("transaction_category", TransactionCategory);
             writer.WriteObjectValue<Marqeta.Core.Sdk.Models.Transit>("transit", Transit);
             writer.WriteAdditionalData(AdditionalData);
         }

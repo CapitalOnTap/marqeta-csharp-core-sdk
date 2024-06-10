@@ -12,34 +12,35 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Threading;
 using System;
-namespace Marqeta.Core.Sdk.Bundles.Item {
+namespace Marqeta.Core.Sdk.Bundles.Item
+{
     /// <summary>
     /// Builds and executes requests for operations under \bundles\{token}
     /// </summary>
-    public class WithTokenItemRequestBuilder : BaseRequestBuilder 
+    public class WithTokenItemRequestBuilder : BaseRequestBuilder
     {
         /// <summary>The clone property</summary>
-        public CloneRequestBuilder Clone
+        public Marqeta.Core.Sdk.Bundles.Item.Clone.CloneRequestBuilder Clone
         {
-            get => new CloneRequestBuilder(PathParameters, RequestAdapter);
+            get => new Marqeta.Core.Sdk.Bundles.Item.Clone.CloneRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The lineage property</summary>
-        public LineageRequestBuilder Lineage
+        public Marqeta.Core.Sdk.Bundles.Item.Lineage.LineageRequestBuilder Lineage
         {
-            get => new LineageRequestBuilder(PathParameters, RequestAdapter);
+            get => new Marqeta.Core.Sdk.Bundles.Item.Lineage.LineageRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The promote property</summary>
-        public PromoteRequestBuilder Promote
+        public Marqeta.Core.Sdk.Bundles.Item.Promote.PromoteRequestBuilder Promote
         {
-            get => new PromoteRequestBuilder(PathParameters, RequestAdapter);
+            get => new Marqeta.Core.Sdk.Bundles.Item.Promote.PromoteRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The transitions property</summary>
-        public TransitionsRequestBuilder Transitions
+        public Marqeta.Core.Sdk.Bundles.Item.Transitions.TransitionsRequestBuilder Transitions
         {
-            get => new TransitionsRequestBuilder(PathParameters, RequestAdapter);
+            get => new Marqeta.Core.Sdk.Bundles.Item.Transitions.TransitionsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>
-        /// Instantiates a new <see cref="WithTokenItemRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Bundles.Item.WithTokenItemRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
@@ -47,7 +48,7 @@ namespace Marqeta.Core.Sdk.Bundles.Item {
         {
         }
         /// <summary>
-        /// Instantiates a new <see cref="WithTokenItemRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Bundles.Item.WithTokenItemRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
@@ -57,50 +58,50 @@ namespace Marqeta.Core.Sdk.Bundles.Item {
         /// <summary>
         /// Retrieve a specific bundle.
         /// </summary>
-        /// <returns>A <see cref="BundleResponse"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Models.BundleResponse"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        /// <exception cref="ApiError">When receiving a 4XX or 5XX status code</exception>
+        /// <exception cref="Marqeta.Core.Sdk.Models.ApiError">When receiving a 4XX or 5XX status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<BundleResponse?> GetAsync(Action<RequestConfiguration<WithTokenItemRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<Marqeta.Core.Sdk.Models.BundleResponse?> GetAsync(Action<RequestConfiguration<Marqeta.Core.Sdk.Bundles.Item.WithTokenItemRequestBuilder.WithTokenItemRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<BundleResponse> GetAsync(Action<RequestConfiguration<WithTokenItemRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<Marqeta.Core.Sdk.Models.BundleResponse> GetAsync(Action<RequestConfiguration<Marqeta.Core.Sdk.Bundles.Item.WithTokenItemRequestBuilder.WithTokenItemRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
-                {"XXX", ApiError.CreateFromDiscriminatorValue},
+                { "XXX", Marqeta.Core.Sdk.Models.ApiError.CreateFromDiscriminatorValue },
             };
-            return await RequestAdapter.SendAsync<BundleResponse>(requestInfo, BundleResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<Marqeta.Core.Sdk.Models.BundleResponse>(requestInfo, Marqeta.Core.Sdk.Models.BundleResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Update a specific bundle that is not `ACTIVE` or `ARCHIVED`. Bundles are created in a `DRAFT` state, and are still modifiable at this point. Using the transitions endpoint a bundle can be transitioned from `DRAFT`, to `ACTIVE`. Once a bundle is active, it is immutable, and cannot be modified.
         /// </summary>
-        /// <returns>A <see cref="BundleResponse"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Models.BundleResponse"/></returns>
         /// <param name="body">Specifies bundles for a credit program.</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        /// <exception cref="ApiError">When receiving a 4XX or 5XX status code</exception>
+        /// <exception cref="Marqeta.Core.Sdk.Models.ApiError">When receiving a 4XX or 5XX status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<BundleResponse?> PutAsync(BundleUpdateReq body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<Marqeta.Core.Sdk.Models.BundleResponse?> PutAsync(Marqeta.Core.Sdk.Models.BundleUpdateReq body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<BundleResponse> PutAsync(BundleUpdateReq body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<Marqeta.Core.Sdk.Models.BundleResponse> PutAsync(Marqeta.Core.Sdk.Models.BundleUpdateReq body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             _ = body ?? throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPutRequestInformation(body, requestConfiguration);
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
-                {"XXX", ApiError.CreateFromDiscriminatorValue},
+                { "XXX", Marqeta.Core.Sdk.Models.ApiError.CreateFromDiscriminatorValue },
             };
-            return await RequestAdapter.SendAsync<BundleResponse>(requestInfo, BundleResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<Marqeta.Core.Sdk.Models.BundleResponse>(requestInfo, Marqeta.Core.Sdk.Models.BundleResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Retrieve a specific bundle.
@@ -109,11 +110,11 @@ namespace Marqeta.Core.Sdk.Bundles.Item {
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<WithTokenItemRequestBuilderGetQueryParameters>>? requestConfiguration = default)
+        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<Marqeta.Core.Sdk.Bundles.Item.WithTokenItemRequestBuilder.WithTokenItemRequestBuilderGetQueryParameters>>? requestConfiguration = default)
         {
 #nullable restore
 #else
-        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<WithTokenItemRequestBuilderGetQueryParameters>> requestConfiguration = default)
+        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<Marqeta.Core.Sdk.Bundles.Item.WithTokenItemRequestBuilder.WithTokenItemRequestBuilderGetQueryParameters>> requestConfiguration = default)
         {
 #endif
             var requestInfo = new RequestInformation(Method.GET, UrlTemplate, PathParameters);
@@ -129,11 +130,11 @@ namespace Marqeta.Core.Sdk.Bundles.Item {
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToPutRequestInformation(BundleUpdateReq body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
+        public RequestInformation ToPutRequestInformation(Marqeta.Core.Sdk.Models.BundleUpdateReq body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
         {
 #nullable restore
 #else
-        public RequestInformation ToPutRequestInformation(BundleUpdateReq body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
+        public RequestInformation ToPutRequestInformation(Marqeta.Core.Sdk.Models.BundleUpdateReq body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
         {
 #endif
             _ = body ?? throw new ArgumentNullException(nameof(body));
@@ -146,11 +147,11 @@ namespace Marqeta.Core.Sdk.Bundles.Item {
         /// <summary>
         /// Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
         /// </summary>
-        /// <returns>A <see cref="WithTokenItemRequestBuilder"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Bundles.Item.WithTokenItemRequestBuilder"/></returns>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
-        public WithTokenItemRequestBuilder WithUrl(string rawUrl)
+        public Marqeta.Core.Sdk.Bundles.Item.WithTokenItemRequestBuilder WithUrl(string rawUrl)
         {
-            return new WithTokenItemRequestBuilder(rawUrl, RequestAdapter);
+            return new Marqeta.Core.Sdk.Bundles.Item.WithTokenItemRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
         /// Retrieve a specific bundle.
@@ -161,11 +162,11 @@ namespace Marqeta.Core.Sdk.Bundles.Item {
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
             [QueryParameter("expand_objects")]
-            public PolicyType[]? ExpandObjects { get; set; }
+            public Marqeta.Core.Sdk.Models.PolicyType[]? ExpandObjects { get; set; }
 #nullable restore
 #else
             [QueryParameter("expand_objects")]
-            public PolicyType[] ExpandObjects { get; set; }
+            public Marqeta.Core.Sdk.Models.PolicyType[] ExpandObjects { get; set; }
 #endif
         }
     }

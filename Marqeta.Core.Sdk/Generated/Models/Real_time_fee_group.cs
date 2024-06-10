@@ -4,11 +4,12 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System;
-namespace Marqeta.Core.Sdk.Models {
+namespace Marqeta.Core.Sdk.Models
+{
     /// <summary>
     /// Contains information about a real-time fee group.
     /// </summary>
-    public class Real_time_fee_group : IAdditionalDataHolder, IParsable 
+    public class Real_time_fee_group : IAdditionalDataHolder, IParsable
     {
         /// <summary>Indicates whether the real-time fee group is active.</summary>
         public bool? Active { get; set; }
@@ -43,7 +44,7 @@ namespace Marqeta.Core.Sdk.Models {
         public string Token { get; set; }
 #endif
         /// <summary>
-        /// Instantiates a new <see cref="Real_time_fee_group"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Models.Real_time_fee_group"/> and sets the default values.
         /// </summary>
         public Real_time_fee_group()
         {
@@ -52,12 +53,12 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="Real_time_fee_group"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Models.Real_time_fee_group"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static Real_time_fee_group CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static Marqeta.Core.Sdk.Models.Real_time_fee_group CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-            return new Real_time_fee_group();
+            return new Marqeta.Core.Sdk.Models.Real_time_fee_group();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -67,12 +68,12 @@ namespace Marqeta.Core.Sdk.Models {
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                {"active", n => { Active = n.GetBoolValue(); } },
-                {"created_time", n => { CreatedTime = n.GetDateTimeOffsetValue(); } },
-                {"fee_tokens", n => { FeeTokens = n.GetCollectionOfPrimitiveValues<string>()?.ToList(); } },
-                {"last_modified_time", n => { LastModifiedTime = n.GetDateTimeOffsetValue(); } },
-                {"name", n => { Name = n.GetStringValue(); } },
-                {"token", n => { Token = n.GetStringValue(); } },
+                { "active", n => { Active = n.GetBoolValue(); } },
+                { "created_time", n => { CreatedTime = n.GetDateTimeOffsetValue(); } },
+                { "fee_tokens", n => { FeeTokens = n.GetCollectionOfPrimitiveValues<string>()?.ToList(); } },
+                { "last_modified_time", n => { LastModifiedTime = n.GetDateTimeOffsetValue(); } },
+                { "name", n => { Name = n.GetStringValue(); } },
+                { "token", n => { Token = n.GetStringValue(); } },
             };
         }
         /// <summary>

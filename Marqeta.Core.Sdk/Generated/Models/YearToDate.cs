@@ -4,11 +4,12 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System;
-namespace Marqeta.Core.Sdk.Models {
+namespace Marqeta.Core.Sdk.Models
+{
     /// <summary>
     /// Contains information about year-to-date totals for an account.
     /// </summary>
-    public class YearToDate : IAdditionalDataHolder, IParsable 
+    public class YearToDate : IAdditionalDataHolder, IParsable
     {
         /// <summary>Unique identifier of the associated credit account.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -31,7 +32,7 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>Total interest charged year-to-date.</summary>
         public double? TotalInterest { get; set; }
         /// <summary>
-        /// Instantiates a new <see cref="YearToDate"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Models.YearToDate"/> and sets the default values.
         /// </summary>
         public YearToDate()
         {
@@ -40,12 +41,12 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="YearToDate"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Models.YearToDate"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static YearToDate CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static Marqeta.Core.Sdk.Models.YearToDate CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-            return new YearToDate();
+            return new Marqeta.Core.Sdk.Models.YearToDate();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -55,12 +56,12 @@ namespace Marqeta.Core.Sdk.Models {
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                {"account_token", n => { AccountToken = n.GetStringValue(); } },
-                {"created_time", n => { CreatedTime = n.GetDateTimeOffsetValue(); } },
-                {"statement_token", n => { StatementToken = n.GetGuidValue(); } },
-                {"token", n => { Token = n.GetGuidValue(); } },
-                {"total_fees", n => { TotalFees = n.GetDoubleValue(); } },
-                {"total_interest", n => { TotalInterest = n.GetDoubleValue(); } },
+                { "account_token", n => { AccountToken = n.GetStringValue(); } },
+                { "created_time", n => { CreatedTime = n.GetDateTimeOffsetValue(); } },
+                { "statement_token", n => { StatementToken = n.GetGuidValue(); } },
+                { "token", n => { Token = n.GetGuidValue(); } },
+                { "total_fees", n => { TotalFees = n.GetDoubleValue(); } },
+                { "total_interest", n => { TotalInterest = n.GetDoubleValue(); } },
             };
         }
         /// <summary>

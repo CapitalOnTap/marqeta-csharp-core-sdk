@@ -4,11 +4,12 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System;
-namespace Marqeta.Core.Sdk.Models {
+namespace Marqeta.Core.Sdk.Models
+{
     /// <summary>
     /// Information about a transaction dispute update request.
     /// </summary>
-    public class DisputeTransitionReq : IAdditionalDataHolder, IParsable 
+    public class DisputeTransitionReq : IAdditionalDataHolder, IParsable
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
@@ -23,7 +24,7 @@ namespace Marqeta.Core.Sdk.Models {
         public string Notes { get; set; }
 #endif
         /// <summary>Status of the dispute.* `ACTIVE` - The dispute is active and awaiting resolution.* `REVERSED` - The dispute has been reversed and is no longer active.* `AH_WON` - The account holder won the dispute.* `AH_LOST` - The account holder lost the dispute.</summary>
-        public DisputeStatus? Status { get; set; }
+        public Marqeta.Core.Sdk.Models.DisputeStatus? Status { get; set; }
         /// <summary>Unique identifier of the dispute update.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -33,7 +34,7 @@ namespace Marqeta.Core.Sdk.Models {
         public string Token { get; set; }
 #endif
         /// <summary>
-        /// Instantiates a new <see cref="DisputeTransitionReq"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Models.DisputeTransitionReq"/> and sets the default values.
         /// </summary>
         public DisputeTransitionReq()
         {
@@ -42,12 +43,12 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="DisputeTransitionReq"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Models.DisputeTransitionReq"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static DisputeTransitionReq CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static Marqeta.Core.Sdk.Models.DisputeTransitionReq CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-            return new DisputeTransitionReq();
+            return new Marqeta.Core.Sdk.Models.DisputeTransitionReq();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -57,10 +58,10 @@ namespace Marqeta.Core.Sdk.Models {
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                {"amount", n => { Amount = n.GetDoubleValue(); } },
-                {"notes", n => { Notes = n.GetStringValue(); } },
-                {"status", n => { Status = n.GetEnumValue<DisputeStatus>(); } },
-                {"token", n => { Token = n.GetStringValue(); } },
+                { "amount", n => { Amount = n.GetDoubleValue(); } },
+                { "notes", n => { Notes = n.GetStringValue(); } },
+                { "status", n => { Status = n.GetEnumValue<Marqeta.Core.Sdk.Models.DisputeStatus>(); } },
+                { "token", n => { Token = n.GetStringValue(); } },
             };
         }
         /// <summary>
@@ -72,7 +73,7 @@ namespace Marqeta.Core.Sdk.Models {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
             writer.WriteDoubleValue("amount", Amount);
             writer.WriteStringValue("notes", Notes);
-            writer.WriteEnumValue<DisputeStatus>("status", Status);
+            writer.WriteEnumValue<Marqeta.Core.Sdk.Models.DisputeStatus>("status", Status);
             writer.WriteStringValue("token", Token);
             writer.WriteAdditionalData(AdditionalData);
         }

@@ -4,9 +4,10 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System;
-namespace Marqeta.Core.Sdk.Models {
+namespace Marqeta.Core.Sdk.Models
+{
     #pragma warning disable CS1591
-    public class Pin_request : IAdditionalDataHolder, IParsable 
+    public class Pin_request : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -28,7 +29,7 @@ namespace Marqeta.Core.Sdk.Models {
         public string Pin { get; set; }
 #endif
         /// <summary>
-        /// Instantiates a new <see cref="Pin_request"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Models.Pin_request"/> and sets the default values.
         /// </summary>
         public Pin_request()
         {
@@ -37,12 +38,12 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="Pin_request"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Models.Pin_request"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static Pin_request CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static Marqeta.Core.Sdk.Models.Pin_request CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-            return new Pin_request();
+            return new Marqeta.Core.Sdk.Models.Pin_request();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -52,8 +53,8 @@ namespace Marqeta.Core.Sdk.Models {
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                {"control_token", n => { ControlToken = n.GetStringValue(); } },
-                {"pin", n => { Pin = n.GetStringValue(); } },
+                { "control_token", n => { ControlToken = n.GetStringValue(); } },
+                { "pin", n => { Pin = n.GetStringValue(); } },
             };
         }
         /// <summary>

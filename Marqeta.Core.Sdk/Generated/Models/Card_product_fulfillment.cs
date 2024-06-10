@@ -4,11 +4,12 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System;
-namespace Marqeta.Core.Sdk.Models {
+namespace Marqeta.Core.Sdk.Models
+{
     /// <summary>
     /// Determines physical characteristics of a card, along with its bulk shipment information.
     /// </summary>
-    public class Card_product_fulfillment : IAdditionalDataHolder, IParsable 
+    public class Card_product_fulfillment : IAdditionalDataHolder, IParsable
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
@@ -29,15 +30,15 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>Specifies personalized attributes to be added to the card.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public Card_personalization? CardPersonalization { get; set; }
+        public Marqeta.Core.Sdk.Models.Card_personalization? CardPersonalization { get; set; }
 #nullable restore
 #else
-        public Card_personalization CardPersonalization { get; set; }
+        public Marqeta.Core.Sdk.Models.Card_personalization CardPersonalization { get; set; }
 #endif
         /// <summary>Enables offline personal identification number (PIN) verification for Europay Mastercard and Visa (EMV, or &quot;chip-and-PIN&quot;) card payments.</summary>
         public bool? EnableOfflinePin { get; set; }
         /// <summary>Specifies the fulfillment provider.You can work with providers located in North America, Europe, South America, and the Asia-Pacific region.For more information, see &lt;&lt;/developer-guides/managing-physical-cards#_fulfillment_providers_by_location, Fulfillment providers by location&gt;&gt;.*NOTE:* Expedited processing is available for cards that are fulfilled by link:https://www.arroweye.com/[Arroweye Solutions, window=&quot;_blank&quot;], link:https://www.gi-de.com/[G+D, window=&quot;_blank&quot;], link:http://www.idemia.com[IDEMIA, window=&quot;_blank&quot;], and link:http://perfectplastic.com/[Perfect Plastic Printing, window=&quot;_blank&quot;].You can expedite an order&apos;s processing by using the `expedite` field of the &lt;&lt;/core-api/cards, card&gt;&gt; or &lt;&lt;/core-api/bulk-card-orders, bulkissuance&gt;&gt; object.Contact your Marqeta representative for information regarding the cost of expedited service.</summary>
-        public Card_product_fulfillment_fulfillment_provider? FulfillmentProvider { get; set; }
+        public Marqeta.Core.Sdk.Models.Card_product_fulfillment_fulfillment_provider? FulfillmentProvider { get; set; }
         /// <summary>Card fulfillment provider&apos;s package ID.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -55,7 +56,7 @@ namespace Marqeta.Core.Sdk.Models {
         public string PanLength { get; set; }
 #endif
         /// <summary>Specifies the physical form cards of this card product type will take.</summary>
-        public Card_product_fulfillment_payment_instrument? PaymentInstrument { get; set; }
+        public Marqeta.Core.Sdk.Models.Card_product_fulfillment_payment_instrument? PaymentInstrument { get; set; }
         /// <summary>Specifies shipping details for the order.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -67,25 +68,25 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>A value of `true` sets the text in the `fulfillment.card_personalization.text.name_line_1` and `name_line_2` fields to all uppercase letters.A value of `false` leaves the text in its original state.</summary>
         public bool? UppercaseNameLines { get; set; }
         /// <summary>
-        /// Instantiates a new <see cref="Card_product_fulfillment"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Models.Card_product_fulfillment"/> and sets the default values.
         /// </summary>
         public Card_product_fulfillment()
         {
             AdditionalData = new Dictionary<string, object>();
-            FulfillmentProvider = Card_product_fulfillment_fulfillment_provider.PERFECTPLASTIC;
+            FulfillmentProvider = Marqeta.Core.Sdk.Models.Card_product_fulfillment_fulfillment_provider.PERFECTPLASTIC;
             PackageId = "0";
             PanLength = "16";
-            PaymentInstrument = Card_product_fulfillment_payment_instrument.PHYSICAL_MSR;
+            PaymentInstrument = Marqeta.Core.Sdk.Models.Card_product_fulfillment_payment_instrument.PHYSICAL_MSR;
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="Card_product_fulfillment"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Models.Card_product_fulfillment"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static Card_product_fulfillment CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static Marqeta.Core.Sdk.Models.Card_product_fulfillment CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-            return new Card_product_fulfillment();
+            return new Marqeta.Core.Sdk.Models.Card_product_fulfillment();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -95,18 +96,18 @@ namespace Marqeta.Core.Sdk.Models {
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                {"all_zero_card_security_code", n => { AllZeroCardSecurityCode = n.GetBoolValue(); } },
-                {"allow_card_creation", n => { AllowCardCreation = n.GetBoolValue(); } },
-                {"bin_prefix", n => { BinPrefix = n.GetStringValue(); } },
-                {"bulk_ship", n => { BulkShip = n.GetBoolValue(); } },
-                {"card_personalization", n => { CardPersonalization = n.GetObjectValue<Card_personalization>(Card_personalization.CreateFromDiscriminatorValue); } },
-                {"enable_offline_pin", n => { EnableOfflinePin = n.GetBoolValue(); } },
-                {"fulfillment_provider", n => { FulfillmentProvider = n.GetEnumValue<Card_product_fulfillment_fulfillment_provider>(); } },
-                {"package_id", n => { PackageId = n.GetStringValue(); } },
-                {"pan_length", n => { PanLength = n.GetStringValue(); } },
-                {"payment_instrument", n => { PaymentInstrument = n.GetEnumValue<Card_product_fulfillment_payment_instrument>(); } },
-                {"shipping", n => { Shipping = n.GetObjectValue<Marqeta.Core.Sdk.Models.Shipping>(Marqeta.Core.Sdk.Models.Shipping.CreateFromDiscriminatorValue); } },
-                {"uppercase_name_lines", n => { UppercaseNameLines = n.GetBoolValue(); } },
+                { "all_zero_card_security_code", n => { AllZeroCardSecurityCode = n.GetBoolValue(); } },
+                { "allow_card_creation", n => { AllowCardCreation = n.GetBoolValue(); } },
+                { "bin_prefix", n => { BinPrefix = n.GetStringValue(); } },
+                { "bulk_ship", n => { BulkShip = n.GetBoolValue(); } },
+                { "card_personalization", n => { CardPersonalization = n.GetObjectValue<Marqeta.Core.Sdk.Models.Card_personalization>(Marqeta.Core.Sdk.Models.Card_personalization.CreateFromDiscriminatorValue); } },
+                { "enable_offline_pin", n => { EnableOfflinePin = n.GetBoolValue(); } },
+                { "fulfillment_provider", n => { FulfillmentProvider = n.GetEnumValue<Marqeta.Core.Sdk.Models.Card_product_fulfillment_fulfillment_provider>(); } },
+                { "package_id", n => { PackageId = n.GetStringValue(); } },
+                { "pan_length", n => { PanLength = n.GetStringValue(); } },
+                { "payment_instrument", n => { PaymentInstrument = n.GetEnumValue<Marqeta.Core.Sdk.Models.Card_product_fulfillment_payment_instrument>(); } },
+                { "shipping", n => { Shipping = n.GetObjectValue<Marqeta.Core.Sdk.Models.Shipping>(Marqeta.Core.Sdk.Models.Shipping.CreateFromDiscriminatorValue); } },
+                { "uppercase_name_lines", n => { UppercaseNameLines = n.GetBoolValue(); } },
             };
         }
         /// <summary>
@@ -120,12 +121,12 @@ namespace Marqeta.Core.Sdk.Models {
             writer.WriteBoolValue("all_zero_card_security_code", AllZeroCardSecurityCode);
             writer.WriteStringValue("bin_prefix", BinPrefix);
             writer.WriteBoolValue("bulk_ship", BulkShip);
-            writer.WriteObjectValue<Card_personalization>("card_personalization", CardPersonalization);
+            writer.WriteObjectValue<Marqeta.Core.Sdk.Models.Card_personalization>("card_personalization", CardPersonalization);
             writer.WriteBoolValue("enable_offline_pin", EnableOfflinePin);
-            writer.WriteEnumValue<Card_product_fulfillment_fulfillment_provider>("fulfillment_provider", FulfillmentProvider);
+            writer.WriteEnumValue<Marqeta.Core.Sdk.Models.Card_product_fulfillment_fulfillment_provider>("fulfillment_provider", FulfillmentProvider);
             writer.WriteStringValue("package_id", PackageId);
             writer.WriteStringValue("pan_length", PanLength);
-            writer.WriteEnumValue<Card_product_fulfillment_payment_instrument>("payment_instrument", PaymentInstrument);
+            writer.WriteEnumValue<Marqeta.Core.Sdk.Models.Card_product_fulfillment_payment_instrument>("payment_instrument", PaymentInstrument);
             writer.WriteObjectValue<Marqeta.Core.Sdk.Models.Shipping>("shipping", Shipping);
             writer.WriteBoolValue("uppercase_name_lines", UppercaseNameLines);
             writer.WriteAdditionalData(AdditionalData);

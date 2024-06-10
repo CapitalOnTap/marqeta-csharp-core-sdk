@@ -10,39 +10,40 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using System;
-namespace Marqeta.Core.Sdk.Simulate {
+namespace Marqeta.Core.Sdk.Simulate
+{
     /// <summary>
     /// Builds and executes requests for operations under \simulate
     /// </summary>
-    public class SimulateRequestBuilder : BaseRequestBuilder 
+    public class SimulateRequestBuilder : BaseRequestBuilder
     {
         /// <summary>The authorization property</summary>
-        public AuthorizationRequestBuilder Authorization
+        public Marqeta.Core.Sdk.Simulate.Authorization.AuthorizationRequestBuilder Authorization
         {
-            get => new AuthorizationRequestBuilder(PathParameters, RequestAdapter);
+            get => new Marqeta.Core.Sdk.Simulate.Authorization.AuthorizationRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The clearing property</summary>
-        public ClearingRequestBuilder Clearing
+        public Marqeta.Core.Sdk.Simulate.Clearing.ClearingRequestBuilder Clearing
         {
-            get => new ClearingRequestBuilder(PathParameters, RequestAdapter);
+            get => new Marqeta.Core.Sdk.Simulate.Clearing.ClearingRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The directdeposits property</summary>
-        public DirectdepositsRequestBuilder Directdeposits
+        public Marqeta.Core.Sdk.Simulate.Directdeposits.DirectdepositsRequestBuilder Directdeposits
         {
-            get => new DirectdepositsRequestBuilder(PathParameters, RequestAdapter);
+            get => new Marqeta.Core.Sdk.Simulate.Directdeposits.DirectdepositsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The financial property</summary>
-        public FinancialRequestBuilder Financial
+        public Marqeta.Core.Sdk.Simulate.Financial.FinancialRequestBuilder Financial
         {
-            get => new FinancialRequestBuilder(PathParameters, RequestAdapter);
+            get => new Marqeta.Core.Sdk.Simulate.Financial.FinancialRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The reversal property</summary>
-        public ReversalRequestBuilder Reversal
+        public Marqeta.Core.Sdk.Simulate.Reversal.ReversalRequestBuilder Reversal
         {
-            get => new ReversalRequestBuilder(PathParameters, RequestAdapter);
+            get => new Marqeta.Core.Sdk.Simulate.Reversal.ReversalRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>
-        /// Instantiates a new <see cref="SimulateRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Simulate.SimulateRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
@@ -50,7 +51,7 @@ namespace Marqeta.Core.Sdk.Simulate {
         {
         }
         /// <summary>
-        /// Instantiates a new <see cref="SimulateRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Simulate.SimulateRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>

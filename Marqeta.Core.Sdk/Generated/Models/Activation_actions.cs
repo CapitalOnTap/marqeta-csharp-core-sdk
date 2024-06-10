@@ -4,11 +4,12 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System;
-namespace Marqeta.Core.Sdk.Models {
+namespace Marqeta.Core.Sdk.Models
+{
     /// <summary>
     /// Defines actions to execute when the card is activated.The fields in this object are mutually exclusive.
     /// </summary>
-    public class Activation_actions : IAdditionalDataHolder, IParsable 
+    public class Activation_actions : IAdditionalDataHolder, IParsable
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
@@ -23,7 +24,7 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>If you are reissuing a card, the source card is terminated by default.To prevent the source card from being terminated, set this field to `false`.Only relevant when `reissue_pan_from_card_token` is set.</summary>
         public bool? TerminateReissuedSourceCard { get; set; }
         /// <summary>
-        /// Instantiates a new <see cref="Activation_actions"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Models.Activation_actions"/> and sets the default values.
         /// </summary>
         public Activation_actions()
         {
@@ -32,12 +33,12 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="Activation_actions"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Models.Activation_actions"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static Activation_actions CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static Marqeta.Core.Sdk.Models.Activation_actions CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-            return new Activation_actions();
+            return new Marqeta.Core.Sdk.Models.Activation_actions();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -47,8 +48,8 @@ namespace Marqeta.Core.Sdk.Models {
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                {"swap_digital_wallet_tokens_from_card_token", n => { SwapDigitalWalletTokensFromCardToken = n.GetStringValue(); } },
-                {"terminate_reissued_source_card", n => { TerminateReissuedSourceCard = n.GetBoolValue(); } },
+                { "swap_digital_wallet_tokens_from_card_token", n => { SwapDigitalWalletTokensFromCardToken = n.GetStringValue(); } },
+                { "terminate_reissued_source_card", n => { TerminateReissuedSourceCard = n.GetBoolValue(); } },
             };
         }
         /// <summary>

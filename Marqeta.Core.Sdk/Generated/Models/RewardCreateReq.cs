@@ -4,9 +4,10 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System;
-namespace Marqeta.Core.Sdk.Models {
+namespace Marqeta.Core.Sdk.Models
+{
     #pragma warning disable CS1591
-    public class RewardCreateReq : IAdditionalDataHolder, IParsable 
+    public class RewardCreateReq : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -40,7 +41,7 @@ namespace Marqeta.Core.Sdk.Models {
         public string Token { get; set; }
 #endif
         /// <summary>
-        /// Instantiates a new <see cref="RewardCreateReq"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Models.RewardCreateReq"/> and sets the default values.
         /// </summary>
         public RewardCreateReq()
         {
@@ -50,12 +51,12 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="RewardCreateReq"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Models.RewardCreateReq"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static RewardCreateReq CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static Marqeta.Core.Sdk.Models.RewardCreateReq CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-            return new RewardCreateReq();
+            return new Marqeta.Core.Sdk.Models.RewardCreateReq();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -65,11 +66,11 @@ namespace Marqeta.Core.Sdk.Models {
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                {"amount", n => { Amount = n.GetDoubleValue(); } },
-                {"currency_code", n => { CurrencyCode = n.GetEnumValue<CurrencyCode>(); } },
-                {"description", n => { Description = n.GetStringValue(); } },
-                {"note", n => { Note = n.GetStringValue(); } },
-                {"token", n => { Token = n.GetStringValue(); } },
+                { "amount", n => { Amount = n.GetDoubleValue(); } },
+                { "currency_code", n => { CurrencyCode = n.GetEnumValue<Marqeta.Core.Sdk.Models.CurrencyCode>(); } },
+                { "description", n => { Description = n.GetStringValue(); } },
+                { "note", n => { Note = n.GetStringValue(); } },
+                { "token", n => { Token = n.GetStringValue(); } },
             };
         }
         /// <summary>
@@ -80,7 +81,7 @@ namespace Marqeta.Core.Sdk.Models {
         {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
             writer.WriteDoubleValue("amount", Amount);
-            writer.WriteEnumValue<CurrencyCode>("currency_code", CurrencyCode);
+            writer.WriteEnumValue<Marqeta.Core.Sdk.Models.CurrencyCode>("currency_code", CurrencyCode);
             writer.WriteStringValue("description", Description);
             writer.WriteStringValue("note", Note);
             writer.WriteStringValue("token", Token);

@@ -4,9 +4,10 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System;
-namespace Marqeta.Core.Sdk.Models {
+namespace Marqeta.Core.Sdk.Models
+{
     #pragma warning disable CS1591
-    public class DirectDepositRequest : IAdditionalDataHolder, IParsable 
+    public class DirectDepositRequest : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
     {
         /// <summary>The account_number property</summary>
@@ -90,9 +91,9 @@ namespace Marqeta.Core.Sdk.Models {
         public string Token { get; set; }
 #endif
         /// <summary>The type property</summary>
-        public DirectDepositRequest_type? Type { get; set; }
+        public Marqeta.Core.Sdk.Models.DirectDepositRequest_type? Type { get; set; }
         /// <summary>
-        /// Instantiates a new <see cref="DirectDepositRequest"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Models.DirectDepositRequest"/> and sets the default values.
         /// </summary>
         public DirectDepositRequest()
         {
@@ -101,12 +102,12 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="DirectDepositRequest"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Models.DirectDepositRequest"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static DirectDepositRequest CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static Marqeta.Core.Sdk.Models.DirectDepositRequest CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-            return new DirectDepositRequest();
+            return new Marqeta.Core.Sdk.Models.DirectDepositRequest();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -116,19 +117,19 @@ namespace Marqeta.Core.Sdk.Models {
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                {"account_number", n => { AccountNumber = n.GetStringValue(); } },
-                {"amount", n => { Amount = n.GetDoubleValue(); } },
-                {"company_discretionary_data", n => { CompanyDiscretionaryData = n.GetStringValue(); } },
-                {"company_entry_description", n => { CompanyEntryDescription = n.GetStringValue(); } },
-                {"company_identification", n => { CompanyIdentification = n.GetStringValue(); } },
-                {"company_name", n => { CompanyName = n.GetStringValue(); } },
-                {"earlyPayEligible", n => { EarlyPayEligible = n.GetBoolValue(); } },
-                {"individual_identification_number", n => { IndividualIdentificationNumber = n.GetStringValue(); } },
-                {"individual_name", n => { IndividualName = n.GetStringValue(); } },
-                {"settlement_date", n => { SettlementDate = n.GetDateTimeOffsetValue(); } },
-                {"standard_entry_class_code", n => { StandardEntryClassCode = n.GetStringValue(); } },
-                {"token", n => { Token = n.GetStringValue(); } },
-                {"type", n => { Type = n.GetEnumValue<DirectDepositRequest_type>(); } },
+                { "account_number", n => { AccountNumber = n.GetStringValue(); } },
+                { "amount", n => { Amount = n.GetDoubleValue(); } },
+                { "company_discretionary_data", n => { CompanyDiscretionaryData = n.GetStringValue(); } },
+                { "company_entry_description", n => { CompanyEntryDescription = n.GetStringValue(); } },
+                { "company_identification", n => { CompanyIdentification = n.GetStringValue(); } },
+                { "company_name", n => { CompanyName = n.GetStringValue(); } },
+                { "earlyPayEligible", n => { EarlyPayEligible = n.GetBoolValue(); } },
+                { "individual_identification_number", n => { IndividualIdentificationNumber = n.GetStringValue(); } },
+                { "individual_name", n => { IndividualName = n.GetStringValue(); } },
+                { "settlement_date", n => { SettlementDate = n.GetDateTimeOffsetValue(); } },
+                { "standard_entry_class_code", n => { StandardEntryClassCode = n.GetStringValue(); } },
+                { "token", n => { Token = n.GetStringValue(); } },
+                { "type", n => { Type = n.GetEnumValue<Marqeta.Core.Sdk.Models.DirectDepositRequest_type>(); } },
             };
         }
         /// <summary>
@@ -150,7 +151,7 @@ namespace Marqeta.Core.Sdk.Models {
             writer.WriteDateTimeOffsetValue("settlement_date", SettlementDate);
             writer.WriteStringValue("standard_entry_class_code", StandardEntryClassCode);
             writer.WriteStringValue("token", Token);
-            writer.WriteEnumValue<DirectDepositRequest_type>("type", Type);
+            writer.WriteEnumValue<Marqeta.Core.Sdk.Models.DirectDepositRequest_type>("type", Type);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

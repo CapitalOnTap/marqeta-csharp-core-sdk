@@ -4,18 +4,19 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System;
-namespace Marqeta.Core.Sdk.Models {
+namespace Marqeta.Core.Sdk.Models
+{
     /// <summary>
     /// Contains information on a bundle transition.
     /// </summary>
-    public class BundleTransitionReq : IAdditionalDataHolder, IParsable 
+    public class BundleTransitionReq : IAdditionalDataHolder, IParsable
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Status of the bundle.* `DRAFT` - The bundle is in the process of being created.* `PENDING_APPROVAL` - The bundle has been created and is awaiting approval.* `SENT_FOR_REVISION` - The bundle has been returned for revision.* `ACTIVE` - The bundle is active.* `REJECTED` - The bundle has been rejected; this status cannot be changed.* `ARCHIVED` - The previously active bundle has been archived.* `APPROVED` - The bundle has been approved (after having been sent for approval).</summary>
-        public BundleResourceStatus? Status { get; set; }
+        public Marqeta.Core.Sdk.Models.BundleResourceStatus? Status { get; set; }
         /// <summary>
-        /// Instantiates a new <see cref="BundleTransitionReq"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Models.BundleTransitionReq"/> and sets the default values.
         /// </summary>
         public BundleTransitionReq()
         {
@@ -24,12 +25,12 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="BundleTransitionReq"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Models.BundleTransitionReq"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static BundleTransitionReq CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static Marqeta.Core.Sdk.Models.BundleTransitionReq CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-            return new BundleTransitionReq();
+            return new Marqeta.Core.Sdk.Models.BundleTransitionReq();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -39,7 +40,7 @@ namespace Marqeta.Core.Sdk.Models {
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                {"status", n => { Status = n.GetEnumValue<BundleResourceStatus>(); } },
+                { "status", n => { Status = n.GetEnumValue<Marqeta.Core.Sdk.Models.BundleResourceStatus>(); } },
             };
         }
         /// <summary>
@@ -49,7 +50,7 @@ namespace Marqeta.Core.Sdk.Models {
         public virtual void Serialize(ISerializationWriter writer)
         {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
-            writer.WriteEnumValue<BundleResourceStatus>("status", Status);
+            writer.WriteEnumValue<Marqeta.Core.Sdk.Models.BundleResourceStatus>("status", Status);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

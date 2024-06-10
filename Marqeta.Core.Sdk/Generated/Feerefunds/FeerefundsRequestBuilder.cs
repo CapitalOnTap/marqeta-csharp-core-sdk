@@ -8,14 +8,15 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Threading;
 using System;
-namespace Marqeta.Core.Sdk.Feerefunds {
+namespace Marqeta.Core.Sdk.Feerefunds
+{
     /// <summary>
     /// Builds and executes requests for operations under \feerefunds
     /// </summary>
-    public class FeerefundsRequestBuilder : BaseRequestBuilder 
+    public class FeerefundsRequestBuilder : BaseRequestBuilder
     {
         /// <summary>
-        /// Instantiates a new <see cref="FeerefundsRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Feerefunds.FeerefundsRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
@@ -23,7 +24,7 @@ namespace Marqeta.Core.Sdk.Feerefunds {
         {
         }
         /// <summary>
-        /// Instantiates a new <see cref="FeerefundsRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Feerefunds.FeerefundsRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
@@ -33,27 +34,27 @@ namespace Marqeta.Core.Sdk.Feerefunds {
         /// <summary>
         /// Use this endpoint to create a fee refund.Include the fee charge `token` path parameter to specify the fee to return.If there are insufficient funds in your fee account to refund the fee, funds are drawn from your program reserve account.
         /// </summary>
-        /// <returns>A <see cref="Fee_transfer_response"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Models.Fee_transfer_response"/></returns>
         /// <param name="body">Specifies the fee to refund.</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        /// <exception cref="ApiError">When receiving a 4XX or 5XX status code</exception>
+        /// <exception cref="Marqeta.Core.Sdk.Models.ApiError">When receiving a 4XX or 5XX status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<Fee_transfer_response?> PostAsync(Fee_refund_request body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<Marqeta.Core.Sdk.Models.Fee_transfer_response?> PostAsync(Marqeta.Core.Sdk.Models.Fee_refund_request body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<Fee_transfer_response> PostAsync(Fee_refund_request body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<Marqeta.Core.Sdk.Models.Fee_transfer_response> PostAsync(Marqeta.Core.Sdk.Models.Fee_refund_request body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             _ = body ?? throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPostRequestInformation(body, requestConfiguration);
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
-                {"XXX", ApiError.CreateFromDiscriminatorValue},
+                { "XXX", Marqeta.Core.Sdk.Models.ApiError.CreateFromDiscriminatorValue },
             };
-            return await RequestAdapter.SendAsync<Fee_transfer_response>(requestInfo, Fee_transfer_response.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<Marqeta.Core.Sdk.Models.Fee_transfer_response>(requestInfo, Marqeta.Core.Sdk.Models.Fee_transfer_response.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Use this endpoint to create a fee refund.Include the fee charge `token` path parameter to specify the fee to return.If there are insufficient funds in your fee account to refund the fee, funds are drawn from your program reserve account.
@@ -63,11 +64,11 @@ namespace Marqeta.Core.Sdk.Feerefunds {
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToPostRequestInformation(Fee_refund_request body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
+        public RequestInformation ToPostRequestInformation(Marqeta.Core.Sdk.Models.Fee_refund_request body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
         {
 #nullable restore
 #else
-        public RequestInformation ToPostRequestInformation(Fee_refund_request body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
+        public RequestInformation ToPostRequestInformation(Marqeta.Core.Sdk.Models.Fee_refund_request body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
         {
 #endif
             _ = body ?? throw new ArgumentNullException(nameof(body));
@@ -80,11 +81,11 @@ namespace Marqeta.Core.Sdk.Feerefunds {
         /// <summary>
         /// Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
         /// </summary>
-        /// <returns>A <see cref="FeerefundsRequestBuilder"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Feerefunds.FeerefundsRequestBuilder"/></returns>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
-        public FeerefundsRequestBuilder WithUrl(string rawUrl)
+        public Marqeta.Core.Sdk.Feerefunds.FeerefundsRequestBuilder WithUrl(string rawUrl)
         {
-            return new FeerefundsRequestBuilder(rawUrl, RequestAdapter);
+            return new Marqeta.Core.Sdk.Feerefunds.FeerefundsRequestBuilder(rawUrl, RequestAdapter);
         }
     }
 }

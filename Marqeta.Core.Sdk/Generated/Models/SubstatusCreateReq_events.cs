@@ -4,28 +4,29 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System;
-namespace Marqeta.Core.Sdk.Models {
+namespace Marqeta.Core.Sdk.Models
+{
     #pragma warning disable CS1591
-    public class SubstatusCreateReq_events : IAdditionalDataHolder, IParsable 
+    public class SubstatusCreateReq_events : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
     {
         /// <summary>Details of an event related to a substatus.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public SubstatusEventDetails? Activation { get; set; }
+        public Marqeta.Core.Sdk.Models.SubstatusEventDetails? Activation { get; set; }
 #nullable restore
 #else
-        public SubstatusEventDetails Activation { get; set; }
+        public Marqeta.Core.Sdk.Models.SubstatusEventDetails Activation { get; set; }
 #endif
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Details of an event related to a substatus.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public SubstatusEventDetails? Deactivation { get; set; }
+        public Marqeta.Core.Sdk.Models.SubstatusEventDetails? Deactivation { get; set; }
 #nullable restore
 #else
-        public SubstatusEventDetails Deactivation { get; set; }
+        public Marqeta.Core.Sdk.Models.SubstatusEventDetails Deactivation { get; set; }
 #endif
         /// <summary>State of the event.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -36,7 +37,7 @@ namespace Marqeta.Core.Sdk.Models {
         public string State { get; set; }
 #endif
         /// <summary>
-        /// Instantiates a new <see cref="SubstatusCreateReq_events"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Models.SubstatusCreateReq_events"/> and sets the default values.
         /// </summary>
         public SubstatusCreateReq_events()
         {
@@ -45,12 +46,12 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="SubstatusCreateReq_events"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Models.SubstatusCreateReq_events"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static SubstatusCreateReq_events CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static Marqeta.Core.Sdk.Models.SubstatusCreateReq_events CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-            return new SubstatusCreateReq_events();
+            return new Marqeta.Core.Sdk.Models.SubstatusCreateReq_events();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -60,9 +61,9 @@ namespace Marqeta.Core.Sdk.Models {
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                {"activation", n => { Activation = n.GetObjectValue<SubstatusEventDetails>(SubstatusEventDetails.CreateFromDiscriminatorValue); } },
-                {"deactivation", n => { Deactivation = n.GetObjectValue<SubstatusEventDetails>(SubstatusEventDetails.CreateFromDiscriminatorValue); } },
-                {"state", n => { State = n.GetStringValue(); } },
+                { "activation", n => { Activation = n.GetObjectValue<Marqeta.Core.Sdk.Models.SubstatusEventDetails>(Marqeta.Core.Sdk.Models.SubstatusEventDetails.CreateFromDiscriminatorValue); } },
+                { "deactivation", n => { Deactivation = n.GetObjectValue<Marqeta.Core.Sdk.Models.SubstatusEventDetails>(Marqeta.Core.Sdk.Models.SubstatusEventDetails.CreateFromDiscriminatorValue); } },
+                { "state", n => { State = n.GetStringValue(); } },
             };
         }
         /// <summary>
@@ -72,8 +73,8 @@ namespace Marqeta.Core.Sdk.Models {
         public virtual void Serialize(ISerializationWriter writer)
         {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<SubstatusEventDetails>("activation", Activation);
-            writer.WriteObjectValue<SubstatusEventDetails>("deactivation", Deactivation);
+            writer.WriteObjectValue<Marqeta.Core.Sdk.Models.SubstatusEventDetails>("activation", Activation);
+            writer.WriteObjectValue<Marqeta.Core.Sdk.Models.SubstatusEventDetails>("deactivation", Deactivation);
             writer.WriteStringValue("state", State);
             writer.WriteAdditionalData(AdditionalData);
         }

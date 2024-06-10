@@ -8,14 +8,15 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Threading;
 using System;
-namespace Marqeta.Core.Sdk.Cards.Barcode.Item {
+namespace Marqeta.Core.Sdk.Cards.Barcode.Item
+{
     /// <summary>
     /// Builds and executes requests for operations under \cards\barcode\{barcode}
     /// </summary>
-    public class WithBarcodeItemRequestBuilder : BaseRequestBuilder 
+    public class WithBarcodeItemRequestBuilder : BaseRequestBuilder
     {
         /// <summary>
-        /// Instantiates a new <see cref="WithBarcodeItemRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Cards.Barcode.Item.WithBarcodeItemRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
@@ -23,7 +24,7 @@ namespace Marqeta.Core.Sdk.Cards.Barcode.Item {
         {
         }
         /// <summary>
-        /// Instantiates a new <see cref="WithBarcodeItemRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Cards.Barcode.Item.WithBarcodeItemRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
@@ -33,25 +34,25 @@ namespace Marqeta.Core.Sdk.Cards.Barcode.Item {
         /// <summary>
         /// Retrieves a card by its barcode.This endpoint supports &lt;&lt;/core-api/field-filtering, field filtering&gt;&gt; and &lt;&lt;/core-api/object-expansion, object expansion&gt;&gt;.
         /// </summary>
-        /// <returns>A <see cref="Card_response"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Models.Card_response"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        /// <exception cref="ApiError">When receiving a 4XX or 5XX status code</exception>
+        /// <exception cref="Marqeta.Core.Sdk.Models.ApiError">When receiving a 4XX or 5XX status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<Card_response?> GetAsync(Action<RequestConfiguration<WithBarcodeItemRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<Marqeta.Core.Sdk.Models.Card_response?> GetAsync(Action<RequestConfiguration<Marqeta.Core.Sdk.Cards.Barcode.Item.WithBarcodeItemRequestBuilder.WithBarcodeItemRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<Card_response> GetAsync(Action<RequestConfiguration<WithBarcodeItemRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<Marqeta.Core.Sdk.Models.Card_response> GetAsync(Action<RequestConfiguration<Marqeta.Core.Sdk.Cards.Barcode.Item.WithBarcodeItemRequestBuilder.WithBarcodeItemRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
-                {"XXX", ApiError.CreateFromDiscriminatorValue},
+                { "XXX", Marqeta.Core.Sdk.Models.ApiError.CreateFromDiscriminatorValue },
             };
-            return await RequestAdapter.SendAsync<Card_response>(requestInfo, Card_response.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<Marqeta.Core.Sdk.Models.Card_response>(requestInfo, Marqeta.Core.Sdk.Models.Card_response.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Retrieves a card by its barcode.This endpoint supports &lt;&lt;/core-api/field-filtering, field filtering&gt;&gt; and &lt;&lt;/core-api/object-expansion, object expansion&gt;&gt;.
@@ -60,11 +61,11 @@ namespace Marqeta.Core.Sdk.Cards.Barcode.Item {
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<WithBarcodeItemRequestBuilderGetQueryParameters>>? requestConfiguration = default)
+        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<Marqeta.Core.Sdk.Cards.Barcode.Item.WithBarcodeItemRequestBuilder.WithBarcodeItemRequestBuilderGetQueryParameters>>? requestConfiguration = default)
         {
 #nullable restore
 #else
-        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<WithBarcodeItemRequestBuilderGetQueryParameters>> requestConfiguration = default)
+        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<Marqeta.Core.Sdk.Cards.Barcode.Item.WithBarcodeItemRequestBuilder.WithBarcodeItemRequestBuilderGetQueryParameters>> requestConfiguration = default)
         {
 #endif
             var requestInfo = new RequestInformation(Method.GET, UrlTemplate, PathParameters);
@@ -75,11 +76,11 @@ namespace Marqeta.Core.Sdk.Cards.Barcode.Item {
         /// <summary>
         /// Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
         /// </summary>
-        /// <returns>A <see cref="WithBarcodeItemRequestBuilder"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Cards.Barcode.Item.WithBarcodeItemRequestBuilder"/></returns>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
-        public WithBarcodeItemRequestBuilder WithUrl(string rawUrl)
+        public Marqeta.Core.Sdk.Cards.Barcode.Item.WithBarcodeItemRequestBuilder WithUrl(string rawUrl)
         {
-            return new WithBarcodeItemRequestBuilder(rawUrl, RequestAdapter);
+            return new Marqeta.Core.Sdk.Cards.Barcode.Item.WithBarcodeItemRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
         /// Retrieves a card by its barcode.This endpoint supports &lt;&lt;/core-api/field-filtering, field filtering&gt;&gt; and &lt;&lt;/core-api/object-expansion, object expansion&gt;&gt;.

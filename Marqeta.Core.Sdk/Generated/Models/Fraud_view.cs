@@ -4,40 +4,41 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System;
-namespace Marqeta.Core.Sdk.Models {
+namespace Marqeta.Core.Sdk.Models
+{
     /// <summary>
     /// Contains one or more fraud determinations by the card network that apply to either the transaction or the cardholder&apos;s account.
     /// </summary>
-    public class Fraud_view : IAdditionalDataHolder, IParsable 
+    public class Fraud_view : IAdditionalDataHolder, IParsable
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Contains one or more fraud determinations by the card network that apply to either the transaction or the cardholder&apos;s account.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public Issuer_fraud_view? IssuerProcessor { get; set; }
+        public Marqeta.Core.Sdk.Models.Issuer_fraud_view? IssuerProcessor { get; set; }
 #nullable restore
 #else
-        public Issuer_fraud_view IssuerProcessor { get; set; }
+        public Marqeta.Core.Sdk.Models.Issuer_fraud_view IssuerProcessor { get; set; }
 #endif
         /// <summary>Contains network-provided information about fraud determinations.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public Network_fraud_view? Network { get; set; }
+        public Marqeta.Core.Sdk.Models.Network_fraud_view? Network { get; set; }
 #nullable restore
 #else
-        public Network_fraud_view Network { get; set; }
+        public Marqeta.Core.Sdk.Models.Network_fraud_view Network { get; set; }
 #endif
         /// <summary>Account intelligence score information, as provided by the Mastercard network.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public Network_account_intelligence_score? NetworkAccountIntelligenceScore { get; set; }
+        public Marqeta.Core.Sdk.Models.Network_account_intelligence_score? NetworkAccountIntelligenceScore { get; set; }
 #nullable restore
 #else
-        public Network_account_intelligence_score NetworkAccountIntelligenceScore { get; set; }
+        public Marqeta.Core.Sdk.Models.Network_account_intelligence_score NetworkAccountIntelligenceScore { get; set; }
 #endif
         /// <summary>
-        /// Instantiates a new <see cref="Fraud_view"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Models.Fraud_view"/> and sets the default values.
         /// </summary>
         public Fraud_view()
         {
@@ -46,12 +47,12 @@ namespace Marqeta.Core.Sdk.Models {
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="Fraud_view"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Models.Fraud_view"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static Fraud_view CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static Marqeta.Core.Sdk.Models.Fraud_view CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-            return new Fraud_view();
+            return new Marqeta.Core.Sdk.Models.Fraud_view();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -61,9 +62,9 @@ namespace Marqeta.Core.Sdk.Models {
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                {"issuer_processor", n => { IssuerProcessor = n.GetObjectValue<Issuer_fraud_view>(Issuer_fraud_view.CreateFromDiscriminatorValue); } },
-                {"network", n => { Network = n.GetObjectValue<Network_fraud_view>(Network_fraud_view.CreateFromDiscriminatorValue); } },
-                {"network_account_intelligence_score", n => { NetworkAccountIntelligenceScore = n.GetObjectValue<Network_account_intelligence_score>(Network_account_intelligence_score.CreateFromDiscriminatorValue); } },
+                { "issuer_processor", n => { IssuerProcessor = n.GetObjectValue<Marqeta.Core.Sdk.Models.Issuer_fraud_view>(Marqeta.Core.Sdk.Models.Issuer_fraud_view.CreateFromDiscriminatorValue); } },
+                { "network", n => { Network = n.GetObjectValue<Marqeta.Core.Sdk.Models.Network_fraud_view>(Marqeta.Core.Sdk.Models.Network_fraud_view.CreateFromDiscriminatorValue); } },
+                { "network_account_intelligence_score", n => { NetworkAccountIntelligenceScore = n.GetObjectValue<Marqeta.Core.Sdk.Models.Network_account_intelligence_score>(Marqeta.Core.Sdk.Models.Network_account_intelligence_score.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -73,9 +74,9 @@ namespace Marqeta.Core.Sdk.Models {
         public virtual void Serialize(ISerializationWriter writer)
         {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<Issuer_fraud_view>("issuer_processor", IssuerProcessor);
-            writer.WriteObjectValue<Network_fraud_view>("network", Network);
-            writer.WriteObjectValue<Network_account_intelligence_score>("network_account_intelligence_score", NetworkAccountIntelligenceScore);
+            writer.WriteObjectValue<Marqeta.Core.Sdk.Models.Issuer_fraud_view>("issuer_processor", IssuerProcessor);
+            writer.WriteObjectValue<Marqeta.Core.Sdk.Models.Network_fraud_view>("network", Network);
+            writer.WriteObjectValue<Marqeta.Core.Sdk.Models.Network_account_intelligence_score>("network_account_intelligence_score", NetworkAccountIntelligenceScore);
             writer.WriteAdditionalData(AdditionalData);
         }
     }
