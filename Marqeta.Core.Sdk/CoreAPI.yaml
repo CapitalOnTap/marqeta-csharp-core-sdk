@@ -6,7 +6,7 @@ info:
   contact:
     name: Marqeta
     email: support@marqeta.com
-  version: 3.0.18
+  version: 3.0.19
 servers:
   - url: /v3
 paths:
@@ -2986,6 +2986,66 @@ paths:
                 $ref: '#/components/schemas/ApiError'
       security:
         - zionToken: [ ]
+  /admin/programs/funding:
+    get:
+      tags:
+        - ProgramFunding
+      summary: List program fundings
+      description: Retrieve an array of program funding entries.
+      operationId: getProgramFundings
+      parameters:
+        - name: count
+          in: query
+          description: Number of program funding resources to retrieve.
+          style: form
+          schema:
+            maximum: 100
+            minimum: 1
+            type: integer
+            default: 5
+        - name: start_index
+          in: query
+          description: Sort order index of the first resource in the returned array.
+          style: form
+          schema:
+            minimum: 0
+            type: integer
+            default: 0
+        - name: start_date
+          in: query
+          description: Start date for filtering program funding entries.
+          style: form
+          schema:
+            type: string
+            example: '2014-01-01'
+        - name: end_date
+          in: query
+          description: End date for filtering program funding entries.
+          style: form
+          schema:
+            type: string
+            example: '2014-04-01'
+        - name: short_code
+          in: query
+          description: Short code for filtering program funding entries.
+          style: form
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Expected response to a valid request.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProgramFundingPage'
+        default:
+          description: Error response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+      security:
+        - zionToken: [ ]
   /admin/replayfailedstatements:
     post:
       tags:
@@ -3672,7 +3732,7 @@ paths:
             type: string
         - name: sort_by
           in: query
-          description: 'Field on which to sort Use any field in the resource model, or one of the system fields `lastModifiedTime` or `createdTime`. Prefix the field name with a hyphen (`-`) to sort in descending order. Omit the hyphen to sort in ascending order.'
+          description: "Field on which to sort.\nUse any field in the resource model, or one of the system fields `lastModifiedTime` or `createdTime`.\nPrefix the field name with a hyphen (`-`) to sort in descending order.\nOmit the hyphen to sort in ascending order."
           style: form
           schema:
             type: string
@@ -3728,6 +3788,39 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ApiError'
+  /banktransfers/ach/earlyfunds:
+    post:
+      tags:
+        - Funding via ACH (Beta)
+      summary: Apply a provisional credit to ACH transfer
+      description: Applies a provisional credit to an ACH transfer.
+      operationId: postApplyProvisionalCreditToBankTransfer
+      requestBody:
+        description: ACH early funds request model
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/early_funds_request_model'
+        required: true
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/bank_transfer_response_model'
+        '201':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/bank_transfer_response_model'
+        default:
+          description: Error response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
   /banktransfers/ach/transitions:
     get:
       tags:
@@ -3767,7 +3860,7 @@ paths:
             default: 0
         - name: sort_by
           in: query
-          description: "Field on which to sort. Use any field in the resource model, or one of the system fields lastModifiedTime or createdTime.\nPrefix the field name with a hyphen (-) to sort in descending order.\nOmit the hyphen to sort in ascending order."
+          description: "Field on which to sort.\nUse any field in the resource model, or one of the system fields lastModifiedTime or createdTime.\nPrefix the field name with a hyphen (-) to sort in descending order.\nOmit the hyphen to sort in ascending order."
           style: form
           schema:
             type: string
@@ -10184,7 +10277,7 @@ paths:
       tags:
         - Program Reserve
       summary: Retrieve reserve account balances
-      description: Use this endpoint to return balances for your program reserve account.
+      description: Use this endpoint to return balances for your program reserve account (sometimes referred to as a _program funding account_).
       operationId: getProgramreserveBalances
       responses:
         '200':
@@ -10243,6 +10336,60 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ApiError'
+  /programs/funding:
+    get:
+      tags:
+        - ProgramFunding
+      summary: List program fundings
+      description: Retrieve an array of program funding entries.
+      operationId: getProgramFundingsByShortCode
+      parameters:
+        - name: count
+          in: query
+          description: Number of program funding resources to retrieve.
+          style: form
+          schema:
+            maximum: 100
+            minimum: 1
+            type: integer
+            default: 5
+        - name: start_index
+          in: query
+          description: Sort order index of the first resource in the returned array.
+          style: form
+          schema:
+            minimum: 0
+            type: integer
+            default: 0
+        - name: start_date
+          in: query
+          description: Start date for filtering program funding entries.
+          style: form
+          schema:
+            type: string
+            example: '2014-01-01'
+        - name: end_date
+          in: query
+          description: End date for filtering program funding entries.
+          style: form
+          schema:
+            type: string
+            example: '2014-04-01'
+      responses:
+        '200':
+          description: Expected response to a valid request.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProgramFundingPage'
+        default:
+          description: Error response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+      security:
+        - zionToken: [ ]
   /programtransfers:
     get:
       tags:
@@ -11993,6 +12140,21 @@ paths:
           style: form
           schema:
             type: boolean
+        - name: substatuses
+          in: query
+          description: "comma-deliminited list of substatuses types to include\nAllowable values:\nHARDSHIP,FRAUD,MLA,SCRA,DECEASED,BANKRUPTCY"
+          style: form
+          schema:
+            type: array
+            items:
+              enum:
+                - HARDSHIP
+                - FRAUD
+                - MLA
+                - SCRA
+                - DECEASED
+                - BANKRUPTCY
+              type: string
         - name: count
           in: query
           description: The number of resources to retrieve.
@@ -12016,10 +12178,10 @@ paths:
           style: form
           schema:
             enum:
-              - effectiveDate
-              - '-effectiveDate'
+              - createdTime
+              - '-createdTime'
             type: string
-            default: '-effectiveDate'
+            default: '-createdTime'
       responses:
         '200':
           description: Expected response to a valid request
@@ -13594,7 +13756,7 @@ paths:
       tags:
         - Webhooks
       summary: Update webhook
-      description: Updates a webhook.
+      description: "Updates a webhook.\n\nYou can also use this endpoint to disable webhooks you no longer want to receive—there is no `DELETE` method available to remove unneeded webhooks.\nTo disable a webhook, use this endpoint to set its `active` field to `false`.\n\nFor instructions on managing your webhooks via the Developer Dashboard, see the <</developer-guides/developer-tools/#_to_disable_a_webhook, Developer Tools>> guide."
       operationId: putWebhooksToken
       parameters:
         - name: token
@@ -13690,6 +13852,40 @@ paths:
       responses:
         '200':
           description: Success
+        default:
+          description: Error response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+  /transactions/authorizationreversal:
+    summary: Reverse an authorisation.
+    post:
+      tags:
+        - Transactions
+      summary: Reverse an authorisation
+      operationId: authorizationReversal
+      requestBody:
+        description: Identifies the transaction to reverse.
+        content:
+          application/json:
+            schema:
+              properties:
+                reverse_authorization_model:
+                  type: object
+                  properties:
+                    original_transaction_token:
+                      maxLength: 36
+                      minLength: 1
+                      type: string
+                      description: Identifies the transaction to reverse.
+      responses:
+        '200':
+          description: 
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/transaction_model'
         default:
           description: Error response
           content:
@@ -20515,6 +20711,75 @@ components:
           type: integer
           description: Sort order index of the first resource in the returned array.
       description: Returns paginated products.
+    ProgramFundingPage:
+      required:
+        - count
+        - data
+        - end_index
+        - is_more
+        - start_index
+      type: object
+      properties:
+        count:
+          type: integer
+          description: Number of resources returned.
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/ProgramFundingResponse'
+          description: Contains one or more program fundings.
+        end_index:
+          type: integer
+          description: Sort order index of the last resource in the returned array.
+        is_more:
+          type: boolean
+          description: A value of `true` indicates that more unreturned resources exist.
+        start_index:
+          type: integer
+          description: Sort order index of the first resource in the returned array.
+      description: Returns paginated program fundings.
+    ProgramFundingResponse:
+      required:
+        - amount
+        - created_time
+        - currency_code
+        - memo
+        - post_time
+        - short_code
+        - token
+        - updated_time
+      type: object
+      properties:
+        amount:
+          minimum: 0
+          type: number
+          description: Amount of the funding.
+        created_time:
+          type: string
+          description: Timestamp when the funding entry was created.
+          format: date-time
+        currency_code:
+          $ref: '#/components/schemas/CurrencyCode'
+        memo:
+          maxLength: 255
+          type: string
+          description: Additional notes for the funding entry.
+        post_time:
+          type: string
+          description: Timestamp when the funding entry was posted.
+          format: date-time
+        short_code:
+          type: string
+          description: Unique identifier of the program.
+        token:
+          maxLength: 36
+          type: string
+          description: Unique identifier of the funding entry.
+        updated_time:
+          type: string
+          description: Timestamp when the funding entry was last updated.
+          format: date-time
+      description: Returns details of a program funding entry.
     ProgramGatewayCreateReq:
       required:
         - basic_auth_password
@@ -21889,24 +22154,21 @@ components:
       type: object
       properties:
         attributes:
-          type: object
-          additionalProperties:
-            type: string
-          description: Dynamic attributes for the substatus.
+          type: array
+          items:
+            type: object
+            properties:
+              key:
+                type: string
+                description: The key of the attribute.
+              value:
+                type: string
+                description: The value of the attribute.
+          description: Additional dynamic attributes related to the substatus.
         events:
           type: array
           items:
-            required:
-              - activation
-            type: object
-            properties:
-              activation:
-                $ref: '#/components/schemas/SubstatusEventDetails'
-              deactivation:
-                $ref: '#/components/schemas/SubstatusEventDetails'
-              state:
-                type: string
-                description: State of the event.
+            $ref: '#/components/schemas/SubstatusEvent'
           description: List of events related to the substatus.
         resource_token:
           minLength: 1
@@ -21922,11 +22184,16 @@ components:
           maxLength: 36
           minLength: 1
           type: string
-          description: "Possible values: FRAUD, DECEASED, BANKRUPTCY, BANKRUPTCY_FILED, BANKRUPTCY_REAFFIRMED,\nBANKRUPTCY_WITHDRAWN, BANKRUPTCY_RESCINDED, BANKRUPTCY_DISCHARGED, HARDSHIP, MLA, SCRA.\n"
+          description: "Possible values: HARDSHIP, FRAUD, MLA, SCRA, DECEASED, BANKRUPTCY.\n"
+        token:
+          maxLength: 36
+          pattern: (?!^ +$)^.+$
+          type: string
+          description: Unique identifier of the substatus.
       description: Contains information relevant to creating a substatus.
-    SubstatusEventDetails:
+    SubstatusEvent:
       required:
-        - reason
+        - state
       type: object
       properties:
         channel:
@@ -21939,15 +22206,25 @@ components:
           description: The channel through which the event occurred.
         effective_date:
           type: string
-          description: 'Effective date of the event, in UTC.'
+          description: 'Effective date of the deactivation, in UTC.'
           format: date-time
         reason:
+          maxLength: 255
           type: string
           description: Reason for the event.
+        state:
+          enum:
+            - ACTIVE
+            - BANKRUPTCY_FILED
+          type: string
+          description: 'The initial state of the substatus. ACTIVE - Required for the substatuses of HARDSHIP,FRAUD,MLA,SCRA,DECEASED. BANKRUPTCY_FILED - Required for the substatus of BANKRUPTCY.'
       description: Details of an event related to a substatus.
     SubstatusEventResponseDetails:
       required:
-        - reason
+        - channel
+        - created_time
+        - effective_date
+        - state
       type: object
       properties:
         channel:
@@ -21969,6 +22246,24 @@ components:
         reason:
           type: string
           description: Reason for the event.
+        state:
+          enum:
+            - ACTIVE
+            - INACTIVE
+            - BANKRUPTCY_FILED
+            - BANKRUPTCY_WITHDRAWN
+            - BANKRUPTCY_REAFFIRMED
+            - BANKRUPTCY_REAFFIRM_RESCINDED
+            - BANKRUPTCY_DISCHARGED
+            - BANKRUPTCY_DISMISSED
+            - BANKRUPTCY_FILED_INACTIVE
+            - BANKRUPTCY_WITHDRAWN_INACTIVE
+            - BANKRUPTCY_REAFFIRMED_INACTIVE
+            - BANKRUPTCY_REAFFIRM_RESCINDED_INACTIVE
+            - BANKRUPTCY_DISCHARGED_INACTIVE
+            - BANKRUPTCY_DISMISSED_INACTIVE
+          type: string
+          description: The state of the event
       description: Details of an event related to a substatus.
     SubstatusPage:
       required:
@@ -22006,22 +22301,25 @@ components:
       type: object
       properties:
         attributes:
-          type: object
-          additionalProperties:
-            type: string
-          description: Additional dynamic attributes related to the substatus.
-        events:
           type: array
           items:
             type: object
             properties:
-              activation:
-                $ref: '#/components/schemas/SubstatusEventResponseDetails'
-              deactivation:
-                $ref: '#/components/schemas/SubstatusEventResponseDetails'
-              state:
+              key:
                 type: string
-                description: 'The state of the event (e.g., MLA, SCRA).'
+                description: The key of the attribute.
+              value:
+                type: string
+                description: The value of the attribute.
+          description: Additional dynamic attributes related to the substatus.
+        created_time:
+          type: string
+          description: 'Date and time when the substatus was created on Marqeta''s credit platform, in UTC.'
+          format: date-time
+        events:
+          type: array
+          items:
+            $ref: '#/components/schemas/SubstatusEventResponseDetails'
           description: List of events related to the substatus.
         is_active:
           type: boolean
@@ -22035,6 +22333,24 @@ components:
             - ACCOUNT
           type: string
           description: substatus resource type
+        state:
+          enum:
+            - ACTIVE
+            - INACTIVE
+            - BANKRUPTCY_FILED
+            - BANKRUPTCY_WITHDRAWN
+            - BANKRUPTCY_REAFFIRMED
+            - BANKRUPTCY_REAFFIRM_RESCINDED
+            - BANKRUPTCY_DISCHARGED
+            - BANKRUPTCY_DISMISSED
+            - BANKRUPTCY_FILED_INACTIVE
+            - BANKRUPTCY_WITHDRAWN_INACTIVE
+            - BANKRUPTCY_REAFFIRMED_INACTIVE
+            - BANKRUPTCY_REAFFIRM_RESCINDED_INACTIVE
+            - BANKRUPTCY_DISCHARGED_INACTIVE
+            - BANKRUPTCY_DISMISSED_INACTIVE
+          type: string
+          description: state of the substatus
         substatus:
           maxLength: 36
           type: string
@@ -22042,35 +22358,49 @@ components:
         token:
           type: string
           description: substatus token
+        updated_time:
+          type: string
+          description: 'Date and time when the substatus was last updated on Marqeta''s credit platform, in UTC.'
+          format: date-time
       description: Contains information about the substatus.
     SubstatusUpdateReq:
       required:
-        - deactivation
+        - state
       type: object
       properties:
-        deactivation:
-          required:
-            - reason
-          type: object
-          properties:
-            channel:
-              enum:
-                - ADMIN
-                - API
-                - FRAUD
-                - SYSTEM
-              type: string
-              description: "The channel through which deactivation is occurring:\n- **ADMIN**: Added through the Marqeta Dashboard.\n- **API**: Initiated through the Core API.\n- **FRAUD**: Determined by Marqeta or the card network.\n- **SYSTEM**: Initiated by Marqeta\n"
-            effective_date:
-              type: string
-              description: 'Effective date of the deactivation, in UTC.'
-              format: date-time
-            reason:
-              maxLength: 255
-              minLength: 1
-              type: string
-              description: Reason for deactivating the substatus.
-          description: Details of the deactivation process.
+        channel:
+          enum:
+            - ADMIN
+            - API
+            - FRAUD
+            - SYSTEM
+          type: string
+          description: "The channel through which deactivation is occurring:\n- **ADMIN**: Added through the Marqeta Dashboard.\n- **API**: Initiated through the Core API.\n- **FRAUD**: Determined by Marqeta or the card network.\n- **SYSTEM**: Initiated by Marqeta\n"
+        effective_date:
+          type: string
+          description: 'Effective date of the deactivation, in UTC.'
+          format: date-time
+        reason:
+          maxLength: 255
+          minLength: 1
+          type: string
+          description: Reason for deactivating the substatus.
+        state:
+          enum:
+            - INACTIVE
+            - BANKRUPTCY_WITHDRAWN
+            - BANKRUPTCY_REAFFIRMED
+            - BANKRUPTCY_REAFFIRM_RESCINDED
+            - BANKRUPTCY_DISCHARGED
+            - BANKRUPTCY_DISMISSED
+            - BANKRUPTCY_FILED_INACTIVE
+            - BANKRUPTCY_WITHDRAWN_INACTIVE
+            - BANKRUPTCY_REAFFIRMED_INACTIVE
+            - BANKRUPTCY_REAFFIRM_RESCINDED_INACTIVE
+            - BANKRUPTCY_DISCHARGED_INACTIVE
+            - BANKRUPTCY_DISMISSED_INACTIVE
+          type: string
+          description: The state of the substatus.
       description: Contains information relevant to deactivating a substatus.
     Success:
       type: object
@@ -26084,7 +26414,7 @@ components:
           description: Specifies the 3D Secure message version used for authentication.
         verification_result:
           type: string
-          description: "Result of cardholder authentication verification value (CAVV) or accountholder authentication value (AAV) verification performed by the card network.\n\n* `failed`\n* `not_present`\n* `not_provided`\n* `not_verified`\n* `not_verified_authentication_outage`\n* `verified`\n* `verified_amount_checked`\n* `verified_amount_greater_than_20_percent`: For Mastercard AAV verification, indicates that the original authentication amount and final authorization amount are mismatched, and that the final authorization amount exceeds the original authentication amount by more than 20%.\nThis 20% margin falls outside Mastercard's suggested tolerance for what a European cardholder might reasonably expect when the total transaction amount is not known in advance.\n* `verified_amount_less_than_20_percent`: For Mastercard AAV verification, indicates that the original authentication amount and final authorization amount are mismatched, and that the final authorization amount exceeds the original authentication amount by 20% or less.\nThis 20% margin falls within Mastercard's suggested tolerance for what a European cardholder might reasonably expect when the total transaction amount is not known in advance.\n* `not_verified_mac_key_validation_passed`: For Mastercard only.\nThis field is present when the transaction passes MAC key validation, but Dynamic Linking was not performed by the Mastercard card network due to system connectivity issues.\n* `not_verified_mac_key_validation_failed`: For Mastercard only.\nThis field is present when the transaction fails MAC key validation, and Dynamic Linking was not performed by the Mastercard card network due to system connectivity issues."
+          description: "Result of cardholder authentication verification value (CAVV) or accountholder authentication value (AAV) verification performed by the card network.\n\n* `failed`\n* `not_present`\n* `not_provided`\n* `not_verified`\n* `not_verified_authentication_outage`\n* `verified`\n* `verified_amount_checked`\n* `verified_amount_greater_than_20_percent`: For Mastercard AAV verification, indicates that the original authentication amount and final authorization amount are mismatched, and that the final authorization amount exceeds the original authentication amount by more than 20%.\nThis 20% margin falls outside Mastercard's suggested tolerance for what a European cardholder might reasonably expect when the total transaction amount is not known in advance.\n* `verified_amount_less_than_20_percent`: For Mastercard AAV verification, indicates that the original authentication amount and final authorization amount are mismatched, and that the final authorization amount exceeds the original authentication amount by 20% or less.\nThis 20% margin falls within Mastercard's suggested tolerance for what a European cardholder might reasonably expect when the total transaction amount is not known in advance.\n* `not_verified_mac_key_validation_passed`: For Mastercard only.\nThis field is present when the transaction passes MAC key validation but Dynamic Linking was not performed by the Mastercard card network due to system connectivity issues.\n* `not_verified_mac_key_validation_failed`: For Mastercard only.\nThis field is present when the transaction fails MAC key validation and Dynamic Linking was not performed by the Mastercard card network due to system connectivity issues."
         verification_value_created_by:
           type: string
           description: Transaction participant who determined the verification result.
@@ -26933,7 +27263,7 @@ components:
           description: Mechanism by which the transition was initiated.
         created_time:
           type: string
-          description: 'Date and time when the digital wallet provisioning request was created, in UTC.'
+          description: 'Date and time when the transition was created, in UTC.'
           format: date-time
         digital_wallet_token:
           $ref: '#/components/schemas/digital_wallet_token_hash'
@@ -27253,6 +27583,14 @@ components:
           properties:
             name:
               type: string
+    early_funds_request_model:
+      type: object
+      properties:
+        bank_transfer_token:
+          maxLength: 36
+          minLength: 0
+          type: string
+          description: Unique identifier of the ACH transfer.
     echo_ping_request:
       type: object
       properties:
@@ -31184,6 +31522,7 @@ components:
           description: Card acceptor's name.
         network_assigned_id:
           type: string
+          description: Identifier assigned by the card network.
         network_mid:
           type: string
           description: The merchant identifier on the card network.
@@ -31365,7 +31704,7 @@ components:
             - TRANSIT
             - EXTENDED_AUTHORIZATION
           type: string
-          description: Industry for which the transaction was originated.
+          description: 'Type of product or service being purchased, if provided by the merchant.'
         transit:
           $ref: '#/components/schemas/transit'
       description: "Contains merchant-provided metadata related to the transaction, including details about lodging- and transit-related purchases.\n\nMay be returned if the request uses Transaction Model v2 of the Marqeta Core API.\nNot returned for Transaction Model v1 requests."
@@ -32525,7 +32864,7 @@ components:
           type: array
           items:
             type: string
-          description: "Specifies the types of events for which notifications are sent.\n\nThe wildcard character `\\*` indicates that you receive all webhook notifications, or all notifications of a specified category.\nFor example, `\\*` indicates that you receive all webhook notifications; `transaction.*` indicates that you receive all `transaction` webhook notifications.\n\n*NOTE:* You can only use the wildcard character with the _base_ type events, not subcategories.\nFor example, you cannot subscribe to `cardtransition.fulfillment.\\*` events, but you can subscribe to `cardtransition.*`."
+          description: "Specifies the types of events for which notifications are sent.\n\nThe wildcard character `\\*` indicates that you receive all webhook notifications, or all notifications of a specified category.\nFor example, `*` indicates that you receive all webhook notifications; `transaction.*` indicates that you receive all `transaction` webhook notifications.\n\n*NOTE:* You can only use the wildcard character with the _base_ type events, not subcategories.\nFor example, you cannot subscribe to `cardtransition.fulfillment.\\*` events, but you can subscribe to `cardtransition.*`."
         name:
           maxLength: 64
           minLength: 1
@@ -32595,7 +32934,7 @@ components:
           type: array
           items:
             type: string
-          description: "Specifies the types of events for which notifications are sent.\n\nThe wildcard character `\\*` indicates that you receive all webhook notifications, or all notifications of a specified category.\nFor example, `\\*` indicates that you receive all webhook notifications; `transaction.*` indicates that you receive all `transaction` webhook notifications.\n\n*NOTE:* You can only use the wildcard character with the _base_ type events, not subcategories.\nFor example, you cannot subscribe to `cardtransition.fulfillment.\\*` events, but you can subscribe to `cardtransition.*`."
+          description: "Specifies the types of events for which notifications are sent.\n\nThe wildcard character `\\*` indicates that you receive all webhook notifications, or all notifications of a specified category.\nFor example, `*` indicates that you receive all webhook notifications; `transaction.*` indicates that you receive all `transaction` webhook notifications.\n\n*NOTE:* You can only use the wildcard character with the _base_ type events, not subcategories.\nFor example, you cannot subscribe to `cardtransition.fulfillment.\\*` events, but you can subscribe to `cardtransition.*`."
         name:
           maxLength: 64
           minLength: 1
@@ -32627,7 +32966,7 @@ components:
           type: array
           items:
             type: string
-          description: "Specifies the types of events for which notifications are sent.\n\nThe wildcard character `\\*` indicates that you receive all webhook notifications, or all notifications of a specified category.\nFor example, `\\*` indicates that you receive all webhook notifications; `transaction.*` indicates that you receive all `transaction` webhook notifications.\n\n*NOTE:* You can only use the wildcard character with the _base_ type events, not subcategories.\nFor example, you cannot subscribe to `cardtransition.fulfillment.\\*` events, but you can subscribe to `cardtransition.*`."
+          description: "Specifies the types of events for which notifications are sent.\n\nThe wildcard character `\\*` indicates that you receive all webhook notifications, or all notifications of a specified category.\nFor example, `*` indicates that you receive all webhook notifications; `transaction.*` indicates that you receive all `transaction` webhook notifications.\n\n*NOTE:* You can only use the wildcard character with the _base_ type events, not subcategories.\nFor example, you cannot subscribe to `cardtransition.fulfillment.\\*` events, but you can subscribe to `cardtransition.*`."
         last_modified_time:
           type: string
           description: 'Date and time when the associated object was last modified, in UTC.'
@@ -32988,7 +33327,7 @@ tags:
   - name: PINs
     description: 'Use the `/pins` endpoint to create, update, or reveal a personal identification number (PIN) for a card.'
   - name: Program Reserve
-    description: 'Use the Program Reserve API to credit or debit your program reserve account (sometimes referred to as a _program funding account_), and to return program reserve balances and transactions.'
+    description: "// Conditional snippet for beta or internal content\ninclude::../../maturity-admonition-banner.adoc[]\n\nUse the Program Reserve API to retrieve program reserve account balances and transactions."
   - name: Program Transfers
     description: "A program transfer moves funds from an account holder's general purpose account (GPA) to a program funding source.\nIn contrast to a fee transfer, the program transfer amount is specified by the transfer itself and can therefore be set dynamically.\nAn auto reload is triggered if the GPA has insufficient funds to cover the transfer amount and auto reload is enabled.\n\n[NOTE]\nThe `/programtransfers` endpoint is only available for specific, pre-approved use cases.\nFor more information about this endpoint, contact your Marqeta representative."
   - name: Real-Time Fee Groups
@@ -33008,6 +33347,6 @@ tags:
   - name: Velocity Controls
     description: "A velocity control limits how much users can spend.\nYou can configure velocity controls to limit how much users can spend and the number of transactions they can make in a given span of time.\nYou can apply velocity controls to a single user, to all users associated with a particular card product, or to all users in your program.\n\nOnly Program Managers can create or modify program-wide velocity controls.\nA `POST` or `PUT` call from a role that does not have Program Manager permissions will receive a 403 error if its `association` field is null, or if it includes all of the fields in the request body.\nAvoid this by passing a valid `user_token` or `card_product_token` in the velocity control's `association` object, indicating that the request is specific to a user or card product, and not program-wide.\nYou should also only include the specific fields you want to update, because a `PUT` or `POST` with values for all fields is interpreted as a change that requires Program Manager permissions.\n\nSee <</developer-guides/controlling-spending, Controlling Spending>> for a tutorial that walks you through the creation of a spend control.\n\n[NOTE]\nEach program supports a maximum of 90 spend controls (velocity controls and <</core-api/authorization-controls, authorization controls>> combined).\nThe limit of 90 spend controls applies at the program level only; it does not affect the number of user-level spend controls you can use."
   - name: Webhooks
-    description: "Webhooks are notifications about API events, sent as they occur.\nThe Marqeta platform sends these notifications to an endpoint that is hosted in your environment and configured to receive and process them.\n\nCreate a webhook object to represent your webhook endpoint.\nConfigure it with the URL of your webhook endpoint and a set of credentials for accessing that endpoint.\nYou can configure it to send notifications for a single event, a group of events by type, or all event types.\nTo set up multiple webhook endpoints and route different types of event notifications to each, create multiple webhook objects and configure each to send a specific type of event notification to a specific endpoint.\n\nSee <</developer-guides/about-webhooks, About Webhooks>> for information on notifications and a tutorial that walks you through the configuration of your webhook endpoint.\n\nSee <</core-api/event-types, Event Types>> for reference documentation on the types of events that the Marqeta platform supports.\n\n[NOTE]\nWebhooks URLs are cached.\nChanges made on your webhook endpoint can take up to one hour to be applied."
+    description: "// Conditional snippet for beta or internal content\ninclude::../../maturity-admonition-banner.adoc[]\n\nWebhooks are notifications about API events, sent as they occur.\nThe Marqeta platform sends these notifications to an endpoint that is hosted in your environment and configured to receive and process them.\n\nCreate a webhook object to represent your webhook endpoint.\nConfigure it with the URL of your webhook endpoint and a set of credentials for accessing that endpoint.\nYou can configure it to send notifications for a single event, a group of events by type, or all event types.\nTo set up multiple webhook endpoints and route different types of event notifications to each, create multiple webhook objects and configure each to send a specific type of event notification to a specific endpoint.\n\nSee <</developer-guides/about-webhooks, About Webhooks>> for information on notifications and a tutorial that walks you through the configuration of your webhook endpoint.\n\nSee <</core-api/event-types, Event Types>> for reference documentation on the types of events that the Marqeta platform supports.\n\n[NOTE]\nWebhooks URLs are cached.\nChanges made on your webhook endpoint can take up to one hour to be applied."
   - name: Applications
     description: "[NOTE]\nThis feature is currently in limited-availability beta and subject to change.\nTo learn more about the beta program for this feature, contact your Marqeta representative.\n\nMarqeta's credit platform's credit applications feature enables you to create and manage credit account applications and retrieve disclosures that you can show to an applicant during the application process.\n\nTo receive webhook notifications when application transition events occur, see <</core-api/event-types#_credit_application_transition_events, Credit application transition events>> in Event Types."

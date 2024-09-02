@@ -22,7 +22,7 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public Marqeta.Core.Sdk.Models.Webhook_config_model Config { get; set; }
 #endif
-        /// <summary>Specifies the types of events for which notifications are sent.The wildcard character `\*` indicates that you receive all webhook notifications, or all notifications of a specified category.For example, `\*` indicates that you receive all webhook notifications; `transaction.*` indicates that you receive all `transaction` webhook notifications.*NOTE:* You can only use the wildcard character with the _base_ type events, not subcategories.For example, you cannot subscribe to `cardtransition.fulfillment.\*` events, but you can subscribe to `cardtransition.*`.</summary>
+        /// <summary>Specifies the types of events for which notifications are sent.The wildcard character `\*` indicates that you receive all webhook notifications, or all notifications of a specified category.For example, `*` indicates that you receive all webhook notifications; `transaction.*` indicates that you receive all `transaction` webhook notifications.*NOTE:* You can only use the wildcard character with the _base_ type events, not subcategories.For example, you cannot subscribe to `cardtransition.fulfillment.\*` events, but you can subscribe to `cardtransition.*`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<string>? Events { get; set; }

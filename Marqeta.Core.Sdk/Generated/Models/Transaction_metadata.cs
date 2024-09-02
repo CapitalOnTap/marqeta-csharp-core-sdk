@@ -45,7 +45,7 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string SpecialPurchaseId { get; set; }
 #endif
-        /// <summary>Industry for which the transaction was originated.</summary>
+        /// <summary>Type of product or service being purchased, if provided by the merchant.</summary>
         public Marqeta.Core.Sdk.Models.Transaction_metadata_transaction_category? TransactionCategory { get; set; }
         /// <summary>Contains merchant-provided, transit-related metadata related to the transaction.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
