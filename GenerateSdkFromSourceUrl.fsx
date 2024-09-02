@@ -340,39 +340,46 @@ module OpenApiHelpers =
         applySchemasModifications(openApiComponents.Schemas)
 
     let private applyAuthorisationReversalAddition (paths: OpenApiPaths) =
-        // Create Response Object by building out the response reference then the schema and content and finally the actual response. 
+        // Create Response Object by building out the response reference then the schema and content and finally adding the actual response. 
         let transactionReference: OpenApiReference = new OpenApiReference()
         transactionReference.ExternalResource <- "#/components/schemas/transaction_model"
 
+        // Add above reference to schema
         let reversalPathResponseSchema: OpenApiSchema = new OpenApiSchema()
         reversalPathResponseSchema.Reference <- transactionReference
 
+        // Create media type and add schema to media type
         let reversalPathResponseMediaType: OpenApiMediaType = new OpenApiMediaType()
         reversalPathResponseMediaType.Schema <- reversalPathResponseSchema
 
+        // Add media type to response content
         let reversalPathResponseContent: Dictionary<string,OpenApiMediaType> = new Dictionary<string, OpenApiMediaType>()
         reversalPathResponseContent.Add("application/json", reversalPathResponseMediaType) 
 
+        // Create a open api response 
         let reversalPathResponse: OpenApiResponse = new OpenApiResponse()
         reversalPathResponse.Content <- reversalPathResponseContent
         reversalPathResponse.Description <- "Success"
 
+        // Reversal response list 
         let reversalPathResponseList: OpenApiResponses = new OpenApiResponses()
         reversalPathResponseList.Add("200", reversalPathResponse)
 
         // OriginalTransactionSchema - Create teh schema for the original transaction field
-        let originalTransactionProperty = new Dictionary<string, OpenApiSchema>()
         let originalTransactionSchema = new OpenApiSchema()
         originalTransactionSchema.Type <- "string"
         originalTransactionSchema.Description <- "Identifies the transaction to reverse."
         originalTransactionSchema.MaxLength <- 36
         originalTransactionSchema.MinLength <- 1
+        
+        let originalTransactionProperty = new Dictionary<string, OpenApiSchema>()
         originalTransactionProperty.Add("original_transaction_token", originalTransactionSchema)
 
         // Create the media type and schema for the request content
-        let requestBodyOpenApiMediaType = new OpenApiMediaType()
         let requestBodySchema = new OpenApiSchema()
         requestBodySchema.Properties <- originalTransactionProperty
+
+        let requestBodyOpenApiMediaType = new OpenApiMediaType()
         requestBodyOpenApiMediaType.Schema <- requestBodySchema
 
         let requestBodyContent = new Dictionary<string, OpenApiMediaType>()

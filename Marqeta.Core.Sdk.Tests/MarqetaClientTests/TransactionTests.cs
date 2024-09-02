@@ -55,10 +55,8 @@ namespace Marqeta.Core.Sdk.Tests.MarqetaClientTests
             var reversalResponse = await client.Transactions.Authorizationreversal.PostAsync(reversalRequest);
             Assert.NotNull(reversalResponse);
 
-            var updatedTransactionToken = await client.Transactions[simulateResponse1.Transaction.Token].GetAsync();
-
-
-            Assert.Equal(Transaction_model_state.CLEARED, updatedTransactionToken.State);
+            Assert.Equal(Transaction_model_type.AuthorizationReversal, reversalResponse.Type);
+            Assert.Equal(Transaction_model_state.CLEARED, reversalResponse.State);
         }
     }
 }
