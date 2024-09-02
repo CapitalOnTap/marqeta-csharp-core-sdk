@@ -339,8 +339,7 @@ module OpenApiHelpers =
     let private applyComponentsModifications (openApiComponents: OpenApiComponents) =
         applySchemasModifications(openApiComponents.Schemas)
 
-    let private applyAuthorisationReversalAddition(paths: OpenApiPaths)=
-
+    let private applyAuthorisationReversalAddition (paths: OpenApiPaths) =
         // Create Response Object by building out the response reference then the schema and content and finally the actual response. 
         let transactionReference: OpenApiReference = new OpenApiReference()
         transactionReference.ExternalResource <- "#/components/schemas/transaction_model"
@@ -351,7 +350,7 @@ module OpenApiHelpers =
         let reversalPathResponseMediaType: OpenApiMediaType = new OpenApiMediaType()
         reversalPathResponseMediaType.Schema <- reversalPathResponseSchema
 
-        let reversalPathResponseContent: Dictionary<string,OpenApiMediaType> = new Dictionary<string, OpenApiMediaType>();
+        let reversalPathResponseContent: Dictionary<string,OpenApiMediaType> = new Dictionary<string, OpenApiMediaType>()
         reversalPathResponseContent.Add("application/json", reversalPathResponseMediaType) 
 
         let reversalPathResponseList: OpenApiResponses = new OpenApiResponses()
@@ -360,7 +359,7 @@ module OpenApiHelpers =
         reversalPathResponseList.Add("200", reversalPathResponse)
 
         // OriginalTransactionSchema - Create teh schema for the original transaction field
-        let originalTransactionProperty = new Dictionary<string, OpenApiSchema>();
+        let originalTransactionProperty = new Dictionary<string, OpenApiSchema>()
         let originalTransactionSchema = new OpenApiSchema()
         originalTransactionSchema.Type <- "string"
         originalTransactionSchema.Description <- "Identifies the transaction to reverse."
@@ -369,7 +368,7 @@ module OpenApiHelpers =
         originalTransactionProperty.Add("original_transaction_token", originalTransactionSchema)
 
         // Request body content which contains the aforementioned original Transaction schema
-        let requestBodySchemaProperties= new Dictionary<string, OpenApiSchema>();
+        let requestBodySchemaProperties = new Dictionary<string, OpenApiSchema>()
         let requestBodySchemaPropertiesSchema = new OpenApiSchema()
         requestBodySchemaPropertiesSchema.Type <- "object"
         requestBodySchemaPropertiesSchema.Properties <- originalTransactionProperty
@@ -381,15 +380,13 @@ module OpenApiHelpers =
         requestBodySchema.Properties <- requestBodySchemaProperties
         requestBodyOpenApiMediaType.Schema <- requestBodySchema
 
-        let requestBodyContent = new Dictionary<string, OpenApiMediaType>();
+        let requestBodyContent = new Dictionary<string, OpenApiMediaType>()
         requestBodyContent.Add("application/json", requestBodyOpenApiMediaType)
 
         // Create the actual request
         let requestBody = new OpenApiRequestBody()
         requestBody.Description <- "Identifies the transaction to reverse."
         requestBody.Content <- requestBodyContent
-
-        // Create tag for the path. 
 
         // Create operation
         let reversalPathOperation: OpenApiOperation = new OpenApiOperation()
@@ -398,6 +395,7 @@ module OpenApiHelpers =
         reversalPathOperation.Responses <- reversalPathResponseList
         reversalPathOperation.Summary <- "Reverse an authorisation"
 
+        // Create tag for the path. 
         let reversalPathTag = new List<OpenApiTag>()
         let openApiTag = new OpenApiTag()
         openApiTag.Name <- "Transactions"
