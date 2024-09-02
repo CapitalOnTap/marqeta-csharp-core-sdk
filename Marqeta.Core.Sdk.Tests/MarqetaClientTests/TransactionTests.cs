@@ -2,6 +2,7 @@ using AutoFixture;
 using Marqeta.Core.Sdk.Models;
 using Marqeta.Core.Sdk.Tests.MarqetaClientTests.Factories;
 using Marqeta.Core.Sdk.Tests.MarqetaClientTests.Helpers;
+using Marqeta.Core.Sdk.Transactions;
 using Marqeta.Core.Sdk.Transactions.Authorizationreversal;
 using Xunit;
 
@@ -51,10 +52,13 @@ namespace Marqeta.Core.Sdk.Tests.MarqetaClientTests
                 OriginalTransactionToken = simulateResponse1.Transaction.Token
             };
 
-            var updatedResponse = await client.Transactions.Authorizationreversal.PostAsync(reversalRequest);
+            var reversalResponse = await client.Transactions.Authorizationreversal.PostAsync(reversalRequest);
+            Assert.NotNull(reversalResponse);
 
-            Assert.NotNull(updatedResponse);
-            Assert.Equal(Transaction_model_state.COMPLETION, updatedResponse.State);
+            var updatedTransactionToken = await client.Transactions[simulateResponse1.Transaction.Token].GetAsync();
+
+
+            Assert.Equal(Transaction_model_state.CLEARED, updatedTransactionToken.State);
         }
     }
 }
