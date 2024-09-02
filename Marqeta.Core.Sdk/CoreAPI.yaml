@@ -13871,17 +13871,14 @@ paths:
           application/json:
             schema:
               properties:
-                reverse_authorization_model:
-                  type: object
-                  properties:
-                    original_transaction_token:
-                      maxLength: 36
-                      minLength: 1
-                      type: string
-                      description: Identifies the transaction to reverse.
+                original_transaction_token:
+                  maxLength: 36
+                  minLength: 1
+                  type: string
+                  description: Identifies the transaction to reverse.
       responses:
         '200':
-          description: 
+          description: Success
           content:
             application/json:
               schema:

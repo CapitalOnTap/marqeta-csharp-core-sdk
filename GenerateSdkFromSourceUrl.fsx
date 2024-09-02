@@ -353,9 +353,11 @@ module OpenApiHelpers =
         let reversalPathResponseContent: Dictionary<string,OpenApiMediaType> = new Dictionary<string, OpenApiMediaType>()
         reversalPathResponseContent.Add("application/json", reversalPathResponseMediaType) 
 
-        let reversalPathResponseList: OpenApiResponses = new OpenApiResponses()
         let reversalPathResponse: OpenApiResponse = new OpenApiResponse()
         reversalPathResponse.Content <- reversalPathResponseContent
+        reversalPathResponse.Description <- "Success"
+
+        let reversalPathResponseList: OpenApiResponses = new OpenApiResponses()
         reversalPathResponseList.Add("200", reversalPathResponse)
 
         // OriginalTransactionSchema - Create teh schema for the original transaction field
@@ -367,17 +369,10 @@ module OpenApiHelpers =
         originalTransactionSchema.MinLength <- 1
         originalTransactionProperty.Add("original_transaction_token", originalTransactionSchema)
 
-        // Request body content which contains the aforementioned original Transaction schema
-        let requestBodySchemaProperties = new Dictionary<string, OpenApiSchema>()
-        let requestBodySchemaPropertiesSchema = new OpenApiSchema()
-        requestBodySchemaPropertiesSchema.Type <- "object"
-        requestBodySchemaPropertiesSchema.Properties <- originalTransactionProperty
-        requestBodySchemaProperties.Add("reverse_authorization_model", requestBodySchemaPropertiesSchema)
-        
         // Create the media type and schema for the request content
         let requestBodyOpenApiMediaType = new OpenApiMediaType()
         let requestBodySchema = new OpenApiSchema()
-        requestBodySchema.Properties <- requestBodySchemaProperties
+        requestBodySchema.Properties <- originalTransactionProperty
         requestBodyOpenApiMediaType.Schema <- requestBodySchema
 
         let requestBodyContent = new Dictionary<string, OpenApiMediaType>()

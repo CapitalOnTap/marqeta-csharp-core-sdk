@@ -12,13 +12,13 @@ namespace Marqeta.Core.Sdk.Transactions.Authorizationreversal
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>The reverse_authorization_model property</summary>
+        /// <summary>Identifies the transaction to reverse.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public Marqeta.Core.Sdk.Transactions.Authorizationreversal.AuthorizationreversalPostRequestBody_reverse_authorization_model? ReverseAuthorizationModel { get; set; }
+        public string? OriginalTransactionToken { get; set; }
 #nullable restore
 #else
-        public Marqeta.Core.Sdk.Transactions.Authorizationreversal.AuthorizationreversalPostRequestBody_reverse_authorization_model ReverseAuthorizationModel { get; set; }
+        public string OriginalTransactionToken { get; set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="Marqeta.Core.Sdk.Transactions.Authorizationreversal.AuthorizationreversalPostRequestBody"/> and sets the default values.
@@ -45,7 +45,7 @@ namespace Marqeta.Core.Sdk.Transactions.Authorizationreversal
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "reverse_authorization_model", n => { ReverseAuthorizationModel = n.GetObjectValue<Marqeta.Core.Sdk.Transactions.Authorizationreversal.AuthorizationreversalPostRequestBody_reverse_authorization_model>(Marqeta.Core.Sdk.Transactions.Authorizationreversal.AuthorizationreversalPostRequestBody_reverse_authorization_model.CreateFromDiscriminatorValue); } },
+                { "original_transaction_token", n => { OriginalTransactionToken = n.GetStringValue(); } },
             };
         }
         /// <summary>
@@ -55,7 +55,7 @@ namespace Marqeta.Core.Sdk.Transactions.Authorizationreversal
         public virtual void Serialize(ISerializationWriter writer)
         {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<Marqeta.Core.Sdk.Transactions.Authorizationreversal.AuthorizationreversalPostRequestBody_reverse_authorization_model>("reverse_authorization_model", ReverseAuthorizationModel);
+            writer.WriteStringValue("original_transaction_token", OriginalTransactionToken);
             writer.WriteAdditionalData(AdditionalData);
         }
     }
