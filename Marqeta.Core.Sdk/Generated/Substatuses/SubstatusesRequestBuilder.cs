@@ -33,7 +33,7 @@ namespace Marqeta.Core.Sdk.Substatuses
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public SubstatusesRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/substatuses{?account_token*,count*,is_active*,sort_by*,start_index*,user_token*}", pathParameters)
+        public SubstatusesRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/substatuses{?account_token*,count*,is_active*,sort_by*,start_index*,substatuses*,user_token*}", pathParameters)
         {
         }
         /// <summary>
@@ -41,7 +41,7 @@ namespace Marqeta.Core.Sdk.Substatuses
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public SubstatusesRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/substatuses{?account_token*,count*,is_active*,sort_by*,start_index*,user_token*}", rawUrl)
+        public SubstatusesRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/substatuses{?account_token*,count*,is_active*,sort_by*,start_index*,substatuses*,user_token*}", rawUrl)
         {
         }
         /// <summary>
@@ -168,6 +168,16 @@ namespace Marqeta.Core.Sdk.Substatuses
             /// <summary>Show n-th paginated page</summary>
             [QueryParameter("start_index")]
             public int? StartIndex { get; set; }
+            /// <summary>comma-deliminited list of substatuses types to includeAllowable values:HARDSHIP,FRAUD,MLA,SCRA,DECEASED,BANKRUPTCY</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            [QueryParameter("substatuses")]
+            public Marqeta.Core.Sdk.Substatuses.GetSubstatusesQueryParameterType[]? Substatuses { get; set; }
+#nullable restore
+#else
+            [QueryParameter("substatuses")]
+            public Marqeta.Core.Sdk.Substatuses.GetSubstatusesQueryParameterType[] Substatuses { get; set; }
+#endif
             /// <summary>The user token to filter by.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable

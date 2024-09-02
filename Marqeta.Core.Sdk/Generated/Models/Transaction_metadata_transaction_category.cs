@@ -3,7 +3,7 @@ using System.Runtime.Serialization;
 using System;
 namespace Marqeta.Core.Sdk.Models
 {
-    /// <summary>Industry for which the transaction was originated.</summary>
+    /// <summary>Type of product or service being purchased, if provided by the merchant.</summary>
     public enum Transaction_metadata_transaction_category
     {
         [EnumMember(Value = "RETAIL_SALE")]

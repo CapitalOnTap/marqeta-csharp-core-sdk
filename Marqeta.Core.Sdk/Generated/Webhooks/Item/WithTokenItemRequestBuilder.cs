@@ -74,7 +74,7 @@ namespace Marqeta.Core.Sdk.Webhooks.Item
             return await RequestAdapter.SendAsync<Marqeta.Core.Sdk.Models.Webhook_response_model>(requestInfo, Marqeta.Core.Sdk.Models.Webhook_response_model.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Updates a webhook.
+        /// Updates a webhook.You can also use this endpoint to disable webhooks you no longer want to receive—there is no `DELETE` method available to remove unneeded webhooks.To disable a webhook, use this endpoint to set its `active` field to `false`.For instructions on managing your webhooks via the Developer Dashboard, see the &lt;&lt;/developer-guides/developer-tools/#_to_disable_a_webhook, Developer Tools&gt;&gt; guide.
         /// </summary>
         /// <returns>A <see cref="Marqeta.Core.Sdk.Models.Webhook_response_model"/></returns>
         /// <param name="body">The request body</param>
@@ -118,7 +118,7 @@ namespace Marqeta.Core.Sdk.Webhooks.Item
             return requestInfo;
         }
         /// <summary>
-        /// Updates a webhook.
+        /// Updates a webhook.You can also use this endpoint to disable webhooks you no longer want to receive—there is no `DELETE` method available to remove unneeded webhooks.To disable a webhook, use this endpoint to set its `active` field to `false`.For instructions on managing your webhooks via the Developer Dashboard, see the &lt;&lt;/developer-guides/developer-tools/#_to_disable_a_webhook, Developer Tools&gt;&gt; guide.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">The request body</param>

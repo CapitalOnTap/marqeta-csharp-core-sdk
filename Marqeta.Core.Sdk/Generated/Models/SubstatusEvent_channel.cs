@@ -4,7 +4,7 @@ using System;
 namespace Marqeta.Core.Sdk.Models
 {
     /// <summary>The channel through which the event occurred.</summary>
-    public enum SubstatusEventDetails_channel
+    public enum SubstatusEvent_channel
     {
         [EnumMember(Value = "ADMIN")]
         #pragma warning disable CS1591

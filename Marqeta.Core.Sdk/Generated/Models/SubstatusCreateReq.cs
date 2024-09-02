@@ -13,21 +13,21 @@ namespace Marqeta.Core.Sdk.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Dynamic attributes for the substatus.</summary>
+        /// <summary>Additional dynamic attributes related to the substatus.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public Marqeta.Core.Sdk.Models.SubstatusCreateReq_attributes? Attributes { get; set; }
+        public List<Marqeta.Core.Sdk.Models.SubstatusCreateReq_attributes>? Attributes { get; set; }
 #nullable restore
 #else
-        public Marqeta.Core.Sdk.Models.SubstatusCreateReq_attributes Attributes { get; set; }
+        public List<Marqeta.Core.Sdk.Models.SubstatusCreateReq_attributes> Attributes { get; set; }
 #endif
         /// <summary>List of events related to the substatus.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<Marqeta.Core.Sdk.Models.SubstatusCreateReq_events>? Events { get; set; }
+        public List<Marqeta.Core.Sdk.Models.SubstatusEvent>? Events { get; set; }
 #nullable restore
 #else
-        public List<Marqeta.Core.Sdk.Models.SubstatusCreateReq_events> Events { get; set; }
+        public List<Marqeta.Core.Sdk.Models.SubstatusEvent> Events { get; set; }
 #endif
         /// <summary>The unique identifier of the user or account for which you want to create a substatus.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -39,13 +39,21 @@ namespace Marqeta.Core.Sdk.Models
 #endif
         /// <summary>Possible values: USER, ACCOUNT.</summary>
         public Marqeta.Core.Sdk.Models.SubstatusCreateReq_resource_type? ResourceType { get; set; }
-        /// <summary>Possible values: FRAUD, DECEASED, BANKRUPTCY, BANKRUPTCY_FILED, BANKRUPTCY_REAFFIRMED,BANKRUPTCY_WITHDRAWN, BANKRUPTCY_RESCINDED, BANKRUPTCY_DISCHARGED, HARDSHIP, MLA, SCRA.</summary>
+        /// <summary>Possible values: HARDSHIP, FRAUD, MLA, SCRA, DECEASED, BANKRUPTCY.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Substatus { get; set; }
 #nullable restore
 #else
         public string Substatus { get; set; }
+#endif
+        /// <summary>Unique identifier of the substatus.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Token { get; set; }
+#nullable restore
+#else
+        public string Token { get; set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="Marqeta.Core.Sdk.Models.SubstatusCreateReq"/> and sets the default values.
@@ -72,11 +80,12 @@ namespace Marqeta.Core.Sdk.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "attributes", n => { Attributes = n.GetObjectValue<Marqeta.Core.Sdk.Models.SubstatusCreateReq_attributes>(Marqeta.Core.Sdk.Models.SubstatusCreateReq_attributes.CreateFromDiscriminatorValue); } },
-                { "events", n => { Events = n.GetCollectionOfObjectValues<Marqeta.Core.Sdk.Models.SubstatusCreateReq_events>(Marqeta.Core.Sdk.Models.SubstatusCreateReq_events.CreateFromDiscriminatorValue)?.ToList(); } },
+                { "attributes", n => { Attributes = n.GetCollectionOfObjectValues<Marqeta.Core.Sdk.Models.SubstatusCreateReq_attributes>(Marqeta.Core.Sdk.Models.SubstatusCreateReq_attributes.CreateFromDiscriminatorValue)?.ToList(); } },
+                { "events", n => { Events = n.GetCollectionOfObjectValues<Marqeta.Core.Sdk.Models.SubstatusEvent>(Marqeta.Core.Sdk.Models.SubstatusEvent.CreateFromDiscriminatorValue)?.ToList(); } },
                 { "resource_token", n => { ResourceToken = n.GetStringValue(); } },
                 { "resource_type", n => { ResourceType = n.GetEnumValue<Marqeta.Core.Sdk.Models.SubstatusCreateReq_resource_type>(); } },
                 { "substatus", n => { Substatus = n.GetStringValue(); } },
+                { "token", n => { Token = n.GetStringValue(); } },
             };
         }
         /// <summary>
@@ -86,11 +95,12 @@ namespace Marqeta.Core.Sdk.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<Marqeta.Core.Sdk.Models.SubstatusCreateReq_attributes>("attributes", Attributes);
-            writer.WriteCollectionOfObjectValues<Marqeta.Core.Sdk.Models.SubstatusCreateReq_events>("events", Events);
+            writer.WriteCollectionOfObjectValues<Marqeta.Core.Sdk.Models.SubstatusCreateReq_attributes>("attributes", Attributes);
+            writer.WriteCollectionOfObjectValues<Marqeta.Core.Sdk.Models.SubstatusEvent>("events", Events);
             writer.WriteStringValue("resource_token", ResourceToken);
             writer.WriteEnumValue<Marqeta.Core.Sdk.Models.SubstatusCreateReq_resource_type>("resource_type", ResourceType);
             writer.WriteStringValue("substatus", Substatus);
+            writer.WriteStringValue("token", Token);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

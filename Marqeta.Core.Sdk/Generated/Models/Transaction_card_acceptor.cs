@@ -101,7 +101,7 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string Name { get; set; }
 #endif
-        /// <summary>The network_assigned_id property</summary>
+        /// <summary>Identifier assigned by the card network.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? NetworkAssignedId { get; set; }

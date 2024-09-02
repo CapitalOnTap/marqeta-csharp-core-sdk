@@ -7,13 +7,13 @@ namespace Marqeta.Core.Sdk.Substatuses
     public enum GetSort_byQueryParameterType
     #pragma warning restore CS1591
     {
-        [EnumMember(Value = "effectiveDate")]
+        [EnumMember(Value = "createdTime")]
         #pragma warning disable CS1591
-        EffectiveDate,
+        CreatedTime,
         #pragma warning restore CS1591
-        [EnumMember(Value = "-effectiveDate")]
+        [EnumMember(Value = "-createdTime")]
         #pragma warning disable CS1591
-        Minus_effectiveDate,
+        Minus_createdTime,
         #pragma warning restore CS1591
     }
 }

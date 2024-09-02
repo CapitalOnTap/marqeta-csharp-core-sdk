@@ -22,7 +22,7 @@ namespace Marqeta.Core.Sdk.Models
 #endif
         /// <summary>Mechanism by which the transition was initiated.</summary>
         public Marqeta.Core.Sdk.Models.Digital_wallet_token_transition_response_channel? Channel { get; set; }
-        /// <summary>Date and time when the digital wallet provisioning request was created, in UTC.</summary>
+        /// <summary>Date and time when the transition was created, in UTC.</summary>
         public DateTimeOffset? CreatedTime { get; set; }
         /// <summary>Contains identifiers of the digital wallet token resource and the card resource.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
