@@ -32,7 +32,7 @@ namespace Marqeta.Core.Sdk.Programreserve.Balances
         {
         }
         /// <summary>
-        /// Use this endpoint to return balances for your program reserve account.
+        /// Use this endpoint to return balances for your program reserve account (sometimes referred to as a _program funding account_).
         /// </summary>
         /// <returns>A <see cref="Marqeta.Core.Sdk.Models.Program_reserve_account_balance"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -55,7 +55,7 @@ namespace Marqeta.Core.Sdk.Programreserve.Balances
             return await RequestAdapter.SendAsync<Marqeta.Core.Sdk.Models.Program_reserve_account_balance>(requestInfo, Marqeta.Core.Sdk.Models.Program_reserve_account_balance.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Use this endpoint to return balances for your program reserve account.
+        /// Use this endpoint to return balances for your program reserve account (sometimes referred to as a _program funding account_).
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>

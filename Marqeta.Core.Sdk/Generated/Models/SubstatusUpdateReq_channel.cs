@@ -4,7 +4,7 @@ using System;
 namespace Marqeta.Core.Sdk.Models
 {
     /// <summary>The channel through which deactivation is occurring:- **ADMIN**: Added through the Marqeta Dashboard.- **API**: Initiated through the Core API.- **FRAUD**: Determined by Marqeta or the card network.- **SYSTEM**: Initiated by Marqeta</summary>
-    public enum SubstatusUpdateReq_deactivation_channel
+    public enum SubstatusUpdateReq_channel
     {
         [EnumMember(Value = "ADMIN")]
         #pragma warning disable CS1591

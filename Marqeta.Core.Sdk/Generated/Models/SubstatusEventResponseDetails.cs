@@ -27,6 +27,8 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string Reason { get; set; }
 #endif
+        /// <summary>The state of the event</summary>
+        public Marqeta.Core.Sdk.Models.SubstatusEventResponseDetails_state? State { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="Marqeta.Core.Sdk.Models.SubstatusEventResponseDetails"/> and sets the default values.
         /// </summary>
@@ -56,6 +58,7 @@ namespace Marqeta.Core.Sdk.Models
                 { "created_time", n => { CreatedTime = n.GetDateTimeOffsetValue(); } },
                 { "effective_date", n => { EffectiveDate = n.GetDateTimeOffsetValue(); } },
                 { "reason", n => { Reason = n.GetStringValue(); } },
+                { "state", n => { State = n.GetEnumValue<Marqeta.Core.Sdk.Models.SubstatusEventResponseDetails_state>(); } },
             };
         }
         /// <summary>
@@ -69,6 +72,7 @@ namespace Marqeta.Core.Sdk.Models
             writer.WriteDateTimeOffsetValue("created_time", CreatedTime);
             writer.WriteDateTimeOffsetValue("effective_date", EffectiveDate);
             writer.WriteStringValue("reason", Reason);
+            writer.WriteEnumValue<Marqeta.Core.Sdk.Models.SubstatusEventResponseDetails_state>("state", State);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

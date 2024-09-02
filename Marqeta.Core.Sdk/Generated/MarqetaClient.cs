@@ -40,6 +40,7 @@ using Marqeta.Core.Sdk.Policies;
 using Marqeta.Core.Sdk.Products;
 using Marqeta.Core.Sdk.Programgateways;
 using Marqeta.Core.Sdk.Programreserve;
+using Marqeta.Core.Sdk.Programs;
 using Marqeta.Core.Sdk.Programtransfers;
 using Marqeta.Core.Sdk.Pushtocards;
 using Marqeta.Core.Sdk.Realtimefeegroups;
@@ -275,6 +276,11 @@ namespace Marqeta.Core.Sdk
         public Marqeta.Core.Sdk.Programreserve.ProgramreserveRequestBuilder Programreserve
         {
             get => new Marqeta.Core.Sdk.Programreserve.ProgramreserveRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The programs property</summary>
+        public Marqeta.Core.Sdk.Programs.ProgramsRequestBuilder Programs
+        {
+            get => new Marqeta.Core.Sdk.Programs.ProgramsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The programtransfers property</summary>
         public Marqeta.Core.Sdk.Programtransfers.ProgramtransfersRequestBuilder Programtransfers

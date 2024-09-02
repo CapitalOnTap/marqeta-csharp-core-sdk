@@ -13,14 +13,20 @@ namespace Marqeta.Core.Sdk.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Details of the deactivation process.</summary>
+        /// <summary>The channel through which deactivation is occurring:- **ADMIN**: Added through the Marqeta Dashboard.- **API**: Initiated through the Core API.- **FRAUD**: Determined by Marqeta or the card network.- **SYSTEM**: Initiated by Marqeta</summary>
+        public Marqeta.Core.Sdk.Models.SubstatusUpdateReq_channel? Channel { get; set; }
+        /// <summary>Effective date of the deactivation, in UTC.</summary>
+        public DateTimeOffset? EffectiveDate { get; set; }
+        /// <summary>Reason for deactivating the substatus.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public Marqeta.Core.Sdk.Models.SubstatusUpdateReq_deactivation? Deactivation { get; set; }
+        public string? Reason { get; set; }
 #nullable restore
 #else
-        public Marqeta.Core.Sdk.Models.SubstatusUpdateReq_deactivation Deactivation { get; set; }
+        public string Reason { get; set; }
 #endif
+        /// <summary>The state of the substatus.</summary>
+        public Marqeta.Core.Sdk.Models.SubstatusUpdateReq_state? State { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="Marqeta.Core.Sdk.Models.SubstatusUpdateReq"/> and sets the default values.
         /// </summary>
@@ -46,7 +52,10 @@ namespace Marqeta.Core.Sdk.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "deactivation", n => { Deactivation = n.GetObjectValue<Marqeta.Core.Sdk.Models.SubstatusUpdateReq_deactivation>(Marqeta.Core.Sdk.Models.SubstatusUpdateReq_deactivation.CreateFromDiscriminatorValue); } },
+                { "channel", n => { Channel = n.GetEnumValue<Marqeta.Core.Sdk.Models.SubstatusUpdateReq_channel>(); } },
+                { "effective_date", n => { EffectiveDate = n.GetDateTimeOffsetValue(); } },
+                { "reason", n => { Reason = n.GetStringValue(); } },
+                { "state", n => { State = n.GetEnumValue<Marqeta.Core.Sdk.Models.SubstatusUpdateReq_state>(); } },
             };
         }
         /// <summary>
@@ -56,7 +65,10 @@ namespace Marqeta.Core.Sdk.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<Marqeta.Core.Sdk.Models.SubstatusUpdateReq_deactivation>("deactivation", Deactivation);
+            writer.WriteEnumValue<Marqeta.Core.Sdk.Models.SubstatusUpdateReq_channel>("channel", Channel);
+            writer.WriteDateTimeOffsetValue("effective_date", EffectiveDate);
+            writer.WriteStringValue("reason", Reason);
+            writer.WriteEnumValue<Marqeta.Core.Sdk.Models.SubstatusUpdateReq_state>("state", State);
             writer.WriteAdditionalData(AdditionalData);
         }
     }
