@@ -13859,17 +13859,19 @@ paths:
               schema:
                 $ref: '#/components/schemas/ApiError'
   /transactions/authorizationreversal:
-    summary: Reverse an authorisation.
+    summary: Reverse an authorization.
     post:
       tags:
         - Transactions
-      summary: Reverse an authorisation
+      summary: Reverse an authorization
       operationId: authorizationReversal
       requestBody:
         description: Identifies the transaction to reverse.
         content:
           application/json:
             schema:
+              required:
+                - original_transaction_token
               properties:
                 original_transaction_token:
                   maxLength: 36
@@ -13882,7 +13884,10 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/transaction_model'
+                type: object
+                properties:
+                  transaction:
+                    $ref: '#/components/schemas/transaction_model'
         default:
           description: Error response
           content:

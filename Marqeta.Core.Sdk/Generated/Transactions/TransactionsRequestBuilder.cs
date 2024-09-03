@@ -18,7 +18,7 @@ namespace Marqeta.Core.Sdk.Transactions
     /// </summary>
     public class TransactionsRequestBuilder : BaseRequestBuilder
     {
-        /// <summary>Reverse an authorisation.</summary>
+        /// <summary>Reverse an authorization.</summary>
         public Marqeta.Core.Sdk.Transactions.Authorizationreversal.AuthorizationreversalRequestBuilder Authorizationreversal
         {
             get => new Marqeta.Core.Sdk.Transactions.Authorizationreversal.AuthorizationreversalRequestBuilder(PathParameters, RequestAdapter);

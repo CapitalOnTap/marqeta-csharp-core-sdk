@@ -11,7 +11,7 @@ using System;
 namespace Marqeta.Core.Sdk.Transactions.Authorizationreversal
 {
     /// <summary>
-    /// Reverse an authorisation.
+    /// Reverse an authorization.
     /// </summary>
     public class AuthorizationreversalRequestBuilder : BaseRequestBuilder
     {
@@ -32,20 +32,20 @@ namespace Marqeta.Core.Sdk.Transactions.Authorizationreversal
         {
         }
         /// <summary>
-        /// Reverse an authorisation
+        /// Reverse an authorization
         /// </summary>
-        /// <returns>A <see cref="Marqeta.Core.Sdk.Models.Transaction_model"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Transactions.Authorizationreversal.AuthorizationreversalPostResponse"/></returns>
         /// <param name="body">The request body</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
         /// <exception cref="Marqeta.Core.Sdk.Models.ApiError">When receiving a 4XX or 5XX status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<Marqeta.Core.Sdk.Models.Transaction_model?> PostAsync(Marqeta.Core.Sdk.Transactions.Authorizationreversal.AuthorizationreversalPostRequestBody body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<Marqeta.Core.Sdk.Transactions.Authorizationreversal.AuthorizationreversalPostResponse?> PostAsync(Marqeta.Core.Sdk.Transactions.Authorizationreversal.AuthorizationreversalPostRequestBody body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<Marqeta.Core.Sdk.Models.Transaction_model> PostAsync(Marqeta.Core.Sdk.Transactions.Authorizationreversal.AuthorizationreversalPostRequestBody body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<Marqeta.Core.Sdk.Transactions.Authorizationreversal.AuthorizationreversalPostResponse> PostAsync(Marqeta.Core.Sdk.Transactions.Authorizationreversal.AuthorizationreversalPostRequestBody body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             _ = body ?? throw new ArgumentNullException(nameof(body));
@@ -54,10 +54,10 @@ namespace Marqeta.Core.Sdk.Transactions.Authorizationreversal
             {
                 { "XXX", Marqeta.Core.Sdk.Models.ApiError.CreateFromDiscriminatorValue },
             };
-            return await RequestAdapter.SendAsync<Marqeta.Core.Sdk.Models.Transaction_model>(requestInfo, Marqeta.Core.Sdk.Models.Transaction_model.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<Marqeta.Core.Sdk.Transactions.Authorizationreversal.AuthorizationreversalPostResponse>(requestInfo, Marqeta.Core.Sdk.Transactions.Authorizationreversal.AuthorizationreversalPostResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Reverse an authorisation
+        /// Reverse an authorization
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">The request body</param>

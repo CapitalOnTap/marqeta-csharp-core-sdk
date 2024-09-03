@@ -2,7 +2,6 @@ using AutoFixture;
 using Marqeta.Core.Sdk.Models;
 using Marqeta.Core.Sdk.Tests.MarqetaClientTests.Factories;
 using Marqeta.Core.Sdk.Tests.MarqetaClientTests.Helpers;
-using Marqeta.Core.Sdk.Transactions;
 using Marqeta.Core.Sdk.Transactions.Authorizationreversal;
 using Xunit;
 
@@ -11,7 +10,7 @@ namespace Marqeta.Core.Sdk.Tests.MarqetaClientTests
     public class TransactionTests : BaseTests
     {
         [Fact]
-        public async void Ensure_velocity_control_lifetime_is_honoured()
+        public async void Ensure_transaction_is_reversed()
         {
             // Get client / fixture
             var client = TestMarqetaClientFactory.Create();
@@ -42,21 +41,22 @@ namespace Marqeta.Core.Sdk.Tests.MarqetaClientTests
                 Mid = fixture.Create<string>(),
                 CardToken = cardResponse.Token,
             };
-            var simulateResponse1 = await client.Simulate.Authorization.PostAsync(authRequest1);
-            Assert.NotNull(simulateResponse1);
-            Assert.Equal(Transaction_model_state.PENDING, simulateResponse1.Transaction.State);
+            var pendingTransaction = await client.Simulate.Authorization.PostAsync(authRequest1);
+            Assert.NotNull(pendingTransaction);
+            Assert.Equal(Transaction_model_state.PENDING, pendingTransaction.Transaction.State);
 
             // Attempt reversal
             var reversalRequest = new AuthorizationreversalPostRequestBody
             {
-                OriginalTransactionToken = simulateResponse1.Transaction.Token
+                OriginalTransactionToken = pendingTransaction.Transaction.Token
             };
 
             var reversalResponse = await client.Transactions.Authorizationreversal.PostAsync(reversalRequest);
             Assert.NotNull(reversalResponse);
 
-            Assert.Equal(Transaction_model_type.AuthorizationReversal, reversalResponse.Type);
-            Assert.Equal(Transaction_model_state.CLEARED, reversalResponse.State);
+            Assert.Equal(Transaction_model_type.AuthorizationReversal, reversalResponse.Transaction.Type);
+            Assert.Equal(Transaction_model_state.CLEARED, reversalResponse.Transaction.State);
+            Assert.Equal(pendingTransaction.Transaction.Token, reversalResponse.Transaction.PrecedingRelatedTransactionToken);
         }
     }
 }
