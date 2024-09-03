@@ -106,6 +106,9 @@ Execute the `dotnet fsi GenerateSdkFromSourceUrl.fsx` command in the root source
 - Remove all examples for every response and request for all paths and operations.
     - These don't actually add any value to the SDK generation, but they do create a lot of noise in validation output due to the examples not matching the specification in a lot of cases.
     - Done in the `applyRequestModifications` → `removeOpenApiMediaTypeExamples`, `applyResponseModifications` → `removeOpenApiMediaTypeExamples` functions.
+- Add the authorisation reversal path to path list manually 
+  - This endpoint is currently undocumented. A method has been added to append it the paths present if it is not added by Marqeta
+  - Done in the `addAuthorizationReversalPath` function
 ## Custom serialization
 As alluded to in the [Gotchas and known issues](#gotchas-and-known-issues) section, we've had to add some custom deserializers to support our needs.
 
