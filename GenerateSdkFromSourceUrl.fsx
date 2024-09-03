@@ -442,7 +442,9 @@ module OpenApiHelpers =
     /// </summary>
     /// <param name="openApiDocument">The OpenApiDocument to apply modifications to.</param>
     let applyOpenApiDocumentModifications (openApiDocument: OpenApiDocument) =
-        addAuthorizationReversalPath(openApiDocument.Paths)
+        if not (openApiDocument.Paths.ContainsKey("/transactions/authorizationreversal")) then
+            addAuthorizationReversalPath(openApiDocument.Paths)
+        
         applyPathsModifications(openApiDocument.Paths) // Apply modifications to the Paths on root document
         applyComponentsModifications(openApiDocument.Components) // Apply modifications to the Components on root document
         
