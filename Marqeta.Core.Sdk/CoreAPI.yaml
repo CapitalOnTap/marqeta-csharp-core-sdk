@@ -13858,6 +13858,42 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ApiError'
+  /transactions/authorizationreversal:
+    summary: Reverse an authorization.
+    post:
+      tags:
+        - Transactions
+      summary: Reverse an authorization
+      operationId: authorizationReversal
+      requestBody:
+        description: Identifies the transaction to reverse.
+        content:
+          application/json:
+            schema:
+              required:
+                - original_transaction_token
+              properties:
+                original_transaction_token:
+                  maxLength: 36
+                  minLength: 1
+                  type: string
+                  description: Identifies the transaction to reverse.
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  transaction:
+                    $ref: '#/components/schemas/transaction_model'
+        default:
+          description: Error response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
 components:
   schemas:
     ACHListResponse:

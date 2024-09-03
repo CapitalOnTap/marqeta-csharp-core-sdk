@@ -340,10 +340,111 @@ module OpenApiHelpers =
         applySchemasModifications(openApiComponents.Schemas)
 
     /// <summary>
+    ///     Create response object by building out the response reference then the schema and content and finally adding the actual response. 
+    /// </summary>
+    /// <param name="paths">The OpenApiPath to add authorization reversal path to.</param> 
+    let private addAuthorizationReversalPath (paths: OpenApiPaths) =
+        // Build responses
+        let responses =
+            // Create reference to transaction model
+            let transactionModelReference: OpenApiReference = OpenApiReference()
+            transactionModelReference.Type <- ReferenceType.Schema
+            transactionModelReference.Id <- "transaction_model"
+            
+            // Create object referencing transaction model schema
+            let authorizationReversalTransactionModel = OpenApiSchema()
+            authorizationReversalTransactionModel.Type <- "object"
+            authorizationReversalTransactionModel.Reference <- transactionModelReference
+
+            // Create authorization response model
+            let authorizationReversalResponseModel: OpenApiSchema = OpenApiSchema()
+            authorizationReversalResponseModel.Type <- "object"
+            authorizationReversalResponseModel.Properties.Add("transaction", authorizationReversalTransactionModel)
+
+            // Create media type
+            let authorizationReversalMediaType: OpenApiMediaType = OpenApiMediaType()
+            authorizationReversalMediaType.Schema <- authorizationReversalResponseModel
+
+            // Add media type to response content
+            let authorizationReversalPathMediaTypeContent: Dictionary<string,OpenApiMediaType> = Dictionary<string, OpenApiMediaType>()
+            authorizationReversalPathMediaTypeContent.Add("application/json", authorizationReversalMediaType) 
+
+            // Create a response 
+            let authorizationReversalResponse: OpenApiResponse = OpenApiResponse()
+            authorizationReversalResponse.Content <- authorizationReversalPathMediaTypeContent
+            authorizationReversalResponse.Description <- "Success"
+
+            // Add response to responses
+            let authorizationReversalResponses: OpenApiResponses = OpenApiResponses()
+            authorizationReversalResponses.Add("200", authorizationReversalResponse)
+            authorizationReversalResponses
+
+        // Build Request Object
+        let request = 
+            // OriginalTransactionSchema - Create the schema for the original transaction property
+            let originalTransactionTokenSchema = OpenApiSchema()
+            originalTransactionTokenSchema.Type <- "string"
+            originalTransactionTokenSchema.Description <- "Identifies the transaction to reverse."
+            originalTransactionTokenSchema.MaxLength <- 36
+            originalTransactionTokenSchema.MinLength <- 1
+            
+            // add original transaction property to property collection
+            let originalTransactionTokenProperty = Dictionary<string, OpenApiSchema>()
+            originalTransactionTokenProperty.Add("original_transaction_token", originalTransactionTokenSchema)
+
+            // Create the media type and schema for the request body
+            let authorizationReversalRequestBodySchema = OpenApiSchema()
+            authorizationReversalRequestBodySchema.Properties <- originalTransactionTokenProperty
+            authorizationReversalRequestBodySchema.Required <- HashSet<string>([| "original_transaction_token" |])
+            
+            let authorizationReversalRequestBodyMediaType = OpenApiMediaType()
+            authorizationReversalRequestBodyMediaType.Schema <- authorizationReversalRequestBodySchema
+
+            let authorizationReversalRequestBodyContent = Dictionary<string, OpenApiMediaType>()
+            authorizationReversalRequestBodyContent.Add("application/json", authorizationReversalRequestBodyMediaType)
+
+            // Create request body
+            let authorizationReversalRequestBody = OpenApiRequestBody()
+            authorizationReversalRequestBody.Description <- "Identifies the transaction to reverse."
+            authorizationReversalRequestBody.Content <- authorizationReversalRequestBodyContent
+            authorizationReversalRequestBody
+        
+        // Create tag for the path and add 
+        let openApiTag = OpenApiTag()
+        openApiTag.Name <- "Transactions"
+        let authorizationReversalTags = List<OpenApiTag>()
+        authorizationReversalTags.Add(openApiTag)
+
+        // Create operation
+        let authorizationReversalOperation: OpenApiOperation = OpenApiOperation()
+
+        // Hydrate operation
+        authorizationReversalOperation.Responses <- responses
+        authorizationReversalOperation.Summary <- "Reverse an authorization"
+        authorizationReversalOperation.OperationId <- "authorizationReversal"
+        authorizationReversalOperation.RequestBody <- request
+        authorizationReversalOperation.Tags <- authorizationReversalTags
+
+        // Create path
+        let authorizationReversalPath: OpenApiPathItem = OpenApiPathItem()
+
+        // Add path summary 
+        authorizationReversalPath.Summary <- "Reverse an authorization."
+
+        // Add operation to path
+        authorizationReversalPath.AddOperation(OperationType.Post, authorizationReversalOperation)
+
+        // Add path to other path list
+        paths.Add("/transactions/authorizationreversal", authorizationReversalPath)
+       
+    /// <summary>
     ///     Applies modifications to a provided OpenApiDocument.
     /// </summary>
     /// <param name="openApiDocument">The OpenApiDocument to apply modifications to.</param>
     let applyOpenApiDocumentModifications (openApiDocument: OpenApiDocument) =
+        if not (openApiDocument.Paths.ContainsKey("/transactions/authorizationreversal")) then
+            addAuthorizationReversalPath(openApiDocument.Paths)
+        
         applyPathsModifications(openApiDocument.Paths) // Apply modifications to the Paths on root document
         applyComponentsModifications(openApiDocument.Components) // Apply modifications to the Components on root document
         
