@@ -370,14 +370,14 @@ module OpenApiHelpers =
             authorizationReversalPathMediaTypeContent.Add("application/json", authorizationReversalMediaType) 
 
             // Create a response 
-            let authorisationReversalResponse: OpenApiResponse = OpenApiResponse()
-            authorisationReversalResponse.Content <- authorizationReversalPathMediaTypeContent
-            authorisationReversalResponse.Description <- "Success"
+            let authorizationReversalResponse: OpenApiResponse = OpenApiResponse()
+            authorizationReversalResponse.Content <- authorizationReversalPathMediaTypeContent
+            authorizationReversalResponse.Description <- "Success"
 
             // Add response to responses
-            let authorisationReversalResponses: OpenApiResponses = OpenApiResponses()
-            authorisationReversalResponses.Add("200", authorisationReversalResponse)
-            authorisationReversalResponses
+            let authorizationReversalResponses: OpenApiResponses = OpenApiResponses()
+            authorizationReversalResponses.Add("200", authorizationReversalResponse)
+            authorizationReversalResponses
 
         // Build Request Object
         let request = 
