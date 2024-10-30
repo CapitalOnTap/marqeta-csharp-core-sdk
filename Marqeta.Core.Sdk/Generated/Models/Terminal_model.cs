@@ -56,13 +56,9 @@ namespace Marqeta.Core.Sdk.Models
         public string Tid { get; set; }
 #endif
         /// <summary>Specifies whether the transaction was initiated by a cardholder or a merchant.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? TransactionInitiatedBy { get; set; }
-#nullable restore
-#else
-        public string TransactionInitiatedBy { get; set; }
-#endif
+        public Marqeta.Core.Sdk.Models.Terminal_model_transaction_initiated_by? TransactionInitiatedBy { get; set; }
+        /// <summary>Specifies the category of a point-of-sale transaction.</summary>
+        public Marqeta.Core.Sdk.Models.Terminal_model_transaction_initiated_category? TransactionInitiatedCategory { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="Marqeta.Core.Sdk.Models.Terminal_model"/> and sets the default values.
         /// </summary>
@@ -94,7 +90,8 @@ namespace Marqeta.Core.Sdk.Models
                 { "pin_present", n => { PinPresent = n.GetStringValue(); } },
                 { "special_condition_indicator", n => { SpecialConditionIndicator = n.GetEnumValue<Marqeta.Core.Sdk.Models.Terminal_model_special_condition_indicator>(); } },
                 { "tid", n => { Tid = n.GetStringValue(); } },
-                { "transaction_initiated_by", n => { TransactionInitiatedBy = n.GetStringValue(); } },
+                { "transaction_initiated_by", n => { TransactionInitiatedBy = n.GetEnumValue<Marqeta.Core.Sdk.Models.Terminal_model_transaction_initiated_by>(); } },
+                { "transaction_initiated_category", n => { TransactionInitiatedCategory = n.GetEnumValue<Marqeta.Core.Sdk.Models.Terminal_model_transaction_initiated_category>(); } },
             };
         }
         /// <summary>
@@ -110,7 +107,8 @@ namespace Marqeta.Core.Sdk.Models
             writer.WriteStringValue("pin_present", PinPresent);
             writer.WriteEnumValue<Marqeta.Core.Sdk.Models.Terminal_model_special_condition_indicator>("special_condition_indicator", SpecialConditionIndicator);
             writer.WriteStringValue("tid", Tid);
-            writer.WriteStringValue("transaction_initiated_by", TransactionInitiatedBy);
+            writer.WriteEnumValue<Marqeta.Core.Sdk.Models.Terminal_model_transaction_initiated_by>("transaction_initiated_by", TransactionInitiatedBy);
+            writer.WriteEnumValue<Marqeta.Core.Sdk.Models.Terminal_model_transaction_initiated_category>("transaction_initiated_category", TransactionInitiatedCategory);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

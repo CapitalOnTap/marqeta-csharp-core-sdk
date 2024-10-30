@@ -85,6 +85,14 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string MerchantTaxId { get; set; }
 #endif
+        /// <summary>The VAT registration identifier of the merchant.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? MerchantVatRegistrationId { get; set; }
+#nullable restore
+#else
+        public string MerchantVatRegistrationId { get; set; }
+#endif
         /// <summary>The merchant identifier.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -231,6 +239,7 @@ namespace Marqeta.Core.Sdk.Models
                 { "mcc", n => { Mcc = n.GetStringValue(); } },
                 { "mcc_groups", n => { MccGroups = n.GetCollectionOfPrimitiveValues<string>()?.ToList(); } },
                 { "merchant_tax_id", n => { MerchantTaxId = n.GetStringValue(); } },
+                { "merchant_vat_registration_id", n => { MerchantVatRegistrationId = n.GetStringValue(); } },
                 { "mid", n => { Mid = n.GetStringValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "network_assigned_id", n => { NetworkAssignedId = n.GetStringValue(); } },
@@ -263,6 +272,7 @@ namespace Marqeta.Core.Sdk.Models
             writer.WriteStringValue("mcc", Mcc);
             writer.WriteCollectionOfPrimitiveValues<string>("mcc_groups", MccGroups);
             writer.WriteStringValue("merchant_tax_id", MerchantTaxId);
+            writer.WriteStringValue("merchant_vat_registration_id", MerchantVatRegistrationId);
             writer.WriteStringValue("mid", Mid);
             writer.WriteStringValue("name", Name);
             writer.WriteStringValue("network_assigned_id", NetworkAssignedId);

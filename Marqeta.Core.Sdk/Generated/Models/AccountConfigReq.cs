@@ -13,7 +13,7 @@ namespace Marqeta.Core.Sdk.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Day of month the billing cycle starts. If an override value is not provided, the default value is derived from the bundle.</summary>
+        /// <summary>Day of month the billing cycle starts. If an override value is not provided, the default value is derived from the bundle.The value must be 1, 10, 15, 20, or 25.</summary>
         public int? BillingCycleDay { get; set; }
         /// <summary>Level of the credit card.</summary>
         public Marqeta.Core.Sdk.Models.AccountConfigReq_card_level? CardLevel { get; set; }
@@ -27,7 +27,7 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public List<Marqeta.Core.Sdk.Models.ConfigFeeScheduleReq> Fees { get; set; }
 #endif
-        /// <summary>Day of month the payment for the previous billing cycle is due.This field is deprecated.Use the `account.payment_due_interval` field instead.To retrieve `payment_due_interval`, see &lt;&lt;/core-api/policies#retrieveProductPolicy, Retrieve credit product policy, payments.payment_due_interval&gt;&gt;.</summary>
+        /// <summary>Day of month the payment for the previous billing cycle is due.This field is being deprecated and replaced by `payment_due_interval` of a product policy.To retrieve `payment_due_interval`, see &lt;&lt;/core-api/policies#retrieveProductPolicy, Retrieve credit product policy, payments.payment_due_interval&gt;&gt;.</summary>
         [Obsolete("")]
         public int? PaymentDueDay { get; set; }
         /// <summary>Contains configurations for a payment hold.</summary>

@@ -7,36 +7,42 @@ using System;
 namespace Marqeta.Core.Sdk.Models
 {
     /// <summary>
-    /// Contains information on the dynamic merchant category code (MCC) for a reward.
+    /// reward conversion.
     /// </summary>
-    public class MccDynamicFilter : IAdditionalDataHolder, IParsable
+    public class PolicyRewardConversion : IAdditionalDataHolder, IParsable
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>One or more dynamic MCCs.</summary>
+        /// <summary>The static amount to reward if the rule conditions are met.</summary>
+        public int? ConversionIncrement { get; set; }
+        /// <summary>The rate that points are worth with converting the REDEMPTION_TYPE indicated.</summary>
+        public decimal? ConversionRate { get; set; }
+        /// <summary>Type of currency the conversion rate is for.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<Marqeta.Core.Sdk.Models.DynamicMccType?>? Includes { get; set; }
+        public string? Currency { get; set; }
 #nullable restore
 #else
-        public List<Marqeta.Core.Sdk.Models.DynamicMccType?> Includes { get; set; }
+        public string Currency { get; set; }
 #endif
+        /// <summary>Type of conversion.</summary>
+        public Marqeta.Core.Sdk.Models.PolicyRewardConversionType? Type { get; set; }
         /// <summary>
-        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Models.MccDynamicFilter"/> and sets the default values.
+        /// Instantiates a new <see cref="Marqeta.Core.Sdk.Models.PolicyRewardConversion"/> and sets the default values.
         /// </summary>
-        public MccDynamicFilter()
+        public PolicyRewardConversion()
         {
             AdditionalData = new Dictionary<string, object>();
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="Marqeta.Core.Sdk.Models.MccDynamicFilter"/></returns>
+        /// <returns>A <see cref="Marqeta.Core.Sdk.Models.PolicyRewardConversion"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static Marqeta.Core.Sdk.Models.MccDynamicFilter CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static Marqeta.Core.Sdk.Models.PolicyRewardConversion CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-            return new Marqeta.Core.Sdk.Models.MccDynamicFilter();
+            return new Marqeta.Core.Sdk.Models.PolicyRewardConversion();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -46,7 +52,10 @@ namespace Marqeta.Core.Sdk.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "includes", n => { Includes = n.GetCollectionOfEnumValues<Marqeta.Core.Sdk.Models.DynamicMccType>()?.ToList(); } },
+                { "conversion_increment", n => { ConversionIncrement = n.GetIntValue(); } },
+                { "conversion_rate", n => { ConversionRate = n.GetDecimalValue(); } },
+                { "currency", n => { Currency = n.GetStringValue(); } },
+                { "type", n => { Type = n.GetEnumValue<Marqeta.Core.Sdk.Models.PolicyRewardConversionType>(); } },
             };
         }
         /// <summary>
@@ -56,7 +65,10 @@ namespace Marqeta.Core.Sdk.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
-            writer.WriteCollectionOfEnumValues<Marqeta.Core.Sdk.Models.DynamicMccType>("includes", Includes);
+            writer.WriteIntValue("conversion_increment", ConversionIncrement);
+            writer.WriteDecimalValue("conversion_rate", ConversionRate);
+            writer.WriteStringValue("currency", Currency);
+            writer.WriteEnumValue<Marqeta.Core.Sdk.Models.PolicyRewardConversionType>("type", Type);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

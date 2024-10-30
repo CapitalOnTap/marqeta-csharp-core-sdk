@@ -150,7 +150,7 @@ namespace Marqeta.Core.Sdk.Bundles
             /// <summary>Number of bundles resources to retrieve.</summary>
             [QueryParameter("count")]
             public int? Count { get; set; }
-            /// <summary>Field on which to sort.Prefix the field name with a hyphen (`-`) to sort in descending order.Omit the hyphen to sort in ascending order.*NOTE:*You must sort using system field names such as `lastModifiedTime`, and not by the field names appearing in response bodies such as `last_modified_time`.</summary>
+            /// <summary>Field on which to sort.Prefix the field name with a hyphen (`-`) to sort in descending order.Omit the hyphen to sort in ascending order.*NOTE:*You must sort using system field names such as `lastModifiedTime`, not by the field names appearing in response bodies: for example, `last_modified_time`.</summary>
             [QueryParameter("sort_by")]
             public Marqeta.Core.Sdk.Bundles.GetSort_byQueryParameterType? SortBy { get; set; }
             /// <summary>Sort order index of the first resource in the returned array.</summary>

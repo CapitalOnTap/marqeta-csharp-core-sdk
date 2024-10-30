@@ -13,7 +13,7 @@ namespace Marqeta.Core.Sdk.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Additional dynamic attributes related to the substatus.</summary>
+        /// <summary>Additional dynamic attributes related to the substatus.If the substatus is `BANKRUPTCY`, `SCRA` or `POWER_OF_ATTORNEY`, then attributes are required.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<Marqeta.Core.Sdk.Models.SubstatusCreateReq_attributes>? Attributes { get; set; }
@@ -29,7 +29,7 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public List<Marqeta.Core.Sdk.Models.SubstatusEvent> Events { get; set; }
 #endif
-        /// <summary>The unique identifier of the user or account for which you want to create a substatus.</summary>
+        /// <summary>Unique identifier of the user or account for which you want to create a substatus.Send a `GET` request to `/credit/accounts` to retrieve existing account tokens.Send a `GET` request to `/users` to retrieve existing user tokens.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? ResourceToken { get; set; }
@@ -37,9 +37,9 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string ResourceToken { get; set; }
 #endif
-        /// <summary>Possible values: USER, ACCOUNT.</summary>
+        /// <summary>Type of resource to which the substatus applies.</summary>
         public Marqeta.Core.Sdk.Models.SubstatusCreateReq_resource_type? ResourceType { get; set; }
-        /// <summary>Possible values: HARDSHIP, FRAUD, MLA, SCRA, DECEASED, BANKRUPTCY.</summary>
+        /// <summary>Type of substatus.`HARDSHIP`, `FRAUD` can only be applied to the `ACCOUNT` resource type.`MLA`, `SCRA`, `DECEASED`, `BANKRUPTCY`, and `POWER_OF_ATTORNEY` can only be applied to the `USER` resource type.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Substatus { get; set; }
@@ -47,7 +47,7 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string Substatus { get; set; }
 #endif
-        /// <summary>Unique identifier of the substatus.</summary>
+        /// <summary>Unique identifier of the credit substatus.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Token { get; set; }

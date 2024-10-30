@@ -3,12 +3,12 @@ using System.Runtime.Serialization;
 using System;
 namespace Marqeta.Core.Sdk.Models
 {
-    /// <summary>Type of reward rule.</summary>
-    public enum PolicyRewardRuleType
+    /// <summary>Reward settlement strategy for program.</summary>
+    public enum PolicyRewardSettlementType
     {
-        [EnumMember(Value = "CASHBACK")]
+        [EnumMember(Value = "STATEMENT")]
         #pragma warning disable CS1591
-        CASHBACK,
+        STATEMENT,
         #pragma warning restore CS1591
     }
 }

@@ -50,6 +50,8 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string FundingSourceToken { get; set; }
 #endif
+        /// <summary>The is_early_funded property</summary>
+        public bool? IsEarlyFunded { get; set; }
         /// <summary>Date and time when the ACH transfer was last modified, in UTC.</summary>
         public DateTimeOffset? LastModifiedTime { get; set; }
         /// <summary>Additional text describing the ACH transfer.</summary>
@@ -140,6 +142,7 @@ namespace Marqeta.Core.Sdk.Models
                 { "created_time", n => { CreatedTime = n.GetDateTimeOffsetValue(); } },
                 { "currency_code", n => { CurrencyCode = n.GetStringValue(); } },
                 { "funding_source_token", n => { FundingSourceToken = n.GetStringValue(); } },
+                { "is_early_funded", n => { IsEarlyFunded = n.GetBoolValue(); } },
                 { "last_modified_time", n => { LastModifiedTime = n.GetDateTimeOffsetValue(); } },
                 { "memo", n => { Memo = n.GetStringValue(); } },
                 { "return_code", n => { ReturnCode = n.GetStringValue(); } },
@@ -167,6 +170,7 @@ namespace Marqeta.Core.Sdk.Models
             writer.WriteDateTimeOffsetValue("created_time", CreatedTime);
             writer.WriteStringValue("currency_code", CurrencyCode);
             writer.WriteStringValue("funding_source_token", FundingSourceToken);
+            writer.WriteBoolValue("is_early_funded", IsEarlyFunded);
             writer.WriteDateTimeOffsetValue("last_modified_time", LastModifiedTime);
             writer.WriteStringValue("memo", Memo);
             writer.WriteStringValue("return_code", ReturnCode);

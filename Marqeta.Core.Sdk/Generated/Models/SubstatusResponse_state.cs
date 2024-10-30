@@ -3,7 +3,7 @@ using System.Runtime.Serialization;
 using System;
 namespace Marqeta.Core.Sdk.Models
 {
-    /// <summary>state of the substatus</summary>
+    /// <summary>Current state of the substatus.</summary>
     public enum SubstatusResponse_state
     {
         [EnumMember(Value = "ACTIVE")]

@@ -12,6 +12,10 @@ namespace Marqeta.Core.Sdk.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>The dwt_tar_avs_decline_on_address_number_mismatch property</summary>
+        public bool? DwtTarAvsDeclineOnAddressNumberMismatch { get; set; }
+        /// <summary>The dwt_tar_avs_decline_on_postal_code_mismatch property</summary>
+        public bool? DwtTarAvsDeclineOnPostalCodeMismatch { get; set; }
         /// <summary>The dwt_use_card_status_during_auth property</summary>
         public bool? DwtUseCardStatusDuringAuth { get; set; }
         /// <summary>The dwt_verify_atc_during_auth property</summary>
@@ -77,6 +81,8 @@ namespace Marqeta.Core.Sdk.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "dwt_tar_avs_decline_on_address_number_mismatch", n => { DwtTarAvsDeclineOnAddressNumberMismatch = n.GetBoolValue(); } },
+                { "dwt_tar_avs_decline_on_postal_code_mismatch", n => { DwtTarAvsDeclineOnPostalCodeMismatch = n.GetBoolValue(); } },
                 { "dwt_use_card_status_during_auth", n => { DwtUseCardStatusDuringAuth = n.GetBoolValue(); } },
                 { "dwt_verify_atc_during_auth", n => { DwtVerifyAtcDuringAuth = n.GetBoolValue(); } },
                 { "enable_discretionary_data_during_tar", n => { EnableDiscretionaryDataDuringTar = n.GetBoolValue(); } },
@@ -94,6 +100,8 @@ namespace Marqeta.Core.Sdk.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
+            writer.WriteBoolValue("dwt_tar_avs_decline_on_address_number_mismatch", DwtTarAvsDeclineOnAddressNumberMismatch);
+            writer.WriteBoolValue("dwt_tar_avs_decline_on_postal_code_mismatch", DwtTarAvsDeclineOnPostalCodeMismatch);
             writer.WriteBoolValue("dwt_use_card_status_during_auth", DwtUseCardStatusDuringAuth);
             writer.WriteBoolValue("dwt_verify_atc_during_auth", DwtVerifyAtcDuringAuth);
             writer.WriteBoolValue("enable_discretionary_data_during_tar", EnableDiscretionaryDataDuringTar);

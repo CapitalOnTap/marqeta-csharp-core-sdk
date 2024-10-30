@@ -3,20 +3,21 @@ using System.Runtime.Serialization;
 using System;
 namespace Marqeta.Core.Sdk.Models
 {
-    /// <summary>Type of reward.</summary>
-    public enum RewardType
+    #pragma warning disable CS1591
+    public enum Card_life_cycle_reloadability
+    #pragma warning restore CS1591
     {
-        [EnumMember(Value = "AUTO_CASH_BACK")]
+        [EnumMember(Value = "SINGLE_USE_VIRTUAL")]
         #pragma warning disable CS1591
-        AUTO_CASH_BACK,
+        SINGLE_USE_VIRTUAL,
         #pragma warning restore CS1591
-        [EnumMember(Value = "CASH_BACK")]
+        [EnumMember(Value = "NON_RELOADABLE")]
         #pragma warning disable CS1591
-        CASH_BACK,
+        NON_RELOADABLE,
         #pragma warning restore CS1591
-        [EnumMember(Value = "STATEMENT_CREDIT")]
+        [EnumMember(Value = "RELOADABLE")]
         #pragma warning disable CS1591
-        STATEMENT_CREDIT,
+        RELOADABLE,
         #pragma warning restore CS1591
     }
 }

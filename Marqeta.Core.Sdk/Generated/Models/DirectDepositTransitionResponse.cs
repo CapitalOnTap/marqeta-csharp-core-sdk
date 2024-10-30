@@ -75,7 +75,13 @@ namespace Marqeta.Core.Sdk.Models
         public string DirectDepositToken { get; set; }
 #endif
         /// <summary>The early_direct_deposit property</summary>
-        public bool? EarlyDirectDeposit { get; set; }
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? EarlyDirectDeposit { get; set; }
+#nullable restore
+#else
+        public string EarlyDirectDeposit { get; set; }
+#endif
         /// <summary>The individual_identification_number property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -205,7 +211,7 @@ namespace Marqeta.Core.Sdk.Models
                 { "created_time", n => { CreatedTime = n.GetDateTimeOffsetValue(); } },
                 { "direct_deposit_account_token", n => { DirectDepositAccountToken = n.GetStringValue(); } },
                 { "direct_deposit_token", n => { DirectDepositToken = n.GetStringValue(); } },
-                { "early_direct_deposit", n => { EarlyDirectDeposit = n.GetBoolValue(); } },
+                { "early_direct_deposit", n => { EarlyDirectDeposit = n.GetStringValue(); } },
                 { "individual_identification_number", n => { IndividualIdentificationNumber = n.GetStringValue(); } },
                 { "individual_name", n => { IndividualName = n.GetStringValue(); } },
                 { "last_modified_time", n => { LastModifiedTime = n.GetDateTimeOffsetValue(); } },
@@ -239,7 +245,7 @@ namespace Marqeta.Core.Sdk.Models
             writer.WriteDateTimeOffsetValue("created_time", CreatedTime);
             writer.WriteStringValue("direct_deposit_account_token", DirectDepositAccountToken);
             writer.WriteStringValue("direct_deposit_token", DirectDepositToken);
-            writer.WriteBoolValue("early_direct_deposit", EarlyDirectDeposit);
+            writer.WriteStringValue("early_direct_deposit", EarlyDirectDeposit);
             writer.WriteStringValue("individual_identification_number", IndividualIdentificationNumber);
             writer.WriteStringValue("individual_name", IndividualName);
             writer.WriteDateTimeOffsetValue("last_modified_time", LastModifiedTime);

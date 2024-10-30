@@ -13,6 +13,14 @@ namespace Marqeta.Core.Sdk.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>Contains information about a Marqeta Flex transaction.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public Marqeta.Core.Sdk.Models.Flex? Flex { get; set; }
+#nullable restore
+#else
+        public Marqeta.Core.Sdk.Models.Flex Flex { get; set; }
+#endif
         /// <summary>Contains information about the JIT Funding load event, in which funds are loaded into an account.This object is returned if your program uses JIT Funding.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -54,6 +62,7 @@ namespace Marqeta.Core.Sdk.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "flex", n => { Flex = n.GetObjectValue<Marqeta.Core.Sdk.Models.Flex>(Marqeta.Core.Sdk.Models.Flex.CreateFromDiscriminatorValue); } },
                 { "jit_funding", n => { JitFunding = n.GetObjectValue<Marqeta.Core.Sdk.Models.Jit_funding_api>(Marqeta.Core.Sdk.Models.Jit_funding_api.CreateFromDiscriminatorValue); } },
                 { "network_metadata", n => { NetworkMetadata = n.GetObjectValue<Marqeta.Core.Sdk.Models.Network_metadata>(Marqeta.Core.Sdk.Models.Network_metadata.CreateFromDiscriminatorValue); } },
             };
@@ -65,6 +74,7 @@ namespace Marqeta.Core.Sdk.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
+            writer.WriteObjectValue<Marqeta.Core.Sdk.Models.Flex>("flex", Flex);
             writer.WriteObjectValue<Marqeta.Core.Sdk.Models.Jit_funding_api>("jit_funding", JitFunding);
             writer.WriteObjectValue<Marqeta.Core.Sdk.Models.Network_metadata>("network_metadata", NetworkMetadata);
             writer.WriteAdditionalData(AdditionalData);

@@ -60,13 +60,9 @@ namespace Marqeta.Core.Sdk.Models
         /// <summary>Type of card acceptor/terminal.</summary>
         public Marqeta.Core.Sdk.Models.Pos_terminal_type? TerminalType { get; set; }
         /// <summary>Specifies whether the transaction was initiated by a cardholder or a merchant.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? TransactionInitiatedBy { get; set; }
-#nullable restore
-#else
-        public string TransactionInitiatedBy { get; set; }
-#endif
+        public Marqeta.Core.Sdk.Models.Pos_transaction_initiated_by? TransactionInitiatedBy { get; set; }
+        /// <summary>Specifies the category of a point-of-sale transaction.</summary>
+        public Marqeta.Core.Sdk.Models.Pos_transaction_initiated_category? TransactionInitiatedCategory { get; set; }
         /// <summary>United States ZIP code of the card acceptor or terminal.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -117,7 +113,8 @@ namespace Marqeta.Core.Sdk.Models
                 { "terminal_id", n => { TerminalId = n.GetStringValue(); } },
                 { "terminal_location", n => { TerminalLocation = n.GetEnumValue<Marqeta.Core.Sdk.Models.Pos_terminal_location>(); } },
                 { "terminal_type", n => { TerminalType = n.GetEnumValue<Marqeta.Core.Sdk.Models.Pos_terminal_type>(); } },
-                { "transaction_initiated_by", n => { TransactionInitiatedBy = n.GetStringValue(); } },
+                { "transaction_initiated_by", n => { TransactionInitiatedBy = n.GetEnumValue<Marqeta.Core.Sdk.Models.Pos_transaction_initiated_by>(); } },
+                { "transaction_initiated_category", n => { TransactionInitiatedCategory = n.GetEnumValue<Marqeta.Core.Sdk.Models.Pos_transaction_initiated_category>(); } },
                 { "zip", n => { Zip = n.GetStringValue(); } },
             };
         }
@@ -145,7 +142,8 @@ namespace Marqeta.Core.Sdk.Models
             writer.WriteStringValue("terminal_id", TerminalId);
             writer.WriteEnumValue<Marqeta.Core.Sdk.Models.Pos_terminal_location>("terminal_location", TerminalLocation);
             writer.WriteEnumValue<Marqeta.Core.Sdk.Models.Pos_terminal_type>("terminal_type", TerminalType);
-            writer.WriteStringValue("transaction_initiated_by", TransactionInitiatedBy);
+            writer.WriteEnumValue<Marqeta.Core.Sdk.Models.Pos_transaction_initiated_by>("transaction_initiated_by", TransactionInitiatedBy);
+            writer.WriteEnumValue<Marqeta.Core.Sdk.Models.Pos_transaction_initiated_category>("transaction_initiated_category", TransactionInitiatedCategory);
             writer.WriteStringValue("zip", Zip);
             writer.WriteAdditionalData(AdditionalData);
         }

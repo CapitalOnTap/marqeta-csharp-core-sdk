@@ -506,6 +506,10 @@ namespace Marqeta.Core.Sdk.Models
         #pragma warning disable CS1591
         PinChangeViaApi,
         #pragma warning restore CS1591
+        [EnumMember(Value = "product.inquiry")]
+        #pragma warning disable CS1591
+        ProductInquiry,
+        #pragma warning restore CS1591
         [EnumMember(Value = "unknown")]
         #pragma warning disable CS1591
         Unknown,

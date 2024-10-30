@@ -55,7 +55,7 @@ namespace Marqeta.Core.Sdk.Substatuses.Item
             return await RequestAdapter.SendAsync<Marqeta.Core.Sdk.Models.SubstatusResponse>(requestInfo, Marqeta.Core.Sdk.Models.SubstatusResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Update substatus for an user or account.
+        /// Updating a substatus registers a new event that changes the substatus&apos; state.
         /// </summary>
         /// <returns>A <see cref="Marqeta.Core.Sdk.Models.SubstatusResponse"/></returns>
         /// <param name="body">Contains information relevant to deactivating a substatus.</param>
@@ -99,7 +99,7 @@ namespace Marqeta.Core.Sdk.Substatuses.Item
             return requestInfo;
         }
         /// <summary>
-        /// Update substatus for an user or account.
+        /// Updating a substatus registers a new event that changes the substatus&apos; state.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">Contains information relevant to deactivating a substatus.</param>

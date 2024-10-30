@@ -25,6 +25,8 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public Marqeta.Core.Sdk.Models.Expiration_offset_with_minimum ExpirationOffset { get; set; }
 #endif
+        /// <summary>The reloadability property</summary>
+        public Marqeta.Core.Sdk.Models.Card_life_cycle_reloadability? Reloadability { get; set; }
         /// <summary>Normally, the `expiration_offset` is measured from the date of issue.Set this field to `true` to measure `expiration_offset` from the date of activation instead.</summary>
         public bool? UpdateExpirationUponActivation { get; set; }
         /// <summary>
@@ -55,6 +57,7 @@ namespace Marqeta.Core.Sdk.Models
                 { "activate_upon_issue", n => { ActivateUponIssue = n.GetBoolValue(); } },
                 { "card_service_code", n => { CardServiceCode = n.GetIntValue(); } },
                 { "expiration_offset", n => { ExpirationOffset = n.GetObjectValue<Marqeta.Core.Sdk.Models.Expiration_offset_with_minimum>(Marqeta.Core.Sdk.Models.Expiration_offset_with_minimum.CreateFromDiscriminatorValue); } },
+                { "reloadability", n => { Reloadability = n.GetEnumValue<Marqeta.Core.Sdk.Models.Card_life_cycle_reloadability>(); } },
                 { "update_expiration_upon_activation", n => { UpdateExpirationUponActivation = n.GetBoolValue(); } },
             };
         }
@@ -68,6 +71,7 @@ namespace Marqeta.Core.Sdk.Models
             writer.WriteBoolValue("activate_upon_issue", ActivateUponIssue);
             writer.WriteIntValue("card_service_code", CardServiceCode);
             writer.WriteObjectValue<Marqeta.Core.Sdk.Models.Expiration_offset_with_minimum>("expiration_offset", ExpirationOffset);
+            writer.WriteEnumValue<Marqeta.Core.Sdk.Models.Card_life_cycle_reloadability>("reloadability", Reloadability);
             writer.WriteBoolValue("update_expiration_upon_activation", UpdateExpirationUponActivation);
             writer.WriteAdditionalData(AdditionalData);
         }

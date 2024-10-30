@@ -37,7 +37,7 @@ namespace Marqeta.Core.Sdk.Models
 #endif
         /// <summary>Indicates the amount of the acquirer fee.Account holders are sometimes charged an acquirer fee for card use at ATMs, fuel dispensers, and so on.</summary>
         public double? AcquirerFeeAmount { get; set; }
-        /// <summary>The acquirer_reference_data property</summary>
+        /// <summary>Acquirer-assigned unique identifier of the transaction.Useful for settlement and reconciliation.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? AcquirerReferenceData { get; set; }
@@ -91,6 +91,8 @@ namespace Marqeta.Core.Sdk.Models
         public double? Amount { get; set; }
         /// <summary>Amount of original authorization to be released.This field appears in final clearing transactions where the clearing amount is lower than the authorization amount.</summary>
         public double? AmountToBeReleased { get; set; }
+        /// <summary>The anticipated_amount property</summary>
+        public double? AnticipatedAmount { get; set; }
         /// <summary>Unique identifier assigned to an authorization, printed on the receipt at point of sale.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -320,6 +322,14 @@ namespace Marqeta.Core.Sdk.Models
 #nullable restore
 #else
         public Marqeta.Core.Sdk.Models.Fee_transfer_response FeeTransfer { get; set; }
+#endif
+        /// <summary>Contains information about a Marqeta Flex transaction.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public Marqeta.Core.Sdk.Models.Flex? Flex { get; set; }
+#nullable restore
+#else
+        public Marqeta.Core.Sdk.Models.Flex Flex { get; set; }
 #endif
         /// <summary>Contains one or more fraud determinations by the card network that apply to either the transaction or the cardholder&apos;s account.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -692,6 +702,7 @@ namespace Marqeta.Core.Sdk.Models
                 { "advice_reason_details", n => { AdviceReasonDetails = n.GetStringValue(); } },
                 { "amount", n => { Amount = n.GetDoubleValue(); } },
                 { "amount_to_be_released", n => { AmountToBeReleased = n.GetDoubleValue(); } },
+                { "anticipated_amount", n => { AnticipatedAmount = n.GetDoubleValue(); } },
                 { "approval_code", n => { ApprovalCode = n.GetStringValue(); } },
                 { "atc_information", n => { AtcInformation = n.GetObjectValue<Marqeta.Core.Sdk.Models.Atc_information>(Marqeta.Core.Sdk.Models.Atc_information.CreateFromDiscriminatorValue); } },
                 { "auto_reload", n => { AutoReload = n.GetObjectValue<Marqeta.Core.Sdk.Models.Auto_reload_model>(Marqeta.Core.Sdk.Models.Auto_reload_model.CreateFromDiscriminatorValue); } },
@@ -723,6 +734,7 @@ namespace Marqeta.Core.Sdk.Models
                 { "fee", n => { Fee = n.GetObjectValue<Marqeta.Core.Sdk.Models.Fee>(Marqeta.Core.Sdk.Models.Fee.CreateFromDiscriminatorValue); } },
                 { "fee_transfer", n => { FeeTransfer = n.GetObjectValue<Marqeta.Core.Sdk.Models.Fee_transfer_response>(Marqeta.Core.Sdk.Models.Fee_transfer_response.CreateFromDiscriminatorValue); } },
                 { "fees", n => { Fees = n.GetCollectionOfObjectValues<Marqeta.Core.Sdk.Models.Network_fee_model>(Marqeta.Core.Sdk.Models.Network_fee_model.CreateFromDiscriminatorValue)?.ToList(); } },
+                { "flex", n => { Flex = n.GetObjectValue<Marqeta.Core.Sdk.Models.Flex>(Marqeta.Core.Sdk.Models.Flex.CreateFromDiscriminatorValue); } },
                 { "fraud", n => { Fraud = n.GetObjectValue<Marqeta.Core.Sdk.Models.Fraud_view>(Marqeta.Core.Sdk.Models.Fraud_view.CreateFromDiscriminatorValue); } },
                 { "from_account", n => { FromAccount = n.GetStringValue(); } },
                 { "gpa", n => { Gpa = n.GetObjectValue<Marqeta.Core.Sdk.Models.Cardholder_balance>(Marqeta.Core.Sdk.Models.Cardholder_balance.CreateFromDiscriminatorValue); } },
@@ -794,6 +806,7 @@ namespace Marqeta.Core.Sdk.Models
             writer.WriteStringValue("advice_reason_details", AdviceReasonDetails);
             writer.WriteDoubleValue("amount", Amount);
             writer.WriteDoubleValue("amount_to_be_released", AmountToBeReleased);
+            writer.WriteDoubleValue("anticipated_amount", AnticipatedAmount);
             writer.WriteStringValue("approval_code", ApprovalCode);
             writer.WriteObjectValue<Marqeta.Core.Sdk.Models.Atc_information>("atc_information", AtcInformation);
             writer.WriteObjectValue<Marqeta.Core.Sdk.Models.Auto_reload_model>("auto_reload", AutoReload);
@@ -825,6 +838,7 @@ namespace Marqeta.Core.Sdk.Models
             writer.WriteObjectValue<Marqeta.Core.Sdk.Models.Fee>("fee", Fee);
             writer.WriteCollectionOfObjectValues<Marqeta.Core.Sdk.Models.Network_fee_model>("fees", Fees);
             writer.WriteObjectValue<Marqeta.Core.Sdk.Models.Fee_transfer_response>("fee_transfer", FeeTransfer);
+            writer.WriteObjectValue<Marqeta.Core.Sdk.Models.Flex>("flex", Flex);
             writer.WriteObjectValue<Marqeta.Core.Sdk.Models.Fraud_view>("fraud", Fraud);
             writer.WriteStringValue("from_account", FromAccount);
             writer.WriteObjectValue<Marqeta.Core.Sdk.Models.Cardholder_balance>("gpa", Gpa);

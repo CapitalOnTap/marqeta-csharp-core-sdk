@@ -3,7 +3,7 @@ using System.Runtime.Serialization;
 using System;
 namespace Marqeta.Core.Sdk.Models
 {
-    /// <summary>The state of the substatus.</summary>
+    /// <summary>New state of the substatus.`INACTIVE` is a valid state for substatuses `HARDSHIP`, `FRAUD`, `MLA`, `SCRA`, `DECEASED`, and `POWER_OF_ATTORNEY`.`BANKRUPTCY_WITHDRAWN`, `BANKRUPTCY_REAFFIRMED`, `BANKRUPTCY_REAFFIRM_RESCINDED`, `BANKRUPTCY_DISCHARGED`, `BANKRUPTCY_DISMISSED`, `BANKRUPTCY_FILED_INACTIVE`, `BANKRUPTCY_WITHDRAWN_INACTIVE`, `BANKRUPTCY_REAFFIRMED_INACTIVE`, `BANKRUPTCY_REAFFIRM_RESCINDED_INACTIVE`, `BANKRUPTCY_DISCHARGED_INACTIVE`, and `BANKRUPTCY_DISMISSED_INACTIVE` states are applicable to `BANKRUPTCY`</summary>
     public enum SubstatusUpdateReq_state
     {
         [EnumMember(Value = "INACTIVE")]

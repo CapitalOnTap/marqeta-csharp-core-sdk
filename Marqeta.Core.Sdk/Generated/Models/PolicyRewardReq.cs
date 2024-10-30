@@ -13,6 +13,14 @@ namespace Marqeta.Core.Sdk.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>One or more reward conversions.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<Marqeta.Core.Sdk.Models.PolicyRewardConversion>? Conversions { get; set; }
+#nullable restore
+#else
+        public List<Marqeta.Core.Sdk.Models.PolicyRewardConversion> Conversions { get; set; }
+#endif
         /// <summary>Description of the reward policy.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -32,11 +40,13 @@ namespace Marqeta.Core.Sdk.Models
         /// <summary>One or more reward rules.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<Marqeta.Core.Sdk.Models.PolicyRewardRule>? Rules { get; set; }
+        public List<Marqeta.Core.Sdk.Models.PolicyRewardPlatformRule>? Rules { get; set; }
 #nullable restore
 #else
-        public List<Marqeta.Core.Sdk.Models.PolicyRewardRule> Rules { get; set; }
+        public List<Marqeta.Core.Sdk.Models.PolicyRewardPlatformRule> Rules { get; set; }
 #endif
+        /// <summary>Reward settlement strategy for program.</summary>
+        public Marqeta.Core.Sdk.Models.PolicyRewardSettlementType? SettlementStrategy { get; set; }
         /// <summary>Unique identifier of the reward policy.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -70,9 +80,11 @@ namespace Marqeta.Core.Sdk.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "conversions", n => { Conversions = n.GetCollectionOfObjectValues<Marqeta.Core.Sdk.Models.PolicyRewardConversion>(Marqeta.Core.Sdk.Models.PolicyRewardConversion.CreateFromDiscriminatorValue)?.ToList(); } },
                 { "description", n => { Description = n.GetStringValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
-                { "rules", n => { Rules = n.GetCollectionOfObjectValues<Marqeta.Core.Sdk.Models.PolicyRewardRule>(Marqeta.Core.Sdk.Models.PolicyRewardRule.CreateFromDiscriminatorValue)?.ToList(); } },
+                { "rules", n => { Rules = n.GetCollectionOfObjectValues<Marqeta.Core.Sdk.Models.PolicyRewardPlatformRule>(Marqeta.Core.Sdk.Models.PolicyRewardPlatformRule.CreateFromDiscriminatorValue)?.ToList(); } },
+                { "settlement_strategy", n => { SettlementStrategy = n.GetEnumValue<Marqeta.Core.Sdk.Models.PolicyRewardSettlementType>(); } },
                 { "token", n => { Token = n.GetStringValue(); } },
             };
         }
@@ -83,9 +95,11 @@ namespace Marqeta.Core.Sdk.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
+            writer.WriteCollectionOfObjectValues<Marqeta.Core.Sdk.Models.PolicyRewardConversion>("conversions", Conversions);
             writer.WriteStringValue("description", Description);
             writer.WriteStringValue("name", Name);
-            writer.WriteCollectionOfObjectValues<Marqeta.Core.Sdk.Models.PolicyRewardRule>("rules", Rules);
+            writer.WriteCollectionOfObjectValues<Marqeta.Core.Sdk.Models.PolicyRewardPlatformRule>("rules", Rules);
+            writer.WriteEnumValue<Marqeta.Core.Sdk.Models.PolicyRewardSettlementType>("settlement_strategy", SettlementStrategy);
             writer.WriteStringValue("token", Token);
             writer.WriteAdditionalData(AdditionalData);
         }

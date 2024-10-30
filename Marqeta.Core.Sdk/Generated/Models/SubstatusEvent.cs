@@ -13,11 +13,11 @@ namespace Marqeta.Core.Sdk.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>The channel through which the event occurred.</summary>
+        /// <summary>The mechanism by which the state of the substatus was applied.* `ADMIN` - Indicates that the state of the substatus was added through the Marqeta Dashboard.* `API` - Indicates that you initiated an update of the substatus through the Core API.Use this value when creating a substatus.* `FRAUD` - Indicates that either Marqeta or the card network has determined that the account is fraudulent.* `SYSTEM` - Indicates that Marqeta initiated the state of the substatus.For example, Marqeta determined during application decisioning that the applicant is `MLA`.</summary>
         public Marqeta.Core.Sdk.Models.SubstatusEvent_channel? Channel { get; set; }
-        /// <summary>Effective date of the deactivation, in UTC.</summary>
+        /// <summary>Date and time when the state of the substatus went into effect, in UTC.The effective date must be in the past.If no value is set, then the effective date and time will be the current time.</summary>
         public DateTimeOffset? EffectiveDate { get; set; }
-        /// <summary>Reason for the event.</summary>
+        /// <summary>Reason for applying a state designation to the substatus.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Reason { get; set; }
@@ -25,7 +25,7 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string Reason { get; set; }
 #endif
-        /// <summary>The initial state of the substatus. ACTIVE - Required for the substatuses of HARDSHIP,FRAUD,MLA,SCRA,DECEASED. BANKRUPTCY_FILED - Required for the substatus of BANKRUPTCY.</summary>
+        /// <summary>Initial state of the substatus.`ACTIVE` - Required if the substatus is `HARDSHIP`, `FRAUD`, `MLA`, `SCRA`, `DECEASED`, or `POWER_OF_ATTORNEY`.`BANKRUPTCY_FILED` - Required if the substatus is `BANKRUPTCY`.</summary>
         public Marqeta.Core.Sdk.Models.SubstatusEvent_state? State { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="Marqeta.Core.Sdk.Models.SubstatusEvent"/> and sets the default values.
