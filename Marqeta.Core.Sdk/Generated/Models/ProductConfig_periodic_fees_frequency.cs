@@ -4,6 +4,7 @@ using System;
 namespace Marqeta.Core.Sdk.Models
 {
     /// <summary>How frequently the fee is charged.</summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum ProductConfig_periodic_fees_frequency
     {
         [EnumMember(Value = "ANNUAL")]

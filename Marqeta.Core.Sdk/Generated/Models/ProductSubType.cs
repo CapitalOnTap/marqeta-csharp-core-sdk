@@ -4,6 +4,7 @@ using System;
 namespace Marqeta.Core.Sdk.Models
 {
     /// <summary>Subtype of the credit product type.`CREDIT_CARD` - Card that enables the cardholder to make purchases on credit.</summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum ProductSubType
     {
         [EnumMember(Value = "CREDIT_CARD")]

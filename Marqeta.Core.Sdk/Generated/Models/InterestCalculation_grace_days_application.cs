@@ -4,6 +4,7 @@ using System;
 namespace Marqeta.Core.Sdk.Models
 {
     /// <summary>Determines the last day of grace period based on which interest charges are calculated.</summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum InterestCalculation_grace_days_application
     {
         [EnumMember(Value = "NEXT_CYCLE_DATE")]

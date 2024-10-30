@@ -1,9 +1,10 @@
 {
   "descriptionHash": "C5095925EBE27269616A30937890194CB5B774F9ED870683772B62FCBC44E217C892EDEA0D95083CA0F08109BB99CE89744A9A61CD29DFB580F6F3B03796C6B6",
-  "descriptionLocation": "..\\CoreAPI.yaml",
+  "descriptionLocation": "../CoreAPI.yaml",
   "lockFileVersion": "1.0.0",
-  "kiotaVersion": "1.15.0",
+  "kiotaVersion": "1.19.1",
   "clientClassName": "MarqetaClient",
+  "typeAccessModifier": "Public",
   "clientNamespaceName": "Marqeta.Core.Sdk",
   "language": "CSharp",
   "usesBackingStore": false,

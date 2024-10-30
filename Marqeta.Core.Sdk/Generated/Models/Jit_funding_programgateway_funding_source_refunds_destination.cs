@@ -4,6 +4,7 @@ using System;
 namespace Marqeta.Core.Sdk.Models
 {
     /// <summary>Specifies the return destination for refunds in the case of a transaction reversal.In most cases, you should set the value to `GATEWAY`, which returns funds to the program gateway funding source.Setting to `GPA` returns the funds to the user&apos;s GPA, which creates a positive account balance and introduces the potential of a transaction being authorized without a JIT Funding request being sent to the gateway.</summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum Jit_funding_programgateway_funding_source_refunds_destination
     {
         [EnumMember(Value = "GATEWAY")]

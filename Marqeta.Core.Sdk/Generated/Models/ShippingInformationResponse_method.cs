@@ -4,6 +4,7 @@ using System;
 namespace Marqeta.Core.Sdk.Models
 {
     /// <summary>Specifies the shipping service.This field is returned if it exists in the resource.</summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum ShippingInformationResponse_method
     {
         [EnumMember(Value = "LOCAL_MAIL")]

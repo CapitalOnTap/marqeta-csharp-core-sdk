@@ -4,6 +4,7 @@ using System;
 namespace Marqeta.Core.Sdk.Models
 {
     /// <summary>Type of redemption.* `EXTERNAL` - You issue the redemption on your external platform; Marqeta adjusts the reward program balance on the system of record.* `STATEMENT_CREDIT` - Marqeta issues the redemption as a statement credit on the associated account. +*NOTE*: This creates a new journal entry on the account and cannot be undone.* `ACH` - The reward redemption is issued as an ACH transfer to the receiving account.</summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum RedemptionType
     {
         [EnumMember(Value = "EXTERNAL")]

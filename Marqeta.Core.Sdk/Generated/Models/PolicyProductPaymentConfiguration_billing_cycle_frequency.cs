@@ -4,6 +4,7 @@ using System;
 namespace Marqeta.Core.Sdk.Models
 {
     /// <summary>Frequency at which your account is billed.</summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum PolicyProductPaymentConfiguration_billing_cycle_frequency
     {
         [EnumMember(Value = "MONTHLY")]

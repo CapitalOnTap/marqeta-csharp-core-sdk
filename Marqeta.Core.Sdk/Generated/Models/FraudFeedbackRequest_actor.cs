@@ -4,6 +4,7 @@ using System;
 namespace Marqeta.Core.Sdk.Models
 {
     /// <summary>This is the party making a call.</summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum FraudFeedbackRequest_actor
     {
         [EnumMember(Value = "UNKNOWN")]

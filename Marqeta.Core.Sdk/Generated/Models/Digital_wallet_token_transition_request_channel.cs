@@ -4,6 +4,7 @@ using System;
 namespace Marqeta.Core.Sdk.Models
 {
     /// <summary>Mechanism by which the transition was initiated.</summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum Digital_wallet_token_transition_request_channel
     {
         [EnumMember(Value = "TOKEN_SERVICE_PROVIDER")]

@@ -4,6 +4,7 @@ using System;
 namespace Marqeta.Core.Sdk.Models
 {
     /// <summary>Reason for the override APR.</summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum MaxAPRSchedulesResponse_reason
     {
         [EnumMember(Value = "SCRA")]

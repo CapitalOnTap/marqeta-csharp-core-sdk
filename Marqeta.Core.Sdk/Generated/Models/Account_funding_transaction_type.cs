@@ -4,6 +4,7 @@ using System;
 namespace Marqeta.Core.Sdk.Models
 {
     /// <summary>Specifies the account funding transaction type.</summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum Account_funding_transaction_type
     {
         [EnumMember(Value = "ACCOUNT_TO_ACCOUNT")]

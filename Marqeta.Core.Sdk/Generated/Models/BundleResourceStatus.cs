@@ -4,6 +4,7 @@ using System;
 namespace Marqeta.Core.Sdk.Models
 {
     /// <summary>Status of the bundle.* `DRAFT` - The bundle is in the process of being created.* `PENDING_APPROVAL` - The bundle has been created and is awaiting approval.* `SENT_FOR_REVISION` - The bundle has been returned for revision.* `ACTIVE` - The bundle is active.* `REJECTED` - The bundle has been rejected; this status cannot be changed.* `ARCHIVED` - The previously active bundle has been archived.* `APPROVED` - The bundle has been approved (after having been sent for approval).</summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum BundleResourceStatus
     {
         [EnumMember(Value = "DRAFT")]

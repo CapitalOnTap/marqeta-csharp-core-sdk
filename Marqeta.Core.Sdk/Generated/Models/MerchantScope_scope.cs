@@ -4,6 +4,7 @@ using System;
 namespace Marqeta.Core.Sdk.Models
 {
     /// <summary>Scope of the merchant category.Can be either &apos;mcc&apos; or &apos;mcc_group&apos;.</summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum MerchantScope_scope
     {
         [EnumMember(Value = "mcc")]

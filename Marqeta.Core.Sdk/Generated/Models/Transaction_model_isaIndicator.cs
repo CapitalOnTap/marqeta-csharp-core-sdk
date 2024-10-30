@@ -4,6 +4,7 @@ using System;
 namespace Marqeta.Core.Sdk.Models
 {
     /// <summary>The international service assessment indicator indicates if an ISA fee is applicable to the transaction.</summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum Transaction_model_isaIndicator
     {
         [EnumMember(Value = "MULTI_CURRENCY")]

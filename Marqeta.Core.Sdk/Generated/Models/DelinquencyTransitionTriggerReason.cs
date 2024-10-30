@@ -4,6 +4,7 @@ using System;
 namespace Marqeta.Core.Sdk.Models
 {
     /// <summary>Event that triggered an update to the account&apos;s delinquency state.</summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum DelinquencyTransitionTriggerReason
     {
         [EnumMember(Value = "PAYMENT")]

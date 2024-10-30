@@ -4,6 +4,7 @@ using System;
 namespace Marqeta.Core.Sdk.Models
 {
     /// <summary>Provisioning status of the digital wallet token.</summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum Digital_wallet_token_transition_response_fulfillment_status
     {
         [EnumMember(Value = "DECISION_RED")]

@@ -4,6 +4,7 @@ using System;
 namespace Marqeta.Core.Sdk.Models
 {
     /// <summary>Provides status information about the card related to order and delivery.The possible fulfillment states are:* *ISSUED:* Initial state of all newly created/issued cards* *ORDERED:* Card ordered through card fulfillment provider* *REJECTED:* Card rejected by card fulfillment provider* *SHIPPED:* Card shipped by card fulfillment provider* *DELIVERED:* Card delivered by the card fulfillment provider.* *DIGITALLY_PRESENTED:* Card digitally presented using the `/cards/{token}/showpan` endpoint; does not affect the delivery of physical cards</summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum Card_transition_response_fulfillment_status
     {
         [EnumMember(Value = "ISSUED")]

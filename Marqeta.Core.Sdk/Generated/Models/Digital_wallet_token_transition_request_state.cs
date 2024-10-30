@@ -4,6 +4,7 @@ using System;
 namespace Marqeta.Core.Sdk.Models
 {
     /// <summary>Specifies the state to which the digital wallet token will transition.The original state is `REQUESTED`. You cannot modify the state if its current value is either `REQUEST_DECLINED` or `TERMINATED`.</summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum Digital_wallet_token_transition_request_state
     {
         [EnumMember(Value = "ACTIVE")]

@@ -4,6 +4,7 @@ using System;
 namespace Marqeta.Core.Sdk.Models
 {
     /// <summary>Type of credit product.`REVOLVING` - Allows users to continuously borrow and pay debts up to the credit limit.</summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum ProductType
     {
         [EnumMember(Value = "REVOLVING")]

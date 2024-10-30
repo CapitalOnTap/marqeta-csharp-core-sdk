@@ -4,6 +4,7 @@ using System;
 namespace Marqeta.Core.Sdk.Models
 {
     /// <summary>Specifies the type of action completed by this request.*WARNING:* Sending a request to this endpoint with a `REVEAL_PIN` control token requires PCI DSS compliance.The lifespan of the control token depends on the token type:* *SET_PIN:* 60 minutes* *REVEAL_PIN:* 5 minutes</summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum Control_token_request_controltoken_type
     {
         [EnumMember(Value = "SET_PIN")]

@@ -4,6 +4,7 @@ using System;
 namespace Marqeta.Core.Sdk.Models
 {
     /// <summary>New state of the ACH transfer.*NOTE:* In production environments, the only value to which you are allowed to transition an ACH transfer is `CANCELLED`.</summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum Bank_transfer_transition_request_model_status
     {
         [EnumMember(Value = "PENDING")]

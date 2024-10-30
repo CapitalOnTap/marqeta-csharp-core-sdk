@@ -4,6 +4,7 @@ using System;
 namespace Marqeta.Core.Sdk.Models
 {
     /// <summary>Whether the primary income source comes from the user being employed, unemployed, self-employment, or another situation.Required when retrieving an application.</summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum CreateApplicationsRequest_primary_income_source
     {
         [EnumMember(Value = "EMPLOYED")]

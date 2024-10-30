@@ -4,6 +4,7 @@ using System;
 namespace Marqeta.Core.Sdk.Models
 {
     /// <summary>Organizational structure of the business, such as corporation or sole proprietorship.This field is required for KYC verification (US-based accounts only).</summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum Business_incorporation_incorporation_type
     {
         [EnumMember(Value = "LLC")]

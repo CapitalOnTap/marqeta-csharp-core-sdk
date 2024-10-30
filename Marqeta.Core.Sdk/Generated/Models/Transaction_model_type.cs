@@ -4,6 +4,7 @@ using System;
 namespace Marqeta.Core.Sdk.Models
 {
     /// <summary>Transaction event type.For more information about the `type` field, see &lt;&lt;/core-api/event-types#_transaction_events, Transaction events&gt;&gt;.</summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum Transaction_model_type
     {
         [EnumMember(Value = "gpa.credit")]

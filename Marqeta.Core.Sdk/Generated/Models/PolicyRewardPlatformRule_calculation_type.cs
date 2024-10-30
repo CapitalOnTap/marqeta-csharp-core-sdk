@@ -4,6 +4,7 @@ using System;
 namespace Marqeta.Core.Sdk.Models
 {
     /// <summary>Type of calculation to use to evaluate a rule has been satisfied.</summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum PolicyRewardPlatformRule_calculation_type
     {
         [EnumMember(Value = "PER_TRANSACTION")]

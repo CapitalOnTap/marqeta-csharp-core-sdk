@@ -4,6 +4,7 @@ using System;
 namespace Marqeta.Core.Sdk.Models
 {
     /// <summary>Specifies the return destination for refunds in the case of a transaction reversal.</summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum Jit_funding_paymentcard_funding_source_refunds_destination
     {
         [EnumMember(Value = "GATEWAY")]

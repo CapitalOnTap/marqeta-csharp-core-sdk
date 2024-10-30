@@ -4,6 +4,7 @@ using System;
 namespace Marqeta.Core.Sdk.Models
 {
     /// <summary>This field cannot be set directly using the `/cardtransitions` endpoint.A card transition&apos;s `type` is managed by the Marqeta platform, based on the before and after state of the transition, as specified in the request&apos;s `state` field.This field appears only when populated by the card fulfillment provider.The `type` field&apos;s possible values are:* *fulfillment.delivered:* Card was delivered by the card fulfillment provider* *fulfillment.digitally_presented:* Card was digitally presented using the `/cards/{token}/showpan` endpoint; does not affect the delivery of physical cards* *fulfillment.issued:* Card was created/issued* *fulfillment.ordered:* Card was ordered from the card fulfillment provider* *fulfillment.rejected:* Card was rejected by the card fulfillment provider* *fulfillment.shipped:* Card was shipped by the card fulfillment provider* *state.activated:* Card was activated* *state.limited:* Card was limited* *state.reinstated:* Card was reinstated from a suspended state* *state.suspended:* Card was suspended* *state.terminated:* Card was terminated//Also appears in /core-api/event-types#_card_transition_events</summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum Card_transition_response_type
     {
         [EnumMember(Value = "fulfillment.issued")]

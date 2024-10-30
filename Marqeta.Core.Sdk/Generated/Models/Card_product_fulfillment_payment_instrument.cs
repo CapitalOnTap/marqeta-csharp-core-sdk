@@ -4,6 +4,7 @@ using System;
 namespace Marqeta.Core.Sdk.Models
 {
     /// <summary>Specifies the physical form cards of this card product type will take.</summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum Card_product_fulfillment_payment_instrument
     {
         [EnumMember(Value = "PHYSICAL_MSR")]

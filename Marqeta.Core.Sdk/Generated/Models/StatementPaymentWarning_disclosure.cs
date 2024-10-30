@@ -4,6 +4,7 @@ using System;
 namespace Marqeta.Core.Sdk.Models
 {
     /// <summary>Statement disclosure in the case of negative or no amortization, or no lifetime repayment for the minimum payment warning type.* `NEGATIVE_OR_NO_AMORTIZATION` - Occurs when the interest amount is higher than the minimum payment; results in the outstanding balance remaining in perpetuity.* `NO_LIFETIME_REPAYMENT` - Occurs when the interest amount is just below the minimum payment; results in the outstanding balance taking longer than a lifetime to pay off.</summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum StatementPaymentWarning_disclosure
     {
         [EnumMember(Value = "NEGATIVE_OR_NO_AMORTIZATION")]

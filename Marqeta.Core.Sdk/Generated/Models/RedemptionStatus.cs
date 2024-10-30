@@ -4,6 +4,7 @@ using System;
 namespace Marqeta.Core.Sdk.Models
 {
     /// <summary>Status of the redemption.If &lt;&lt;/core-api/reward-redemptions#postRedemptionTransition, transitioning the redemption&apos;s status&gt;&gt;:* `new_state` is the state to which you want to transition the redemption; must be `COMPLETED` or `RETURNED`.* `initial_status` is the initial status of the redemption prior to transition.</summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum RedemptionStatus
     {
         [EnumMember(Value = "INITIATED")]

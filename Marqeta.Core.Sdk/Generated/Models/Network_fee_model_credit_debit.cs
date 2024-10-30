@@ -4,6 +4,7 @@ using System;
 namespace Marqeta.Core.Sdk.Models
 {
     /// <summary>Indicates whether the fee is a credit or a debit.* *C* indicates a credit* *D* indicates a debit</summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum Network_fee_model_credit_debit
     {
         [EnumMember(Value = "C")]

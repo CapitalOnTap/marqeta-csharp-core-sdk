@@ -4,6 +4,7 @@ using System;
 namespace Marqeta.Core.Sdk.Models
 {
     /// <summary>Specifies if the fee is a standalone fee or a real-time fee.</summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum Fee_request_category
     {
         [EnumMember(Value = "STANDALONE")]

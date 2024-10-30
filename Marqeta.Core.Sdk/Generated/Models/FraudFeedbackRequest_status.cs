@@ -4,6 +4,7 @@ using System;
 namespace Marqeta.Core.Sdk.Models
 {
     /// <summary>This is the value of the status of the fraud.</summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum FraudFeedbackRequest_status
     {
         [EnumMember(Value = "CONFIRMED")]

@@ -4,6 +4,7 @@ using System;
 namespace Marqeta.Core.Sdk.Models
 {
     /// <summary>Type of rule.</summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum PolicyRewardPlatformRule_type
     {
         [EnumMember(Value = "MULTIPLIER_PER_TRANSACTION")]

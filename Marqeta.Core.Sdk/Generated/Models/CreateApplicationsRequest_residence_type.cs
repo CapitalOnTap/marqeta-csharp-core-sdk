@@ -4,6 +4,7 @@ using System;
 namespace Marqeta.Core.Sdk.Models
 {
     /// <summary>Whether the user owns or rents their residence, or has another situation.Required when retrieving an application.</summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum CreateApplicationsRequest_residence_type
     {
         [EnumMember(Value = "OWN")]

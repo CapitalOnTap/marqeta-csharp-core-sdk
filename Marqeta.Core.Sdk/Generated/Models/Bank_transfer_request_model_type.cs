@@ -4,6 +4,7 @@ using System;
 namespace Marqeta.Core.Sdk.Models
 {
     /// <summary>Specifies whether the ACH transfer is a push (credit) or pull (debit).</summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum Bank_transfer_request_model_type
     {
         [EnumMember(Value = "PUSH")]

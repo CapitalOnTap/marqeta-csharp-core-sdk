@@ -4,6 +4,7 @@ using System;
 namespace Marqeta.Core.Sdk.Models
 {
     /// <summary>The type of account from which the OCT draws funds.</summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum Original_credit_sender_account_type
     {
         [EnumMember(Value = "OTHER")]
