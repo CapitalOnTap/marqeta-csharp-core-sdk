@@ -441,7 +441,7 @@ module OpenApiHelpers =
     ///     Applies modifications to a provided OpenApiDocument.
     /// </summary>
     /// <param name="openApiDocument">The OpenApiDocument to apply modifications to.</param>
-    let applyOpenApiDocumentModifications (openApiDocument: OpenApiDocument) =
+    let applyCoreOpenApiDocumentModifications (openApiDocument: OpenApiDocument) =
         if not (openApiDocument.Paths.ContainsKey("/transactions/authorizationreversal")) then
             addAuthorizationReversalPath(openApiDocument.Paths)
         
@@ -786,6 +786,11 @@ open SdkGenerator
 open Http
 open DotnetCli
 
+/// Type of SDK
+type SdkType =
+    | Core
+    | SimulationsV2
+    
 /// Config type for the script
 type GeneratorConfig = {OpenApiSourceUrl:string
                         SourceOpenApiOutputPath:string
@@ -793,7 +798,8 @@ type GeneratorConfig = {OpenApiSourceUrl:string
                         SdkGeneratorTool:string
                         SdkOutputPath:string
                         SdkClientName:string
-                        SdkClientNamespace:string}
+                        SdkClientNamespace:string
+                        SdkType:SdkType}
 
 /// <summary>
 ///     Transform an OpenAPI spec using specified config.
@@ -813,9 +819,10 @@ let transformOpenApiSpec (generatorConfig: GeneratorConfig, stopwatch:System.Dia
 
     logOk($"Writing to file {generatorConfig.SourceOpenApiOutputPath} {getElapsedTime(stopwatch)}")
     writeAllTextToPath(getOpenApiDocumentSerializedAsYaml(parsedOpenApiDocument), generatorConfig.SourceOpenApiOutputPath)
-    
+
     logOk($"Applying fixes and validating {getElapsedTime(stopwatch)}")
-    applyOpenApiDocumentModifications(parsedOpenApiDocument)
+    if generatorConfig.SdkType = Core then
+        applyCoreOpenApiDocumentModifications(parsedOpenApiDocument)
     let fixedOpenApiDocumentDiagnostics = validateDocument(parsedOpenApiDocument)
 
     logOk($"Diagnostics after fixing {getElapsedTime(stopwatch)}")
@@ -855,7 +862,7 @@ let buildAndTestSolution (stopwatch: System.Diagnostics.Stopwatch) =
     testSolution()
 
 let projectPath = "Marqeta.Core.Sdk" // The path of the .csproj for SDK (also used for namespace)
-let config = {
+let coreConfig = {
     // The source YAML, references Marqeta GitHub CoreAPI.yaml currently
     OpenApiSourceUrl = "https://raw.githubusercontent.com/marqeta/marqeta-openapi/main/yaml/CoreAPI.yaml"
     // The output path to save the source YAML to
@@ -870,14 +877,40 @@ let config = {
     SdkClientName =  "MarqetaClient"
     // The namespace to use for the generated SDK
     SdkClientNamespace =  projectPath
+    // The type of SDK
+    SdkType = Core 
+}
+
+let simulationsV2Config = {
+    // The source YAML, references Marqeta GitHub CoreAPI.yaml currently
+    OpenApiSourceUrl = "https://www.marqeta.com/docs/core-api/postman-collection-simulations.yaml"
+    // The output path to save the source YAML to
+    SourceOpenApiOutputPath = $"{projectPath}/SourceCoreSimulationsV2API.yaml"
+    // The output path to save the transformed YAML to
+    TransformedOpenApiPath = $"{projectPath}/CoreSimulationsV2API.yaml"
+    // The dotnet tool to use for SDK generation
+    SdkGeneratorTool = "Microsoft.OpenApi.Kiota"
+    // The output path to use for generated SDK files
+    SdkOutputPath = $"{projectPath}/Generated/SimulationsV2"
+    // The client name to use for the generated SDK
+    SdkClientName =  "MarqetaSimulationsV2Client"
+    // The namespace to use for the generated SDK
+    SdkClientNamespace =  $"{projectPath}.SimulationsV2"
+    // The type of SDK
+    SdkType = SimulationsV2
 }
 
 let stopwatch = start
 
 // Retrieve and transform the OpenAPI spec
-transformOpenApiSpec(config, stopwatch)
+transformOpenApiSpec(coreConfig, stopwatch)
 // Generate an SDK using the transformed OpenAPI spec
-generateSdk(config, stopwatch)
+generateSdk(coreConfig, stopwatch)
+
+// Retrieve and transform the OpenAPI spec
+transformOpenApiSpec(simulationsV2Config, stopwatch)
+// Generate an SDK using the transformed OpenAPI spec
+generateSdk(simulationsV2Config, stopwatch)
 
 // Build and test SLN
 buildAndTestSolution(stopwatch)

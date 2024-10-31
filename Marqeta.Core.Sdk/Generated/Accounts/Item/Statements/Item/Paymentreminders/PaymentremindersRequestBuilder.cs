@@ -13,7 +13,7 @@ using System;
 namespace Marqeta.Core.Sdk.Accounts.Item.Statements.Item.Paymentreminders
 {
     /// <summary>
-    /// Builds and executes requests for operations under \accounts\{account_token}\statements\{statement_summary_token}\paymentreminders
+    /// Builds and executes requests for operations under \accounts\{account_token}\statements\{statement_summary_token}\paymentreminders\
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class PaymentremindersRequestBuilder : BaseRequestBuilder
@@ -35,7 +35,7 @@ namespace Marqeta.Core.Sdk.Accounts.Item.Statements.Item.Paymentreminders
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public PaymentremindersRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/accounts/{account_token}/statements/{statement_summary_token}/paymentreminders", pathParameters)
+        public PaymentremindersRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/accounts/{account_token}/statements/{statement_summary_token}/paymentreminders/{?count*,sort_by*,start_index*}", pathParameters)
         {
         }
         /// <summary>
@@ -43,7 +43,7 @@ namespace Marqeta.Core.Sdk.Accounts.Item.Statements.Item.Paymentreminders
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public PaymentremindersRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/accounts/{account_token}/statements/{statement_summary_token}/paymentreminders", rawUrl)
+        public PaymentremindersRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/accounts/{account_token}/statements/{statement_summary_token}/paymentreminders/{?count*,sort_by*,start_index*}", rawUrl)
         {
         }
         /// <summary>
