@@ -29,6 +29,14 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string IncomingResponseCode { get; set; }
 #endif
+        /// <summary>Transaction type indicator provided by the card network for original credit and account funding transactions.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? NetworkFundingTxnType { get; set; }
+#nullable restore
+#else
+        public string NetworkFundingTxnType { get; set; }
+#endif
         /// <summary>Product identification value assigned by the card network to each card product.Can be used to track card-level activity by individual account number for premium card products.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -88,6 +96,7 @@ namespace Marqeta.Core.Sdk.Models
             {
                 { "account_identification_1", n => { AccountIdentification1 = n.GetStringValue(); } },
                 { "incoming_response_code", n => { IncomingResponseCode = n.GetStringValue(); } },
+                { "network_funding_txn_type", n => { NetworkFundingTxnType = n.GetStringValue(); } },
                 { "product_id", n => { ProductId = n.GetStringValue(); } },
                 { "program_id", n => { ProgramId = n.GetStringValue(); } },
                 { "spend_qualifier", n => { SpendQualifier = n.GetStringValue(); } },
@@ -103,6 +112,7 @@ namespace Marqeta.Core.Sdk.Models
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("account_identification_1", AccountIdentification1);
             writer.WriteStringValue("incoming_response_code", IncomingResponseCode);
+            writer.WriteStringValue("network_funding_txn_type", NetworkFundingTxnType);
             writer.WriteStringValue("product_id", ProductId);
             writer.WriteStringValue("program_id", ProgramId);
             writer.WriteStringValue("spend_qualifier", SpendQualifier);

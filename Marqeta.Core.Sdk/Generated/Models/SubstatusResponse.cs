@@ -13,7 +13,7 @@ namespace Marqeta.Core.Sdk.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Additional dynamic attributes related to the substatus.</summary>
+        /// <summary>Additional dynamic attributes related to the substatus.If the substatus is `BANKRUPTCY`, `SCRA`, or `POWER_OF_ATTORNEY`, then attributes are present.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<Marqeta.Core.Sdk.Models.SubstatusResponse_attributes>? Attributes { get; set; }
@@ -31,9 +31,9 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public List<Marqeta.Core.Sdk.Models.SubstatusEventResponseDetails> Events { get; set; }
 #endif
-        /// <summary>Flag indicating whether the substatus is active (false when deactivated).</summary>
+        /// <summary>Denotes whether a substatus is active.</summary>
         public bool? IsActive { get; set; }
-        /// <summary>substatus resource token</summary>
+        /// <summary>Unique identifier of the resource.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? ResourceToken { get; set; }
@@ -41,11 +41,11 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string ResourceToken { get; set; }
 #endif
-        /// <summary>substatus resource type</summary>
+        /// <summary>Type of resource to which the substatus is applied.</summary>
         public Marqeta.Core.Sdk.Models.SubstatusResponse_resource_type? ResourceType { get; set; }
-        /// <summary>state of the substatus</summary>
+        /// <summary>Current state of the substatus.</summary>
         public Marqeta.Core.Sdk.Models.SubstatusResponse_state? State { get; set; }
-        /// <summary>substatus</summary>
+        /// <summary>Type of substatus.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Substatus { get; set; }
@@ -53,7 +53,7 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string Substatus { get; set; }
 #endif
-        /// <summary>substatus token</summary>
+        /// <summary>Unique identifier of the credit substatus.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Token { get; set; }

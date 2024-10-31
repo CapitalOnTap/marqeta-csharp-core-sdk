@@ -17,7 +17,7 @@ namespace Marqeta.Core.Sdk.Substatuses
     public class SubstatusesRequestBuilder : BaseRequestBuilder
     {
         /// <summary>Gets an item from the Marqeta.Core.Sdk.substatuses.item collection</summary>
-        /// <param name="position">The unique identifier of the substatus to retrieve.Send a `GET` request to `/credit/substatuses` to retrieve existing substatus tokens.</param>
+        /// <param name="position">Unique identifier of the substatus to retrieve.Send a `GET` request to `/credit/substatuses` to retrieve existing substatus tokens.</param>
         /// <returns>A <see cref="Marqeta.Core.Sdk.Substatuses.Item.WithSubstatus_tokenItemRequestBuilder"/></returns>
         public Marqeta.Core.Sdk.Substatuses.Item.WithSubstatus_tokenItemRequestBuilder this[string position]
         {
@@ -45,7 +45,7 @@ namespace Marqeta.Core.Sdk.Substatuses
         {
         }
         /// <summary>
-        /// Get list of substatuses
+        /// Retrieve an array of substatuses.This endpoint supports &lt;&lt;/core-api/sorting-and-pagination,sorting and pagination&gt;&gt;.
         /// </summary>
         /// <returns>A <see cref="Marqeta.Core.Sdk.Models.SubstatusPage"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -68,7 +68,7 @@ namespace Marqeta.Core.Sdk.Substatuses
             return await RequestAdapter.SendAsync<Marqeta.Core.Sdk.Models.SubstatusPage>(requestInfo, Marqeta.Core.Sdk.Models.SubstatusPage.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Create a sub status for an existing user or account.
+        /// Create a new substatus for a credit account or user.
         /// </summary>
         /// <returns>A <see cref="Marqeta.Core.Sdk.Models.SubstatusResponse"/></returns>
         /// <param name="body">Contains information relevant to creating a substatus.</param>
@@ -93,7 +93,7 @@ namespace Marqeta.Core.Sdk.Substatuses
             return await RequestAdapter.SendAsync<Marqeta.Core.Sdk.Models.SubstatusResponse>(requestInfo, Marqeta.Core.Sdk.Models.SubstatusResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Get list of substatuses
+        /// Retrieve an array of substatuses.This endpoint supports &lt;&lt;/core-api/sorting-and-pagination,sorting and pagination&gt;&gt;.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -112,7 +112,7 @@ namespace Marqeta.Core.Sdk.Substatuses
             return requestInfo;
         }
         /// <summary>
-        /// Create a sub status for an existing user or account.
+        /// Create a new substatus for a credit account or user.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">Contains information relevant to creating a substatus.</param>
@@ -143,11 +143,11 @@ namespace Marqeta.Core.Sdk.Substatuses
             return new Marqeta.Core.Sdk.Substatuses.SubstatusesRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
-        /// Get list of substatuses
+        /// Retrieve an array of substatuses.This endpoint supports &lt;&lt;/core-api/sorting-and-pagination,sorting and pagination&gt;&gt;.
         /// </summary>
         public class SubstatusesRequestBuilderGetQueryParameters 
         {
-            /// <summary>The account token to filter by.</summary>
+            /// <summary>Unique identifier of the account for which to retrieve substatuses.Send a `GET` request to `/credit/accounts` to retrieve existing account tokens.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
             [QueryParameter("account_token")]
@@ -160,15 +160,16 @@ namespace Marqeta.Core.Sdk.Substatuses
             /// <summary>The number of resources to retrieve.</summary>
             [QueryParameter("count")]
             public int? Count { get; set; }
+            /// <summary>Denotes whether a substatus is active.</summary>
             [QueryParameter("is_active")]
             public bool? IsActive { get; set; }
             /// <summary>Field on which to sort.Prefix the field name with a hyphen (`-`) to sort in descending order.Omit the hyphen to sort in ascending order.</summary>
             [QueryParameter("sort_by")]
             public Marqeta.Core.Sdk.Substatuses.GetSort_byQueryParameterType? SortBy { get; set; }
-            /// <summary>Show n-th paginated page</summary>
+            /// <summary>Sort order index of the first resource in the returned array.</summary>
             [QueryParameter("start_index")]
             public int? StartIndex { get; set; }
-            /// <summary>comma-deliminited list of substatuses types to includeAllowable values:HARDSHIP,FRAUD,MLA,SCRA,DECEASED,BANKRUPTCY</summary>
+            /// <summary>Comma-delimited list of substatus types to include.Allowable values:`HARDSHIP`, `FRAUD`, `MLA`, `SCRA`, `DECEASED`, `BANKRUPTCY`, `POWER_OF_ATTORNEY`</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
             [QueryParameter("substatuses")]
@@ -178,7 +179,7 @@ namespace Marqeta.Core.Sdk.Substatuses
             [QueryParameter("substatuses")]
             public Marqeta.Core.Sdk.Substatuses.GetSubstatusesQueryParameterType[] Substatuses { get; set; }
 #endif
-            /// <summary>The user token to filter by.</summary>
+            /// <summary>Unique identifier of the user for which to retrieve substatuses.Send a `GET` request to `/users` to retrieve existing user tokens.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
             [QueryParameter("user_token")]

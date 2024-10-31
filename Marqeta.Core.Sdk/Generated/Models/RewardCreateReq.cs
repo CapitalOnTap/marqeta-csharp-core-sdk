@@ -24,6 +24,8 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string Description { get; set; }
 #endif
+        /// <summary>Allows you to force the creation of a reward on an account.By default, reward creation is not permitted for accounts with a status of `SUSPENDED` or `TERMINATED` if more than 90 days have passed since the status transition.</summary>
+        public bool? Forced { get; set; }
         /// <summary>Additional information about the reward.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -69,6 +71,7 @@ namespace Marqeta.Core.Sdk.Models
                 { "amount", n => { Amount = n.GetDoubleValue(); } },
                 { "currency_code", n => { CurrencyCode = n.GetEnumValue<Marqeta.Core.Sdk.Models.CurrencyCode>(); } },
                 { "description", n => { Description = n.GetStringValue(); } },
+                { "forced", n => { Forced = n.GetBoolValue(); } },
                 { "note", n => { Note = n.GetStringValue(); } },
                 { "token", n => { Token = n.GetStringValue(); } },
             };
@@ -83,6 +86,7 @@ namespace Marqeta.Core.Sdk.Models
             writer.WriteDoubleValue("amount", Amount);
             writer.WriteEnumValue<Marqeta.Core.Sdk.Models.CurrencyCode>("currency_code", CurrencyCode);
             writer.WriteStringValue("description", Description);
+            writer.WriteBoolValue("forced", Forced);
             writer.WriteStringValue("note", Note);
             writer.WriteStringValue("token", Token);
             writer.WriteAdditionalData(AdditionalData);

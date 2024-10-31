@@ -206,5 +206,9 @@ namespace Marqeta.Core.Sdk.Models
         #pragma warning disable CS1591
         PgfsAuthorizationAccount_verification,
         #pragma warning restore CS1591
+        [EnumMember(Value = "pgfs.product.inquiry")]
+        #pragma warning disable CS1591
+        PgfsProductInquiry,
+        #pragma warning restore CS1591
     }
 }

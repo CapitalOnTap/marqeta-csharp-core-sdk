@@ -13,6 +13,8 @@ namespace Marqeta.Core.Sdk.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>Whether to include all fees charged when calculating the minimum payments.</summary>
+        public bool? IncludeAllFeesCharged { get; set; }
         /// <summary>One or more fee types to include when calculating the minimum payment.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -48,6 +50,7 @@ namespace Marqeta.Core.Sdk.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "include_all_fees_charged", n => { IncludeAllFeesCharged = n.GetBoolValue(); } },
                 { "include_fees_charged", n => { IncludeFeesCharged = n.GetCollectionOfEnumValues<Marqeta.Core.Sdk.Models.ProductFeeType>()?.ToList(); } },
                 { "percentage_of_balance", n => { PercentageOfBalance = n.GetDoubleValue(); } },
             };
@@ -59,6 +62,7 @@ namespace Marqeta.Core.Sdk.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
+            writer.WriteBoolValue("include_all_fees_charged", IncludeAllFeesCharged);
             writer.WriteCollectionOfEnumValues<Marqeta.Core.Sdk.Models.ProductFeeType>("include_fees_charged", IncludeFeesCharged);
             writer.WriteDoubleValue("percentage_of_balance", PercentageOfBalance);
             writer.WriteAdditionalData(AdditionalData);

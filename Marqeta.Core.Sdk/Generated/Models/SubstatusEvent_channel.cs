@@ -3,7 +3,7 @@ using System.Runtime.Serialization;
 using System;
 namespace Marqeta.Core.Sdk.Models
 {
-    /// <summary>The channel through which the event occurred.</summary>
+    /// <summary>The mechanism by which the state of the substatus was applied.* `ADMIN` - Indicates that the state of the substatus was added through the Marqeta Dashboard.* `API` - Indicates that you initiated an update of the substatus through the Core API.Use this value when creating a substatus.* `FRAUD` - Indicates that either Marqeta or the card network has determined that the account is fraudulent.* `SYSTEM` - Indicates that Marqeta initiated the state of the substatus.For example, Marqeta determined during application decisioning that the applicant is `MLA`.</summary>
     public enum SubstatusEvent_channel
     {
         [EnumMember(Value = "ADMIN")]

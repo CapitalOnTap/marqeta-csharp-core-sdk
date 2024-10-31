@@ -13,11 +13,11 @@ namespace Marqeta.Core.Sdk.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>The channel through which deactivation is occurring:- **ADMIN**: Added through the Marqeta Dashboard.- **API**: Initiated through the Core API.- **FRAUD**: Determined by Marqeta or the card network.- **SYSTEM**: Initiated by Marqeta</summary>
+        /// <summary>The mechanism by which a state designation was applied to a substatus.If no value is set, then it defaults to `API`.* `ADMIN` - Indicates that the state of the substatus was added through the Marqeta Dashboard.* `API` - Indicates that you initiated the update of the substatus through the Core API.Use this value when creating a card transition with an API `POST` request.* `FRAUD` - Indicates that either Marqeta or the card network has determined that the account is fraudulent.* `SYSTEM` - Indicates that the substatus update was initiated by Marqeta.For example, Marqeta determined during application decisioning that the applicant is `MLA`.</summary>
         public Marqeta.Core.Sdk.Models.SubstatusUpdateReq_channel? Channel { get; set; }
-        /// <summary>Effective date of the deactivation, in UTC.</summary>
+        /// <summary>Date and time when the state of the substatus is effective, in UTC.</summary>
         public DateTimeOffset? EffectiveDate { get; set; }
-        /// <summary>Reason for deactivating the substatus.</summary>
+        /// <summary>Reason for applying the state to the substatus.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Reason { get; set; }
@@ -25,7 +25,7 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string Reason { get; set; }
 #endif
-        /// <summary>The state of the substatus.</summary>
+        /// <summary>New state of the substatus.`INACTIVE` is a valid state for substatuses `HARDSHIP`, `FRAUD`, `MLA`, `SCRA`, `DECEASED`, and `POWER_OF_ATTORNEY`.`BANKRUPTCY_WITHDRAWN`, `BANKRUPTCY_REAFFIRMED`, `BANKRUPTCY_REAFFIRM_RESCINDED`, `BANKRUPTCY_DISCHARGED`, `BANKRUPTCY_DISMISSED`, `BANKRUPTCY_FILED_INACTIVE`, `BANKRUPTCY_WITHDRAWN_INACTIVE`, `BANKRUPTCY_REAFFIRMED_INACTIVE`, `BANKRUPTCY_REAFFIRM_RESCINDED_INACTIVE`, `BANKRUPTCY_DISCHARGED_INACTIVE`, and `BANKRUPTCY_DISMISSED_INACTIVE` states are applicable to `BANKRUPTCY`</summary>
         public Marqeta.Core.Sdk.Models.SubstatusUpdateReq_state? State { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="Marqeta.Core.Sdk.Models.SubstatusUpdateReq"/> and sets the default values.

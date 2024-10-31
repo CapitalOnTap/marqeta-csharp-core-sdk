@@ -13,7 +13,7 @@ namespace Marqeta.Core.Sdk.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Day of month the billing cycle starts.</summary>
+        /// <summary>Day of month the billing cycle starts. The value must be 1, 10, 15, 20, or 25.</summary>
         public int? BillingCycleDay { get; set; }
         /// <summary>Determines if the billing cycle day is manually set or determined dynamically during account creation based on cycling logic.</summary>
         public Marqeta.Core.Sdk.Models.ProductConfig_billing_cycle_day_strategy? BillingCycleDayStrategy { get; set; }
@@ -30,7 +30,7 @@ namespace Marqeta.Core.Sdk.Models
         /// <summary>Day of month the payment for the previous billing cycle is due.This field is deprecated.Use the `product.payment_due_interval` field instead.To retrieve `payment_due_interval`, see &lt;&lt;/core-api/credit-products#retrieveProduct, Retrieve credit product, config.payment_due_interval&gt;&gt;.</summary>
         [Obsolete("")]
         public int? PaymentDueDay { get; set; }
-        /// <summary>Specifies the payment due interval that is used to determine the payment due date for a billing cycle.The accepted values are either -1 or a value between 1 and 26.A value of -1 indicates one day prior to the next billing cycle date.</summary>
+        /// <summary>Specifies the payment due interval that is used to determine the payment due date for a billing cycle.The allowed value is -1.A value of -1 indicates one day prior to the next billing cycle date.</summary>
         public int? PaymentDueInterval { get; set; }
         /// <summary>Contains one or more periodic fees.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER

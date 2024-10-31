@@ -13,7 +13,7 @@ namespace Marqeta.Core.Sdk.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Day of month the billing cycle starts. If an override value is not provided, the default value is derived from the bundle.</summary>
+        /// <summary>Day of month the billing cycle starts. If an override value is not provided, the default value is derived from the bundle.The value must be 1, 10, 15, 20, or 25.</summary>
         public int? BillingCycleDay { get; set; }
         /// <summary>Level of the credit card.</summary>
         public Marqeta.Core.Sdk.Models.AccountConfigResponse_card_level? CardLevel { get; set; }

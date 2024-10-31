@@ -33,7 +33,7 @@ namespace Marqeta.Core.Sdk.Paymentsources
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public PaymentsourcesRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/paymentsources{?account_token*,business_token*,count*,sort_by*,start_index*,user_token*}", pathParameters)
+        public PaymentsourcesRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/paymentsources{?account_token*,business_token*,count*,sort_by*,start_index*,statuses*,user_token*}", pathParameters)
         {
         }
         /// <summary>
@@ -41,7 +41,7 @@ namespace Marqeta.Core.Sdk.Paymentsources
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public PaymentsourcesRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/paymentsources{?account_token*,business_token*,count*,sort_by*,start_index*,user_token*}", rawUrl)
+        public PaymentsourcesRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/paymentsources{?account_token*,business_token*,count*,sort_by*,start_index*,statuses*,user_token*}", rawUrl)
         {
         }
         /// <summary>
@@ -176,6 +176,16 @@ namespace Marqeta.Core.Sdk.Paymentsources
             /// <summary>Sort order index of the first resource in the returned array.</summary>
             [QueryParameter("start_index")]
             public int? StartIndex { get; set; }
+            /// <summary>Array of statuses to use for filtering payment sources.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            [QueryParameter("statuses")]
+            public Marqeta.Core.Sdk.Models.PaymentSourceStatusEnum[]? Statuses { get; set; }
+#nullable restore
+#else
+            [QueryParameter("statuses")]
+            public Marqeta.Core.Sdk.Models.PaymentSourceStatusEnum[] Statuses { get; set; }
+#endif
             /// <summary>Unique identifier of the user associated with the payment source.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable

@@ -3,12 +3,12 @@ using System.Runtime.Serialization;
 using System;
 namespace Marqeta.Core.Sdk.Models
 {
-    /// <summary>Type of dynamic MCC.</summary>
-    public enum DynamicMccType
+    /// <summary>Type of rule.</summary>
+    public enum PolicyRewardPlatformRule_type
     {
-        [EnumMember(Value = "HIGHEST_SPEND")]
+        [EnumMember(Value = "MULTIPLIER_PER_TRANSACTION")]
         #pragma warning disable CS1591
-        HIGHEST_SPEND,
+        MULTIPLIER_PER_TRANSACTION,
         #pragma warning restore CS1591
     }
 }

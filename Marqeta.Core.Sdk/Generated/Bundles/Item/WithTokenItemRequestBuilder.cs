@@ -79,7 +79,7 @@ namespace Marqeta.Core.Sdk.Bundles.Item
             return await RequestAdapter.SendAsync<Marqeta.Core.Sdk.Models.BundleResponse>(requestInfo, Marqeta.Core.Sdk.Models.BundleResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Update a specific bundle that is not `ACTIVE` or `ARCHIVED`. Bundles are created in a `DRAFT` state, and are still modifiable at this point. Using the transitions endpoint a bundle can be transitioned from `DRAFT`, to `ACTIVE`. Once a bundle is active, it is immutable, and cannot be modified.
+        /// Update a specific bundle that is not `ACTIVE` or `ARCHIVED`.Bundles are created in a `DRAFT` state, and are still modifiable at this point.Using the transitions endpoint a bundle can be transitioned from `DRAFT`, to `ACTIVE`.Once a bundle is active, it cannot be modified.
         /// </summary>
         /// <returns>A <see cref="Marqeta.Core.Sdk.Models.BundleResponse"/></returns>
         /// <param name="body">Specifies bundles for a credit program.</param>
@@ -123,7 +123,7 @@ namespace Marqeta.Core.Sdk.Bundles.Item
             return requestInfo;
         }
         /// <summary>
-        /// Update a specific bundle that is not `ACTIVE` or `ARCHIVED`. Bundles are created in a `DRAFT` state, and are still modifiable at this point. Using the transitions endpoint a bundle can be transitioned from `DRAFT`, to `ACTIVE`. Once a bundle is active, it is immutable, and cannot be modified.
+        /// Update a specific bundle that is not `ACTIVE` or `ARCHIVED`.Bundles are created in a `DRAFT` state, and are still modifiable at this point.Using the transitions endpoint a bundle can be transitioned from `DRAFT`, to `ACTIVE`.Once a bundle is active, it cannot be modified.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">Specifies bundles for a credit program.</param>

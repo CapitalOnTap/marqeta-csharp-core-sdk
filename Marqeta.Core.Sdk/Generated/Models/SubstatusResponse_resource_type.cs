@@ -3,16 +3,16 @@ using System.Runtime.Serialization;
 using System;
 namespace Marqeta.Core.Sdk.Models
 {
-    /// <summary>substatus resource type</summary>
+    /// <summary>Type of resource to which the substatus is applied.</summary>
     public enum SubstatusResponse_resource_type
     {
-        [EnumMember(Value = "USER")]
-        #pragma warning disable CS1591
-        USER,
-        #pragma warning restore CS1591
         [EnumMember(Value = "ACCOUNT")]
         #pragma warning disable CS1591
         ACCOUNT,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "USER")]
+        #pragma warning disable CS1591
+        USER,
         #pragma warning restore CS1591
     }
 }

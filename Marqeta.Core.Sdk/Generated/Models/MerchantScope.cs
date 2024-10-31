@@ -21,6 +21,8 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string Attribute { get; set; }
 #endif
+        /// <summary>Indicates whether to decline transactions at merchants not included in the scope.If `true`, transactions at merchants not included in the scope will be declined.If `false`, transactions at merchants not included in the scope will not be declined.*Default value:* `false`</summary>
+        public bool? DeclineOtherMerchants { get; set; }
         /// <summary>Scope of the merchant category.Can be either &apos;mcc&apos; or &apos;mcc_group&apos;.</summary>
         public Marqeta.Core.Sdk.Models.MerchantScope_scope? Scope { get; set; }
         /// <summary>
@@ -49,6 +51,7 @@ namespace Marqeta.Core.Sdk.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "attribute", n => { Attribute = n.GetStringValue(); } },
+                { "decline_other_merchants", n => { DeclineOtherMerchants = n.GetBoolValue(); } },
                 { "scope", n => { Scope = n.GetEnumValue<Marqeta.Core.Sdk.Models.MerchantScope_scope>(); } },
             };
         }
@@ -60,6 +63,7 @@ namespace Marqeta.Core.Sdk.Models
         {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("attribute", Attribute);
+            writer.WriteBoolValue("decline_other_merchants", DeclineOtherMerchants);
             writer.WriteEnumValue<Marqeta.Core.Sdk.Models.MerchantScope_scope>("scope", Scope);
             writer.WriteAdditionalData(AdditionalData);
         }

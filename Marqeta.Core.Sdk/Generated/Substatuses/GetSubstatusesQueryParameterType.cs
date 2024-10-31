@@ -31,5 +31,9 @@ namespace Marqeta.Core.Sdk.Substatuses
         #pragma warning disable CS1591
         BANKRUPTCY,
         #pragma warning restore CS1591
+        [EnumMember(Value = "POWER_OF_ATTORNEY")]
+        #pragma warning disable CS1591
+        POWER_OF_ATTORNEY,
+        #pragma warning restore CS1591
     }
 }

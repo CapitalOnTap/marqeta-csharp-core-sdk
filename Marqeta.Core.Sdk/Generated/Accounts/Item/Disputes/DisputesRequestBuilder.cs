@@ -33,7 +33,7 @@ namespace Marqeta.Core.Sdk.Accounts.Item.Disputes
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public DisputesRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/accounts/{account_token}/disputes{?count*,sort_by*,start_index*}", pathParameters)
+        public DisputesRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/accounts/{account_token}/disputes{?count*,ledger_entry_tokens*,sort_by*,start_index*,statuses*}", pathParameters)
         {
         }
         /// <summary>
@@ -41,7 +41,7 @@ namespace Marqeta.Core.Sdk.Accounts.Item.Disputes
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public DisputesRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/accounts/{account_token}/disputes{?count*,sort_by*,start_index*}", rawUrl)
+        public DisputesRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/accounts/{account_token}/disputes{?count*,ledger_entry_tokens*,sort_by*,start_index*,statuses*}", rawUrl)
         {
         }
         /// <summary>
@@ -150,12 +150,32 @@ namespace Marqeta.Core.Sdk.Accounts.Item.Disputes
             /// <summary>Number of disputes resources to retrieve.</summary>
             [QueryParameter("count")]
             public int? Count { get; set; }
+            /// <summary>Unique identifier of the journal entry in dispute.This type of identifier can only be used for `authorization.clearing`-type journal entries.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            [QueryParameter("ledger_entry_tokens")]
+            public string[]? LedgerEntryTokens { get; set; }
+#nullable restore
+#else
+            [QueryParameter("ledger_entry_tokens")]
+            public string[] LedgerEntryTokens { get; set; }
+#endif
             /// <summary>Field on which to sort.Prefix the field name with a hyphen (`-`) to sort in descending order.Omit the hyphen to sort in ascending order.*NOTE:*You must sort using system field names such as `lastModifiedTime`, and not by the field names appearing in response bodies such as `last_modified_time`.</summary>
             [QueryParameter("sort_by")]
             public Marqeta.Core.Sdk.Accounts.Item.Disputes.GetSort_byQueryParameterType? SortBy { get; set; }
             /// <summary>Sort order index of the first resource in the returned array.</summary>
             [QueryParameter("start_index")]
             public int? StartIndex { get; set; }
+            /// <summary>Status of the dispute.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            [QueryParameter("statuses")]
+            public Marqeta.Core.Sdk.Models.DisputeStatus[]? Statuses { get; set; }
+#nullable restore
+#else
+            [QueryParameter("statuses")]
+            public Marqeta.Core.Sdk.Models.DisputeStatus[] Statuses { get; set; }
+#endif
         }
     }
 }

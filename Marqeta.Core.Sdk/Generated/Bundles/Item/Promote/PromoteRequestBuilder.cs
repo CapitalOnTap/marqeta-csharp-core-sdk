@@ -32,7 +32,7 @@ namespace Marqeta.Core.Sdk.Bundles.Item.Promote
         {
         }
         /// <summary>
-        /// Promote a specific bundle, which replaces the current active bundle and activates the promoted bundle.
+        /// Promote a specific bundle that replaces the current active bundle and activates the promoted bundle.
         /// </summary>
         /// <returns>A <see cref="Marqeta.Core.Sdk.Models.BundleResponse"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -55,7 +55,7 @@ namespace Marqeta.Core.Sdk.Bundles.Item.Promote
             return await RequestAdapter.SendAsync<Marqeta.Core.Sdk.Models.BundleResponse>(requestInfo, Marqeta.Core.Sdk.Models.BundleResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Promote a specific bundle, which replaces the current active bundle and activates the promoted bundle.
+        /// Promote a specific bundle that replaces the current active bundle and activates the promoted bundle.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>

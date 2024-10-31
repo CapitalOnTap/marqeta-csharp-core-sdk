@@ -51,7 +51,7 @@ namespace Marqeta.Core.Sdk.Fundingsources.Ach
         {
         }
         /// <summary>
-        /// Create an ACH funding source for an existing account holder.Specify the account holder of the funding source by passing a user or business token.When adding an ACH funding source, a small amount is deposited in the bank account as a test.The test deposit should be reflected in the account after two to three business days.You must then make an API call to verify the deposit amount in order to activate the ACH account.See &lt;&lt;/core-api/account-holder-funding-sources#putFundingsourcesAchFundingsourcetoken, Verify or Update ACH Funding Source&gt;&gt; on this page for more information.The response body returns details about the account, including the verification status.Possible ACH verification status values include `ACH_VERIFIED`, `ACH_FAILED`, and `VERIFICATION_PENDING`.
+        /// Create an ACH funding source for an existing account holder.Specify the account holder of the funding source by passing a user or business token.The response body returns details about the account, including the verification status.Possible ACH verification status values include `ACH_VERIFIED`, `ACH_FAILED`, and `VERIFICATION_PENDING`.
         /// </summary>
         /// <returns>A <see cref="Marqeta.Core.Sdk.Models.Ach_response_model"/></returns>
         /// <param name="body">The request body</param>
@@ -76,7 +76,7 @@ namespace Marqeta.Core.Sdk.Fundingsources.Ach
             return await RequestAdapter.SendAsync<Marqeta.Core.Sdk.Models.Ach_response_model>(requestInfo, Marqeta.Core.Sdk.Models.Ach_response_model.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Create an ACH funding source for an existing account holder.Specify the account holder of the funding source by passing a user or business token.When adding an ACH funding source, a small amount is deposited in the bank account as a test.The test deposit should be reflected in the account after two to three business days.You must then make an API call to verify the deposit amount in order to activate the ACH account.See &lt;&lt;/core-api/account-holder-funding-sources#putFundingsourcesAchFundingsourcetoken, Verify or Update ACH Funding Source&gt;&gt; on this page for more information.The response body returns details about the account, including the verification status.Possible ACH verification status values include `ACH_VERIFIED`, `ACH_FAILED`, and `VERIFICATION_PENDING`.
+        /// Create an ACH funding source for an existing account holder.Specify the account holder of the funding source by passing a user or business token.The response body returns details about the account, including the verification status.Possible ACH verification status values include `ACH_VERIFIED`, `ACH_FAILED`, and `VERIFICATION_PENDING`.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">The request body</param>

@@ -7,7 +7,7 @@ using System;
 namespace Marqeta.Core.Sdk.Models
 {
     /// <summary>
-    /// Return paginated account and user substatuses
+    /// Return paginated account and user substatuses.
     /// </summary>
     public class SubstatusPage : IAdditionalDataHolder, IParsable
     {
@@ -15,7 +15,7 @@ namespace Marqeta.Core.Sdk.Models
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Number of resources returned.</summary>
         public int? Count { get; set; }
-        /// <summary>The data property</summary>
+        /// <summary>Contains one or more substatuses.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<Marqeta.Core.Sdk.Models.SubstatusResponse>? Data { get; set; }

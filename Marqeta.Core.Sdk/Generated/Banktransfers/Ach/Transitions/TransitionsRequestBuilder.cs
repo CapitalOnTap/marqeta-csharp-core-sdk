@@ -147,7 +147,7 @@ namespace Marqeta.Core.Sdk.Banktransfers.Ach.Transitions
             /// <summary>Number of bank transfer transitions to retrieve.</summary>
             [QueryParameter("count")]
             public int? Count { get; set; }
-            /// <summary>Field on which to sort.Use any field in the resource model, or one of the system fields lastModifiedTime or createdTime.Prefix the field name with a hyphen (-) to sort in descending order.Omit the hyphen to sort in ascending order.</summary>
+            /// <summary>Field on which to sort.Use any field in the resource model, or one of the system fields `lastModifiedTime` or `createdTime`.Prefix the field name with a hyphen (-) to sort in descending order.Omit the hyphen to sort in ascending order.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
             [QueryParameter("sort_by")]

@@ -10,9 +10,9 @@ namespace Marqeta.Core.Sdk.Models
         #pragma warning disable CS1591
         SET_PIN,
         #pragma warning restore CS1591
-        [EnumMember(Value = "SHOW_PIN")]
+        [EnumMember(Value = "REVEAL_PIN")]
         #pragma warning disable CS1591
-        SHOW_PIN,
+        REVEAL_PIN,
         #pragma warning restore CS1591
     }
 }

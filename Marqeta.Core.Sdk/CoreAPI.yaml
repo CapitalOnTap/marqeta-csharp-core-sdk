@@ -6,7 +6,7 @@ info:
   contact:
     name: Marqeta
     email: support@marqeta.com
-  version: 3.0.19
+  version: 3.0.24
 servers:
   - url: /v3
 paths:
@@ -1032,6 +1032,24 @@ paths:
               - '-lastModifiedTime'
             type: string
             default: '-lastModifiedTime'
+        - name: ledger_entry_tokens
+          in: query
+          description: "Unique identifier of the journal entry in dispute.\nThis type of identifier can only be used for `authorization.clearing`-type journal entries."
+          style: form
+          schema:
+            type: array
+            items:
+              type: string
+            x-allowableValues: Existing `authorization.clearing`-type journal entry token
+        - name: statuses
+          in: query
+          description: Status of the dispute.
+          style: form
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/DisputeStatus'
+            x-allowableValues: Valid dispute status
       responses:
         '200':
           description: Expected response to a valid request
@@ -3045,7 +3063,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/ApiError'
       security:
-        - zionToken: [ ]
+        - nileToken: [ ]
   /admin/replayfailedstatements:
     post:
       tags:
@@ -3067,7 +3085,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/ApiError'
       security:
-        - zionToken: [ ]
+        - nileToken: [ ]
   '/admin/replayfailedstatements/{short_code}':
     post:
       tags:
@@ -3097,7 +3115,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/ApiError'
       security:
-        - zionToken: [ ]
+        - nileToken: [ ]
   /admin/scheduleStatements:
     post:
       tags:
@@ -3119,7 +3137,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/ApiError'
       security:
-        - zionToken: [ ]
+        - nileToken: [ ]
   '/admin/{short_code}/replayfailedstatement/{account_token}':
     post:
       tags:
@@ -3156,7 +3174,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/ApiError'
       security:
-        - zionToken: [ ]
+        - nileToken: [ ]
   '/admin/{short_code}/retryachpayments':
     post:
       tags:
@@ -3192,6 +3210,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ApiError'
+      security:
+        - nileToken: [ ]
   /authcontrols:
     get:
       tags:
@@ -3792,11 +3812,11 @@ paths:
     post:
       tags:
         - Funding via ACH (Beta)
-      summary: Apply a provisional credit to ACH transfer
-      description: Applies a provisional credit to an ACH transfer.
+      summary: Perform faster funds ACH transfer
+      description: Use this endpoint to post funds from an existing bank transfer more quickly to the cardholder's account.
       operationId: postApplyProvisionalCreditToBankTransfer
       requestBody:
-        description: ACH early funds request model
+        description: Early funds request model
         content:
           application/json:
             schema:
@@ -3860,7 +3880,7 @@ paths:
             default: 0
         - name: sort_by
           in: query
-          description: "Field on which to sort.\nUse any field in the resource model, or one of the system fields lastModifiedTime or createdTime.\nPrefix the field name with a hyphen (-) to sort in descending order.\nOmit the hyphen to sort in ascending order."
+          description: "Field on which to sort.\nUse any field in the resource model, or one of the system fields `lastModifiedTime` or `createdTime`.\nPrefix the field name with a hyphen (-) to sort in descending order.\nOmit the hyphen to sort in ascending order."
           style: form
           schema:
             type: string
@@ -4061,7 +4081,7 @@ paths:
             default: 0
         - name: sort_by
           in: query
-          description: "Field on which to sort.\nPrefix the field name with a hyphen (`-`) to sort in descending order.\nOmit the hyphen to sort in ascending order.\n\n*NOTE:*\nYou must sort using system field names such as `lastModifiedTime`, and not by the field names appearing in response bodies such as `last_modified_time`."
+          description: "Field on which to sort.\nPrefix the field name with a hyphen (`-`) to sort in descending order.\nOmit the hyphen to sort in ascending order.\n\n*NOTE:*\nYou must sort using system field names such as `lastModifiedTime`, not by the field names appearing in response bodies: for example, `last_modified_time`."
           style: form
           schema:
             enum:
@@ -4163,7 +4183,7 @@ paths:
       tags:
         - Bundles (Beta)
       summary: Update bundle
-      description: 'Update a specific bundle that is not `ACTIVE` or `ARCHIVED`. Bundles are created in a `DRAFT` state, and are still modifiable at this point. Using the transitions endpoint a bundle can be transitioned from `DRAFT`, to `ACTIVE`. Once a bundle is active, it is immutable, and cannot be modified.'
+      description: "Update a specific bundle that is not `ACTIVE` or `ARCHIVED`.\nBundles are created in a `DRAFT` state, and are still modifiable at this point.\nUsing the transitions endpoint a bundle can be transitioned from `DRAFT`, to `ACTIVE`.\nOnce a bundle is active, it cannot be modified."
       operationId: updateBundle
       parameters:
         - name: token
@@ -4297,7 +4317,7 @@ paths:
       tags:
         - Bundles (Beta)
       summary: Promote bundle
-      description: 'Promote a specific bundle, which replaces the current active bundle and activates the promoted bundle.'
+      description: Promote a specific bundle that replaces the current active bundle and activates the promoted bundle.
       operationId: promoteBundle
       parameters:
         - name: token
@@ -5351,6 +5371,7 @@ paths:
           description: Number of card transitions to retrieve.
           style: form
           schema:
+            minimum: 0
             type: integer
             format: int32
             default: 5
@@ -7157,7 +7178,7 @@ paths:
       tags:
         - Account Holder Funding Sources
       summary: Create ACH source
-      description: "Create an ACH funding source for an existing account holder.\nSpecify the account holder of the funding source by passing a user or business token.\n\nWhen adding an ACH funding source, a small amount is deposited in the bank account as a test.\nThe test deposit should be reflected in the account after two to three business days.\nYou must then make an API call to verify the deposit amount in order to activate the ACH account.\nSee <</core-api/account-holder-funding-sources#putFundingsourcesAchFundingsourcetoken, Verify or Update ACH Funding Source>> on this page for more information.\n\nThe response body returns details about the account, including the verification status.\nPossible ACH verification status values include `ACH_VERIFIED`, `ACH_FAILED`, and `VERIFICATION_PENDING`."
+      description: "Create an ACH funding source for an existing account holder.\nSpecify the account holder of the funding source by passing a user or business token.\n\nThe response body returns details about the account, including the verification status.\nPossible ACH verification status values include `ACH_VERIFIED`, `ACH_FAILED`, and `VERIFICATION_PENDING`."
       operationId: postFundingsourcesAch
       requestBody:
         content:
@@ -7224,66 +7245,6 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ach_response_model'
-        default:
-          description: Error response
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ApiError'
-    put:
-      tags:
-        - Account Holder Funding Sources
-      summary: Verify or update ACH source
-      description: "Verify or update an ACH funding source.\n\nIf you are verifying the ACH source, include the verification amounts in the body of the request.\nACH verification will fail if the verification amounts are not entered in the correct order.\n`verify_amount1` must match the first deposit amount, and `verify_amount2` must match the second.\n\nIf you are updating the ACH source, include the `active` field instead.\nThe `active` field is the only field you can update."
-      operationId: putFundingsourcesAchFundingsourcetoken
-      parameters:
-        - name: funding_source_token
-          in: path
-          description: "Unique identifier of the funding source.\n\nSend a `GET` request to `/fundingsources/user/{user_token}` to retrieve existing funding source tokens for a user or to `/fundingsources/business/{business_token}` to retrieve existing funding source tokens for a business."
-          required: true
-          style: simple
-          schema:
-            type: string
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/ach_verification_model'
-      responses:
-        '200':
-          description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ach_response_model'
-        default:
-          description: Error response
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ApiError'
-  '/fundingsources/ach/{funding_source_token}/verificationamounts':
-    get:
-      tags:
-        - Account Holder Funding Sources
-      summary: Retrieve ACH verification amounts
-      description: "In your sandbox environment, retrieve the amounts used to verify the association with your ACH account.\n\nUse this endpoint for testing purposes only.\nIn production, verification amounts are retrieved from the bank statement of the account holder."
-      operationId: getFundingsourcesAchFundingsourcetokenVerificationamounts
-      parameters:
-        - name: funding_source_token
-          in: path
-          description: "Unique identifier of the funding source.\n\nSend a `GET` request to `/fundingsources/user/{user_token}` to retrieve existing funding source tokens for a user or to `/fundingsources/business/{business_token}` to retrieve existing funding source tokens for a business."
-          required: true
-          style: simple
-          schema:
-            type: string
-      responses:
-        '200':
-          description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ach_verification_model'
         default:
           description: Error response
           content:
@@ -8591,6 +8552,14 @@ paths:
               - '-lastModifiedTime'
             type: string
             default: '-lastModifiedTime'
+        - name: statuses
+          in: query
+          description: Array of statuses to use for filtering payment sources.
+          style: form
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/PaymentSourceStatusEnum'
       responses:
         '200':
           description: Response containing a list of all payment sources for a provided account
@@ -8951,7 +8920,7 @@ paths:
       tags:
         - PINs
       summary: Create or update PIN
-      description: "Creates or updates a personal identification number (PIN) for an existing card.\n\nIf you want to manage a card's PIN, first create a new control token for the card by sending a `POST` request to `/pins/controltoken`, and then use that token to update the PIN.\nYou must create a card before you can manage a PIN.\n\nUnless PIN reveal functionality has been enabled for your program, you cannot retrieve a PIN that has previously been created.\nIf the PIN has been forgotten, you must either update the card's PIN or create a new card and PIN.\n\nIf you have enabled PIN reveal functionality for your program, you can send a `POST` request to the `/pins/reveal` endpoint to retrieve an existing PIN.\nSee <</core-api/pins#revealPins, Reveal PIN>> on this page for details.\n\n[WARNING]\nSending a request to this endpoint requires PCI DSS compliance.\nYou must comply with PCI DSS data security requirements if you want to store, transmit, or process sensitive card data such as the cardholder's primary account number (PAN), personal identification number (PIN), and card expiration date."
+      description: "Creates or updates a personal identification number (PIN) for an existing card.\nAlthough cardholders might choose a four-, five-, or six-digit PIN if they set their PIN at an automated teller machine, they can only set a four-digit PIN using Marqeta's Set PIN widget or the create or update PIN endpoint (`PUT /pins`).\nCardholders can update their PIN through the API regardless of its length, but the new PIN value they choose must contain four digits.\n\nIf you want to manage a card's PIN, first create a new control token for the card by sending a `POST` request to `/pins/controltoken`, and then use that token to update the PIN.\nYou must create a card before you can manage a PIN.\n\nUnless PIN reveal functionality has been enabled for your program, you cannot retrieve a PIN that has previously been created.\nIf the PIN has been forgotten, you must either update the card's PIN or create a new card and PIN.\n\nIf you have enabled PIN reveal functionality for your program, you can send a `POST` request to the `/pins/reveal` endpoint to retrieve an existing PIN.\nSee <</core-api/pins#revealPins, Reveal PIN>> on this page for details.\n\n[WARNING]\nSending a request to this endpoint requires PCI DSS compliance.\nYou must comply with PCI DSS data security requirements if you want to store, transmit, or process sensitive card data such as the cardholder's primary account number (PAN), personal identification number (PIN), and card expiration date."
       operationId: putPins
       requestBody:
         content:
@@ -8997,7 +8966,7 @@ paths:
       tags:
         - PINs
       summary: Reveal PIN
-      description: "Reveals the personal identification number (PIN) of an existing, active card.\n\n*WARNING:* Only use this endpoint to access a PIN in order to reveal it to its cardholder.\nDo not use this endpoint for the purpose of storing a PIN at any location.\n\nSending a request to this endpoint requires PCI DSS compliance.\nYou must comply with PCI DSS data security requirements if you want to store, transmit, or process sensitive card data such as the cardholder's primary account number (PAN), personal identification number (PIN), and card expiration date.\n\nIf you want instead to update a card's PIN, send a `PUT` request to the `/pins` endpoint.\nSee <</core-api/pins#putPins, Create or Update PIN>> on this page for details.\n\nRevealing a card's PIN is a two-step process.\nYou must first create a new control token for the card by sending a `POST` request to `/pins/controltoken`, and then use that token to reveal the PIN."
+      description: "Reveals the personal identification number (PIN) of an existing, active card.\nBe aware that while a cardholder can only set a four-digit PIN using the Marqeta Set PIN widget or `PUT /pins` API, you may see a four-, five-, or six-digit PIN in cases where your cardholders have set a new PIN at an automated teller machine.\n\n[WARNING]\nOnly use this endpoint to access a PIN in order to reveal it to its cardholder.\nDo not use this endpoint for the purpose of storing a PIN at any location.\n\nSending a request to this endpoint requires PCI DSS compliance.\nYou must comply with PCI DSS data security requirements if you want to store, transmit, or process sensitive card data such as the cardholder's primary account number (PAN), personal identification number (PIN), and card expiration date.\n\nIf you want to update a card's PIN instead, send a `PUT` request to the `/pins` endpoint.\nSee <</core-api/pins#putPins, Create or Update PIN>> on this page for details.\n\nRevealing a card's PIN is a two-step process.\nYou must first create a new control token for the card by sending a `POST` request to `/pins/controltoken`, and then use that token to reveal the PIN."
       operationId: revealPins
       requestBody:
         content:
@@ -9866,7 +9835,7 @@ paths:
             x-allowableValues: Existing reward policy token
       responses:
         '200':
-          description: A JSON object containing reward policy information
+          description: A JSON object containing reward policy information.
           content:
             application/json:
               schema:
@@ -10403,6 +10372,7 @@ paths:
           description: Number of program transfers to retrieve.
           style: form
           schema:
+            maximum: 100
             type: integer
             format: int32
             default: 5
@@ -12118,31 +12088,35 @@ paths:
   /substatuses:
     get:
       tags:
-        - Substatus
+        - Credit Substatuses
       summary: List substatuses
-      description: Get list of substatuses
+      description: "Retrieve an array of substatuses.\nThis endpoint supports <</core-api/sorting-and-pagination,sorting and pagination>>."
       operationId: listSubStatuses
       parameters:
         - name: account_token
           in: query
-          description: The account token to filter by.
+          description: "Unique identifier of the account for which to retrieve substatuses.\n\nSend a `GET` request to `/credit/accounts` to retrieve existing account tokens."
           style: form
           schema:
             type: string
+            x-allowableValues: Existing account token
         - name: user_token
           in: query
-          description: The user token to filter by.
+          description: "Unique identifier of the user for which to retrieve substatuses.\n\nSend a `GET` request to `/users` to retrieve existing user tokens."
           style: form
           schema:
             type: string
+            x-allowableValues: Existing user token
         - name: is_active
           in: query
+          description: Denotes whether a substatus is active.
           style: form
           schema:
             type: boolean
+            x-allowableValues: '`true`, `false`'
         - name: substatuses
           in: query
-          description: "comma-deliminited list of substatuses types to include\nAllowable values:\nHARDSHIP,FRAUD,MLA,SCRA,DECEASED,BANKRUPTCY"
+          description: "Comma-delimited list of substatus types to include.\nAllowable values:\n`HARDSHIP`, `FRAUD`, `MLA`, `SCRA`, `DECEASED`, `BANKRUPTCY`, `POWER_OF_ATTORNEY`"
           style: form
           schema:
             type: array
@@ -12154,6 +12128,7 @@ paths:
                 - SCRA
                 - DECEASED
                 - BANKRUPTCY
+                - POWER_OF_ATTORNEY
               type: string
         - name: count
           in: query
@@ -12166,7 +12141,7 @@ paths:
             default: 5
         - name: start_index
           in: query
-          description: Show n-th paginated page
+          description: Sort order index of the first resource in the returned array.
           style: form
           schema:
             minimum: 0
@@ -12184,7 +12159,7 @@ paths:
             default: '-createdTime'
       responses:
         '200':
-          description: Expected response to a valid request
+          description: Expected response to a valid request.
           content:
             application/json:
               schema:
@@ -12199,9 +12174,9 @@ paths:
         - zionToken: [ ]
     post:
       tags:
-        - Substatus
+        - Credit Substatuses
       summary: Create substatus
-      description: Create a sub status for an existing user or account.
+      description: Create a new substatus for a credit account or user.
       operationId: createSubStatus
       requestBody:
         content:
@@ -12211,7 +12186,7 @@ paths:
         required: true
       responses:
         '201':
-          description: Expected response to a valid request
+          description: Expected response to a valid request.
           content:
             application/json:
               schema:
@@ -12227,14 +12202,14 @@ paths:
   '/substatuses/{substatus_token}':
     get:
       tags:
-        - Substatus
-      summary: Retrieve Substatus
+        - Credit Substatuses
+      summary: Retrieve substatus
       description: Retrieve a user or account substatus.
       operationId: retrieveSubStatus
       parameters:
         - name: substatus_token
           in: path
-          description: "The unique identifier of the substatus to retrieve.\n\nSend a `GET` request to `/credit/substatuses` to retrieve existing substatus tokens."
+          description: "Unique identifier of the substatus to retrieve.\n\nSend a `GET` request to `/credit/substatuses` to retrieve existing substatus tokens."
           required: true
           style: simple
           schema:
@@ -12257,14 +12232,14 @@ paths:
         - zionToken: [ ]
     put:
       tags:
-        - Substatus
+        - Credit Substatuses
       summary: Update substatus
-      description: Update substatus for an user or account.
+      description: Updating a substatus registers a new event that changes the substatus' state.
       operationId: updateSubStatus
       parameters:
         - name: substatus_token
           in: path
-          description: The unique identifier of the substatus to update.
+          description: "Unique identifier of the account substatus resource to retrieve.\n\nSend a `GET` request to `/credit/substatuses` to retrieve existing substatus tokens."
           required: true
           style: simple
           schema:
@@ -12278,7 +12253,7 @@ paths:
         required: true
       responses:
         '200':
-          description: Updated substatus response
+          description: Updated substatus response.
           content:
             application/json:
               schema:
@@ -13682,6 +13657,7 @@ paths:
         - Payments
         - Statements
         - Delinquency
+        - Credit Substatuses
       summary: Resend credit event notification
       description: "Resends a credit event notification to your webhook endpoint.\n\nAlthough you send this request as a `POST`, all parameters are passed in the URL and the body is empty.\nThe event notification is resent to your webhook endpoint and also returned in the response to this request.\n\nFor details on how to configure your webhook endpoint, see the About Webhooks <</developer-guides/about-webhooks#_tutorial, tutorial>>.\nFor the complete `/webhooks` endpoint reference, see <</core-api/webhooks, Webhooks>>."
       operationId: resendWebhookEvent
@@ -13700,15 +13676,16 @@ paths:
               - paymenttransition
               - delinquencytransition
               - paymentreminders
+              - substatus
             type: string
         - name: resource_token
           in: path
-          description: "Unique identifier of the resource for which you want to resend a notification.\n\nSend a `GET` request to `/credit/accounts/{account_token}/journalentries` to retrieve existing journal entry tokens.\n\nSend a `GET` request to `/credit/accounts/{account_token}/ledgerentries` to retrieve existing ledger entry tokens.\n\nSend a `GET` request to `/accounts/{account_token}/accounttransitions` to retrieve existing account transition tokens.\n\nSend a `GET` request to `/credit/accounts/{account_token}/payments/{payment_token}` to retrieve existing payment transition tokens.\n\nSend a `GET` request to `/accounts/{account_token}/statements` to retrieve existing statement summary tokens.\n\nSend a `GET` request to `/accounts/{account_token}/delinquencystate/transitions` to retrieve existing delinquency state transition tokens.\n\nSend a `GET` request to `/accounts/{account_token}/statements/{statement_summary_token}/paymentreminders/{token}` to retrieve existing payment reminder tokens."
+          description: "Unique identifier of the resource for which you want to resend a notification.\n\nSend a `GET` request to `/credit/accounts/{account_token}/journalentries` to retrieve existing journal entry tokens.\n\nSend a `GET` request to `/credit/accounts/{account_token}/ledgerentries` to retrieve existing ledger entry tokens.\n\nSend a `GET` request to `/accounts/{account_token}/accounttransitions` to retrieve existing account transition tokens.\n\nSend a `GET` request to `/credit/accounts/{account_token}/payments/{payment_token}` to retrieve existing payment transition tokens.\n\nSend a `GET` request to `/accounts/{account_token}/statements` to retrieve existing statement summary tokens.\n\nSend a `GET` request to `/accounts/{account_token}/delinquencystate/transitions` to retrieve existing delinquency state transition tokens.\n\nSend a `GET` request to `/accounts/{account_token}/statements/{statement_summary_token}/paymentreminders/{token}` to retrieve existing payment reminder tokens.\n\nSend a `GET` request to `/credit/substatuses` to retrieve existing substatus tokens."
           required: true
           style: simple
           schema:
             type: string
-            x-allowableValues: 'Existing journal entry token, ledger entry token, account transition token, payment transition token, statement summary token, or delinquency transition token'
+            x-allowableValues: 'Existing journal entry token, ledger entry token, account transition token, payment transition token, statement summary token, delinquency transition token, or substatus token'
       responses:
         '200':
           description: Event response for which the webhook event was resent
@@ -14137,6 +14114,17 @@ components:
       type: string
       description: "Type of APR.\n\n* `GO_TO` - Default APR rate that is applicable when any promotional periods expire.\n* `PROMOTIONAL` - A temporary rate that is applicable for a specified period of time."
     AccountBillingCycleResponse:
+      required:
+        - account_token
+        - created_time
+        - current_end_time
+        - current_payment_due_date
+        - current_start_time
+        - next_end_time
+        - next_payment_due_date
+        - next_start_time
+        - short_code
+        - updated_time
       type: object
       properties:
         account_token:
@@ -14246,10 +14234,10 @@ components:
       type: object
       properties:
         billing_cycle_day:
-          maximum: 28
+          maximum: 25
           minimum: 1
           type: integer
-          description: "Day of month the billing cycle starts. \nIf an override value is not provided, the default value is derived from the bundle."
+          description: "Day of month the billing cycle starts. \nIf an override value is not provided, the default value is derived from the bundle.\nThe value must be 1, 10, 15, 20, or 25."
         card_level:
           enum:
             - PREMIUM
@@ -14271,7 +14259,7 @@ components:
           maximum: 31
           minimum: 31
           type: integer
-          description: "Day of month the payment for the previous billing cycle is due.\n\nThis field is deprecated.\nUse the `account.payment_due_interval` field instead.\nTo retrieve `payment_due_interval`, see <</core-api/policies#retrieveProductPolicy, Retrieve credit product policy, payments.payment_due_interval>>."
+          description: "Day of month the payment for the previous billing cycle is due.\n\nThis field is being deprecated and replaced by `payment_due_interval` of a product policy.\nTo retrieve `payment_due_interval`, see <</core-api/policies#retrieveProductPolicy, Retrieve credit product policy, payments.payment_due_interval>>."
           deprecated: true
         payment_holds:
           $ref: '#/components/schemas/AccountConfigPaymentHolds'
@@ -14290,10 +14278,10 @@ components:
       type: object
       properties:
         billing_cycle_day:
-          maximum: 28
+          maximum: 25
           minimum: 1
           type: integer
-          description: "Day of month the billing cycle starts. \nIf an override value is not provided, the default value is derived from the bundle."
+          description: "Day of month the billing cycle starts. \nIf an override value is not provided, the default value is derived from the bundle.\nThe value must be 1, 10, 15, 20, or 25."
         card_level:
           enum:
             - PREMIUM
@@ -14969,19 +14957,6 @@ components:
           type: string
           description: "United States ZIP code of the address.\n\nThis field is returned if it exists in the resource."
       description: Address associated with the business.
-    AmountFilter:
-      type: object
-      properties:
-        greater_than:
-          minimum: 0
-          type: number
-          description: Minimum amount that a balance for a billing cycle can be to earn the reward.
-        less_than:
-          minimum: 0
-          exclusiveMinimum: true
-          type: number
-          description: Maximum amount that a balance for a billing cycle can be to earn the reward.
-      description: Contains information on the minimum and maximum amounts that the balance for a billing cycle can be to earn the reward.
     AndroidPushTokenRequestAddress:
       type: object
       properties:
@@ -17298,8 +17273,7 @@ components:
         direct_deposit_account_token:
           type: string
         early_direct_deposit:
-          type: boolean
-          default: false
+          type: string
         individual_identification_number:
           type: string
         individual_name:
@@ -17441,8 +17415,7 @@ components:
         direct_deposit_token:
           type: string
         early_direct_deposit:
-          type: boolean
-          default: false
+          type: string
         individual_identification_number:
           type: string
         individual_name:
@@ -17662,11 +17635,6 @@ components:
           type: string
           description: Unique identifier of the dispute update.
       description: Information about a transaction dispute update request.
-    DynamicMccType:
-      enum:
-        - HIGHEST_SPEND
-      type: string
-      description: Type of dynamic MCC.
     ErrorDetailsResponse:
       required:
         - application_token
@@ -18436,18 +18404,6 @@ components:
           minimum: 0
           type: number
           description: 'The APR percentage value. This is the value of the fixed rate during the override period. The APR value must adhere to the constraints of the main schedule, such as maximum allowable values.'
-    MccDynamicFilter:
-      required:
-        - includes
-      type: object
-      properties:
-        includes:
-          minItems: 1
-          type: array
-          items:
-            $ref: '#/components/schemas/DynamicMccType'
-          description: One or more dynamic MCCs.
-      description: Contains information on the dynamic merchant category code (MCC) for a reward.
     MerchantGroupListResponse:
       type: object
       properties:
@@ -18478,6 +18434,10 @@ components:
         attribute:
           type: string
           description: "Attribute value corresponding to the chosen scope.\nIf 'mcc' is chosen, provide the Merchant Category Code (MCC).\nIf 'mcc_group' is chosen, provide the token identifying a group of MCCs."
+        decline_other_merchants:
+          type: boolean
+          description: "Indicates whether to decline transactions at merchants not included in the scope.\nIf `true`, transactions at merchants not included in the scope will be declined.\nIf `false`, transactions at merchants not included in the scope will not be declined.\n*Default value:* `false`"
+          default: false
         scope:
           enum:
             - mcc
@@ -20013,6 +19973,9 @@ components:
         - percentage_of_balance
       type: object
       properties:
+        include_all_fees_charged:
+          type: boolean
+          description: Whether to include all fees charged when calculating the minimum payment.
         include_fees_charged:
           type: array
           items:
@@ -20049,10 +20012,10 @@ components:
             - FEES
             - PRINCIPAL
         billing_cycle_day:
-          maximum: 28
+          maximum: 25
           minimum: 1
           type: integer
-          description: Day of month the billing cycle starts.
+          description: 'Day of month the billing cycle starts. The value must be 1, 10, 15, 20, or 25.'
         billing_cycle_day_strategy:
           enum:
             - MANUAL
@@ -20075,7 +20038,7 @@ components:
           $ref: '#/components/schemas/PolicyProductMinPaymentCalculation'
         payment_due_interval:
           type: integer
-          description: "Specifies the payment due interval that is used to determine the payment due date for a billing cycle.\nThe accepted values are either -1 or a value between 1 and 26.\nA value of -1 indicates one day prior to the next billing cycle date"
+          description: "Specifies the payment due interval that is used to determine the payment due date for a billing cycle.\nThe allowed value is -1.\nA value of -1 indicates one day prior to the next billing cycle date"
           default: -1
       description: 'Contains the configurations for billing cycle day, payment due day, and fees.'
     PolicyProductResponse:
@@ -20176,6 +20139,31 @@ components:
             $ref: '#/components/schemas/BalanceType'
           description: One or more usage types for the credit product policy.
       description: Request details to update a credit product policy.
+    PolicyRewardConversion:
+      required:
+        - conversion_increment
+        - type
+      type: object
+      properties:
+        conversion_increment:
+          type: integer
+          description: The static amount to reward if the rule conditions are met.
+        conversion_rate:
+          minimum: 0.001
+          type: number
+          description: The rate that points are worth with converting the REDEMPTION_TYPE indicated.
+          format: decimal
+        currency:
+          type: string
+          description: Type of currency the conversion rate is for.
+        type:
+          $ref: '#/components/schemas/PolicyRewardConversionType'
+      description: reward conversion.
+    PolicyRewardConversionType:
+      enum:
+        - STATEMENT_CREDIT
+      type: string
+      description: Type of conversion.
     PolicyRewardPage:
       required:
         - count
@@ -20203,12 +20191,49 @@ components:
           type: integer
           description: Sort order index of the first resource in the returned array.
       description: List response details for reward policies.
+    PolicyRewardPlatformRule:
+      required:
+        - description
+        - type
+      type: object
+      properties:
+        amount:
+          type: number
+          description: The static amount to reward if the rule conditions are met.
+          nullable: true
+        attributes:
+          $ref: '#/components/schemas/PolicyRewardRuleAttributes'
+        calculation_type:
+          enum:
+            - PER_TRANSACTION
+          type: string
+          description: Type of calculation to use to evaluate a rule has been satisfied.
+        description:
+          type: string
+          description: The description of the rule.
+        multiplier:
+          type: number
+          description: 'The reward multiplier to apply the transaction, where ''1'' means 1 X transaction amount.'
+          format: float
+          nullable: true
+        type:
+          enum:
+            - MULTIPLIER_PER_TRANSACTION
+          type: string
+          description: Type of rule.
+      description: Contains information on a policy reward platform rule.
     PolicyRewardReq:
       required:
         - name
         - rules
       type: object
       properties:
+        conversions:
+          minItems: 1
+          type: array
+          items:
+            $ref: '#/components/schemas/PolicyRewardConversion'
+          description: One or more reward conversions.
         description:
           type: string
           description: Description of the reward policy.
@@ -20220,8 +20245,10 @@ components:
           minItems: 1
           type: array
           items:
-            $ref: '#/components/schemas/PolicyRewardRule'
+            $ref: '#/components/schemas/PolicyRewardPlatformRule'
           description: One or more reward rules.
+        settlement_strategy:
+          $ref: '#/components/schemas/PolicyRewardSettlementType'
         token:
           pattern: (?!^ +$)^.+$
           type: string
@@ -20230,6 +20257,12 @@ components:
     PolicyRewardResponse:
       type: object
       properties:
+        conversions:
+          minItems: 1
+          type: array
+          items:
+            $ref: '#/components/schemas/PolicyRewardConversion'
+          description: One or more reward conversions.
         created_time:
           type: string
           description: 'Date and time when the reward policy was created on Marqeta''s credit platform, in UTC.'
@@ -20244,8 +20277,10 @@ components:
           minItems: 1
           type: array
           items:
-            $ref: '#/components/schemas/PolicyRewardRule'
-          description: One or more reward rules
+            $ref: '#/components/schemas/PolicyRewardPlatformRule'
+          description: An array of one or more reward rules.
+        settlement_strategy:
+          $ref: '#/components/schemas/PolicyRewardSettlementType'
         token:
           pattern: (?!^ +$)^.+$
           type: string
@@ -20255,49 +20290,26 @@ components:
           description: 'Date and time when the reward policy was last updated on Marqeta''s credit platform, in UTC.'
           format: date-time
       description: Contains information on a reward policy.
-    PolicyRewardRule:
-      required:
-        - filters
-        - outcome
-        - type
+    PolicyRewardRuleAttributes:
       type: object
       properties:
-        filters:
-          $ref: '#/components/schemas/PolicyRewardRuleFilters'
-        outcome:
-          $ref: '#/components/schemas/PolicyRewardRuleOutcome'
-        type:
-          $ref: '#/components/schemas/PolicyRewardRuleType'
-      description: Contains information on a reward rule.
-    PolicyRewardRuleFilters:
-      required:
-        - amount
-      type: object
-      properties:
-        amount:
-          $ref: '#/components/schemas/AmountFilter'
-        mcc_dynamic:
-          $ref: '#/components/schemas/MccDynamicFilter'
-      description: Contains information on the rules defined for a reward program.
-    PolicyRewardRuleOutcome:
-      required:
-        - percentage
-      type: object
-      properties:
-        max_amount:
-          minimum: 0
+        max_spend:
           type: number
-          description: Max amount of the reward.
-        percentage:
-          minimum: 0
-          type: number
-          description: "Reward percentage applied when the balance for a billing cycle is within the range specified in the `filters.amount.greater_than` and `filters.amount.less_than` fields.\nFor example, if the percentage is `1`, the account holder earns 1% of the account balance if they spend between the `greater_than` and `less_than` amounts during a billing cycle."
-      description: Contains information on the outcome of a reward rule.
-    PolicyRewardRuleType:
+          description: Maximum spend amount.
+        mcc:
+          type: array
+          items:
+            type: string
+          description: "List of merchant category codes (MCCs).\nMCCs must be a four-digit number, or a range of two four-digit numbers separated by a hyphen."
+        mid:
+          type: string
+          description: Merchant ID for the rule.
+      description: Additional properties for which the rule can be used to determine reward accrual eligibility for a transaction.
+    PolicyRewardSettlementType:
       enum:
-        - CASHBACK
+        - STATEMENT
       type: string
-      description: Type of reward rule.
+      description: Reward settlement strategy for program.
     PolicyType:
       enum:
         - APR
@@ -20404,10 +20416,10 @@ components:
       type: object
       properties:
         billing_cycle_day:
-          maximum: 28
+          maximum: 25
           minimum: 1
           type: integer
-          description: Day of month the billing cycle starts.
+          description: 'Day of month the billing cycle starts. The value must be 1, 10, 15, 20, or 25.'
         billing_cycle_day_strategy:
           enum:
             - MANUAL
@@ -20433,7 +20445,7 @@ components:
           deprecated: true
         payment_due_interval:
           type: integer
-          description: "Specifies the payment due interval that is used to determine the payment due date for a billing cycle.\nThe accepted values are either -1 or a value between 1 and 26.\nA value of -1 indicates one day prior to the next billing cycle date."
+          description: "Specifies the payment due interval that is used to determine the payment due date for a billing cycle.\nThe allowed value is -1.\nA value of -1 indicates one day prior to the next billing cycle date."
           default: -1
         periodic_fees:
           type: array
@@ -20590,6 +20602,9 @@ components:
         - percentage_of_balance
       type: object
       properties:
+        include_all_fees_charged:
+          type: boolean
+          description: Whether to include all fees charged when calculating the minimum payments.
         include_fees_charged:
           type: array
           items:
@@ -21412,6 +21427,9 @@ components:
           maxLength: 255
           type: string
           description: Description of the reward.
+        forced:
+          type: boolean
+          description: "Allows you to force the creation of a reward on an account.\n\nBy default, reward creation is not permitted for accounts with a status of `SUSPENDED` or `TERMINATED` if more than 90 days have passed since the status transition."
         note:
           maxLength: 255
           type: string
@@ -21820,6 +21838,7 @@ components:
       enum:
         - AUTO_CASH_BACK
         - CASH_BACK
+        - STATEMENT_CREDIT
       type: string
       description: Type of reward.
     ShippingInformationResponse:
@@ -22162,36 +22181,39 @@ components:
             properties:
               key:
                 type: string
-                description: The key of the attribute.
+                description: "The name of the attribute.\n\nMarqeta provides several preconfigured attributes, as described in the following list.\n\n* *chapter:* If the substatus is `BANKRUPTCY`, then chapter attribute is required.\n\n* *military_start_date:* If the substatus is `SCRA`, then the military start date attribute is required.\nThe 6% APR override will be applied from the time and date of account opening until the last statement period of the military start date.\n\n* *end_date:* If the substatus is `POWER_OF_ATTORNEY`, then the end date attribute is applicable.\nThis specifies the date when the power of attorney document is no longer valid.\n\n* *poa_details:* If the substatus is `POWER_OF_ATTORNEY`, then the Power of Attorney details attribute is applicable.\nThis attribute specifies the range of actions that the agent with Power of Attorney is able to perform on the account.\nBy default the range is `UNRESTRICTED`.\n\n* *agent_name:* If the substatus is `POWER_OF_ATTORNEY`, then the agent name is required.\nThis attribute specifies the name of the agent with Power of Attorney for the user.\n\n* *agent_address:* If the substatus is `POWER_OF_ATTORNEY`, then the agent address attribute is required.\nThis attribute specifies the address of the agent with Power of Attorney for the user.\n\n* *agent_id_type:* If the substatus is `POWER_OF_ATTORNEY`, then the agent identification type attribute is required.\nThis specifies the type of the identification method used to identify the agent with Power of Attorney for the user.\n\n* *agent_id_value:* If the substatus is `POWER_OF_ATTORNEY`, then the agent identification value attribute is required.\nThis attribute specifies the value of the identification method used to identify the agent with Power of Attorney for the user.\n\n* *agent_id_expiration_date:* If the substatus is `POWER_OF_ATTORNEY`, then the attribute for the Power of Attorney identification expiration date attribute is required.\nThis attribute specifies the expiration date of the identification method used to identify the agent with Power of Attorney for the user."
+                x-allowableValues: "- `chapter`\n- `military_start_date`\n- `end_date`\n- `poa_details`\n- `agent_name`\n- `agent_address`\n- `agent_id_type`\n- `agent_id_value`\n- `agent_id_expiration_date`"
               value:
                 type: string
                 description: The value of the attribute.
-          description: Additional dynamic attributes related to the substatus.
+                x-allowableValues: "* *chapter:* `CHAPTER_7`, `CHAPTER_11`, `CHAPTER_12`, `CHAPTER_13`\n* *military_start_date:* yyyy-MM-ddThh:mm:ssZ format\n* *end_date:* yyyy-MM-ddThh:mm:ssZ format\n* *poa_details:* string (255 char max)\n* *agent_name:* string (255 char max)\n* *agent_address:* string (255 char max)\n* *agent_id_type:* `SSN`, `TIN`, `SIN`, `NIN`, `PASSPORT_NUMBER`, `DRIVERS_LICENSE`, `BUSINESS_LICENSE`, `BUSINESS_NUMBER`, `BUSINESS_TAX_ID`, `TAXPAYER_REFERENCE`\n* *agent_id_value:* string (255 char max)\n* *agent_id_expiration_date:* yyyy-MM-ddThh:mm:ssZ format"
+          description: "Additional dynamic attributes related to the substatus.\nIf the substatus is `BANKRUPTCY`, `SCRA` or `POWER_OF_ATTORNEY`, then attributes are required."
         events:
           type: array
           items:
             $ref: '#/components/schemas/SubstatusEvent'
           description: List of events related to the substatus.
         resource_token:
+          maxLength: 36
           minLength: 1
           type: string
-          description: The unique identifier of the user or account for which you want to create a substatus.
+          description: "Unique identifier of the user or account for which you want to create a substatus.\n\nSend a `GET` request to `/credit/accounts` to retrieve existing account tokens.\nSend a `GET` request to `/users` to retrieve existing user tokens."
         resource_type:
           enum:
             - USER
             - ACCOUNT
           type: string
-          description: "Possible values: USER, ACCOUNT.\n"
+          description: Type of resource to which the substatus applies.
         substatus:
           maxLength: 36
           minLength: 1
           type: string
-          description: "Possible values: HARDSHIP, FRAUD, MLA, SCRA, DECEASED, BANKRUPTCY.\n"
+          description: "Type of substatus.\n\n`HARDSHIP`, `FRAUD` can only be applied to the `ACCOUNT` resource type.\n`MLA`, `SCRA`, `DECEASED`, `BANKRUPTCY`, and `POWER_OF_ATTORNEY` can only be applied to the `USER` resource type."
         token:
           maxLength: 36
           pattern: (?!^ +$)^.+$
           type: string
-          description: Unique identifier of the substatus.
+          description: Unique identifier of the credit substatus.
       description: Contains information relevant to creating a substatus.
     SubstatusEvent:
       required:
@@ -22205,21 +22227,21 @@ components:
             - FRAUD
             - SYSTEM
           type: string
-          description: The channel through which the event occurred.
+          description: "The mechanism by which the state of the substatus was applied.\n\n* `ADMIN` - Indicates that the state of the substatus was added through the Marqeta Dashboard.\n* `API` - Indicates that you initiated an update of the substatus through the Core API.\nUse this value when creating a substatus.\n* `FRAUD` - Indicates that either Marqeta or the card network has determined that the account is fraudulent.\n* `SYSTEM` - Indicates that Marqeta initiated the state of the substatus.\nFor example, Marqeta determined during application decisioning that the applicant is `MLA`."
         effective_date:
           type: string
-          description: 'Effective date of the deactivation, in UTC.'
+          description: "Date and time when the state of the substatus went into effect, in UTC.\nThe effective date must be in the past.\nIf no value is set, then the effective date and time will be the current time."
           format: date-time
         reason:
           maxLength: 255
           type: string
-          description: Reason for the event.
+          description: Reason for applying a state designation to the substatus.
         state:
           enum:
             - ACTIVE
             - BANKRUPTCY_FILED
           type: string
-          description: 'The initial state of the substatus. ACTIVE - Required for the substatuses of HARDSHIP,FRAUD,MLA,SCRA,DECEASED. BANKRUPTCY_FILED - Required for the substatus of BANKRUPTCY.'
+          description: "Initial state of the substatus.\n\n`ACTIVE` - Required if the substatus is `HARDSHIP`, `FRAUD`, `MLA`, `SCRA`, `DECEASED`, or `POWER_OF_ATTORNEY`.\n`BANKRUPTCY_FILED` - Required if the substatus is `BANKRUPTCY`."
       description: Details of an event related to a substatus.
     SubstatusEventResponseDetails:
       required:
@@ -22246,6 +22268,7 @@ components:
           description: 'Effective date of the event, in UTC.'
           format: date-time
         reason:
+          maxLength: 255
           type: string
           description: Reason for the event.
         state:
@@ -22265,7 +22288,7 @@ components:
             - BANKRUPTCY_DISCHARGED_INACTIVE
             - BANKRUPTCY_DISMISSED_INACTIVE
           type: string
-          description: The state of the event
+          description: The state of the event.
       description: Details of an event related to a substatus.
     SubstatusPage:
       required:
@@ -22283,6 +22306,7 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/SubstatusResponse'
+          description: Contains one or more substatuses.
         end_index:
           type: integer
           description: Sort order index of the last resource in the returned array.
@@ -22292,12 +22316,13 @@ components:
         start_index:
           type: integer
           description: Sort order index of the first resource in the returned array.
-      description: Return paginated account and user substatuses
+      description: Return paginated account and user substatuses.
     SubstatusResponse:
       required:
         - is_active
         - resource_token
         - resource_type
+        - state
         - substatus
         - token
       type: object
@@ -22309,11 +22334,13 @@ components:
             properties:
               key:
                 type: string
-                description: The key of the attribute.
+                description: "The name of the attribute.\n\nMarqeta provides several preconfigured attributes, as described in the following list.\n\n* *chapter:* If the substatus is `BANKRUPTCY`, then this value defines the chapter.\n\n* *military_start_date:* If the substatus is `SCRA`, then this value defines the military start date.\n\n* *end_date:* If the substatus is `POWER_OF_ATTORNEY`, then the end date attribute is present.\nThis specifies the date when the power of attorney document is no longer valid.\n\n* *poa_details:* If the substatus is `POWER_OF_ATTORNEY`, then the Power of Attorney details attribute is applicable.\nThis attribute specifies the range of actions that the agent with Power of Attorney is able to perform on the account.\nBy default the range is `UNRESTRICTED`.\n\n* *agent_name:* If the substatus is `POWER_OF_ATTORNEY`, then the agent name is present.\nThis attribute specifies the name of the agent with Power of Attorney for the user.\n\n* *agent_address:* If the substatus is `POWER_OF_ATTORNEY`, then the agent address attribute is present.\nThis attribute specifies the address of the agent with Power of Attorney for the user.\n\n* *agent_id_type:* If the substatus is `POWER_OF_ATTORNEY`, then the agent identification type attribute is present.\nThis specifies the type of the identification method used to identify the agent with Power of Attorney for the user.\n\n* *agent_id_value:* If the substatus is `POWER_OF_ATTORNEY`, then the agent identification value attribute is present.\nThis attribute specifies the value of the identification method used to identify the agent with Power of Attorney for the user.\n\n* *agent_id_expiration_date:* If the substatus is `POWER_OF_ATTORNEY`, then the attribute for the Power of Attorney identification expiration date attribute is present.\nThis attribute specifies the expiration date of the identification method used to identify the agent with Power of Attorney for the user."
+                x-allowableValues: "- `chapter`\n- `military_start_date`\n- `end_date`\n- `poa_details`\n- `agent_name`\n- `agent_address`\n- `agent_id_type`\n- `agent_id_value`\n- `agent_id_expiration_date`"
               value:
                 type: string
                 description: The value of the attribute.
-          description: Additional dynamic attributes related to the substatus.
+                x-allowableValues: "* *chapter:* `CHAPTER_7`, `CHAPTER_11`, `CHAPTER_12`, `CHAPTER_13`\n* *military_start_date:* yyyy-MM-ddThh:mm:ssZ format\n* *end_date:* yyyy-MM-ddThh:mm:ssZ format\n* *poa_details:* string (255 char max)\n* *agent_name:* string (255 char max)\n* *agent_address:* string (255 char max)\n* *agent_id_type:* `SSN`, `TIN`, `SIN`, `NIN`, `PASSPORT_NUMBER`, `DRIVERS_LICENSE`, `BUSINESS_LICENSE`, `BUSINESS_NUMBER`, `BUSINESS_TAX_ID`, `TAXPAYER_REFERENCE`\n* *agent_id_value:* string (255 char max)\n* *agent_id_expiration_date:* yyyy-MM-ddThh:mm:ssZ format"
+          description: "Additional dynamic attributes related to the substatus.\n\nIf the substatus is `BANKRUPTCY`, `SCRA`, or `POWER_OF_ATTORNEY`, then attributes are present."
         created_time:
           type: string
           description: 'Date and time when the substatus was created on Marqeta''s credit platform, in UTC.'
@@ -22325,16 +22352,17 @@ components:
           description: List of events related to the substatus.
         is_active:
           type: boolean
-          description: Flag indicating whether the substatus is active (false when deactivated).
+          description: Denotes whether a substatus is active.
         resource_token:
+          maxLength: 36
           type: string
-          description: substatus resource token
+          description: Unique identifier of the resource.
         resource_type:
           enum:
-            - USER
             - ACCOUNT
+            - USER
           type: string
-          description: substatus resource type
+          description: Type of resource to which the substatus is applied.
         state:
           enum:
             - ACTIVE
@@ -22352,14 +22380,15 @@ components:
             - BANKRUPTCY_DISCHARGED_INACTIVE
             - BANKRUPTCY_DISMISSED_INACTIVE
           type: string
-          description: state of the substatus
+          description: Current state of the substatus.
         substatus:
           maxLength: 36
           type: string
-          description: substatus
+          description: Type of substatus.
         token:
+          maxLength: 36
           type: string
-          description: substatus token
+          description: Unique identifier of the credit substatus.
         updated_time:
           type: string
           description: 'Date and time when the substatus was last updated on Marqeta''s credit platform, in UTC.'
@@ -22377,16 +22406,16 @@ components:
             - FRAUD
             - SYSTEM
           type: string
-          description: "The channel through which deactivation is occurring:\n- **ADMIN**: Added through the Marqeta Dashboard.\n- **API**: Initiated through the Core API.\n- **FRAUD**: Determined by Marqeta or the card network.\n- **SYSTEM**: Initiated by Marqeta\n"
+          description: "The mechanism by which a state designation was applied to a substatus.\nIf no value is set, then it defaults to `API`.\n\n* `ADMIN` - Indicates that the state of the substatus was added through the Marqeta Dashboard.\n* `API` - Indicates that you initiated the update of the substatus through the Core API.\nUse this value when creating a card transition with an API `POST` request.\n* `FRAUD` - Indicates that either Marqeta or the card network has determined that the account is fraudulent.\n* `SYSTEM` - Indicates that the substatus update was initiated by Marqeta.\nFor example, Marqeta determined during application decisioning that the applicant is `MLA`."
         effective_date:
           type: string
-          description: 'Effective date of the deactivation, in UTC.'
+          description: 'Date and time when the state of the substatus is effective, in UTC.'
           format: date-time
         reason:
           maxLength: 255
           minLength: 1
           type: string
-          description: Reason for deactivating the substatus.
+          description: Reason for applying the state to the substatus.
         state:
           enum:
             - INACTIVE
@@ -22402,7 +22431,7 @@ components:
             - BANKRUPTCY_DISCHARGED_INACTIVE
             - BANKRUPTCY_DISMISSED_INACTIVE
           type: string
-          description: The state of the substatus.
+          description: "New state of the substatus.\n\n`INACTIVE` is a valid state for substatuses `HARDSHIP`, `FRAUD`, `MLA`, `SCRA`, `DECEASED`, and `POWER_OF_ATTORNEY`.\n`BANKRUPTCY_WITHDRAWN`, `BANKRUPTCY_REAFFIRMED`, `BANKRUPTCY_REAFFIRM_RESCINDED`, `BANKRUPTCY_DISCHARGED`, \n`BANKRUPTCY_DISMISSED`, `BANKRUPTCY_FILED_INACTIVE`, `BANKRUPTCY_WITHDRAWN_INACTIVE`, `BANKRUPTCY_REAFFIRMED_INACTIVE`, `BANKRUPTCY_REAFFIRM_RESCINDED_INACTIVE`, `BANKRUPTCY_DISCHARGED_INACTIVE`, and `BANKRUPTCY_DISMISSED_INACTIVE` states are applicable to `BANKRUPTCY`"
       description: Contains information relevant to deactivating a substatus.
     Success:
       type: object
@@ -23429,7 +23458,7 @@ components:
           format: date-time
         date_sent_for_verification:
           type: string
-          description: "Date and time in UTC when either the request for account validation was sent to the third-party partner, or when the funding source was verified by microdeposits.\n\nThis field is returned if it exists in the resource."
+          description: "Date and time in UTC when the request for account validation was sent to the third-party partner.\n\nThis field is returned if it exists in the resource."
           format: date-time
         date_verified:
           type: string
@@ -23468,19 +23497,6 @@ components:
         verification_status:
           type: string
           description: "Account verification status.\nThis field is returned if it exists in the resource."
-    ach_verification_model:
-      type: object
-      properties:
-        active:
-          type: boolean
-          description: Indicates whether the ACH funding source is active.
-          default: false
-        verify_amount1:
-          type: number
-          description: Verification amount.
-        verify_amount2:
-          type: number
-          description: Verification amount.
     acquirer:
       type: object
       properties:
@@ -23585,6 +23601,9 @@ components:
     ani_information:
       type: object
       properties:
+        card_name:
+          type: string
+          description: Full name of the cardholder as it appears on the card.
         first_name:
           type: string
           description: First or given name of the cardholder.
@@ -24231,6 +24250,8 @@ components:
           minLength: 0
           type: string
           description: ACH funding source token for the external account.
+        is_early_funded:
+          type: boolean
         last_modified_time:
           type: string
           description: 'Date and time when the ACH transfer was last modified, in UTC.'
@@ -24504,7 +24525,7 @@ components:
           format: date-time
         date_sent_for_verification:
           type: string
-          description: "Date and time in UTC when either the request for account validation was sent to the third-party partner, or when the funding source was verified by microdeposits.\n`2022-02-26T20:03:05Z`, for example.\n\nThis field is returned if it exists in the resource."
+          description: "Date and time in UTC when the request for account validation was sent to the third-party partner.\n\nThis field is returned if it exists in the resource."
           format: date-time
         date_verified:
           type: string
@@ -25664,6 +25685,12 @@ components:
           default: 101
         expiration_offset:
           $ref: '#/components/schemas/expiration_offset_with_minimum'
+        reloadability:
+          enum:
+            - SINGLE_USE_VIRTUAL
+            - NON_RELOADABLE
+            - RELOADABLE
+          type: string
         update_expiration_upon_activation:
           type: boolean
           description: "Normally, the `expiration_offset` is measured from the date of issue.\nSet this field to `true` to measure `expiration_offset` from the date of activation instead."
@@ -26770,7 +26797,7 @@ components:
         controltoken_type:
           enum:
             - SET_PIN
-            - SHOW_PIN
+            - REVEAL_PIN
           type: string
           description: "Specifies the type of action completed by this request.\n\n*WARNING:* Sending a request to this endpoint with a `REVEAL_PIN` control token requires PCI DSS compliance.\n\nThe lifespan of the control token depends on the token type:\n\n* *SET_PIN:* 60 minutes\n* *REVEAL_PIN:* 5 minutes"
     control_token_response:
@@ -27344,7 +27371,7 @@ components:
       properties:
         card_art_id:
           type: string
-          description: "Specifies the digital wallet card art identifier for the card product.\nDigital wallets display the card art after the initial token has been provisioned and activated.\nDigital wallet card art is updated for all wallets automatically whenever a tokenized card is reissued or replaced.\n\n* If your card program is Managed by Marqeta, Marqeta populates this field on your behalf.\n* If your card program is Powered by Marqeta, you can obtain the correct card art identifier directly from Visa or Mastercard.\n\nIf this field is left blank, your card product inherits the card art assigned to the account BIN range."
+          description: "Specifies the digital wallet card art identifier for the card product.\nThe card art identifier also includes card metadata, such as terms and conditions, card product information, contact information, Apple Pay requirements, Android Pay requirements, wallet profiles, rule sets, terminal profiles, authorization profiles, message profiles, and activation profiles.\n\nDigital wallets display the card art after the initial token has been provisioned and activated.\nDigital wallet card art is updated for all wallets automatically whenever a tokenized card is reissued or replaced.\n\n* If your card program is Managed by Marqeta, Marqeta populates this field on your behalf.\n* If your card program is Powered by Marqeta, you can obtain the correct card art identifier directly from Visa or Mastercard.\n\nIf this field is left blank, your card product inherits the card art assigned to the account BIN range.\nFor more information about this field, contact your Marqeta representative."
         provisioning_controls:
           $ref: '#/components/schemas/provisioning_controls'
       description: Controls characteristics related to digital wallets.
@@ -27592,7 +27619,7 @@ components:
           maxLength: 36
           minLength: 0
           type: string
-          description: Unique identifier of the ACH transfer.
+          description: Unique identifier of the ACH transfer whose funds you want to post more quickly to the cardholder's account.
     echo_ping_request:
       type: object
       properties:
@@ -28008,6 +28035,27 @@ components:
           $ref: '#/components/schemas/transaction_options'
         webhook:
           $ref: '#/components/schemas/webhook'
+    flex:
+      type: object
+      properties:
+        action:
+          type: string
+          description: Indicates if the Marqeta Flex object is an actionable `inquiry` or merely informative `advice`.
+        eligible:
+          type: string
+          description: Indicates if the transaction is eligible for Marqeta Flex or not.
+        eligible_products:
+          type: array
+          items:
+            type: string
+          description: "A value of `DEBIT` indicates that the primary credential of the payment instrument is eligible for this transaction.\n\nA value of `LOAN` indicates that the secondary credential of the payment instrument is eligible for this transaction."
+        secondary_credential_identifier:
+          type: string
+          description: 'Identifies the secondary credential used in the transaction, if applicable.'
+        selected_product:
+          type: string
+          description: Indicates the eligible product that was used in the transaction.
+      description: Contains information about a Marqeta Flex transaction.
     fraud_view:
       type: object
       properties:
@@ -28117,7 +28165,7 @@ components:
           format: date-time
         date_sent_for_verification:
           type: string
-          description: "Date and time in UTC when either the request for account validation was sent to the third-party partner, or when the funding source was verified by microdeposits.\n\nThis field is returned if it exists in the resource."
+          description: "Date and time in UTC when the request for account validation was sent to the third-party partner.\n\nThis field is returned if it exists in the resource."
           format: date-time
         date_verified:
           type: string
@@ -28859,6 +28907,7 @@ components:
             - pgfs.authorization.quasi.cash
             - pgfs.authorization.clearing.quasi.cash
             - pgfs.authorization.account_verification
+            - pgfs.product.inquiry
           type: string
           description: "JIT Funding response type.\nSee <</core-api/gateway-jit-funding-messages#_the_jit_funding_object, The jit_funding object>> for the purpose, funding event type, and description of each method."
         original_jit_funding_token:
@@ -28949,6 +28998,8 @@ components:
         - jit_funding
       type: object
       properties:
+        flex:
+          $ref: '#/components/schemas/flex'
         jit_funding:
           $ref: '#/components/schemas/jit_funding_api'
         network_metadata:
@@ -29472,6 +29523,8 @@ components:
           type: number
         user_token:
           type: string
+      xml:
+        name: msa_returns
     network:
       type: object
       properties:
@@ -29557,6 +29610,9 @@ components:
         incoming_response_code:
           type: string
           description: 'Visa Risk Management esponse code `59`, indicating suspected fraud.'
+        network_funding_txn_type:
+          type: string
+          description: Transaction type indicator provided by the card network for original credit and account funding transactions.
         product_id:
           type: string
           description: "Product identification value assigned by the card network to each card product.\nCan be used to track card-level activity by individual account number for premium card products."
@@ -30235,8 +30291,31 @@ components:
           type: string
           description: Type of card acceptor/terminal.
         transaction_initiated_by:
+          enum:
+            - CONSUMER
+            - MERCHANT
+            - UNKNOWN
+            - MARQETA
+            - NETWORK
           type: string
           description: Specifies whether the transaction was initiated by a cardholder or a merchant.
+        transaction_initiated_category:
+          enum:
+            - CARD_ON_FILE
+            - RECURRING_VAR_AMT_FIXED_FREQ
+            - RECURRING_PAYMENT
+            - INSTALLMENT_PAYMENT
+            - UNSCHEDULED_PAYMENT
+            - PARTIAL_SHIPMENT
+            - DELAYED_PAYMENT
+            - NO_SHOW
+            - RESUBMISSION
+            - DEFERRED_BILLING
+            - ACCOUNT_INQUIRY
+            - INCREMENTAL_AUTHORIZATION
+            - REAUTHORIZATION
+          type: string
+          description: Specifies the category of a point-of-sale transaction.
         zip:
           type: string
           description: United States ZIP code of the card acceptor or terminal.
@@ -30606,6 +30685,10 @@ components:
     provisioning_controls:
       type: object
       properties:
+        dwt_tar_avs_decline_on_address_number_mismatch:
+          type: boolean
+        dwt_tar_avs_decline_on_postal_code_mismatch:
+          type: boolean
         dwt_use_card_status_during_auth:
           type: boolean
         dwt_verify_atc_during_auth:
@@ -31368,8 +31451,31 @@ components:
           type: string
           description: Card acceptor or terminal identification number.
         transaction_initiated_by:
+          enum:
+            - CONSUMER
+            - MERCHANT
+            - UNKNOWN
+            - MARQETA
+            - NETWORK
           type: string
           description: Specifies whether the transaction was initiated by a cardholder or a merchant.
+        transaction_initiated_category:
+          enum:
+            - CARD_ON_FILE
+            - RECURRING_VAR_AMT_FIXED_FREQ
+            - RECURRING_PAYMENT
+            - INSTALLMENT_PAYMENT
+            - UNSCHEDULED_PAYMENT
+            - PARTIAL_SHIPMENT
+            - DELAYED_PAYMENT
+            - NO_SHOW
+            - RESUBMISSION
+            - DEFERRED_BILLING
+            - ACCOUNT_INQUIRY
+            - INCREMENTAL_AUTHORIZATION
+            - REAUTHORIZATION
+          type: string
+          description: Specifies the category of a point-of-sale transaction.
       description: "Contains information about the point of sale, including details on how the card was presented.\n\nReturned if provided by the card network, and the request uses Transaction Model v1 of the Marqeta Core API.\nNot returned for Transaction Model v2 requests."
     text:
       required:
@@ -31516,6 +31622,9 @@ components:
           description: An array of `mcc_groups`.
         merchant_tax_id:
           type: string
+        merchant_vat_registration_id:
+          type: string
+          description: The VAT registration identifier of the merchant.
         mid:
           type: string
           description: The merchant identifier.
@@ -31731,6 +31840,7 @@ components:
           description: "Indicates the amount of the acquirer fee.\nAccount holders are sometimes charged an acquirer fee for card use at ATMs, fuel dispensers, and so on."
         acquirer_reference_data:
           type: string
+          description: "Acquirer-assigned unique identifier of the transaction.\nUseful for settlement and reconciliation."
         acquirer_reference_id:
           type: string
           description: "Acquirer-assigned unique identifier of the transaction.\nUseful for settlement and reconciliation."
@@ -31751,6 +31861,8 @@ components:
         amount_to_be_released:
           type: number
           description: "Amount of original authorization to be released.\nThis field appears in final clearing transactions where the clearing amount is lower than the authorization amount."
+        anticipated_amount:
+          type: number
         approval_code:
           type: string
           description: 'Unique identifier assigned to an authorization, printed on the receipt at point of sale.'
@@ -31835,6 +31947,8 @@ components:
           items:
             $ref: '#/components/schemas/network_fee_model'
           description: "List of fees associated with the transaction.\n\nThis array is returned if it exists in the resource."
+        flex:
+          $ref: '#/components/schemas/flex'
         fraud:
           $ref: '#/components/schemas/fraud_view'
         from_account:
@@ -32109,6 +32223,7 @@ components:
             - credit.adjustment
             - debit.adjustment
             - pin.change.via.api
+            - product.inquiry
             - unknown
             - authorization.clearing.representment
             - billpayment
@@ -32490,10 +32605,10 @@ components:
           minimum: 0
           exclusiveMinimum: false
           type: number
-          description: Maximum monetary sum that can be cleared within the time period defined by the `velocity_window` field.
+          description: "Maximum monetary sum that can be cleared within the time period defined by the `velocity_window` field.\nRefunds and reversals cannot exceed this limit."
         approvals_only:
           type: boolean
-          description: 'If set to `true`, only approved transactions are subject to control.'
+          description: "If set to `true`, only approved transactions are subject to control.\nIf set to `false`, only declined transactions are subject to control."
         association:
           $ref: '#/components/schemas/spend_control_association'
         available:
@@ -32558,10 +32673,10 @@ components:
           minimum: 0
           exclusiveMinimum: false
           type: number
-          description: Maximum monetary sum that can be cleared within the time period defined by the `velocity_window` field.
+          description: "Maximum monetary sum that can be cleared within the time period defined by the `velocity_window` field.\nRefunds and reversals cannot exceed this limit."
         approvals_only:
           type: boolean
-          description: 'If set to `true`, only approved transactions are subject to control.'
+          description: "If set to `true`, only approved transactions are subject to control.\nIf set to `false`, only declined transactions are subject to control."
         association:
           $ref: '#/components/schemas/spend_control_association'
         currency_code:
@@ -32609,7 +32724,7 @@ components:
             - LIFETIME
             - TRANSACTION
           type: string
-          description: "Defines the time period to which the `amount_limit` and `usage_limit` fields apply:\n\n* *DAY* – one day; days begin at 00:00:00 UTC.\n* *WEEK* – one week; weeks begin Sundays at 00:00:00 UTC.\n* *MONTH* – one month; months begin on the first day of month at 00:00:00 UTC.\n* *LIFETIME* – forever; time period never expires.\n* *TRANSACTION* – a single transaction.\n\n// (2023-05-03): This statement was validated by Processing, as part of a customer inquiry.\n*NOTE:* If set to `DAY`, `WEEK`, or `MONTH`, the velocity control takes effect retroactively from the beginning of the specified period.\nThe amount and usage data already collected within the first period is counted toward the limits.\n\n// (2023-05-03): Commenting this note out, as it is untrue in testing as reported by customers and confirmed by transaction engine team\n//*NOTE:* Editing any of the following fields on a velocity control resets its usage and amount count to 0:\n\n//* `merchant_scope.mcc`\n//* `merchant_scope.mid`\n//* `merchant_scope.mcc_group`\n//* `association.user_token`\n//* `association.card_product_token`"
+          description: "Defines the time period to which the `amount_limit` and `usage_limit` fields apply:\n\n* *DAY* – one day; days begin at 00:00:00 UTC.\n* *WEEK* – one week; weeks begin Sundays at 00:00:00 UTC.\n* *MONTH* – one month; months begin on the first day of month at 00:00:00 UTC.\n* *LIFETIME* – forever; time period never expires.\n* *TRANSACTION* – a single transaction.\n\n// (2023-05-03): This statement was validated by Processing, as part of a customer inquiry.\n*NOTE:* If set to `DAY`, `WEEK`, or `MONTH`, the velocity control takes effect retroactively from the beginning of the specified period.\nThe amount and usage data already collected within the first period is counted toward the limits.\nIf set to `LIFETIME`, the velocity control only applies to transactions on or after the date and time that the velocity control was created.\n`LIFETIME` velocity controls are not retroactively applied to historical transactions.\n\n// (2023-05-03): Commenting this note out, as it is untrue in testing as reported by customers and confirmed by transaction engine team\n//*NOTE:* Editing any of the following fields on a velocity control resets its usage and amount count to 0:\n\n//* `merchant_scope.mcc`\n//* `merchant_scope.mid`\n//* `merchant_scope.mcc_group`\n//* `association.user_token`\n//* `association.card_product_token`"
     velocity_control_response:
       required:
         - amount_limit
@@ -32624,10 +32739,10 @@ components:
           minimum: 0
           exclusiveMinimum: false
           type: number
-          description: Maximum monetary sum that can be cleared within the time period defined by the `velocity_window` field.
+          description: "Maximum monetary sum that can be cleared within the time period defined by the `velocity_window` field.\nRefunds and reversals cannot exceed this limit."
         approvals_only:
           type: boolean
-          description: 'If set to `true`, only approved transactions are subject to control.'
+          description: "If set to `true`, only approved transactions are subject to control.\nIf set to `false`, only declined transactions are subject to control."
         association:
           $ref: '#/components/schemas/spend_control_association'
         currency_code:
@@ -32688,10 +32803,10 @@ components:
           minimum: 0
           exclusiveMinimum: false
           type: number
-          description: Maximum monetary sum that can be cleared within the time period defined by the `velocity_window` field.
+          description: "Maximum monetary sum that can be cleared within the time period defined by the `velocity_window` field.\nRefunds and reversals cannot exceed this limit."
         approvals_only:
           type: boolean
-          description: 'If set to `true`, only approved transactions are subject to control.'
+          description: "If set to `true`, only approved transactions are subject to control.\nIf set to `false`, only declined transactions are subject to control."
         association:
           $ref: '#/components/schemas/spend_control_association'
         currency_code:
@@ -32741,7 +32856,7 @@ components:
             - LIFETIME
             - TRANSACTION
           type: string
-          description: "Defines the time period to which the `amount_limit` and `usage_limit` fields apply:\n\n* *DAY* – one day; days begin at 00:00:00 UTC.\n* *WEEK* – one week; weeks begin Sundays at 00:00:00 UTC.\n* *MONTH* – one month; months begin on the first day of month at 00:00:00 UTC.\n* *LIFETIME* – forever; time period never expires.\n* *TRANSACTION* – a single transaction.\n\n// (2023-05-03): This statement was validated by Processing, as part of a customer inquiry.\n*NOTE:* If set to `DAY`, `WEEK`, or `MONTH`, the velocity control takes effect retroactively from the beginning of the specified period.\nThe amount and usage data already collected within the first period is counted toward the limits.\n\n// (2023-05-03): Commenting this note out, as it is untrue in testing as reported by customers and confirmed by transaction engine team\n//*NOTE:* Editing any of the following fields on a velocity control resets its usage and amount count to 0:\n\n//* `merchant_scope.mcc`\n//* `merchant_scope.mid`\n//* `merchant_scope.mcc_group`\n//* `association.user_token`\n//* `association.card_product_token`"
+          description: "Defines the time period to which the `amount_limit` and `usage_limit` fields apply:\n\n* *DAY* – one day; days begin at 00:00:00 UTC.\n* *WEEK* – one week; weeks begin Sundays at 00:00:00 UTC.\n* *MONTH* – one month; months begin on the first day of month at 00:00:00 UTC.\n* *LIFETIME* – forever; time period never expires.\n* *TRANSACTION* – a single transaction.\n\n// (2023-05-03): This statement was validated by Processing, as part of a customer inquiry.\n*NOTE:* If set to `DAY`, `WEEK`, or `MONTH`, the velocity control takes effect retroactively from the beginning of the specified period.\nThe amount and usage data already collected within the first period is counted toward the limits.\nIf set to `LIFETIME`, the velocity control only applies to transactions on or after the date and time that the velocity control was created.\n`LIFETIME` velocity controls are not retroactively applied to historical transactions.\n\n// (2023-05-03): Commenting this note out, as it is untrue in testing as reported by customers and confirmed by transaction engine team\n//*NOTE:* Editing any of the following fields on a velocity control resets its usage and amount count to 0:\n\n//* `merchant_scope.mcc`\n//* `merchant_scope.mid`\n//* `merchant_scope.mcc_group`\n//* `association.user_token`\n//* `association.card_product_token`"
     wallet_provider_card_on_file:
       type: object
       properties:
@@ -33168,7 +33283,7 @@ tags:
   - name: Balances
     description: "Use the `/balances` endpoint to retrieve the following general purpose account (GPA) balance details for a user or business:\n\n* *Ledger balance* - When using standard funding: The funds that are available to spend immediately, including funds from any authorized transactions that have not yet cleared.\nWhen using Just-in-Time (JIT) Funding: Authorized funds that are currently on hold, but not yet cleared.\n* *Available balance* - The ledger balance minus any authorized transactions that have not yet cleared.\nAlso known as the cardholder's purchasing power.\nIf you are using JIT Funding, this balance is usually 0.00.\n* *Cached balance* - Not currently used.\n* *Credit balance* - Not currently used.\n* *Pending credits* - ACH loads that have been accepted, but for which the funding time has not yet elapsed."
   - name: Funding via ACH (Beta)
-    description: "Use the `/banktransfers` endpoint to move funds between your program funding or cardholder account and an external account over the ACH Network.\nThis kind of bank transfer is also known as ACH origination.\n\n[NOTE]\nThis feature is currently in beta and subject to change.\nIt also requires additional activation steps.\nTo learn more about the beta program for this feature and about activating it for your program, contact your Marqeta representative.\n\nYou can create the following types of transfers:\n\n* *Push* funds from your program funding or cardholder account to an external account.\n* *Pull* funds from your external account into your program funding or cardholder account.\n\nYou must have an existing bank account at a US bank to fund or receive funds from your Marqeta account.\nTo add an external program funding source account to the Marqeta platform, send a `POST` request to the `/fundingsources/program/ach` endpoint to PUSH or PULL money from or to the Program Funding Account.\nTo add an external account holder funding source account to the Marqeta platform, send a `POST` request to the `/fundingsources/ach` endpoint to PUSH or PULL money from or to the Cardholder Account.\n\nFor more information on ACH funding, see <</developer-guides/ach-origination, ACH Origination>>."
+    description: "// Conditional snippet for beta or internal content\ninclude::../../maturity-admonition-banner.adoc[]\n\nUse the `/banktransfers` endpoint to move funds between your program funding or cardholder account and an external account over the ACH Network.\nThis kind of bank transfer is also known as ACH origination.\n\nYou can create the following types of transfers:\n\n* *Push* funds from your program funding or cardholder account to an external account.\n* *Pull* funds from your external account into your program funding or cardholder account.\n\nYou must have an existing bank account at a US bank to fund or receive funds from your Marqeta account.\nTo add an external program funding source account to the Marqeta platform, send a `POST` request to the `/fundingsources/program/ach` endpoint to PUSH or PULL money from or to the Program Funding Account.\nTo add an external account holder funding source account to the Marqeta platform, send a `POST` request to the `/fundingsources/ach` endpoint to PUSH or PULL money from or to the Cardholder Account.\n\nFor more information on ACH funding, see <</developer-guides/ach-origination, ACH Origination>>."
   - name: internal
   - name: Bulk Card Orders
     description: "Use the `/bulkissuances` endpoint to order physical payment cards in bulk.\n\nFor more information on cards, card products, and bulk card ordering, see <</developer-guides/about-cards, About Cards>>.\n\nSome attributes of the `bulkissuance` object can also be defined in an associated `card` or `cardproduct` object.\nIf you define one of these attributes in more than one object, the Marqeta platform applies an order of precedence to determine which attribute to use at fulfillment time.\nThe order of precedence is as follows:\n\n. `card`\n. `bulkissuance`\n. `cardproduct`\n\nDefining an attribute in an object with higher precedence does not overwrite the same attribute in a lower-precedence object; the Marqeta platform ignores these lower-precedence attributes.\n\nFor more information on cards, see <</developer-guides/about-cards, About Cards>>."
@@ -33177,13 +33292,14 @@ tags:
   - name: Business Transitions
     description: 'Use the `/businesstransitions` endpoints to transition business resources between states, as well as to retrieve and list state changes for a business resource.'
   - name: Card Products
-    description: "The card products resource represents the behavior and functionality of one or more cards (either physical or virtual).\nFor example, attributes of the card product determine whether the associated cards can be used at an ATM and/or online and whether they are currently enabled.\nFor physical cards, the card product determines color and other printing specifications for when the cards are manufactured and personalized.\nYou can optionally associate authorization controls and/or velocity controls with card products to restrict where and how associated cards are used.\n\nIf your program is Managed by Marqeta, then Marqeta will create the card products for your production environment.\n\nSome attributes of the `cardproduct` object can also be defined in an associated `bulkissuance` or `card` object.\nIf you define one of these attributes in more than one object, the Marqeta platform applies an order of precedence to determine which attribute to use at fulfillment time.\nThe order of precedence is as follows:\n\n. `card`\n. `bulkissuance`\n. `cardproduct`\n\nDefining an attribute in an object with higher precedence does not overwrite the same attribute in a lower-precedence object; the Marqeta platform ignores these lower-precedence attributes.\n\nFor more information on cards, see <</developer-guides/about-cards, About Cards>>."
+    description: "// Conditional snippet for beta or internal content\ninclude::../../maturity-admonition-banner.adoc[]\n\nThe card products resource represents the behavior and functionality of one or more cards (either physical or virtual).\nFor example, attributes of the card product determine whether the associated cards can be used at an ATM and/or online and whether they are currently enabled.\nFor physical cards, the card product determines color and other printing specifications for when the cards are manufactured and personalized.\nYou can optionally associate authorization controls and/or velocity controls with card products to restrict where and how associated cards are used.\n\nIf your program is Managed by Marqeta, then Marqeta will create the card products for your production environment.\n\nSome attributes of the `cardproduct` object can also be defined in an associated `bulkissuance` or `card` object.\nIf you define one of these attributes in more than one object, the Marqeta platform applies an order of precedence to determine which attribute to use at fulfillment time.\nThe order of precedence is as follows:\n\n. `card`\n. `bulkissuance`\n. `cardproduct`\n\nDefining an attribute in an object with higher precedence does not overwrite the same attribute in a lower-precedence object; the Marqeta platform ignores these lower-precedence attributes.\n\nFor more information on cards, see <</developer-guides/about-cards, About Cards>>."
   - name: Cards
     description: "The `card` resource represents a payment card.\nCards are derived from and controlled by the `cardproduct` resource.\nFor more information on cards, see <</developer-guides/about-cards, About Cards>>.\n\nSome attributes of the `card` resource can be defined in an associated `bulkissuance` or `cardproduct` resource.\nIf you define one of these attributes in more than one object, the order of precedence at fulfillment time is as follows:\n\n. `card`\n. `bulkissuance`\n. `cardproduct`\n\nDefining an attribute in an object with higher precedence overrides, but does not overwrite, the attribute in a lower-precedence object."
   - name: Card Transitions
     description: Use the `/cardtransitions` API to set the state of an existing card.
   - name: Commando Mode
     description: "Commando Mode is a fallback measure that ensures Gateway JIT-funded cards continue to function in the event that your system fails.\nIf your system cannot respond to the JIT Funding request, the Marqeta platform makes a decision in your place based on defined business rules.\nThe Marqeta platform stores any unsent webhooks for later transmission, ensuring that the card state and account balances on your system correspond with activity that occurred while Commando Mode was in effect.\n\nYou can identify transactions that were funded while Commando Mode was in effect by examining the `subnetwork` field of the transaction record.\n\n* A `subnetwork` value of `GATEWAY_JIT` indicates that the transaction was funded through normal Gateway JIT Funding and that Commando Mode was not in effect at the time.\n* A value of `MANAGED_JIT` indicates that the transaction was funded while Commando Mode was in effect.\nIn addition, the `standin_approved_by` field has a value of `COMMANDO_AUTO` or `COMMANDO_MANUAL` when Commando Mode is enabled for a transaction.\n\nWhen `COMMANDO_MANUAL` is configured, all transactions are processed via Commando Mode.\nWhen `COMMANDO_AUTO` is configured, Commando Mode is enabled only when a transaction times out or encounters an error.\n\nWhile Commando Mode is a form of Stand-in Processing (STIP), it is different than network STIP.\nNetwork STIP occurs when the card network cannot communicate with the Marqeta platform.\nTransactions handled by network STIP include the `standin_approved_by` field with a value of `NETWORK`.\n\nCommando Mode and Managed JIT Funding are functionally equivalent.\nSee <</developer-guides/about-jit-funding, About Just-in-Time Funding>> for more information.\n\n[NOTE]\nCommando Mode requires additional configuration.\nTo configure Commando Mode control sets, contact your Marqeta representative."
+  - name: ' Write digital wallet tokens'
   - name: accepted countries
   - name: account holder groups
   - name: accounting
@@ -33250,6 +33366,7 @@ tags:
   - name: peer transfers
   - name: ping
   - name: pins
+  - name: post transactions
   - name: program
   - name: program configs
   - name: program reserve
@@ -33258,7 +33375,6 @@ tags:
   - name: real time fee groups
   - name: simulate
   - name: token service gateway
-  - name: transaction caches
   - name: transactions
   - name: 'transactions : Dispute transactions'
   - name: user transitions
@@ -33269,9 +33385,11 @@ tags:
   - name: Account Cards
     description: "// Conditional snippet for beta or internal content\ninclude::../../maturity-admonition-banner.adoc[]\n\nUse the account cards endpoints to create and retrieve credit cards that can access the credit line on a <</core-api/credit-accounts, credit account>>.\n\nOnce a credit card is created, you can use the `/cards` endpoint to <</core-api/cards#putCardsToken, update the card>> or <</developer-guides/managing-lost-stolen-or-damaged-cards, manage lost, stolen, or damaged cards>>.\n\nTo receive webhook notifications when card transition or card action events occur, see <</core-api/event-types#_card_transition_events, Card transition events>> and <</core-api/event-types#_card_action_events, Card action events>> in Event Types."
   - name: Account Rewards
-    description: "// Conditional snippet for beta or internal content\ninclude::../../maturity-admonition-banner.adoc[]\n\nUse the `/credit/accounts/{account_token}/rewards` endpoint to create a one-time reward on a <</core-api/credit-accounts, credit account>>.\n\nCreating a reward triggers the creation of a <</core-api/credit-account-journal-entries, journal entry>> belonging to the `REWARD` group.\nFor more on reward journal entries, see <</developer-guides/about-credit-account-journal-entries#_rewards, Rewards>> in the About Credit Account Journal Entries guide.\n\nFor the reward programs that are associated with a reward policy on a bundle, see <</core-api/reward-programs, Reward Programs>>."
+    description: "// Conditional snippet for beta or internal content\ninclude::../../maturity-admonition-banner.adoc[]\n\nUse the `/credit/accounts/{account_token}/rewards` endpoint to create a one-time reward on a <</core-api/credit-accounts, credit account>>.\n\nCreating a reward triggers the creation of a <</core-api/credit-account-journal-entries, journal entry>> belonging to the `REWARD` group.\nFor more on reward journal entries, see <</developer-guides/about-credit-account-journal-entries#_rewards, Rewards>> in the About Credit Account Journal Entries guide.\n\nFor the reward programs that are associated with a reward policy on a bundle, see <</core-api/credit-reward-programs, Reward Programs>>."
   - name: Account Transitions
     description: "// Conditional snippet for beta or internal content\ninclude::../../maturity-admonition-banner.adoc[]\nUse the account transitions endpoints to create and retrieve account transitions on Marqeta's credit platform.\nAn account transition occurs when a <</core-api/credit-accounts, credit account>> transitions to a new status.\n\nTo receive webhook notifications when account transition events occur, see <</core-api/event-types#_credit_account_transition_events, Credit account transition events>> in Event Types."
+  - name: Credit Substatuses
+    description: "// Conditional snippet for beta or internal content\ninclude::../../maturity-admonition-banner.adoc[]\n\nCredit substatuses can be applied to credit accounts or credit account holders.\nSubstatuses should be applied only after verification with Customer Support and after the cardholder request for the substatus designation has been accepted.\nSubstatuses define specific circumstances, such as bankruptcy, hardship or fraud.\nThey also affect account behavior or activity, including interest accrual, authorization requests, and account termination.\nSubstatus downstream account actions are not always reversible for the cardholder, which means that substatuses should be applied with caution.\n\nUse the substatus endpoints to apply or remove a substatus for a credit account or user.\nApplying a substatus causes immediate downstream changes to the account.\nFor additional information about substatuses, see <</developer-guides/about-credit-accounts#_account-substatuses,Account substatuses>> or <</developer-guides/about-credit-accounts#_account-holder-substatuses,Account holder substatuses>> in the <</developer-guides/about-credit-accounts,About Credit Accounts>> guide.\n\n[NOTE]\n====\nThe substatus `SCRA` stands for \"Servicemembers Civilian Relief Act.\"\nThe substatus `MLA` stands for \"Military Lending Act.\"\n====\n\nFor more information about receiving webhook notifications when account transition events occur, see <</core-api/event-types#_credit-substatus-events,Credit substatus events>> on the <</core-api/event-types,Event Types>> page.\n\n[IMPORTANT]\n====\nIf you are a Managed by Marqeta customer, a Marqeta customer service representative will apply the appropriate substatuses.\n===="
   - name: Adjustments
     description: "// Conditional snippet for beta or internal content\ninclude::../../maturity-admonition-banner.adoc[]\n\nUse the adjustments endpoints to create and retrieve account adjustments on Marqeta's credit platform.\nAn account adjustment adjusts the amount of a <</core-api/credit-account-journal-entries, journal entry>> or account balance.\n\nCreating an adjustment triggers the creation of a <</core-api/credit-account-journal-entries, journal entry>> belonging to the `ADJUSTMENT` group.\nFor more on adjustment journal entries, see <</developer-guides/about-credit-account-journal-entries#_adjustments, Adjustments>> in the About Credit Account Journal Entries guide."
   - name: Balance Refunds
@@ -33309,15 +33427,15 @@ tags:
   - name: Fees
     description: "A `fees` resource represents a monetary assessment against an account holder's general purpose account (GPA).\nAssessing a fee transfers funds from the account holder's GPA account to your program's fee account.\nBy default, every account has a GPA account used for the funding of transfers.\n\nYou can assess fees either post-transaction or in real time.\nReal-time fee assessment ensures the account has sufficient funds available to cover both the transaction amount and the fee before authorization of the transaction.\nTo assess fees in real time, you must create a real-time fee group using the `/realtimefeegroups` endpoint.\n\nWhen assessing a post-transaction fee, you can either debit existing GPA funds, or pull in new funds from a funding source.\nTo use existing GPA funds, use the `/feetransfers` endpoint.\nTo pull in new funds, use the fees array in `/gpaorders`.\n\n[NOTE]\nIf your program uses Gateway JIT Funding, you cannot assess fees."
   - name: Addresses
-    description: "The address resource is your billing address.\nAn active address is required in order to use a payment card funding source.\nTo associate an address with a funding source, use the same `user_token` or `business_token` for both resources.\n\n[NOTE]\nThe `/users` and `/businesses` resources also have address fields.\nThose are used for other purposes, such as KYC identity verification or as shipping addresses for physical cards."
+    description: "// Conditional snippet for beta or internal content\ninclude::../../maturity-admonition-banner.adoc[]\n\nThe address resource is your billing address.\nAn active address is required in order to use a payment card funding source.\nTo associate an address with a funding source, use the same `user_token` or `business_token` for both resources.\n\n[NOTE]\nThe `/users` and `/businesses` resources also have address fields.\nThose are used for other purposes, such as KYC identity verification or as shipping addresses for physical cards."
   - name: Account Holder Funding Sources
-    description: "Use the `/fundingsources/ach`, `/fundingsources/ach/partner`, and `/fundingsources/paymentcard` endpoints to create account holder funding sources.\nA funding source enables access to funds outside of the Marqeta platform.\n\nFor more information on users and businesses, see <</developer-guides/about-account-holders, About Account Holders>>."
+    description: "// Conditional snippet for beta or internal content\ninclude::../../maturity-admonition-banner.adoc[]\n\nUse the `/fundingsources/ach`, `/fundingsources/ach/partner`, and `/fundingsources/paymentcard` endpoints to create account holder funding sources.\nA funding source enables access to funds outside of the Marqeta platform.\n\nFor more information on users and businesses, see <</developer-guides/about-account-holders, About Account Holders>>."
   - name: Program Funding Sources
-    description: "Use the `/fundingsources/program` endpoint to create a program funding source.\n\nA program funding source represents a bank account from which funds are drawn for Managed Just-in-Time (JIT) Funding transactions.\nFor more information about JIT Funding, see <</developer-guides/about-jit-funding, About Just-in-Time Funding>>.\n\nIn the sandbox environment, each program funding source you create simulates funds for use in test transactions.\nIn production environments, program funding sources are created by Marqeta and draw funds from a bank account you set up in conjunction with Marqeta.\n\n[NOTE]\nYour program funding source must be approved by Marqeta and the issuing bank.\nIf you are using a third-party service to collect user funds, Marqeta and the issuing bank require specific reporting to ensure compliance with applicable rules and regulations.\nContact Marqeta for more information."
+    description: "// Conditional snippet for beta or internal content\ninclude::../../maturity-admonition-banner.adoc[]\n\nUse the `/fundingsources/program` endpoint to create a program funding source.\n\nA program funding source represents a bank account from which funds are drawn for Managed Just-in-Time (JIT) Funding transactions.\nFor more information about JIT Funding, see <</developer-guides/about-jit-funding, About Just-in-Time Funding>>.\n\nIn the sandbox environment, each program funding source you create simulates funds for use in test transactions.\nIn production environments, program funding sources are created by Marqeta and draw funds from a bank account you set up in conjunction with Marqeta.\n\n[NOTE]\nYour program funding source must be approved by Marqeta and the issuing bank.\nIf you are using a third-party service to collect user funds, Marqeta and the issuing bank require specific reporting to ensure compliance with applicable rules and regulations.\nContact Marqeta for more information."
   - name: Program Gateway Funding Sources
-    description: "Use the `/fundingsources/programgateway` endpoint to create a program gateway funding source.\n\nA program gateway funding source represents a bank account from which funds are drawn for Gateway Just-in-Time (JIT) Funding transactions.\nFor more information about JIT Funding, see <</developer-guides/about-jit-funding, About Just-in-Time Funding>>.\n\nIn a sandbox environment, you can create a program gateway funding source that simulates funds for use in test transactions.\nIn a production environment, you must work with a Marqeta representative to define the bank account from which the program gateway funding source draws funds.\n\n[NOTE]\nIf you are using a third-party service to collect user funds, Marqeta and the issuing bank require specific reporting to ensure compliance with applicable rules and regulations.\nContact Marqeta for more information."
+    description: "// Conditional snippet for beta or internal content\ninclude::../../maturity-admonition-banner.adoc[]\n\nUse the `/fundingsources/programgateway` endpoint to create a program gateway funding source.\n\nA program gateway funding source represents a bank account from which funds are drawn for Gateway Just-in-Time (JIT) Funding transactions.\nFor more information about JIT Funding, see <</developer-guides/about-jit-funding, About Just-in-Time Funding>>.\n\nIn a sandbox environment, you can create a program gateway funding source that simulates funds for use in test transactions.\nIn a production environment, you must work with a Marqeta representative to define the bank account from which the program gateway funding source draws funds.\n\n[NOTE]\nIf you are using a third-party service to collect user funds, Marqeta and the issuing bank require specific reporting to ensure compliance with applicable rules and regulations.\nContact Marqeta for more information."
   - name: GPA Orders
-    description: "The `/gpaorders` endpoint moves funds from a funding source into an\naccount holder's general-purpose account (GPA).\n\nGPA orders can also be used to move funds from an account holder's funding source into your program's fee account.\n\nGPA orders can be funded by the account holder or your program."
+    description: "// Conditional snippet for beta or internal content\ninclude::../../maturity-admonition-banner.adoc[]\n\nThe `/gpaorders` endpoint moves funds from a funding source into an\naccount holder's general-purpose account (GPA).\n\nGPA orders can also be used to move funds from an account holder's funding source into your program's fee account.\n\nGPA orders can be funded by the account holder or your program."
   - name: KYC Verification
     description: "// Conditional snippet for beta or internal content\ninclude::../../maturity-admonition-banner.adoc[]\n\nUse the `/kyc` endpoint to perform Know Your Customer (KYC) verification tasks for your account holders.\n\nThis endpoint can only be used to perform KYC verification for individuals or businesses in the United States.\n\nFor more information about KYC verification, see <</developer-guides/about-kyc, About KYC Verification>>.\n\nFor more information about account holders, see <</developer-guides/about-account-holders, About Account Holders>>."
   - name: MCC Groups
@@ -33327,7 +33445,7 @@ tags:
   - name: Peer Transfers
     description: "A peer transfer moves funds from the general purpose account (GPA) of an account holder (a user or business) to another account within your program.\nBoth the sender and recipient accounts must be active.\n\n[NOTE]\nThe `/peertransfers` endpoint is only available for specific, pre-approved use cases.\nFor more information about this endpoint, contact your Marqeta representative."
   - name: PINs
-    description: 'Use the `/pins` endpoint to create, update, or reveal a personal identification number (PIN) for a card.'
+    description: "// Conditional snippet for beta or internal content\ninclude::../../maturity-admonition-banner.adoc[]\n\nUse the `/pins` endpoint to create, update, or reveal a personal identification number (PIN) for a card."
   - name: Program Reserve
     description: "// Conditional snippet for beta or internal content\ninclude::../../maturity-admonition-banner.adoc[]\n\nUse the Program Reserve API to retrieve program reserve account balances and transactions."
   - name: Program Transfers
@@ -33347,7 +33465,7 @@ tags:
   - name: User Transitions
     description: "// Conditional snippet for beta or internal content\ninclude::../../maturity-admonition-banner.adoc[]\n\nUse the `/usertransitions` endpoints to transition user resources between statuses, as well as to retrieve and list status changes for a user resource."
   - name: Velocity Controls
-    description: "A velocity control limits how much users can spend.\nYou can configure velocity controls to limit how much users can spend and the number of transactions they can make in a given span of time.\nYou can apply velocity controls to a single user, to all users associated with a particular card product, or to all users in your program.\n\nOnly Program Managers can create or modify program-wide velocity controls.\nA `POST` or `PUT` call from a role that does not have Program Manager permissions will receive a 403 error if its `association` field is null, or if it includes all of the fields in the request body.\nAvoid this by passing a valid `user_token` or `card_product_token` in the velocity control's `association` object, indicating that the request is specific to a user or card product, and not program-wide.\nYou should also only include the specific fields you want to update, because a `PUT` or `POST` with values for all fields is interpreted as a change that requires Program Manager permissions.\n\nSee <</developer-guides/controlling-spending, Controlling Spending>> for a tutorial that walks you through the creation of a spend control.\n\n[NOTE]\nEach program supports a maximum of 90 spend controls (velocity controls and <</core-api/authorization-controls, authorization controls>> combined).\nThe limit of 90 spend controls applies at the program level only; it does not affect the number of user-level spend controls you can use."
+    description: "// Conditional snippet for beta or internal content\ninclude::../../maturity-admonition-banner.adoc[]\n\nA velocity control limits how much users can spend.\nYou can configure velocity controls to limit how much users can spend and the number of transactions they can make in a given span of time.\nYou can apply velocity controls to a single user, to all users associated with a particular card product, or to all users in your program.\n\nOnly Program Managers can create or modify program-wide velocity controls.\nA `POST` or `PUT` call from a role that does not have Program Manager permissions will receive a 403 error if its `association` field is null, or if it includes all of the fields in the request body.\nAvoid this by passing a valid `user_token` or `card_product_token` in the velocity control's `association` object, indicating that the request is specific to a user or card product, and not program-wide.\nYou should also only include the specific fields you want to update, because a `PUT` or `POST` with values for all fields is interpreted as a change that requires Program Manager permissions.\n\nSee <</developer-guides/controlling-spending, Controlling Spending>> for a tutorial that walks you through the creation of a spend control.\n\n[NOTE]\nEach program supports a maximum of 90 spend controls (velocity controls and <</core-api/authorization-controls, authorization controls>> combined).\nThe limit of 90 spend controls applies at the program level only; it does not affect the number of user-level spend controls you can use."
   - name: Webhooks
     description: "// Conditional snippet for beta or internal content\ninclude::../../maturity-admonition-banner.adoc[]\n\nWebhooks are notifications about API events, sent as they occur.\nThe Marqeta platform sends these notifications to an endpoint that is hosted in your environment and configured to receive and process them.\n\nCreate a webhook object to represent your webhook endpoint.\nConfigure it with the URL of your webhook endpoint and a set of credentials for accessing that endpoint.\nYou can configure it to send notifications for a single event, a group of events by type, or all event types.\nTo set up multiple webhook endpoints and route different types of event notifications to each, create multiple webhook objects and configure each to send a specific type of event notification to a specific endpoint.\n\nSee <</developer-guides/about-webhooks, About Webhooks>> for information on notifications and a tutorial that walks you through the configuration of your webhook endpoint.\n\nSee <</core-api/event-types, Event Types>> for reference documentation on the types of events that the Marqeta platform supports.\n\n[NOTE]\nWebhooks URLs are cached.\nChanges made on your webhook endpoint can take up to one hour to be applied."
   - name: Applications

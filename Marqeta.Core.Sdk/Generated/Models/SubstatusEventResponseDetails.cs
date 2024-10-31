@@ -27,7 +27,7 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string Reason { get; set; }
 #endif
-        /// <summary>The state of the event</summary>
+        /// <summary>The state of the event.</summary>
         public Marqeta.Core.Sdk.Models.SubstatusEventResponseDetails_state? State { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="Marqeta.Core.Sdk.Models.SubstatusEventResponseDetails"/> and sets the default values.

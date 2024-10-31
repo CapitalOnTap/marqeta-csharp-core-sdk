@@ -14,9 +14,9 @@ namespace Marqeta.Core.Sdk.Models
         public bool? Active { get; set; }
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Maximum monetary sum that can be cleared within the time period defined by the `velocity_window` field.</summary>
+        /// <summary>Maximum monetary sum that can be cleared within the time period defined by the `velocity_window` field.Refunds and reversals cannot exceed this limit.</summary>
         public double? AmountLimit { get; set; }
-        /// <summary>If set to `true`, only approved transactions are subject to control.</summary>
+        /// <summary>If set to `true`, only approved transactions are subject to control.If set to `false`, only declined transactions are subject to control.</summary>
         public bool? ApprovalsOnly { get; set; }
         /// <summary>Defines the group of users to which the velocity control applies.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER

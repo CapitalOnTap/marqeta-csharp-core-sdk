@@ -14,9 +14,9 @@ namespace Marqeta.Core.Sdk.Models
         public bool? Active { get; set; }
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Maximum monetary sum that can be cleared within the time period defined by the `velocity_window` field.</summary>
+        /// <summary>Maximum monetary sum that can be cleared within the time period defined by the `velocity_window` field.Refunds and reversals cannot exceed this limit.</summary>
         public double? AmountLimit { get; set; }
-        /// <summary>If set to `true`, only approved transactions are subject to control.</summary>
+        /// <summary>If set to `true`, only approved transactions are subject to control.If set to `false`, only declined transactions are subject to control.</summary>
         public bool? ApprovalsOnly { get; set; }
         /// <summary>Defines the group of users to which the velocity control applies.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -78,7 +78,7 @@ namespace Marqeta.Core.Sdk.Models
 #endif
         /// <summary>Maximum number of times a card can be used within the time period defined by the `velocity_window` field.If `velocity_window` is set to `TRANSACTION`, do not include a `usage_limit` in your request.</summary>
         public int? UsageLimit { get; set; }
-        /// <summary>Defines the time period to which the `amount_limit` and `usage_limit` fields apply:* *DAY* – one day; days begin at 00:00:00 UTC.* *WEEK* – one week; weeks begin Sundays at 00:00:00 UTC.* *MONTH* – one month; months begin on the first day of month at 00:00:00 UTC.* *LIFETIME* – forever; time period never expires.* *TRANSACTION* – a single transaction.// (2023-05-03): This statement was validated by Processing, as part of a customer inquiry.*NOTE:* If set to `DAY`, `WEEK`, or `MONTH`, the velocity control takes effect retroactively from the beginning of the specified period.The amount and usage data already collected within the first period is counted toward the limits.// (2023-05-03): Commenting this note out, as it is untrue in testing as reported by customers and confirmed by transaction engine team//*NOTE:* Editing any of the following fields on a velocity control resets its usage and amount count to 0://* `merchant_scope.mcc`//* `merchant_scope.mid`//* `merchant_scope.mcc_group`//* `association.user_token`//* `association.card_product_token`</summary>
+        /// <summary>Defines the time period to which the `amount_limit` and `usage_limit` fields apply:* *DAY* – one day; days begin at 00:00:00 UTC.* *WEEK* – one week; weeks begin Sundays at 00:00:00 UTC.* *MONTH* – one month; months begin on the first day of month at 00:00:00 UTC.* *LIFETIME* – forever; time period never expires.* *TRANSACTION* – a single transaction.// (2023-05-03): This statement was validated by Processing, as part of a customer inquiry.*NOTE:* If set to `DAY`, `WEEK`, or `MONTH`, the velocity control takes effect retroactively from the beginning of the specified period.The amount and usage data already collected within the first period is counted toward the limits.If set to `LIFETIME`, the velocity control only applies to transactions on or after the date and time that the velocity control was created.`LIFETIME` velocity controls are not retroactively applied to historical transactions.// (2023-05-03): Commenting this note out, as it is untrue in testing as reported by customers and confirmed by transaction engine team//*NOTE:* Editing any of the following fields on a velocity control resets its usage and amount count to 0://* `merchant_scope.mcc`//* `merchant_scope.mid`//* `merchant_scope.mcc_group`//* `association.user_token`//* `association.card_product_token`</summary>
         public Marqeta.Core.Sdk.Models.Velocity_control_update_request_velocity_window? VelocityWindow { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="Marqeta.Core.Sdk.Models.Velocity_control_update_request"/> and sets the default values.

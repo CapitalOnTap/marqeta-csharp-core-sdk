@@ -3,7 +3,7 @@ using System.Runtime.Serialization;
 using System;
 namespace Marqeta.Core.Sdk.Models
 {
-    /// <summary>The state of the event</summary>
+    /// <summary>The state of the event.</summary>
     public enum SubstatusEventResponseDetails_state
     {
         [EnumMember(Value = "ACTIVE")]

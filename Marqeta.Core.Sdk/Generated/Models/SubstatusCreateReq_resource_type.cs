@@ -3,7 +3,7 @@ using System.Runtime.Serialization;
 using System;
 namespace Marqeta.Core.Sdk.Models
 {
-    /// <summary>Possible values: USER, ACCOUNT.</summary>
+    /// <summary>Type of resource to which the substatus applies.</summary>
     public enum SubstatusCreateReq_resource_type
     {
         [EnumMember(Value = "USER")]
