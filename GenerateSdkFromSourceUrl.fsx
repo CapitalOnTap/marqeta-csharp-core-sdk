@@ -862,55 +862,53 @@ let buildAndTestSolution (stopwatch: System.Diagnostics.Stopwatch) =
     testSolution()
 
 let projectPath = "Marqeta.Core.Sdk" // The path of the .csproj for SDK (also used for namespace)
-let coreConfig = {
-    // The source YAML, references Marqeta GitHub CoreAPI.yaml currently
-    OpenApiSourceUrl = "https://raw.githubusercontent.com/marqeta/marqeta-openapi/main/yaml/CoreAPI.yaml"
-    // The output path to save the source YAML to
-    SourceOpenApiOutputPath = $"{projectPath}/SourceCoreAPI.yaml"
-    // The output path to save the transformed YAML to
-    TransformedOpenApiPath = $"{projectPath}/CoreAPI.yaml"
-    // The dotnet tool to use for SDK generation
-    SdkGeneratorTool = "Microsoft.OpenApi.Kiota"
-    // The output path to use for generated SDK files
-    SdkOutputPath = $"{projectPath}/Generated"
-    // The client name to use for the generated SDK
-    SdkClientName =  "MarqetaClient"
-    // The namespace to use for the generated SDK
-    SdkClientNamespace =  projectPath
-    // The type of SDK
-    SdkType = Core 
-}
 
-let simulationsV2Config = {
-    // The source YAML, references Marqeta GitHub CoreAPI.yaml currently
-    OpenApiSourceUrl = "https://www.marqeta.com/docs/core-api/postman-collection-simulations.yaml"
-    // The output path to save the source YAML to
-    SourceOpenApiOutputPath = $"{projectPath}/SourceCoreSimulationsV2API.yaml"
-    // The output path to save the transformed YAML to
-    TransformedOpenApiPath = $"{projectPath}/CoreSimulationsV2API.yaml"
-    // The dotnet tool to use for SDK generation
-    SdkGeneratorTool = "Microsoft.OpenApi.Kiota"
-    // The output path to use for generated SDK files
-    SdkOutputPath = $"{projectPath}/Generated/SimulationsV2"
-    // The client name to use for the generated SDK
-    SdkClientName =  "MarqetaSimulationsV2Client"
-    // The namespace to use for the generated SDK
-    SdkClientNamespace =  $"{projectPath}.SimulationsV2"
-    // The type of SDK
-    SdkType = SimulationsV2
-}
+let configs = [
+    {
+        // The source YAML, references Marqeta GitHub CoreAPI.yaml currently
+        OpenApiSourceUrl = "https://raw.githubusercontent.com/marqeta/marqeta-openapi/main/yaml/CoreAPI.yaml"
+        // The output path to save the source YAML to
+        SourceOpenApiOutputPath = $"{projectPath}/SourceCoreAPI.yaml"
+        // The output path to save the transformed YAML to
+        TransformedOpenApiPath = $"{projectPath}/CoreAPI.yaml"
+        // The dotnet tool to use for SDK generation
+        SdkGeneratorTool = "Microsoft.OpenApi.Kiota"
+        // The output path to use for generated SDK files
+        SdkOutputPath = $"{projectPath}/Generated"
+        // The client name to use for the generated SDK
+        SdkClientName =  "MarqetaClient"
+        // The namespace to use for the generated SDK
+        SdkClientNamespace =  projectPath
+        // The type of SDK
+        SdkType = Core 
+    };
+    {
+        // The source YAML, references Marqeta GitHub CoreAPI.yaml currently
+        OpenApiSourceUrl = "https://www.marqeta.com/docs/core-api/postman-collection-simulations.yaml"
+        // The output path to save the source YAML to
+        SourceOpenApiOutputPath = $"{projectPath}/SourceCoreSimulationsV2API.yaml"
+        // The output path to save the transformed YAML to
+        TransformedOpenApiPath = $"{projectPath}/CoreSimulationsV2API.yaml"
+        // The dotnet tool to use for SDK generation
+        SdkGeneratorTool = "Microsoft.OpenApi.Kiota"
+        // The output path to use for generated SDK files
+        SdkOutputPath = $"{projectPath}/Generated/SimulationsV2"
+        // The client name to use for the generated SDK
+        SdkClientName =  "MarqetaSimulationsV2Client"
+        // The namespace to use for the generated SDK
+        SdkClientNamespace =  $"{projectPath}.SimulationsV2"
+        // The type of SDK
+        SdkType = SimulationsV2
+    }
+]
 
 let stopwatch = start
 
-// Retrieve and transform the OpenAPI spec
-transformOpenApiSpec(coreConfig, stopwatch)
-// Generate an SDK using the transformed OpenAPI spec
-generateSdk(coreConfig, stopwatch)
-
-// Retrieve and transform the OpenAPI spec
-transformOpenApiSpec(simulationsV2Config, stopwatch)
-// Generate an SDK using the transformed OpenAPI spec
-generateSdk(simulationsV2Config, stopwatch)
+for config in configs do
+    // Retrieve and transform the OpenAPI spec
+    transformOpenApiSpec(config, stopwatch)
+    // Generate an SDK using the transformed OpenAPI spec
+    generateSdk(config, stopwatch)
 
 // Build and test SLN
 buildAndTestSolution(stopwatch)
