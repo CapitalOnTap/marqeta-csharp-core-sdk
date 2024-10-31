@@ -1,4 +1,5 @@
-﻿using Marqeta.Core.Sdk.Tests.MarqetaClientTests.Factories;
+﻿using System.Threading.Tasks;
+using Marqeta.Core.Sdk.Tests.MarqetaClientTests.Factories;
 using Marqeta.Core.Sdk.Tests.MarqetaClientTests.Helpers;
 using Xunit;
 
@@ -7,7 +8,7 @@ namespace Marqeta.Core.Sdk.Tests.MarqetaClientTests
     public class CardProductTests : BaseTests
     {
         [Fact]
-        public async void CardproductsGetAsync()
+        public async Task CardproductsGetAsync()
         {
             var client = TestMarqetaClientFactory.Create();
             var response = await client.Cardproducts.GetAsync();
@@ -16,7 +17,7 @@ namespace Marqeta.Core.Sdk.Tests.MarqetaClientTests
         }
 
         [Fact]
-        public async void CardproductsPostAsync()
+        public async Task CardproductsPostAsync()
         {
             await CardProductHelper.CreateCardProduct();
         }

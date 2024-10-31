@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using AutoFixture;
 using Marqeta.Core.Sdk.Models;
 using Marqeta.Core.Sdk.Tests.MarqetaClientTests.Factories;
@@ -25,7 +26,7 @@ namespace Marqeta.Core.Sdk.Tests.MarqetaClientTests
         /// NB: We do not use any of the helper classes here as these tests are illustrative
         /// </remarks>
         [Fact]
-        public async void QuickStart()
+        public async Task QuickStart()
         {
             // Get client / fixture
             var client = TestMarqetaClientFactory.Create();
@@ -135,7 +136,7 @@ namespace Marqeta.Core.Sdk.Tests.MarqetaClientTests
         }
 
         [Fact]
-        public async void QuickStartWithWebhook()
+        public async Task QuickStartWithWebhook()
         {
             // Get client / fixture
             var client = TestMarqetaClientFactory.Create();

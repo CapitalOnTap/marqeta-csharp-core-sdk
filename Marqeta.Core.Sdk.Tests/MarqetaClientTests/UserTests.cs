@@ -1,4 +1,5 @@
 ﻿using System.Linq;
+using System.Threading.Tasks;
 using Marqeta.Core.Sdk.Models;
 using Marqeta.Core.Sdk.Tests.MarqetaClientTests.Factories;
 using Marqeta.Core.Sdk.Tests.MarqetaClientTests.Helpers;
@@ -9,7 +10,7 @@ namespace Marqeta.Core.Sdk.Tests.MarqetaClientTests
     public class UserTests : BaseTests
     {
         [Fact]
-        public async void UsersGetAsync()
+        public async Task UsersGetAsync()
         {
             var client = TestMarqetaClientFactory.Create();
             var response = await client.Users.GetAsync();
@@ -18,13 +19,13 @@ namespace Marqeta.Core.Sdk.Tests.MarqetaClientTests
         }
 
         [Fact]
-        public async void UsersPostAsync()
+        public async Task UsersPostAsync()
         {
             await UserHelper.CreateUser();
         }
 
         [Fact]
-        public async void UsersPostAsync_CreateChildren()
+        public async Task UsersPostAsync_CreateChildren()
         {
             var client = TestMarqetaClientFactory.Create();
 
@@ -45,7 +46,7 @@ namespace Marqeta.Core.Sdk.Tests.MarqetaClientTests
         }
 
         [Fact]
-        public async void UsersChildrenAsync()
+        public async Task UsersChildrenAsync()
         {
             var client = TestMarqetaClientFactory.Create();
 

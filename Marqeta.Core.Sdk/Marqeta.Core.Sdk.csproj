@@ -17,4 +17,8 @@
     <PackageReference Include="Microsoft.Kiota.Serialization.Text" Version="1.13.2" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="IoC\" />
+  </ItemGroup>
+
 </Project>

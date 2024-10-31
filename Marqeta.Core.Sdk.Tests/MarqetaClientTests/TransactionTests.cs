@@ -1,3 +1,4 @@
+using System.Threading.Tasks;
 using AutoFixture;
 using Marqeta.Core.Sdk.Models;
 using Marqeta.Core.Sdk.Tests.MarqetaClientTests.Factories;
@@ -10,7 +11,7 @@ namespace Marqeta.Core.Sdk.Tests.MarqetaClientTests
     public class TransactionTests : BaseTests
     {
         [Fact]
-        public async void Ensure_transaction_is_reversed()
+        public async Task Ensure_transaction_is_reversed()
         {
             // Get client / fixture
             var client = TestMarqetaClientFactory.Create();

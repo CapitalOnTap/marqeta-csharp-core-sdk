@@ -1,4 +1,5 @@
-﻿using AutoFixture;
+﻿using System.Threading.Tasks;
+using AutoFixture;
 using Marqeta.Core.Sdk.Models;
 using Marqeta.Core.Sdk.Tests.MarqetaClientTests.Factories;
 using Marqeta.Core.Sdk.Tests.MarqetaClientTests.Helpers;
@@ -9,7 +10,7 @@ namespace Marqeta.Core.Sdk.Tests.MarqetaClientTests
     public class GpaOrderTests : BaseTests
     {
         [Fact]
-        public async void GpaordersPostAsync()
+        public async Task GpaordersPostAsync()
         {
             // Get client / fixture
             var client = TestMarqetaClientFactory.Create();

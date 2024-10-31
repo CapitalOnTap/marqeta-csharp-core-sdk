@@ -1,4 +1,5 @@
-﻿using AutoFixture;
+﻿using System.Threading.Tasks;
+using AutoFixture;
 using Marqeta.Core.Sdk.Models;
 using Marqeta.Core.Sdk.Tests.MarqetaClientTests.Factories;
 using Marqeta.Core.Sdk.Tests.MarqetaClientTests.Helpers;
@@ -9,7 +10,7 @@ namespace Marqeta.Core.Sdk.Tests.MarqetaClientTests
     public class VelocityControlTests : BaseTests
     {
         [Fact]
-        public async void Ensure_velocity_control_lifetime_is_honoured()
+        public async Task Ensure_velocity_control_lifetime_is_honoured()
         {
             // Get client / fixture
             var client = TestMarqetaClientFactory.Create();
@@ -78,7 +79,7 @@ namespace Marqeta.Core.Sdk.Tests.MarqetaClientTests
         }
 
         [Fact]
-        public async void Ensure_resetting_velocity_control_allows()
+        public async Task Ensure_resetting_velocity_control_allows()
         {
             // Get client / fixture
             var client = TestMarqetaClientFactory.Create();
