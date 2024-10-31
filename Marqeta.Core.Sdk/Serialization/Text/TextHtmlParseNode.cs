@@ -1,4 +1,5 @@
-﻿using Marqeta.Core.Sdk.Models;
+﻿using System.Diagnostics.CodeAnalysis;
+using Marqeta.Core.Sdk.Models;
 using Microsoft.Kiota.Abstractions;
 using Microsoft.Kiota.Abstractions.Serialization;
 using Microsoft.Kiota.Serialization.Text;
