@@ -17,7 +17,7 @@ public static class MarqetaSdkServiceCollectionExtensions
     /// <param name="configureClient"></param>
     /// <param name="httpMessageHandlerFactory"></param>
     /// <returns>The <paramref name="services"/>.</returns>
-    public static IServiceCollection AddMarqetaSdk(this IServiceCollection services,  MarqetaSdkConfiguration configuration, Action<HttpClient> configureClient, IHttpMessageHandlerFactory? httpMessageHandlerFactory = null)
+    public static IServiceCollection AddMarqetaSdk(this IServiceCollection services,  MarqetaSdkConfiguration configuration, Action<HttpClient> configureClient, Func<HttpMessageHandler>? httpMessageHandlerFactory = null)
     {
         services.AddSingleton<IAuthenticationProvider, BasicAuthenticationProvider>(
             _ => new BasicAuthenticationProvider(configuration.Username, configuration.Password));
@@ -30,7 +30,7 @@ public static class MarqetaSdkServiceCollectionExtensions
         return services;
     }
     
-    internal static IHttpClientBuilder AddMarqetaClient(IServiceCollection services, MarqetaSdkConfiguration configuration, Action<HttpClient> configureClient, IHttpMessageHandlerFactory? httpMessageHandlerFactory = null) =>
+    internal static IHttpClientBuilder AddMarqetaClient(IServiceCollection services, MarqetaSdkConfiguration configuration, Action<HttpClient> configureClient, Func<HttpMessageHandler>? httpMessageHandlerFactory = null) =>
         // based on https://github.com/microsoft/kiota-samples/blob/main/get-started/dotnet-dependency-injection
         // and https://nikiforovall.github.io/dotnet/aspnetcore/2024/03/24/kiota-guide-deep-dive.html
         services.AddHttpClient<MarqetaClient>("MarqetaSdkClient", configureClient)
@@ -44,7 +44,7 @@ public static class MarqetaSdkServiceCollectionExtensions
             .ConfigurePrimaryHttpMessageHandler(_ =>
             {
                 var defaultHandlers = KiotaClientFactory.CreateDefaultHandlers(configuration.OptionsForHandlers);
-                var defaultHttpMessageHandler = httpMessageHandlerFactory?.GetHttpMessageHandler() ?? KiotaClientFactory.GetDefaultHttpMessageHandler();
+                var defaultHttpMessageHandler = httpMessageHandlerFactory?.Invoke() ?? KiotaClientFactory.GetDefaultHttpMessageHandler();
                 return KiotaClientFactory.ChainHandlersCollectionAndGetFirstLink(defaultHttpMessageHandler, [.. defaultHandlers])!;
             });
 }

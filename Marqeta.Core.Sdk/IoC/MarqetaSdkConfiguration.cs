@@ -2,4 +2,9 @@ using Microsoft.Kiota.Abstractions;
 
 namespace Marqeta.Core.Sdk.IoC;
 
-public record MarqetaSdkConfiguration(string Username, string Password, IRequestOption[]? OptionsForHandlers = null);
+public record MarqetaSdkConfiguration
+{
+    public string Username { get; set; }
+    public string Password { get; set; }
+    public IRequestOption[] OptionsForHandlers { get; set; }
+}

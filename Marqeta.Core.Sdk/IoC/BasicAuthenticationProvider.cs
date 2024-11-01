@@ -5,7 +5,7 @@ using Microsoft.Kiota.Abstractions.Authentication;
 
 namespace Marqeta.Core.Sdk.IoC;
 
-public record BasicAuthenticationProvider : IAuthenticationProvider
+public class BasicAuthenticationProvider : IAuthenticationProvider
 {
     private const string HeaderName = "Authorization";
     private readonly string _credentials;
