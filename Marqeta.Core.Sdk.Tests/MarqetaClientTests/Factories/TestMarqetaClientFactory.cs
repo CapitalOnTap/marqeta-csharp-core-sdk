@@ -1,30 +1,30 @@
 ﻿using System;
-using System.Text;
-using Microsoft.Kiota.Abstractions.Authentication;
-using Microsoft.Kiota.Http.HttpClientLibrary;
+using System.Net.Http;
+using Marqeta.Core.Sdk.IoC;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace Marqeta.Core.Sdk.Tests.MarqetaClientTests.Factories
 {
     internal static class TestMarqetaClientFactory
     {
         /// <summary>
-        ///     Create a new instance of <see cref="IMarqetaClient"/> for tests.
+        ///     Create a new instance of <see cref="MarqetaClient"/> for tests.
         /// </summary>
-        /// <returns>The created <see cref="IMarqetaClient"/> instance.</returns>
-        public static MarqetaClient Create()
+        /// <returns>The created <see cref="MarqetaClient"/> instance.</returns>
+        public static MarqetaClient Create(Action<HttpClient> configureClient = null, Func<HttpMessageHandler> httpMessageHandlerFactory = null)
         {
             var config = TestConfigurationFactory.Create();
-            var apiKey = Convert.ToBase64String(Encoding.ASCII.GetBytes($"{config["Marqeta:UserName"]}:{config["Marqeta:Password"]}"));
-            var authProvider = new ApiKeyAuthenticationProvider(
-                $"Basic {apiKey}",
-                "Authorization",
-                ApiKeyAuthenticationProvider.KeyLocation.Header);
-            var adapter = new HttpClientRequestAdapter(authProvider)
-            {
-                BaseUrl = config["Marqeta:BaseUrl"]
-            };
-
-            return new MarqetaClient(adapter);
+            var serviceCollection = new ServiceCollection();
+            serviceCollection.AddMarqetaSdk(new MarqetaSdkConfiguration{
+                    Username = config["Marqeta:UserName"]!,
+                    Password = config["Marqeta:Password"]!
+                },
+                configureClient ?? (httpClient =>
+                {
+                    httpClient.BaseAddress = new Uri(config["Marqeta:BaseUrl"]!);
+                }), httpMessageHandlerFactory);
+            var serviceProvider = serviceCollection.BuildServiceProvider();
+            return serviceProvider.GetRequiredService<MarqetaClient>();
         }
     }
 }
