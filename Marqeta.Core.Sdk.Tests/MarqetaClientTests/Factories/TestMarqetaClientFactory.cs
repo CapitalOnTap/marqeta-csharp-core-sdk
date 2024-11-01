@@ -2,7 +2,6 @@
 using System.Net.Http;
 using Marqeta.Core.Sdk.IoC;
 using Microsoft.Extensions.DependencyInjection;
-using IHttpMessageHandlerFactory = Marqeta.Core.Sdk.IoC.IHttpMessageHandlerFactory;
 
 namespace Marqeta.Core.Sdk.Tests.MarqetaClientTests.Factories
 {
