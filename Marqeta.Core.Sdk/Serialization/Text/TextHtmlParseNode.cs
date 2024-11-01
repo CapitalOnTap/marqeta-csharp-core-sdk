@@ -6,12 +6,12 @@ using Microsoft.Kiota.Serialization.Text;
 namespace Marqeta.Core.Sdk.Serialization.Text;
 
 /// <summary>
-/// The <see cref="IParseNode"/> implementation for the text/html content type. 
-/// Copied from: https://github.com/microsoft/kiota-serialization-text-dotnet/blob/main/src/TextParseNode.cs
-/// <see cref="TextParseNode"/>
-/// Changes will be marked with a MODIFIED comment, otherwise we call the <see cref="TextParseNode"/> implementation
-/// Current changes:
-///     <see cref="GetObjectValue{T}"/> returns an <see cref="ApiError"/> instead of throwing an error if type matches
+///     The <see cref="IParseNode"/> implementation for the text/html content type. 
+///     Copied from:  <see href="https://github.com/microsoft/kiota-serialization-text-dotnet/blob/main/src/TextParseNode.cs"/>
+///     <see cref="TextParseNode"/>
+///     Changes will be marked with a MODIFIED comment, otherwise we call the <see cref="TextParseNode"/> implementation
+///     Current changes:
+///         <see cref="GetObjectValue{T}"/> returns an <see cref="ApiError"/> instead of throwing an error if type matches
 /// </summary>
 public class TextHtmlParseNode : IParseNode
 {

@@ -14,14 +14,14 @@ using Microsoft.Kiota.Serialization.Json;
 namespace Marqeta.Core.Sdk.Serialization.Json;
 
 /// <summary>
-/// The <see cref="IParseNode"/> implementation for the json content type.
-/// Copied from: https://github.com/microsoft/kiota-serialization-json-dotnet/blob/main/src/JsonParseNode.cs
-/// <see cref="JsonParseNode"/>
-/// We don't call the base implementation in <see cref="JsonParseNode"/> as some methods new up a <see cref="JsonParseNode"/>
-/// which causes inconsistencies
-/// Changes will be marked with a MODIFIED comment 
-/// Current changes:
-///     <see cref="GetEnumValue{T}"/> throws an <see cref="ArgumentOutOfRangeException"/> instead of null
+///     The <see cref="IParseNode"/> implementation for the json content type.
+///     Copied from: <see href="https://github.com/microsoft/kiota-serialization-json-dotnet/blob/main/src/JsonParseNode.cs"/>
+///     <see cref="JsonParseNode"/>
+///     We don't call the base implementation in <see cref="JsonParseNode"/> as some methods new up a <see cref="JsonParseNode"/>
+///     which causes inconsistencies
+///     Changes will be marked with a MODIFIED comment 
+///     Current changes:
+///         <see cref="GetEnumValue{T}"/> throws an <see cref="ArgumentOutOfRangeException"/> instead of null
 /// </summary>
 public class CustomJsonParseNode : IParseNode
 {
