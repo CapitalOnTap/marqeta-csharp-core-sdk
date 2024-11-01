@@ -6,9 +6,9 @@ using Microsoft.Kiota.Serialization.Json;
 namespace Marqeta.Core.Sdk.Serialization.Json
 {
     /// <summary>
-    /// The <see cref="IAsyncParseNodeFactory"/> implementation for json content types.
-    /// Copied from https://github.com/microsoft/kiota-serialization-json-dotnet/blob/main/src/JsonParseNodeFactory.cs
-    /// <see cref="JsonParseNodeFactory"/>
+    ///     The <see cref="IAsyncParseNodeFactory"/> implementation for json content types.
+    ///     Copied from  <see href="https://github.com/microsoft/kiota-serialization-json-dotnet/blob/main/src/JsonParseNodeFactory.cs"/>
+    ///     <see cref="JsonParseNodeFactory"/>
     /// </summary>
     public class CustomJsonParseNodeFactory : IAsyncParseNodeFactory
     {

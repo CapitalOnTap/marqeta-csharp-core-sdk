@@ -13,7 +13,7 @@ using System;
 namespace Marqeta.Core.Sdk.Accounts.Item.Statements.Item.Paymentreminders
 {
     /// <summary>
-    /// Builds and executes requests for operations under \accounts\{account_token}\statements\{statement_summary_token}\paymentreminders\
+    /// Builds and executes requests for operations under \accounts\{account_token}\statements\{statement_summary_token}\paymentreminders
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class PaymentremindersRequestBuilder : BaseRequestBuilder
