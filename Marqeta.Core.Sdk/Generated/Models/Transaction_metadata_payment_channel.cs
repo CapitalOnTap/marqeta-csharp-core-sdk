@@ -4,6 +4,7 @@ using System;
 namespace Marqeta.Core.Sdk.Models
 {
     /// <summary>Channel from which the transaction was originated.</summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum Transaction_metadata_payment_channel
     {
         [EnumMember(Value = "OTHER")]

@@ -4,6 +4,7 @@ using System;
 namespace Marqeta.Core.Sdk.Models
 {
     /// <summary>Indicates a higher-risk operation, such as a quasi-cash or cryptocurrency transaction.These transactions typically involve non-financial institutions.</summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum Terminal_model_special_condition_indicator
     {
         [EnumMember(Value = "UNSPECIFIED")]

@@ -4,6 +4,7 @@ using System;
 namespace Marqeta.Core.Sdk.Models
 {
     /// <summary>Type of payment source.</summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum PaymentSourceResponse_source_type
     {
         [EnumMember(Value = "CHECKING")]

@@ -4,6 +4,7 @@ using System;
 namespace Marqeta.Core.Sdk.Models
 {
     /// <summary>Type of reward accrued.</summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum AccrualType
     {
         [EnumMember(Value = "CASHBACK")]

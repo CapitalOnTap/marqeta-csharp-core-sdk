@@ -4,6 +4,7 @@ using System;
 namespace Marqeta.Core.Sdk.Models
 {
     /// <summary>Indicates the type of mail or telephone order transaction.</summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum Transaction_metadata_moto_indicator
     {
         [EnumMember(Value = "UNKNOWN")]

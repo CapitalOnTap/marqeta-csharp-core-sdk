@@ -4,6 +4,7 @@ using System;
 namespace Marqeta.Core.Sdk.Models
 {
     /// <summary>Specifies the destination for overdraft funds.This field does not apply if JIT Funding is enabled.</summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum Clearing_and_settlement_overdraft_destination
     {
         [EnumMember(Value = "GPA")]

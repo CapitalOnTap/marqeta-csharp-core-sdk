@@ -4,6 +4,7 @@ using System;
 namespace Marqeta.Core.Sdk.Models
 {
     /// <summary>Reason for the adjustment.* `DISPUTE` - The adjustment occurred because a dispute was initiated.* `DISPUTE_RESOLUTION` - The adjustment occurred because of the result of a dispute resolution.* `RETURNED_OR_CANCELED_PAYMENT` - The adjustment occurred because a payment was returned or canceled.* `OTHER` - Any other reason the adjustment occurred. For example, a waived fee.</summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum AccountAdjustmentResponse_reason
     {
         [EnumMember(Value = "DISPUTE")]

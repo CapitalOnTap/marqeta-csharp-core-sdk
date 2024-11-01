@@ -4,6 +4,7 @@ using System;
 namespace Marqeta.Core.Sdk.Models
 {
     /// <summary>Method used to authenticate the cardholder.</summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum Pos_cardholder_authentication_method
     {
         [EnumMember(Value = "UNSPECIFIED")]

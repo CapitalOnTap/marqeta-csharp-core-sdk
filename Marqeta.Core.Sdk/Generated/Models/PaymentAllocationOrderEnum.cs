@@ -4,6 +4,7 @@ using System;
 namespace Marqeta.Core.Sdk.Models
 {
     /// <summary>Ordered list of balance types to which payments are allocated, from first to last.</summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum PaymentAllocationOrderEnum
     {
         [EnumMember(Value = "INTEREST")]

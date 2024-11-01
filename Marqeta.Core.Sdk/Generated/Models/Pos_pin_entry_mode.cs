@@ -4,6 +4,7 @@ using System;
 namespace Marqeta.Core.Sdk.Models
 {
     /// <summary>Indicates whether the card acceptor or terminal can capture card personal identification numbers (PINs).*NOTE:* This field does not indicate whether a PIN was entered.</summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum Pos_pin_entry_mode
     {
         [EnumMember(Value = "UNKNOWN")]

@@ -4,6 +4,7 @@ using System;
 namespace Marqeta.Core.Sdk.Models
 {
     /// <summary>Descriptive reason for the card fulfillment.</summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum CardFulfillmentResponse_card_fulfillment_reason
     {
         [EnumMember(Value = "NEW")]

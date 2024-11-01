@@ -4,6 +4,7 @@ using System;
 namespace Marqeta.Core.Sdk.Models
 {
     /// <summary>The tier of the card product.</summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum DecisionsResponse_card_product_level
     {
         [EnumMember(Value = "PREMIUM")]

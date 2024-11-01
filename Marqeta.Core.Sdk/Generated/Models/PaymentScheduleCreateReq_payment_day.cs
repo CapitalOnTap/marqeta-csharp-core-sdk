@@ -4,6 +4,7 @@ using System;
 namespace Marqeta.Core.Sdk.Models
 {
     /// <summary>Day on which monthly payments are made.Required if `frequency` is `MONTHLY`.</summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum PaymentScheduleCreateReq_payment_day
     {
         [EnumMember(Value = "PAYMENT_DUE_DAY")]

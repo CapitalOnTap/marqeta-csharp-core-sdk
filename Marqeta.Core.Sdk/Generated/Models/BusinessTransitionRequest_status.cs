@@ -4,6 +4,7 @@ using System;
 namespace Marqeta.Core.Sdk.Models
 {
     /// <summary>Specifies the new status of the business.</summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum BusinessTransitionRequest_status
     {
         [EnumMember(Value = "UNVERIFIED")]

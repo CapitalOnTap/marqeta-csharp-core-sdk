@@ -4,6 +4,7 @@ using System;
 namespace Marqeta.Core.Sdk.Models
 {
     /// <summary>Name of the partner who validated the account holder.Returned when a third-party partner was used for account validation.</summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum Ach_partner_request_model_partner
     {
         [EnumMember(Value = "PLAID")]

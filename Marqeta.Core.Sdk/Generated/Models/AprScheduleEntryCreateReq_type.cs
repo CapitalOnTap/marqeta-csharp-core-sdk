@@ -4,6 +4,7 @@ using System;
 namespace Marqeta.Core.Sdk.Models
 {
     /// <summary>Indicates whether the APR value is fixed or variable.</summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum AprScheduleEntryCreateReq_type
     {
         [EnumMember(Value = "FIXED")]

@@ -4,6 +4,7 @@ using System;
 namespace Marqeta.Core.Sdk.Models
 {
     /// <summary>Time unit of the pay off period.</summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum StatementPaymentWarning_period_type
     {
         [EnumMember(Value = "MONTH")]

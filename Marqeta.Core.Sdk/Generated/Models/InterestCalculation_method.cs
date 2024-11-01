@@ -4,6 +4,7 @@ using System;
 namespace Marqeta.Core.Sdk.Models
 {
     /// <summary>Method of interest calculation.</summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum InterestCalculation_method
     {
         [EnumMember(Value = "AVG_DAILY_BALANCE_WITH_NEW_TRANSACTIONS")]

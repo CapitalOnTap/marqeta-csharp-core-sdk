@@ -4,6 +4,7 @@ using System;
 namespace Marqeta.Core.Sdk.Models
 {
     /// <summary>State of the application.If manually &lt;&lt;/core-api/credit-applications#transitionApplication, transitioning an application state&gt;&gt;:* `application_state` is the state to which you want to transition the application status; must be `ACCEPTED` or `REJECTED`.* `original_status` returns the state of the application before it was manually transitioned.* `status` returns the state to which the application was transitioned.</summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum ApplicationResourceState
     {
         [EnumMember(Value = "CREATED")]

@@ -4,6 +4,7 @@ using System;
 namespace Marqeta.Core.Sdk.Models
 {
     /// <summary>Specifies the channel through which the password was last changed.</summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum Authentication_last_password_update_channel
     {
         [EnumMember(Value = "USER_CHANGE")]

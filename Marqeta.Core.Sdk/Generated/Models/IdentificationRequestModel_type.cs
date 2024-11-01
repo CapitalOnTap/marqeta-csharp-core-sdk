@@ -4,6 +4,7 @@ using System;
 namespace Marqeta.Core.Sdk.Models
 {
     /// <summary>Type of identification.*NOTE:* Full Social Security Number (SSN) is required for US-based cardholder KYC verification.Nine digits only, no delimiters.`123456789`, for example.</summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum IdentificationRequestModel_type
     {
         [EnumMember(Value = "SSN")]

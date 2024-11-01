@@ -4,6 +4,7 @@ using System;
 namespace Marqeta.Core.Sdk.Models
 {
     /// <summary>Specifies the units for the `value` field.</summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum Expiration_offset_with_minimum_unit
     {
         [EnumMember(Value = "YEARS")]

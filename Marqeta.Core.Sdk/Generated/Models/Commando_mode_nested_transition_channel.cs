@@ -4,6 +4,7 @@ using System;
 namespace Marqeta.Core.Sdk.Models
 {
     /// <summary>Mechanism that changed the Commando Mode control set&apos;s state.</summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum Commando_mode_nested_transition_channel
     {
         [EnumMember(Value = "API")]

@@ -4,6 +4,7 @@ using System;
 namespace Marqeta.Core.Sdk.Models
 {
     /// <summary>Specifies the state of the business on the Marqeta platform.This field is returned if it exists in the resource.</summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum Business_card_holder_response_status
     {
         [EnumMember(Value = "UNVERIFIED")]

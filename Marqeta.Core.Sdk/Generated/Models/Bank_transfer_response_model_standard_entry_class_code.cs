@@ -4,6 +4,7 @@ using System;
 namespace Marqeta.Core.Sdk.Models
 {
     /// <summary>Three-letter code identifying the type of entry.* *WEB* — An internet-initiated entry* *PPD* — Prearranged Payment and Deposit* *CCD* — Cash Concentration and Disbursement</summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum Bank_transfer_response_model_standard_entry_class_code
     {
         [EnumMember(Value = "WEB")]

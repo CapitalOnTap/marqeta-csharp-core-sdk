@@ -4,6 +4,7 @@ using System;
 namespace Marqeta.Core.Sdk.Models
 {
     /// <summary>Method used for capturing the card primary account number (PAN) during the transaction.</summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum Pos_pan_entry_mode
     {
         [EnumMember(Value = "UNKNOWN")]

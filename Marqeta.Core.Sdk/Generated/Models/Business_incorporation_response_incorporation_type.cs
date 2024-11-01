@@ -4,6 +4,7 @@ using System;
 namespace Marqeta.Core.Sdk.Models
 {
     /// <summary>Organizational structure of the business (corporation or sole proprietorship, for example).This field is returned if it exists in the resource.</summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum Business_incorporation_response_incorporation_type
     {
         [EnumMember(Value = "LLC")]

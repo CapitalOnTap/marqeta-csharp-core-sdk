@@ -4,6 +4,7 @@ using System;
 namespace Marqeta.Core.Sdk.Models
 {
     /// <summary>category a portion of the payment is allocated to.</summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum PaymentAllocationResponse_bucket
     {
         [EnumMember(Value = "PRINCIPAL")]

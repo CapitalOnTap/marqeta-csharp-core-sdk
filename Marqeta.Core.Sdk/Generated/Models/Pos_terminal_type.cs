@@ -4,6 +4,7 @@ using System;
 namespace Marqeta.Core.Sdk.Models
 {
     /// <summary>Type of card acceptor/terminal.</summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum Pos_terminal_type
     {
         [EnumMember(Value = "AUTO_DISPENSER_WITH_PIN")]

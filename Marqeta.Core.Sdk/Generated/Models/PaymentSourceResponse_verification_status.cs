@@ -4,6 +4,7 @@ using System;
 namespace Marqeta.Core.Sdk.Models
 {
     /// <summary>Status of the verification for the payment source.</summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum PaymentSourceResponse_verification_status
     {
         [EnumMember(Value = "ACH_VERIFIED")]

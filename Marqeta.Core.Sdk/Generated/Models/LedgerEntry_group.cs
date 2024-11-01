@@ -4,6 +4,7 @@ using System;
 namespace Marqeta.Core.Sdk.Models
 {
     /// <summary>Group to which the ledger entry belongs.</summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum LedgerEntry_group
     {
         [EnumMember(Value = "PURCHASE")]

@@ -4,6 +4,7 @@ using System;
 namespace Marqeta.Core.Sdk.Models
 {
     /// <summary>Determines whether funds are being debited from or credited to the account.</summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum DepositDepositResponse_type
     {
         [EnumMember(Value = "CREDIT")]

@@ -4,6 +4,7 @@ using System;
 namespace Marqeta.Core.Sdk.Models
 {
     /// <summary>Instrument type of the card:* *PHYSICAL_MSR:* A physical card with a magnetic stripe. This is the default physical card type.* *PHYSICAL_ICC:* A physical card with an integrated circuit, or &quot;chip.&quot;* *PHYSICAL_CONTACTLESS:* A physical card that uses radio frequency identification (RFID) or near-field communication (NFC) to enable payment over a secure radio interface.* *PHYSICAL_COMBO:* A physical card with a chip that also supports contactless payments.* *VIRTUAL_PAN:* A virtual card with a primary account number (PAN).</summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum Card_response_instrument_type
     {
         [EnumMember(Value = "PHYSICAL_MSR")]

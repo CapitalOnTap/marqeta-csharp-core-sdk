@@ -1,4 +1,5 @@
-﻿using System.Text.Json;
+﻿using System.ComponentModel;
+using System.Text.Json;
 using Microsoft.Kiota.Abstractions.Serialization;
 using Microsoft.Kiota.Serialization.Json;
 
@@ -33,7 +34,7 @@ namespace Marqeta.Core.Sdk.Serialization.Json
         /// <param name="content">The <see cref="Stream"/> containing json to parse.</param>
         /// <param name="cancellationToken">The cancellation token for the task</param>
         /// <returns>An instance of <see cref="IParseNode"/> for json manipulation</returns>
-        public async Task<IParseNode> GetRootParseNodeAsync(string contentType, Stream content, CancellationToken cancellationToken = new CancellationToken())
+        public async Task<IParseNode> GetRootParseNodeAsync(string contentType, Stream content, CancellationToken cancellationToken = default)
         {
             if(string.IsNullOrEmpty(contentType))
                 throw new ArgumentNullException(nameof(contentType));
@@ -42,7 +43,7 @@ namespace Marqeta.Core.Sdk.Serialization.Json
 
             _ = content ?? throw new ArgumentNullException(nameof(content));
 
-            using var jsonDocument = await JsonDocument.ParseAsync(content, cancellationToken: cancellationToken);
+            using var jsonDocument = await JsonDocument.ParseAsync(content, cancellationToken: cancellationToken).ConfigureAwait(false);
             return new CustomJsonParseNode(jsonDocument.RootElement.Clone(), _jsonJsonSerializationContext);
         }
 
@@ -52,6 +53,8 @@ namespace Marqeta.Core.Sdk.Serialization.Json
         /// <param name="contentType">The content type of the stream to be parsed</param>
         /// <param name="content">The <see cref="Stream"/> containing json to parse.</param>
         /// <returns>An instance of <see cref="IParseNode"/> for json manipulation</returns>
+        [Obsolete("Use GetRootParseNodeAsync instead")]
+        [EditorBrowsable(EditorBrowsableState.Never)]
         public IParseNode GetRootParseNode(string contentType, Stream content)
         {
             if(string.IsNullOrEmpty(contentType))

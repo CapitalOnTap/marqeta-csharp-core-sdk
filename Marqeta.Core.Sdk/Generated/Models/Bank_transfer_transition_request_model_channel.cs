@@ -4,6 +4,7 @@ using System;
 namespace Marqeta.Core.Sdk.Models
 {
     /// <summary>Mechanism by which the transaction was initiated.</summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum Bank_transfer_transition_request_model_channel
     {
         [EnumMember(Value = "API")]

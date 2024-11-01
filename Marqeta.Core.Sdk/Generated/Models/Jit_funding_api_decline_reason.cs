@@ -4,6 +4,7 @@ using System;
 namespace Marqeta.Core.Sdk.Models
 {
     /// <summary>Reason why the transaction was declined.</summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum Jit_funding_api_decline_reason
     {
         [EnumMember(Value = "INVALID_AMOUNT")]

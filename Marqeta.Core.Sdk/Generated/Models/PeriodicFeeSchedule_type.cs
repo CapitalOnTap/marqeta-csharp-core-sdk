@@ -4,6 +4,7 @@ using System;
 namespace Marqeta.Core.Sdk.Models
 {
     /// <summary>type of fee to be charged</summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum PeriodicFeeSchedule_type
     {
         [EnumMember(Value = "ANNUAL_FEE")]

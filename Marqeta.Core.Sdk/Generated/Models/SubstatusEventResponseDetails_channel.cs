@@ -4,6 +4,7 @@ using System;
 namespace Marqeta.Core.Sdk.Models
 {
     /// <summary>The channel through which the event occurred.</summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum SubstatusEventResponseDetails_channel
     {
         [EnumMember(Value = "ADMIN")]

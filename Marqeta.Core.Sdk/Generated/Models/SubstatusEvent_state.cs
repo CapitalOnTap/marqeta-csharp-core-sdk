@@ -4,6 +4,7 @@ using System;
 namespace Marqeta.Core.Sdk.Models
 {
     /// <summary>Initial state of the substatus.`ACTIVE` - Required if the substatus is `HARDSHIP`, `FRAUD`, `MLA`, `SCRA`, `DECEASED`, or `POWER_OF_ATTORNEY`.`BANKRUPTCY_FILED` - Required if the substatus is `BANKRUPTCY`.</summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum SubstatusEvent_state
     {
         [EnumMember(Value = "ACTIVE")]

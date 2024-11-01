@@ -1,4 +1,5 @@
-﻿using Microsoft.Kiota.Abstractions.Serialization;
+﻿using System.ComponentModel;
+using Microsoft.Kiota.Abstractions.Serialization;
 using Microsoft.Kiota.Serialization.Text;
 
 namespace Marqeta.Core.Sdk.Serialization.Text;
@@ -14,7 +15,7 @@ public class TextHtmlParseNodeFactory : IAsyncParseNodeFactory
 
     /// <inheritdoc />
     public async Task<IParseNode> GetRootParseNodeAsync(string contentType, Stream content,
-        CancellationToken cancellationToken = new CancellationToken())
+        CancellationToken cancellationToken = default)
     {
         if(string.IsNullOrEmpty(contentType))
             throw new ArgumentNullException(nameof(contentType));
@@ -23,11 +24,13 @@ public class TextHtmlParseNodeFactory : IAsyncParseNodeFactory
             
         _ = content ?? throw new ArgumentNullException(nameof(content));
         using var reader = new StreamReader(content);
-        var stringContent = await reader.ReadToEndAsync();
+        var stringContent = await reader.ReadToEndAsync().ConfigureAwait(false);
         return new TextHtmlParseNode(stringContent);
     }
 
     /// <inheritdoc />
+    [Obsolete("Use GetRootParseNodeAsync instead")]
+    [EditorBrowsable(EditorBrowsableState.Never)]
     public IParseNode GetRootParseNode(string contentType, Stream content) {
         if(string.IsNullOrEmpty(contentType))
             throw new ArgumentNullException(nameof(contentType));

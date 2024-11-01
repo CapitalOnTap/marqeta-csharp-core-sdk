@@ -4,6 +4,7 @@ using System;
 namespace Marqeta.Core.Sdk.Models
 {
     /// <summary>Type of adjustment.The adjustment is made on its correlating amount (for example, purchase adjustments are made on purchase amounts).You can use general adjustments for standalone adjustments made on the credit account balance itself, which includes account write-offs, credits, and more.</summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum AccountAdjustmentResponse_type
     {
         [EnumMember(Value = "PURCHASE")]

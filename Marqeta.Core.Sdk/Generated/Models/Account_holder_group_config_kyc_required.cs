@@ -4,6 +4,7 @@ using System;
 namespace Marqeta.Core.Sdk.Models
 {
     /// <summary>If set to `ALWAYS`, new account holders are created in an `UNVERIFIED` status and must pass identity verification (KYC) before they can be active; if set to `CONDITIONAL`, new account holders begin in a `LIMITED` status and have limited actions available before passing identity verification; if set to `NEVER`, new account holders are created in an active state.</summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum Account_holder_group_config_kyc_required
     {
         [EnumMember(Value = "ALWAYS")]

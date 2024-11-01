@@ -4,6 +4,7 @@ using System;
 namespace Marqeta.Core.Sdk.Models
 {
     /// <summary>Type of product or service being purchased, if provided by the merchant.</summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum Transaction_metadata_transaction_category
     {
         [EnumMember(Value = "RETAIL_SALE")]

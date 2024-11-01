@@ -4,6 +4,7 @@ using System;
 namespace Marqeta.Core.Sdk.Models
 {
     /// <summary>Status of the decision on the application.</summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum PostDecisionsResponse_status
     {
         [EnumMember(Value = "SUBMITTED")]

@@ -4,6 +4,7 @@ using System;
 namespace Marqeta.Core.Sdk.Models
 {
     /// <summary>Type of resource to which the substatus is applied.</summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum SubstatusResponse_resource_type
     {
         [EnumMember(Value = "ACCOUNT")]

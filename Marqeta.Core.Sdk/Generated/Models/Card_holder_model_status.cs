@@ -4,6 +4,7 @@ using System;
 namespace Marqeta.Core.Sdk.Models
 {
     /// <summary>Specifies the status of the cardholder on the Marqeta platform.</summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum Card_holder_model_status
     {
         [EnumMember(Value = "UNVERIFIED")]

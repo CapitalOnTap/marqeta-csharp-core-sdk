@@ -4,6 +4,7 @@ using System;
 namespace Marqeta.Core.Sdk.Models
 {
     /// <summary>Specifies for whom the credit product is intended.* `CONSUMER` - The credit product is intended for individual consumers.* `SMALL_AND_MEDIUM_BUSINESS` - The credit product is intended for small and medium business.</summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum ProductClassification
     {
         [EnumMember(Value = "CONSUMER")]

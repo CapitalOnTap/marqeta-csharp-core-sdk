@@ -4,6 +4,7 @@ using System;
 namespace Marqeta.Core.Sdk.Models
 {
     /// <summary>Whether the card acceptor/terminal was attended.</summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum Pos_terminal_attendance
     {
         [EnumMember(Value = "UNSPECIFIED")]

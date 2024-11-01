@@ -4,6 +4,7 @@ using System;
 namespace Marqeta.Core.Sdk.Models
 {
     /// <summary>Specifies the category of a point-of-sale transaction.</summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum Pos_transaction_initiated_category
     {
         [EnumMember(Value = "CARD_ON_FILE")]

@@ -4,6 +4,7 @@ using System;
 namespace Marqeta.Core.Sdk.Models
 {
     /// <summary>Type of calculation for the reward.* `NET_BALANCE` - The reward is calculated based on the net balance for a billing cycle, which is the total amount spent during a billing cycle, minus any refunds or disputes.</summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum CalculationType
     {
         [EnumMember(Value = "NET_BALANCE")]

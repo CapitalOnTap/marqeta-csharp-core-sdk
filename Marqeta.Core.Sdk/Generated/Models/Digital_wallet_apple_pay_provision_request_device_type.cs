@@ -4,6 +4,7 @@ using System;
 namespace Marqeta.Core.Sdk.Models
 {
     /// <summary>Type of device into which the digital wallet token will be provisioned.</summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum Digital_wallet_apple_pay_provision_request_device_type
     {
         [EnumMember(Value = "MOBILE_PHONE")]

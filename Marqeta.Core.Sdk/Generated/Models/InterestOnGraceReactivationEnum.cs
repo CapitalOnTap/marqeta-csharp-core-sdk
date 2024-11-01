@@ -4,6 +4,7 @@ using System;
 namespace Marqeta.Core.Sdk.Models
 {
     /// <summary>Determines whether to charge or waive interest for the billing period when the balance is paid off.</summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum InterestOnGraceReactivationEnum
     {
         [EnumMember(Value = "ACCRUE_FULL_CYCLE")]
