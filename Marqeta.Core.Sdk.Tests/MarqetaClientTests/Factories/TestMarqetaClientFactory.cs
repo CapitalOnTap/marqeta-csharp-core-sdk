@@ -20,7 +20,7 @@ namespace Marqeta.Core.Sdk.Tests.MarqetaClientTests.Factories
                 new MarqetaSdkConfiguration{
                     Username = config["Marqeta:UserName"]!,
                     Password = config["Marqeta:Password"]!,
-                    BaseAddress = config["Marqeta:BaseUrl"]
+                    BaseAddress = config["Marqeta:BaseUrl"]!
                 },
                 configureClient, 
                 httpMessageHandlerFactory,

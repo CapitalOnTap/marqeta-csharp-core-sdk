@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <ImplicitUsings>enable</ImplicitUsings>
-    <Nullable>disable</Nullable>
+    <Nullable>enable</Nullable>
     <RootNamespace>Marqeta.Core.Sdk</RootNamespace>
     <TargetFramework>netstandard2.0</TargetFramework>
     <LangVersion>latestmajor</LangVersion>

@@ -11,7 +11,7 @@ public class MarqetaSdkConfiguration
     ///     Marqeta Username used for Basic Authentication.
     /// </summary>
     public string Username { get; set; }
-    
+
     /// <summary>
     ///     Marqeta Password used for Basic Authentication.
     /// </summary>
@@ -21,7 +21,7 @@ public class MarqetaSdkConfiguration
     ///     Base Address to use for Marqeta API calls.
     /// </summary>
     public string BaseAddress { get; set; }
-    
+
     /// <summary>
     ///     Kiota Request options to configure kiota middleware handlers.
     ///     <see href="https://github.com/microsoft/kiota-dotnet/tree/main/src/http/httpClient/Middleware/Options"/>
