@@ -5,9 +5,9 @@ using Microsoft.Kiota.Serialization.Text;
 namespace Marqeta.Core.Sdk.Serialization.Text;
 
 /// <summary>
-/// The <see cref="IAsyncParseNodeFactory"/> implementation for text/html content types
-/// Copied from: https://github.com/microsoft/kiota-serialization-text-dotnet/blob/main/src/TextParseNodeFactory.cs
-/// <see cref="TextParseNodeFactory"/>
+///     The <see cref="IAsyncParseNodeFactory"/> implementation for text/html content types
+///     Copied from:  <see href="https://github.com/microsoft/kiota-serialization-text-dotnet/blob/main/src/TextParseNodeFactory.cs"/>
+///     <see cref="TextParseNodeFactory"/>
 /// </summary>
 public class TextHtmlParseNodeFactory : IAsyncParseNodeFactory
 {

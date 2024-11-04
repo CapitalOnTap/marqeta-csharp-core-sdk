@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFramework>net6.0</TargetFramework>
+		<TargetFramework>net8.0</TargetFramework>
 		<UserSecretsId>faef85ee-8ebd-4cdb-a06e-1e980a61fc10</UserSecretsId>
 		<LangVersion>8</LangVersion>
 		<IsPackable>false</IsPackable>
@@ -12,8 +12,8 @@
 		<PackageReference Include="DeepEqual" Version="5.1.0" />
 		<PackageReference Include="Microsoft.Extensions.Configuration" Version="8.0.0" />
 		<PackageReference Include="Microsoft.Extensions.Configuration.EnvironmentVariables" Version="8.0.0" />
-		<PackageReference Include="Microsoft.Extensions.Configuration.UserSecrets" Version="8.0.1" />
-		<PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="6.0.1" />
+		<PackageReference Include="Microsoft.Extensions.Configuration.UserSecrets" Version="8.0.0" />
+		<PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="8.0.1" />
 		<PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.11.1" />
 		<PackageReference Include="xunit" Version="2.9.2" />
 		<PackageReference Include="xunit.runner.visualstudio" Version="2.8.2">
