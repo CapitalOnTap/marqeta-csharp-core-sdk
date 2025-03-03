@@ -7,15 +7,14 @@ using System.IO;
 using System;
 namespace Marqeta.Core.Sdk.Models
 {
-    /// <summary>
-    /// Specifies shipping details for the order.
-    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
+    #pragma warning disable CS1591
     public partial class Shipping : IAdditionalDataHolder, IParsable
+    #pragma warning restore CS1591
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Adds the specified value as a care of (C/O) line to the mailing carrier.*NOTE:* This field can be specified on cards, card products, and bulk card orders.If you specify this field at multiple levels, the order of precedence is: card, bulk card order, card product.</summary>
+        /// <summary>255 char max</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? CareOfLine { get; set; }
@@ -23,9 +22,9 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string CareOfLine { get; set; }
 #endif
-        /// <summary>Specifies the shipping service.</summary>
+        /// <summary>The method property</summary>
         public global::Marqeta.Core.Sdk.Models.Shipping_method? Method { get; set; }
-        /// <summary>Specifies a fulfillment shipping or return address.</summary>
+        /// <summary>The recipient_address property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Marqeta.Core.Sdk.Models.Fulfillment_address_request? RecipientAddress { get; set; }
@@ -33,7 +32,7 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public global::Marqeta.Core.Sdk.Models.Fulfillment_address_request RecipientAddress { get; set; }
 #endif
-        /// <summary>Specifies a fulfillment shipping or return address.</summary>
+        /// <summary>The return_address property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Marqeta.Core.Sdk.Models.Fulfillment_address_request? ReturnAddress { get; set; }

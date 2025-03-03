@@ -16,7 +16,7 @@ namespace Marqeta.Core.Sdk.Commandomodes.Transitions
     public partial class TransitionsRequestBuilder : BaseRequestBuilder
     {
         /// <summary>Gets an item from the Marqeta.Core.Sdk.commandomodes.transitions.item collection</summary>
-        /// <param name="position">Unique identifier of the Commando Mode control set transition.</param>
+        /// <param name="position">Commando mode transition token</param>
         /// <returns>A <see cref="global::Marqeta.Core.Sdk.Commandomodes.Transitions.Item.WithTokenItemRequestBuilder"/></returns>
         public global::Marqeta.Core.Sdk.Commandomodes.Transitions.Item.WithTokenItemRequestBuilder this[string position]
         {

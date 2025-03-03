@@ -3,9 +3,10 @@ using System.Runtime.Serialization;
 using System;
 namespace Marqeta.Core.Sdk.Models
 {
-    /// <summary>Reason for card fulfillment.</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
+    #pragma warning disable CS1591
     public enum CardFulfillmentRequest_card_fulfillment_reason
+    #pragma warning restore CS1591
     {
         [EnumMember(Value = "NEW")]
         #pragma warning disable CS1591

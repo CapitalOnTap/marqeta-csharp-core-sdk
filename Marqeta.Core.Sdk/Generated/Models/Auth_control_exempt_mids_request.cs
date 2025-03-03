@@ -22,9 +22,9 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public global::Marqeta.Core.Sdk.Models.Spend_control_association Association { get; set; }
 #endif
-        /// <summary>Date and time when the exception ends, in UTC.</summary>
+        /// <summary>The end_time property</summary>
         public DateTimeOffset? EndTime { get; set; }
-        /// <summary>Unique identifier of the merchant group to be exempted.This field is required if there is no entry in the `mid` field.Pass either this field or the `mid` field, not both.For information about merchant groups, see &lt;&lt;/core-api/merchant-groups, Merchant Groups&gt;&gt;.</summary>
+        /// <summary>36 char max</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? MerchantGroupToken { get; set; }
@@ -32,7 +32,7 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string MerchantGroupToken { get; set; }
 #endif
-        /// <summary>Merchant to be exempted.This field is required if there is no entry in the `merchant_group_token` field.Use either this field or the `merchant_group_token` field, not both.</summary>
+        /// <summary>The mid property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Mid { get; set; }
@@ -40,7 +40,7 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string Mid { get; set; }
 #endif
-        /// <summary>Name of the merchant identifier authorization control exemption.</summary>
+        /// <summary>The name property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Name { get; set; }
@@ -48,9 +48,9 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string Name { get; set; }
 #endif
-        /// <summary>Date and time when the exception starts, in UTC.</summary>
+        /// <summary>The start_time property</summary>
         public DateTimeOffset? StartTime { get; set; }
-        /// <summary>Unique identifier of the merchant identifier authorization control exemption.If you do not include a token, the system will generate one automatically.This token is necessary for use in other API calls, so we recommend that rather than let the system generate one, you use a simple string that is easy to remember.This value cannot be updated.</summary>
+        /// <summary>The token property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Token { get; set; }

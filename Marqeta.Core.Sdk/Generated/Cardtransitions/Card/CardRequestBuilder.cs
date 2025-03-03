@@ -16,7 +16,7 @@ namespace Marqeta.Core.Sdk.Cardtransitions.Card
     public partial class CardRequestBuilder : BaseRequestBuilder
     {
         /// <summary>Gets an item from the Marqeta.Core.Sdk.cardtransitions.card.item collection</summary>
-        /// <param name="position">Unique identifier of the card.</param>
+        /// <param name="position">Card token</param>
         /// <returns>A <see cref="global::Marqeta.Core.Sdk.Cardtransitions.Card.Item.WithTokenItemRequestBuilder"/></returns>
         public global::Marqeta.Core.Sdk.Cardtransitions.Card.Item.WithTokenItemRequestBuilder this[string position]
         {

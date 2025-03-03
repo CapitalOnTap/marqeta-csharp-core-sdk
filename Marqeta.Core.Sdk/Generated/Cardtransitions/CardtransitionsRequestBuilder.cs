@@ -25,7 +25,7 @@ namespace Marqeta.Core.Sdk.Cardtransitions
             get => new global::Marqeta.Core.Sdk.Cardtransitions.Card.CardRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>Gets an item from the Marqeta.Core.Sdk.cardtransitions.item collection</summary>
-        /// <param name="position">Unique identifier of the card transition.Send a `GET` request to `/cardtransitions/card/{token}` to retrieve card transition tokens for a specific card.</param>
+        /// <param name="position">Card transition token</param>
         /// <returns>A <see cref="global::Marqeta.Core.Sdk.Cardtransitions.Item.WithTokenItemRequestBuilder"/></returns>
         public global::Marqeta.Core.Sdk.Cardtransitions.Item.WithTokenItemRequestBuilder this[string position]
         {
@@ -53,7 +53,7 @@ namespace Marqeta.Core.Sdk.Cardtransitions
         {
         }
         /// <summary>
-        /// Creates a card state transition to set the state of an existing card.If your system uses IVR, you can send a `POST` request to `/cards/getbypan` to retrieve a card token, which you can then use in your `POST` request to `/cardtransitions`.It may not be possible to move a card from one user to another once the card has been activated.
+        /// Creates a card transition object
         /// </summary>
         /// <returns>A <see cref="global::Marqeta.Core.Sdk.Models.Card_transition_response"/></returns>
         /// <param name="body">The request body</param>
@@ -78,7 +78,7 @@ namespace Marqeta.Core.Sdk.Cardtransitions
             return await RequestAdapter.SendAsync<global::Marqeta.Core.Sdk.Models.Card_transition_response>(requestInfo, global::Marqeta.Core.Sdk.Models.Card_transition_response.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Creates a card state transition to set the state of an existing card.If your system uses IVR, you can send a `POST` request to `/cards/getbypan` to retrieve a card token, which you can then use in your `POST` request to `/cardtransitions`.It may not be possible to move a card from one user to another once the card has been activated.
+        /// Creates a card transition object
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">The request body</param>

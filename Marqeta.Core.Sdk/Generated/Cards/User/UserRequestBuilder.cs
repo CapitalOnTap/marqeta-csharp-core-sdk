@@ -16,7 +16,7 @@ namespace Marqeta.Core.Sdk.Cards.User
     public partial class UserRequestBuilder : BaseRequestBuilder
     {
         /// <summary>Gets an item from the Marqeta.Core.Sdk.cards.user.item collection</summary>
-        /// <param name="position">Unique identifier of the user whose cards you want to list.Send a `GET` request to `/users` to retrieve user tokens.</param>
+        /// <param name="position">User token</param>
         /// <returns>A <see cref="global::Marqeta.Core.Sdk.Cards.User.Item.WithTokenItemRequestBuilder"/></returns>
         public global::Marqeta.Core.Sdk.Cards.User.Item.WithTokenItemRequestBuilder this[string position]
         {

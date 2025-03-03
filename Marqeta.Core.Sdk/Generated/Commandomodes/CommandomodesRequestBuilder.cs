@@ -25,7 +25,7 @@ namespace Marqeta.Core.Sdk.Commandomodes
             get => new global::Marqeta.Core.Sdk.Commandomodes.Transitions.TransitionsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>Gets an item from the Marqeta.Core.Sdk.commandomodes.item collection</summary>
-        /// <param name="position">Unique identifier of the Commando Mode control set you want to retrieve.</param>
+        /// <param name="position">Unique identifier of the item</param>
         /// <returns>A <see cref="global::Marqeta.Core.Sdk.Commandomodes.Item.Commandomode_tokenItemRequestBuilder"/></returns>
         public global::Marqeta.Core.Sdk.Commandomodes.Item.Commandomode_tokenItemRequestBuilder this[string position]
         {
@@ -53,7 +53,7 @@ namespace Marqeta.Core.Sdk.Commandomodes
         {
         }
         /// <summary>
-        /// Retrieve a list of Commando Mode control sets.This endpoint supports &lt;&lt;/core-api/field-filtering, field filtering&gt;&gt; and &lt;&lt;/core-api/sorting-and-pagination, pagination&gt;&gt;.
+        /// Lists all commando mode control sets
         /// </summary>
         /// <returns>A <see cref="global::Marqeta.Core.Sdk.Models.CommandoModeListResponse"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -76,7 +76,7 @@ namespace Marqeta.Core.Sdk.Commandomodes
             return await RequestAdapter.SendAsync<global::Marqeta.Core.Sdk.Models.CommandoModeListResponse>(requestInfo, global::Marqeta.Core.Sdk.Models.CommandoModeListResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Retrieve a list of Commando Mode control sets.This endpoint supports &lt;&lt;/core-api/field-filtering, field filtering&gt;&gt; and &lt;&lt;/core-api/sorting-and-pagination, pagination&gt;&gt;.
+        /// Lists all commando mode control sets
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -104,15 +104,15 @@ namespace Marqeta.Core.Sdk.Commandomodes
             return new global::Marqeta.Core.Sdk.Commandomodes.CommandomodesRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
-        /// Retrieve a list of Commando Mode control sets.This endpoint supports &lt;&lt;/core-api/field-filtering, field filtering&gt;&gt; and &lt;&lt;/core-api/sorting-and-pagination, pagination&gt;&gt;.
+        /// Lists all commando mode control sets
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class CommandomodesRequestBuilderGetQueryParameters 
         {
-            /// <summary>Number of Commando Mode control sets to retrieve.</summary>
+            /// <summary>Number of commando modes to retrieve</summary>
             [QueryParameter("count")]
             public int? Count { get; set; }
-            /// <summary>Field on which to sort.Use any field in the resource model, or one of the system fields `lastModifiedTime` or `createdTime`.Prefix the field name with a hyphen (`-`) to sort in descending order.Omit the hyphen to sort in ascending order.</summary>
+            /// <summary>Sort order</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
             [QueryParameter("sort_by")]
@@ -122,7 +122,7 @@ namespace Marqeta.Core.Sdk.Commandomodes
             [QueryParameter("sort_by")]
             public string SortBy { get; set; }
 #endif
-            /// <summary>Sort order index of the first resource in the returned array.</summary>
+            /// <summary>Start index</summary>
             [QueryParameter("start_index")]
             public int? StartIndex { get; set; }
         }

@@ -3,9 +3,10 @@ using System.Runtime.Serialization;
 using System;
 namespace Marqeta.Core.Sdk.Models
 {
-    /// <summary>Specifies the return destination for refunds in the case of a transaction reversal.`PROGRAM_FUNDING_SOURCE` returns funds to the program funding source.`GPA` returns the funds to the user&apos;s GPA.</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
+    #pragma warning disable CS1591
     public enum Jit_funding_program_funding_source_refunds_destination
+    #pragma warning restore CS1591
     {
         [EnumMember(Value = "PROGRAM_FUNDING_SOURCE")]
         #pragma warning disable CS1591

@@ -2,6 +2,7 @@
 #pragma warning disable CS0618
 using Marqeta.Core.Sdk.Digitalwallets.Wpp.ApplePayJWT;
 using Marqeta.Core.Sdk.Digitalwallets.Wpp.GooglePayPushProvisioningNotification;
+using Marqeta.Core.Sdk.Digitalwallets.Wpp.Parameters;
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions;
 using System.Collections.Generic;
@@ -25,6 +26,11 @@ namespace Marqeta.Core.Sdk.Digitalwallets.Wpp
         public global::Marqeta.Core.Sdk.Digitalwallets.Wpp.GooglePayPushProvisioningNotification.GooglePayPushProvisioningNotificationRequestBuilder GooglePayPushProvisioningNotification
         {
             get => new global::Marqeta.Core.Sdk.Digitalwallets.Wpp.GooglePayPushProvisioningNotification.GooglePayPushProvisioningNotificationRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The parameters property</summary>
+        public global::Marqeta.Core.Sdk.Digitalwallets.Wpp.Parameters.ParametersRequestBuilder Parameters
+        {
+            get => new global::Marqeta.Core.Sdk.Digitalwallets.Wpp.Parameters.ParametersRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>
         /// Instantiates a new <see cref="global::Marqeta.Core.Sdk.Digitalwallets.Wpp.WppRequestBuilder"/> and sets the default values.

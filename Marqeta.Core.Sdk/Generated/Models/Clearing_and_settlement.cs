@@ -7,15 +7,14 @@ using System.IO;
 using System;
 namespace Marqeta.Core.Sdk.Models
 {
-    /// <summary>
-    /// Specifies the destination for overdraft funds.
-    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
+    #pragma warning disable CS1591
     public partial class Clearing_and_settlement : IAdditionalDataHolder, IParsable
+    #pragma warning restore CS1591
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Specifies the destination for overdraft funds.This field does not apply if JIT Funding is enabled.</summary>
+        /// <summary>Default value of GPA does not apply when JIT funding is enabled</summary>
         public global::Marqeta.Core.Sdk.Models.Clearing_and_settlement_overdraft_destination? OverdraftDestination { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Marqeta.Core.Sdk.Models.Clearing_and_settlement"/> and sets the default values.

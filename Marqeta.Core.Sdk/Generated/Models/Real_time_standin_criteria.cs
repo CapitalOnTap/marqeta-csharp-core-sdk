@@ -7,21 +7,20 @@ using System.IO;
 using System;
 namespace Marqeta.Core.Sdk.Models
 {
-    /// <summary>
-    /// Specifies which event types automatically enable Commando Mode.
-    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
+    #pragma warning disable CS1591
     public partial class Real_time_standin_criteria : IAdditionalDataHolder, IParsable
+    #pragma warning restore CS1591
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>If set to `true`, Commando Mode is automatically enabled by events defined in the `real_time_standin_criteria` object.If set to `false`, Auto Commando Mode is not enabled.</summary>
+        /// <summary>The enabled property</summary>
         public bool? Enabled { get; set; }
-        /// <summary>If set to `true`, an application error (any non-connection, non-timeout error) automatically enables Commando Mode when `real_time_standin_criteria.enabled` is also `true`.</summary>
+        /// <summary>The include_application_errors property</summary>
         public bool? IncludeApplicationErrors { get; set; }
-        /// <summary>If set to `true`, a non-timeout connection error automatically enables Commando Mode when `real_time_standin_criteria.enabled` is also `true`.</summary>
+        /// <summary>The include_connection_errors property</summary>
         public bool? IncludeConnectionErrors { get; set; }
-        /// <summary>If set to `true`, a gateway response slower than 3000ms automatically enables Commando Mode when `real_time_standin_criteria.enabled` is also `true`.</summary>
+        /// <summary>The include_response_timeouts property</summary>
         public bool? IncludeResponseTimeouts { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Marqeta.Core.Sdk.Models.Real_time_standin_criteria"/> and sets the default values.

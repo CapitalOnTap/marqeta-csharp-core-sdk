@@ -14,11 +14,11 @@ namespace Marqeta.Core.Sdk.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>If set to `true`, this card product is always funded from this program gateway funding source.</summary>
+        /// <summary>The always_fund property</summary>
         public bool? AlwaysFund { get; set; }
-        /// <summary>Specifies whether JIT Funding is enabled or disabled for the program gateway funding source.A value of `true` indicates that the program gateway funding source is enabled and will be debited when swipes occur.</summary>
+        /// <summary>The enabled property</summary>
         public bool? Enabled { get; set; }
-        /// <summary>Unique identifier of the already existing funding source.Required if JIT Funding is enabled.</summary>
+        /// <summary>Required if enabled</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? FundingSourceToken { get; set; }
@@ -26,7 +26,7 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string FundingSourceToken { get; set; }
 #endif
-        /// <summary>Specifies the return destination for refunds in the case of a transaction reversal.In most cases, you should set the value to `GATEWAY`, which returns funds to the program gateway funding source.Setting to `GPA` returns the funds to the user&apos;s GPA, which creates a positive account balance and introduces the potential of a transaction being authorized without a JIT Funding request being sent to the gateway.</summary>
+        /// <summary>The refunds_destination property</summary>
         public global::Marqeta.Core.Sdk.Models.Jit_funding_programgateway_funding_source_refunds_destination? RefundsDestination { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Marqeta.Core.Sdk.Models.Jit_funding_programgateway_funding_source"/> and sets the default values.

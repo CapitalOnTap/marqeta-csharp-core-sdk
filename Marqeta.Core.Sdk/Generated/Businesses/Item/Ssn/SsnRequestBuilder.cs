@@ -34,7 +34,7 @@ namespace Marqeta.Core.Sdk.Businesses.Item.Ssn
         {
         }
         /// <summary>
-        /// To retrieve the government-issued identification number of a business&apos; proprietor, send a `GET` request to the `/businesses/{token}/ssn` endpoint.Include the `token` path parameter to specify the business whose identification number (SSN, TIN, NIN, SIN) you want to return.You can indicate whether to return the full number or the last four digits only.
+        /// Returns a specific business proprietor&apos;s SSN
         /// </summary>
         /// <returns>A <see cref="global::Marqeta.Core.Sdk.Models.Ssn_response_model"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -57,7 +57,7 @@ namespace Marqeta.Core.Sdk.Businesses.Item.Ssn
             return await RequestAdapter.SendAsync<global::Marqeta.Core.Sdk.Models.Ssn_response_model>(requestInfo, global::Marqeta.Core.Sdk.Models.Ssn_response_model.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// To retrieve the government-issued identification number of a business&apos; proprietor, send a `GET` request to the `/businesses/{token}/ssn` endpoint.Include the `token` path parameter to specify the business whose identification number (SSN, TIN, NIN, SIN) you want to return.You can indicate whether to return the full number or the last four digits only.
+        /// Returns a specific business proprietor&apos;s SSN
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -85,12 +85,11 @@ namespace Marqeta.Core.Sdk.Businesses.Item.Ssn
             return new global::Marqeta.Core.Sdk.Businesses.Item.Ssn.SsnRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
-        /// To retrieve the government-issued identification number of a business&apos; proprietor, send a `GET` request to the `/businesses/{token}/ssn` endpoint.Include the `token` path parameter to specify the business whose identification number (SSN, TIN, NIN, SIN) you want to return.You can indicate whether to return the full number or the last four digits only.
+        /// Returns a specific business proprietor&apos;s SSN
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class SsnRequestBuilderGetQueryParameters 
         {
-            /// <summary>To return the full identification number, set to `true`.To return only the last four digits, set to `false`.If the `proprietor_or_officer.identifications` array contains only the last four digits of the identification number, the `/businesses/{token}/ssn` endpoint will return only the last four digits regardless of the `full_ssn` parameter.</summary>
             [QueryParameter("full_ssn")]
             public bool? FullSsn { get; set; }
         }

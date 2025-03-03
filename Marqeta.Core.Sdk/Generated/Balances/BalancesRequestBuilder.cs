@@ -16,7 +16,7 @@ namespace Marqeta.Core.Sdk.Balances
     public partial class BalancesRequestBuilder : BaseRequestBuilder
     {
         /// <summary>Gets an item from the Marqeta.Core.Sdk.balances.item collection</summary>
-        /// <param name="position">Unique identifier of the user or business for which you want to return GPA balances.</param>
+        /// <param name="position">User or Business token</param>
         /// <returns>A <see cref="global::Marqeta.Core.Sdk.Balances.Item.WithTokenItemRequestBuilder"/></returns>
         public global::Marqeta.Core.Sdk.Balances.Item.WithTokenItemRequestBuilder this[string position]
         {

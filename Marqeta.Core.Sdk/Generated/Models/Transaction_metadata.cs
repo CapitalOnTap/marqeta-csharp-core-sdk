@@ -33,6 +33,8 @@ namespace Marqeta.Core.Sdk.Models
         public bool? IsLodgingAutoRental { get; set; }
         /// <summary>Date and time when the lodging check-in or vehicle rental began.</summary>
         public DateTimeOffset? LodgingAutoRentalStartDate { get; set; }
+        /// <summary>Indicates a credit or debit adjustment in a clearing transaction.</summary>
+        public global::Marqeta.Core.Sdk.Models.Transaction_metadata_memo? Memo { get; set; }
         /// <summary>Indicates the type of mail or telephone order transaction.</summary>
         public global::Marqeta.Core.Sdk.Models.Transaction_metadata_moto_indicator? MotoIndicator { get; set; }
         /// <summary>The one_leg_out property</summary>
@@ -88,6 +90,7 @@ namespace Marqeta.Core.Sdk.Models
                 { "is_deferred_authorization", n => { IsDeferredAuthorization = n.GetBoolValue(); } },
                 { "is_lodging_auto_rental", n => { IsLodgingAutoRental = n.GetBoolValue(); } },
                 { "lodging_auto_rental_start_date", n => { LodgingAutoRentalStartDate = n.GetDateTimeOffsetValue(); } },
+                { "memo", n => { Memo = n.GetEnumValue<global::Marqeta.Core.Sdk.Models.Transaction_metadata_memo>(); } },
                 { "moto_indicator", n => { MotoIndicator = n.GetEnumValue<global::Marqeta.Core.Sdk.Models.Transaction_metadata_moto_indicator>(); } },
                 { "one_leg_out", n => { OneLegOut = n.GetBoolValue(); } },
                 { "payment_channel", n => { PaymentChannel = n.GetEnumValue<global::Marqeta.Core.Sdk.Models.Transaction_metadata_payment_channel>(); } },
@@ -109,6 +112,7 @@ namespace Marqeta.Core.Sdk.Models
             writer.WriteBoolValue("is_deferred_authorization", IsDeferredAuthorization);
             writer.WriteBoolValue("is_lodging_auto_rental", IsLodgingAutoRental);
             writer.WriteDateTimeOffsetValue("lodging_auto_rental_start_date", LodgingAutoRentalStartDate);
+            writer.WriteEnumValue<global::Marqeta.Core.Sdk.Models.Transaction_metadata_memo>("memo", Memo);
             writer.WriteEnumValue<global::Marqeta.Core.Sdk.Models.Transaction_metadata_moto_indicator>("moto_indicator", MotoIndicator);
             writer.WriteBoolValue("one_leg_out", OneLegOut);
             writer.WriteEnumValue<global::Marqeta.Core.Sdk.Models.Transaction_metadata_payment_channel>("payment_channel", PaymentChannel);

@@ -14,9 +14,9 @@ namespace Marqeta.Core.Sdk.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Specifies whether JIT Funding is enabled or disabled for the program funding source.A value of `true` indicates that the program funding source is enabled and will be debited when swipes occur.</summary>
+        /// <summary>The enabled property</summary>
         public bool? Enabled { get; set; }
-        /// <summary>Unique identifier of the already existing funding source.Required if JIT Funding is enabled.</summary>
+        /// <summary>required if enabled</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? FundingSourceToken { get; set; }
@@ -24,7 +24,7 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string FundingSourceToken { get; set; }
 #endif
-        /// <summary>Specifies the return destination for refunds in the case of a transaction reversal.`PROGRAM_FUNDING_SOURCE` returns funds to the program funding source.`GPA` returns the funds to the user&apos;s GPA.</summary>
+        /// <summary>The refunds_destination property</summary>
         public global::Marqeta.Core.Sdk.Models.Jit_funding_program_funding_source_refunds_destination? RefundsDestination { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Marqeta.Core.Sdk.Models.Jit_funding_program_funding_source"/> and sets the default values.

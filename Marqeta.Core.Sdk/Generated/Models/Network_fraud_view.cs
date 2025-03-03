@@ -31,6 +31,14 @@ namespace Marqeta.Core.Sdk.Models
 #endif
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>_(Visa only)_ Visa-provided score ranking the risk of an account enumeration attack in a card-not-present transaction.A higher score indicates higher risk.A score of 00 indicates insufficient data to determine risk.Useful for making authorization decisions.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? TransactionAccountAttackIntelligenceScore { get; set; }
+#nullable restore
+#else
+        public string TransactionAccountAttackIntelligenceScore { get; set; }
+#endif
         /// <summary>Network-provided risk score for the transaction.A higher score indicates higher risk.Useful for making authorization decisions.</summary>
         public int? TransactionRiskScore { get; set; }
         /// <summary>_(Mastercard only)_ Unique code that describes the main driver of the `transaction_risk_score`.</summary>
@@ -76,6 +84,7 @@ namespace Marqeta.Core.Sdk.Models
             {
                 { "account_risk_score", n => { AccountRiskScore = n.GetStringValue(); } },
                 { "account_risk_score_reason_code", n => { AccountRiskScoreReasonCode = n.GetStringValue(); } },
+                { "transaction_account_attack_intelligence_score", n => { TransactionAccountAttackIntelligenceScore = n.GetStringValue(); } },
                 { "transaction_risk_score", n => { TransactionRiskScore = n.GetIntValue(); } },
                 { "transaction_risk_score_reason_code", n => { TransactionRiskScoreReasonCode = n.GetStringValue(); } },
                 { "transaction_risk_score_reason_description", n => { TransactionRiskScoreReasonDescription = n.GetStringValue(); } },
@@ -90,6 +99,7 @@ namespace Marqeta.Core.Sdk.Models
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("account_risk_score", AccountRiskScore);
             writer.WriteStringValue("account_risk_score_reason_code", AccountRiskScoreReasonCode);
+            writer.WriteStringValue("transaction_account_attack_intelligence_score", TransactionAccountAttackIntelligenceScore);
             writer.WriteIntValue("transaction_risk_score", TransactionRiskScore);
             writer.WriteStringValue("transaction_risk_score_reason_code", TransactionRiskScoreReasonCode);
             writer.WriteStringValue("transaction_risk_score_reason_description", TransactionRiskScoreReasonDescription);

@@ -54,6 +54,14 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string EcommerceSecurityLevelIndicator { get; set; }
 #endif
+        /// <summary>The geographic_coordinates property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? GeographicCoordinates { get; set; }
+#nullable restore
+#else
+        public string GeographicCoordinates { get; set; }
+#endif
         /// <summary>The mcc property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -79,6 +87,14 @@ namespace Marqeta.Core.Sdk.Models
 #nullable restore
 #else
         public string Phone { get; set; }
+#endif
+        /// <summary>The service_geographic_coordinates property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? ServiceGeographicCoordinates { get; set; }
+#nullable restore
+#else
+        public string ServiceGeographicCoordinates { get; set; }
 #endif
         /// <summary>The state property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -134,10 +150,12 @@ namespace Marqeta.Core.Sdk.Models
                 { "country", n => { Country = n.GetStringValue(); } },
                 { "customer_service_phone", n => { CustomerServicePhone = n.GetStringValue(); } },
                 { "ecommerce_security_level_indicator", n => { EcommerceSecurityLevelIndicator = n.GetStringValue(); } },
+                { "geographic_coordinates", n => { GeographicCoordinates = n.GetStringValue(); } },
                 { "mcc", n => { Mcc = n.GetStringValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "partial_approval_capable", n => { PartialApprovalCapable = n.GetBoolValue(); } },
                 { "phone", n => { Phone = n.GetStringValue(); } },
+                { "service_geographic_coordinates", n => { ServiceGeographicCoordinates = n.GetStringValue(); } },
                 { "state", n => { State = n.GetStringValue(); } },
                 { "url", n => { Url = n.GetStringValue(); } },
                 { "zip", n => { Zip = n.GetStringValue(); } },
@@ -155,10 +173,12 @@ namespace Marqeta.Core.Sdk.Models
             writer.WriteStringValue("country", Country);
             writer.WriteStringValue("customer_service_phone", CustomerServicePhone);
             writer.WriteStringValue("ecommerce_security_level_indicator", EcommerceSecurityLevelIndicator);
+            writer.WriteStringValue("geographic_coordinates", GeographicCoordinates);
             writer.WriteStringValue("mcc", Mcc);
             writer.WriteStringValue("name", Name);
             writer.WriteBoolValue("partial_approval_capable", PartialApprovalCapable);
             writer.WriteStringValue("phone", Phone);
+            writer.WriteStringValue("service_geographic_coordinates", ServiceGeographicCoordinates);
             writer.WriteStringValue("state", State);
             writer.WriteStringValue("url", Url);
             writer.WriteStringValue("zip", Zip);

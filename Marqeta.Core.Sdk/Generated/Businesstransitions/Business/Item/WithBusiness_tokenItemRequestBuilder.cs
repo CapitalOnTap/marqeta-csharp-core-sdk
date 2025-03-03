@@ -34,7 +34,7 @@ namespace Marqeta.Core.Sdk.Businesstransitions.Business.Item
         {
         }
         /// <summary>
-        /// List all transitions for a given business.
+        /// Returns transitions for a given business
         /// </summary>
         /// <returns>A <see cref="global::Marqeta.Core.Sdk.Models.BusinessTransitionListResponse"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -57,7 +57,7 @@ namespace Marqeta.Core.Sdk.Businesstransitions.Business.Item
             return await RequestAdapter.SendAsync<global::Marqeta.Core.Sdk.Models.BusinessTransitionListResponse>(requestInfo, global::Marqeta.Core.Sdk.Models.BusinessTransitionListResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// List all transitions for a given business.
+        /// Returns transitions for a given business
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -85,15 +85,15 @@ namespace Marqeta.Core.Sdk.Businesstransitions.Business.Item
             return new global::Marqeta.Core.Sdk.Businesstransitions.Business.Item.WithBusiness_tokenItemRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
-        /// List all transitions for a given business.
+        /// Returns transitions for a given business
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class WithBusiness_tokenItemRequestBuilderGetQueryParameters 
         {
-            /// <summary>Number of business transitions to retrieve.</summary>
+            /// <summary>Number of business transitions to retrieve</summary>
             [QueryParameter("count")]
             public int? Count { get; set; }
-            /// <summary>Comma-delimited list of fields to return (`field_1,field_2`, and so on).Leave blank to return all fields.</summary>
+            /// <summary>Comma-delimited list of fields to return (e.g. field_1,field_2,..). Leave blank to return all fields.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
             [QueryParameter("fields")]
@@ -103,7 +103,7 @@ namespace Marqeta.Core.Sdk.Businesstransitions.Business.Item
             [QueryParameter("fields")]
             public string Fields { get; set; }
 #endif
-            /// <summary>Field on which to sort.Use any field in the resource model, or one of the system fields `lastModifiedTime` or `createdTime`.Prefix the field name with a hyphen (`-`) to sort in descending order.Omit the hyphen to sort in ascending order.</summary>
+            /// <summary>Sort order</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
             [QueryParameter("sort_by")]
@@ -113,7 +113,7 @@ namespace Marqeta.Core.Sdk.Businesstransitions.Business.Item
             [QueryParameter("sort_by")]
             public string SortBy { get; set; }
 #endif
-            /// <summary>Sort order index of the first resource in the returned array.</summary>
+            /// <summary>Start index</summary>
             [QueryParameter("start_index")]
             public int? StartIndex { get; set; }
         }

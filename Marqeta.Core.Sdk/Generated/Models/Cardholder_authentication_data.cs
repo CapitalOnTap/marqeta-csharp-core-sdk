@@ -8,7 +8,7 @@ using System;
 namespace Marqeta.Core.Sdk.Models
 {
     /// <summary>
-    /// Contains authentication data for 3D Secure and digital wallet token transactions:* `electronic_commerce_indicator` – The level of verification performed.* `verification_result` – The result of the verification.* `verification_value_created_by` – The transaction participant who determined the verification result.* `three_ds_message_version` – The 3D Secure message version used for authentication.* `authentication_method` – The 3D Secure authentication method.* `authentication_status` – The 3D Secure authentication status.* `acquirer_exemption` – Indicates a 3D Secure authentication exemption from the acquirer.* `issuer_exemption` – Indicates a 3D Secure authentication exemption from the issuer.
+    /// Contains authentication data for 3D Secure and digital wallet token transactions:* `electronic_commerce_indicator` – The level of verification performed.* `verification_result` – The result of the verification.* `verification_value_created_by` – The transaction participant who determined the verification result.* `three_ds_message_version` – The 3D Secure message version used for authentication.* `authentication_method` – The 3D Secure authentication method.* `authentication_status` – The 3D Secure authentication status.* `acquirer_exemption` – Indicates a 3D Secure authentication exemption from the acquirer.* `issuer_exemption` – Indicates a 3D Secure authentication exemption from the issuer.* `cavv_authentication_amount` – CAVV authentication amount.* `raw_cavv_data` – Raw CAVV data provided by the card network.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class Cardholder_authentication_data : IAdditionalDataHolder, IParsable
@@ -31,7 +31,7 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string AuthenticationMethod { get; set; }
 #endif
-        /// <summary>Specifies the status of the 3D Secure authentication:* `ATTEMPTED`: Indicates that 3D Secure authentication was requested and processed by the card network.* `DATA_SHARE_EXEMPTION`: Indicates that 3D Secure authentication was for information only and exempted.* `EXEMPTED`: Indicates that 3D Secure authentication was requested but the challenge was exempted.* `EXEMPTION_CLAIMED`: Indicates that 3D Secure authentication was exempted because acquirer transaction risk analysis (TRA) was already performed.* `SCA_EXEMPTION`: Indicates that 3D Secure authentication was exempted because strong customer authentication (SCA) was already performed.* `SUCCESSFUL`: Indicates that 3D Secure authentication was successful.* `SUCCESSFUL_NON_PAYMENT`: Indicates that 3D Secure non-payment authentication was successful.* `THREEDS_REQUESTER_DATA_SHARE_EXEMPTION`: Status is deprecated and will be removed from a future release of the Marqeta platform.After June 2023, use `DATA_SHARE_EXEMPTION` instead.* `THREEDS_REQUESTER_SCA_EXEMPTION`: Status is deprecated and will be removed in a June 2023 release of the Marqeta platform.After June 2023, use `SCA_EXEMPTION` instead.* `THREEDS_REQUESTER_TRA_EXEMPTION`: Status is deprecated and will be removed in a June 2023 release of the Marqeta platform.After June 2023, use `EXEMPTION_CLAIMED` instead.* `UNAVAILABLE`:** For Visa transactions, this status indicates that 3D Secure authentication was requested, but Marqeta&apos;s access control server (ACS) was not available.** For Mastercard transactions, this status indicates that 3D Secure authentication was not available.</summary>
+        /// <summary>Specifies the status of the 3D Secure authentication:* `ATTEMPTED`: Indicates that 3D Secure authentication was requested and processed by the card network.* `DATA_SHARE_EXEMPTED`: Indicates that 3D Secure authentication was for information only and exempted.* `EXEMPTED`: Indicates that 3D Secure authentication was requested but the challenge was exempted.* `EXEMPTION_CLAIMED`: Indicates that 3D Secure authentication was exempted because acquirer transaction risk analysis (TRA) was already performed.* `SCA_EXEMPTION`: Indicates that 3D Secure authentication was exempted because strong customer authentication (SCA) was already performed.* `SUCCESSFUL`: Indicates that 3D Secure authentication was successful.* `SUCCESSFUL_NON_PAYMENT`: Indicates that 3D Secure non-payment authentication was successful.* `THREEDS_REQUESTER_DATA_SHARE_EXEMPTION`: Status is deprecated and will be removed from a future release of the Marqeta platform.After June 2023, use `DATA_SHARE_EXEMPTION` instead.* `THREEDS_REQUESTER_SCA_EXEMPTION`: Status is deprecated and will be removed in a June 2023 release of the Marqeta platform.After June 2023, use `SCA_EXEMPTION` instead.* `THREEDS_REQUESTER_TRA_EXEMPTION`: Status is deprecated and will be removed in a June 2023 release of the Marqeta platform.After June 2023, use `EXEMPTION_CLAIMED` instead.* `UNAVAILABLE`:** For Visa transactions, this status indicates that 3D Secure authentication was requested, but Marqeta&apos;s access control server (ACS) was not available.** For Mastercard transactions, this status indicates that 3D Secure authentication was not available.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? AuthenticationStatus { get; set; }
@@ -71,6 +71,22 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string RawCavvData { get; set; }
 #endif
+        /// <summary>The 3D Secure authentication indicator, as provided by the Mastercard card network.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Threeds_reference_id { get; set; }
+#nullable restore
+#else
+        public string Threeds_reference_id { get; set; }
+#endif
+        /// <summary>The three_ds_data_quality property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? ThreeDsDataQuality { get; set; }
+#nullable restore
+#else
+        public string ThreeDsDataQuality { get; set; }
+#endif
         /// <summary>Specifies the 3D Secure message version used for authentication.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -78,6 +94,14 @@ namespace Marqeta.Core.Sdk.Models
 #nullable restore
 #else
         public string ThreeDsMessageVersion { get; set; }
+#endif
+        /// <summary>The three_ds_reference_id property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? ThreeDsReferenceId { get; set; }
+#nullable restore
+#else
+        public string ThreeDsReferenceId { get; set; }
 #endif
         /// <summary>Result of cardholder authentication verification value (CAVV) or accountholder authentication value (AAV) verification performed by the card network.* `failed`* `not_present`* `not_provided`* `not_verified`* `not_verified_authentication_outage`* `verified`* `verified_amount_checked`* `verified_amount_greater_than_20_percent`: For Mastercard AAV verification, indicates that the original authentication amount and final authorization amount are mismatched, and that the final authorization amount exceeds the original authentication amount by more than 20%.This 20% margin falls outside Mastercard&apos;s suggested tolerance for what a European cardholder might reasonably expect when the total transaction amount is not known in advance.* `verified_amount_less_than_20_percent`: For Mastercard AAV verification, indicates that the original authentication amount and final authorization amount are mismatched, and that the final authorization amount exceeds the original authentication amount by 20% or less.This 20% margin falls within Mastercard&apos;s suggested tolerance for what a European cardholder might reasonably expect when the total transaction amount is not known in advance.* `not_verified_mac_key_validation_passed`: For Mastercard only.This field is present when the transaction passes MAC key validation but Dynamic Linking was not performed by the Mastercard card network due to system connectivity issues.* `not_verified_mac_key_validation_failed`: For Mastercard only.This field is present when the transaction fails MAC key validation and Dynamic Linking was not performed by the Mastercard card network due to system connectivity issues.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -127,9 +151,12 @@ namespace Marqeta.Core.Sdk.Models
                 { "electronic_commerce_indicator", n => { ElectronicCommerceIndicator = n.GetStringValue(); } },
                 { "issuer_exemption", n => { IssuerExemption = n.GetStringValue(); } },
                 { "raw_cavv_data", n => { RawCavvData = n.GetStringValue(); } },
+                { "three_ds_data_quality", n => { ThreeDsDataQuality = n.GetStringValue(); } },
                 { "three_ds_message_version", n => { ThreeDsMessageVersion = n.GetStringValue(); } },
+                { "three_ds_reference_id", n => { ThreeDsReferenceId = n.GetStringValue(); } },
                 { "verification_result", n => { VerificationResult = n.GetStringValue(); } },
                 { "verification_value_created_by", n => { VerificationValueCreatedBy = n.GetStringValue(); } },
+                { "threeds_reference_id", n => { Threeds_reference_id = n.GetStringValue(); } },
             };
         }
         /// <summary>
@@ -146,7 +173,10 @@ namespace Marqeta.Core.Sdk.Models
             writer.WriteStringValue("electronic_commerce_indicator", ElectronicCommerceIndicator);
             writer.WriteStringValue("issuer_exemption", IssuerExemption);
             writer.WriteStringValue("raw_cavv_data", RawCavvData);
+            writer.WriteStringValue("threeds_reference_id", Threeds_reference_id);
+            writer.WriteStringValue("three_ds_data_quality", ThreeDsDataQuality);
             writer.WriteStringValue("three_ds_message_version", ThreeDsMessageVersion);
+            writer.WriteStringValue("three_ds_reference_id", ThreeDsReferenceId);
             writer.WriteStringValue("verification_result", VerificationResult);
             writer.WriteStringValue("verification_value_created_by", VerificationValueCreatedBy);
             writer.WriteAdditionalData(AdditionalData);

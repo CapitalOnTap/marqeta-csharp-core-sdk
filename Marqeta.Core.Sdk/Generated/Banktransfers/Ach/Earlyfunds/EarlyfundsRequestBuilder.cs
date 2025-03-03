@@ -34,7 +34,7 @@ namespace Marqeta.Core.Sdk.Banktransfers.Ach.Earlyfunds
         {
         }
         /// <summary>
-        /// Use this endpoint to post funds from an existing bank transfer more quickly to the cardholder&apos;s account.
+        /// Applies a provisional credit to a bank transfer
         /// </summary>
         /// <returns>A <see cref="global::Marqeta.Core.Sdk.Models.Bank_transfer_response_model"/></returns>
         /// <param name="body">The request body</param>
@@ -59,7 +59,7 @@ namespace Marqeta.Core.Sdk.Banktransfers.Ach.Earlyfunds
             return await RequestAdapter.SendAsync<global::Marqeta.Core.Sdk.Models.Bank_transfer_response_model>(requestInfo, global::Marqeta.Core.Sdk.Models.Bank_transfer_response_model.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Use this endpoint to post funds from an existing bank transfer more quickly to the cardholder&apos;s account.
+        /// Applies a provisional credit to a bank transfer
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">The request body</param>

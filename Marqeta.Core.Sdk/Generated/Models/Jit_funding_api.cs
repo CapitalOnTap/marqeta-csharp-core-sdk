@@ -41,6 +41,8 @@ namespace Marqeta.Core.Sdk.Models
 #endif
         /// <summary>Requested amount of funding.</summary>
         public double? Amount { get; set; }
+        /// <summary>The anticipated_amount_supported property</summary>
+        public bool? AnticipatedAmountSupported { get; set; }
         /// <summary>Contains the GPA&apos;s balance details.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -146,6 +148,7 @@ namespace Marqeta.Core.Sdk.Models
                 { "acting_user_token", n => { ActingUserToken = n.GetStringValue(); } },
                 { "address_verification", n => { AddressVerification = n.GetObjectValue<global::Marqeta.Core.Sdk.Models.Jit_address_verification>(global::Marqeta.Core.Sdk.Models.Jit_address_verification.CreateFromDiscriminatorValue); } },
                 { "amount", n => { Amount = n.GetDoubleValue(); } },
+                { "anticipated_amount_supported", n => { AnticipatedAmountSupported = n.GetBoolValue(); } },
                 { "balances", n => { Balances = n.GetObjectValue<global::Marqeta.Core.Sdk.Models.Jit_funding_api_balances>(global::Marqeta.Core.Sdk.Models.Jit_funding_api_balances.CreateFromDiscriminatorValue); } },
                 { "business_token", n => { BusinessToken = n.GetStringValue(); } },
                 { "decline_reason", n => { DeclineReason = n.GetEnumValue<global::Marqeta.Core.Sdk.Models.Jit_funding_api_decline_reason>(); } },
@@ -170,6 +173,7 @@ namespace Marqeta.Core.Sdk.Models
             writer.WriteStringValue("acting_user_token", ActingUserToken);
             writer.WriteObjectValue<global::Marqeta.Core.Sdk.Models.Jit_address_verification>("address_verification", AddressVerification);
             writer.WriteDoubleValue("amount", Amount);
+            writer.WriteBoolValue("anticipated_amount_supported", AnticipatedAmountSupported);
             writer.WriteObjectValue<global::Marqeta.Core.Sdk.Models.Jit_funding_api_balances>("balances", Balances);
             writer.WriteStringValue("business_token", BusinessToken);
             writer.WriteEnumValue<global::Marqeta.Core.Sdk.Models.Jit_funding_api_decline_reason>("decline_reason", DeclineReason);

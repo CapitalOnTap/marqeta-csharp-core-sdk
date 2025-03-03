@@ -7,17 +7,16 @@ using System.IO;
 using System;
 namespace Marqeta.Core.Sdk.Models
 {
-    /// <summary>
-    /// Contains information about the beneficial owner of the business, if applicable.This object is required for KYC verification in the United States if the business is private and has a beneficial owner.This object is not required for publicly held businesses.Do not include information about the proprietor or business officer in a `beneficial_owner` object.If the proprietor or officer of the business is also a beneficial owner, you must indicate that in the `proprietor_is_beneficial_owner` field in the body field details of the business.
-    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
+    #pragma warning disable CS1591
     public partial class Beneficial_owner_request : IAdditionalDataHolder, IParsable
+    #pragma warning restore CS1591
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Date of birth of the beneficial owner.</summary>
+        /// <summary>The dob property</summary>
         public DateTimeOffset? Dob { get; set; }
-        /// <summary>First name of the beneficial owner.</summary>
+        /// <summary>The first_name property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? FirstName { get; set; }
@@ -25,7 +24,7 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string FirstName { get; set; }
 #endif
-        /// <summary>Address associated with the business.</summary>
+        /// <summary>The home property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Marqeta.Core.Sdk.Models.AddressRequestModel? Home { get; set; }
@@ -33,7 +32,7 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public global::Marqeta.Core.Sdk.Models.AddressRequestModel Home { get; set; }
 #endif
-        /// <summary>Last name of the beneficial owner.</summary>
+        /// <summary>The last_name property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? LastName { get; set; }
@@ -41,7 +40,7 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string LastName { get; set; }
 #endif
-        /// <summary>Middle name of the beneficial owner.</summary>
+        /// <summary>The middle_name property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? MiddleName { get; set; }
@@ -49,7 +48,7 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string MiddleName { get; set; }
 #endif
-        /// <summary>Ten-digit phone number of the beneficial owner.</summary>
+        /// <summary>The phone property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Phone { get; set; }
@@ -57,7 +56,7 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string Phone { get; set; }
 #endif
-        /// <summary>Nine-digit Social Security Number (SSN) of the beneficial owner.</summary>
+        /// <summary>The ssn property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Ssn { get; set; }
@@ -65,7 +64,7 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string Ssn { get; set; }
 #endif
-        /// <summary>Title of the beneficial owner.</summary>
+        /// <summary>The title property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Title { get; set; }

@@ -34,7 +34,7 @@ namespace Marqeta.Core.Sdk.Commandomodes.Transitions.Item
         {
         }
         /// <summary>
-        /// Retrieve a specific Commando Mode control set transition.
+        /// Returns a specific commando mode transition
         /// </summary>
         /// <returns>A <see cref="global::Marqeta.Core.Sdk.Models.Commando_mode_transition_response"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -57,7 +57,7 @@ namespace Marqeta.Core.Sdk.Commandomodes.Transitions.Item
             return await RequestAdapter.SendAsync<global::Marqeta.Core.Sdk.Models.Commando_mode_transition_response>(requestInfo, global::Marqeta.Core.Sdk.Models.Commando_mode_transition_response.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Retrieve a specific Commando Mode control set transition.
+        /// Returns a specific commando mode transition
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>

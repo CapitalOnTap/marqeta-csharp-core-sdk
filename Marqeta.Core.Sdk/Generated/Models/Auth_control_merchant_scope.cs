@@ -7,15 +7,14 @@ using System.IO;
 using System;
 namespace Marqeta.Core.Sdk.Models
 {
-    /// <summary>
-    /// Defines the group of merchants to which the authorization control applies.This object is required if the `association` object is not included in your request.Your request can include both the `merchant_scope` and `association` objects.If you include this object in your request, you must populate one or more of its fields.If no fields are populated, the authorization control applies to all merchants.
-    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
+    #pragma warning disable CS1591
     public partial class Auth_control_merchant_scope : IAdditionalDataHolder, IParsable
+    #pragma warning restore CS1591
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Merchant Category Code (MCC).Identifies the type of goods or services provided by the merchant.Enter a value to control access to a particular type of product or service.See &lt;&lt;/developer-guides/controlling-spending, Controlling Spending&gt;&gt; for links to more information about merchant category codes.</summary>
+        /// <summary>4 char max</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Mcc { get; set; }
@@ -23,7 +22,7 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string Mcc { get; set; }
 #endif
-        /// <summary>Token identifying a group of MCCs.Enter a value to control access to a group of product or service types.</summary>
+        /// <summary>36 char max</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? MccGroup { get; set; }
@@ -31,7 +30,7 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string MccGroup { get; set; }
 #endif
-        /// <summary>Unique identifier of a merchant group.Enter a value to control access to a group of merchants.</summary>
+        /// <summary>36 char max</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? MerchantGroupToken { get; set; }
@@ -39,7 +38,7 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string MerchantGroupToken { get; set; }
 #endif
-        /// <summary>Merchant identifier (MID).Identifies a specific merchant.Enter a value to control access to a particular merchant.</summary>
+        /// <summary>36 char max</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Mid { get; set; }

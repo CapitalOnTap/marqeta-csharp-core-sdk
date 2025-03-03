@@ -12,7 +12,7 @@ namespace Marqeta.Core.Sdk.Models
     public partial class Auth_control_update_request : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
     {
-        /// <summary>Indicates whether the authorization control is active.</summary>
+        /// <summary>The active property</summary>
         public bool? Active { get; set; }
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
@@ -24,7 +24,7 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public global::Marqeta.Core.Sdk.Models.Spend_control_association Association { get; set; }
 #endif
-        /// <summary>Date and time when the exception ends, in UTC.</summary>
+        /// <summary>The end_time property</summary>
         public DateTimeOffset? EndTime { get; set; }
         /// <summary>Defines the group of merchants to which the velocity control applies.Populate no more than one field of the `merchant_scope` object.If no fields are populated, the velocity control applies to all merchants.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -34,7 +34,7 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public global::Marqeta.Core.Sdk.Models.Merchant_scope MerchantScope { get; set; }
 #endif
-        /// <summary>Name of the authorization control.</summary>
+        /// <summary>The name property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Name { get; set; }
@@ -42,9 +42,9 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string Name { get; set; }
 #endif
-        /// <summary>Date and time when the exception goes into effect, in UTC.</summary>
+        /// <summary>The start_time property</summary>
         public DateTimeOffset? StartTime { get; set; }
-        /// <summary>Unique identifier of the authorization control.</summary>
+        /// <summary>The token property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Token { get; set; }

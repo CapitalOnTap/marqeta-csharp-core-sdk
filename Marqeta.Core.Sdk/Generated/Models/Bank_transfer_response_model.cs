@@ -14,9 +14,9 @@ namespace Marqeta.Core.Sdk.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Amount to push or pull.</summary>
+        /// <summary>The amount property</summary>
         public double? Amount { get; set; }
-        /// <summary>Field required in older versions of the API, but no longer used.</summary>
+        /// <summary>The batch_number property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? BatchNumber { get; set; }
@@ -34,9 +34,9 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string CreatedBy { get; set; }
 #endif
-        /// <summary>Date and time when the ACH transfer was created, in UTC.</summary>
+        /// <summary>The created_time property</summary>
         public DateTimeOffset? CreatedTime { get; set; }
-        /// <summary>Valid alpha-3 link:https://www.iso.org/iso-4217-currency-codes.html[ISO 4217 currency code, window=&quot;_blank&quot;]</summary>
+        /// <summary>default = USD</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? CurrencyCode { get; set; }
@@ -44,7 +44,7 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string CurrencyCode { get; set; }
 #endif
-        /// <summary>ACH funding source token for the external account.</summary>
+        /// <summary>The funding_source_token property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? FundingSourceToken { get; set; }
@@ -54,9 +54,9 @@ namespace Marqeta.Core.Sdk.Models
 #endif
         /// <summary>The is_early_funded property</summary>
         public bool? IsEarlyFunded { get; set; }
-        /// <summary>Date and time when the ACH transfer was last modified, in UTC.</summary>
+        /// <summary>The last_modified_time property</summary>
         public DateTimeOffset? LastModifiedTime { get; set; }
-        /// <summary>Additional text describing the ACH transfer.</summary>
+        /// <summary>The memo property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Memo { get; set; }
@@ -64,7 +64,7 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string Memo { get; set; }
 #endif
-        /// <summary>Standardized ACH return code for a returned transaction, generally sent by the RDFI.Transactions can be returned for any of the reasons listed in the &lt;&lt;/developer-guides/ach-origination#_nacha_ach_return_codes, NACHA ACH return codes table&gt;&gt; of the ACH Origination Guide.</summary>
+        /// <summary>The return_code property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? ReturnCode { get; set; }
@@ -72,7 +72,7 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string ReturnCode { get; set; }
 #endif
-        /// <summary>Human-readable description correlating to the `return_code`, such as `Insufficient funds`, if a return code is present in the response.</summary>
+        /// <summary>The return_reason property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? ReturnReason { get; set; }
@@ -80,9 +80,9 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string ReturnReason { get; set; }
 #endif
-        /// <summary>Three-letter code identifying the type of entry.* *WEB* — An internet-initiated entry* *PPD* — Prearranged Payment and Deposit* *CCD* — Cash Concentration and Disbursement</summary>
+        /// <summary>The standard_entry_class_code property</summary>
         public global::Marqeta.Core.Sdk.Models.Bank_transfer_response_model_standard_entry_class_code? StandardEntryClassCode { get; set; }
-        /// <summary>Description of the transaction, as it will appear on the receiver&apos;s bank statement.</summary>
+        /// <summary>The statement_descriptor property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? StatementDescriptor { get; set; }
@@ -90,9 +90,9 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string StatementDescriptor { get; set; }
 #endif
-        /// <summary>New state of the ACH transfer.</summary>
+        /// <summary>The status property</summary>
         public global::Marqeta.Core.Sdk.Models.Bank_transfer_response_model_status? Status { get; set; }
-        /// <summary>Unique identifier of the ACH transfer to retrieve.</summary>
+        /// <summary>The token property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Token { get; set; }
@@ -100,9 +100,9 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string Token { get; set; }
 #endif
-        /// <summary>Specifies how quickly to initiate the ACH transfer.*NOTE:* Same-day transfers are limited to a maximum amount of $100,000.</summary>
+        /// <summary>default = STANDARD</summary>
         public global::Marqeta.Core.Sdk.Models.Bank_transfer_response_model_transfer_speed? TransferSpeed { get; set; }
-        /// <summary>Array of ACH transfer transition objects.</summary>
+        /// <summary>The transitions property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<global::Marqeta.Core.Sdk.Models.Bank_transfer_transition_response_model>? Transitions { get; set; }
@@ -110,7 +110,7 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public List<global::Marqeta.Core.Sdk.Models.Bank_transfer_transition_response_model> Transitions { get; set; }
 #endif
-        /// <summary>Specifies whether the ACH transfer is a push (credit) or pull (debit).</summary>
+        /// <summary>The type property</summary>
         public global::Marqeta.Core.Sdk.Models.Bank_transfer_response_model_type? Type { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Marqeta.Core.Sdk.Models.Bank_transfer_response_model"/> and sets the default values.

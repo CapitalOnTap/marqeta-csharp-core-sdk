@@ -19,7 +19,7 @@ namespace Marqeta.Core.Sdk.Bulkissuances
     public partial class BulkissuancesRequestBuilder : BaseRequestBuilder
     {
         /// <summary>Gets an item from the Marqeta.Core.Sdk.bulkissuances.item collection</summary>
-        /// <param name="position">The unique identifier of the bulk card order to retrieve.</param>
+        /// <param name="position">Bulk issuance token</param>
         /// <returns>A <see cref="global::Marqeta.Core.Sdk.Bulkissuances.Item.WithTokenItemRequestBuilder"/></returns>
         public global::Marqeta.Core.Sdk.Bulkissuances.Item.WithTokenItemRequestBuilder this[string position]
         {
@@ -47,7 +47,7 @@ namespace Marqeta.Core.Sdk.Bulkissuances
         {
         }
         /// <summary>
-        /// Use this endpoint to list existing bulk card orders.This endpoint supports &lt;&lt;/core-api/sorting-and-pagination, pagination and sorting&gt;&gt;.
+        /// Lists all bulk issuance requests
         /// </summary>
         /// <returns>A <see cref="global::Marqeta.Core.Sdk.Models.BulkCardOrderListResponse"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -70,7 +70,7 @@ namespace Marqeta.Core.Sdk.Bulkissuances
             return await RequestAdapter.SendAsync<global::Marqeta.Core.Sdk.Models.BulkCardOrderListResponse>(requestInfo, global::Marqeta.Core.Sdk.Models.BulkCardOrderListResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Use this endpoint to order physical cards in bulk.A new bulk card order creates new cards or users, generally within about a day.Before creating a bulk card order, set the `config.fulfillment.bulk_ship` field of the associated card product to `true`.*To associate all cards with the same user:** Set `user_association.single_inventory_user=true`* Set `user_association.single_inventory_user_token` equal to the token of an existing user.The bulk card order automatically populates the database with the specified card objects.Values for the card `token` fields are generated in the format `card-numericPostfix`, where `numericPostfix` is a randomly generated number that is added for each new card that is generated.*To associate each card with a unique user:*Set `user_association.single_inventory_user=false`.Both the cards and their associated users are automatically generated.Values for the user `token` fields are generated in the format `user-numericPostfix`.The `numericPostfix` values for cards and their associated users match.This value is also printed on the physical cards if the `name_line_1_numeric_postfix` field is set to `true`.
+        /// Creates a bulk issuance request for cards
         /// </summary>
         /// <returns>A <see cref="global::Marqeta.Core.Sdk.Models.Bulk_issuance_response"/></returns>
         /// <param name="body">The request body</param>
@@ -95,7 +95,7 @@ namespace Marqeta.Core.Sdk.Bulkissuances
             return await RequestAdapter.SendAsync<global::Marqeta.Core.Sdk.Models.Bulk_issuance_response>(requestInfo, global::Marqeta.Core.Sdk.Models.Bulk_issuance_response.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Use this endpoint to list existing bulk card orders.This endpoint supports &lt;&lt;/core-api/sorting-and-pagination, pagination and sorting&gt;&gt;.
+        /// Lists all bulk issuance requests
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -114,7 +114,7 @@ namespace Marqeta.Core.Sdk.Bulkissuances
             return requestInfo;
         }
         /// <summary>
-        /// Use this endpoint to order physical cards in bulk.A new bulk card order creates new cards or users, generally within about a day.Before creating a bulk card order, set the `config.fulfillment.bulk_ship` field of the associated card product to `true`.*To associate all cards with the same user:** Set `user_association.single_inventory_user=true`* Set `user_association.single_inventory_user_token` equal to the token of an existing user.The bulk card order automatically populates the database with the specified card objects.Values for the card `token` fields are generated in the format `card-numericPostfix`, where `numericPostfix` is a randomly generated number that is added for each new card that is generated.*To associate each card with a unique user:*Set `user_association.single_inventory_user=false`.Both the cards and their associated users are automatically generated.Values for the user `token` fields are generated in the format `user-numericPostfix`.The `numericPostfix` values for cards and their associated users match.This value is also printed on the physical cards if the `name_line_1_numeric_postfix` field is set to `true`.
+        /// Creates a bulk issuance request for cards
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">The request body</param>
@@ -145,15 +145,15 @@ namespace Marqeta.Core.Sdk.Bulkissuances
             return new global::Marqeta.Core.Sdk.Bulkissuances.BulkissuancesRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
-        /// Use this endpoint to list existing bulk card orders.This endpoint supports &lt;&lt;/core-api/sorting-and-pagination, pagination and sorting&gt;&gt;.
+        /// Lists all bulk issuance requests
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class BulkissuancesRequestBuilderGetQueryParameters 
         {
-            /// <summary>Number of bulk card orders to retrieve.</summary>
+            /// <summary>Number of requests to retrieve</summary>
             [QueryParameter("count")]
             public int? Count { get; set; }
-            /// <summary>Field on which to sort.Use any field in the resource model, or one of the system fields `lastModifiedTime` or `createdTime`.Prefix the field name with a hyphen (`-`) to sort in descending order.Omit the hyphen to sort in ascending order.</summary>
+            /// <summary>Sort order</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
             [QueryParameter("sort_by")]
@@ -163,7 +163,7 @@ namespace Marqeta.Core.Sdk.Bulkissuances
             [QueryParameter("sort_by")]
             public string SortBy { get; set; }
 #endif
-            /// <summary>Sort order index of the first resource in the returned array.</summary>
+            /// <summary>Start index</summary>
             [QueryParameter("start_index")]
             public int? StartIndex { get; set; }
         }

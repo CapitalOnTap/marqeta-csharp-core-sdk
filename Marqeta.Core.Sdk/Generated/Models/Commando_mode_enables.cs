@@ -7,15 +7,14 @@ using System.IO;
 using System;
 namespace Marqeta.Core.Sdk.Models
 {
-    /// <summary>
-    /// Defines program behavior when Commando Mode is enabled.
-    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
+    #pragma warning disable CS1591
     public partial class Commando_mode_enables : IAdditionalDataHolder, IParsable
+    #pragma warning restore CS1591
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Unique identifiers of the authorization controls enabled while in Commando Mode.</summary>
+        /// <summary>The auth_controls property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<string>? AuthControls { get; set; }
@@ -23,9 +22,9 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public List<string> AuthControls { get; set; }
 #endif
-        /// <summary>If set to `true`, transactions conducted while Commando Mode is enabled proceed even when the card is suspended.If set to `false`, transactions conducted while Commando Mode is enabled are declined if the card is suspended.</summary>
+        /// <summary>The ignore_card_suspended_state property</summary>
         public bool? IgnoreCardSuspendedState { get; set; }
-        /// <summary>Unique identifier of the program funding source that substitutes for the program gateway funding source upon Commando Mode enablement.</summary>
+        /// <summary>The program_funding_source property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? ProgramFundingSource { get; set; }
@@ -33,9 +32,9 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string ProgramFundingSource { get; set; }
 #endif
-        /// <summary>This field is not currently in use.</summary>
+        /// <summary>The use_cache_balance property</summary>
         public bool? UseCacheBalance { get; set; }
-        /// <summary>Unique identifiers of the velocity controls enabled while in Commando Mode.Velocity controls that are enabled in Commando Mode are inactive until a Commando Mode event occurs.When Commando Mode velocity controls are activated, they conform to the `velocity_window` specified in that velocity control.For example, a `velocity_window` of `DAY` is one calendar day starting at 00:00:00 UTC.If a Commando Mode event occurs at 11:59:59 UTC, the `DAY` window includes all transactions that occurred between 00:00:00 and 11:59:59 on that calendar day.</summary>
+        /// <summary>The velocity_controls property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<string>? VelocityControls { get; set; }

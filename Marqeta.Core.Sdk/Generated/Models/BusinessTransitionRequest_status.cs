@@ -3,9 +3,10 @@ using System.Runtime.Serialization;
 using System;
 namespace Marqeta.Core.Sdk.Models
 {
-    /// <summary>Specifies the new status of the business.</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
+    #pragma warning disable CS1591
     public enum BusinessTransitionRequest_status
+    #pragma warning restore CS1591
     {
         [EnumMember(Value = "UNVERIFIED")]
         #pragma warning disable CS1591
@@ -26,6 +27,10 @@ namespace Marqeta.Core.Sdk.Models
         [EnumMember(Value = "CLOSED")]
         #pragma warning disable CS1591
         CLOSED,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "TERMINATED")]
+        #pragma warning disable CS1591
+        TERMINATED,
         #pragma warning restore CS1591
     }
 }

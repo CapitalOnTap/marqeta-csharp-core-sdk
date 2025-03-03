@@ -25,7 +25,7 @@ namespace Marqeta.Core.Sdk.Businesses
             get => new global::Marqeta.Core.Sdk.Businesses.Lookup.LookupRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>Gets an item from the Marqeta.Core.Sdk.businesses.item collection</summary>
-        /// <param name="position">Unique identifier of the business resource.</param>
+        /// <param name="position">Business token</param>
         /// <returns>A <see cref="global::Marqeta.Core.Sdk.Businesses.Item.Parent_tokenItemRequestBuilder"/></returns>
         public global::Marqeta.Core.Sdk.Businesses.Item.Parent_tokenItemRequestBuilder this[string position]
         {
@@ -53,7 +53,7 @@ namespace Marqeta.Core.Sdk.Businesses
         {
         }
         /// <summary>
-        /// To return an array of all businesses, send a `GET` request to the `/businesses` endpoint.To narrow your result set to businesses that match a particular legal or fictitious name, include the appropriate parameters from the following query parameters table.This endpoint also supports &lt;&lt;/core-api/field-filtering, field filtering&gt;&gt; and &lt;&lt;/core-api/sorting-and-pagination, sorting and pagination&gt;&gt;.
+        /// Lists all businesses
         /// </summary>
         /// <returns>A <see cref="global::Marqeta.Core.Sdk.Models.BusinessCardHolderListResponse"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -76,10 +76,10 @@ namespace Marqeta.Core.Sdk.Businesses
             return await RequestAdapter.SendAsync<global::Marqeta.Core.Sdk.Models.BusinessCardHolderListResponse>(requestInfo, global::Marqeta.Core.Sdk.Models.BusinessCardHolderListResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Create a business.The initial status of a newly created business depends on the &lt;&lt;/core-api/kyc-verification, Know Your Customer (KYC) requirements&gt;&gt; of the program or associated &lt;&lt;/core-api/account-holder-groups, account holder group&gt;&gt;.[cols=&quot;1,1,1,2&quot;]|===| KYC Required | Initial Business State | Business Active on Creation | Business Limitations| Always| `UNVERIFIED`| No| Cannot load funds.| Conditionally| `LIMITED`| No| Restricted by rules in `accountholdergroups.pre_kyc_controls`.| Never| `ACTIVE`| Required| None.|===To change or track the history of a business&apos; status, use the `/businesstransitions` endpoint.For more information on status changes, see &lt;&lt;create_business_transition, Create Business Transition&gt;&gt;.For information about configuring the required fields for KYC verification, see &lt;&lt;/core-api/kyc-verification#_perform_kyc, Perform KYC&gt;&gt;.
+        /// Creates a business
         /// </summary>
         /// <returns>A <see cref="global::Marqeta.Core.Sdk.Models.Business_card_holder_response"/></returns>
-        /// <param name="body">Contains information about a business.</param>
+        /// <param name="body">The request body</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
         /// <exception cref="global::Marqeta.Core.Sdk.Models.ApiError">When receiving a 4XX or 5XX status code</exception>
@@ -101,7 +101,7 @@ namespace Marqeta.Core.Sdk.Businesses
             return await RequestAdapter.SendAsync<global::Marqeta.Core.Sdk.Models.Business_card_holder_response>(requestInfo, global::Marqeta.Core.Sdk.Models.Business_card_holder_response.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// To return an array of all businesses, send a `GET` request to the `/businesses` endpoint.To narrow your result set to businesses that match a particular legal or fictitious name, include the appropriate parameters from the following query parameters table.This endpoint also supports &lt;&lt;/core-api/field-filtering, field filtering&gt;&gt; and &lt;&lt;/core-api/sorting-and-pagination, sorting and pagination&gt;&gt;.
+        /// Lists all businesses
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -120,10 +120,10 @@ namespace Marqeta.Core.Sdk.Businesses
             return requestInfo;
         }
         /// <summary>
-        /// Create a business.The initial status of a newly created business depends on the &lt;&lt;/core-api/kyc-verification, Know Your Customer (KYC) requirements&gt;&gt; of the program or associated &lt;&lt;/core-api/account-holder-groups, account holder group&gt;&gt;.[cols=&quot;1,1,1,2&quot;]|===| KYC Required | Initial Business State | Business Active on Creation | Business Limitations| Always| `UNVERIFIED`| No| Cannot load funds.| Conditionally| `LIMITED`| No| Restricted by rules in `accountholdergroups.pre_kyc_controls`.| Never| `ACTIVE`| Required| None.|===To change or track the history of a business&apos; status, use the `/businesstransitions` endpoint.For more information on status changes, see &lt;&lt;create_business_transition, Create Business Transition&gt;&gt;.For information about configuring the required fields for KYC verification, see &lt;&lt;/core-api/kyc-verification#_perform_kyc, Perform KYC&gt;&gt;.
+        /// Creates a business
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
-        /// <param name="body">Contains information about a business.</param>
+        /// <param name="body">The request body</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -151,12 +151,12 @@ namespace Marqeta.Core.Sdk.Businesses
             return new global::Marqeta.Core.Sdk.Businesses.BusinessesRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
-        /// To return an array of all businesses, send a `GET` request to the `/businesses` endpoint.To narrow your result set to businesses that match a particular legal or fictitious name, include the appropriate parameters from the following query parameters table.This endpoint also supports &lt;&lt;/core-api/field-filtering, field filtering&gt;&gt; and &lt;&lt;/core-api/sorting-and-pagination, sorting and pagination&gt;&gt;.
+        /// Lists all businesses
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class BusinessesRequestBuilderGetQueryParameters 
         {
-            /// <summary>Fictitious or &quot;doing business as (DBA)&quot; name of the business.</summary>
+            /// <summary>Business name DBA</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
             [QueryParameter("business_name_dba")]
@@ -166,7 +166,7 @@ namespace Marqeta.Core.Sdk.Businesses
             [QueryParameter("business_name_dba")]
             public string BusinessNameDba { get; set; }
 #endif
-            /// <summary>Legal name of the business.</summary>
+            /// <summary>Business name legal</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
             [QueryParameter("business_name_legal")]
@@ -176,10 +176,10 @@ namespace Marqeta.Core.Sdk.Businesses
             [QueryParameter("business_name_legal")]
             public string BusinessNameLegal { get; set; }
 #endif
-            /// <summary>Number of business resources to retrieve.</summary>
+            /// <summary>Number of users to retrieve</summary>
             [QueryParameter("count")]
             public int? Count { get; set; }
-            /// <summary>Comma-delimited list of fields to return (`field_1,field_2`, and so on).Leave blank to return all fields.</summary>
+            /// <summary>Comma-delimited list of fields to return (e.g. field_1,field_2,..). Leave blank to return all fields.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
             [QueryParameter("fields")]
@@ -189,7 +189,7 @@ namespace Marqeta.Core.Sdk.Businesses
             [QueryParameter("fields")]
             public string Fields { get; set; }
 #endif
-            /// <summary>Specifies the search type for the query.</summary>
+            /// <summary>Search type</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
             [QueryParameter("search_type")]
@@ -199,7 +199,7 @@ namespace Marqeta.Core.Sdk.Businesses
             [QueryParameter("search_type")]
             public string SearchType { get; set; }
 #endif
-            /// <summary>Field on which to sort.Use any field in the resource model, or one of the system fields `lastModifiedTime` or `createdTime`.Prefix the field name with a hyphen (`-`) to sort in descending order.Omit the hyphen to sort in ascending order.</summary>
+            /// <summary>Sort order</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
             [QueryParameter("sort_by")]
@@ -209,7 +209,7 @@ namespace Marqeta.Core.Sdk.Businesses
             [QueryParameter("sort_by")]
             public string SortBy { get; set; }
 #endif
-            /// <summary>Sort order index of the first resource in the returned array.</summary>
+            /// <summary>Start index</summary>
             [QueryParameter("start_index")]
             public int? StartIndex { get; set; }
         }

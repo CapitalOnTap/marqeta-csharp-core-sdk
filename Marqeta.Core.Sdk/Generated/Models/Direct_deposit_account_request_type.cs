@@ -20,9 +20,5 @@ namespace Marqeta.Core.Sdk.Models
         #pragma warning disable CS1591
         SAVINGS,
         #pragma warning restore CS1591
-        [EnumMember(Value = "INTEREST_BEARING")]
-        #pragma warning disable CS1591
-        INTEREST_BEARING,
-        #pragma warning restore CS1591
     }
 }

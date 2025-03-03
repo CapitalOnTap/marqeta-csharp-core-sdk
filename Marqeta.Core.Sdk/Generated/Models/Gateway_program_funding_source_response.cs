@@ -78,7 +78,7 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string Url { get; set; }
 #endif
-        /// <summary>Specifies whether or not to use mutual transport layer security (mTLS) authentication for the funding request.</summary>
+        /// <summary>Specifies whether or not to use mutual transport layer security (mTLS) authentication for the funding request.mTLS authentication is in the beta testing phase, and is not yet generally available.Contact your Marqeta representative for more information about using mTLS authentication.</summary>
         public bool? UseMtls { get; set; }
         /// <summary>Program gateway funding source object version.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER

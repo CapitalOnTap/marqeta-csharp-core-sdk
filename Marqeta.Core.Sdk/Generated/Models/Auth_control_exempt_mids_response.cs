@@ -12,7 +12,7 @@ namespace Marqeta.Core.Sdk.Models
     public partial class Auth_control_exempt_mids_response : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
     {
-        /// <summary>Indicates whether the merchant identifier authorization control exception is active.This field is returned if it exists in the resource.</summary>
+        /// <summary>The active property</summary>
         public bool? Active { get; set; }
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
@@ -24,13 +24,13 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public global::Marqeta.Core.Sdk.Models.Spend_control_association Association { get; set; }
 #endif
-        /// <summary>Date and time when the resource was created, in UTC.This field is returned if it exists in the resource.</summary>
+        /// <summary>The created property</summary>
         public DateTimeOffset? Created { get; set; }
-        /// <summary>Date and time when the exception ends, in UTC.This field is returned if it exists in the resource.</summary>
+        /// <summary>The end_time property</summary>
         public DateTimeOffset? EndTime { get; set; }
-        /// <summary>Date and time when the resource was last updated, in UTC.This field is returned if it exists in the resource.</summary>
+        /// <summary>The last_updated property</summary>
         public DateTimeOffset? LastUpdated { get; set; }
-        /// <summary>Unique identifier of the merchant group to be exempted.This field is returned if it exists in the resource.</summary>
+        /// <summary>36 char max</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? MerchantGroupToken { get; set; }
@@ -38,7 +38,7 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string MerchantGroupToken { get; set; }
 #endif
-        /// <summary>Merchant to be exempted.This field is returned if it exists in the resource.</summary>
+        /// <summary>The mid property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Mid { get; set; }
@@ -46,7 +46,7 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string Mid { get; set; }
 #endif
-        /// <summary>Name of the merchant identifier authorization control exemption.</summary>
+        /// <summary>The name property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Name { get; set; }
@@ -54,9 +54,9 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string Name { get; set; }
 #endif
-        /// <summary>Date and time when the exception starts, in UTC.This field is returned if it exists in the resource.</summary>
+        /// <summary>The start_time property</summary>
         public DateTimeOffset? StartTime { get; set; }
-        /// <summary>Unique identifier of the merchant identifier authorization control exemption.This field is always returned.</summary>
+        /// <summary>The token property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Token { get; set; }

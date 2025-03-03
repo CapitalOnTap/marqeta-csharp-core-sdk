@@ -14,9 +14,9 @@ namespace Marqeta.Core.Sdk.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Specifies whether JIT Funding is enabled or disabled for the payment card funding source.A value of `true` indicates that the payment card funding source is enabled and will be debited when swipes occur.</summary>
+        /// <summary>The enabled property</summary>
         public bool? Enabled { get; set; }
-        /// <summary>Specifies the return destination for refunds in the case of a transaction reversal.</summary>
+        /// <summary>The refunds_destination property</summary>
         public global::Marqeta.Core.Sdk.Models.Jit_funding_paymentcard_funding_source_refunds_destination? RefundsDestination { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Marqeta.Core.Sdk.Models.Jit_funding_paymentcard_funding_source"/> and sets the default values.

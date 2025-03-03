@@ -16,7 +16,7 @@ namespace Marqeta.Core.Sdk.Models
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The amount property</summary>
         public double? Amount { get; set; }
-        /// <summary>Unique identifier of the ACH transfer being transitioned.</summary>
+        /// <summary>The bank_transfer_token property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? BankTransferToken { get; set; }
@@ -24,7 +24,7 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string BankTransferToken { get; set; }
 #endif
-        /// <summary>Field required in older versions of the API, but no longer used.</summary>
+        /// <summary>The batch_number property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? BatchNumber { get; set; }
@@ -32,15 +32,15 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string BatchNumber { get; set; }
 #endif
-        /// <summary>Mechanism by which the transaction was initiated.</summary>
+        /// <summary>The channel property</summary>
         public global::Marqeta.Core.Sdk.Models.Bank_transfer_transition_response_model_channel? Channel { get; set; }
-        /// <summary>Date and time when the ACH transfer was created, in UTC.</summary>
+        /// <summary>The created_time property</summary>
         public DateTimeOffset? CreatedTime { get; set; }
         /// <summary>The effective_date property</summary>
         public DateTimeOffset? EffectiveDate { get; set; }
-        /// <summary>Date and time when the ACH transfer was last modified.</summary>
+        /// <summary>The last_modified_time property</summary>
         public DateTimeOffset? LastModifiedTime { get; set; }
-        /// <summary>Not currently used.</summary>
+        /// <summary>The program_reserve_token property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? ProgramReserveToken { get; set; }
@@ -48,7 +48,7 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string ProgramReserveToken { get; set; }
 #endif
-        /// <summary>Explanation of why the transition is being made, for example &quot;Created by POST call on API&quot;.Returned if this information was supplied when the transition was originally created.</summary>
+        /// <summary>The reason property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Reason { get; set; }
@@ -56,7 +56,7 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string Reason { get; set; }
 #endif
-        /// <summary>Standardized ACH return code for a returned transaction, generally sent by the RDFI.Transactions can be returned for any of the reasons listed in the &lt;&lt;/developer-guides/ach-origination#_nacha_ach_return_codes, NACHA ACH return codes table&gt;&gt; of the ACH Origination Guide.</summary>
+        /// <summary>The return_code property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? ReturnCode { get; set; }
@@ -64,7 +64,7 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string ReturnCode { get; set; }
 #endif
-        /// <summary>Human-readable description correlating to the `return_code`, such as `Insufficient funds`, if a return code is present in the response.</summary>
+        /// <summary>The return_reason property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? ReturnReason { get; set; }
@@ -74,9 +74,9 @@ namespace Marqeta.Core.Sdk.Models
 #endif
         /// <summary>The reversal_after_45_days property</summary>
         public bool? ReversalAfter45Days { get; set; }
-        /// <summary>New state of the ACH transfer.</summary>
+        /// <summary>The status property</summary>
         public global::Marqeta.Core.Sdk.Models.Bank_transfer_transition_response_model_status? Status { get; set; }
-        /// <summary>Unique identifier of the bank transfer transition.</summary>
+        /// <summary>The token property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Token { get; set; }
@@ -84,7 +84,7 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string Token { get; set; }
 #endif
-        /// <summary>Transaction token for JIT-related ledger entries for the ACH transfer.</summary>
+        /// <summary>The transaction_jit_token property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? TransactionJitToken { get; set; }
@@ -92,7 +92,7 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string TransactionJitToken { get; set; }
 #endif
-        /// <summary>Transaction token for *non*-JIT-related ledger entries for the ACH transfer.</summary>
+        /// <summary>The transaction_token property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? TransactionToken { get; set; }

@@ -3,9 +3,10 @@ using System.Runtime.Serialization;
 using System;
 namespace Marqeta.Core.Sdk.Models
 {
-    /// <summary>Mechanism that changed the Commando Mode control set&apos;s state.</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
+    #pragma warning disable CS1591
     public enum Commando_mode_nested_transition_channel
+    #pragma warning restore CS1591
     {
         [EnumMember(Value = "API")]
         #pragma warning disable CS1591

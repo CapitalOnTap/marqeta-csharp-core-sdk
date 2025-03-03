@@ -7,19 +7,18 @@ using System.IO;
 using System;
 namespace Marqeta.Core.Sdk.Models
 {
-    /// <summary>
-    /// Determines physical characteristics of a card, along with its bulk shipment information.
-    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
+    #pragma warning disable CS1591
     public partial class Card_product_fulfillment : IAdditionalDataHolder, IParsable
+    #pragma warning restore CS1591
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Controls the ability to create cards from this card product; `true` allows and `false` disallows the creation of cards.*NOTE:* The card product&apos;s `active` field has no effect on card creation or the behavior of this field.</summary>
+        /// <summary>The allow_card_creation property</summary>
         public bool? AllowCardCreation { get; set; }
-        /// <summary>If `true`, an all zero code (000) is allowed as a valid value in an authorization request.</summary>
+        /// <summary>The all_zero_card_security_code property</summary>
         public bool? AllZeroCardSecurityCode { get; set; }
-        /// <summary>Prefix of the bank identification number.</summary>
+        /// <summary>The bin_prefix property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? BinPrefix { get; set; }
@@ -27,7 +26,7 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string BinPrefix { get; set; }
 #endif
-        /// <summary>Enables bulk ordering of cards of this card product type using the `/bulkissuances` endpoint.</summary>
+        /// <summary>The bulk_ship property</summary>
         public bool? BulkShip { get; set; }
         /// <summary>Specifies personalized attributes to be added to the card.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -37,11 +36,11 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public global::Marqeta.Core.Sdk.Models.Card_personalization CardPersonalization { get; set; }
 #endif
-        /// <summary>Enables offline personal identification number (PIN) verification for Europay Mastercard and Visa (EMV, or &quot;chip-and-PIN&quot;) card payments.</summary>
+        /// <summary>The enable_offline_pin property</summary>
         public bool? EnableOfflinePin { get; set; }
-        /// <summary>Specifies the fulfillment provider.You can work with providers located in North America, Europe, South America, and the Asia-Pacific region.For more information, see &lt;&lt;/developer-guides/managing-physical-cards#_fulfillment_providers_by_location, Fulfillment providers by location&gt;&gt;.*NOTE:* Expedited processing is available for cards that are fulfilled by link:https://www.arroweye.com/[Arroweye Solutions, window=&quot;_blank&quot;], link:https://www.gi-de.com/[G+D, window=&quot;_blank&quot;], link:http://www.idemia.com[IDEMIA, window=&quot;_blank&quot;], and link:http://perfectplastic.com/[Perfect Plastic Printing, window=&quot;_blank&quot;].You can expedite an order&apos;s processing by using the `expedite` field of the &lt;&lt;/core-api/cards, card&gt;&gt; or &lt;&lt;/core-api/bulk-card-orders, bulkissuance&gt;&gt; object.Contact your Marqeta representative for information regarding the cost of expedited service.</summary>
+        /// <summary>The fulfillment_provider property</summary>
         public global::Marqeta.Core.Sdk.Models.Card_product_fulfillment_fulfillment_provider? FulfillmentProvider { get; set; }
-        /// <summary>Card fulfillment provider&apos;s package ID.</summary>
+        /// <summary>The package_id property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? PackageId { get; set; }
@@ -49,7 +48,7 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string PackageId { get; set; }
 #endif
-        /// <summary>Specifies the length of the primary account number (PAN).</summary>
+        /// <summary>The pan_length property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? PanLength { get; set; }
@@ -57,9 +56,9 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string PanLength { get; set; }
 #endif
-        /// <summary>Specifies the physical form cards of this card product type will take.</summary>
+        /// <summary>The payment_instrument property</summary>
         public global::Marqeta.Core.Sdk.Models.Card_product_fulfillment_payment_instrument? PaymentInstrument { get; set; }
-        /// <summary>Specifies shipping details for the order.</summary>
+        /// <summary>The shipping property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Marqeta.Core.Sdk.Models.Shipping? Shipping { get; set; }
@@ -67,7 +66,7 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public global::Marqeta.Core.Sdk.Models.Shipping Shipping { get; set; }
 #endif
-        /// <summary>A value of `true` sets the text in the `fulfillment.card_personalization.text.name_line_1` and `name_line_2` fields to all uppercase letters.A value of `false` leaves the text in its original state.</summary>
+        /// <summary>The uppercase_name_lines property</summary>
         public bool? UppercaseNameLines { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Marqeta.Core.Sdk.Models.Card_product_fulfillment"/> and sets the default values.

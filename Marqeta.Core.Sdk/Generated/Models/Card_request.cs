@@ -22,7 +22,7 @@ namespace Marqeta.Core.Sdk.Models
 #endif
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Associates the card with the specified bulk card order.This field cannot be updated.</summary>
+        /// <summary>The bulk_issuance_token property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? BulkIssuanceToken { get; set; }
@@ -30,7 +30,7 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string BulkIssuanceToken { get; set; }
 #endif
-        /// <summary>Unique identifier of the card product.</summary>
+        /// <summary>The card_product_token property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? CardProductToken { get; set; }
@@ -38,9 +38,9 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string CardProductToken { get; set; }
 #endif
-        /// <summary>Set to `true` to request expedited processing of the card by your card fulfillment provider.This expedited service is available for cards fulfilled by link:http://perfectplastic.com/[Perfect Plastic Printing, window=&quot;_blank&quot;], link:http://www.idemia.com[IDEMIA, window=&quot;_blank&quot;], and link:https://www.arroweye.com/[Arroweye Solutions, window=&quot;_blank&quot;].*NOTE:* Contact your Marqeta representative for information regarding the cost of expedited service.</summary>
+        /// <summary>The expedite property</summary>
         public bool? Expedite { get; set; }
-        /// <summary>Specifies the length of time after the date of issue for which the cards are valid.</summary>
+        /// <summary>The expiration_offset property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Marqeta.Core.Sdk.Models.Expiration_offset? ExpirationOffset { get; set; }
@@ -48,7 +48,7 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public global::Marqeta.Core.Sdk.Models.Expiration_offset ExpirationOffset { get; set; }
 #endif
-        /// <summary>Specifies certain physical characteristics of a card, as well as shipment information.</summary>
+        /// <summary>The fulfillment property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Marqeta.Core.Sdk.Models.CardFulfillmentRequest? Fulfillment { get; set; }
@@ -56,7 +56,7 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public global::Marqeta.Core.Sdk.Models.CardFulfillmentRequest Fulfillment { get; set; }
 #endif
-        /// <summary>Associates customer-provided metadata with the card.</summary>
+        /// <summary>The metadata property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Marqeta.Core.Sdk.Models.Card_request_metadata? Metadata { get; set; }
@@ -64,7 +64,7 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public global::Marqeta.Core.Sdk.Models.Card_request_metadata Metadata { get; set; }
 #endif
-        /// <summary>Reissues the specified card (known as the &quot;source&quot; card) with a new primary account number (PAN).This field reissues a card with a new PAN from the specified source card.The source card is automatically terminated when the card is reissued with the new PAN.Use this field when reissuing a lost or stolen card.Send a `GET` request to `/cards/user/{token}` to retrieve card tokens for a particular user.</summary>
+        /// <summary>The new_pan_from_card_token property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? NewPanFromCardToken { get; set; }
@@ -72,7 +72,7 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string NewPanFromCardToken { get; set; }
 #endif
-        /// <summary>Reissues the specified card (known as the &quot;source&quot; card).This field reissues a card by copying the primary account number (PAN) and personal identification number (PIN) from the specified source card to the newly created card.The reissued card has the same PAN and PIN as the source card but a new expiration date and CVV2 number.Send a `GET` request to `/cards/user/{token}` to retrieve card tokens for a particular user.*NOTE:* By default, the source card is automatically terminated when the reissued card is activated.However, if your program is configured for multiple active cards, you can prevent the source card from being automatically terminated by setting the `activation_actions.terminate_reissued_source_card` field to `false`.</summary>
+        /// <summary>The reissue_pan_from_card_token property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? ReissuePanFromCardToken { get; set; }
@@ -80,7 +80,7 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string ReissuePanFromCardToken { get; set; }
 #endif
-        /// <summary>Unique identifier of the card.If you do not include a token, the system will generate one automatically.Other API calls will require this token, so we recommend creating a token that is easy to remember rather than letting the system generate one.This value cannot be updated.</summary>
+        /// <summary>The token property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Token { get; set; }
@@ -88,7 +88,7 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string Token { get; set; }
 #endif
-        /// <summary>Copies the PIN from the specified card to the newly created card.Both cards must belong to the same user.Populating this field will raise an error if `reissue_pan_from_card_token` is also set.Send a `GET` request to `/cards/user/{token}` to retrieve card tokens for a particular user.</summary>
+        /// <summary>The translate_pin_from_card_token property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? TranslatePinFromCardToken { get; set; }
@@ -96,7 +96,7 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string TranslatePinFromCardToken { get; set; }
 #endif
-        /// <summary>Unique identifier of the authorized user of the card.</summary>
+        /// <summary>The user_token property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? UserToken { get; set; }

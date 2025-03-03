@@ -34,7 +34,7 @@ namespace Marqeta.Core.Sdk.Cards.Barcode.Item
         {
         }
         /// <summary>
-        /// Retrieves a card by its barcode.This endpoint supports &lt;&lt;/core-api/field-filtering, field filtering&gt;&gt; and &lt;&lt;/core-api/object-expansion, object expansion&gt;&gt;.
+        /// Returns a card&apos;s metadata
         /// </summary>
         /// <returns>A <see cref="global::Marqeta.Core.Sdk.Models.Card_response"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -57,7 +57,7 @@ namespace Marqeta.Core.Sdk.Cards.Barcode.Item
             return await RequestAdapter.SendAsync<global::Marqeta.Core.Sdk.Models.Card_response>(requestInfo, global::Marqeta.Core.Sdk.Models.Card_response.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Retrieves a card by its barcode.This endpoint supports &lt;&lt;/core-api/field-filtering, field filtering&gt;&gt; and &lt;&lt;/core-api/object-expansion, object expansion&gt;&gt;.
+        /// Returns a card&apos;s metadata
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -85,12 +85,12 @@ namespace Marqeta.Core.Sdk.Cards.Barcode.Item
             return new global::Marqeta.Core.Sdk.Cards.Barcode.Item.WithBarcodeItemRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
-        /// Retrieves a card by its barcode.This endpoint supports &lt;&lt;/core-api/field-filtering, field filtering&gt;&gt; and &lt;&lt;/core-api/object-expansion, object expansion&gt;&gt;.
+        /// Returns a card&apos;s metadata
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class WithBarcodeItemRequestBuilderGetQueryParameters 
         {
-            /// <summary>Comma-delimited list of fields to return (`field_1,field_2`, and so on).Leave blank to return all fields.</summary>
+            /// <summary>Comma-delimited list of fields to return (e.g. field_1,field_2,..). Leave blank to return all fields.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
             [QueryParameter("fields")]

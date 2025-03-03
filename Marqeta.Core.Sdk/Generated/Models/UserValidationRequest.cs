@@ -7,17 +7,16 @@ using System.IO;
 using System;
 namespace Marqeta.Core.Sdk.Models
 {
-    /// <summary>
-    /// Contains information about the user.
-    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
+    #pragma warning disable CS1591
     public partial class UserValidationRequest : IAdditionalDataHolder, IParsable
+    #pragma warning restore CS1591
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Date of birth of the user associated with this card.</summary>
+        /// <summary>yyyy-MM-dd</summary>
         public DateTimeOffset? BirthDate { get; set; }
-        /// <summary>Telephone number of the user associated with this card.</summary>
+        /// <summary>Phone #</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Phone { get; set; }
@@ -25,7 +24,7 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string Phone { get; set; }
 #endif
-        /// <summary>Random six-digit numeric postfix generated for some bulk card orders.See &lt;&lt;/core-api/bulk-card-orders, Bulk Card Orders&gt;&gt; for more information about numeric postfixes.</summary>
+        /// <summary>Six-char random name postfix</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? RandomNameLine1Postfix { get; set; }
@@ -33,7 +32,7 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string RandomNameLine1Postfix { get; set; }
 #endif
-        /// <summary>Social Security Number (SSN) of the user associated with this card.</summary>
+        /// <summary>Last four digits of SSN</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Ssn { get; set; }

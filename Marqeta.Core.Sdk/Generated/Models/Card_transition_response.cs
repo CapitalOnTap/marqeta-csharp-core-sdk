@@ -14,7 +14,7 @@ namespace Marqeta.Core.Sdk.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>The barcode printed on the card, expressed as digits.</summary>
+        /// <summary>The barcode property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Barcode { get; set; }
@@ -22,7 +22,7 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string Barcode { get; set; }
 #endif
-        /// <summary>The unique identifier of the bulk card order.</summary>
+        /// <summary>The bulk_issuance_token property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? BulkIssuanceToken { get; set; }
@@ -38,7 +38,7 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public global::Marqeta.Core.Sdk.Models.Card_metadata Card { get; set; }
 #endif
-        /// <summary>Unique identifier of the card product.</summary>
+        /// <summary>The card_product_token property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? CardProductToken { get; set; }
@@ -46,7 +46,7 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string CardProductToken { get; set; }
 #endif
-        /// <summary>Unique identifier of the card.</summary>
+        /// <summary>The card_token property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? CardToken { get; set; }
@@ -54,13 +54,13 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string CardToken { get; set; }
 #endif
-        /// <summary>The mechanism by which the transition was initiated.* *ADMIN* - Indicates that the card transition was initiated through the Marqeta Dashboard.* *API* - Indicates that the card transition was initiated by you through the Core API.Use this value when creating a card transition with an API `POST` request.* *FRAUD* - Indicates that either Marqeta or the card network has determined that the card is fraudulent.* *IVR* - Indicates that the card transition was initiated through your Interactive Voice Response system.* *SYSTEM* - Indicates that the card transition was initiated by Marqeta.For example, Marqeta suspended the card due to excessive failed personal identification number (PIN) entries.</summary>
+        /// <summary>The channel property</summary>
         public global::Marqeta.Core.Sdk.Models.Card_transition_response_channel? Channel { get; set; }
-        /// <summary>Date and time when the resource was created, in UTC.</summary>
+        /// <summary>The created_time property</summary>
         public DateTimeOffset? CreatedTime { get; set; }
-        /// <summary>A value of `true` indicates that you requested expedited processing of the card from your card fulfillment provider.</summary>
+        /// <summary>The expedite property</summary>
         public bool? Expedite { get; set; }
-        /// <summary>Expiration date in `MMyy` format.</summary>
+        /// <summary>The expiration property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Expiration { get; set; }
@@ -68,7 +68,7 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string Expiration { get; set; }
 #endif
-        /// <summary>Expiration date and time in UTC format.</summary>
+        /// <summary>The expiration_time property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? ExpirationTime { get; set; }
@@ -76,7 +76,7 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string ExpirationTime { get; set; }
 #endif
-        /// <summary>Specifies certain physical characteristics of a card, as well as shipment information.</summary>
+        /// <summary>The fulfillment property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Marqeta.Core.Sdk.Models.CardFulfillmentRequest? Fulfillment { get; set; }
@@ -84,9 +84,9 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public global::Marqeta.Core.Sdk.Models.CardFulfillmentRequest Fulfillment { get; set; }
 #endif
-        /// <summary>Provides status information about the card related to order and delivery.The possible fulfillment states are:* *ISSUED:* Initial state of all newly created/issued cards* *ORDERED:* Card ordered through card fulfillment provider* *REJECTED:* Card rejected by card fulfillment provider* *SHIPPED:* Card shipped by card fulfillment provider* *DELIVERED:* Card delivered by the card fulfillment provider.* *DIGITALLY_PRESENTED:* Card digitally presented using the `/cards/{token}/showpan` endpoint; does not affect the delivery of physical cards</summary>
+        /// <summary>The fulfillment_status property</summary>
         public global::Marqeta.Core.Sdk.Models.Card_transition_response_fulfillment_status? FulfillmentStatus { get; set; }
-        /// <summary>Last four digits of the card primary account number (PAN).</summary>
+        /// <summary>The last_four property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? LastFour { get; set; }
@@ -94,7 +94,7 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string LastFour { get; set; }
 #endif
-        /// <summary>Reissues the specified (&quot;source&quot;) card with a new primary account number (PAN).</summary>
+        /// <summary>The new_pan_from_card_token property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? NewPanFromCardToken { get; set; }
@@ -102,7 +102,7 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string NewPanFromCardToken { get; set; }
 #endif
-        /// <summary>Primary account number (PAN) of the card.</summary>
+        /// <summary>The pan property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Pan { get; set; }
@@ -110,9 +110,9 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string Pan { get; set; }
 #endif
-        /// <summary>Specifies if the personal identification number (PIN) has been set for the card.</summary>
+        /// <summary>The pin_is_set property</summary>
         public bool? PinIsSet { get; set; }
-        /// <summary>Additional information about the state change.</summary>
+        /// <summary>The reason property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Reason { get; set; }
@@ -120,9 +120,9 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string Reason { get; set; }
 #endif
-        /// <summary>A standard code describing the reason for the transition:* *00:* Object activated for the first time* *01:* Requested by you* *02:* Inactivity over time* *03:* This address cannot accept mail or the addressee is unknown* *04:* Negative account balance* *05:* Account under review* *06:* Suspicious activity was identified* *07:* Activity outside the program parameters was identified* *08:* Confirmed fraud was identified* *09:* Matched with an Office of Foreign Assets Control list* *10:* Card was reported lost* *11:* Card information was cloned* *12:* Account or card information was compromised* *13:* Temporary status change while on hold/leave* *14:* Initiated by Marqeta* *15:* Initiated by issuer* *16:* Card expired* *17:* Failed KYC* *18:* Changed to `ACTIVE` because information was properly validated* *19:* Changed to `ACTIVE` because account activity was properly validated* *20:* Change occurred prior to the normalization of reason codes* *21:* Initiated by a third party, often a digital wallet provider* *22:* PIN retry limit reached* *23:* Card was reported stolen* *24:* Address issue* *25:* Name issue* *26:* SSN issue* *27:* DOB issue* *28:* Email issue* *29:* Phone issue* *30:* Account/fulfillment mismatch* *31:* Other reason</summary>
+        /// <summary>The reason_code property</summary>
         public global::Marqeta.Core.Sdk.Models.Card_transition_response_reason_code? ReasonCode { get; set; }
-        /// <summary>Reissues the specified (&quot;source&quot;) card.</summary>
+        /// <summary>The reissue_pan_from_card_token property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? ReissuePanFromCardToken { get; set; }
@@ -130,9 +130,9 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string ReissuePanFromCardToken { get; set; }
 #endif
-        /// <summary>Indicates the state of the card.</summary>
+        /// <summary>The state property</summary>
         public global::Marqeta.Core.Sdk.Models.Card_transition_response_state? State { get; set; }
-        /// <summary>Unique identifier of the card transition.</summary>
+        /// <summary>The token property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Token { get; set; }
@@ -140,7 +140,7 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string Token { get; set; }
 #endif
-        /// <summary>This field cannot be set directly using the `/cardtransitions` endpoint.A card transition&apos;s `type` is managed by the Marqeta platform, based on the before and after state of the transition, as specified in the request&apos;s `state` field.This field appears only when populated by the card fulfillment provider.The `type` field&apos;s possible values are:* *fulfillment.delivered:* Card was delivered by the card fulfillment provider* *fulfillment.digitally_presented:* Card was digitally presented using the `/cards/{token}/showpan` endpoint; does not affect the delivery of physical cards* *fulfillment.issued:* Card was created/issued* *fulfillment.ordered:* Card was ordered from the card fulfillment provider* *fulfillment.rejected:* Card was rejected by the card fulfillment provider* *fulfillment.shipped:* Card was shipped by the card fulfillment provider* *state.activated:* Card was activated* *state.limited:* Card was limited* *state.reinstated:* Card was reinstated from a suspended state* *state.suspended:* Card was suspended* *state.terminated:* Card was terminated//Also appears in /core-api/event-types#_card_transition_events</summary>
+        /// <summary>The type property</summary>
         public global::Marqeta.Core.Sdk.Models.Card_transition_response_type? Type { get; set; }
         /// <summary>Contains customer-provided information about the cardholder that performed the transaction.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -150,7 +150,7 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public global::Marqeta.Core.Sdk.Models.Cardholder_metadata User { get; set; }
 #endif
-        /// <summary>Unique identifier of the cardholder.</summary>
+        /// <summary>The user_token property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? UserToken { get; set; }
@@ -158,7 +158,7 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string UserToken { get; set; }
 #endif
-        /// <summary>Contains information about the user.</summary>
+        /// <summary>The validations property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Marqeta.Core.Sdk.Models.ValidationsResponse? Validations { get; set; }

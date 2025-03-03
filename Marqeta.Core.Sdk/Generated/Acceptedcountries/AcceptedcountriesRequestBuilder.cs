@@ -19,7 +19,7 @@ namespace Marqeta.Core.Sdk.Acceptedcountries
     public partial class AcceptedcountriesRequestBuilder : BaseRequestBuilder
     {
         /// <summary>Gets an item from the Marqeta.Core.Sdk.acceptedcountries.item collection</summary>
-        /// <param name="position">Unique identifier of the accepted countries object.</param>
+        /// <param name="position">Accepted country token</param>
         /// <returns>A <see cref="global::Marqeta.Core.Sdk.Acceptedcountries.Item.WithTokenItemRequestBuilder"/></returns>
         public global::Marqeta.Core.Sdk.Acceptedcountries.Item.WithTokenItemRequestBuilder this[string position]
         {
@@ -47,7 +47,7 @@ namespace Marqeta.Core.Sdk.Acceptedcountries
         {
         }
         /// <summary>
-        /// Retrieve a list of `acceptedcountries` objects.
+        /// Lists all accepted countries
         /// </summary>
         /// <returns>A <see cref="global::Marqeta.Core.Sdk.Models.AcceptedCountriesListResponse"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -70,7 +70,7 @@ namespace Marqeta.Core.Sdk.Acceptedcountries
             return await RequestAdapter.SendAsync<global::Marqeta.Core.Sdk.Models.AcceptedCountriesListResponse>(requestInfo, global::Marqeta.Core.Sdk.Models.AcceptedCountriesListResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Retrieve a list of `acceptedcountries` objects.
+        /// Lists all accepted countries
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -98,15 +98,15 @@ namespace Marqeta.Core.Sdk.Acceptedcountries
             return new global::Marqeta.Core.Sdk.Acceptedcountries.AcceptedcountriesRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
-        /// Retrieve a list of `acceptedcountries` objects.
+        /// Lists all accepted countries
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class AcceptedcountriesRequestBuilderGetQueryParameters 
         {
-            /// <summary>Number of accepted countries objects to retrieve.</summary>
+            /// <summary>Number of accepted countries to retrieve</summary>
             [QueryParameter("count")]
             public int? Count { get; set; }
-            /// <summary>Comma-delimited list of fields to return (`field_1,field_2`, and so on).Leave blank to return all fields.</summary>
+            /// <summary>Comma-delimited list of fields to return (e.g. field_1,field_2,..). Leave blank to return all fields.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
             [QueryParameter("fields")]
@@ -116,7 +116,7 @@ namespace Marqeta.Core.Sdk.Acceptedcountries
             [QueryParameter("fields")]
             public string Fields { get; set; }
 #endif
-            /// <summary>Name of the accepted countries object.</summary>
+            /// <summary>Name</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
             [QueryParameter("name")]
@@ -126,7 +126,7 @@ namespace Marqeta.Core.Sdk.Acceptedcountries
             [QueryParameter("name")]
             public string Name { get; set; }
 #endif
-            /// <summary>Specifies the type of search you want to perform.</summary>
+            /// <summary>Search type</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
             [QueryParameter("search_type")]
@@ -136,7 +136,7 @@ namespace Marqeta.Core.Sdk.Acceptedcountries
             [QueryParameter("search_type")]
             public string SearchType { get; set; }
 #endif
-            /// <summary>Field on which to sort.Use any field in the resource model, or one of the system fields `lastModifiedTime` or `createdTime`.Prefix the field name with a hyphen (`-`) to sort in descending order.Omit the hyphen to sort in ascending order.</summary>
+            /// <summary>Sort order</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
             [QueryParameter("sort_by")]
@@ -146,10 +146,10 @@ namespace Marqeta.Core.Sdk.Acceptedcountries
             [QueryParameter("sort_by")]
             public string SortBy { get; set; }
 #endif
-            /// <summary>Sort order index of the first resource in the returned array.</summary>
+            /// <summary>Start index</summary>
             [QueryParameter("start_index")]
             public int? StartIndex { get; set; }
-            /// <summary>Specifies if the accepted countries object is an allow list.</summary>
+            /// <summary>Whitelist</summary>
             [QueryParameter("whitelist")]
             public bool? Whitelist { get; set; }
         }

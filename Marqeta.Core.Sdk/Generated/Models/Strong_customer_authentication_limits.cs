@@ -7,15 +7,14 @@ using System.IO;
 using System;
 namespace Marqeta.Core.Sdk.Models
 {
-    /// <summary>
-    /// Contains information about Strong Customer Authentication (SCA) behavior for contactless point-of-sale (POS) and low-value payment (LVP) e-commerce transactions.
-    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
+    #pragma warning disable CS1591
     public partial class Strong_customer_authentication_limits : IAdditionalDataHolder, IParsable
+    #pragma warning restore CS1591
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>If you have enabled CAVV authentication amount validation, the value of this field specifies the maximum allowable variance between the authorization amount and the 3D Secure authentication amount.Expressed as a percentage.</summary>
+        /// <summary>The cavv_authentication_amount_incremental_percentage property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? CavvAuthenticationAmountIncrementalPercentage { get; set; }
@@ -23,15 +22,19 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string CavvAuthenticationAmountIncrementalPercentage { get; set; }
 #endif
-        /// <summary>If set to `true`, Marqeta validates the amount in the authorization transaction against the amount in the 3D Secure authentication attempt.If the authorization amount is greater than the 3D Secure authentication amount, Marqeta rejects the transaction.You can specify an allowable variance for the 3D Secure authentication amount in the `cavv_authentication_amount_incremental_percentage` field.</summary>
+        /// <summary>The enable_biometric_bypass_sca_contactless property</summary>
+        public bool? EnableBiometricBypassScaContactless { get; set; }
+        /// <summary>The enable_cavv_authentication_amount_validation property</summary>
         public bool? EnableCavvAuthenticationAmountValidation { get; set; }
-        /// <summary>Specifies the cumulative limit of transactions the cardholder can perform before receiving an SCA challenge.A value of `0` in this field means that the cumulative amount spent in contactless POS transactions performed by the cardholder does not impact the decision of whether or not an SCA challenge is served.</summary>
+        /// <summary>The enable_issuer_tra_exemption property</summary>
+        public bool? EnableIssuerTraExemption { get; set; }
+        /// <summary>The sca_contactless_cumulative_amount_limit property</summary>
         public double? ScaContactlessCumulativeAmountLimit { get; set; }
-        /// <summary>Specifies the maximum allowable amount for a single contactless point-of-sale (POS) transaction, above which the cardholder receives a strong customer authentication (SCA) challenge.A value of `0` in this field means that the amount of any single contactless POS transaction performed by the cardholder does not impact the decision of whether or not an SCA challenge is served.</summary>
+        /// <summary>The sca_contactless_transaction_limit property</summary>
         public double? ScaContactlessTransactionLimit { get; set; }
-        /// <summary>Specifies the number of contactless POS transactions the cardholder can perform before receiving an SCA challenge.A value of `0` in this field means that the number of contactless POS transactions performed by the cardholder does not impact the decision of whether or not an SCA challenge is served.</summary>
+        /// <summary>The sca_contactless_transactions_count_limit property</summary>
         public int? ScaContactlessTransactionsCountLimit { get; set; }
-        /// <summary>Specifies the currency type for contactless POS transactions.This field is required if either the `sca_contactless_transaction_limit` field or the `sca_contactless_cumulative_amount_limit` field in this object contains a value, even if that value is `0`.</summary>
+        /// <summary>The sca_contactless_transactions_currency property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? ScaContactlessTransactionsCurrency { get; set; }
@@ -39,13 +42,13 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string ScaContactlessTransactionsCurrency { get; set; }
 #endif
-        /// <summary>Specifies the cumulative limit of LVP e-commerce transactions the cardholder can perform before receiving an SCA challenge.For example, if you set the value of this field to `100.00`, your cardholder can perform two transactions for `30.00` and two transactions for `20.00` before receiving an SCA challenge.If you leave this field blank, the cumulative amount spent in LVP e-commerce transactions performed by the cardholder does not impact the decision of whether or not an SCA challenge is served.</summary>
+        /// <summary>The sca_lvp_cumulative_amount_limit property</summary>
         public double? ScaLvpCumulativeAmountLimit { get; set; }
-        /// <summary>Specifies the maximum allowable amount for a single low-value payment (LVP) e-commerce transaction, above which the cardholder receives a strong customer authentication (SCA) challenge.If you leave this field blank, the amount of any single LVP e-commerce transaction performed by the cardholder does not impact the decision of whether or not an SCA challenge is served.</summary>
+        /// <summary>The sca_lvp_transaction_limit property</summary>
         public double? ScaLvpTransactionLimit { get; set; }
-        /// <summary>Specifies the number of LVP e-commerce transactions the cardholder can perform before receiving an SCA challenge.If you leave this field blank, the total number of LVP e-commerce transactions performed by the cardholder does not impact the decision of whether or not an SCA challenge is served.</summary>
+        /// <summary>The sca_lvp_transactions_count_limit property</summary>
         public int? ScaLvpTransactionsCountLimit { get; set; }
-        /// <summary>Specifies the currency type for LVP e-commerce transaction limits.This field is required if any one of the `sca_lvp_transaction_limit`, `sca_lvp_cumulative_amount_limit`, or `sca_lvp_transactions_count_limit` fields in this object contains a value, even if that value is `0`.</summary>
+        /// <summary>The sca_lvp_transactions_currency property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? ScaLvpTransactionsCurrency { get; set; }
@@ -53,7 +56,7 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string ScaLvpTransactionsCurrency { get; set; }
 #endif
-        /// <summary>Specifies the maximum allowable amount for a single low-value payment (LVP) e-commerce transaction with transaction risk analysis (TRA) exemption sent by the merchant or acquirer.If the transaction amount exceeds the specified limit, then the transaction is either approved or it receives a strong customer authentication (SCA) challenge based on `sca_lvp_transaction_limit` and `sca_lvp_transactions_currency`.</summary>
+        /// <summary>The sca_tra_exemption_amount_limit property</summary>
         public double? ScaTraExemptionAmountLimit { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Marqeta.Core.Sdk.Models.Strong_customer_authentication_limits"/> and sets the default values.
@@ -81,7 +84,9 @@ namespace Marqeta.Core.Sdk.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "cavv_authentication_amount_incremental_percentage", n => { CavvAuthenticationAmountIncrementalPercentage = n.GetStringValue(); } },
+                { "enable_biometric_bypass_sca_contactless", n => { EnableBiometricBypassScaContactless = n.GetBoolValue(); } },
                 { "enable_cavv_authentication_amount_validation", n => { EnableCavvAuthenticationAmountValidation = n.GetBoolValue(); } },
+                { "enable_issuer_tra_exemption", n => { EnableIssuerTraExemption = n.GetBoolValue(); } },
                 { "sca_contactless_cumulative_amount_limit", n => { ScaContactlessCumulativeAmountLimit = n.GetDoubleValue(); } },
                 { "sca_contactless_transaction_limit", n => { ScaContactlessTransactionLimit = n.GetDoubleValue(); } },
                 { "sca_contactless_transactions_count_limit", n => { ScaContactlessTransactionsCountLimit = n.GetIntValue(); } },
@@ -101,7 +106,9 @@ namespace Marqeta.Core.Sdk.Models
         {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("cavv_authentication_amount_incremental_percentage", CavvAuthenticationAmountIncrementalPercentage);
+            writer.WriteBoolValue("enable_biometric_bypass_sca_contactless", EnableBiometricBypassScaContactless);
             writer.WriteBoolValue("enable_cavv_authentication_amount_validation", EnableCavvAuthenticationAmountValidation);
+            writer.WriteBoolValue("enable_issuer_tra_exemption", EnableIssuerTraExemption);
             writer.WriteDoubleValue("sca_contactless_cumulative_amount_limit", ScaContactlessCumulativeAmountLimit);
             writer.WriteDoubleValue("sca_contactless_transaction_limit", ScaContactlessTransactionLimit);
             writer.WriteIntValue("sca_contactless_transactions_count_limit", ScaContactlessTransactionsCountLimit);

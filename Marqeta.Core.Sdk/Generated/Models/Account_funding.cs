@@ -35,6 +35,54 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string ScreeningScore { get; set; }
 #endif
+        /// <summary>Account number of the sender funding the transaction.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? SenderAccountNumber { get; set; }
+#nullable restore
+#else
+        public string SenderAccountNumber { get; set; }
+#endif
+        /// <summary>Street address of the sender funding the transaction.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? SenderAddress { get; set; }
+#nullable restore
+#else
+        public string SenderAddress { get; set; }
+#endif
+        /// <summary>City of the sender funding the transaction.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? SenderCity { get; set; }
+#nullable restore
+#else
+        public string SenderCity { get; set; }
+#endif
+        /// <summary>Country of the sender funding the transaction.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? SenderCountry { get; set; }
+#nullable restore
+#else
+        public string SenderCountry { get; set; }
+#endif
+        /// <summary>Name of the sender funding the transaction.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? SenderName { get; set; }
+#nullable restore
+#else
+        public string SenderName { get; set; }
+#endif
+        /// <summary>State or province of the sender funding the transaction.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? SenderState { get; set; }
+#nullable restore
+#else
+        public string SenderState { get; set; }
+#endif
         /// <summary>Describes the purpose of the account funding transaction.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -74,6 +122,12 @@ namespace Marqeta.Core.Sdk.Models
                 { "receiver_account_type", n => { ReceiverAccountType = n.GetEnumValue<global::Marqeta.Core.Sdk.Models.Account_funding_receiver_account_type>(); } },
                 { "receiver_name", n => { ReceiverName = n.GetStringValue(); } },
                 { "screening_score", n => { ScreeningScore = n.GetStringValue(); } },
+                { "sender_account_number", n => { SenderAccountNumber = n.GetStringValue(); } },
+                { "sender_address", n => { SenderAddress = n.GetStringValue(); } },
+                { "sender_city", n => { SenderCity = n.GetStringValue(); } },
+                { "sender_country", n => { SenderCountry = n.GetStringValue(); } },
+                { "sender_name", n => { SenderName = n.GetStringValue(); } },
+                { "sender_state", n => { SenderState = n.GetStringValue(); } },
                 { "transaction_purpose", n => { TransactionPurpose = n.GetStringValue(); } },
                 { "transaction_type", n => { TransactionType = n.GetEnumValue<global::Marqeta.Core.Sdk.Models.Account_funding_transaction_type>(); } },
             };
@@ -89,6 +143,12 @@ namespace Marqeta.Core.Sdk.Models
             writer.WriteEnumValue<global::Marqeta.Core.Sdk.Models.Account_funding_receiver_account_type>("receiver_account_type", ReceiverAccountType);
             writer.WriteStringValue("receiver_name", ReceiverName);
             writer.WriteStringValue("screening_score", ScreeningScore);
+            writer.WriteStringValue("sender_account_number", SenderAccountNumber);
+            writer.WriteStringValue("sender_address", SenderAddress);
+            writer.WriteStringValue("sender_city", SenderCity);
+            writer.WriteStringValue("sender_country", SenderCountry);
+            writer.WriteStringValue("sender_name", SenderName);
+            writer.WriteStringValue("sender_state", SenderState);
             writer.WriteStringValue("transaction_purpose", TransactionPurpose);
             writer.WriteEnumValue<global::Marqeta.Core.Sdk.Models.Account_funding_transaction_type>("transaction_type", TransactionType);
             writer.WriteAdditionalData(AdditionalData);

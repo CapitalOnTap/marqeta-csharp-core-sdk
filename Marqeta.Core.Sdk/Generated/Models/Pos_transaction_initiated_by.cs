@@ -3,7 +3,7 @@ using System.Runtime.Serialization;
 using System;
 namespace Marqeta.Core.Sdk.Models
 {
-    /// <summary>Specifies whether the transaction was initiated by a cardholder or a merchant.</summary>
+    /// <summary>Specifies the initiator of the transaction.</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum Pos_transaction_initiated_by
     {

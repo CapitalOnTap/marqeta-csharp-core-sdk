@@ -7,21 +7,20 @@ using System.IO;
 using System;
 namespace Marqeta.Core.Sdk.Models
 {
-    /// <summary>
-    /// Contains information about the user.
-    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
+    #pragma warning disable CS1591
     public partial class UserValidationResponse : IAdditionalDataHolder, IParsable
+    #pragma warning restore CS1591
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Indicates whether the `birth_date` field in the request was validated.</summary>
+        /// <summary>yyyy-MM-dd</summary>
         public bool? BirthDate { get; set; }
-        /// <summary>Indicates whether the `phone` field in the request was validated.</summary>
+        /// <summary>10 char max, phone number</summary>
         public bool? Phone { get; set; }
-        /// <summary>Indicates whether the `random_name_line1_postfix` field in the request was validated.</summary>
+        /// <summary>Six-char random name postfix</summary>
         public bool? RandomNameLine1Postfix { get; set; }
-        /// <summary>Indicates whether the `ssn` field in the request was validated.</summary>
+        /// <summary>Last four digits of SSN</summary>
         public bool? Ssn { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Marqeta.Core.Sdk.Models.UserValidationResponse"/> and sets the default values.

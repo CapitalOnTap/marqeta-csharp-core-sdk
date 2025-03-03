@@ -7,19 +7,18 @@ using System.IO;
 using System;
 namespace Marqeta.Core.Sdk.Models
 {
-    /// <summary>
-    /// Contains configuration fields for the account holder group.
-    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
+    #pragma warning disable CS1591
     public partial class Account_holder_group_config : IAdditionalDataHolder, IParsable
+    #pragma warning restore CS1591
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>If set to `false`, this control prohibits an account holder&apos;s account from being reloaded with funds after the initial load.This restriction applies to GPA orders, peer transfers, and direct deposits, but does not apply to operator adjustments.</summary>
+        /// <summary>The is_reloadable property</summary>
         public bool? IsReloadable { get; set; }
-        /// <summary>If set to `ALWAYS`, new account holders are created in an `UNVERIFIED` status and must pass identity verification (KYC) before they can be active; if set to `CONDITIONAL`, new account holders begin in a `LIMITED` status and have limited actions available before passing identity verification; if set to `NEVER`, new account holders are created in an active state.</summary>
+        /// <summary>The kyc_required property</summary>
         public global::Marqeta.Core.Sdk.Models.Account_holder_group_config_kyc_required? KycRequired { get; set; }
-        /// <summary>Contains configuration fields for a number of controls.*NOTE:* These controls are in effect only if `kyc_required` is `ALWAYS` or `CONDITIONAL` and the account holder has not yet passed KYC.</summary>
+        /// <summary>The pre_kyc_controls property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Marqeta.Core.Sdk.Models.Pre_kyc_controls? PreKycControls { get; set; }
@@ -27,7 +26,7 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public global::Marqeta.Core.Sdk.Models.Pre_kyc_controls PreKycControls { get; set; }
 #endif
-        /// <summary>Associates the specified real-time fee group with the members of the account holder group.</summary>
+        /// <summary>The real_time_fee_group_token property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? RealTimeFeeGroupToken { get; set; }

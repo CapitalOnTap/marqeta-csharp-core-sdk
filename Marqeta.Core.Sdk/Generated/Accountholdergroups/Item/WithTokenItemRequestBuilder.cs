@@ -34,7 +34,7 @@ namespace Marqeta.Core.Sdk.Accountholdergroups.Item
         {
         }
         /// <summary>
-        /// Use this endpoint to retrieve a specific account holder group.
+        /// Returns a specific account holder group object
         /// </summary>
         /// <returns>A <see cref="global::Marqeta.Core.Sdk.Models.Account_holder_group_response"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -57,7 +57,7 @@ namespace Marqeta.Core.Sdk.Accountholdergroups.Item
             return await RequestAdapter.SendAsync<global::Marqeta.Core.Sdk.Models.Account_holder_group_response>(requestInfo, global::Marqeta.Core.Sdk.Models.Account_holder_group_response.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Use this endpoint to update a specific account holder group.Only values of parameters in the request are modified; all others are left unchanged.To update a specific account holder group, send a `PUT` request to the `/accountholdergroups/{token}` endpoint.Use the `token` path parameter to specify the account holder group to update.Include the account holder group details to update in link:http://json.org[JSON, window=&quot;_blank&quot;] format in the body of the request.[NOTE]While you can update account holder groups that you create, the default group is restricted and requires special permissions to update.
+        /// Updates an account holder group object
         /// </summary>
         /// <returns>A <see cref="global::Marqeta.Core.Sdk.Models.Account_holder_group_response"/></returns>
         /// <param name="body">The request body</param>
@@ -82,7 +82,7 @@ namespace Marqeta.Core.Sdk.Accountholdergroups.Item
             return await RequestAdapter.SendAsync<global::Marqeta.Core.Sdk.Models.Account_holder_group_response>(requestInfo, global::Marqeta.Core.Sdk.Models.Account_holder_group_response.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Use this endpoint to retrieve a specific account holder group.
+        /// Returns a specific account holder group object
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -101,7 +101,7 @@ namespace Marqeta.Core.Sdk.Accountholdergroups.Item
             return requestInfo;
         }
         /// <summary>
-        /// Use this endpoint to update a specific account holder group.Only values of parameters in the request are modified; all others are left unchanged.To update a specific account holder group, send a `PUT` request to the `/accountholdergroups/{token}` endpoint.Use the `token` path parameter to specify the account holder group to update.Include the account holder group details to update in link:http://json.org[JSON, window=&quot;_blank&quot;] format in the body of the request.[NOTE]While you can update account holder groups that you create, the default group is restricted and requires special permissions to update.
+        /// Updates an account holder group object
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">The request body</param>

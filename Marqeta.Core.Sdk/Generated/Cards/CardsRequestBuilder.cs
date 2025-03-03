@@ -3,6 +3,7 @@
 using Marqeta.Core.Sdk.Cards.Barcode;
 using Marqeta.Core.Sdk.Cards.Getbypan;
 using Marqeta.Core.Sdk.Cards.Item;
+using Marqeta.Core.Sdk.Cards.Merchant;
 using Marqeta.Core.Sdk.Cards.User;
 using Marqeta.Core.Sdk.Models;
 using Microsoft.Kiota.Abstractions.Extensions;
@@ -31,21 +32,26 @@ namespace Marqeta.Core.Sdk.Cards
         {
             get => new global::Marqeta.Core.Sdk.Cards.Getbypan.GetbypanRequestBuilder(PathParameters, RequestAdapter);
         }
+        /// <summary>The merchant property</summary>
+        public global::Marqeta.Core.Sdk.Cards.Merchant.MerchantRequestBuilder Merchant
+        {
+            get => new global::Marqeta.Core.Sdk.Cards.Merchant.MerchantRequestBuilder(PathParameters, RequestAdapter);
+        }
         /// <summary>The user property</summary>
         public global::Marqeta.Core.Sdk.Cards.User.UserRequestBuilder User
         {
             get => new global::Marqeta.Core.Sdk.Cards.User.UserRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>Gets an item from the Marqeta.Core.Sdk.cards.item collection</summary>
-        /// <param name="position">Unique identifier of the card you want to retrieve.</param>
-        /// <returns>A <see cref="global::Marqeta.Core.Sdk.Cards.Item.WithTokenItemRequestBuilder"/></returns>
-        public global::Marqeta.Core.Sdk.Cards.Item.WithTokenItemRequestBuilder this[string position]
+        /// <param name="position">Card token</param>
+        /// <returns>A <see cref="global::Marqeta.Core.Sdk.Cards.Item.Card_hashItemRequestBuilder"/></returns>
+        public global::Marqeta.Core.Sdk.Cards.Item.Card_hashItemRequestBuilder this[string position]
         {
             get
             {
                 var urlTplParams = new Dictionary<string, object>(PathParameters);
-                urlTplParams.Add("token", position);
-                return new global::Marqeta.Core.Sdk.Cards.Item.WithTokenItemRequestBuilder(urlTplParams, RequestAdapter);
+                urlTplParams.Add("card_hash%2Did", position);
+                return new global::Marqeta.Core.Sdk.Cards.Item.Card_hashItemRequestBuilder(urlTplParams, RequestAdapter);
             }
         }
         /// <summary>
@@ -65,7 +71,7 @@ namespace Marqeta.Core.Sdk.Cards
         {
         }
         /// <summary>
-        /// Retrieves an array of cards whose primary account numbers (PANs) end in the four digits specified by the `last_four` query parameter.This endpoint supports &lt;&lt;/core-api/field-filtering, field filtering&gt;&gt;, &lt;&lt;/core-api/object-expansion, object expansion&gt;&gt;, &lt;&lt;/core-api/sorting-and-pagination, sorting, and pagination&gt;&gt;.
+        /// Lists cards by the last 4 digits
         /// </summary>
         /// <returns>A <see cref="global::Marqeta.Core.Sdk.Models.CardListResponse"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -88,7 +94,7 @@ namespace Marqeta.Core.Sdk.Cards
             return await RequestAdapter.SendAsync<global::Marqeta.Core.Sdk.Models.CardListResponse>(requestInfo, global::Marqeta.Core.Sdk.Models.CardListResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Creates a card.Create the user and card product before you create the card.You create a card using the `user_token` of the user who will own the card and the `card_product_token` of the card product that will control the card.[TIP]By default, newly created cards are inactive and must be explicitly activated (see &lt;&lt;/core-api/cards#_create_card_transition, Create Card Transition&gt;&gt; for information on activating cards).To create cards that are activated upon issue, configure your card product&apos;s `config.card_life_cycle.activate_upon_issue` field (see &lt;&lt;/core-api/card-products, Card Products&gt;&gt;).Send a `POST` request to `/pins/controltoken` to set the card&apos;s personal identification number (PIN) if your program requires PIN numbers (for example, for Europay Mastercard and Visa cards); this action updates the `pin_is_set` field to `true`.See &lt;&lt;/core-api/pins#_create_or_update_pin, Create or Update PIN&gt;&gt; for details.You can use optional query parameters to show the primary account number (PAN) and card verification value (CVV2) number in the response.If `show_pan` and `show_cvv_number` are set to `true`, the fulfillment state of the card is `DIGITALLY_PRESENTED` instead of the typical initial state of `ISSUED`.This fulfillment state does not affect the delivery of physical cards.This endpoint requires PCI DSS compliance if `show_pan` and `show_cvv_number` are set to `true`.You must comply with PCI DSS data security requirements if you store, transmit, or process sensitive card data.
+        /// Creates a card
         /// </summary>
         /// <returns>A <see cref="global::Marqeta.Core.Sdk.Models.Card_response"/></returns>
         /// <param name="body">The request body</param>
@@ -113,7 +119,7 @@ namespace Marqeta.Core.Sdk.Cards
             return await RequestAdapter.SendAsync<global::Marqeta.Core.Sdk.Models.Card_response>(requestInfo, global::Marqeta.Core.Sdk.Models.Card_response.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Retrieves an array of cards whose primary account numbers (PANs) end in the four digits specified by the `last_four` query parameter.This endpoint supports &lt;&lt;/core-api/field-filtering, field filtering&gt;&gt;, &lt;&lt;/core-api/object-expansion, object expansion&gt;&gt;, &lt;&lt;/core-api/sorting-and-pagination, sorting, and pagination&gt;&gt;.
+        /// Lists cards by the last 4 digits
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -132,7 +138,7 @@ namespace Marqeta.Core.Sdk.Cards
             return requestInfo;
         }
         /// <summary>
-        /// Creates a card.Create the user and card product before you create the card.You create a card using the `user_token` of the user who will own the card and the `card_product_token` of the card product that will control the card.[TIP]By default, newly created cards are inactive and must be explicitly activated (see &lt;&lt;/core-api/cards#_create_card_transition, Create Card Transition&gt;&gt; for information on activating cards).To create cards that are activated upon issue, configure your card product&apos;s `config.card_life_cycle.activate_upon_issue` field (see &lt;&lt;/core-api/card-products, Card Products&gt;&gt;).Send a `POST` request to `/pins/controltoken` to set the card&apos;s personal identification number (PIN) if your program requires PIN numbers (for example, for Europay Mastercard and Visa cards); this action updates the `pin_is_set` field to `true`.See &lt;&lt;/core-api/pins#_create_or_update_pin, Create or Update PIN&gt;&gt; for details.You can use optional query parameters to show the primary account number (PAN) and card verification value (CVV2) number in the response.If `show_pan` and `show_cvv_number` are set to `true`, the fulfillment state of the card is `DIGITALLY_PRESENTED` instead of the typical initial state of `ISSUED`.This fulfillment state does not affect the delivery of physical cards.This endpoint requires PCI DSS compliance if `show_pan` and `show_cvv_number` are set to `true`.You must comply with PCI DSS data security requirements if you store, transmit, or process sensitive card data.
+        /// Creates a card
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">The request body</param>
@@ -163,15 +169,15 @@ namespace Marqeta.Core.Sdk.Cards
             return new global::Marqeta.Core.Sdk.Cards.CardsRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
-        /// Retrieves an array of cards whose primary account numbers (PANs) end in the four digits specified by the `last_four` query parameter.This endpoint supports &lt;&lt;/core-api/field-filtering, field filtering&gt;&gt;, &lt;&lt;/core-api/object-expansion, object expansion&gt;&gt;, &lt;&lt;/core-api/sorting-and-pagination, sorting, and pagination&gt;&gt;.
+        /// Lists cards by the last 4 digits
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class CardsRequestBuilderGetQueryParameters 
         {
-            /// <summary>Number of resources to retrieve.</summary>
+            /// <summary>Number of cards to retrieve</summary>
             [QueryParameter("count")]
             public int? Count { get; set; }
-            /// <summary>Comma-delimited list of fields to return (`field_1,field_2`, and so on).Leave blank to return all fields.</summary>
+            /// <summary>Comma-delimited list of fields to return (e.g. field_1,field_2,..). Leave blank to return all fields.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
             [QueryParameter("fields")]
@@ -181,7 +187,7 @@ namespace Marqeta.Core.Sdk.Cards
             [QueryParameter("fields")]
             public string Fields { get; set; }
 #endif
-            /// <summary>Last four digits of the primary account number (PAN) of the card you want to locate.</summary>
+            /// <summary>Last four digits of card number</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
             [QueryParameter("last_four")]
@@ -191,7 +197,7 @@ namespace Marqeta.Core.Sdk.Cards
             [QueryParameter("last_four")]
             public string LastFour { get; set; }
 #endif
-            /// <summary>Use any field in the resource model, or one of the system fields `lastModifiedTime` or `createdTime`.Prefix the field name with a hyphen (`-`) to sort in descending order.Omit the hyphen to sort in ascending order.</summary>
+            /// <summary>Sort order</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
             [QueryParameter("sort_by")]
@@ -201,20 +207,20 @@ namespace Marqeta.Core.Sdk.Cards
             [QueryParameter("sort_by")]
             public string SortBy { get; set; }
 #endif
-            /// <summary>Sort order index of the first resource in the returned array.</summary>
+            /// <summary>Start index</summary>
             [QueryParameter("start_index")]
             public int? StartIndex { get; set; }
         }
         /// <summary>
-        /// Creates a card.Create the user and card product before you create the card.You create a card using the `user_token` of the user who will own the card and the `card_product_token` of the card product that will control the card.[TIP]By default, newly created cards are inactive and must be explicitly activated (see &lt;&lt;/core-api/cards#_create_card_transition, Create Card Transition&gt;&gt; for information on activating cards).To create cards that are activated upon issue, configure your card product&apos;s `config.card_life_cycle.activate_upon_issue` field (see &lt;&lt;/core-api/card-products, Card Products&gt;&gt;).Send a `POST` request to `/pins/controltoken` to set the card&apos;s personal identification number (PIN) if your program requires PIN numbers (for example, for Europay Mastercard and Visa cards); this action updates the `pin_is_set` field to `true`.See &lt;&lt;/core-api/pins#_create_or_update_pin, Create or Update PIN&gt;&gt; for details.You can use optional query parameters to show the primary account number (PAN) and card verification value (CVV2) number in the response.If `show_pan` and `show_cvv_number` are set to `true`, the fulfillment state of the card is `DIGITALLY_PRESENTED` instead of the typical initial state of `ISSUED`.This fulfillment state does not affect the delivery of physical cards.This endpoint requires PCI DSS compliance if `show_pan` and `show_cvv_number` are set to `true`.You must comply with PCI DSS data security requirements if you store, transmit, or process sensitive card data.
+        /// Creates a card
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class CardsRequestBuilderPostQueryParameters 
         {
-            /// <summary>Set to `true` to show the CVV2 number in the response.</summary>
+            /// <summary>Show CVV</summary>
             [QueryParameter("show_cvv_number")]
             public bool? ShowCvvNumber { get; set; }
-            /// <summary>Set to `true` to show the full primary account number (PAN) in the response.</summary>
+            /// <summary>Show PAN</summary>
             [QueryParameter("show_pan")]
             public bool? ShowPan { get; set; }
         }

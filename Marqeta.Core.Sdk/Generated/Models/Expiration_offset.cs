@@ -7,17 +7,16 @@ using System.IO;
 using System;
 namespace Marqeta.Core.Sdk.Models
 {
-    /// <summary>
-    /// Specifies the length of time after the date of issue for which the cards are valid.
-    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
+    #pragma warning disable CS1591
     public partial class Expiration_offset : IAdditionalDataHolder, IParsable
+    #pragma warning restore CS1591
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Specifies the units for the `value` field in this object.</summary>
+        /// <summary>specify if a value is provided; default is card product expiration offset unit</summary>
         public global::Marqeta.Core.Sdk.Models.Expiration_offset_unit? Unit { get; set; }
-        /// <summary>Specifies the number of time units (as defined by the `unit` field in this object) for which the cards are valid.In other words, cards expire `value` x `unit` after the date of issue.This number is rounded as follows:* *YEARS* – Rounds up to the last second of the last day of the month of expiration.For example, if the issue date is 1 Jan 2021 and `value = 1`, the cards expire on the last day of Jan 2022.* *MONTHS* – Rounds up to the last second of the last day of the month of expiration.For example, if the issue date is 1 May 2022 and `value = 1`, the cards expire on the last day of June 2022.* *DAYS* – Rounds up to the last second of the day of expiration.* *HOURS*, *MINUTES*, *SECONDS* – No rounding.</summary>
+        /// <summary>specify if unit is provided; default is card product expiration offset value</summary>
         public int? Value { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Marqeta.Core.Sdk.Models.Expiration_offset"/> and sets the default values.

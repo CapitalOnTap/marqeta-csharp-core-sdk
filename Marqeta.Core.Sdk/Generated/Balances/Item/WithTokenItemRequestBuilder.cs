@@ -34,7 +34,7 @@ namespace Marqeta.Core.Sdk.Balances.Item
         {
         }
         /// <summary>
-        /// Use this endpoint to return general purpose account (GPA) balances for a user or a business.The response object includes a link to balances of related user GPAs.
+        /// Returns account balances for a cardholder
         /// </summary>
         /// <returns>A <see cref="global::Marqeta.Core.Sdk.Models.Cardholder_balances"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -57,7 +57,7 @@ namespace Marqeta.Core.Sdk.Balances.Item
             return await RequestAdapter.SendAsync<global::Marqeta.Core.Sdk.Models.Cardholder_balances>(requestInfo, global::Marqeta.Core.Sdk.Models.Cardholder_balances.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Use this endpoint to return general purpose account (GPA) balances for a user or a business.The response object includes a link to balances of related user GPAs.
+        /// Returns account balances for a cardholder
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>

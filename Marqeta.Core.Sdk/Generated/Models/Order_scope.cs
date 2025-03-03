@@ -18,18 +18,18 @@ namespace Marqeta.Core.Sdk.Models
         /// <summary>Defines the type of order.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Marqeta.Core.Sdk.Models.Gpa? Gpa { get; set; }
+        public global::Marqeta.Core.Sdk.Models.GPA? Gpa { get; set; }
 #nullable restore
 #else
-        public global::Marqeta.Core.Sdk.Models.Gpa Gpa { get; set; }
+        public global::Marqeta.Core.Sdk.Models.GPA Gpa { get; set; }
 #endif
         /// <summary>The msa property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Marqeta.Core.Sdk.Models.Msa? Msa { get; set; }
+        public global::Marqeta.Core.Sdk.Models.MSA? Msa { get; set; }
 #nullable restore
 #else
-        public global::Marqeta.Core.Sdk.Models.Msa Msa { get; set; }
+        public global::Marqeta.Core.Sdk.Models.MSA Msa { get; set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Marqeta.Core.Sdk.Models.Order_scope"/> and sets the default values.
@@ -56,8 +56,8 @@ namespace Marqeta.Core.Sdk.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "gpa", n => { Gpa = n.GetObjectValue<global::Marqeta.Core.Sdk.Models.Gpa>(global::Marqeta.Core.Sdk.Models.Gpa.CreateFromDiscriminatorValue); } },
-                { "msa", n => { Msa = n.GetObjectValue<global::Marqeta.Core.Sdk.Models.Msa>(global::Marqeta.Core.Sdk.Models.Msa.CreateFromDiscriminatorValue); } },
+                { "gpa", n => { Gpa = n.GetObjectValue<global::Marqeta.Core.Sdk.Models.GPA>(global::Marqeta.Core.Sdk.Models.GPA.CreateFromDiscriminatorValue); } },
+                { "msa", n => { Msa = n.GetObjectValue<global::Marqeta.Core.Sdk.Models.MSA>(global::Marqeta.Core.Sdk.Models.MSA.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -67,8 +67,8 @@ namespace Marqeta.Core.Sdk.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Marqeta.Core.Sdk.Models.Gpa>("gpa", Gpa);
-            writer.WriteObjectValue<global::Marqeta.Core.Sdk.Models.Msa>("msa", Msa);
+            writer.WriteObjectValue<global::Marqeta.Core.Sdk.Models.GPA>("gpa", Gpa);
+            writer.WriteObjectValue<global::Marqeta.Core.Sdk.Models.MSA>("msa", Msa);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

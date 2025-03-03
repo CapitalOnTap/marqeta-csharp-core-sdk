@@ -7,15 +7,14 @@ using System.IO;
 using System;
 namespace Marqeta.Core.Sdk.Models
 {
-    /// <summary>
-    /// Address associated with the business.
-    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
+    #pragma warning disable CS1591
     public partial class AddressResponseModel : IAdditionalDataHolder, IParsable
+    #pragma warning restore CS1591
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Street name and number of the address.This field is returned if it exists in the resource.</summary>
+        /// <summary>The address1 property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Address1 { get; set; }
@@ -23,7 +22,7 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string Address1 { get; set; }
 #endif
-        /// <summary>Additional address information.This field is returned if it exists in the resource.</summary>
+        /// <summary>The address2 property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Address2 { get; set; }
@@ -31,7 +30,7 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string Address2 { get; set; }
 #endif
-        /// <summary>City of the address.This field is returned if it exists in the resource.</summary>
+        /// <summary>The city property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? City { get; set; }
@@ -39,7 +38,7 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string City { get; set; }
 #endif
-        /// <summary>Country of the address.This field is returned if it exists in the resource.</summary>
+        /// <summary>The country property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Country { get; set; }
@@ -47,7 +46,7 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string Country { get; set; }
 #endif
-        /// <summary>Postal code of the address.This field is returned if it exists in the resource.</summary>
+        /// <summary>The postal_code property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? PostalCode { get; set; }
@@ -55,7 +54,7 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string PostalCode { get; set; }
 #endif
-        /// <summary>State, province, or territory of the address.This field is returned if it exists in the resource.</summary>
+        /// <summary>The state property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? State { get; set; }
@@ -63,7 +62,7 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string State { get; set; }
 #endif
-        /// <summary>United States ZIP code of the address.This field is returned if it exists in the resource.</summary>
+        /// <summary>The zip property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Zip { get; set; }

@@ -7,15 +7,14 @@ using System.IO;
 using System;
 namespace Marqeta.Core.Sdk.Models
 {
-    /// <summary>
-    /// Contains information about the organizational structure of the business.
-    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
+    #pragma warning disable CS1591
     public partial class Business_incorporation_response : IAdditionalDataHolder, IParsable
+    #pragma warning restore CS1591
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Address associated with the business.</summary>
+        /// <summary>The address_registered_under property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Marqeta.Core.Sdk.Models.AddressResponseModel? AddressRegisteredUnder { get; set; }
@@ -23,11 +22,11 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public global::Marqeta.Core.Sdk.Models.AddressResponseModel AddressRegisteredUnder { get; set; }
 #endif
-        /// <summary>Organizational structure of the business (corporation or sole proprietorship, for example).This field is returned if it exists in the resource.</summary>
+        /// <summary>The incorporation_type property</summary>
         public global::Marqeta.Core.Sdk.Models.Business_incorporation_response_incorporation_type? IncorporationType { get; set; }
-        /// <summary>A value of `true` indicates that the business is publicly held.This field is returned if it exists in the resource.</summary>
+        /// <summary>The is_public property</summary>
         public bool? IsPublic { get; set; }
-        /// <summary>Name under which the business is registered.This field is returned if it exists in the resource.</summary>
+        /// <summary>The name_registered_under property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? NameRegisteredUnder { get; set; }
@@ -35,7 +34,7 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string NameRegisteredUnder { get; set; }
 #endif
-        /// <summary>State where the business is incorporated.This field is returned if it exists in the resource.</summary>
+        /// <summary>The state_of_incorporation property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? StateOfIncorporation { get; set; }
@@ -43,7 +42,7 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string StateOfIncorporation { get; set; }
 #endif
-        /// <summary>Stock symbol associated with the business.This field is returned if it exists in the resource.</summary>
+        /// <summary>The stock_symbol property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? StockSymbol { get; set; }

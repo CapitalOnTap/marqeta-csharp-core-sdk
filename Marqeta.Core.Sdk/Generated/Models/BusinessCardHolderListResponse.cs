@@ -14,21 +14,21 @@ namespace Marqeta.Core.Sdk.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Number of resources to retrieve.This field is returned if there are resources in your returned array.</summary>
+        /// <summary>The count property</summary>
         public int? Count { get; set; }
-        /// <summary>Array of business objects.Objects are returned as appropriate to your query.</summary>
+        /// <summary>The data property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Marqeta.Core.Sdk.Models.Business_cardholder>? Data { get; set; }
+        public List<global::Marqeta.Core.Sdk.Models.Business_card_holder_response>? Data { get; set; }
 #nullable restore
 #else
-        public List<global::Marqeta.Core.Sdk.Models.Business_cardholder> Data { get; set; }
+        public List<global::Marqeta.Core.Sdk.Models.Business_card_holder_response> Data { get; set; }
 #endif
-        /// <summary>Sort order index of the last resource in the returned array.This field is returned if there are resources in your returned array.</summary>
+        /// <summary>The end_index property</summary>
         public int? EndIndex { get; set; }
-        /// <summary>A value of `true` indicates that more unreturned resources exist.A value of `false` indicates that no more unreturned resources exist.This field is returned if there are resources in your returned array.</summary>
+        /// <summary>The is_more property</summary>
         public bool? IsMore { get; set; }
-        /// <summary>Sort order index of the first resource in the returned array.This field is returned if there are resources in your returned array.</summary>
+        /// <summary>The start_index property</summary>
         public int? StartIndex { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Marqeta.Core.Sdk.Models.BusinessCardHolderListResponse"/> and sets the default values.
@@ -56,7 +56,7 @@ namespace Marqeta.Core.Sdk.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "count", n => { Count = n.GetIntValue(); } },
-                { "data", n => { Data = n.GetCollectionOfObjectValues<global::Marqeta.Core.Sdk.Models.Business_cardholder>(global::Marqeta.Core.Sdk.Models.Business_cardholder.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "data", n => { Data = n.GetCollectionOfObjectValues<global::Marqeta.Core.Sdk.Models.Business_card_holder_response>(global::Marqeta.Core.Sdk.Models.Business_card_holder_response.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "end_index", n => { EndIndex = n.GetIntValue(); } },
                 { "is_more", n => { IsMore = n.GetBoolValue(); } },
                 { "start_index", n => { StartIndex = n.GetIntValue(); } },
@@ -70,7 +70,7 @@ namespace Marqeta.Core.Sdk.Models
         {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
             writer.WriteIntValue("count", Count);
-            writer.WriteCollectionOfObjectValues<global::Marqeta.Core.Sdk.Models.Business_cardholder>("data", Data);
+            writer.WriteCollectionOfObjectValues<global::Marqeta.Core.Sdk.Models.Business_card_holder_response>("data", Data);
             writer.WriteIntValue("end_index", EndIndex);
             writer.WriteBoolValue("is_more", IsMore);
             writer.WriteIntValue("start_index", StartIndex);

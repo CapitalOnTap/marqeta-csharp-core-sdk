@@ -3,9 +3,10 @@ using System.Runtime.Serialization;
 using System;
 namespace Marqeta.Core.Sdk.Models
 {
-    /// <summary>Organizational structure of the business (corporation or sole proprietorship, for example).This field is returned if it exists in the resource.</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
+    #pragma warning disable CS1591
     public enum Business_incorporation_response_incorporation_type
+    #pragma warning restore CS1591
     {
         [EnumMember(Value = "LLC")]
         #pragma warning disable CS1591

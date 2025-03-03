@@ -34,7 +34,7 @@ namespace Marqeta.Core.Sdk.Autoreloads.Item
         {
         }
         /// <summary>
-        /// Use this endpoint to retrieve a specific auto reload object.
+        /// Returns a specific auto reload object
         /// </summary>
         /// <returns>A <see cref="global::Marqeta.Core.Sdk.Models.Auto_reload_response_model"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -57,7 +57,7 @@ namespace Marqeta.Core.Sdk.Autoreloads.Item
             return await RequestAdapter.SendAsync<global::Marqeta.Core.Sdk.Models.Auto_reload_response_model>(requestInfo, global::Marqeta.Core.Sdk.Models.Auto_reload_response_model.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Use this endpoint to update an auto reload.Only values of parameters in the request are modified; all others are left unchanged.
+        /// Updates a specific auto reload object
         /// </summary>
         /// <returns>A <see cref="global::Marqeta.Core.Sdk.Models.Auto_reload_response_model"/></returns>
         /// <param name="body">The request body</param>
@@ -82,7 +82,7 @@ namespace Marqeta.Core.Sdk.Autoreloads.Item
             return await RequestAdapter.SendAsync<global::Marqeta.Core.Sdk.Models.Auto_reload_response_model>(requestInfo, global::Marqeta.Core.Sdk.Models.Auto_reload_response_model.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Use this endpoint to retrieve a specific auto reload object.
+        /// Returns a specific auto reload object
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -101,7 +101,7 @@ namespace Marqeta.Core.Sdk.Autoreloads.Item
             return requestInfo;
         }
         /// <summary>
-        /// Use this endpoint to update an auto reload.Only values of parameters in the request are modified; all others are left unchanged.
+        /// Updates a specific auto reload object
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">The request body</param>
@@ -132,12 +132,12 @@ namespace Marqeta.Core.Sdk.Autoreloads.Item
             return new global::Marqeta.Core.Sdk.Autoreloads.Item.WithTokenItemRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
-        /// Use this endpoint to retrieve a specific auto reload object.
+        /// Returns a specific auto reload object
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class WithTokenItemRequestBuilderGetQueryParameters 
         {
-            /// <summary>Comma-delimited list of fields to return (`field_1,field_2`, and so on).Leave blank to return all fields.</summary>
+            /// <summary>Comma-delimited list of fields to return (e.g. field_1,field_2,..). Leave blank to return all fields.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
             [QueryParameter("fields")]
