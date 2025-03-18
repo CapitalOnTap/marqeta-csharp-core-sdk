@@ -19,7 +19,7 @@ namespace Marqeta.Core.Sdk.Cardproducts
     public partial class CardproductsRequestBuilder : BaseRequestBuilder
     {
         /// <summary>Gets an item from the Marqeta.Core.Sdk.cardproducts.item collection</summary>
-        /// <param name="position">Unique identifier of the card product to retrieve.</param>
+        /// <param name="position">Card product token</param>
         /// <returns>A <see cref="global::Marqeta.Core.Sdk.Cardproducts.Item.WithTokenItemRequestBuilder"/></returns>
         public global::Marqeta.Core.Sdk.Cardproducts.Item.WithTokenItemRequestBuilder this[string position]
         {
@@ -47,7 +47,7 @@ namespace Marqeta.Core.Sdk.Cardproducts
         {
         }
         /// <summary>
-        /// Use this endpoint to list existing card products.This endpoint supports &lt;&lt;/core-api/sorting-and-pagination, pagination&gt;&gt;.
+        /// Lists all card products
         /// </summary>
         /// <returns>A <see cref="global::Marqeta.Core.Sdk.Models.CardProductListResponse"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -70,7 +70,7 @@ namespace Marqeta.Core.Sdk.Cardproducts
             return await RequestAdapter.SendAsync<global::Marqeta.Core.Sdk.Models.CardProductListResponse>(requestInfo, global::Marqeta.Core.Sdk.Models.CardProductListResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Use this endpoint to create a card product.The card product request contains a set of fields that provide basic information about the card product, such as name, active status, and start and end dates.Configuration information is contained in the `config` object, which contains sub-elements whose fields control the features and behavior of the card product.The elements are referred to collectively as the card product &quot;configuration,&quot; and as such are contained in a `config` object.
+        /// Creates a card product
         /// </summary>
         /// <returns>A <see cref="global::Marqeta.Core.Sdk.Models.Card_product_response"/></returns>
         /// <param name="body">The request body</param>
@@ -95,7 +95,7 @@ namespace Marqeta.Core.Sdk.Cardproducts
             return await RequestAdapter.SendAsync<global::Marqeta.Core.Sdk.Models.Card_product_response>(requestInfo, global::Marqeta.Core.Sdk.Models.Card_product_response.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Use this endpoint to list existing card products.This endpoint supports &lt;&lt;/core-api/sorting-and-pagination, pagination&gt;&gt;.
+        /// Lists all card products
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -114,7 +114,7 @@ namespace Marqeta.Core.Sdk.Cardproducts
             return requestInfo;
         }
         /// <summary>
-        /// Use this endpoint to create a card product.The card product request contains a set of fields that provide basic information about the card product, such as name, active status, and start and end dates.Configuration information is contained in the `config` object, which contains sub-elements whose fields control the features and behavior of the card product.The elements are referred to collectively as the card product &quot;configuration,&quot; and as such are contained in a `config` object.
+        /// Creates a card product
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">The request body</param>
@@ -145,15 +145,15 @@ namespace Marqeta.Core.Sdk.Cardproducts
             return new global::Marqeta.Core.Sdk.Cardproducts.CardproductsRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
-        /// Use this endpoint to list existing card products.This endpoint supports &lt;&lt;/core-api/sorting-and-pagination, pagination&gt;&gt;.
+        /// Lists all card products
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class CardproductsRequestBuilderGetQueryParameters 
         {
-            /// <summary>Number of resources to retrieve.Count can be between 1 - 10 items.</summary>
+            /// <summary>Number of items to retrieve. Count can be between 1 - 10 items.</summary>
             [QueryParameter("count")]
             public int? Count { get; set; }
-            /// <summary>Field on which to sort.Use any field in the resource model, or one of the system fields `lastModifiedTime` or `createdTime`.Prefix the field name with a hyphen (`-`) to sort in descending order.Omit the hyphen to sort in ascending order.</summary>
+            /// <summary>Sort order</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
             [QueryParameter("sort_by")]
@@ -163,7 +163,7 @@ namespace Marqeta.Core.Sdk.Cardproducts
             [QueryParameter("sort_by")]
             public string SortBy { get; set; }
 #endif
-            /// <summary>The sort order index of the first resource in the returned array.</summary>
+            /// <summary>Indicates from what row to start returning data.</summary>
             [QueryParameter("start_index")]
             public int? StartIndex { get; set; }
         }

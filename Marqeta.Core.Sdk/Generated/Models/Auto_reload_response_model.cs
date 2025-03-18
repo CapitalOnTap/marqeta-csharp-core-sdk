@@ -12,7 +12,7 @@ namespace Marqeta.Core.Sdk.Models
     public partial class Auto_reload_response_model : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
     {
-        /// <summary>Specifies whether the auto reload is active.This field is returned if it exists in the resource.</summary>
+        /// <summary>The active property</summary>
         public bool? Active { get; set; }
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
@@ -24,9 +24,9 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public global::Marqeta.Core.Sdk.Models.Auto_reload_association Association { get; set; }
 #endif
-        /// <summary>Date and time when the auto reload object was created, in UTC.</summary>
+        /// <summary>yyyy-MM-ddTHH:mm:ssZ</summary>
         public DateTimeOffset? CreatedTime { get; set; }
-        /// <summary>Three-digit link:https://www.iso.org/iso-4217-currency-codes.html[ISO 4217 currency code, window=&quot;_blank&quot;].</summary>
+        /// <summary>The currency_code property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? CurrencyCode { get; set; }
@@ -34,7 +34,7 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string CurrencyCode { get; set; }
 #endif
-        /// <summary>Unique identifier of the funding source address to use for this auto reload.This field is returned if it exists in the resource.</summary>
+        /// <summary>The funding_source_address_token property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? FundingSourceAddressToken { get; set; }
@@ -42,7 +42,7 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string FundingSourceAddressToken { get; set; }
 #endif
-        /// <summary>Unique identifier of the funding source to use for this auto reload.This field is returned if it exists in the resource.</summary>
+        /// <summary>Required when order scope is GPA</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? FundingSourceToken { get; set; }
@@ -50,17 +50,17 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string FundingSourceToken { get; set; }
 #endif
-        /// <summary>Date and time when the auto reload object was last modified, in UTC.</summary>
+        /// <summary>yyyy-MM-ddTHH:mm:ssZ</summary>
         public DateTimeOffset? LastModifiedTime { get; set; }
-        /// <summary>Defines the balance threshold and reload amounts.</summary>
+        /// <summary>The order_scope property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Marqeta.Core.Sdk.Models.Order_scope? OrderScope { get; set; }
+        public global::Marqeta.Core.Sdk.Models.OrderScope? OrderScope { get; set; }
 #nullable restore
 #else
-        public global::Marqeta.Core.Sdk.Models.Order_scope OrderScope { get; set; }
+        public global::Marqeta.Core.Sdk.Models.OrderScope OrderScope { get; set; }
 #endif
-        /// <summary>Unique identifier of the auto reload.This field is always returned.</summary>
+        /// <summary>The token property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Token { get; set; }
@@ -100,7 +100,7 @@ namespace Marqeta.Core.Sdk.Models
                 { "funding_source_address_token", n => { FundingSourceAddressToken = n.GetStringValue(); } },
                 { "funding_source_token", n => { FundingSourceToken = n.GetStringValue(); } },
                 { "last_modified_time", n => { LastModifiedTime = n.GetDateTimeOffsetValue(); } },
-                { "order_scope", n => { OrderScope = n.GetObjectValue<global::Marqeta.Core.Sdk.Models.Order_scope>(global::Marqeta.Core.Sdk.Models.Order_scope.CreateFromDiscriminatorValue); } },
+                { "order_scope", n => { OrderScope = n.GetObjectValue<global::Marqeta.Core.Sdk.Models.OrderScope>(global::Marqeta.Core.Sdk.Models.OrderScope.CreateFromDiscriminatorValue); } },
                 { "token", n => { Token = n.GetStringValue(); } },
             };
         }
@@ -118,7 +118,7 @@ namespace Marqeta.Core.Sdk.Models
             writer.WriteStringValue("funding_source_address_token", FundingSourceAddressToken);
             writer.WriteStringValue("funding_source_token", FundingSourceToken);
             writer.WriteDateTimeOffsetValue("last_modified_time", LastModifiedTime);
-            writer.WriteObjectValue<global::Marqeta.Core.Sdk.Models.Order_scope>("order_scope", OrderScope);
+            writer.WriteObjectValue<global::Marqeta.Core.Sdk.Models.OrderScope>("order_scope", OrderScope);
             writer.WriteStringValue("token", Token);
             writer.WriteAdditionalData(AdditionalData);
         }

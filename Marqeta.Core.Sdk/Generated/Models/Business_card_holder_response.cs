@@ -12,7 +12,7 @@ namespace Marqeta.Core.Sdk.Models
     public partial class Business_card_holder_response : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
     {
-        /// <summary>Associates the specified account holder group with the business.This field is returned if it exists in the resource.</summary>
+        /// <summary>The account_holder_group_token property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? AccountHolderGroupToken { get; set; }
@@ -20,15 +20,15 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string AccountHolderGroupToken { get; set; }
 #endif
-        /// <summary>Specifies if the business is in the `ACTIVE` state on the Marqeta platform.This field is returned if it exists in the resource.</summary>
+        /// <summary>default = true</summary>
         public bool? Active { get; set; }
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Indicates that the attester agrees that the information provided is correct and truthful.This field is returned if it exists in the resource.</summary>
+        /// <summary>The attestation_consent property</summary>
         public bool? AttestationConsent { get; set; }
-        /// <summary>Timestamp of the attestation.This field is returned if it exists in the resource.</summary>
+        /// <summary>The attestation_date property</summary>
         public DateTimeOffset? AttestationDate { get; set; }
-        /// <summary>Name of the attester for KYC verification.This field is returned if it exists in the resource.</summary>
+        /// <summary>The attester_name property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? AttesterName { get; set; }
@@ -36,7 +36,7 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string AttesterName { get; set; }
 #endif
-        /// <summary>Title of the attester for KYC verification.This field is returned if it exists in the resource.</summary>
+        /// <summary>The attester_title property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? AttesterTitle { get; set; }
@@ -52,7 +52,7 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public global::Marqeta.Core.Sdk.Models.Authentication Authentication { get; set; }
 #endif
-        /// <summary>Contains information about the beneficial owner of the business, if applicable.</summary>
+        /// <summary>The beneficial_owner1 property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Marqeta.Core.Sdk.Models.Beneficial_owner_response? BeneficialOwner1 { get; set; }
@@ -60,7 +60,7 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public global::Marqeta.Core.Sdk.Models.Beneficial_owner_response BeneficialOwner1 { get; set; }
 #endif
-        /// <summary>Contains information about the beneficial owner of the business, if applicable.</summary>
+        /// <summary>The beneficial_owner2 property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Marqeta.Core.Sdk.Models.Beneficial_owner_response? BeneficialOwner2 { get; set; }
@@ -68,7 +68,7 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public global::Marqeta.Core.Sdk.Models.Beneficial_owner_response BeneficialOwner2 { get; set; }
 #endif
-        /// <summary>Contains information about the beneficial owner of the business, if applicable.</summary>
+        /// <summary>The beneficial_owner3 property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Marqeta.Core.Sdk.Models.Beneficial_owner_response? BeneficialOwner3 { get; set; }
@@ -76,7 +76,7 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public global::Marqeta.Core.Sdk.Models.Beneficial_owner_response BeneficialOwner3 { get; set; }
 #endif
-        /// <summary>Contains information about the beneficial owner of the business, if applicable.</summary>
+        /// <summary>The beneficial_owner4 property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Marqeta.Core.Sdk.Models.Beneficial_owner_response? BeneficialOwner4 { get; set; }
@@ -84,7 +84,7 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public global::Marqeta.Core.Sdk.Models.Beneficial_owner_response BeneficialOwner4 { get; set; }
 #endif
-        /// <summary>Fictitious business name (&quot;Doing Business As&quot; or DBA).This field is returned if it exists in the resource.</summary>
+        /// <summary>The business_name_dba property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? BusinessNameDba { get; set; }
@@ -92,7 +92,7 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string BusinessNameDba { get; set; }
 #endif
-        /// <summary>Legal name of the business.This field is returned if it exists in the resource.</summary>
+        /// <summary>The business_name_legal property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? BusinessNameLegal { get; set; }
@@ -100,7 +100,7 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string BusinessNameLegal { get; set; }
 #endif
-        /// <summary>Indicates the type of business, for example B2B (business-to-business) or B2C (business-to-consumer).This field is returned if it exists in the resource.</summary>
+        /// <summary>The business_type property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? BusinessType { get; set; }
@@ -108,11 +108,11 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string BusinessType { get; set; }
 #endif
-        /// <summary>Date and time when the business was created, in UTC.</summary>
+        /// <summary>yyyy-MM-ddTHH:mm:ssZ</summary>
         public DateTimeOffset? CreatedTime { get; set; }
-        /// <summary>Date and time when the business was established.This field is returned if it exists in the resource.</summary>
+        /// <summary>The date_established property</summary>
         public DateTimeOffset? DateEstablished { get; set; }
-        /// <summary>Data Universal Numbering System (DUNS) number of the business.This field is returned if it exists in the resource.</summary>
+        /// <summary>The duns_number property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? DunsNumber { get; set; }
@@ -120,7 +120,7 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string DunsNumber { get; set; }
 #endif
-        /// <summary>General description of the business.This field is returned if it exists in the resource.</summary>
+        /// <summary>The general_business_description property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? GeneralBusinessDescription { get; set; }
@@ -128,7 +128,7 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string GeneralBusinessDescription { get; set; }
 #endif
-        /// <summary>History of the business.This field is returned if it exists in the resource.</summary>
+        /// <summary>The history property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? History { get; set; }
@@ -136,7 +136,7 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string History { get; set; }
 #endif
-        /// <summary>One or more objects containing identifications associated with the business.Objects are returned if they exist in the resource.</summary>
+        /// <summary>The identifications property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<global::Marqeta.Core.Sdk.Models.IdentificationResponseModel>? Identifications { get; set; }
@@ -144,7 +144,7 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public List<global::Marqeta.Core.Sdk.Models.IdentificationResponseModel> Identifications { get; set; }
 #endif
-        /// <summary>Contains information about the organizational structure of the business.</summary>
+        /// <summary>The incorporation property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Marqeta.Core.Sdk.Models.Business_incorporation_response? Incorporation { get; set; }
@@ -152,9 +152,9 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public global::Marqeta.Core.Sdk.Models.Business_incorporation_response Incorporation { get; set; }
 #endif
-        /// <summary>Date on which the business office opened in its current location.This field is returned if it exists in the resource.</summary>
+        /// <summary>The in_current_location_since property</summary>
         public DateTimeOffset? InCurrentLocationSince { get; set; }
-        /// <summary>Locations of the business&apos; offices outside the US.This field is returned if it exists in the resource.</summary>
+        /// <summary>The international_office_locations property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? InternationalOfficeLocations { get; set; }
@@ -162,7 +162,7 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string InternationalOfficeLocations { get; set; }
 #endif
-        /// <summary>IP address of the business.This field is returned if it exists in the resource.</summary>
+        /// <summary>The ip_address property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? IpAddress { get; set; }
@@ -170,9 +170,9 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string IpAddress { get; set; }
 #endif
-        /// <summary>Date and time when the business was last modified, in UTC.</summary>
+        /// <summary>yyyy-MM-ddTHH:mm:ssZ</summary>
         public DateTimeOffset? LastModifiedTime { get; set; }
-        /// <summary>Associates any additional metadata you provide with the business.Metadata is returned if it exists in the resource.</summary>
+        /// <summary>The metadata property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Marqeta.Core.Sdk.Models.Business_card_holder_response_metadata? Metadata { get; set; }
@@ -180,7 +180,7 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public global::Marqeta.Core.Sdk.Models.Business_card_holder_response_metadata Metadata { get; set; }
 #endif
-        /// <summary>Any additional information pertaining to the business.This field is returned if it exists in the resource.</summary>
+        /// <summary>The notes property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Notes { get; set; }
@@ -188,7 +188,7 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string Notes { get; set; }
 #endif
-        /// <summary>Address associated with the business.</summary>
+        /// <summary>The office_location property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Marqeta.Core.Sdk.Models.AddressResponseModel? OfficeLocation { get; set; }
@@ -196,7 +196,7 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public global::Marqeta.Core.Sdk.Models.AddressResponseModel OfficeLocation { get; set; }
 #endif
-        /// <summary>Password for the business account on the Marqeta platform.This field is returned if it exists in the resource.</summary>
+        /// <summary>Strong password required</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Password { get; set; }
@@ -204,7 +204,7 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string Password { get; set; }
 #endif
-        /// <summary>10-digit telephone number of the business.This field is returned if it exists in the resource.</summary>
+        /// <summary>The phone property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Phone { get; set; }
@@ -212,7 +212,7 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string Phone { get; set; }
 #endif
-        /// <summary>Describes the business&apos; primary contact person.</summary>
+        /// <summary>The primary_contact property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Marqeta.Core.Sdk.Models.PrimaryContactInfoModel? PrimaryContact { get; set; }
@@ -220,9 +220,9 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public global::Marqeta.Core.Sdk.Models.PrimaryContactInfoModel PrimaryContact { get; set; }
 #endif
-        /// <summary>Indicates that the proprietor or officer of the business is also a beneficial owner.This field is returned if it exists in the resource.</summary>
+        /// <summary>The proprietor_is_beneficial_owner property</summary>
         public bool? ProprietorIsBeneficialOwner { get; set; }
-        /// <summary>Contains information about the proprietor or officer of the business.</summary>
+        /// <summary>The proprietor_or_officer property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Marqeta.Core.Sdk.Models.Business_proprietor_response? ProprietorOrOfficer { get; set; }
@@ -230,9 +230,9 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public global::Marqeta.Core.Sdk.Models.Business_proprietor_response ProprietorOrOfficer { get; set; }
 #endif
-        /// <summary>Specifies the state of the business on the Marqeta platform.This field is returned if it exists in the resource.</summary>
+        /// <summary>The status property</summary>
         public global::Marqeta.Core.Sdk.Models.Business_card_holder_response_status? Status { get; set; }
-        /// <summary>Taxpayer identifier of the business.This field is returned if it exists in the resource.</summary>
+        /// <summary>The taxpayer_id property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? TaxpayerId { get; set; }
@@ -240,7 +240,7 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string TaxpayerId { get; set; }
 #endif
-        /// <summary>Unique identifier of the business resource.This field is always returned.</summary>
+        /// <summary>The token property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Token { get; set; }
@@ -248,7 +248,7 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string Token { get; set; }
 #endif
-        /// <summary>URL of the business&apos; website.This field is returned if it exists in the resource.</summary>
+        /// <summary>The website property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Website { get; set; }

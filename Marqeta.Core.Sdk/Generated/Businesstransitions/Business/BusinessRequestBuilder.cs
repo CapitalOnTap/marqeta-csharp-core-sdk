@@ -16,7 +16,7 @@ namespace Marqeta.Core.Sdk.Businesstransitions.Business
     public partial class BusinessRequestBuilder : BaseRequestBuilder
     {
         /// <summary>Gets an item from the Marqeta.Core.Sdk.businesstransitions.business.item collection</summary>
-        /// <param name="position">Unique identifier of the business resource associated with the transitions to retrieve.</param>
+        /// <param name="position">Business token</param>
         /// <returns>A <see cref="global::Marqeta.Core.Sdk.Businesstransitions.Business.Item.WithBusiness_tokenItemRequestBuilder"/></returns>
         public global::Marqeta.Core.Sdk.Businesstransitions.Business.Item.WithBusiness_tokenItemRequestBuilder this[string position]
         {

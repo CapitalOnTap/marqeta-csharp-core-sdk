@@ -7,15 +7,14 @@ using System.IO;
 using System;
 namespace Marqeta.Core.Sdk.Models
 {
-    /// <summary>
-    /// Contains information about the beneficial owner of the business, if applicable.
-    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
+    #pragma warning disable CS1591
     public partial class Beneficial_owner_response : IAdditionalDataHolder, IParsable
+    #pragma warning restore CS1591
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>First name of the beneficial owner.This field is returned if it exists in the resource.</summary>
+        /// <summary>The first_name property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? FirstName { get; set; }
@@ -23,9 +22,9 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string FirstName { get; set; }
 #endif
-        /// <summary>Date of birth of the beneficial owner.This field is returned if it exists in the resource.</summary>
+        /// <summary>The getdob property</summary>
         public DateTimeOffset? Getdob { get; set; }
-        /// <summary>Address associated with the business.</summary>
+        /// <summary>The home property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Marqeta.Core.Sdk.Models.AddressResponseModel? Home { get; set; }
@@ -33,7 +32,7 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public global::Marqeta.Core.Sdk.Models.AddressResponseModel Home { get; set; }
 #endif
-        /// <summary>Last name of the beneficial owner.This field is returned if it exists in the resource.</summary>
+        /// <summary>The last_name property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? LastName { get; set; }
@@ -41,7 +40,7 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string LastName { get; set; }
 #endif
-        /// <summary>Middle name of the beneficial owner.This field is returned if it exists in the resource.</summary>
+        /// <summary>The middle_name property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? MiddleName { get; set; }
@@ -49,7 +48,7 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string MiddleName { get; set; }
 #endif
-        /// <summary>Ten-digit phone number of the beneficial owner.This field is returned if it exists in the resource.</summary>
+        /// <summary>The phone property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Phone { get; set; }
@@ -57,7 +56,7 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string Phone { get; set; }
 #endif
-        /// <summary>Title of the beneficial owner.This field is returned if it exists in the resource.</summary>
+        /// <summary>The title property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Title { get; set; }

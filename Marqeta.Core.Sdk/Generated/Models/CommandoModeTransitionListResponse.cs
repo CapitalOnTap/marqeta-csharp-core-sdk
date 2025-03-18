@@ -14,9 +14,9 @@ namespace Marqeta.Core.Sdk.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Number of Commando Mode control set transition objects to retrieve.</summary>
+        /// <summary>The count property</summary>
         public int? Count { get; set; }
-        /// <summary>Array of Commando Mode control set transition objects.</summary>
+        /// <summary>The data property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<global::Marqeta.Core.Sdk.Models.Commando_mode_transition_response>? Data { get; set; }
@@ -24,11 +24,11 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public List<global::Marqeta.Core.Sdk.Models.Commando_mode_transition_response> Data { get; set; }
 #endif
-        /// <summary>Sort order index of the last resource in the returned array.</summary>
+        /// <summary>The end_index property</summary>
         public int? EndIndex { get; set; }
-        /// <summary>Value of `true` indicates that more unreturned resources exist.</summary>
+        /// <summary>The is_more property</summary>
         public bool? IsMore { get; set; }
-        /// <summary>Sort order index of the first resource in the returned array.</summary>
+        /// <summary>The start_index property</summary>
         public int? StartIndex { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Marqeta.Core.Sdk.Models.CommandoModeTransitionListResponse"/> and sets the default values.

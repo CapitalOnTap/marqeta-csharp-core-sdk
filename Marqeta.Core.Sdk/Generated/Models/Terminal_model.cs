@@ -57,7 +57,7 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string Tid { get; set; }
 #endif
-        /// <summary>Specifies whether the transaction was initiated by a cardholder or a merchant.</summary>
+        /// <summary>Specifies the initiator of the transaction.</summary>
         public global::Marqeta.Core.Sdk.Models.Terminal_model_transaction_initiated_by? TransactionInitiatedBy { get; set; }
         /// <summary>Specifies the category of a point-of-sale transaction.</summary>
         public global::Marqeta.Core.Sdk.Models.Terminal_model_transaction_initiated_category? TransactionInitiatedCategory { get; set; }

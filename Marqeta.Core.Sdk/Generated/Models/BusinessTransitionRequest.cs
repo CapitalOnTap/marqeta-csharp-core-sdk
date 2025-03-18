@@ -14,7 +14,7 @@ namespace Marqeta.Core.Sdk.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Unique identifier of the business whose status you want to transition.</summary>
+        /// <summary>The business_token property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? BusinessToken { get; set; }
@@ -22,9 +22,9 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string BusinessToken { get; set; }
 #endif
-        /// <summary>Mechanism by which the transaction was initiated.</summary>
+        /// <summary>The channel property</summary>
         public global::Marqeta.Core.Sdk.Models.BusinessTransitionRequest_channel? Channel { get; set; }
-        /// <summary>Unique hashed value that identifies subsequent submissions of the business transition request.</summary>
+        /// <summary>The idempotentHash property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? IdempotentHash { get; set; }
@@ -32,7 +32,7 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string IdempotentHash { get; set; }
 #endif
-        /// <summary>Additional information about the status change.</summary>
+        /// <summary>The reason property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Reason { get; set; }
@@ -40,11 +40,11 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string Reason { get; set; }
 #endif
-        /// <summary>Identifies the standardized reason for the transition:*00:* Object activated for the first time.*01:* Requested by you.*02:* Inactivity over time.*03:* This address cannot accept mail or the addressee is unknown.*04:* Negative account balance.*05:* Account under review.*06:* Suspicious activity was identified.*07:* Activity outside the program parameters was identified.*08:* Confirmed fraud was identified.*09:* Matched with an Office of Foreign Assets Control list.*10:* Card was reported lost.*11:* Card information was cloned.*12:* Account or card information was compromised.*13:* Temporary status change while on hold/leave.*14:* Initiated by Marqeta.*15:* Initiated by issuer.*16:* Card expired.*17:* Failed KYC.*18:* Changed to `ACTIVE` because information was properly validated.*19:* Changed to `ACTIVE` because account activity was properly validated.*20:* Change occurred prior to the normalization of reason codes.*21:* Initiated by a third party, often a digital wallet provider.*22:* PIN retry limit reached.*23:* Card was reported stolen.*24:* Address issue.*25:* Name issue.*26:* SSN issue.*27:* DOB issue.*28:* Email issue.*29:* Phone issue.*30:* Account/fulfillment mismatch.*31:* Other reason.</summary>
+        /// <summary>The reason_code property</summary>
         public global::Marqeta.Core.Sdk.Models.BusinessTransitionRequest_reason_code? ReasonCode { get; set; }
-        /// <summary>Specifies the new status of the business.</summary>
+        /// <summary>The status property</summary>
         public global::Marqeta.Core.Sdk.Models.BusinessTransitionRequest_status? Status { get; set; }
-        /// <summary>Unique identifier of the business transition.If you do not include a token, the system generates one automatically.This token is referenced in other API calls, so we recommend that you define a simple string that is easy to remember.This value cannot be updated.</summary>
+        /// <summary>The token property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Token { get; set; }

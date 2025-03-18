@@ -7,15 +7,14 @@ using System.IO;
 using System;
 namespace Marqeta.Core.Sdk.Models
 {
-    /// <summary>
-    /// Specifies a fulfillment shipping or return address.
-    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
+    #pragma warning disable CS1591
     public partial class Fulfillment_address_request : IAdditionalDataHolder, IParsable
+    #pragma warning restore CS1591
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Number and street of the address.</summary>
+        /// <summary>The address1 property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Address1 { get; set; }
@@ -23,7 +22,7 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string Address1 { get; set; }
 #endif
-        /// <summary>Additional address information.</summary>
+        /// <summary>The address2 property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Address2 { get; set; }
@@ -31,7 +30,7 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string Address2 { get; set; }
 #endif
-        /// <summary>City of the address.</summary>
+        /// <summary>The city property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? City { get; set; }
@@ -39,7 +38,7 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string City { get; set; }
 #endif
-        /// <summary>Country of the address.</summary>
+        /// <summary>The country property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Country { get; set; }
@@ -47,7 +46,7 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string Country { get; set; }
 #endif
-        /// <summary>First name of the addressee.</summary>
+        /// <summary>The first_name property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? FirstName { get; set; }
@@ -55,7 +54,7 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string FirstName { get; set; }
 #endif
-        /// <summary>Last name of the addressee.</summary>
+        /// <summary>The last_name property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? LastName { get; set; }
@@ -63,7 +62,7 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string LastName { get; set; }
 #endif
-        /// <summary>Middle name of the addressee.</summary>
+        /// <summary>The middle_name property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? MiddleName { get; set; }
@@ -71,7 +70,7 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string MiddleName { get; set; }
 #endif
-        /// <summary>Telephone number of the addressee.</summary>
+        /// <summary>The phone property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Phone { get; set; }
@@ -79,7 +78,7 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string Phone { get; set; }
 #endif
-        /// <summary>Postal code of the address.</summary>
+        /// <summary>The postal_code property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? PostalCode { get; set; }
@@ -87,7 +86,7 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string PostalCode { get; set; }
 #endif
-        /// <summary>State of the address.</summary>
+        /// <summary>The state property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? State { get; set; }
@@ -95,7 +94,7 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string State { get; set; }
 #endif
-        /// <summary>United States ZIP code of the address.</summary>
+        /// <summary>The zip property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Zip { get; set; }

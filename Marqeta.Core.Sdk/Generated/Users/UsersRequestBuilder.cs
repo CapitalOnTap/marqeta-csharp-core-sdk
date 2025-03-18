@@ -4,6 +4,7 @@ using Marqeta.Core.Sdk.Models;
 using Marqeta.Core.Sdk.Users.Auth;
 using Marqeta.Core.Sdk.Users.Item;
 using Marqeta.Core.Sdk.Users.Lookup;
+using Marqeta.Core.Sdk.Users.Phonenumber;
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions.Serialization;
 using Microsoft.Kiota.Abstractions;
@@ -29,6 +30,11 @@ namespace Marqeta.Core.Sdk.Users
         public global::Marqeta.Core.Sdk.Users.Lookup.LookupRequestBuilder Lookup
         {
             get => new global::Marqeta.Core.Sdk.Users.Lookup.LookupRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The phonenumber property</summary>
+        public global::Marqeta.Core.Sdk.Users.Phonenumber.PhonenumberRequestBuilder Phonenumber
+        {
+            get => new global::Marqeta.Core.Sdk.Users.Phonenumber.PhonenumberRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>Gets an item from the Marqeta.Core.Sdk.users.item collection</summary>
         /// <param name="position">Unique identifier of the user resource.</param>

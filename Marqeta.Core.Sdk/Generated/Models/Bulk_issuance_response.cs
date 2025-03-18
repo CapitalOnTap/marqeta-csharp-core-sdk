@@ -14,11 +14,11 @@ namespace Marqeta.Core.Sdk.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Number of cards in the order.</summary>
+        /// <summary>The card_allocation property</summary>
         public int? CardAllocation { get; set; }
-        /// <summary>Date and time when the bulk card order was fulfilled, in UTC.This field is included if your bulk card order has been processed.</summary>
+        /// <summary>The card_fulfillment_time property</summary>
         public DateTimeOffset? CardFulfillmentTime { get; set; }
-        /// <summary>Specifies the card product from which the cards are created.</summary>
+        /// <summary>The card_product_token property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? CardProductToken { get; set; }
@@ -26,13 +26,13 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string CardProductToken { get; set; }
 #endif
-        /// <summary>Number of cards processed in the bulk card order.This field is returned if it exists in the resource.</summary>
+        /// <summary>The cards_processed property</summary>
         public int? CardsProcessed { get; set; }
-        /// <summary>Date and time when the resource was created, in UTC.This field is returned if it exists in the resource.</summary>
+        /// <summary>The created_time property</summary>
         public DateTimeOffset? CreatedTime { get; set; }
-        /// <summary>Indicates if expedited processing of this bulk card order was requested.This field is returned if it exists in the resource.</summary>
+        /// <summary>The expedite property</summary>
         public bool? Expedite { get; set; }
-        /// <summary>Specifies the length of time after the date of issue for which the cards are valid.</summary>
+        /// <summary>The expiration_offset property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Marqeta.Core.Sdk.Models.Expiration_offset? ExpirationOffset { get; set; }
@@ -40,7 +40,7 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public global::Marqeta.Core.Sdk.Models.Expiration_offset ExpirationOffset { get; set; }
 #endif
-        /// <summary>Specifies certain physical characteristics of a card, as well as bulk shipment information.This object is returned if it exists in the resource.</summary>
+        /// <summary>The fulfillment property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Marqeta.Core.Sdk.Models.FulfillmentResponse? Fulfillment { get; set; }
@@ -48,17 +48,17 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public global::Marqeta.Core.Sdk.Models.FulfillmentResponse Fulfillment { get; set; }
 #endif
-        /// <summary>This field is included if your bulk card order has been processed.You can use the `name_line1_start_index` and `name_line1_end_index` fields to identify the cards and users associated with the order.For example, if the start index is &quot;1&quot; and the end index is &quot;3&quot;, the card tokens are &quot;card-1&quot;, &quot;card-2&quot;, and &quot;card-3&quot;, and the user tokens are &quot;user-1&quot;, &quot;user-2&quot;, and &quot;user-3&quot;.See &lt;&lt;/core-api/bulk-card-orders#create_bulk_card_order, Create bulk card order&gt;&gt; for more information about the automatic generation and naming of cards and users.</summary>
+        /// <summary>The name_line1_end_index property</summary>
         public int? NameLine1EndIndex { get; set; }
-        /// <summary>If set to `true`, the unique numeric postfix appended to each card&apos;s token field is also appended to the card&apos;s `fulfillment.card_personalization.text.name_line_1.value` field.</summary>
+        /// <summary>The name_line_1_numeric_postfix property</summary>
         public bool? NameLine1NumericPostfix { get; set; }
-        /// <summary>If set to `true`, the unique random postfix appended to each card&apos;s token field is also appended to the card&apos;s `fulfillment.card_personalization.text.name_line_1.value` field.This field is returned if it exists in the resource.</summary>
+        /// <summary>The name_line_1_random_postfix property</summary>
         public bool? NameLine1RandomPostfix { get; set; }
-        /// <summary>This field is included if your bulk card order has been processed.You can use the `name_line1_start_index` and `name_line1_end_index` fields to identify the cards and users associated with the order.For example, if the start index is &quot;1&quot; and the end index is &quot;3&quot;, the card tokens are &quot;card-1&quot;, &quot;card-2&quot;, and &quot;card-3&quot;, and the user tokens are &quot;user-1&quot;, &quot;user-2&quot;, and &quot;user-3&quot;.See &lt;&lt;/core-api/bulk-card-orders#create_bulk_card_order, Create bulk card order&gt;&gt; for more information about the automatic generation and naming of cards and users.</summary>
+        /// <summary>The name_line1_start_index property</summary>
         public int? NameLine1StartIndex { get; set; }
-        /// <summary>Date and time when the card provider shipped the bulk card order, in UTC.This field is included if your bulk card order has shipped.</summary>
+        /// <summary>The provider_ship_date property</summary>
         public DateTimeOffset? ProviderShipDate { get; set; }
-        /// <summary>Shipping method used by the card provider.`United_Postal_Service`, for example.This field is included if your bulk card order has shipped.</summary>
+        /// <summary>The provider_shipping_method property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? ProviderShippingMethod { get; set; }
@@ -66,7 +66,7 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string ProviderShippingMethod { get; set; }
 #endif
-        /// <summary>A tracking number is included only if your card provider is Arroweye Solutions.This field is included if your bulk card order has shipped.</summary>
+        /// <summary>The provider_tracking_number property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? ProviderTrackingNumber { get; set; }
@@ -74,7 +74,7 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string ProviderTrackingNumber { get; set; }
 #endif
-        /// <summary>Unique identifier of the bulk card order.</summary>
+        /// <summary>The token property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Token { get; set; }
@@ -82,7 +82,7 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string Token { get; set; }
 #endif
-        /// <summary>Associates each card with a user.</summary>
+        /// <summary>The user_association property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Marqeta.Core.Sdk.Models.User_association? UserAssociation { get; set; }

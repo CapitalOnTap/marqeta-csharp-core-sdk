@@ -3,9 +3,10 @@ using System.Runtime.Serialization;
 using System;
 namespace Marqeta.Core.Sdk.Models
 {
-    /// <summary>Specifies the state of the business on the Marqeta platform.This field is returned if it exists in the resource.</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
+    #pragma warning disable CS1591
     public enum Business_card_holder_response_status
+    #pragma warning restore CS1591
     {
         [EnumMember(Value = "UNVERIFIED")]
         #pragma warning disable CS1591
@@ -26,6 +27,10 @@ namespace Marqeta.Core.Sdk.Models
         [EnumMember(Value = "CLOSED")]
         #pragma warning disable CS1591
         CLOSED,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "TERMINATED")]
+        #pragma warning disable CS1591
+        TERMINATED,
         #pragma warning restore CS1591
     }
 }

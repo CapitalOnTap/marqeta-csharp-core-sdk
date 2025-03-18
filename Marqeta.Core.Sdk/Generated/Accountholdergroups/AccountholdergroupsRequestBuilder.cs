@@ -19,7 +19,7 @@ namespace Marqeta.Core.Sdk.Accountholdergroups
     public partial class AccountholdergroupsRequestBuilder : BaseRequestBuilder
     {
         /// <summary>Gets an item from the Marqeta.Core.Sdk.accountholdergroups.item collection</summary>
-        /// <param name="position">Unique identifier of the account holder group.</param>
+        /// <param name="position">Account holder group token</param>
         /// <returns>A <see cref="global::Marqeta.Core.Sdk.Accountholdergroups.Item.WithTokenItemRequestBuilder"/></returns>
         public global::Marqeta.Core.Sdk.Accountholdergroups.Item.WithTokenItemRequestBuilder this[string position]
         {
@@ -47,7 +47,7 @@ namespace Marqeta.Core.Sdk.Accountholdergroups
         {
         }
         /// <summary>
-        /// Use this endpoint to return an array of all account holder groups.
+        /// Lists account holder groups
         /// </summary>
         /// <returns>A <see cref="global::Marqeta.Core.Sdk.Models.AccountHolderGroupListResponse"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -70,7 +70,7 @@ namespace Marqeta.Core.Sdk.Accountholdergroups
             return await RequestAdapter.SendAsync<global::Marqeta.Core.Sdk.Models.AccountHolderGroupListResponse>(requestInfo, global::Marqeta.Core.Sdk.Models.AccountHolderGroupListResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Use this endpoint to create an account holder group.
+        /// Creates an account holder group object
         /// </summary>
         /// <returns>A <see cref="global::Marqeta.Core.Sdk.Models.Account_holder_group_response"/></returns>
         /// <param name="body">The request body</param>
@@ -95,7 +95,7 @@ namespace Marqeta.Core.Sdk.Accountholdergroups
             return await RequestAdapter.SendAsync<global::Marqeta.Core.Sdk.Models.Account_holder_group_response>(requestInfo, global::Marqeta.Core.Sdk.Models.Account_holder_group_response.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Use this endpoint to return an array of all account holder groups.
+        /// Lists account holder groups
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -114,7 +114,7 @@ namespace Marqeta.Core.Sdk.Accountholdergroups
             return requestInfo;
         }
         /// <summary>
-        /// Use this endpoint to create an account holder group.
+        /// Creates an account holder group object
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">The request body</param>
@@ -145,15 +145,15 @@ namespace Marqeta.Core.Sdk.Accountholdergroups
             return new global::Marqeta.Core.Sdk.Accountholdergroups.AccountholdergroupsRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
-        /// Use this endpoint to return an array of all account holder groups.
+        /// Lists account holder groups
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class AccountholdergroupsRequestBuilderGetQueryParameters 
         {
-            /// <summary>Number of resources to retrieve.</summary>
+            /// <summary>Number of items to retrieve. Count can be between 1 - 10 items.</summary>
             [QueryParameter("count")]
             public int? Count { get; set; }
-            /// <summary>Field on which to sort.Use any field in the resource model, or one of the system fields `lastModifiedTime` or `createdTime`.Prefix the field name with a hyphen (`-`) to sort in descending order.Omit the hyphen to sort in ascending order.</summary>
+            /// <summary>Field by which to sort the returned items. Use any field in the model, or system fields lastModifiedTime or createdTime.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
             [QueryParameter("sort_by")]
@@ -163,7 +163,7 @@ namespace Marqeta.Core.Sdk.Accountholdergroups
             [QueryParameter("sort_by")]
             public string SortBy { get; set; }
 #endif
-            /// <summary>Sort order index of the first resource in the returned array.</summary>
+            /// <summary>Indicates from what row to start returning data.</summary>
             [QueryParameter("start_index")]
             public int? StartIndex { get; set; }
         }

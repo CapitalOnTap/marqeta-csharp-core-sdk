@@ -7,17 +7,16 @@ using System.IO;
 using System;
 namespace Marqeta.Core.Sdk.Models
 {
-    /// <summary>
-    /// Associates each card with a user.
-    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
+    #pragma warning disable CS1591
     public partial class User_association : IAdditionalDataHolder, IParsable
+    #pragma warning restore CS1591
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Set to `true` to associate all cards with the same user.Set to `false` to associate each card with a different user.When set to `false`, users are generated automatically and associated with the cards.</summary>
+        /// <summary>The single_inventory_user property</summary>
         public bool? SingleInventoryUser { get; set; }
-        /// <summary>If `single_inventory_user=true`, use this field to specify the token of an existing user.All cards in the order will be associated with this user.</summary>
+        /// <summary>The single_inventory_user_token property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? SingleInventoryUserToken { get; set; }

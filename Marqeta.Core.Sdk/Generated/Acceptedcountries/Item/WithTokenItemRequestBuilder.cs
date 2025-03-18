@@ -34,7 +34,7 @@ namespace Marqeta.Core.Sdk.Acceptedcountries.Item
         {
         }
         /// <summary>
-        /// Retrieve a specific `acceptedcountries` object.Send a `GET` request to the `/acceptedcountries` endpoint to retrieve existing `acceptedcountries` object tokens.
+        /// Returns a specific accepted country
         /// </summary>
         /// <returns>A <see cref="global::Marqeta.Core.Sdk.Models.Accepted_countries_model"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -57,7 +57,7 @@ namespace Marqeta.Core.Sdk.Acceptedcountries.Item
             return await RequestAdapter.SendAsync<global::Marqeta.Core.Sdk.Models.Accepted_countries_model>(requestInfo, global::Marqeta.Core.Sdk.Models.Accepted_countries_model.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Retrieve a specific `acceptedcountries` object.Send a `GET` request to the `/acceptedcountries` endpoint to retrieve existing `acceptedcountries` object tokens.
+        /// Returns a specific accepted country
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -85,12 +85,12 @@ namespace Marqeta.Core.Sdk.Acceptedcountries.Item
             return new global::Marqeta.Core.Sdk.Acceptedcountries.Item.WithTokenItemRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
-        /// Retrieve a specific `acceptedcountries` object.Send a `GET` request to the `/acceptedcountries` endpoint to retrieve existing `acceptedcountries` object tokens.
+        /// Returns a specific accepted country
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class WithTokenItemRequestBuilderGetQueryParameters 
         {
-            /// <summary>Comma-delimited list of fields to return (`field_1,field_2`, and so on).Leave blank to return all fields.</summary>
+            /// <summary>Comma-delimited list of fields to return (e.g. field_1,field_2,..). Leave blank to return all fields.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
             [QueryParameter("fields")]

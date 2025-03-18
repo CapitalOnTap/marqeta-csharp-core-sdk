@@ -511,6 +511,10 @@ namespace Marqeta.Core.Sdk.Models
         #pragma warning disable CS1591
         ProductInquiry,
         #pragma warning restore CS1591
+        [EnumMember(Value = "transit.offer")]
+        #pragma warning disable CS1591
+        TransitOffer,
+        #pragma warning restore CS1591
         [EnumMember(Value = "unknown")]
         #pragma warning disable CS1591
         Unknown,

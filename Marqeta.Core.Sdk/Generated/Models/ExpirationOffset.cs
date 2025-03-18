@@ -7,23 +7,24 @@ using System.IO;
 using System;
 namespace Marqeta.Core.Sdk.Models
 {
-    /// <summary>
-    /// Contains information on how long after the date of issue for when the cards are valid.If this field is not specified, the card uses the `config.card_life_cycle.expiration_offset` of the bulk card order or card product as appropriate.
-    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
+    #pragma warning disable CS1591
     public partial class ExpirationOffset : IAdditionalDataHolder, IParsable
+    #pragma warning restore CS1591
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Units for the `value` field.</summary>
+        /// <summary>The min_offset property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Unit { get; set; }
+        public global::Marqeta.Core.Sdk.Models.MinOffset? MinOffset { get; set; }
 #nullable restore
 #else
-        public string Unit { get; set; }
+        public global::Marqeta.Core.Sdk.Models.MinOffset MinOffset { get; set; }
 #endif
-        /// <summary>Specifies the number of time units (as defined by the `unit` field in this object) that this card is valid.In other words, cards expire `value` x `unit` after the date of issue.This number is rounded as follows:* *YEARS* - Rounds up to the last second of the last day of the month of expiration.For example, if the issue date is 1 Jan 2021 and `value = 1`, the cards expire on the last day of Jan 2022.* *MONTHS* - Rounds up to the last second of the last day of the month of expiration.For example, if the issue date is 1 May 2022 and `value = 1`, the cards expire on the last day of June 2022.* *DAYS* - Rounds up to the last second of the day of expiration.* *HOURS*, *MINUTES*, *SECONDS* - No rounding.</summary>
+        /// <summary>specify if a value is provided; default is YEARS</summary>
+        public global::Marqeta.Core.Sdk.Models.ExpirationOffset_unit? Unit { get; set; }
+        /// <summary>specify if unit is provided; default is 4</summary>
         public int? Value { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Marqeta.Core.Sdk.Models.ExpirationOffset"/> and sets the default values.
@@ -50,7 +51,8 @@ namespace Marqeta.Core.Sdk.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "unit", n => { Unit = n.GetStringValue(); } },
+                { "min_offset", n => { MinOffset = n.GetObjectValue<global::Marqeta.Core.Sdk.Models.MinOffset>(global::Marqeta.Core.Sdk.Models.MinOffset.CreateFromDiscriminatorValue); } },
+                { "unit", n => { Unit = n.GetEnumValue<global::Marqeta.Core.Sdk.Models.ExpirationOffset_unit>(); } },
                 { "value", n => { Value = n.GetIntValue(); } },
             };
         }
@@ -61,7 +63,8 @@ namespace Marqeta.Core.Sdk.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
-            writer.WriteStringValue("unit", Unit);
+            writer.WriteObjectValue<global::Marqeta.Core.Sdk.Models.MinOffset>("min_offset", MinOffset);
+            writer.WriteEnumValue<global::Marqeta.Core.Sdk.Models.ExpirationOffset_unit>("unit", Unit);
             writer.WriteIntValue("value", Value);
             writer.WriteAdditionalData(AdditionalData);
         }

@@ -7,13 +7,12 @@ using System.IO;
 using System;
 namespace Marqeta.Core.Sdk.Models
 {
-    /// <summary>
-    /// Controls transactional characteristics of card usage.
-    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
+    #pragma warning disable CS1591
     public partial class Transaction_controls : IAdditionalDataHolder, IParsable
+    #pragma warning restore CS1591
     {
-        /// <summary>Set to `accept_us_only` to allow transactions only within the US.Set to `decline_ofac_countries` to allow international transactions except with countries that the Financial Action Task Force (FATF) and Office of Foreign Assets Control (OFAC) have identified as high risk.Users with the Admin role can create and update additional lists of accepted countries for transactions at the `/acceptedcountries` endpoint.See &lt;&lt;/core-api/accepted-countries, Accepted Countries&gt;&gt;.</summary>
+        /// <summary>50 char max (default = accept_us_only)</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? AcceptedCountriesToken { get; set; }
@@ -31,31 +30,31 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public global::Marqeta.Core.Sdk.Models.Avs_controls AddressVerification { get; set; }
 #endif
-        /// <summary>Indicates whether to allow transactions where a Europay Mastercard and Visa (EMV) chip-enabled card was processed using the magstripe as fallback.</summary>
+        /// <summary>The allow_chip_fallback property</summary>
         public bool? AllowChipFallback { get; set; }
-        /// <summary>*WARNING:* This field is deprecated and will be unsupported in a future release.Allows cardholders to define a personal identification number (PIN) as they complete their first PIN-debit transaction.</summary>
+        /// <summary>The allow_first_pin_set_via_financial_transaction property</summary>
         public bool? AllowFirstPinSetViaFinancialTransaction { get; set; }
-        /// <summary>If set to `true`, transactions can be authorized using GPA funds.*NOTE:* For most programs, this field should be set to `true`.</summary>
+        /// <summary>The allow_gpa_auth property</summary>
         public bool? AllowGpaAuth { get; set; }
-        /// <summary>The &lt;&lt;/core-api/mcc-groups, MCC group&gt;&gt; `authorization_controls` object allows you to automatically increase authorization holds and to specify authorization expiration times based on merchant type.By default, these settings apply to all cards in your program.You can, however, exempt cards associated with a particular card product by setting this field to `false`.*NOTE:* Partial authorizations are disallowed if this field is set to `true`.</summary>
+        /// <summary>The allow_mcc_group_authorization_controls property</summary>
         public bool? AllowMccGroupAuthorizationControls { get; set; }
-        /// <summary>Indicates whether card network loads are allowed.The associated card&apos;s state must be `ACTIVE` or the load will be rejected.</summary>
+        /// <summary>The allow_network_load property</summary>
         public bool? AllowNetworkLoad { get; set; }
-        /// <summary>Indicates whether card network loads are allowed.Sets the associated card&apos;s state to `ACTIVE` if its current state is `INACTIVE`.</summary>
+        /// <summary>The allow_network_load_card_activation property</summary>
         public bool? AllowNetworkLoadCardActivation { get; set; }
-        /// <summary>Indicates whether quasi-cash transactions are allowed.In a quasi-cash transaction, the cardholder purchases an item that can be directly converted to cash, such as traveler&apos;s checks, money orders, casino chips, or lottery tickets.</summary>
+        /// <summary>The allow_quasi_cash property</summary>
         public bool? AllowQuasiCash { get; set; }
-        /// <summary>If set to `true`, cards of this card product type require an Integrated Circuit Card.</summary>
+        /// <summary>The always_require_icc property</summary>
         public bool? AlwaysRequireIcc { get; set; }
-        /// <summary>If set to `true`, cards of this card product type require a personal identification number (PIN).</summary>
+        /// <summary>The always_require_pin property</summary>
         public bool? AlwaysRequirePin { get; set; }
         /// <summary>The enable_credit_service property</summary>
         public bool? EnableCreditService { get; set; }
-        /// <summary>Set to `true` to enable partial authorizations.When this setting is `false` and the requested authorization amount exceeds available funds, the transaction is declined.When this setting is `true` and the requested authorization amount exceeds available funds, the transaction is authorized for the amount of available funds.</summary>
+        /// <summary>The enable_partial_auth_approval property</summary>
         public bool? EnablePartialAuthApproval { get; set; }
-        /// <summary>Allows transactions to be approved even if the card&apos;s `state = SUSPENDED`.When this field is set to `true`, the card behaves as if its `state = ACTIVE`.</summary>
+        /// <summary>The ignore_card_suspended_state property</summary>
         public bool? IgnoreCardSuspendedState { get; set; }
-        /// <summary>Specifies the language for 3D Secure and digital wallet token notifications sent to cardholders under this card program.You can send notifications to your cardholders in the following languages:* *ces* – Czech* *deu* – German* *eng* – English* *fra* – French* *grc* – Greek* *ita* – Italian* *nld* – Dutch* *pol* – Polish* *prt* – Portuguese* *rou* – Romanian* *spa* – Spanish* *swe* – SwedishBy default, notifications are sent in English.To specify the language for OTP notifications at the user level, see &lt;&lt;/core-api/users, Users&gt;&gt;.Languages set at the user level take precedence over the language set at the card product level.</summary>
+        /// <summary>The notification_language property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? NotificationLanguage { get; set; }
@@ -63,7 +62,7 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string NotificationLanguage { get; set; }
 #endif
-        /// <summary>The token of the merchant group that you want to exempt from quasi-cash transaction authorization control, allowing your cardholders to conduct quasi-cash transactions.In a quasi-cash transaction, the cardholder purchases an item that can be directly converted to cash, such as traveler&apos;s checks, money orders, casino chips, or lottery tickets.You can specify a merchant group token in addition to whatever merchant identifiers you listed in the `quasi_cash_exempt_mids` field, if any.For more information, see &lt;&lt;/core-api/merchant-groups, Merchant Groups&gt;&gt;.</summary>
+        /// <summary>36 char max</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? QuasiCashExemptMerchantGroupToken { get; set; }
@@ -71,7 +70,7 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string QuasiCashExemptMerchantGroupToken { get; set; }
 #endif
-        /// <summary>Comma-separated list of merchant identifiers that you want to exempt from quasi-cash transaction authorization control, allowing your cardholders to conduct quasi-cash transactions.In a quasi-cash transaction, the cardholder purchases an item that can be directly converted to cash, such as traveler&apos;s checks, money orders, casino chips, or lottery tickets.</summary>
+        /// <summary>The quasi_cash_exempt_mids property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? QuasiCashExemptMids { get; set; }
@@ -79,9 +78,9 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string QuasiCashExemptMids { get; set; }
 #endif
-        /// <summary>A value of `true` indicates that if `card_presence_required` is `true`, the card&apos;s security code is required.</summary>
+        /// <summary>The require_card_not_present_card_security_code property</summary>
         public bool? RequireCardNotPresentCardSecurityCode { get; set; }
-        /// <summary>Contains information about Strong Customer Authentication (SCA) behavior for contactless point-of-sale (POS) and low-value payment (LVP) e-commerce transactions.</summary>
+        /// <summary>The strong_customer_authentication_limits property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Marqeta.Core.Sdk.Models.Strong_customer_authentication_limits? StrongCustomerAuthenticationLimits { get; set; }

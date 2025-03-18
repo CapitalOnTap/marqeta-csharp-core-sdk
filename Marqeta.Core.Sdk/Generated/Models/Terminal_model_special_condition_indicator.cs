@@ -23,5 +23,21 @@ namespace Marqeta.Core.Sdk.Models
         #pragma warning disable CS1591
         DEBT_PAYMENT,
         #pragma warning restore CS1591
+        [EnumMember(Value = "CENTRAL_BANK_DIGITAL_CURRENCY_PURCHASE")]
+        #pragma warning disable CS1591
+        CENTRAL_BANK_DIGITAL_CURRENCY_PURCHASE,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "STABLECOIN_PURCHASE")]
+        #pragma warning disable CS1591
+        STABLECOIN_PURCHASE,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "BLOCKCHAIN_NATIVE_TOKEN_PURCHASE")]
+        #pragma warning disable CS1591
+        BLOCKCHAIN_NATIVE_TOKEN_PURCHASE,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "NON_FUNGIBLE_TOKEN_PURCHASE")]
+        #pragma warning disable CS1591
+        NON_FUNGIBLE_TOKEN_PURCHASE,
+        #pragma warning restore CS1591
     }
 }

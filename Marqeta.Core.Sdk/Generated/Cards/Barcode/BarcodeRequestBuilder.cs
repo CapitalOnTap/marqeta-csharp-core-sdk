@@ -16,7 +16,7 @@ namespace Marqeta.Core.Sdk.Cards.Barcode
     public partial class BarcodeRequestBuilder : BaseRequestBuilder
     {
         /// <summary>Gets an item from the Marqeta.Core.Sdk.cards.barcode.item collection</summary>
-        /// <param name="position">Barcode of the card to retrieve.</param>
+        /// <param name="position">Barcode</param>
         /// <returns>A <see cref="global::Marqeta.Core.Sdk.Cards.Barcode.Item.WithBarcodeItemRequestBuilder"/></returns>
         public global::Marqeta.Core.Sdk.Cards.Barcode.Item.WithBarcodeItemRequestBuilder this[string position]
         {

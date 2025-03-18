@@ -14,7 +14,7 @@ namespace Marqeta.Core.Sdk.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Defines program behavior when Commando Mode is enabled.</summary>
+        /// <summary>The commando_mode_enables property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Marqeta.Core.Sdk.Models.Commando_mode_enables? CommandoModeEnables { get; set; }
@@ -22,9 +22,9 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public global::Marqeta.Core.Sdk.Models.Commando_mode_enables CommandoModeEnables { get; set; }
 #endif
-        /// <summary>Date and time when the resource was created, in UTC.</summary>
+        /// <summary>yyyy-MM-ddTHH:mm:ssZ</summary>
         public DateTimeOffset? CreatedTime { get; set; }
-        /// <summary>Describes the Commando Mode control set&apos;s `current_state` object.</summary>
+        /// <summary>The current_state property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Marqeta.Core.Sdk.Models.Commando_mode_nested_transition? CurrentState { get; set; }
@@ -32,9 +32,9 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public global::Marqeta.Core.Sdk.Models.Commando_mode_nested_transition CurrentState { get; set; }
 #endif
-        /// <summary>Date and time when the resource was last updated, in UTC.</summary>
+        /// <summary>yyyy-MM-ddTHH:mm:ssZ</summary>
         public DateTimeOffset? LastModifiedTime { get; set; }
-        /// <summary>Unique identifier of the associated program gateway funding source.</summary>
+        /// <summary>The program_gateway_funding_source_token property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? ProgramGatewayFundingSourceToken { get; set; }
@@ -42,7 +42,7 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string ProgramGatewayFundingSourceToken { get; set; }
 #endif
-        /// <summary>Specifies which event types automatically enable Commando Mode.</summary>
+        /// <summary>The real_time_standin_criteria property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Marqeta.Core.Sdk.Models.Real_time_standin_criteria? RealTimeStandinCriteria { get; set; }
@@ -50,7 +50,7 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public global::Marqeta.Core.Sdk.Models.Real_time_standin_criteria RealTimeStandinCriteria { get; set; }
 #endif
-        /// <summary>Unique identifier of the Commando Mode control set.</summary>
+        /// <summary>The token property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Token { get; set; }

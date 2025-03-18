@@ -12,7 +12,7 @@ using System;
 namespace Marqeta.Core.Sdk.Cards.Item.Showpan
 {
     /// <summary>
-    /// Builds and executes requests for operations under \cards\{token}\showpan
+    /// Builds and executes requests for operations under \cards\{card_hash-id}\showpan
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class ShowpanRequestBuilder : BaseRequestBuilder
@@ -22,7 +22,7 @@ namespace Marqeta.Core.Sdk.Cards.Item.Showpan
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public ShowpanRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/cards/{token}/showpan{?fields*,show_cvv_number*}", pathParameters)
+        public ShowpanRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/cards/{card_hash%2Did}/showpan{?fields*,show_cvv_number*}", pathParameters)
         {
         }
         /// <summary>
@@ -30,11 +30,11 @@ namespace Marqeta.Core.Sdk.Cards.Item.Showpan
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public ShowpanRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/cards/{token}/showpan{?fields*,show_cvv_number*}", rawUrl)
+        public ShowpanRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/cards/{card_hash%2Did}/showpan{?fields*,show_cvv_number*}", rawUrl)
         {
         }
         /// <summary>
-        /// Retrieves a primary account number (PAN).For security reasons, the PAN is not fully visible on the card resource returned by `GET` `/cards/{token}`.This endpoint supports &lt;&lt;/core-api/field-filtering, field filtering&gt;&gt; and &lt;&lt;/core-api/object-expansion, object expansion&gt;&gt;.
+        /// Returns a specific card - PAN visible
         /// </summary>
         /// <returns>A <see cref="global::Marqeta.Core.Sdk.Models.Card_response"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -57,7 +57,7 @@ namespace Marqeta.Core.Sdk.Cards.Item.Showpan
             return await RequestAdapter.SendAsync<global::Marqeta.Core.Sdk.Models.Card_response>(requestInfo, global::Marqeta.Core.Sdk.Models.Card_response.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Retrieves a primary account number (PAN).For security reasons, the PAN is not fully visible on the card resource returned by `GET` `/cards/{token}`.This endpoint supports &lt;&lt;/core-api/field-filtering, field filtering&gt;&gt; and &lt;&lt;/core-api/object-expansion, object expansion&gt;&gt;.
+        /// Returns a specific card - PAN visible
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -85,12 +85,12 @@ namespace Marqeta.Core.Sdk.Cards.Item.Showpan
             return new global::Marqeta.Core.Sdk.Cards.Item.Showpan.ShowpanRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
-        /// Retrieves a primary account number (PAN).For security reasons, the PAN is not fully visible on the card resource returned by `GET` `/cards/{token}`.This endpoint supports &lt;&lt;/core-api/field-filtering, field filtering&gt;&gt; and &lt;&lt;/core-api/object-expansion, object expansion&gt;&gt;.
+        /// Returns a specific card - PAN visible
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class ShowpanRequestBuilderGetQueryParameters 
         {
-            /// <summary>Comma-delimited list of fields to return (`field_1,field_2`, and so on).Leave blank to return all fields.</summary>
+            /// <summary>Comma-delimited list of fields to return (e.g. field_1,field_2,..). Leave blank to return all fields.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
             [QueryParameter("fields")]
@@ -100,7 +100,6 @@ namespace Marqeta.Core.Sdk.Cards.Item.Showpan
             [QueryParameter("fields")]
             public string Fields { get; set; }
 #endif
-            /// <summary>Set to `true` to show the CVV2 number in the response.</summary>
             [QueryParameter("show_cvv_number")]
             public bool? ShowCvvNumber { get; set; }
         }

@@ -55,7 +55,7 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string Url { get; set; }
 #endif
-        /// <summary>Set to `true` to use MTLS for the webhook.</summary>
+        /// <summary>Set to `true` to use use mutual transport layer security (mTLS) authentication for the webhook.mTLS authentication is in the beta testing phase, and is not yet generally available.Contact your Marqeta representative for more information about using mTLS authentication.</summary>
         public bool? UseMtls { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Marqeta.Core.Sdk.Models.Webhook_config_model"/> and sets the default values.

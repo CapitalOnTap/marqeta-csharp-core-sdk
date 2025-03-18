@@ -2,22 +2,19 @@
 #pragma warning disable CS0618
 using Marqeta.Core.Sdk.Acceptedcountries;
 using Marqeta.Core.Sdk.Accountholdergroups;
-using Marqeta.Core.Sdk.Accounts;
-using Marqeta.Core.Sdk.Admin;
 using Marqeta.Core.Sdk.Authcontrols;
 using Marqeta.Core.Sdk.Autoreloads;
 using Marqeta.Core.Sdk.Balances;
 using Marqeta.Core.Sdk.Banktransfers;
 using Marqeta.Core.Sdk.Bulkissuances;
-using Marqeta.Core.Sdk.Bundles;
 using Marqeta.Core.Sdk.Businesses;
 using Marqeta.Core.Sdk.Businesstransitions;
-using Marqeta.Core.Sdk.Cardgroups;
+using Marqeta.Core.Sdk.Campaigns;
 using Marqeta.Core.Sdk.Cardproducts;
 using Marqeta.Core.Sdk.Cards;
 using Marqeta.Core.Sdk.Cardtransitions;
+using Marqeta.Core.Sdk.Chargebacks;
 using Marqeta.Core.Sdk.Commandomodes;
-using Marqeta.Core.Sdk.Credit;
 using Marqeta.Core.Sdk.Depositaccounts;
 using Marqeta.Core.Sdk.Digitalwalletprovisionrequests;
 using Marqeta.Core.Sdk.Digitalwallets;
@@ -33,23 +30,21 @@ using Marqeta.Core.Sdk.Gpaorders;
 using Marqeta.Core.Sdk.Kyc;
 using Marqeta.Core.Sdk.Mccgroups;
 using Marqeta.Core.Sdk.Merchantgroups;
-using Marqeta.Core.Sdk.Paymentsources;
+using Marqeta.Core.Sdk.Merchants;
+using Marqeta.Core.Sdk.Migration;
+using Marqeta.Core.Sdk.Offers;
 using Marqeta.Core.Sdk.Peertransfers;
 using Marqeta.Core.Sdk.Ping;
 using Marqeta.Core.Sdk.Pins;
-using Marqeta.Core.Sdk.Policies;
-using Marqeta.Core.Sdk.Products;
-using Marqeta.Core.Sdk.Programgateways;
 using Marqeta.Core.Sdk.Programreserve;
-using Marqeta.Core.Sdk.Programs;
 using Marqeta.Core.Sdk.Programtransfers;
 using Marqeta.Core.Sdk.Pushtocards;
 using Marqeta.Core.Sdk.Realtimefeegroups;
-using Marqeta.Core.Sdk.Rewardprograms;
 using Marqeta.Core.Sdk.Serialization.Json;
 using Marqeta.Core.Sdk.Serialization.Text;
 using Marqeta.Core.Sdk.Simulate;
-using Marqeta.Core.Sdk.Substatuses;
+using Marqeta.Core.Sdk.Spaces;
+using Marqeta.Core.Sdk.Stores;
 using Marqeta.Core.Sdk.Transactions;
 using Marqeta.Core.Sdk.Users;
 using Marqeta.Core.Sdk.Usertransitions;
@@ -83,16 +78,6 @@ namespace Marqeta.Core.Sdk
         {
             get => new global::Marqeta.Core.Sdk.Accountholdergroups.AccountholdergroupsRequestBuilder(PathParameters, RequestAdapter);
         }
-        /// <summary>The accounts property</summary>
-        public global::Marqeta.Core.Sdk.Accounts.AccountsRequestBuilder Accounts
-        {
-            get => new global::Marqeta.Core.Sdk.Accounts.AccountsRequestBuilder(PathParameters, RequestAdapter);
-        }
-        /// <summary>The admin property</summary>
-        public global::Marqeta.Core.Sdk.Admin.AdminRequestBuilder Admin
-        {
-            get => new global::Marqeta.Core.Sdk.Admin.AdminRequestBuilder(PathParameters, RequestAdapter);
-        }
         /// <summary>The authcontrols property</summary>
         public global::Marqeta.Core.Sdk.Authcontrols.AuthcontrolsRequestBuilder Authcontrols
         {
@@ -118,11 +103,6 @@ namespace Marqeta.Core.Sdk
         {
             get => new global::Marqeta.Core.Sdk.Bulkissuances.BulkissuancesRequestBuilder(PathParameters, RequestAdapter);
         }
-        /// <summary>The bundles property</summary>
-        public global::Marqeta.Core.Sdk.Bundles.BundlesRequestBuilder Bundles
-        {
-            get => new global::Marqeta.Core.Sdk.Bundles.BundlesRequestBuilder(PathParameters, RequestAdapter);
-        }
         /// <summary>The businesses property</summary>
         public global::Marqeta.Core.Sdk.Businesses.BusinessesRequestBuilder Businesses
         {
@@ -133,10 +113,10 @@ namespace Marqeta.Core.Sdk
         {
             get => new global::Marqeta.Core.Sdk.Businesstransitions.BusinesstransitionsRequestBuilder(PathParameters, RequestAdapter);
         }
-        /// <summary>The cardgroups property</summary>
-        public global::Marqeta.Core.Sdk.Cardgroups.CardgroupsRequestBuilder Cardgroups
+        /// <summary>The campaigns property</summary>
+        public global::Marqeta.Core.Sdk.Campaigns.CampaignsRequestBuilder Campaigns
         {
-            get => new global::Marqeta.Core.Sdk.Cardgroups.CardgroupsRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Marqeta.Core.Sdk.Campaigns.CampaignsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The cardproducts property</summary>
         public global::Marqeta.Core.Sdk.Cardproducts.CardproductsRequestBuilder Cardproducts
@@ -153,15 +133,15 @@ namespace Marqeta.Core.Sdk
         {
             get => new global::Marqeta.Core.Sdk.Cardtransitions.CardtransitionsRequestBuilder(PathParameters, RequestAdapter);
         }
+        /// <summary>The chargebacks property</summary>
+        public global::Marqeta.Core.Sdk.Chargebacks.ChargebacksRequestBuilder Chargebacks
+        {
+            get => new global::Marqeta.Core.Sdk.Chargebacks.ChargebacksRequestBuilder(PathParameters, RequestAdapter);
+        }
         /// <summary>The commandomodes property</summary>
         public global::Marqeta.Core.Sdk.Commandomodes.CommandomodesRequestBuilder Commandomodes
         {
             get => new global::Marqeta.Core.Sdk.Commandomodes.CommandomodesRequestBuilder(PathParameters, RequestAdapter);
-        }
-        /// <summary>The credit property</summary>
-        public global::Marqeta.Core.Sdk.Credit.CreditRequestBuilder Credit
-        {
-            get => new global::Marqeta.Core.Sdk.Credit.CreditRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The depositaccounts property</summary>
         public global::Marqeta.Core.Sdk.Depositaccounts.DepositaccountsRequestBuilder Depositaccounts
@@ -238,10 +218,20 @@ namespace Marqeta.Core.Sdk
         {
             get => new global::Marqeta.Core.Sdk.Merchantgroups.MerchantgroupsRequestBuilder(PathParameters, RequestAdapter);
         }
-        /// <summary>The paymentsources property</summary>
-        public global::Marqeta.Core.Sdk.Paymentsources.PaymentsourcesRequestBuilder Paymentsources
+        /// <summary>The merchants property</summary>
+        public global::Marqeta.Core.Sdk.Merchants.MerchantsRequestBuilder Merchants
         {
-            get => new global::Marqeta.Core.Sdk.Paymentsources.PaymentsourcesRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Marqeta.Core.Sdk.Merchants.MerchantsRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The migration property</summary>
+        public global::Marqeta.Core.Sdk.Migration.MigrationRequestBuilder Migration
+        {
+            get => new global::Marqeta.Core.Sdk.Migration.MigrationRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The offers property</summary>
+        public global::Marqeta.Core.Sdk.Offers.OffersRequestBuilder Offers
+        {
+            get => new global::Marqeta.Core.Sdk.Offers.OffersRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The peertransfers property</summary>
         public global::Marqeta.Core.Sdk.Peertransfers.PeertransfersRequestBuilder Peertransfers
@@ -258,30 +248,10 @@ namespace Marqeta.Core.Sdk
         {
             get => new global::Marqeta.Core.Sdk.Pins.PinsRequestBuilder(PathParameters, RequestAdapter);
         }
-        /// <summary>The policies property</summary>
-        public global::Marqeta.Core.Sdk.Policies.PoliciesRequestBuilder Policies
-        {
-            get => new global::Marqeta.Core.Sdk.Policies.PoliciesRequestBuilder(PathParameters, RequestAdapter);
-        }
-        /// <summary>The products property</summary>
-        public global::Marqeta.Core.Sdk.Products.ProductsRequestBuilder Products
-        {
-            get => new global::Marqeta.Core.Sdk.Products.ProductsRequestBuilder(PathParameters, RequestAdapter);
-        }
-        /// <summary>The programgateways property</summary>
-        public global::Marqeta.Core.Sdk.Programgateways.ProgramgatewaysRequestBuilder Programgateways
-        {
-            get => new global::Marqeta.Core.Sdk.Programgateways.ProgramgatewaysRequestBuilder(PathParameters, RequestAdapter);
-        }
         /// <summary>The programreserve property</summary>
         public global::Marqeta.Core.Sdk.Programreserve.ProgramreserveRequestBuilder Programreserve
         {
             get => new global::Marqeta.Core.Sdk.Programreserve.ProgramreserveRequestBuilder(PathParameters, RequestAdapter);
-        }
-        /// <summary>The programs property</summary>
-        public global::Marqeta.Core.Sdk.Programs.ProgramsRequestBuilder Programs
-        {
-            get => new global::Marqeta.Core.Sdk.Programs.ProgramsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The programtransfers property</summary>
         public global::Marqeta.Core.Sdk.Programtransfers.ProgramtransfersRequestBuilder Programtransfers
@@ -298,20 +268,20 @@ namespace Marqeta.Core.Sdk
         {
             get => new global::Marqeta.Core.Sdk.Realtimefeegroups.RealtimefeegroupsRequestBuilder(PathParameters, RequestAdapter);
         }
-        /// <summary>The rewardprograms property</summary>
-        public global::Marqeta.Core.Sdk.Rewardprograms.RewardprogramsRequestBuilder Rewardprograms
-        {
-            get => new global::Marqeta.Core.Sdk.Rewardprograms.RewardprogramsRequestBuilder(PathParameters, RequestAdapter);
-        }
         /// <summary>The simulate property</summary>
         public global::Marqeta.Core.Sdk.Simulate.SimulateRequestBuilder Simulate
         {
             get => new global::Marqeta.Core.Sdk.Simulate.SimulateRequestBuilder(PathParameters, RequestAdapter);
         }
-        /// <summary>The substatuses property</summary>
-        public global::Marqeta.Core.Sdk.Substatuses.SubstatusesRequestBuilder Substatuses
+        /// <summary>The spaces property</summary>
+        public global::Marqeta.Core.Sdk.Spaces.SpacesRequestBuilder Spaces
         {
-            get => new global::Marqeta.Core.Sdk.Substatuses.SubstatusesRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Marqeta.Core.Sdk.Spaces.SpacesRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The stores property</summary>
+        public global::Marqeta.Core.Sdk.Stores.StoresRequestBuilder Stores
+        {
+            get => new global::Marqeta.Core.Sdk.Stores.StoresRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The transactions property</summary>
         public global::Marqeta.Core.Sdk.Transactions.TransactionsRequestBuilder Transactions

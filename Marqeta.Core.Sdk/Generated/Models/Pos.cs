@@ -61,7 +61,7 @@ namespace Marqeta.Core.Sdk.Models
         public global::Marqeta.Core.Sdk.Models.Pos_terminal_location? TerminalLocation { get; set; }
         /// <summary>Type of card acceptor/terminal.</summary>
         public global::Marqeta.Core.Sdk.Models.Pos_terminal_type? TerminalType { get; set; }
-        /// <summary>Specifies whether the transaction was initiated by a cardholder or a merchant.</summary>
+        /// <summary>Specifies the initiator of the transaction.</summary>
         public global::Marqeta.Core.Sdk.Models.Pos_transaction_initiated_by? TransactionInitiatedBy { get; set; }
         /// <summary>Specifies the category of a point-of-sale transaction.</summary>
         public global::Marqeta.Core.Sdk.Models.Pos_transaction_initiated_category? TransactionInitiatedCategory { get; set; }

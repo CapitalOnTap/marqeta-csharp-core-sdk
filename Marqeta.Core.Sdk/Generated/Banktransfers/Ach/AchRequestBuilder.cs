@@ -31,7 +31,7 @@ namespace Marqeta.Core.Sdk.Banktransfers.Ach
             get => new global::Marqeta.Core.Sdk.Banktransfers.Ach.Transitions.TransitionsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>Gets an item from the Marqeta.Core.Sdk.banktransfers.ach.item collection</summary>
-        /// <param name="position">Unique identifier of the bank transfer.</param>
+        /// <param name="position">Bank transfer token</param>
         /// <returns>A <see cref="global::Marqeta.Core.Sdk.Banktransfers.Ach.Item.WithTokenItemRequestBuilder"/></returns>
         public global::Marqeta.Core.Sdk.Banktransfers.Ach.Item.WithTokenItemRequestBuilder this[string position]
         {
@@ -59,7 +59,7 @@ namespace Marqeta.Core.Sdk.Banktransfers.Ach
         {
         }
         /// <summary>
-        /// Retrieve a list of all ACH transfers.
+        /// Lists all bank transfers
         /// </summary>
         /// <returns>A <see cref="global::Marqeta.Core.Sdk.Models.BankTransferListResponse"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -82,7 +82,7 @@ namespace Marqeta.Core.Sdk.Banktransfers.Ach
             return await RequestAdapter.SendAsync<global::Marqeta.Core.Sdk.Models.BankTransferListResponse>(requestInfo, global::Marqeta.Core.Sdk.Models.BankTransferListResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Create an ACH transfer that pushes funds to an external account or pulls funds into your program funding account.
+        /// Creates an ACH bank transfer
         /// </summary>
         /// <returns>A <see cref="global::Marqeta.Core.Sdk.Models.Bank_transfer_response_model"/></returns>
         /// <param name="body">The request body</param>
@@ -107,7 +107,7 @@ namespace Marqeta.Core.Sdk.Banktransfers.Ach
             return await RequestAdapter.SendAsync<global::Marqeta.Core.Sdk.Models.Bank_transfer_response_model>(requestInfo, global::Marqeta.Core.Sdk.Models.Bank_transfer_response_model.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Retrieve a list of all ACH transfers.
+        /// Lists all bank transfers
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -126,7 +126,7 @@ namespace Marqeta.Core.Sdk.Banktransfers.Ach
             return requestInfo;
         }
         /// <summary>
-        /// Create an ACH transfer that pushes funds to an external account or pulls funds into your program funding account.
+        /// Creates an ACH bank transfer
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">The request body</param>
@@ -157,12 +157,12 @@ namespace Marqeta.Core.Sdk.Banktransfers.Ach
             return new global::Marqeta.Core.Sdk.Banktransfers.Ach.AchRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
-        /// Retrieve a list of all ACH transfers.
+        /// Lists all bank transfers
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class AchRequestBuilderGetQueryParameters 
         {
-            /// <summary>Unique identifier of the business resource.</summary>
+            /// <summary>Business token</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
             [QueryParameter("business_token")]
@@ -172,10 +172,10 @@ namespace Marqeta.Core.Sdk.Banktransfers.Ach
             [QueryParameter("business_token")]
             public string BusinessToken { get; set; }
 #endif
-            /// <summary>Number of resources to retrieve.</summary>
+            /// <summary>Number of users to retrieve</summary>
             [QueryParameter("count")]
             public int? Count { get; set; }
-            /// <summary>Returns the full funding source object when `fundingsource` is passed.Otherwise, returns the funding source token.</summary>
+            /// <summary>Object to expand</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
             [QueryParameter("expand")]
@@ -185,7 +185,7 @@ namespace Marqeta.Core.Sdk.Banktransfers.Ach
             [QueryParameter("expand")]
             public string Expand { get; set; }
 #endif
-            /// <summary>Unique identifier of the funding source.</summary>
+            /// <summary>Funding source token</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
             [QueryParameter("funding_source_token")]
@@ -195,7 +195,7 @@ namespace Marqeta.Core.Sdk.Banktransfers.Ach
             [QueryParameter("funding_source_token")]
             public string FundingSourceToken { get; set; }
 #endif
-            /// <summary>Funding source type to filter.</summary>
+            /// <summary>Funding source type</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
             [QueryParameter("funding_source_type")]
@@ -205,7 +205,7 @@ namespace Marqeta.Core.Sdk.Banktransfers.Ach
             [QueryParameter("funding_source_type")]
             public string FundingSourceType { get; set; }
 #endif
-            /// <summary>Field on which to sort.Use any field in the resource model, or one of the system fields `lastModifiedTime` or `createdTime`.Prefix the field name with a hyphen (`-`) to sort in descending order.Omit the hyphen to sort in ascending order.</summary>
+            /// <summary>Sort order</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
             [QueryParameter("sort_by")]
@@ -215,10 +215,10 @@ namespace Marqeta.Core.Sdk.Banktransfers.Ach
             [QueryParameter("sort_by")]
             public string SortBy { get; set; }
 #endif
-            /// <summary>Sort order index of the first resource in the returned array.</summary>
+            /// <summary>Start index</summary>
             [QueryParameter("start_index")]
             public int? StartIndex { get; set; }
-            /// <summary>Comma-delimited list of bank transfer statuses.</summary>
+            /// <summary>A comma-delimited list of bank transfer status(s)</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
             [QueryParameter("statuses")]
@@ -228,7 +228,7 @@ namespace Marqeta.Core.Sdk.Banktransfers.Ach
             [QueryParameter("statuses")]
             public string Statuses { get; set; }
 #endif
-            /// <summary>Unique identifier of the user resource.</summary>
+            /// <summary>User token</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
             [QueryParameter("user_token")]

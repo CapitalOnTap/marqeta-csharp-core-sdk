@@ -7,19 +7,18 @@ using System.IO;
 using System;
 namespace Marqeta.Core.Sdk.Models
 {
-    /// <summary>
-    /// Governs the point of interaction.
-    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
+    #pragma warning disable CS1591
     public partial class Poi : IAdditionalDataHolder, IParsable
+    #pragma warning restore CS1591
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>If set to `true`, cards can be used for withdrawing cash at an ATM and for receiving cash back at a point of sale (POS).</summary>
+        /// <summary>Default = false</summary>
         public bool? Atm { get; set; }
-        /// <summary>If set to `true`, cards can be used for online purchases.</summary>
+        /// <summary>The ecommerce property</summary>
         public bool? Ecommerce { get; set; }
-        /// <summary>Allows for configuration of points of interaction other than ecommerce or ATMs, such as points of sale (POS).</summary>
+        /// <summary>The other property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Marqeta.Core.Sdk.Models.Other_poi? Other { get; set; }

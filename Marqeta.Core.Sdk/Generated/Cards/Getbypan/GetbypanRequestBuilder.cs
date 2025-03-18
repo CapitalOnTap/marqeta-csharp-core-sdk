@@ -34,7 +34,7 @@ namespace Marqeta.Core.Sdk.Cards.Getbypan
         {
         }
         /// <summary>
-        /// Retrieves the `user_token` and `card_token` for a primary account number (PAN).In the case of a reissued card, where multiple cards share the same PAN, the information for the most recently issued card is returned.This request is useful in IVR scenarios where a user has telephoned and identifies the card by the PAN.The retrieval of these tokens is implemented as a `POST` request because supplying the PAN in the request body is more secure than supplying it in the URL (as would be required with a `GET`).[WARNING]Sending a request to this endpoint requires PCI DSS compliance.You must comply with PCI DSS data security requirements if you want to store, transmit, or process sensitive card data such as the cardholder&apos;s primary account number (PAN), personal identification number (PIN), and card expiration date.
+        /// Returns user and card tokens for the specified PAN
         /// </summary>
         /// <returns>A <see cref="global::Marqeta.Core.Sdk.Models.Pan_response"/></returns>
         /// <param name="body">The request body</param>
@@ -59,7 +59,7 @@ namespace Marqeta.Core.Sdk.Cards.Getbypan
             return await RequestAdapter.SendAsync<global::Marqeta.Core.Sdk.Models.Pan_response>(requestInfo, global::Marqeta.Core.Sdk.Models.Pan_response.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Retrieves the `user_token` and `card_token` for a primary account number (PAN).In the case of a reissued card, where multiple cards share the same PAN, the information for the most recently issued card is returned.This request is useful in IVR scenarios where a user has telephoned and identifies the card by the PAN.The retrieval of these tokens is implemented as a `POST` request because supplying the PAN in the request body is more secure than supplying it in the URL (as would be required with a `GET`).[WARNING]Sending a request to this endpoint requires PCI DSS compliance.You must comply with PCI DSS data security requirements if you want to store, transmit, or process sensitive card data such as the cardholder&apos;s primary account number (PAN), personal identification number (PIN), and card expiration date.
+        /// Returns user and card tokens for the specified PAN
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">The request body</param>

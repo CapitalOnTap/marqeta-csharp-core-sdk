@@ -119,5 +119,25 @@ namespace Marqeta.Core.Sdk.Models
         #pragma warning disable CS1591
         PURCHASE_REPAYMENT,
         #pragma warning restore CS1591
+        [EnumMember(Value = "AFT_OR_OCT_ELIGIBILITY")]
+        #pragma warning disable CS1591
+        AFT_OR_OCT_ELIGIBILITY,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "CONSUMER_BILL_PAYMENT")]
+        #pragma warning disable CS1591
+        CONSUMER_BILL_PAYMENT,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "REQUEST_TO_PAY")]
+        #pragma warning disable CS1591
+        REQUEST_TO_PAY,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "LIQUID_ASSET")]
+        #pragma warning disable CS1591
+        LIQUID_ASSET,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "FAST_REFUND")]
+        #pragma warning disable CS1591
+        FAST_REFUND,
+        #pragma warning restore CS1591
     }
 }

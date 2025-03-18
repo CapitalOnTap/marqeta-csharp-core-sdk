@@ -55,6 +55,14 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string CustomerServicePhone { get; set; }
 #endif
+        /// <summary>Geographic coordinates of the card acceptor in `latitudeE7,longitudeE7` format.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? GeographicCoordinates { get; set; }
+#nullable restore
+#else
+        public string GeographicCoordinates { get; set; }
+#endif
         /// <summary>The independent_sales_organization_id property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -167,6 +175,14 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string PostalCode { get; set; }
 #endif
+        /// <summary>Geographic coordinates of the service provider in `latitudeE7,longitudeE7` format.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? ServiceGeographicCoordinates { get; set; }
+#nullable restore
+#else
+        public string ServiceGeographicCoordinates { get; set; }
+#endif
         /// <summary>The special_merchant_id property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -237,6 +253,7 @@ namespace Marqeta.Core.Sdk.Models
                 { "country_code", n => { CountryCode = n.GetStringValue(); } },
                 { "country_of_origin", n => { CountryOfOrigin = n.GetStringValue(); } },
                 { "customer_service_phone", n => { CustomerServicePhone = n.GetStringValue(); } },
+                { "geographic_coordinates", n => { GeographicCoordinates = n.GetStringValue(); } },
                 { "independent_sales_organization_id", n => { IndependentSalesOrganizationId = n.GetStringValue(); } },
                 { "mcc", n => { Mcc = n.GetStringValue(); } },
                 { "mcc_groups", n => { MccGroups = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
@@ -251,6 +268,7 @@ namespace Marqeta.Core.Sdk.Models
                 { "phone", n => { Phone = n.GetStringValue(); } },
                 { "poi", n => { Poi = n.GetObjectValue<global::Marqeta.Core.Sdk.Models.Terminal_model>(global::Marqeta.Core.Sdk.Models.Terminal_model.CreateFromDiscriminatorValue); } },
                 { "postal_code", n => { PostalCode = n.GetStringValue(); } },
+                { "service_geographic_coordinates", n => { ServiceGeographicCoordinates = n.GetStringValue(); } },
                 { "special_merchant_id", n => { SpecialMerchantId = n.GetStringValue(); } },
                 { "state", n => { State = n.GetStringValue(); } },
                 { "sub_merchant_id", n => { SubMerchantId = n.GetStringValue(); } },
@@ -270,6 +288,7 @@ namespace Marqeta.Core.Sdk.Models
             writer.WriteStringValue("country_code", CountryCode);
             writer.WriteStringValue("country_of_origin", CountryOfOrigin);
             writer.WriteStringValue("customer_service_phone", CustomerServicePhone);
+            writer.WriteStringValue("geographic_coordinates", GeographicCoordinates);
             writer.WriteStringValue("independent_sales_organization_id", IndependentSalesOrganizationId);
             writer.WriteStringValue("mcc", Mcc);
             writer.WriteCollectionOfPrimitiveValues<string>("mcc_groups", MccGroups);
@@ -284,6 +303,7 @@ namespace Marqeta.Core.Sdk.Models
             writer.WriteStringValue("phone", Phone);
             writer.WriteObjectValue<global::Marqeta.Core.Sdk.Models.Terminal_model>("poi", Poi);
             writer.WriteStringValue("postal_code", PostalCode);
+            writer.WriteStringValue("service_geographic_coordinates", ServiceGeographicCoordinates);
             writer.WriteStringValue("special_merchant_id", SpecialMerchantId);
             writer.WriteStringValue("state", State);
             writer.WriteStringValue("sub_merchant_id", SubMerchantId);

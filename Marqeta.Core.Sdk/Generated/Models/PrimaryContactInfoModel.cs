@@ -7,15 +7,14 @@ using System.IO;
 using System;
 namespace Marqeta.Core.Sdk.Models
 {
-    /// <summary>
-    /// Describes the business&apos; primary contact person.
-    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
+    #pragma warning disable CS1591
     public partial class PrimaryContactInfoModel : IAdditionalDataHolder, IParsable
+    #pragma warning restore CS1591
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Business department of the primary contact.</summary>
+        /// <summary>The department property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Department { get; set; }
@@ -23,7 +22,7 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string Department { get; set; }
 #endif
-        /// <summary>Email address of the primary contact.</summary>
+        /// <summary>The email property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Email { get; set; }
@@ -31,7 +30,7 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string Email { get; set; }
 #endif
-        /// <summary>Phone extension of the primary contact.</summary>
+        /// <summary>The extension property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Extension { get; set; }
@@ -39,7 +38,7 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string Extension { get; set; }
 #endif
-        /// <summary>Fax number of the primary contact.</summary>
+        /// <summary>The fax property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Fax { get; set; }
@@ -47,7 +46,7 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string Fax { get; set; }
 #endif
-        /// <summary>Full name of the primary contact.</summary>
+        /// <summary>The full_name property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? FullName { get; set; }
@@ -55,7 +54,7 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string FullName { get; set; }
 #endif
-        /// <summary>Mobile phone number of the primary contact.</summary>
+        /// <summary>The mobile property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Mobile { get; set; }
@@ -63,7 +62,7 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string Mobile { get; set; }
 #endif
-        /// <summary>Phone number of the primary contact.</summary>
+        /// <summary>The phone property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Phone { get; set; }
@@ -71,7 +70,7 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string Phone { get; set; }
 #endif
-        /// <summary>Title of the primary contact.</summary>
+        /// <summary>The title property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Title { get; set; }

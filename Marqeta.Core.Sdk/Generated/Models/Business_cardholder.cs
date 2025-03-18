@@ -7,13 +7,12 @@ using System.IO;
 using System;
 namespace Marqeta.Core.Sdk.Models
 {
-    /// <summary>
-    /// Contains information about a business.
-    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
+    #pragma warning disable CS1591
     public partial class Business_cardholder : IAdditionalDataHolder, IParsable
+    #pragma warning restore CS1591
     {
-        /// <summary>Existing account holder group token that associates the specified account holder group with the business.Send a `GET` request to `/accountholdergroups` to retrieve account holder group tokens.</summary>
+        /// <summary>The account_holder_group_token property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? AccountHolderGroupToken { get; set; }
@@ -21,15 +20,15 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string AccountHolderGroupToken { get; set; }
 #endif
-        /// <summary>Specifies if the business is in the `ACTIVE` state on the Marqeta platform.</summary>
+        /// <summary>The active property</summary>
         public bool? Active { get; set; }
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Indicates that the attester agrees that the information provided is correct and truthful.This field is required for KYC verification (US-based accounts only).</summary>
+        /// <summary>The attestation_consent property</summary>
         public bool? AttestationConsent { get; set; }
-        /// <summary>Timestamp of the attestation.This field is required for KYC verification (US-based accounts only).</summary>
+        /// <summary>YYYY-MM-DDThh:mm:ssZ</summary>
         public DateTimeOffset? AttestationDate { get; set; }
-        /// <summary>Name of the attester for KYC verification.This field is required for KYC verification (US-based accounts only).</summary>
+        /// <summary>The attester_name property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? AttesterName { get; set; }
@@ -37,7 +36,7 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string AttesterName { get; set; }
 #endif
-        /// <summary>Title of the attester for KYC verification.</summary>
+        /// <summary>The attester_title property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? AttesterTitle { get; set; }
@@ -45,7 +44,7 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string AttesterTitle { get; set; }
 #endif
-        /// <summary>Contains information about the beneficial owner of the business, if applicable.This object is required for KYC verification in the United States if the business is private and has a beneficial owner.This object is not required for publicly held businesses.Do not include information about the proprietor or business officer in a `beneficial_owner` object.If the proprietor or officer of the business is also a beneficial owner, you must indicate that in the `proprietor_is_beneficial_owner` field in the body field details of the business.</summary>
+        /// <summary>The beneficial_owner1 property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Marqeta.Core.Sdk.Models.Beneficial_owner_request? BeneficialOwner1 { get; set; }
@@ -53,7 +52,7 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public global::Marqeta.Core.Sdk.Models.Beneficial_owner_request BeneficialOwner1 { get; set; }
 #endif
-        /// <summary>Contains information about the beneficial owner of the business, if applicable.This object is required for KYC verification in the United States if the business is private and has a beneficial owner.This object is not required for publicly held businesses.Do not include information about the proprietor or business officer in a `beneficial_owner` object.If the proprietor or officer of the business is also a beneficial owner, you must indicate that in the `proprietor_is_beneficial_owner` field in the body field details of the business.</summary>
+        /// <summary>The beneficial_owner2 property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Marqeta.Core.Sdk.Models.Beneficial_owner_request? BeneficialOwner2 { get; set; }
@@ -61,7 +60,7 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public global::Marqeta.Core.Sdk.Models.Beneficial_owner_request BeneficialOwner2 { get; set; }
 #endif
-        /// <summary>Contains information about the beneficial owner of the business, if applicable.This object is required for KYC verification in the United States if the business is private and has a beneficial owner.This object is not required for publicly held businesses.Do not include information about the proprietor or business officer in a `beneficial_owner` object.If the proprietor or officer of the business is also a beneficial owner, you must indicate that in the `proprietor_is_beneficial_owner` field in the body field details of the business.</summary>
+        /// <summary>The beneficial_owner3 property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Marqeta.Core.Sdk.Models.Beneficial_owner_request? BeneficialOwner3 { get; set; }
@@ -69,7 +68,7 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public global::Marqeta.Core.Sdk.Models.Beneficial_owner_request BeneficialOwner3 { get; set; }
 #endif
-        /// <summary>Contains information about the beneficial owner of the business, if applicable.This object is required for KYC verification in the United States if the business is private and has a beneficial owner.This object is not required for publicly held businesses.Do not include information about the proprietor or business officer in a `beneficial_owner` object.If the proprietor or officer of the business is also a beneficial owner, you must indicate that in the `proprietor_is_beneficial_owner` field in the body field details of the business.</summary>
+        /// <summary>The beneficial_owner4 property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Marqeta.Core.Sdk.Models.Beneficial_owner_request? BeneficialOwner4 { get; set; }
@@ -77,7 +76,7 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public global::Marqeta.Core.Sdk.Models.Beneficial_owner_request BeneficialOwner4 { get; set; }
 #endif
-        /// <summary>Fictitious business name (&quot;Doing Business As&quot; or DBA).This field is required for KYC verification (US-based accounts only).If your business does not use a fictitious business name, enter your legal business name again in this field.</summary>
+        /// <summary>The business_name_dba property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? BusinessNameDba { get; set; }
@@ -85,7 +84,7 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string BusinessNameDba { get; set; }
 #endif
-        /// <summary>Legal name of business.This field is required for KYC verification (US-based accounts only).</summary>
+        /// <summary>The business_name_legal property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? BusinessNameLegal { get; set; }
@@ -93,7 +92,7 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string BusinessNameLegal { get; set; }
 #endif
-        /// <summary>Indicates the type of business, for example B2B (business-to-business) or B2C (business-to-consumer).</summary>
+        /// <summary>The business_type property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? BusinessType { get; set; }
@@ -101,9 +100,9 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string BusinessType { get; set; }
 #endif
-        /// <summary>Date when the business was established.</summary>
+        /// <summary>The date_established property</summary>
         public DateTimeOffset? DateEstablished { get; set; }
-        /// <summary>Data Universal Numbering System (DUNS) number of the business.</summary>
+        /// <summary>The duns_number property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? DunsNumber { get; set; }
@@ -111,7 +110,7 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string DunsNumber { get; set; }
 #endif
-        /// <summary>General description of the business.</summary>
+        /// <summary>The general_business_description property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? GeneralBusinessDescription { get; set; }
@@ -119,7 +118,7 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string GeneralBusinessDescription { get; set; }
 #endif
-        /// <summary>History of the business.</summary>
+        /// <summary>The history property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? History { get; set; }
@@ -127,7 +126,7 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string History { get; set; }
 #endif
-        /// <summary>One or more objects containing identifications associated with the business.</summary>
+        /// <summary>The identifications property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<global::Marqeta.Core.Sdk.Models.IdentificationRequestModel>? Identifications { get; set; }
@@ -135,7 +134,7 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public List<global::Marqeta.Core.Sdk.Models.IdentificationRequestModel> Identifications { get; set; }
 #endif
-        /// <summary>Contains information about the organizational structure of the business.This object is required for KYC verification (US-based accounts only).</summary>
+        /// <summary>The incorporation property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Marqeta.Core.Sdk.Models.Business_incorporation? Incorporation { get; set; }
@@ -143,9 +142,9 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public global::Marqeta.Core.Sdk.Models.Business_incorporation Incorporation { get; set; }
 #endif
-        /// <summary>Date on which the business office opened in its current location.</summary>
+        /// <summary>The in_current_location_since property</summary>
         public DateTimeOffset? InCurrentLocationSince { get; set; }
-        /// <summary>Locations of the business&apos; offices outside the US.</summary>
+        /// <summary>The international_office_locations property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? InternationalOfficeLocations { get; set; }
@@ -153,7 +152,7 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string InternationalOfficeLocations { get; set; }
 #endif
-        /// <summary>IP address of the business.</summary>
+        /// <summary>The ip_address property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? IpAddress { get; set; }
@@ -161,7 +160,7 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string IpAddress { get; set; }
 #endif
-        /// <summary>Associates any additional metadata you provide with the business.</summary>
+        /// <summary>The metadata property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Marqeta.Core.Sdk.Models.Business_cardholder_metadata? Metadata { get; set; }
@@ -169,7 +168,7 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public global::Marqeta.Core.Sdk.Models.Business_cardholder_metadata Metadata { get; set; }
 #endif
-        /// <summary>Any additional information pertaining to the business.</summary>
+        /// <summary>The notes property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Notes { get; set; }
@@ -177,7 +176,7 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string Notes { get; set; }
 #endif
-        /// <summary>Address associated with the business.</summary>
+        /// <summary>The office_location property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Marqeta.Core.Sdk.Models.AddressRequestModel? OfficeLocation { get; set; }
@@ -185,7 +184,7 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public global::Marqeta.Core.Sdk.Models.AddressRequestModel OfficeLocation { get; set; }
 #endif
-        /// <summary>Password for the business account on the Marqeta platform.</summary>
+        /// <summary>Strong password required</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Password { get; set; }
@@ -193,7 +192,7 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string Password { get; set; }
 #endif
-        /// <summary>10-digit telephone number of business.</summary>
+        /// <summary>The phone property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Phone { get; set; }
@@ -201,7 +200,7 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string Phone { get; set; }
 #endif
-        /// <summary>Describes the business&apos; primary contact person.</summary>
+        /// <summary>The primary_contact property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Marqeta.Core.Sdk.Models.PrimaryContactInfoModel? PrimaryContact { get; set; }
@@ -209,9 +208,9 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public global::Marqeta.Core.Sdk.Models.PrimaryContactInfoModel PrimaryContact { get; set; }
 #endif
-        /// <summary>Indicates that the proprietor or officer of the business is also a beneficial owner.This field is required for KYC verification if the business proprietor or officer is also a beneficial owner.</summary>
+        /// <summary>The proprietor_is_beneficial_owner property</summary>
         public bool? ProprietorIsBeneficialOwner { get; set; }
-        /// <summary>Contains information about the proprietor or officer of the business.This object is required for KYC verification of proprietors or officers of privately held businesses in the United States.This object is not required for publicly held businesses.</summary>
+        /// <summary>The proprietor_or_officer property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Marqeta.Core.Sdk.Models.Business_proprietor? ProprietorOrOfficer { get; set; }
@@ -219,7 +218,7 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public global::Marqeta.Core.Sdk.Models.Business_proprietor ProprietorOrOfficer { get; set; }
 #endif
-        /// <summary>Taxpayer identifier of the business.</summary>
+        /// <summary>The taxpayer_id property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? TaxpayerId { get; set; }
@@ -227,7 +226,7 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string TaxpayerId { get; set; }
 #endif
-        /// <summary>Unique identifier of the business resource.If you do not include a token, the system generates one automatically.This token is necessary for use in other API calls, so we recommend that rather than let the system generate one, you use a simple string that is easy to remember.This value cannot be updated.</summary>
+        /// <summary>The token property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Token { get; set; }
@@ -235,7 +234,7 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string Token { get; set; }
 #endif
-        /// <summary>URL of the business&apos; website.</summary>
+        /// <summary>The website property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Website { get; set; }

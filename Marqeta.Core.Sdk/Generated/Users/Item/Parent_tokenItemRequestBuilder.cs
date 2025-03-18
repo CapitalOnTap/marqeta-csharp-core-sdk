@@ -2,6 +2,7 @@
 #pragma warning disable CS0618
 using Marqeta.Core.Sdk.Models;
 using Marqeta.Core.Sdk.Users.Item.Children;
+using Marqeta.Core.Sdk.Users.Item.Notes;
 using Marqeta.Core.Sdk.Users.Item.Ssn;
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions.Serialization;
@@ -23,6 +24,11 @@ namespace Marqeta.Core.Sdk.Users.Item
         public global::Marqeta.Core.Sdk.Users.Item.Children.ChildrenRequestBuilder Children
         {
             get => new global::Marqeta.Core.Sdk.Users.Item.Children.ChildrenRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The notes property</summary>
+        public global::Marqeta.Core.Sdk.Users.Item.Notes.NotesRequestBuilder Notes
+        {
+            get => new global::Marqeta.Core.Sdk.Users.Item.Notes.NotesRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The ssn property</summary>
         public global::Marqeta.Core.Sdk.Users.Item.Ssn.SsnRequestBuilder Ssn

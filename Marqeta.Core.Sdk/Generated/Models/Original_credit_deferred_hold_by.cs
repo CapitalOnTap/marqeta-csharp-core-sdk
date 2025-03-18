@@ -20,5 +20,9 @@ namespace Marqeta.Core.Sdk.Models
         #pragma warning disable CS1591
         Originator,
         #pragma warning restore CS1591
+        [EnumMember(Value = "payment")]
+        #pragma warning disable CS1591
+        Payment,
+        #pragma warning restore CS1591
     }
 }

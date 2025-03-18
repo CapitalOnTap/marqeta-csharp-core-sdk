@@ -7,19 +7,18 @@ using System.IO;
 using System;
 namespace Marqeta.Core.Sdk.Models
 {
-    /// <summary>
-    /// Contains information about authorization decisions.
-    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
+    #pragma warning disable CS1591
     public partial class Selective_auth : IAdditionalDataHolder, IParsable
+    #pragma warning restore CS1591
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Determines what type of merchant information is required for a match (authorization).Not relevant if `enable_regex_search_chain = false`.* *0* – Requires exact match on card acceptor name and postal code to existing entry in Marqeta Merchant database (most restrictive).* *1* – Partial match on card acceptor name (least restrictive).* *2* – Partial match on card acceptor name; exact match on card acceptor city.* *3* – Partial match on card acceptor name; exact match on card acceptor postal code.* *4* – Partial match on card acceptor name; exact match on street address 1 and postal code.</summary>
+        /// <summary>The dmd_location_sensitivity property</summary>
         public int? DmdLocationSensitivity { get; set; }
-        /// <summary>Set to `true` to perform regular expression checking on the description received in the authorization.</summary>
+        /// <summary>The enable_regex_search_chain property</summary>
         public bool? EnableRegexSearchChain { get; set; }
-        /// <summary>Specifies the selective authorization mode.* *0* — Inactive* *1* — Active (attempts to authorize a merchant that does not have a recognized MID by matching other pieces of information)* *2* — Logging and notification (checks the transaction and logs results, but does not authorize)Selective authorization applies to transactions that are limited to specific merchants.Matching requirements for authorization are set by the `dmd_location_sensitivity` field.</summary>
+        /// <summary>The sa_mode property</summary>
         public int? SaMode { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Marqeta.Core.Sdk.Models.Selective_auth"/> and sets the default values.

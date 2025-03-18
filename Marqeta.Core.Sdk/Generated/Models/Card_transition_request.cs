@@ -14,7 +14,7 @@ namespace Marqeta.Core.Sdk.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Identifies the card whose state will transition.</summary>
+        /// <summary>The card_token property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? CardToken { get; set; }
@@ -22,9 +22,9 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string CardToken { get; set; }
 #endif
-        /// <summary>The mechanism by which the transition was initiated.* *ADMIN* - Indicates that the card transition was initiated through the Marqeta Dashboard.* *API* - Indicates that the card transition was initiated by you through the Core API.Use this value when creating a card transition with an API `POST` request.* *FRAUD* - Indicates that either Marqeta or the card network has determined that the card is fraudulent.* *IVR* - Indicates that the card transition was initiated through your Interactive Voice Response system.* *SYSTEM* - Indicates that the card transition was initiated by Marqeta.For example, Marqeta suspended the card due to excessive failed personal identification number (PIN) entries.</summary>
+        /// <summary>The channel property</summary>
         public global::Marqeta.Core.Sdk.Models.Card_transition_request_channel? Channel { get; set; }
-        /// <summary>Additional information about the state change.</summary>
+        /// <summary>The reason property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Reason { get; set; }
@@ -32,13 +32,13 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string Reason { get; set; }
 #endif
-        /// <summary>Standard code describing the reason for the transition.*NOTE:* This field is required if your program uses v2 of the `user_card_state_version`, which is a program-specific configuration value that is managed by Marqeta and cannot be accessed via the API.To learn more about the `user_card_state_version` program configuration, contact your Marqeta representative.* *00:* Object activated for the first time* *01:* Requested by you* *02:* Inactivity over time* *03:* This address cannot accept mail or the addressee is unknown* *04:* Negative account balance* *05:* Account under review* *06:* Suspicious activity was identified* *07:* Activity outside the program parameters was identified* *08:* Confirmed fraud was identified* *09:* Matched with an Office of Foreign Assets Control list* *10:* Card was reported lost* *11:* Card information was cloned* *12:* Account or card information was compromised* *13:* Temporary status change while on hold/leave* *14:* Initiated by Marqeta* *15:* Initiated by issuer* *16:* Card expired* *17:* Failed KYC* *18:* Changed to `ACTIVE` because information was properly validated* *19:* Changed to `ACTIVE` because account activity was properly validated* *20:* Change occurred prior to the normalization of reason codes* *21:* Initiated by a third party, often a digital wallet provider* *22:* PIN retry limit reached* *23:* Card was reported stolen* *24:* Address issue* *25:* Name issue* *26:* SSN issue* *27:* DOB issue* *28:* Email issue* *29:* Phone issue* *30:* Account/fulfillment mismatch* *31:* Other reason</summary>
+        /// <summary>The reason_code property</summary>
         public global::Marqeta.Core.Sdk.Models.Card_transition_request_reason_code? ReasonCode { get; set; }
-        /// <summary>Specifies the new state.</summary>
+        /// <summary>The state property</summary>
         public global::Marqeta.Core.Sdk.Models.Card_transition_request_state? State { get; set; }
-        /// <summary>Set this field to `true` to synchronize the state of the card&apos;s associated token(s) with the card&apos;s new state.The digital wallet tokens must be in a valid starting state for the given transition, which will reflect the card&apos;s state transition.For example, if the card is transitioning from the `ACTIVE` state to the `SUSPENDED` state, only digital wallet tokens in the `ACTIVE` state will be synchronized with the card state transition and therefore be transitioned to the `SUSPENDED` state.Leave this field blank or set it to `false` to keep the states of the card and its digital wallet tokens independent.</summary>
+        /// <summary>The sync_state_with_dwts property</summary>
         public bool? SyncStateWithDwts { get; set; }
-        /// <summary>Unique identifier of the card transition.If you do not include a token, the system will generate one automatically.This token is referenced in other API calls, so we recommend that you define a simple string that is easy to remember.This value cannot be updated.</summary>
+        /// <summary>The token property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Token { get; set; }
@@ -46,7 +46,7 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string Token { get; set; }
 #endif
-        /// <summary>Contains information about the user.</summary>
+        /// <summary>The validations property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Marqeta.Core.Sdk.Models.ValidationsRequest? Validations { get; set; }

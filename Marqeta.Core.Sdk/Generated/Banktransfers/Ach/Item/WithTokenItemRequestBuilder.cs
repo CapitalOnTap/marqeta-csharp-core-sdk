@@ -34,7 +34,7 @@ namespace Marqeta.Core.Sdk.Banktransfers.Ach.Item
         {
         }
         /// <summary>
-        /// Retrieve a specific ACH transfer.
+        /// Returns a bank transfer entry
         /// </summary>
         /// <returns>A <see cref="global::Marqeta.Core.Sdk.Models.Bank_transfer_response_model"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -57,7 +57,7 @@ namespace Marqeta.Core.Sdk.Banktransfers.Ach.Item
             return await RequestAdapter.SendAsync<global::Marqeta.Core.Sdk.Models.Bank_transfer_response_model>(requestInfo, global::Marqeta.Core.Sdk.Models.Bank_transfer_response_model.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Retrieve a specific ACH transfer.
+        /// Returns a bank transfer entry
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>

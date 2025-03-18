@@ -14,11 +14,11 @@ namespace Marqeta.Core.Sdk.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Set to `true` to decline account verification or authorization messages whose address number does not match the address number on file.Set to `false` to not decline account verification or authorization messages whose address number does not match the address number on file.This field is functional only if `validate = true`.</summary>
+        /// <summary>The decline_on_address_number_mismatch property</summary>
         public bool? DeclineOnAddressNumberMismatch { get; set; }
-        /// <summary>Set to `true` to decline account verification or authorization messages whose postal code does not match the postal code on file.Set to `false` to not decline account verification or authorization messages whose postal code does not match the postal code on file.This field is functional only if `validate = true`.</summary>
+        /// <summary>The decline_on_postal_code_mismatch property</summary>
         public bool? DeclineOnPostalCodeMismatch { get; set; }
-        /// <summary>Set to `true` to require validation of account verification or authorization messages.Set to `false` to forgo validation and approve all account verification and authorization messages.</summary>
+        /// <summary>The validate property</summary>
         public bool? Validate { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Marqeta.Core.Sdk.Models.Avs_control_options"/> and sets the default values.

@@ -13,11 +13,11 @@ namespace Marqeta.Core.Sdk.Models
     public partial class Card_product_update_model : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
     {
-        /// <summary>Indicates whether the card product is active.*NOTE:* This field has no effect on the ability to create cards from this card product.Use the `config.fulfillment.allow_card_creation` field to allow/disallow card creation.</summary>
+        /// <summary>The active property</summary>
         public bool? Active { get; set; }
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Defines the characteristics of the card product.Configurations are conditionally required based on program setup.For more information, contact your Marqeta representative.</summary>
+        /// <summary>The config property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Marqeta.Core.Sdk.Models.Card_product_config? Config { get; set; }
@@ -25,9 +25,9 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public global::Marqeta.Core.Sdk.Models.Card_product_config Config { get; set; }
 #endif
-        /// <summary>End date of the range over which the card product can be active.</summary>
+        /// <summary>yyyy-MM-dd</summary>
         public Date? EndDate { get; set; }
-        /// <summary>Name of the card product.Marqeta recommends that you use a unique string.</summary>
+        /// <summary>The name property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Name { get; set; }
@@ -35,7 +35,7 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string Name { get; set; }
 #endif
-        /// <summary>Date the card product becomes active.If the start date has passed and the card is set to `active = false`, then the card will not be activated.</summary>
+        /// <summary>yyyy-MM-dd</summary>
         public Date? StartDate { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Marqeta.Core.Sdk.Models.Card_product_update_model"/> and sets the default values.

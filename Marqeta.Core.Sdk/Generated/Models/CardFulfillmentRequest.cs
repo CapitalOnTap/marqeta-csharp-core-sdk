@@ -7,15 +7,14 @@ using System.IO;
 using System;
 namespace Marqeta.Core.Sdk.Models
 {
-    /// <summary>
-    /// Specifies certain physical characteristics of a card, as well as shipment information.
-    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
+    #pragma warning disable CS1591
     public partial class CardFulfillmentRequest : IAdditionalDataHolder, IParsable
+    #pragma warning restore CS1591
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Reason for card fulfillment.</summary>
+        /// <summary>The card_fulfillment_reason property</summary>
         public global::Marqeta.Core.Sdk.Models.CardFulfillmentRequest_card_fulfillment_reason? CardFulfillmentReason { get; set; }
         /// <summary>Specifies personalized attributes to be added to the card.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -25,7 +24,7 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public global::Marqeta.Core.Sdk.Models.Card_personalization CardPersonalization { get; set; }
 #endif
-        /// <summary>Specifies shipping details for the order.</summary>
+        /// <summary>The shipping property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Marqeta.Core.Sdk.Models.Shipping? Shipping { get; set; }

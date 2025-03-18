@@ -3,9 +3,10 @@ using System.Runtime.Serialization;
 using System;
 namespace Marqeta.Core.Sdk.Models
 {
-    /// <summary>Specifies the physical form cards of this card product type will take.</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
+    #pragma warning disable CS1591
     public enum Card_product_fulfillment_payment_instrument
+    #pragma warning restore CS1591
     {
         [EnumMember(Value = "PHYSICAL_MSR")]
         #pragma warning disable CS1591

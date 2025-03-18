@@ -7,19 +7,18 @@ using System.IO;
 using System;
 namespace Marqeta.Core.Sdk.Models
 {
-    /// <summary>
-    /// Describes the Commando Mode control set&apos;s `current_state` object.
-    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
+    #pragma warning disable CS1591
     public partial class Commando_mode_nested_transition : IAdditionalDataHolder, IParsable
+    #pragma warning restore CS1591
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Mechanism that changed the Commando Mode control set&apos;s state.</summary>
+        /// <summary>The channel property</summary>
         public global::Marqeta.Core.Sdk.Models.Commando_mode_nested_transition_channel? Channel { get; set; }
-        /// <summary>Indicates whether Commando Mode is enabled.* If `commando_enabled` is `true` and `COMMANDO_MANUAL` is configured, all transactions are processed via Commando Mode.* If `commando_enabled` is `true` and `COMMANDO_AUTO` is configured, Commando Mode is ready to intervene only when a transaction times out or encounters an error.</summary>
+        /// <summary>The commando_enabled property</summary>
         public bool? CommandoEnabled { get; set; }
-        /// <summary>Describes the reason why the current state of the Commando Mode control set was last changed.</summary>
+        /// <summary>The reason property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Reason { get; set; }
@@ -27,7 +26,7 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string Reason { get; set; }
 #endif
-        /// <summary>Identifies the user who last changed the Commando Mode control set&apos;s state.</summary>
+        /// <summary>The username property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Username { get; set; }

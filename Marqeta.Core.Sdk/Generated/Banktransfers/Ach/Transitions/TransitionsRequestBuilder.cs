@@ -34,7 +34,7 @@ namespace Marqeta.Core.Sdk.Banktransfers.Ach.Transitions
         {
         }
         /// <summary>
-        /// Retrieve a list of all ACH transfer transitions for a given ACH transfer.
+        /// Lists all bank transfer transitions
         /// </summary>
         /// <returns>A <see cref="global::Marqeta.Core.Sdk.Models.BankTransferTransitionListResponse"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -57,7 +57,7 @@ namespace Marqeta.Core.Sdk.Banktransfers.Ach.Transitions
             return await RequestAdapter.SendAsync<global::Marqeta.Core.Sdk.Models.BankTransferTransitionListResponse>(requestInfo, global::Marqeta.Core.Sdk.Models.BankTransferTransitionListResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Create an ACH transfer transition that updates the `status` of an ACH transfer.Each ACH transfer has a lifecycle of statuses, as shown in the following diagram:[#banktransfers-1-image]image::achtransfers1[alt=&apos;ACH transfer lifecycle&apos;, width=575][NOTE]You can create ACH transfer transitions in the sandbox environment.However, Marqeta transitions ACH transfers through their lifecycle in the production environment.
+        /// Creates an ACH bank transfer transition
         /// </summary>
         /// <returns>A <see cref="global::Marqeta.Core.Sdk.Models.Bank_transfer_transition_response_model"/></returns>
         /// <param name="body">The request body</param>
@@ -82,7 +82,7 @@ namespace Marqeta.Core.Sdk.Banktransfers.Ach.Transitions
             return await RequestAdapter.SendAsync<global::Marqeta.Core.Sdk.Models.Bank_transfer_transition_response_model>(requestInfo, global::Marqeta.Core.Sdk.Models.Bank_transfer_transition_response_model.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Retrieve a list of all ACH transfer transitions for a given ACH transfer.
+        /// Lists all bank transfer transitions
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -101,7 +101,7 @@ namespace Marqeta.Core.Sdk.Banktransfers.Ach.Transitions
             return requestInfo;
         }
         /// <summary>
-        /// Create an ACH transfer transition that updates the `status` of an ACH transfer.Each ACH transfer has a lifecycle of statuses, as shown in the following diagram:[#banktransfers-1-image]image::achtransfers1[alt=&apos;ACH transfer lifecycle&apos;, width=575][NOTE]You can create ACH transfer transitions in the sandbox environment.However, Marqeta transitions ACH transfers through their lifecycle in the production environment.
+        /// Creates an ACH bank transfer transition
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">The request body</param>
@@ -132,12 +132,12 @@ namespace Marqeta.Core.Sdk.Banktransfers.Ach.Transitions
             return new global::Marqeta.Core.Sdk.Banktransfers.Ach.Transitions.TransitionsRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
-        /// Retrieve a list of all ACH transfer transitions for a given ACH transfer.
+        /// Lists all bank transfer transitions
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class TransitionsRequestBuilderGetQueryParameters 
         {
-            /// <summary>Unique identifier of the bank transfer.</summary>
+            /// <summary>Bank transfer token</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
             [QueryParameter("bank_transfer_token")]
@@ -147,10 +147,10 @@ namespace Marqeta.Core.Sdk.Banktransfers.Ach.Transitions
             [QueryParameter("bank_transfer_token")]
             public string BankTransferToken { get; set; }
 #endif
-            /// <summary>Number of bank transfer transitions to retrieve.</summary>
+            /// <summary>Number of bank transfer transitions to retrieve</summary>
             [QueryParameter("count")]
             public int? Count { get; set; }
-            /// <summary>Field on which to sort.Use any field in the resource model, or one of the system fields `lastModifiedTime` or `createdTime`.Prefix the field name with a hyphen (-) to sort in descending order.Omit the hyphen to sort in ascending order.</summary>
+            /// <summary>Sort order</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
             [QueryParameter("sort_by")]
@@ -160,10 +160,10 @@ namespace Marqeta.Core.Sdk.Banktransfers.Ach.Transitions
             [QueryParameter("sort_by")]
             public string SortBy { get; set; }
 #endif
-            /// <summary>Sort order index of the first resource in the returned array.</summary>
+            /// <summary>Start index</summary>
             [QueryParameter("start_index")]
             public int? StartIndex { get; set; }
-            /// <summary>Comma-delimited list of bank transfer states to display.</summary>
+            /// <summary>Comma-delimited list of bank transfer states to display e.g. PENDING | PROCESSING | SUBMITTED | RETURNED |  COMPLETED | CANCELLED</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
             [QueryParameter("statuses")]
@@ -173,7 +173,7 @@ namespace Marqeta.Core.Sdk.Banktransfers.Ach.Transitions
             [QueryParameter("statuses")]
             public string Statuses { get; set; }
 #endif
-            /// <summary>Unique identifier of the bank transfer transition.</summary>
+            /// <summary>Bank transfer transition token</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
             [QueryParameter("token")]

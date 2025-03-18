@@ -34,7 +34,7 @@ namespace Marqeta.Core.Sdk.Bulkissuances.Item
         {
         }
         /// <summary>
-        /// Use this endpoint to retrieve a specific bulk card order.
+        /// Returns a bulk issuance request
         /// </summary>
         /// <returns>A <see cref="global::Marqeta.Core.Sdk.Models.Bulk_issuance_response"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -57,7 +57,7 @@ namespace Marqeta.Core.Sdk.Bulkissuances.Item
             return await RequestAdapter.SendAsync<global::Marqeta.Core.Sdk.Models.Bulk_issuance_response>(requestInfo, global::Marqeta.Core.Sdk.Models.Bulk_issuance_response.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Use this endpoint to retrieve a specific bulk card order.
+        /// Returns a bulk issuance request
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>

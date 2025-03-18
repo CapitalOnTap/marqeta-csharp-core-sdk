@@ -14,9 +14,9 @@ namespace Marqeta.Core.Sdk.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Number of cards in the order.</summary>
+        /// <summary>The card_allocation property</summary>
         public int? CardAllocation { get; set; }
-        /// <summary>Specifies the card product from which to create your cards.</summary>
+        /// <summary>The card_product_token property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? CardProductToken { get; set; }
@@ -24,9 +24,9 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string CardProductToken { get; set; }
 #endif
-        /// <summary>Set to `true` to request expedited processing of the order by your card fulfillment provider.This expedited service is available for cards fulfilled by link:http://perfectplastic.com/[Perfect Plastic Printing, window=&quot;_blank&quot;], link:http://www.idemia.com[IDEMIA, window=&quot;_blank&quot;], and link:https://www.arroweye.com/[Arroweye Solutions, window=&quot;_blank&quot;].*NOTE:* Contact your Marqeta representative for information regarding the cost of expedited service.</summary>
+        /// <summary>The expedite property</summary>
         public bool? Expedite { get; set; }
-        /// <summary>Specifies the length of time after the date of issue for which the cards are valid.</summary>
+        /// <summary>The expiration_offset property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Marqeta.Core.Sdk.Models.Expiration_offset? ExpirationOffset { get; set; }
@@ -34,7 +34,7 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public global::Marqeta.Core.Sdk.Models.Expiration_offset ExpirationOffset { get; set; }
 #endif
-        /// <summary>Specifies certain physical characteristics of a card, as well as bulk shipment information.</summary>
+        /// <summary>The fulfillment property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Marqeta.Core.Sdk.Models.FulfillmentRequest? Fulfillment { get; set; }
@@ -42,11 +42,11 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public global::Marqeta.Core.Sdk.Models.FulfillmentRequest Fulfillment { get; set; }
 #endif
-        /// <summary>If set to `true`, the unique numeric postfix appended to each card&apos;s token field is also appended to the card&apos;s `fulfillment.card_personalization.text.name_line_1.value` field.</summary>
+        /// <summary>The name_line_1_numeric_postfix property</summary>
         public bool? NameLine1NumericPostfix { get; set; }
-        /// <summary>If set to `true`, the unique random postfix appended to each card&apos;s token field is also appended to the card&apos;s `fulfillment.card_personalization.text.name_line_1.value` field.</summary>
+        /// <summary>The name_line_1_random_postfix property</summary>
         public bool? NameLine1RandomPostfix { get; set; }
-        /// <summary>If you do not include a token, the system will generate one automatically.This token is necessary for use in other API calls, so we recommend that rather than let the system generate one, you use a simple string that is easy to remember.This value cannot be updated.</summary>
+        /// <summary>The token property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Token { get; set; }
@@ -54,7 +54,7 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string Token { get; set; }
 #endif
-        /// <summary>Associates each card with a user.</summary>
+        /// <summary>The user_association property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Marqeta.Core.Sdk.Models.User_association? UserAssociation { get; set; }

@@ -52,7 +52,7 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string Tags { get; set; }
 #endif
-        /// <summary>The type property</summary>
+        /// <summary>Specifies if this is a flat fee or a percentage of the transaction amount.</summary>
         public global::Marqeta.Core.Sdk.Models.Fee_update_request_type? Type { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Marqeta.Core.Sdk.Models.Fee_update_request"/> and sets the default values.

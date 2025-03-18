@@ -34,7 +34,7 @@ namespace Marqeta.Core.Sdk.Businesses.Lookup
         {
         }
         /// <summary>
-        /// To search for one or more businesses, send a `POST` request to the `/businesses/lookup` endpoint.Include in the message body any parameters by which you want to query.This endpoint supports &lt;&lt;/core-api/field-filtering, field filtering&gt;&gt; and &lt;&lt;/core-api/sorting-and-pagination, pagination&gt;&gt;.
+        /// Returns a specific business
         /// </summary>
         /// <returns>A <see cref="global::Marqeta.Core.Sdk.Models.Business_cardholder"/></returns>
         /// <param name="body">The request body</param>
@@ -59,7 +59,7 @@ namespace Marqeta.Core.Sdk.Businesses.Lookup
             return await RequestAdapter.SendAsync<global::Marqeta.Core.Sdk.Models.Business_cardholder>(requestInfo, global::Marqeta.Core.Sdk.Models.Business_cardholder.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// To search for one or more businesses, send a `POST` request to the `/businesses/lookup` endpoint.Include in the message body any parameters by which you want to query.This endpoint supports &lt;&lt;/core-api/field-filtering, field filtering&gt;&gt; and &lt;&lt;/core-api/sorting-and-pagination, pagination&gt;&gt;.
+        /// Returns a specific business
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">The request body</param>

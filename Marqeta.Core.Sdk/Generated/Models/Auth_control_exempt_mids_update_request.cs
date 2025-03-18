@@ -12,7 +12,7 @@ namespace Marqeta.Core.Sdk.Models
     public partial class Auth_control_exempt_mids_update_request : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
     {
-        /// <summary>Indicates whether the merchant identifier authorization control exception is active.</summary>
+        /// <summary>The active property</summary>
         public bool? Active { get; set; }
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }

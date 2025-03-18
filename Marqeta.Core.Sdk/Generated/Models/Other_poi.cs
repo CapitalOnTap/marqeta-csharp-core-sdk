@@ -7,19 +7,18 @@ using System.IO;
 using System;
 namespace Marqeta.Core.Sdk.Models
 {
-    /// <summary>
-    /// Allows for configuration of points of interaction other than ecommerce or ATMs, such as points of sale (POS).
-    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
+    #pragma warning disable CS1591
     public partial class Other_poi : IAdditionalDataHolder, IParsable
+    #pragma warning restore CS1591
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>If set to `true`, card transactions at points of interaction other than e-commerce or ATMs are allowed.This group includes points of sale (POS).</summary>
+        /// <summary>The allow property</summary>
         public bool? Allow { get; set; }
-        /// <summary>If set to `true`, the cardholder is required to be present during the transaction, such as in a restaurant where the card is present but the cardholder might not be present when the card is swiped.</summary>
+        /// <summary>Default = false</summary>
         public bool? CardholderPresenceRequired { get; set; }
-        /// <summary>If set to `true`, cards of this card product type are required to be present during the transaction, such as in IVR scenarios.</summary>
+        /// <summary>Default = false</summary>
         public bool? CardPresenceRequired { get; set; }
         /// <summary>The track1_discretionary_data property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER

@@ -14,9 +14,9 @@ namespace Marqeta.Core.Sdk.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Set to `true` to request expedited processing of the card by your card fulfillment provider.This expedited service is available for cards fulfilled by link:http://perfectplastic.com/[Perfect Plastic Printing, window=&quot;_blank&quot;], link:http://www.idemia.com[IDEMIA, window=&quot;_blank&quot;], and link:https://www.arroweye.com/[Arroweye Solutions, window=&quot;_blank&quot;].*NOTE:* Contact your Marqeta representative for information regarding the cost of expedited service.</summary>
+        /// <summary>The expedite property</summary>
         public bool? Expedite { get; set; }
-        /// <summary>Specifies certain physical characteristics of a card, as well as shipment information.</summary>
+        /// <summary>The fulfillment property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Marqeta.Core.Sdk.Models.CardFulfillmentRequest? Fulfillment { get; set; }
@@ -24,7 +24,7 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public global::Marqeta.Core.Sdk.Models.CardFulfillmentRequest Fulfillment { get; set; }
 #endif
-        /// <summary>Associates customer-provided metadata with the card.</summary>
+        /// <summary>The metadata property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Marqeta.Core.Sdk.Models.Card_update_request_metadata? Metadata { get; set; }
@@ -32,7 +32,7 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public global::Marqeta.Core.Sdk.Models.Card_update_request_metadata Metadata { get; set; }
 #endif
-        /// <summary>Unique identifier of the card you want to update.</summary>
+        /// <summary>The token property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Token { get; set; }
@@ -40,7 +40,7 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string Token { get; set; }
 #endif
-        /// <summary>Specifies the user you want to associate with the card.</summary>
+        /// <summary>The user_token property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? UserToken { get; set; }

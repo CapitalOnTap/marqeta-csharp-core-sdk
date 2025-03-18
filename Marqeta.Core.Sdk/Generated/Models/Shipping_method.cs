@@ -3,9 +3,10 @@ using System.Runtime.Serialization;
 using System;
 namespace Marqeta.Core.Sdk.Models
 {
-    /// <summary>Specifies the shipping service.</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
+    #pragma warning disable CS1591
     public enum Shipping_method
+    #pragma warning restore CS1591
     {
         [EnumMember(Value = "LOCAL_MAIL")]
         #pragma warning disable CS1591

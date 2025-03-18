@@ -34,7 +34,7 @@ namespace Marqeta.Core.Sdk.Cardproducts.Item
         {
         }
         /// <summary>
-        /// Use this endpoint to retrieve a specific card product.
+        /// Returns a specific card product
         /// </summary>
         /// <returns>A <see cref="global::Marqeta.Core.Sdk.Models.Card_product_response"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -57,7 +57,7 @@ namespace Marqeta.Core.Sdk.Cardproducts.Item
             return await RequestAdapter.SendAsync<global::Marqeta.Core.Sdk.Models.Card_product_response>(requestInfo, global::Marqeta.Core.Sdk.Models.Card_product_response.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Use this endpoint to update a card product.Only values of fields in the request are modified; all others are left unchanged.
+        /// Updates a specific card product
         /// </summary>
         /// <returns>A <see cref="global::Marqeta.Core.Sdk.Models.Card_product_response"/></returns>
         /// <param name="body">The request body</param>
@@ -82,7 +82,7 @@ namespace Marqeta.Core.Sdk.Cardproducts.Item
             return await RequestAdapter.SendAsync<global::Marqeta.Core.Sdk.Models.Card_product_response>(requestInfo, global::Marqeta.Core.Sdk.Models.Card_product_response.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Use this endpoint to retrieve a specific card product.
+        /// Returns a specific card product
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -101,7 +101,7 @@ namespace Marqeta.Core.Sdk.Cardproducts.Item
             return requestInfo;
         }
         /// <summary>
-        /// Use this endpoint to update a card product.Only values of fields in the request are modified; all others are left unchanged.
+        /// Updates a specific card product
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">The request body</param>

@@ -3,7 +3,7 @@ using System.Runtime.Serialization;
 using System;
 namespace Marqeta.Core.Sdk.Models
 {
-    /// <summary>Specifies how quickly to initiate the ACH transfer.*NOTE:* Same-day transfers are limited to a maximum amount of $100,000.</summary>
+    /// <summary>default = STANDARD</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum Bank_transfer_request_model_transfer_speed
     {

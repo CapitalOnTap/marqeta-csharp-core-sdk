@@ -19,7 +19,7 @@ namespace Marqeta.Core.Sdk.Authcontrols.Exemptmids
     public partial class ExemptmidsRequestBuilder : BaseRequestBuilder
     {
         /// <summary>Gets an item from the Marqeta.Core.Sdk.authcontrols.exemptmids.item collection</summary>
-        /// <param name="position">Unique identifier of the authorization control resource.</param>
+        /// <param name="position">Auth control token</param>
         /// <returns>A <see cref="global::Marqeta.Core.Sdk.Authcontrols.Exemptmids.Item.WithTokenItemRequestBuilder"/></returns>
         public global::Marqeta.Core.Sdk.Authcontrols.Exemptmids.Item.WithTokenItemRequestBuilder this[string position]
         {
@@ -47,7 +47,7 @@ namespace Marqeta.Core.Sdk.Authcontrols.Exemptmids
         {
         }
         /// <summary>
-        /// Retrieve a list of all merchant (MID) exemptions.
+        /// Lists all auth control exempted MIDs for the program
         /// </summary>
         /// <returns>A <see cref="global::Marqeta.Core.Sdk.Models.AuthControlExemptMidsListResponse"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -70,7 +70,7 @@ namespace Marqeta.Core.Sdk.Authcontrols.Exemptmids
             return await RequestAdapter.SendAsync<global::Marqeta.Core.Sdk.Models.AuthControlExemptMidsListResponse>(requestInfo, global::Marqeta.Core.Sdk.Models.AuthControlExemptMidsListResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Exempt an individual merchant from authorization controls by merchant identifier (MID).Transactions originating from this MID ignore any otherwise applicable authorization controls.[NOTE]You can create MID exemptions in your user sandbox.However, you must work with your Marqeta representative to create MID exemptions in a production environment.
+        /// Creates an auth control for exempting MIDs
         /// </summary>
         /// <returns>A <see cref="global::Marqeta.Core.Sdk.Models.Auth_control_exempt_mids_response"/></returns>
         /// <param name="body">The request body</param>
@@ -95,7 +95,7 @@ namespace Marqeta.Core.Sdk.Authcontrols.Exemptmids
             return await RequestAdapter.SendAsync<global::Marqeta.Core.Sdk.Models.Auth_control_exempt_mids_response>(requestInfo, global::Marqeta.Core.Sdk.Models.Auth_control_exempt_mids_response.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Retrieve a list of all merchant (MID) exemptions.
+        /// Lists all auth control exempted MIDs for the program
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -114,7 +114,7 @@ namespace Marqeta.Core.Sdk.Authcontrols.Exemptmids
             return requestInfo;
         }
         /// <summary>
-        /// Exempt an individual merchant from authorization controls by merchant identifier (MID).Transactions originating from this MID ignore any otherwise applicable authorization controls.[NOTE]You can create MID exemptions in your user sandbox.However, you must work with your Marqeta representative to create MID exemptions in a production environment.
+        /// Creates an auth control for exempting MIDs
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">The request body</param>
@@ -145,12 +145,12 @@ namespace Marqeta.Core.Sdk.Authcontrols.Exemptmids
             return new global::Marqeta.Core.Sdk.Authcontrols.Exemptmids.ExemptmidsRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
-        /// Retrieve a list of all merchant (MID) exemptions.
+        /// Lists all auth control exempted MIDs for the program
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class ExemptmidsRequestBuilderGetQueryParameters 
         {
-            /// <summary>Unique identifier of the card product whose associated MID exemptions you want to retrieve.Enter the string &quot;null&quot; to list MID exemptions that are not associated with a card product.</summary>
+            /// <summary>Card product token. Use &quot;null&quot; to get auth controls that are not associated with any card product.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
             [QueryParameter("card_product")]
@@ -160,10 +160,10 @@ namespace Marqeta.Core.Sdk.Authcontrols.Exemptmids
             [QueryParameter("card_product")]
             public string CardProduct { get; set; }
 #endif
-            /// <summary>The number of resources to retrieve.</summary>
+            /// <summary>Number of items to retrieve. Count can be between 1 - 10 items.</summary>
             [QueryParameter("count")]
             public int? Count { get; set; }
-            /// <summary>Comma-delimited list of fields to return (`field_1,field_2`, and so on).Leave blank to return all fields.</summary>
+            /// <summary>Comma-delimited list of fields to return (e.g. field_1,field_2,..). Leave blank to return all fields.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
             [QueryParameter("fields")]
@@ -173,7 +173,7 @@ namespace Marqeta.Core.Sdk.Authcontrols.Exemptmids
             [QueryParameter("fields")]
             public string Fields { get; set; }
 #endif
-            /// <summary>Field on which to sort.Use any field in the resource model, or one of the system fields `lastModifiedTime` or `createdTime`.Prefix the field name with a hyphen (`-`) to sort in descending order.Omit the hyphen to sort in ascending order.</summary>
+            /// <summary>Field by which to sort the returned items. Use any field in the model, or system fields lastModifiedTime or createdTime.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
             [QueryParameter("sort_by")]
@@ -183,10 +183,10 @@ namespace Marqeta.Core.Sdk.Authcontrols.Exemptmids
             [QueryParameter("sort_by")]
             public string SortBy { get; set; }
 #endif
-            /// <summary>The sort order index of the first resource in the returned array.</summary>
+            /// <summary>Indicates from what row to start returning data.</summary>
             [QueryParameter("start_index")]
             public int? StartIndex { get; set; }
-            /// <summary>Unique identifier of the user whose associated MID exemptions you want to retrieve.Enter the string &quot;null&quot; to list MID exemptions that are not associated with a user.</summary>
+            /// <summary>User token. Use &quot;null&quot; to get auth controls that are not associated with any user.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
             [QueryParameter("user")]

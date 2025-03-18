@@ -14,7 +14,7 @@ namespace Marqeta.Core.Sdk.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Comma-delimited list of accepted countries by ISO 3166 three-digit country code.</summary>
+        /// <summary>The country_codes property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<string>? CountryCodes { get; set; }
@@ -22,13 +22,13 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public List<string> CountryCodes { get; set; }
 #endif
-        /// <summary>Date and time when the accepted countries object was created, in UTC.This field is returned when included in your query.</summary>
+        /// <summary>The created_time property</summary>
         public DateTimeOffset? CreatedTime { get; set; }
-        /// <summary>Specifies if the list of accepted countries in this object is an allow list.If set to `true`, transactions are accepted for all countries included in the object&apos;s `country_codes` array.If set to `false`, transactions are prohibited for all countries included in the object&apos;s `country_codes` array.</summary>
+        /// <summary>The is_whitelist property</summary>
         public bool? IsWhitelist { get; set; }
-        /// <summary>Date and time when the accepted countries object was last updated, in UTC.This field is returned when included in your query.</summary>
+        /// <summary>The last_modified_time property</summary>
         public DateTimeOffset? LastModifiedTime { get; set; }
-        /// <summary>Name of the `acceptedcountries` object.</summary>
+        /// <summary>The name property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Name { get; set; }
@@ -36,7 +36,7 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string Name { get; set; }
 #endif
-        /// <summary>The unique identifier of the `acceptedcountries` object.This field is always returned.</summary>
+        /// <summary>The token property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Token { get; set; }

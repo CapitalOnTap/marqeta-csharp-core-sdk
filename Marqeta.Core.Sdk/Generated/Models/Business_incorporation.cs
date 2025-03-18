@@ -7,15 +7,14 @@ using System.IO;
 using System;
 namespace Marqeta.Core.Sdk.Models
 {
-    /// <summary>
-    /// Contains information about the organizational structure of the business.This object is required for KYC verification (US-based accounts only).
-    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
+    #pragma warning disable CS1591
     public partial class Business_incorporation : IAdditionalDataHolder, IParsable
+    #pragma warning restore CS1591
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Address associated with the business.</summary>
+        /// <summary>The address_registered_under property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Marqeta.Core.Sdk.Models.AddressRequestModel? AddressRegisteredUnder { get; set; }
@@ -23,11 +22,11 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public global::Marqeta.Core.Sdk.Models.AddressRequestModel AddressRegisteredUnder { get; set; }
 #endif
-        /// <summary>Organizational structure of the business, such as corporation or sole proprietorship.This field is required for KYC verification (US-based accounts only).</summary>
+        /// <summary>The incorporation_type property</summary>
         public global::Marqeta.Core.Sdk.Models.Business_incorporation_incorporation_type? IncorporationType { get; set; }
-        /// <summary>A value of `true` indicates that the business is publicly held.</summary>
+        /// <summary>The is_public property</summary>
         public bool? IsPublic { get; set; }
-        /// <summary>Name under which the business is registered.</summary>
+        /// <summary>The name_registered_under property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? NameRegisteredUnder { get; set; }
@@ -35,7 +34,7 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string NameRegisteredUnder { get; set; }
 #endif
-        /// <summary>State where the business is incorporated.This field is required for KYC verification (US-based accounts only).</summary>
+        /// <summary>The state_of_incorporation property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? StateOfIncorporation { get; set; }
@@ -43,7 +42,7 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string StateOfIncorporation { get; set; }
 #endif
-        /// <summary>Business stock symbol.</summary>
+        /// <summary>The stock_symbol property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? StockSymbol { get; set; }

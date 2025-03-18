@@ -14,7 +14,7 @@ namespace Marqeta.Core.Sdk.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Three-digit card verification value (CVV2) included on the back of the card.This value cannot be updated.</summary>
+        /// <summary>The cvv_number property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? CvvNumber { get; set; }
@@ -22,7 +22,7 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string CvvNumber { get; set; }
 #endif
-        /// <summary>Card expiration date.</summary>
+        /// <summary>The expiration property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Expiration { get; set; }
@@ -30,7 +30,7 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string Expiration { get; set; }
 #endif
-        /// <summary>Primary account number (PAN) of the card whose information you want to retrieve.Send a `GET` request to `/cards/{token}/showpan` to retrieve the PAN for a specific card.</summary>
+        /// <summary>The pan property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Pan { get; set; }

@@ -15,7 +15,7 @@ namespace Marqeta.Core.Sdk.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>For any `PENDING` or `FAILURE` outcome, see the &lt;&lt;user_kyc_failure_codes, User KYC failure codes&gt;&gt; table, the &lt;&lt;outcome_reasons_for_the_business, Outcome reasons for the business&gt;&gt; table, or the &lt;&lt;outcome_reasons_for_individuals_associated_with_a_business, Outcome reasons for individuals associated with a business&gt;&gt; table.</summary>
+        /// <summary>For any `pending` or `failure` outcome, see the &lt;&lt;user_kyc_failure_codes, User KYC failure codes&gt;&gt; table, the &lt;&lt;outcome_reasons_for_the_business, Outcome reasons for the business&gt;&gt; table, or the &lt;&lt;outcome_reasons_for_individuals_associated_with_a_business, Outcome reasons for individuals associated with a business&gt;&gt; table.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Code { get; set; }
