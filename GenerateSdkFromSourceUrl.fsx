@@ -1,9 +1,9 @@
 ﻿(* Reference nuget packages, fixed version numbers to prevent breaking changes and make script runs consistent
    If possible, please try updating the nuget packages each time we modify the script *)
-#r "nuget: Microsoft.OpenApi,1.6.14"
-#r "nuget: Microsoft.OpenApi.Readers,1.6.14"
+#r "nuget: Microsoft.OpenApi,1.6.23"
+#r "nuget: Microsoft.OpenApi.Readers,1.6.23"
 #r "nuget: Fli,1.111.10"
-#r "nuget: FsHttp,14.5.0"
+#r "nuget: FsHttp,15.0.1"
 
 /// <summary>
 ///     Module of string helpers
