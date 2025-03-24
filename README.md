@@ -76,7 +76,7 @@ Execute the `dotnet fsi GenerateSdkFromSourceUrl.fsx` command in the root source
 2. If build and tests succeed then commit and push
 
 > [!NOTE]
-> #### Update Kiota
+> #### Updating Kiota
 > When updating Kiota it is best to update the CLI and packages together in the same release as the Kiota generation depends on its abstractions and the generated SDK may require changes not present in our versions of the Kiota nuget packages.
 
 ## Making changes
