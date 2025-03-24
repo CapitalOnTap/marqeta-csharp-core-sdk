@@ -10,7 +10,7 @@ namespace Marqeta.Core.Sdk.Serialization.Text;
 
 /// <summary>
 ///     The <see cref="IParseNode"/> implementation for the text/html content type. 
-///     Copied from:  <see href="https://github.com/microsoft/kiota-serialization-text-dotnet/blob/main/src/TextParseNode.cs"/>
+///     Copied from:  <see href="https://github.com/microsoft/kiota-dotnet/blob/main/src/serialization/text/TextParseNode.cs"/>
 ///     <see cref="TextParseNode"/>
 ///     Changes will be marked with a MODIFIED comment, otherwise we call the <see cref="TextParseNode"/> implementation
 ///     Current changes:

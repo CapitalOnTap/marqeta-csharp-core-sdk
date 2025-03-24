@@ -19,7 +19,7 @@ namespace Marqeta.Core.Sdk.Serialization.Json;
 
 /// <summary>
 ///     The <see cref="IParseNode"/> implementation for the json content type.
-///     Copied from: <see href="https://github.com/microsoft/kiota-serialization-json-dotnet/blob/main/src/JsonParseNode.cs"/>
+///     Copied from: <see href="https://github.com/microsoft/kiota-dotnet/blob/main/src/serialization/json/JsonParseNode.cs"/>
 ///     <see cref="JsonParseNode"/>
 ///     We don't call the base implementation in <see cref="JsonParseNode"/> as some methods new up a <see cref="JsonParseNode"/>
 ///     which causes inconsistencies

@@ -3,7 +3,7 @@
 namespace Marqeta.Core.Sdk.Serialization.Json;
 
 /// <summary>
-///     Copied from  <see href="https://github.com/microsoft/kiota-serialization-json-dotnet/blob/main/src/TypeConstants.cs"/>
+///     Copied from  <see href="https://github.com/microsoft/kiota-dotnet/blob/main/src/serialization/json/TypeConstants.cs"/>
 ///     <see cref="Microsoft.Kiota.Serialization.Json.TypeConstants"/>
 /// </summary>
 static internal class TypeConstants

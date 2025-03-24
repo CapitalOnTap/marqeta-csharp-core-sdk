@@ -6,7 +6,7 @@ namespace Marqeta.Core.Sdk.Serialization.Text;
 
 /// <summary>
 ///     The <see cref="IAsyncParseNodeFactory"/> implementation for text/html content types
-///     Copied from:  <see href="https://github.com/microsoft/kiota-serialization-text-dotnet/blob/main/src/TextParseNodeFactory.cs"/>
+///     Copied from:  <see href="https://github.com/microsoft/kiota-dotnet/blob/main/src/serialization/text/TextParseNodeFactory.cs"/>
 ///     <see cref="TextParseNodeFactory"/>
 /// </summary>
 public class TextHtmlParseNodeFactory : IAsyncParseNodeFactory
