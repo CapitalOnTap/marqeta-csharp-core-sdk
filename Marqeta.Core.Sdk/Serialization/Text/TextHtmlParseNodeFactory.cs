@@ -14,21 +14,6 @@ public class TextHtmlParseNodeFactory : IAsyncParseNodeFactory
     public string ValidContentType => "text/html";
 
     /// <inheritdoc />
-    public async Task<IParseNode> GetRootParseNodeAsync(string contentType, Stream content,
-        CancellationToken cancellationToken = default)
-    {
-        if(string.IsNullOrEmpty(contentType))
-            throw new ArgumentNullException(nameof(contentType));
-        else if(!ValidContentType.Equals(contentType, StringComparison.OrdinalIgnoreCase))
-            throw new ArgumentOutOfRangeException($"expected a {ValidContentType} content type");
-            
-        _ = content ?? throw new ArgumentNullException(nameof(content));
-        using var reader = new StreamReader(content);
-        var stringContent = await reader.ReadToEndAsync().ConfigureAwait(false);
-        return new TextHtmlParseNode(stringContent);
-    }
-
-    /// <inheritdoc />
     [Obsolete("Use GetRootParseNodeAsync instead")]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public IParseNode GetRootParseNode(string contentType, Stream content) {
@@ -40,6 +25,21 @@ public class TextHtmlParseNodeFactory : IAsyncParseNodeFactory
         _ = content ?? throw new ArgumentNullException(nameof(content));
         using var reader = new StreamReader(content);
         var stringContent = reader.ReadToEnd();
+        return new TextHtmlParseNode(stringContent);
+    }
+    
+    /// <inheritdoc />
+    public async Task<IParseNode> GetRootParseNodeAsync(string contentType, Stream content,
+        CancellationToken cancellationToken = default)
+    {
+        if(string.IsNullOrEmpty(contentType))
+            throw new ArgumentNullException(nameof(contentType));
+        else if(!ValidContentType.Equals(contentType, StringComparison.OrdinalIgnoreCase))
+            throw new ArgumentOutOfRangeException($"expected a {ValidContentType} content type");
+            
+        _ = content ?? throw new ArgumentNullException(nameof(content));
+        using var reader = new StreamReader(content);
+        var stringContent = await reader.ReadToEndAsync().ConfigureAwait(false);
         return new TextHtmlParseNode(stringContent);
     }
 }
