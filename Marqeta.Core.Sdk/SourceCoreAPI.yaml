@@ -1,4 +1,4 @@
-openapi: 3.0.1
+openapi: 3.0.4
 info:
   title: Core API
   description: 'Marqeta''s Core API endpoints, conveniently annotated to enable code generation (including SDKs), test cases, and documentation. Currently in beta.'
