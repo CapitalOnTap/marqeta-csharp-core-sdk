@@ -48,32 +48,39 @@ Execute the `dotnet fsi GenerateSdkFromSourceUrl.fsx` command in the root source
 ### Updating dependencies
 
 #### Packages in `GenerateSdkFromSourceUrl.fsx` script
+> Nuget packages needed for the script to run 
 1. Check for new versions of the packages referenced at the top of file prefaced with `#r`
-2. Update versions if available
-3. Check for breaking changes
+2. Check for breaking changes
+3. Update versions if appropriate
 4. Re-run script
 5. Commit and push
 
 #### Kiota CLI
-1. Run the command `dotnet tool update microsoft.openapi.kiota` in the root directory of repository
-2. Run the `GenerateSdkFromSourceUrl.fsx` script
-3. If build and tests succeed then commit and push
+> The Kiota dotnet CLI tool used to generate the output SDK from the OpenAPI specification file
+1. Check for relevant breaking changes on the [GitHub Release Page](https://github.com/microsoft/kiota/releases)
+2. Run the command `dotnet tool update microsoft.openapi.kiota` in the root directory of repository to update the tool
+3. Run the `GenerateSdkFromSourceUrl.fsx` script
+4. If build and tests succeed then commit and push
 
-#### SDK Kiota nuget packages
-1. Update all Kiota nuget packages `Microsoft.Kiota.*`
-2. Diff the following files with the same file of each found in [Kiota dotnet GitHub](https://github.com/microsoft/kiota-dotnet/blob/main/src/serialization)
+#### Marqeta SDK - Kiota nuget packages
+> Kiota nuget packages added as a dependency to the Marqeta SDK project
+1. Check for relevant breaking changers on the [GitHub Release Page](https://github.com/microsoft/kiota-dotnet/releases)
+2. Update all Kiota nuget packages `Microsoft.Kiota.*`
+3. Diff the following files with the same file of each found in [Kiota dotnet GitHub](https://github.com/microsoft/kiota-dotnet/blob/main/src/serialization)
    - `Marqeta.Core.Sdk/Serialization/Json/CustomJsonParseNode.cs`
    - `Marqeta.Core.Sdk/Serialization/Json/CustomJsonParseNodeFactory.cs`
    - `Marqeta.Core.Sdk/Serialization/Json/TypeConstants.cs`
    - `Marqeta.Core.Sdk/Serialization/Text/CustomTextParseNode.cs`
    - `Marqeta.Core.Sdk/Serialization/Text/CustomTextParseNodeFactory.cs`
-3. Pay attention to changes listed in [serialization changes](#custom-serialization), as well as any comments starting with `// Modified:`
-4. Bring our versions of these files inline where appropriate to make sure we're following Kiotas general standards for serialization and for bug/performance fixes
-5. If build and tests succeed then commit and push
+4. Pay attention to changes listed in [serialization changes](#custom-serialization), as well as any comments starting with `// Modified:`
+5. Bring our versions of these files inline where appropriate to make sure we're following Kiotas general standards for serialization and for bug/performance fixes
+6. If build and tests succeed then commit and push
 
-### Other SDK nuget packages
-1. If versions have updated, then update these where appropriate
-2. If build and tests succeed then commit and push
+### Marqeta SDK - Misc nuget packages
+> Miscellaneous nuget packages added as a depdendency to the Marqeta SDK project for things like IoC (also covers nuget packages for the Marqeta.Core.Sdk.Tests project)
+1. Check for relevant breaking changes
+2. If versions have updated, then update these where appropriate
+3. If build and tests succeed then commit and push
 
 > [!NOTE]
 > #### Updating Kiota
