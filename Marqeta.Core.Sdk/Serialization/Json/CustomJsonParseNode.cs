@@ -11,6 +11,10 @@ using Microsoft.Kiota.Abstractions.Helpers;
 using Microsoft.Kiota.Abstractions.Serialization;
 using Microsoft.Kiota.Serialization.Json;
 
+#if NET5_0_OR_GREATER
+using System.Diagnostics.CodeAnalysis;
+#endif
+
 namespace Marqeta.Core.Sdk.Serialization.Json;
 
 /// <summary>
@@ -174,12 +178,13 @@ public class CustomJsonParseNode : IParseNode
     {
         var rawValue = _jsonNode.GetString();
         
+        // MODIFIED: Don't try to parse if we don't have a value to parse as we don't want an exception here.
         if(string.IsNullOrEmpty(rawValue)) return null;
         
         var type = typeof(T);
         return EnumHelpers.GetEnumValue<T>(rawValue!)
                // MODIFICATION: We want to throw an exception rather than return null
-            ?? throw new ArgumentOutOfRangeException(type.FullName, rawValue, "Unable to parse enum value");;
+            ?? throw new ArgumentOutOfRangeException(type.FullName, rawValue, "Unable to parse enum value");
     }
 
     /// <summary>
@@ -226,7 +231,8 @@ public class CustomJsonParseNode : IParseNode
     /// Gets the byte array value of the node.
     /// </summary>
     /// <returns>The byte array value of the node.</returns>
-    public byte[]? GetByteArrayValue() {
+    public byte[]? GetByteArrayValue()
+    {
         if(_jsonNode.ValueKind is JsonValueKind.String && _jsonNode.TryGetBytesFromBase64(out var result))
             return result;
         return null;
@@ -235,14 +241,18 @@ public class CustomJsonParseNode : IParseNode
     /// Gets the untyped value of the node
     /// </summary>
     /// <returns>The untyped value of the node.</returns>
-    private UntypedNode? GetUntypedValue() => GetUntypedValue(_jsonNode);
+    private UntypedNode GetUntypedValue() => GetUntypedValue(_jsonNode);
 
 
     /// <summary>
     /// Get the collection of primitives of type <typeparam name="T"/>from the json node
     /// </summary>
     /// <returns>A collection of objects</returns>
+#if NET5_0_OR_GREATER
+        public IEnumerable<T> GetCollectionOfPrimitiveValues<[DynamicallyAccessedMembers(DynamicallyAccessedMemberTypes.PublicFields)] T>()
+#else
     public IEnumerable<T> GetCollectionOfPrimitiveValues<T>()
+#endif
     {
         var genericType = typeof(T);
         foreach(var collectionValue in _jsonNode.EnumerateArray())
@@ -300,7 +310,7 @@ public class CustomJsonParseNode : IParseNode
                 OnBeforeAssignFieldValues = OnBeforeAssignFieldValues,
                 OnAfterAssignFieldValues = OnAfterAssignFieldValues
             };
-            yield return currentParseNode.GetUntypedValue()!;
+            yield return currentParseNode.GetUntypedValue();
         }
     }
 
@@ -328,66 +338,27 @@ public class CustomJsonParseNode : IParseNode
                 }
                 else
                 {
-                    properties[objectValue.Name] = GetUntypedValue(property)!;
+                    properties[objectValue.Name] = GetUntypedValue(property);
                 }
             }
         }
         return properties;
     }
 
-    private UntypedNode? GetUntypedValue(JsonElement jsonNode)
+    private UntypedNode GetUntypedValue(JsonElement jsonNode) => jsonNode.ValueKind switch
     {
-        UntypedNode? untypedNode = null;
-        switch(jsonNode.ValueKind)
-        {
-            case JsonValueKind.Number:
-                if(jsonNode.TryGetInt32(out var intValue))
-                {
-                    untypedNode = new UntypedInteger(intValue);
-                }
-                else if(jsonNode.TryGetInt64(out var longValue))
-                {
-                    untypedNode = new UntypedLong(longValue);
-                }
-                else if(jsonNode.TryGetDecimal(out var decimalValue))
-                {
-                    untypedNode = new UntypedDecimal(decimalValue);
-                }
-                else if(jsonNode.TryGetSingle(out var floatValue))
-                {
-                    untypedNode = new UntypedFloat(floatValue);
-                }
-                else if(jsonNode.TryGetDouble(out var doubleValue))
-                {
-                    untypedNode = new UntypedDouble(doubleValue);
-                }
-                else throw new InvalidOperationException("unexpected additional value type during number deserialization");
-                break;
-            case JsonValueKind.String:
-                var stringValue = jsonNode.GetString();
-                untypedNode = new UntypedString(stringValue);
-                break;
-            case JsonValueKind.True:
-            case JsonValueKind.False:
-                var boolValue = jsonNode.GetBoolean();
-                untypedNode = new UntypedBoolean(boolValue);
-                break;
-            case JsonValueKind.Array:
-                var arrayValue = GetCollectionOfUntypedValues(jsonNode);
-                untypedNode = new UntypedArray(arrayValue);
-                break;
-            case JsonValueKind.Object:
-                var objectValue = GetPropertiesOfUntypedObject(jsonNode);
-                untypedNode = new UntypedObject(objectValue);
-                break;
-            case JsonValueKind.Null:
-            case JsonValueKind.Undefined:
-                untypedNode = new UntypedNull();
-                break;
-        }
-
-        return untypedNode;
-    }
+        JsonValueKind.Number when jsonNode.TryGetInt32(out var intValue) => new UntypedInteger(intValue),
+        JsonValueKind.Number when jsonNode.TryGetInt64(out var longValue) => new UntypedLong(longValue),
+        JsonValueKind.Number when jsonNode.TryGetDecimal(out var decimalValue) => new UntypedDecimal(decimalValue),
+        JsonValueKind.Number when jsonNode.TryGetSingle(out var floatValue) => new UntypedFloat(floatValue),
+        JsonValueKind.Number when jsonNode.TryGetDouble(out var doubleValue) => new UntypedDouble(doubleValue),
+        JsonValueKind.String => new UntypedString(jsonNode.GetString()),
+        JsonValueKind.True or JsonValueKind.False => new UntypedBoolean(jsonNode.GetBoolean()),
+        JsonValueKind.Array => new UntypedArray(GetCollectionOfUntypedValues(jsonNode)),
+        JsonValueKind.Object => new UntypedObject(GetPropertiesOfUntypedObject(jsonNode)),
+        JsonValueKind.Null or JsonValueKind.Undefined => new UntypedNull(),
+        _ => throw new InvalidOperationException($"unexpected additional value type during deserialization json kind : {jsonNode.ValueKind}")
+    };
 
     /// <summary>
     /// The action to perform before assigning field values.
@@ -410,7 +381,7 @@ public class CustomJsonParseNode : IParseNode
         var genericType = typeof(T);
         if(genericType == typeof(UntypedNode))
         {
-            return (T)(object)GetUntypedValue()!;
+            return (T)(object)GetUntypedValue();
         }
         
         var item = factory(this);
@@ -439,6 +410,8 @@ public class CustomJsonParseNode : IParseNode
 
                 var fieldDeserializer = fieldDeserializers[fieldValue.Name];
                 Debug.WriteLine($"found property {fieldValue.Name} to deserialize");
+                
+                // MODIFIED: Wrap fieldDeserializer.Invoke() in a try catch to catch json parsing exceptions and rethrow with a more useful error.
                 try
                 {
                     fieldDeserializer.Invoke(new CustomJsonParseNode(fieldValue.Value, _jsonSerializerContext)
