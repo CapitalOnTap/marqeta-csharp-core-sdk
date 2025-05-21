@@ -229,27 +229,8 @@ module OpenApiHelpers =
             if not(typeEnum.Contains(enumString)) then
                 typeEnum.Add(enumString)
 
-    /// <summary>
-    ///     Applies modifications to the payment_channel schema.
-    /// </summary>
-    /// <param name="openApiSchema">The OpenApiSchema object representing transaction_metadata.</param>
-    let private applyTransactionMetadataPaymentChannelModifications(openApiSchema: OpenApiSchema) = 
-        let enumsToAdd = [
-            "EU_MOTO_NON_SECURE"
-        ]
-
-        let typeEnum = openApiSchema.Properties["payment_channel"].Enum
-        for enumToAdd in enumsToAdd do 
-            let enumString = OpenApiString(enumToAdd)
-
-            if(not(typeEnum.Contains(enumString))) then
-                typeEnum.Add(enumString)
-
     let private applyTransactionModelModifications (openApiSchema: OpenApiSchema) =
         applyTransactionModelTypeModifications(openApiSchema)
-
-    let private applyTransactionMetadataModifications (openApiSchema: OpenApiSchema) =
-        applyTransactionMetadataPaymentChannelModifications(openApiSchema)
 
     /// <summary>
     ///     Takes a schema and applies relevant modifications.
@@ -328,9 +309,6 @@ module OpenApiHelpers =
             
         if openApiSchemas.ContainsKey("transaction_model") then
             applyTransactionModelModifications(openApiSchemas["transaction_model"])
-
-        if openApiSchemas.ContainsKey("transaction_metadata") then
-            applyTransactionMetadataModifications(openApiSchemas["transaction_metadata"])
         
     /// <summary>
     ///     Applies modifications to the Components on an OpenAPI spec.
