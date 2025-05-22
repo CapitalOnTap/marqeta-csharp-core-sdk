@@ -7,15 +7,14 @@ using System.IO;
 using System;
 namespace Marqeta.Core.Sdk.Models
 {
-    /// <summary>
-    /// Contains the KYC result code and a descriptive message about that codes.
-    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
+    #pragma warning disable CS1591
     public partial class Result_code : IAdditionalDataHolder, IParsable
+    #pragma warning restore CS1591
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>For any `pending` or `failure` outcome, see the &lt;&lt;user_kyc_failure_codes, User KYC failure codes&gt;&gt; table, the &lt;&lt;outcome_reasons_for_the_business, Outcome reasons for the business&gt;&gt; table, or the &lt;&lt;outcome_reasons_for_individuals_associated_with_a_business, Outcome reasons for individuals associated with a business&gt;&gt; table.</summary>
+        /// <summary>The code property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Code { get; set; }
@@ -23,7 +22,7 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string Code { get; set; }
 #endif
-        /// <summary>Result code description.</summary>
+        /// <summary>The message property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Message { get; set; }

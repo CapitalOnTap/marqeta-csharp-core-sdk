@@ -16,7 +16,7 @@ namespace Marqeta.Core.Sdk.Fundingsources.Programgateway.Customheaders
     public partial class CustomheadersRequestBuilder : BaseRequestBuilder
     {
         /// <summary>Gets an item from the Marqeta.Core.Sdk.fundingsources.programgateway.customheaders.item collection</summary>
-        /// <param name="position">Unique identifier of the program gateway funding source.</param>
+        /// <param name="position">Gateway program funding source token</param>
         /// <returns>A <see cref="global::Marqeta.Core.Sdk.Fundingsources.Programgateway.Customheaders.Item.WithTokenItemRequestBuilder"/></returns>
         public global::Marqeta.Core.Sdk.Fundingsources.Programgateway.Customheaders.Item.WithTokenItemRequestBuilder this[string position]
         {

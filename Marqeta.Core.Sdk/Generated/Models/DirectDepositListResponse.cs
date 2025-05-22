@@ -19,10 +19,10 @@ namespace Marqeta.Core.Sdk.Models
         /// <summary>The data property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Marqeta.Core.Sdk.Models.DirectDepositResponse>? Data { get; set; }
+        public List<global::Marqeta.Core.Sdk.Models.DepositDepositResponse>? Data { get; set; }
 #nullable restore
 #else
-        public List<global::Marqeta.Core.Sdk.Models.DirectDepositResponse> Data { get; set; }
+        public List<global::Marqeta.Core.Sdk.Models.DepositDepositResponse> Data { get; set; }
 #endif
         /// <summary>The end_index property</summary>
         public int? EndIndex { get; set; }
@@ -56,7 +56,7 @@ namespace Marqeta.Core.Sdk.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "count", n => { Count = n.GetIntValue(); } },
-                { "data", n => { Data = n.GetCollectionOfObjectValues<global::Marqeta.Core.Sdk.Models.DirectDepositResponse>(global::Marqeta.Core.Sdk.Models.DirectDepositResponse.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "data", n => { Data = n.GetCollectionOfObjectValues<global::Marqeta.Core.Sdk.Models.DepositDepositResponse>(global::Marqeta.Core.Sdk.Models.DepositDepositResponse.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "end_index", n => { EndIndex = n.GetIntValue(); } },
                 { "is_more", n => { IsMore = n.GetBoolValue(); } },
                 { "start_index", n => { StartIndex = n.GetIntValue(); } },
@@ -70,7 +70,7 @@ namespace Marqeta.Core.Sdk.Models
         {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
             writer.WriteIntValue("count", Count);
-            writer.WriteCollectionOfObjectValues<global::Marqeta.Core.Sdk.Models.DirectDepositResponse>("data", Data);
+            writer.WriteCollectionOfObjectValues<global::Marqeta.Core.Sdk.Models.DepositDepositResponse>("data", Data);
             writer.WriteIntValue("end_index", EndIndex);
             writer.WriteBoolValue("is_more", IsMore);
             writer.WriteIntValue("start_index", StartIndex);

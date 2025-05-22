@@ -23,6 +23,22 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string Address { get; set; }
 #endif
+        /// <summary>Business registration identifier, as provided by the Visa card network.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? BusinessRegistrationId { get; set; }
+#nullable restore
+#else
+        public string BusinessRegistrationId { get; set; }
+#endif
+        /// <summary>Business registration identifier type, as provided by the Visa card network.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? BusinessRegistrationIdType { get; set; }
+#nullable restore
+#else
+        public string BusinessRegistrationIdType { get; set; }
+#endif
         /// <summary>Card acceptor&apos;s city.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -70,6 +86,14 @@ namespace Marqeta.Core.Sdk.Models
 #nullable restore
 #else
         public string IndependentSalesOrganizationId { get; set; }
+#endif
+        /// <summary>Legal business name, as provided by the Visa card network.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? LegalBusinessName { get; set; }
+#nullable restore
+#else
+        public string LegalBusinessName { get; set; }
 #endif
         /// <summary>Merchant category code (MCC).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -249,12 +273,15 @@ namespace Marqeta.Core.Sdk.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "address", n => { Address = n.GetStringValue(); } },
+                { "business_registration_id", n => { BusinessRegistrationId = n.GetStringValue(); } },
+                { "business_registration_id_type", n => { BusinessRegistrationIdType = n.GetStringValue(); } },
                 { "city", n => { City = n.GetStringValue(); } },
                 { "country_code", n => { CountryCode = n.GetStringValue(); } },
                 { "country_of_origin", n => { CountryOfOrigin = n.GetStringValue(); } },
                 { "customer_service_phone", n => { CustomerServicePhone = n.GetStringValue(); } },
                 { "geographic_coordinates", n => { GeographicCoordinates = n.GetStringValue(); } },
                 { "independent_sales_organization_id", n => { IndependentSalesOrganizationId = n.GetStringValue(); } },
+                { "legal_business_name", n => { LegalBusinessName = n.GetStringValue(); } },
                 { "mcc", n => { Mcc = n.GetStringValue(); } },
                 { "mcc_groups", n => { MccGroups = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "merchant_tax_id", n => { MerchantTaxId = n.GetStringValue(); } },
@@ -284,12 +311,15 @@ namespace Marqeta.Core.Sdk.Models
         {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("address", Address);
+            writer.WriteStringValue("business_registration_id", BusinessRegistrationId);
+            writer.WriteStringValue("business_registration_id_type", BusinessRegistrationIdType);
             writer.WriteStringValue("city", City);
             writer.WriteStringValue("country_code", CountryCode);
             writer.WriteStringValue("country_of_origin", CountryOfOrigin);
             writer.WriteStringValue("customer_service_phone", CustomerServicePhone);
             writer.WriteStringValue("geographic_coordinates", GeographicCoordinates);
             writer.WriteStringValue("independent_sales_organization_id", IndependentSalesOrganizationId);
+            writer.WriteStringValue("legal_business_name", LegalBusinessName);
             writer.WriteStringValue("mcc", Mcc);
             writer.WriteCollectionOfPrimitiveValues<string>("mcc_groups", MccGroups);
             writer.WriteStringValue("merchant_tax_id", MerchantTaxId);

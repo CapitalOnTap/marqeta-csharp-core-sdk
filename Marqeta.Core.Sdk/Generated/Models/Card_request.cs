@@ -12,6 +12,14 @@ namespace Marqeta.Core.Sdk.Models
     public partial class Card_request : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
     {
+        /// <summary>The account_token property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? AccountToken { get; set; }
+#nullable restore
+#else
+        public string AccountToken { get; set; }
+#endif
         /// <summary>Defines actions to execute when the card is activated.The fields in this object are mutually exclusive.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -129,6 +137,7 @@ namespace Marqeta.Core.Sdk.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "account_token", n => { AccountToken = n.GetStringValue(); } },
                 { "activation_actions", n => { ActivationActions = n.GetObjectValue<global::Marqeta.Core.Sdk.Models.Activation_actions>(global::Marqeta.Core.Sdk.Models.Activation_actions.CreateFromDiscriminatorValue); } },
                 { "bulk_issuance_token", n => { BulkIssuanceToken = n.GetStringValue(); } },
                 { "card_product_token", n => { CardProductToken = n.GetStringValue(); } },
@@ -150,6 +159,7 @@ namespace Marqeta.Core.Sdk.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
+            writer.WriteStringValue("account_token", AccountToken);
             writer.WriteObjectValue<global::Marqeta.Core.Sdk.Models.Activation_actions>("activation_actions", ActivationActions);
             writer.WriteStringValue("bulk_issuance_token", BulkIssuanceToken);
             writer.WriteStringValue("card_product_token", CardProductToken);

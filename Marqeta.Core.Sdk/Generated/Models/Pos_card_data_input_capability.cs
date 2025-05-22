@@ -59,5 +59,9 @@ namespace Marqeta.Core.Sdk.Models
         #pragma warning disable CS1591
         BAR_CODE,
         #pragma warning restore CS1591
+        [EnumMember(Value = "CREDENTIALS_ON_FILE")]
+        #pragma warning disable CS1591
+        CREDENTIALS_ON_FILE,
+        #pragma warning restore CS1591
     }
 }

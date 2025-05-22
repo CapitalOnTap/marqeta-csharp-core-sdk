@@ -23,5 +23,13 @@ namespace Marqeta.Core.Sdk.Models
         #pragma warning disable CS1591
         NO_TERMINAL,
         #pragma warning restore CS1591
+        [EnumMember(Value = "MOBILE_REMOTE")]
+        #pragma warning disable CS1591
+        MOBILE_REMOTE,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "TRANSIT_ACCESS_TERMINAL")]
+        #pragma warning disable CS1591
+        TRANSIT_ACCESS_TERMINAL,
+        #pragma warning restore CS1591
     }
 }

@@ -12,7 +12,7 @@ namespace Marqeta.Core.Sdk.Models
     public partial class Gateway_program_funding_source_response : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
     {
-        /// <summary>Bank account number.</summary>
+        /// <summary>The account property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Account { get; set; }
@@ -20,11 +20,11 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string Account { get; set; }
 #endif
-        /// <summary>Indicates whether the program gateway funding source is active.This field is returned if it exists in the resource.</summary>
+        /// <summary>The active property</summary>
         public bool? Active { get; set; }
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Password for authenticating your environment.</summary>
+        /// <summary>50 char max. Required if URL is present. Minimum 20 chars with upper and lowercase letters, numbers, and symbols</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? BasicAuthPassword { get; set; }
@@ -32,7 +32,7 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string BasicAuthPassword { get; set; }
 #endif
-        /// <summary>Username for authenticating your environment.</summary>
+        /// <summary>50 char max. Required if URL is present</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? BasicAuthUsername { get; set; }
@@ -40,9 +40,9 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string BasicAuthUsername { get; set; }
 #endif
-        /// <summary>Date and time when the resource was created, in UTC.</summary>
+        /// <summary>The created_time property</summary>
         public DateTimeOffset? CreatedTime { get; set; }
-        /// <summary>Additional custom information included in the HTTP header.</summary>
+        /// <summary>Custom headers to be passed along with request</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Marqeta.Core.Sdk.Models.Gateway_program_funding_source_response_custom_header? CustomHeader { get; set; }
@@ -50,9 +50,9 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public global::Marqeta.Core.Sdk.Models.Gateway_program_funding_source_response_custom_header CustomHeader { get; set; }
 #endif
-        /// <summary>Date and time when the resource was last modified, in UTC.</summary>
+        /// <summary>The last_modified_time property</summary>
         public DateTimeOffset? LastModifiedTime { get; set; }
-        /// <summary>Name of the program gateway funding source.</summary>
+        /// <summary>The name property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Name { get; set; }
@@ -60,9 +60,9 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string Name { get; set; }
 #endif
-        /// <summary>Total timeout in milliseconds for gateway processing.</summary>
+        /// <summary>Total timeout in milliseconds for gateway processing</summary>
         public long? TimeoutMillis { get; set; }
-        /// <summary>Unique identifier of the program gateway funding source.</summary>
+        /// <summary>The token property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Token { get; set; }
@@ -70,7 +70,7 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string Token { get; set; }
 #endif
-        /// <summary>URL of the gateway endpoint hosted in your environment, to which `POST` requests are submitted by the Marqeta platform.</summary>
+        /// <summary>250 char max. Empty string (disabled). Must be HTTPS.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Url { get; set; }
@@ -78,9 +78,9 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string Url { get; set; }
 #endif
-        /// <summary>Specifies whether or not to use mutual transport layer security (mTLS) authentication for the funding request.mTLS authentication is in the beta testing phase, and is not yet generally available.Contact your Marqeta representative for more information about using mTLS authentication.</summary>
+        /// <summary>Use MTLS for funding request</summary>
         public bool? UseMtls { get; set; }
-        /// <summary>Program gateway funding source object version.</summary>
+        /// <summary>The version property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Version { get; set; }

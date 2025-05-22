@@ -55,5 +55,21 @@ namespace Marqeta.Core.Sdk.Models
         #pragma warning disable CS1591
         OTHER,
         #pragma warning restore CS1591
+        [EnumMember(Value = "KEY_ENTERED")]
+        #pragma warning disable CS1591
+        KEY_ENTERED,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "CREDENTIALS_ON_FILE")]
+        #pragma warning disable CS1591
+        CREDENTIALS_ON_FILE,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "KEYED_CARD_PCSC")]
+        #pragma warning disable CS1591
+        KEYED_CARD_PCSC,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "MAG_STRIPE_READ_KEYED_PCSC")]
+        #pragma warning disable CS1591
+        MAG_STRIPE_READ_KEYED_PCSC,
+        #pragma warning restore CS1591
     }
 }

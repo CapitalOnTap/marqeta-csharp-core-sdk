@@ -31,6 +31,22 @@ namespace Marqeta.Core.Sdk.Models
 #endif
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>Mastercard Digital Identity Insights risk score, where `0` indicates the lowest risk and `9` indicates the highest risk.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? DiiScore { get; set; }
+#nullable restore
+#else
+        public string DiiScore { get; set; }
+#endif
+        /// <summary>Mastercard Digital Identity Insights risk score reason code, where `AA` indicates the lowest risk, and `ZZ` indicates the highest risk.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? DiiScoreReasonCode { get; set; }
+#nullable restore
+#else
+        public string DiiScoreReasonCode { get; set; }
+#endif
         /// <summary>_(Visa only)_ Visa-provided score ranking the risk of an account enumeration attack in a card-not-present transaction.A higher score indicates higher risk.A score of 00 indicates insufficient data to determine risk.Useful for making authorization decisions.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -84,6 +100,8 @@ namespace Marqeta.Core.Sdk.Models
             {
                 { "account_risk_score", n => { AccountRiskScore = n.GetStringValue(); } },
                 { "account_risk_score_reason_code", n => { AccountRiskScoreReasonCode = n.GetStringValue(); } },
+                { "dii_score", n => { DiiScore = n.GetStringValue(); } },
+                { "dii_score_reason_code", n => { DiiScoreReasonCode = n.GetStringValue(); } },
                 { "transaction_account_attack_intelligence_score", n => { TransactionAccountAttackIntelligenceScore = n.GetStringValue(); } },
                 { "transaction_risk_score", n => { TransactionRiskScore = n.GetIntValue(); } },
                 { "transaction_risk_score_reason_code", n => { TransactionRiskScoreReasonCode = n.GetStringValue(); } },
@@ -99,6 +117,8 @@ namespace Marqeta.Core.Sdk.Models
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("account_risk_score", AccountRiskScore);
             writer.WriteStringValue("account_risk_score_reason_code", AccountRiskScoreReasonCode);
+            writer.WriteStringValue("dii_score", DiiScore);
+            writer.WriteStringValue("dii_score_reason_code", DiiScoreReasonCode);
             writer.WriteStringValue("transaction_account_attack_intelligence_score", TransactionAccountAttackIntelligenceScore);
             writer.WriteIntValue("transaction_risk_score", TransactionRiskScore);
             writer.WriteStringValue("transaction_risk_score_reason_code", TransactionRiskScoreReasonCode);

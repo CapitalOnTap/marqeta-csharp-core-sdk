@@ -27,5 +27,25 @@ namespace Marqeta.Core.Sdk.Models
         #pragma warning disable CS1591
         ID_VERIFIED,
         #pragma warning restore CS1591
+        [EnumMember(Value = "ELECTRONIC_SIGNATURE")]
+        #pragma warning disable CS1591
+        ELECTRONIC_SIGNATURE,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "BIOMETRIC")]
+        #pragma warning disable CS1591
+        BIOMETRIC,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "BIOGRAPHIC")]
+        #pragma warning disable CS1591
+        BIOGRAPHIC,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "MANUAL_SIGNATURE")]
+        #pragma warning disable CS1591
+        MANUAL_SIGNATURE,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "ELECTRONIC_TICKET_ENVIRONMENT")]
+        #pragma warning disable CS1591
+        ELECTRONIC_TICKET_ENVIRONMENT,
+        #pragma warning restore CS1591
     }
 }

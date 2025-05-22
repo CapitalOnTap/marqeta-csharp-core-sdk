@@ -25,7 +25,7 @@ namespace Marqeta.Core.Sdk.Peertransfers
             get => new global::Marqeta.Core.Sdk.Peertransfers.User.UserRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>Gets an item from the Marqeta.Core.Sdk.peertransfers.item collection</summary>
-        /// <param name="position">Unique identifier of the peer transfer.</param>
+        /// <param name="position">Unique identifier of the item</param>
         /// <returns>A <see cref="global::Marqeta.Core.Sdk.Peertransfers.Item.WithTokenItemRequestBuilder"/></returns>
         public global::Marqeta.Core.Sdk.Peertransfers.Item.WithTokenItemRequestBuilder this[string position]
         {
@@ -53,7 +53,7 @@ namespace Marqeta.Core.Sdk.Peertransfers
         {
         }
         /// <summary>
-        /// Use this endpoint to request a peer transfer.Add the source details to the body of the request in link:http://www.json.org/[JSON, window=&quot;_blank&quot;] format.When creating a peer transfer request, you must pass in both a token to identify the transfer sender (either `sender_user_token` or `sender_business_token`) and a token to identify the transfer recipient (either `recipient_user_token` or `recipient_business_token`).The sender and recipient objects must already exist.[NOTE]This feature is disabled by default and requires activation by Marqeta.   +  +This feature enables you to transfer or reallocate funds where the `sender_*\_token` and the `recipient_*_token` belong to the same program.It does not allow you to transfer or reallocate funds between different programs.Contact your Marqeta representative for more information.
+        /// Performs a peer transfer from one user to another
         /// </summary>
         /// <returns>A <see cref="global::Marqeta.Core.Sdk.Models.Peer_transfer_response"/></returns>
         /// <param name="body">The request body</param>
@@ -78,7 +78,7 @@ namespace Marqeta.Core.Sdk.Peertransfers
             return await RequestAdapter.SendAsync<global::Marqeta.Core.Sdk.Models.Peer_transfer_response>(requestInfo, global::Marqeta.Core.Sdk.Models.Peer_transfer_response.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Use this endpoint to request a peer transfer.Add the source details to the body of the request in link:http://www.json.org/[JSON, window=&quot;_blank&quot;] format.When creating a peer transfer request, you must pass in both a token to identify the transfer sender (either `sender_user_token` or `sender_business_token`) and a token to identify the transfer recipient (either `recipient_user_token` or `recipient_business_token`).The sender and recipient objects must already exist.[NOTE]This feature is disabled by default and requires activation by Marqeta.   +  +This feature enables you to transfer or reallocate funds where the `sender_*\_token` and the `recipient_*_token` belong to the same program.It does not allow you to transfer or reallocate funds between different programs.Contact your Marqeta representative for more information.
+        /// Performs a peer transfer from one user to another
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">The request body</param>

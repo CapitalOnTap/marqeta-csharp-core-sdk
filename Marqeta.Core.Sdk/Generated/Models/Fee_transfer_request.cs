@@ -14,7 +14,7 @@ namespace Marqeta.Core.Sdk.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Specifies the business account holder to which the fee applies.Pass either `business_token` or `user_token`, not both.</summary>
+        /// <summary>Required if &apos;user_token&apos; is null</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? BusinessToken { get; set; }
@@ -22,7 +22,7 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string BusinessToken { get; set; }
 #endif
-        /// <summary>Contains attributes that define characteristics of one or more fees.</summary>
+        /// <summary>The fees property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<global::Marqeta.Core.Sdk.Models.Fee_model>? Fees { get; set; }
@@ -30,7 +30,7 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public List<global::Marqeta.Core.Sdk.Models.Fee_model> Fees { get; set; }
 #endif
-        /// <summary>Metadata about the transfer.</summary>
+        /// <summary>The tags property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Tags { get; set; }
@@ -38,7 +38,7 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string Tags { get; set; }
 #endif
-        /// <summary>Unique identifier of the fee transfer.If you do not include a token, the system will generate one automatically.This token is necessary for use in other API calls, so we recommend that rather than let the system generate one, you use a simple string that is easy to remember.This value cannot be updated.</summary>
+        /// <summary>The token property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Token { get; set; }
@@ -46,7 +46,7 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string Token { get; set; }
 #endif
-        /// <summary>Specifies the user account holder to which the fee applies.Pass either `user_token` or `business_token`, not both.</summary>
+        /// <summary>Required if &apos;business_token&apos; is null</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? UserToken { get; set; }

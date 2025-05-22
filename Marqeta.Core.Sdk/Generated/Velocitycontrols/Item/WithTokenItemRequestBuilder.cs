@@ -34,6 +34,29 @@ namespace Marqeta.Core.Sdk.Velocitycontrols.Item
         {
         }
         /// <summary>
+        /// Sets a specific velocity control to inactive to soft delete it
+        /// </summary>
+        /// <returns>A <see cref="global::Marqeta.Core.Sdk.Models.Velocity_control_response"/></returns>
+        /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
+        /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
+        /// <exception cref="global::Marqeta.Core.Sdk.Models.ApiError">When receiving a 4XX or 5XX status code</exception>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public async Task<global::Marqeta.Core.Sdk.Models.Velocity_control_response?> DeleteAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        {
+#nullable restore
+#else
+        public async Task<global::Marqeta.Core.Sdk.Models.Velocity_control_response> DeleteAsync(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        {
+#endif
+            var requestInfo = ToDeleteRequestInformation(requestConfiguration);
+            var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
+            {
+                { "XXX", global::Marqeta.Core.Sdk.Models.ApiError.CreateFromDiscriminatorValue },
+            };
+            return await RequestAdapter.SendAsync<global::Marqeta.Core.Sdk.Models.Velocity_control_response>(requestInfo, global::Marqeta.Core.Sdk.Models.Velocity_control_response.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
+        }
+        /// <summary>
         /// Retrieves a specific velocity control.
         /// </summary>
         /// <returns>A <see cref="global::Marqeta.Core.Sdk.Models.Velocity_control_response"/></returns>
@@ -80,6 +103,25 @@ namespace Marqeta.Core.Sdk.Velocitycontrols.Item
                 { "XXX", global::Marqeta.Core.Sdk.Models.ApiError.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Marqeta.Core.Sdk.Models.Velocity_control_response>(requestInfo, global::Marqeta.Core.Sdk.Models.Velocity_control_response.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
+        }
+        /// <summary>
+        /// Sets a specific velocity control to inactive to soft delete it
+        /// </summary>
+        /// <returns>A <see cref="RequestInformation"/></returns>
+        /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public RequestInformation ToDeleteRequestInformation(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
+        {
+#nullable restore
+#else
+        public RequestInformation ToDeleteRequestInformation(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
+        {
+#endif
+            var requestInfo = new RequestInformation(Method.DELETE, UrlTemplate, PathParameters);
+            requestInfo.Configure(requestConfiguration);
+            requestInfo.Headers.TryAdd("Accept", "application/json");
+            return requestInfo;
         }
         /// <summary>
         /// Retrieves a specific velocity control.

@@ -12,11 +12,11 @@ namespace Marqeta.Core.Sdk.Models
     public partial class Token_update_request : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
     {
-        /// <summary>Indicates whether the card funding source is active.</summary>
+        /// <summary>The active property</summary>
         public bool? Active { get; set; }
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Expiration date for the payment card.</summary>
+        /// <summary>The exp_date property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? ExpDate { get; set; }
@@ -24,7 +24,7 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string ExpDate { get; set; }
 #endif
-        /// <summary>If there are multiple funding sources, this field specifies which source is used by default in funding calls.If there is only one funding source, the system ignores this field and always uses that source.</summary>
+        /// <summary>The is_default_account property</summary>
         public bool? IsDefaultAccount { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Marqeta.Core.Sdk.Models.Token_update_request"/> and sets the default values.

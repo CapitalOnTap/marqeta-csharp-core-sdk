@@ -8,7 +8,7 @@ using System;
 namespace Marqeta.Core.Sdk.Models
 {
     /// <summary>
-    /// Contains information about a peer transfer, including sender and recipient tokens, transfer amount, and currency code.
+    /// Contains information about an intra-account transfer, including sender and recipient tokens, transfer amount, and currency code.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class Peer_transfer_response : IAdditionalDataHolder, IParsable
@@ -27,7 +27,7 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string CurrencyCode { get; set; }
 #endif
-        /// <summary>Additional descriptive text about the peer transfer.</summary>
+        /// <summary>Additional descriptive text about the intra-account transfer.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Memo { get; set; }
@@ -67,7 +67,7 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string SenderUserToken { get; set; }
 #endif
-        /// <summary>Metadata about the peer transfer.</summary>
+        /// <summary>Metadata about the intra-account transfer.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Tags { get; set; }
@@ -75,7 +75,7 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string Tags { get; set; }
 #endif
-        /// <summary>Unique identifier of the peer transfer request.</summary>
+        /// <summary>Unique identifier of the intra-account transfer request.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Token { get; set; }

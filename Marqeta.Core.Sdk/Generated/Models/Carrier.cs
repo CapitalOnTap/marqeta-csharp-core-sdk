@@ -47,6 +47,14 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string MessageLine { get; set; }
 #endif
+        /// <summary>Specifies the second line of a custom message that appears on the card carrier.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? MessageLine2 { get; set; }
+#nullable restore
+#else
+        public string MessageLine2 { get; set; }
+#endif
         /// <summary>Specifies the card carrier template to use.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -84,6 +92,7 @@ namespace Marqeta.Core.Sdk.Models
                 { "logo_thumbnail_file", n => { LogoThumbnailFile = n.GetStringValue(); } },
                 { "message_file", n => { MessageFile = n.GetStringValue(); } },
                 { "message_line", n => { MessageLine = n.GetStringValue(); } },
+                { "message_line_2", n => { MessageLine2 = n.GetStringValue(); } },
                 { "template_id", n => { TemplateId = n.GetStringValue(); } },
             };
         }
@@ -98,6 +107,7 @@ namespace Marqeta.Core.Sdk.Models
             writer.WriteStringValue("logo_thumbnail_file", LogoThumbnailFile);
             writer.WriteStringValue("message_file", MessageFile);
             writer.WriteStringValue("message_line", MessageLine);
+            writer.WriteStringValue("message_line_2", MessageLine2);
             writer.WriteStringValue("template_id", TemplateId);
             writer.WriteAdditionalData(AdditionalData);
         }

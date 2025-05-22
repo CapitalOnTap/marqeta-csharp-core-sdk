@@ -19,7 +19,7 @@ namespace Marqeta.Core.Sdk.Mccgroups
     public partial class MccgroupsRequestBuilder : BaseRequestBuilder
     {
         /// <summary>Gets an item from the Marqeta.Core.Sdk.mccgroups.item collection</summary>
-        /// <param name="position">Unique identifier of the MCC group.</param>
+        /// <param name="position">MCC group token</param>
         /// <returns>A <see cref="global::Marqeta.Core.Sdk.Mccgroups.Item.WithTokenItemRequestBuilder"/></returns>
         public global::Marqeta.Core.Sdk.Mccgroups.Item.WithTokenItemRequestBuilder this[string position]
         {
@@ -47,7 +47,7 @@ namespace Marqeta.Core.Sdk.Mccgroups
         {
         }
         /// <summary>
-        /// Use this endpoint to list all MCC groups defined in your program or list MCC groups that contain a specified code.This endpoint supports &lt;&lt;/core-api/field-filtering, field filtering&gt;&gt; and &lt;&lt;/core-api/sorting-and-pagination, pagination&gt;&gt;.
+        /// Lists all MCC groups
         /// </summary>
         /// <returns>A <see cref="global::Marqeta.Core.Sdk.Models.MCCGroupListResponse"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -70,7 +70,7 @@ namespace Marqeta.Core.Sdk.Mccgroups
             return await RequestAdapter.SendAsync<global::Marqeta.Core.Sdk.Models.MCCGroupListResponse>(requestInfo, global::Marqeta.Core.Sdk.Models.MCCGroupListResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Use this endpoint to create an MCC group.
+        /// Creates an MCC group
         /// </summary>
         /// <returns>A <see cref="global::Marqeta.Core.Sdk.Models.Mcc_group_model"/></returns>
         /// <param name="body">The request body</param>
@@ -95,7 +95,7 @@ namespace Marqeta.Core.Sdk.Mccgroups
             return await RequestAdapter.SendAsync<global::Marqeta.Core.Sdk.Models.Mcc_group_model>(requestInfo, global::Marqeta.Core.Sdk.Models.Mcc_group_model.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Use this endpoint to list all MCC groups defined in your program or list MCC groups that contain a specified code.This endpoint supports &lt;&lt;/core-api/field-filtering, field filtering&gt;&gt; and &lt;&lt;/core-api/sorting-and-pagination, pagination&gt;&gt;.
+        /// Lists all MCC groups
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -114,7 +114,7 @@ namespace Marqeta.Core.Sdk.Mccgroups
             return requestInfo;
         }
         /// <summary>
-        /// Use this endpoint to create an MCC group.
+        /// Creates an MCC group
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">The request body</param>
@@ -145,15 +145,15 @@ namespace Marqeta.Core.Sdk.Mccgroups
             return new global::Marqeta.Core.Sdk.Mccgroups.MccgroupsRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
-        /// Use this endpoint to list all MCC groups defined in your program or list MCC groups that contain a specified code.This endpoint supports &lt;&lt;/core-api/field-filtering, field filtering&gt;&gt; and &lt;&lt;/core-api/sorting-and-pagination, pagination&gt;&gt;.
+        /// Lists all MCC groups
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class MccgroupsRequestBuilderGetQueryParameters 
         {
-            /// <summary>The number of resources to retrieve.</summary>
+            /// <summary>Number of items to retrieve. Count can be between 1 - 10 items.</summary>
             [QueryParameter("count")]
             public int? Count { get; set; }
-            /// <summary>Returns all MCC groups that contain the specified merchant category code.</summary>
+            /// <summary>MCC</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
             [QueryParameter("mcc")]
@@ -163,7 +163,7 @@ namespace Marqeta.Core.Sdk.Mccgroups
             [QueryParameter("mcc")]
             public string Mcc { get; set; }
 #endif
-            /// <summary>Field on which to sort.Use any field in the resource model, or one of the system fields `lastModifiedTime` or `createdTime`.Prefix the field name with a hyphen (`-`) to sort in descending order.Omit the hyphen to sort in ascending order.</summary>
+            /// <summary>Field by which to sort the returned items. Use any field in the model, or system fields lastModifiedTime or createdTime.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
             [QueryParameter("sort_by")]
@@ -173,7 +173,7 @@ namespace Marqeta.Core.Sdk.Mccgroups
             [QueryParameter("sort_by")]
             public string SortBy { get; set; }
 #endif
-            /// <summary>The sort order index of the first resource in the returned array.</summary>
+            /// <summary>Indicates from what row to start returning data.</summary>
             [QueryParameter("start_index")]
             public int? StartIndex { get; set; }
         }

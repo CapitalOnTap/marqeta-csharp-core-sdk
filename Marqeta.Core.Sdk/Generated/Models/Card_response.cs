@@ -47,6 +47,14 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string CardProductToken { get; set; }
 #endif
+        /// <summary>The chip_cvv_contactless_number property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? ChipCvvContactlessNumber { get; set; }
+#nullable restore
+#else
+        public string ChipCvvContactlessNumber { get; set; }
+#endif
         /// <summary>Three-digit card verification value (ICVV) stored on the chip of the card.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -147,6 +155,14 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string StateReason { get; set; }
 #endif
+        /// <summary>The Threecsc property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Threecsc { get; set; }
+#nullable restore
+#else
+        public string Threecsc { get; set; }
+#endif
         /// <summary>Unique identifier of the card.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -200,6 +216,7 @@ namespace Marqeta.Core.Sdk.Models
                 { "barcode", n => { Barcode = n.GetStringValue(); } },
                 { "bulk_issuance_token", n => { BulkIssuanceToken = n.GetStringValue(); } },
                 { "card_product_token", n => { CardProductToken = n.GetStringValue(); } },
+                { "chip_cvv_contactless_number", n => { ChipCvvContactlessNumber = n.GetStringValue(); } },
                 { "chip_cvv_number", n => { ChipCvvNumber = n.GetStringValue(); } },
                 { "contactless_exemption_counter", n => { ContactlessExemptionCounter = n.GetIntValue(); } },
                 { "contactless_exemption_total_amount", n => { ContactlessExemptionTotalAmount = n.GetDoubleValue(); } },
@@ -220,6 +237,7 @@ namespace Marqeta.Core.Sdk.Models
                 { "reissue_pan_from_card_token", n => { ReissuePanFromCardToken = n.GetStringValue(); } },
                 { "state", n => { State = n.GetEnumValue<global::Marqeta.Core.Sdk.Models.Card_response_state>(); } },
                 { "state_reason", n => { StateReason = n.GetStringValue(); } },
+                { "3csc", n => { Threecsc = n.GetStringValue(); } },
                 { "token", n => { Token = n.GetStringValue(); } },
                 { "translate_pin_from_card_token", n => { TranslatePinFromCardToken = n.GetStringValue(); } },
                 { "user_token", n => { UserToken = n.GetStringValue(); } },
@@ -236,6 +254,7 @@ namespace Marqeta.Core.Sdk.Models
             writer.WriteStringValue("barcode", Barcode);
             writer.WriteStringValue("bulk_issuance_token", BulkIssuanceToken);
             writer.WriteStringValue("card_product_token", CardProductToken);
+            writer.WriteStringValue("chip_cvv_contactless_number", ChipCvvContactlessNumber);
             writer.WriteStringValue("chip_cvv_number", ChipCvvNumber);
             writer.WriteIntValue("contactless_exemption_counter", ContactlessExemptionCounter);
             writer.WriteDoubleValue("contactless_exemption_total_amount", ContactlessExemptionTotalAmount);
@@ -256,6 +275,7 @@ namespace Marqeta.Core.Sdk.Models
             writer.WriteStringValue("reissue_pan_from_card_token", ReissuePanFromCardToken);
             writer.WriteEnumValue<global::Marqeta.Core.Sdk.Models.Card_response_state>("state", State);
             writer.WriteStringValue("state_reason", StateReason);
+            writer.WriteStringValue("3csc", Threecsc);
             writer.WriteStringValue("token", Token);
             writer.WriteStringValue("translate_pin_from_card_token", TranslatePinFromCardToken);
             writer.WriteStringValue("user_token", UserToken);

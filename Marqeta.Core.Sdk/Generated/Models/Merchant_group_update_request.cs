@@ -12,11 +12,11 @@ namespace Marqeta.Core.Sdk.Models
     public partial class Merchant_group_update_request : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
     {
-        /// <summary>Indicates if the merchant group is active or not.</summary>
+        /// <summary>The active property</summary>
         public bool? Active { get; set; }
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Comma-separated list of alphanumeric merchant identifiers.You can include merchant identifiers in multiple merchant groups.</summary>
+        /// <summary>The mids property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<string>? Mids { get; set; }
@@ -24,7 +24,7 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public List<string> Mids { get; set; }
 #endif
-        /// <summary>Name of the merchant group.</summary>
+        /// <summary>The name property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Name { get; set; }

@@ -16,7 +16,7 @@ namespace Marqeta.Core.Sdk.Kyc.Business
     public partial class BusinessRequestBuilder : BaseRequestBuilder
     {
         /// <summary>Gets an item from the Marqeta.Core.Sdk.kyc.business.item collection</summary>
-        /// <param name="position">The unique identifier of the business resource for which you want to retrieve KYC verification results.</param>
+        /// <param name="position">Business token</param>
         /// <returns>A <see cref="global::Marqeta.Core.Sdk.Kyc.Business.Item.WithBusiness_tokenItemRequestBuilder"/></returns>
         public global::Marqeta.Core.Sdk.Kyc.Business.Item.WithBusiness_tokenItemRequestBuilder this[string position]
         {

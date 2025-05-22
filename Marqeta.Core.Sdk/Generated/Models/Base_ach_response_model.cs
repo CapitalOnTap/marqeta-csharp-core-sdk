@@ -12,7 +12,7 @@ namespace Marqeta.Core.Sdk.Models
     public partial class Base_ach_response_model : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
     {
-        /// <summary>ACH account identifier appended to the bank account number.</summary>
+        /// <summary>The account_suffix property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? AccountSuffix { get; set; }
@@ -20,7 +20,7 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string AccountSuffix { get; set; }
 #endif
-        /// <summary>Type of account.</summary>
+        /// <summary>The account_type property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? AccountType { get; set; }
@@ -28,11 +28,11 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string AccountType { get; set; }
 #endif
-        /// <summary>Specifies whether the account is active.</summary>
+        /// <summary>The active property</summary>
         public bool? Active { get; set; }
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Name of the bank holding the account.This field is returned if it exists in the resource.</summary>
+        /// <summary>The bank_name property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? BankName { get; set; }
@@ -40,17 +40,17 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string BankName { get; set; }
 #endif
-        /// <summary>Date and time when the resource was created, in UTC.</summary>
+        /// <summary>yyyy-MM-ddTHH:mm:ssZ</summary>
         public DateTimeOffset? CreatedTime { get; set; }
-        /// <summary>Date and time in UTC when the request for account validation was sent to the third-party partner.This field is returned if it exists in the resource.</summary>
+        /// <summary>The date_sent_for_verification property</summary>
         public DateTimeOffset? DateSentForVerification { get; set; }
-        /// <summary>Date and time when the account was verified, in UTC.This field is returned if it exists in the resource.</summary>
+        /// <summary>The date_verified property</summary>
         public DateTimeOffset? DateVerified { get; set; }
-        /// <summary>If there are multiple funding sources, this field specifies which source is used by default in funding calls.If there is only one funding source, the system ignores this field and always uses that source.</summary>
+        /// <summary>The is_default_account property</summary>
         public bool? IsDefaultAccount { get; set; }
-        /// <summary>Date and time when the resource was last modified, in UTC.</summary>
+        /// <summary>yyyy-MM-ddTHH:mm:ssZ</summary>
         public DateTimeOffset? LastModifiedTime { get; set; }
-        /// <summary>Name on the ACH account.</summary>
+        /// <summary>The name_on_account property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? NameOnAccount { get; set; }
@@ -74,7 +74,7 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string PartnerAccountLinkReferenceToken { get; set; }
 #endif
-        /// <summary>Unique identifier of the funding source.</summary>
+        /// <summary>The token property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Token { get; set; }
@@ -82,7 +82,7 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string Token { get; set; }
 #endif
-        /// <summary>Free-form text field for holding notes about verification.This field is returned only if `verification_override = true`.</summary>
+        /// <summary>The verification_notes property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? VerificationNotes { get; set; }
@@ -90,9 +90,9 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string VerificationNotes { get; set; }
 #endif
-        /// <summary>Allows the ACH funding source to be used regardless of its verification status.This field is returned if it exists in the resource.*NOTE:* When using `PLAID` to validate a funding source, this field is always set to `true`.</summary>
+        /// <summary>The verification_override property</summary>
         public bool? VerificationOverride { get; set; }
-        /// <summary>Account verification status.This field is returned if it exists in the resource.</summary>
+        /// <summary>The verification_status property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? VerificationStatus { get; set; }

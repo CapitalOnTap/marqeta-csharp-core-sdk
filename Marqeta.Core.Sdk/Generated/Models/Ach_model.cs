@@ -12,7 +12,7 @@ namespace Marqeta.Core.Sdk.Models
     public partial class Ach_model : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
     {
-        /// <summary>ACH account number.</summary>
+        /// <summary>The account_number property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? AccountNumber { get; set; }
@@ -20,11 +20,11 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string AccountNumber { get; set; }
 #endif
-        /// <summary>Type of account.</summary>
+        /// <summary>The account_type property</summary>
         public global::Marqeta.Core.Sdk.Models.Ach_model_account_type? AccountType { get; set; }
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Name of the financial institution where the ACH account is held.</summary>
+        /// <summary>The bank_name property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? BankName { get; set; }
@@ -32,7 +32,7 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string BankName { get; set; }
 #endif
-        /// <summary>Unique identifier of the business account holder.This token is required if a `user_token` is not specified.</summary>
+        /// <summary>Required if &apos;user_token&apos; is null</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? BusinessToken { get; set; }
@@ -40,9 +40,9 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string BusinessToken { get; set; }
 #endif
-        /// <summary>If there are multiple funding sources, this field specifies which source is used by default in funding calls.If there is only one funding source, the system ignores this field and always uses that source.</summary>
+        /// <summary>The is_default_account property</summary>
         public bool? IsDefaultAccount { get; set; }
-        /// <summary>Name on the ACH account.</summary>
+        /// <summary>The name_on_account property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? NameOnAccount { get; set; }
@@ -50,7 +50,7 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string NameOnAccount { get; set; }
 #endif
-        /// <summary>Routing number for the ACH account.</summary>
+        /// <summary>The routing_number property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? RoutingNumber { get; set; }
@@ -58,7 +58,7 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string RoutingNumber { get; set; }
 #endif
-        /// <summary>Unique identifier of the funding source.If you do not include a token, the system will generate one automatically.This token is necessary for use in other calls, so we recommend that rather than let the system generate one, you use a simple string that is easy to remember.This value cannot be updated.</summary>
+        /// <summary>The token property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Token { get; set; }
@@ -66,7 +66,7 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string Token { get; set; }
 #endif
-        /// <summary>Unique identifier of the user account holder.This token is required if a `business_token` is not specified.</summary>
+        /// <summary>Required if &apos;business_token&apos; is null</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? UserToken { get; set; }
@@ -74,7 +74,7 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string UserToken { get; set; }
 #endif
-        /// <summary>Free-form text field for holding notes about verification.This field is returned only if `verification_override = true`.</summary>
+        /// <summary>The verification_notes property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? VerificationNotes { get; set; }
@@ -82,7 +82,7 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string VerificationNotes { get; set; }
 #endif
-        /// <summary>Allows the ACH funding source to be used, regardless of its verification status.Set this field to `true` if you can attest that you have verified the account on your own and that it will not be returned by the Federal Reserve.*NOTE:* When using `PLAID` to validate a funding source, this field is always set to `true`.</summary>
+        /// <summary>The verification_override property</summary>
         public bool? VerificationOverride { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Marqeta.Core.Sdk.Models.Ach_model"/> and sets the default values.

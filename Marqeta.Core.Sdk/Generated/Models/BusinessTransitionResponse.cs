@@ -26,6 +26,8 @@ namespace Marqeta.Core.Sdk.Models
         public global::Marqeta.Core.Sdk.Models.BusinessTransitionResponse_channel? Channel { get; set; }
         /// <summary>The created_time property</summary>
         public DateTimeOffset? CreatedTime { get; set; }
+        /// <summary>The created_timestamp property</summary>
+        public DateTimeOffset? CreatedTimestamp { get; set; }
         /// <summary>The last_modified_time property</summary>
         public DateTimeOffset? LastModifiedTime { get; set; }
         /// <summary>The reason property</summary>
@@ -76,6 +78,7 @@ namespace Marqeta.Core.Sdk.Models
                 { "business_token", n => { BusinessToken = n.GetStringValue(); } },
                 { "channel", n => { Channel = n.GetEnumValue<global::Marqeta.Core.Sdk.Models.BusinessTransitionResponse_channel>(); } },
                 { "created_time", n => { CreatedTime = n.GetDateTimeOffsetValue(); } },
+                { "created_timestamp", n => { CreatedTimestamp = n.GetDateTimeOffsetValue(); } },
                 { "last_modified_time", n => { LastModifiedTime = n.GetDateTimeOffsetValue(); } },
                 { "reason", n => { Reason = n.GetStringValue(); } },
                 { "reason_code", n => { ReasonCode = n.GetEnumValue<global::Marqeta.Core.Sdk.Models.BusinessTransitionResponse_reason_code>(); } },
@@ -93,6 +96,7 @@ namespace Marqeta.Core.Sdk.Models
             writer.WriteStringValue("business_token", BusinessToken);
             writer.WriteEnumValue<global::Marqeta.Core.Sdk.Models.BusinessTransitionResponse_channel>("channel", Channel);
             writer.WriteDateTimeOffsetValue("created_time", CreatedTime);
+            writer.WriteDateTimeOffsetValue("created_timestamp", CreatedTimestamp);
             writer.WriteDateTimeOffsetValue("last_modified_time", LastModifiedTime);
             writer.WriteStringValue("reason", Reason);
             writer.WriteEnumValue<global::Marqeta.Core.Sdk.Models.BusinessTransitionResponse_reason_code>("reason_code", ReasonCode);

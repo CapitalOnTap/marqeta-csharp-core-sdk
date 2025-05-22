@@ -15,11 +15,19 @@ namespace Marqeta.Core.Sdk.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>The amount of the network fee.</summary>
+        /// <summary>Amount of the network fee.</summary>
         public double? Amount { get; set; }
         /// <summary>Indicates whether the fee is a credit or a debit.* *C* indicates a credit* *D* indicates a debit</summary>
         public global::Marqeta.Core.Sdk.Models.Network_fee_model_credit_debit? CreditDebit { get; set; }
-        /// <summary>The type of fee assessed by the card network.</summary>
+        /// <summary>Type of currency used when assessing a `CROSS_BORDER_ISSUER_FEE` or `INTERCHANGE_FEE` on Mastercard multi-currency transactions.Three-digit link:https://www.iso.org/iso-4217-currency-codes.html[ISO 4217 currency code, window=&quot;_blank&quot;].</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Currency { get; set; }
+#nullable restore
+#else
+        public string Currency { get; set; }
+#endif
+        /// <summary>Type of fee assessed by the card network.</summary>
         public global::Marqeta.Core.Sdk.Models.Network_fee_model_type? Type { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Marqeta.Core.Sdk.Models.Network_fee_model"/> and sets the default values.
@@ -48,6 +56,7 @@ namespace Marqeta.Core.Sdk.Models
             {
                 { "amount", n => { Amount = n.GetDoubleValue(); } },
                 { "credit_debit", n => { CreditDebit = n.GetEnumValue<global::Marqeta.Core.Sdk.Models.Network_fee_model_credit_debit>(); } },
+                { "currency", n => { Currency = n.GetStringValue(); } },
                 { "type", n => { Type = n.GetEnumValue<global::Marqeta.Core.Sdk.Models.Network_fee_model_type>(); } },
             };
         }
@@ -60,6 +69,7 @@ namespace Marqeta.Core.Sdk.Models
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
             writer.WriteDoubleValue("amount", Amount);
             writer.WriteEnumValue<global::Marqeta.Core.Sdk.Models.Network_fee_model_credit_debit>("credit_debit", CreditDebit);
+            writer.WriteStringValue("currency", Currency);
             writer.WriteEnumValue<global::Marqeta.Core.Sdk.Models.Network_fee_model_type>("type", Type);
             writer.WriteAdditionalData(AdditionalData);
         }

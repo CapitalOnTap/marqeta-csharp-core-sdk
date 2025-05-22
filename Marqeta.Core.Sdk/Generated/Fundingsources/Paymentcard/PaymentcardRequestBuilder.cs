@@ -19,7 +19,7 @@ namespace Marqeta.Core.Sdk.Fundingsources.Paymentcard
     public partial class PaymentcardRequestBuilder : BaseRequestBuilder
     {
         /// <summary>Gets an item from the Marqeta.Core.Sdk.fundingsources.paymentcard.item collection</summary>
-        /// <param name="position">Unique identifier of the funding source.Send a `GET` request to `/fundingsources/user/{user_token}` to retrieve existing funding source tokens for a user or to `/fundingsources/business/{business_token}` to retrieve existing funding source tokens for a business.</param>
+        /// <param name="position">Funding token</param>
         /// <returns>A <see cref="global::Marqeta.Core.Sdk.Fundingsources.Paymentcard.Item.WithFunding_source_tokenItemRequestBuilder"/></returns>
         public global::Marqeta.Core.Sdk.Fundingsources.Paymentcard.Item.WithFunding_source_tokenItemRequestBuilder this[string position]
         {
@@ -47,7 +47,7 @@ namespace Marqeta.Core.Sdk.Fundingsources.Paymentcard
         {
         }
         /// <summary>
-        /// Create a payment card funding source for an existing account holder.This endpoint returns the card type and the last four digits of the card, and then sets the `active_ field` to `true`.Marqeta retains only a tokenized representation of the card number.
+        /// Registers a payment card funding source
         /// </summary>
         /// <returns>A <see cref="global::Marqeta.Core.Sdk.Models.Payment_card_response_model"/></returns>
         /// <param name="body">The request body</param>
@@ -72,7 +72,7 @@ namespace Marqeta.Core.Sdk.Fundingsources.Paymentcard
             return await RequestAdapter.SendAsync<global::Marqeta.Core.Sdk.Models.Payment_card_response_model>(requestInfo, global::Marqeta.Core.Sdk.Models.Payment_card_response_model.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Create a payment card funding source for an existing account holder.This endpoint returns the card type and the last four digits of the card, and then sets the `active_ field` to `true`.Marqeta retains only a tokenized representation of the card number.
+        /// Registers a payment card funding source
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">The request body</param>

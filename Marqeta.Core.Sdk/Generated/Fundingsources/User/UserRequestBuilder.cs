@@ -16,7 +16,7 @@ namespace Marqeta.Core.Sdk.Fundingsources.User
     public partial class UserRequestBuilder : BaseRequestBuilder
     {
         /// <summary>Gets an item from the Marqeta.Core.Sdk.fundingsources.user.item collection</summary>
-        /// <param name="position">Unique identifier of the user account holder.</param>
+        /// <param name="position">User token</param>
         /// <returns>A <see cref="global::Marqeta.Core.Sdk.Fundingsources.User.Item.WithUser_tokenItemRequestBuilder"/></returns>
         public global::Marqeta.Core.Sdk.Fundingsources.User.Item.WithUser_tokenItemRequestBuilder this[string position]
         {

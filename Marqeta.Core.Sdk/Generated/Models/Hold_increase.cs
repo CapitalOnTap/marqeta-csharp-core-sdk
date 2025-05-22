@@ -7,17 +7,16 @@ using System.IO;
 using System;
 namespace Marqeta.Core.Sdk.Models
 {
-    /// <summary>
-    /// Controls automatic increases to the authorization amount for MCCs specified in this group.
-    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
+    #pragma warning disable CS1591
     public partial class Hold_increase : IAdditionalDataHolder, IParsable
+    #pragma warning restore CS1591
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Controls whether the `value` field represents a fixed amount or a percentage of the authorization amount.</summary>
+        /// <summary>The type property</summary>
         public global::Marqeta.Core.Sdk.Models.Hold_increase_type? Type { get; set; }
-        /// <summary>Specifies the amount of the automatic increase to the authorization amount.The `type` field controls whether this amount is a fixed amount or a percentage.</summary>
+        /// <summary>The value property</summary>
         public double? Value { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Marqeta.Core.Sdk.Models.Hold_increase"/> and sets the default values.

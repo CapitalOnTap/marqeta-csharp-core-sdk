@@ -34,7 +34,7 @@ namespace Marqeta.Core.Sdk.Fees.Item
         {
         }
         /// <summary>
-        /// Use this endpoint to retrieve a fee.Include the `token` path parameter to specify the fee to return.
+        /// Returns a specific fee
         /// </summary>
         /// <returns>A <see cref="global::Marqeta.Core.Sdk.Models.Fee_response"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -57,7 +57,7 @@ namespace Marqeta.Core.Sdk.Fees.Item
             return await RequestAdapter.SendAsync<global::Marqeta.Core.Sdk.Models.Fee_response>(requestInfo, global::Marqeta.Core.Sdk.Models.Fee_response.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Use this endpoint to update a fee.Include the `token` as a path parameter to indicate the fee to update.
+        /// Updates a specific fee
         /// </summary>
         /// <returns>A <see cref="global::Marqeta.Core.Sdk.Models.Fee_response"/></returns>
         /// <param name="body">The request body</param>
@@ -82,7 +82,7 @@ namespace Marqeta.Core.Sdk.Fees.Item
             return await RequestAdapter.SendAsync<global::Marqeta.Core.Sdk.Models.Fee_response>(requestInfo, global::Marqeta.Core.Sdk.Models.Fee_response.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Use this endpoint to retrieve a fee.Include the `token` path parameter to specify the fee to return.
+        /// Returns a specific fee
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -101,7 +101,7 @@ namespace Marqeta.Core.Sdk.Fees.Item
             return requestInfo;
         }
         /// <summary>
-        /// Use this endpoint to update a fee.Include the `token` as a path parameter to indicate the fee to update.
+        /// Updates a specific fee
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">The request body</param>

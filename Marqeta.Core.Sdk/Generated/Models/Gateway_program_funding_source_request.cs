@@ -12,11 +12,11 @@ namespace Marqeta.Core.Sdk.Models
     public partial class Gateway_program_funding_source_request : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
     {
-        /// <summary>Indicates whether the program gateway funding source is active.</summary>
+        /// <summary>The active property</summary>
         public bool? Active { get; set; }
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Password for authenticating your environment.</summary>
+        /// <summary>The basic_auth_password property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? BasicAuthPassword { get; set; }
@@ -24,7 +24,7 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string BasicAuthPassword { get; set; }
 #endif
-        /// <summary>Username for authenticating your environment.</summary>
+        /// <summary>The basic_auth_username property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? BasicAuthUsername { get; set; }
@@ -32,7 +32,7 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string BasicAuthUsername { get; set; }
 #endif
-        /// <summary>Additional custom information included in the HTTP header.For example, this might contain security information, along with Basic Authentication, when making a JIT Funding request.Custom headers also appear in the associated webhook&apos;s notifications.</summary>
+        /// <summary>Custom headers</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Marqeta.Core.Sdk.Models.Gateway_program_funding_source_request_custom_header? CustomHeader { get; set; }
@@ -40,7 +40,7 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public global::Marqeta.Core.Sdk.Models.Gateway_program_funding_source_request_custom_header CustomHeader { get; set; }
 #endif
-        /// <summary>Name of the program gateway funding source.</summary>
+        /// <summary>The name property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Name { get; set; }
@@ -48,9 +48,9 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string Name { get; set; }
 #endif
-        /// <summary>Total timeout in milliseconds for gateway processing.</summary>
+        /// <summary>Total timeout in milliseconds for gateway processing</summary>
         public long? TimeoutMillis { get; set; }
-        /// <summary>Unique identifier of the program gateway funding source.If you do not include a token, the system will generate one automatically.As this token is necessary for use in other calls, we recommend that you define a simple and easy to remember string rather than letting the system generate a token for you.This value cannot be updated.</summary>
+        /// <summary>The token property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Token { get; set; }
@@ -58,7 +58,7 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string Token { get; set; }
 #endif
-        /// <summary>URL of the gateway endpoint hosted in your environment, to which `POST` requests are submitted by the Marqeta platform.</summary>
+        /// <summary>The url property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Url { get; set; }
@@ -66,7 +66,7 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string Url { get; set; }
 #endif
-        /// <summary>Specifies whether or not to use mutual transport layer security (mTLS) authentication for the funding request.mTLS authentication is in the beta testing phase, and is not yet generally available.Contact your Marqeta representative for more information about using mTLS authentication.</summary>
+        /// <summary>Use MTLS for funding request</summary>
         public bool? UseMtls { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Marqeta.Core.Sdk.Models.Gateway_program_funding_source_request"/> and sets the default values.

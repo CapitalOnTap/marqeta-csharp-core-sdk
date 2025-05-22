@@ -8,7 +8,7 @@ using System;
 namespace Marqeta.Core.Sdk.Models
 {
     /// <summary>
-    /// Additional custom information included in the HTTP header.For example, this might contain security information, along with Basic Authentication, when making a JIT Funding request.Custom headers also appear in the associated webhook&apos;s notifications.
+    /// Custom headers
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class Gateway_program_funding_source_request_custom_header : IAdditionalDataHolder, IParsable

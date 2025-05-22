@@ -16,7 +16,7 @@ namespace Marqeta.Core.Sdk.Peertransfers.User
     public partial class UserRequestBuilder : BaseRequestBuilder
     {
         /// <summary>Gets an item from the Marqeta.Core.Sdk.peertransfers.user.item collection</summary>
-        /// <param name="position">Existing user or business token.Send a `GET` request to `/users` to retrieve user tokens or to `/businesses` to retrieve business tokens.</param>
+        /// <param name="position">User or business token</param>
         /// <returns>A <see cref="global::Marqeta.Core.Sdk.Peertransfers.User.Item.WithUser_or_business_tokenItemRequestBuilder"/></returns>
         public global::Marqeta.Core.Sdk.Peertransfers.User.Item.WithUser_or_business_tokenItemRequestBuilder this[string position]
         {

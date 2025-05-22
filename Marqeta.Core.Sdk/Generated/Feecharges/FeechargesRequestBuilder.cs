@@ -25,7 +25,7 @@ namespace Marqeta.Core.Sdk.Feecharges
             get => new global::Marqeta.Core.Sdk.Feecharges.Realtime.RealtimeRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>Gets an item from the Marqeta.Core.Sdk.feecharges.item collection</summary>
-        /// <param name="position">Unique identifier of the fee charge to retrieve.</param>
+        /// <param name="position">Unique identifier of the item</param>
         /// <returns>A <see cref="global::Marqeta.Core.Sdk.Feecharges.Item.WithTokenItemRequestBuilder"/></returns>
         public global::Marqeta.Core.Sdk.Feecharges.Item.WithTokenItemRequestBuilder this[string position]
         {
@@ -53,7 +53,7 @@ namespace Marqeta.Core.Sdk.Feecharges
         {
         }
         /// <summary>
-        /// Use this endpoint to create a fee charge.You must pass in either `user_token` or `business_token` to associate a user or business with the fee charge.This is an all-or-nothing operation.When more than one fee is present, you must assess either all fees, or no fees.
+        /// Creates a fee charge
         /// </summary>
         /// <returns>A <see cref="global::Marqeta.Core.Sdk.Models.Fee_transfer_response"/></returns>
         /// <param name="body">The request body</param>
@@ -78,7 +78,7 @@ namespace Marqeta.Core.Sdk.Feecharges
             return await RequestAdapter.SendAsync<global::Marqeta.Core.Sdk.Models.Fee_transfer_response>(requestInfo, global::Marqeta.Core.Sdk.Models.Fee_transfer_response.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Use this endpoint to create a fee charge.You must pass in either `user_token` or `business_token` to associate a user or business with the fee charge.This is an all-or-nothing operation.When more than one fee is present, you must assess either all fees, or no fees.
+        /// Creates a fee charge
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">The request body</param>

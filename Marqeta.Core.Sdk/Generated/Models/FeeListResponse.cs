@@ -14,9 +14,9 @@ namespace Marqeta.Core.Sdk.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Number of resources to retrieve.This field is returned if there are resources in your returned array.</summary>
+        /// <summary>The count property</summary>
         public int? Count { get; set; }
-        /// <summary>An array of fee objects.Objects are returned as appropriate to your query.</summary>
+        /// <summary>The data property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<global::Marqeta.Core.Sdk.Models.Fee_response>? Data { get; set; }
@@ -24,11 +24,11 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public List<global::Marqeta.Core.Sdk.Models.Fee_response> Data { get; set; }
 #endif
-        /// <summary>Sort order index of the last resource in the returned array.This field is returned if there are resources in your returned array.</summary>
+        /// <summary>The end_index property</summary>
         public int? EndIndex { get; set; }
-        /// <summary>A value of `true` indicates that more unreturned resources exist.A value of `false` indicates that no more unreturned resources exist.This field is returned if there are resources in your returned array.</summary>
+        /// <summary>The is_more property</summary>
         public bool? IsMore { get; set; }
-        /// <summary>Sort order index of the first resource in the returned array.This field is returned if there are resources in your returned array.</summary>
+        /// <summary>The start_index property</summary>
         public int? StartIndex { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Marqeta.Core.Sdk.Models.FeeListResponse"/> and sets the default values.

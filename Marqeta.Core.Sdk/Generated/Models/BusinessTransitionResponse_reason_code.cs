@@ -140,5 +140,9 @@ namespace Marqeta.Core.Sdk.Models
         #pragma warning disable CS1591
         ThreeTwo,
         #pragma warning restore CS1591
+        [EnumMember(Value = "86")]
+        #pragma warning disable CS1591
+        EightSix,
+        #pragma warning restore CS1591
     }
 }

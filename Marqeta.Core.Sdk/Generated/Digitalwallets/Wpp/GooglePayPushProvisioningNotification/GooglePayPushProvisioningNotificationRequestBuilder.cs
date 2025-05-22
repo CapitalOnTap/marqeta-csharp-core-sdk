@@ -34,7 +34,7 @@ namespace Marqeta.Core.Sdk.Digitalwallets.Wpp.GooglePayPushProvisioningNotificat
         {
         }
         /// <summary>
-        /// [NOTE]This endpoint is currently in beta and subject to change.For more information, contact your Marqeta representative.Use this endpoint to add a card to Google Wallet via a web application.This endpoint does not return a payload in response to a request.Instead, a successful call will return a response code only.
+        /// Use this endpoint to add a card to Google Wallet via a web application.This endpoint does not return a payload in response to a request.Instead, a successful call will return a response code only.
         /// </summary>
         /// <param name="body">The request body</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -58,7 +58,7 @@ namespace Marqeta.Core.Sdk.Digitalwallets.Wpp.GooglePayPushProvisioningNotificat
             await RequestAdapter.SendNoContentAsync(requestInfo, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// [NOTE]This endpoint is currently in beta and subject to change.For more information, contact your Marqeta representative.Use this endpoint to add a card to Google Wallet via a web application.This endpoint does not return a payload in response to a request.Instead, a successful call will return a response code only.
+        /// Use this endpoint to add a card to Google Wallet via a web application.This endpoint does not return a payload in response to a request.Instead, a successful call will return a response code only.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">The request body</param>

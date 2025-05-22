@@ -14,6 +14,7 @@ using Marqeta.Core.Sdk.Cardproducts;
 using Marqeta.Core.Sdk.Cards;
 using Marqeta.Core.Sdk.Cardtransitions;
 using Marqeta.Core.Sdk.Chargebacks;
+using Marqeta.Core.Sdk.Clicktopay;
 using Marqeta.Core.Sdk.Commandomodes;
 using Marqeta.Core.Sdk.Depositaccounts;
 using Marqeta.Core.Sdk.Digitalwalletprovisionrequests;
@@ -31,7 +32,6 @@ using Marqeta.Core.Sdk.Kyc;
 using Marqeta.Core.Sdk.Mccgroups;
 using Marqeta.Core.Sdk.Merchantgroups;
 using Marqeta.Core.Sdk.Merchants;
-using Marqeta.Core.Sdk.Migration;
 using Marqeta.Core.Sdk.Offers;
 using Marqeta.Core.Sdk.Peertransfers;
 using Marqeta.Core.Sdk.Ping;
@@ -138,6 +138,11 @@ namespace Marqeta.Core.Sdk
         {
             get => new global::Marqeta.Core.Sdk.Chargebacks.ChargebacksRequestBuilder(PathParameters, RequestAdapter);
         }
+        /// <summary>The clicktopay property</summary>
+        public global::Marqeta.Core.Sdk.Clicktopay.ClicktopayRequestBuilder Clicktopay
+        {
+            get => new global::Marqeta.Core.Sdk.Clicktopay.ClicktopayRequestBuilder(PathParameters, RequestAdapter);
+        }
         /// <summary>The commandomodes property</summary>
         public global::Marqeta.Core.Sdk.Commandomodes.CommandomodesRequestBuilder Commandomodes
         {
@@ -222,11 +227,6 @@ namespace Marqeta.Core.Sdk
         public global::Marqeta.Core.Sdk.Merchants.MerchantsRequestBuilder Merchants
         {
             get => new global::Marqeta.Core.Sdk.Merchants.MerchantsRequestBuilder(PathParameters, RequestAdapter);
-        }
-        /// <summary>The migration property</summary>
-        public global::Marqeta.Core.Sdk.Migration.MigrationRequestBuilder Migration
-        {
-            get => new global::Marqeta.Core.Sdk.Migration.MigrationRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The offers property</summary>
         public global::Marqeta.Core.Sdk.Offers.OffersRequestBuilder Offers

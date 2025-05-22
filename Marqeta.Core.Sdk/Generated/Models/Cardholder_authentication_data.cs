@@ -71,14 +71,6 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string RawCavvData { get; set; }
 #endif
-        /// <summary>The 3D Secure authentication indicator, as provided by the Mastercard card network.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? Threeds_reference_id { get; set; }
-#nullable restore
-#else
-        public string Threeds_reference_id { get; set; }
-#endif
         /// <summary>The three_ds_data_quality property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -95,7 +87,7 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string ThreeDsMessageVersion { get; set; }
 #endif
-        /// <summary>The three_ds_reference_id property</summary>
+        /// <summary>The 3D Secure authentication indicator, as provided by the Mastercard card network.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? ThreeDsReferenceId { get; set; }
@@ -156,7 +148,6 @@ namespace Marqeta.Core.Sdk.Models
                 { "three_ds_reference_id", n => { ThreeDsReferenceId = n.GetStringValue(); } },
                 { "verification_result", n => { VerificationResult = n.GetStringValue(); } },
                 { "verification_value_created_by", n => { VerificationValueCreatedBy = n.GetStringValue(); } },
-                { "threeds_reference_id", n => { Threeds_reference_id = n.GetStringValue(); } },
             };
         }
         /// <summary>
@@ -173,7 +164,6 @@ namespace Marqeta.Core.Sdk.Models
             writer.WriteStringValue("electronic_commerce_indicator", ElectronicCommerceIndicator);
             writer.WriteStringValue("issuer_exemption", IssuerExemption);
             writer.WriteStringValue("raw_cavv_data", RawCavvData);
-            writer.WriteStringValue("threeds_reference_id", Threeds_reference_id);
             writer.WriteStringValue("three_ds_data_quality", ThreeDsDataQuality);
             writer.WriteStringValue("three_ds_message_version", ThreeDsMessageVersion);
             writer.WriteStringValue("three_ds_reference_id", ThreeDsReferenceId);

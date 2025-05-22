@@ -59,7 +59,7 @@ namespace Marqeta.Core.Sdk.Directdeposits
         {
         }
         /// <summary>
-        /// Retrieves a list of all direct deposit records for your program.
+        /// Lists all direct deposits
         /// </summary>
         /// <returns>A <see cref="global::Marqeta.Core.Sdk.Models.DirectDepositListResponse"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -82,7 +82,7 @@ namespace Marqeta.Core.Sdk.Directdeposits
             return await RequestAdapter.SendAsync<global::Marqeta.Core.Sdk.Models.DirectDepositListResponse>(requestInfo, global::Marqeta.Core.Sdk.Models.DirectDepositListResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Retrieves a list of all direct deposit records for your program.
+        /// Lists all direct deposits
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -110,7 +110,7 @@ namespace Marqeta.Core.Sdk.Directdeposits
             return new global::Marqeta.Core.Sdk.Directdeposits.DirectdepositsRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
-        /// Retrieves a list of all direct deposit records for your program.
+        /// Lists all direct deposits
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class DirectdepositsRequestBuilderGetQueryParameters 
@@ -125,13 +125,13 @@ namespace Marqeta.Core.Sdk.Directdeposits
             [QueryParameter("business_token")]
             public string BusinessToken { get; set; }
 #endif
-            /// <summary>The number of direct deposit records to retrieve.</summary>
+            /// <summary>Number of direct deposits to retrieve</summary>
             [QueryParameter("count")]
             public int? Count { get; set; }
-            /// <summary>Comma-delimited list of direct deposit states to display e.g. PENDING | REVERSED | APPLIED | REJECTED </summary>
+            /// <summary>Direct deposit state</summary>
             [QueryParameter("direct_deposit_state")]
             public global::Marqeta.Core.Sdk.Directdeposits.GetDirect_deposit_stateQueryParameterType? DirectDepositState { get; set; }
-            /// <summary>End Settlement Date</summary>
+            /// <summary>End settlement date</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
             [QueryParameter("end_settlement_date")]
@@ -157,7 +157,7 @@ namespace Marqeta.Core.Sdk.Directdeposits
             /// <summary>Start index</summary>
             [QueryParameter("start_index")]
             public int? StartIndex { get; set; }
-            /// <summary>Start Settlement Date</summary>
+            /// <summary>Start settlement date</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
             [QueryParameter("start_settlement_date")]

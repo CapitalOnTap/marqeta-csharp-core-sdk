@@ -29,6 +29,14 @@ namespace Marqeta.Core.Sdk.Models
 #endif
         /// <summary>Date and time when the `fees` object was last modified, in UTC.</summary>
         public DateTimeOffset? LastModifiedTime { get; set; }
+        /// <summary>Optional property to be used as Dispaly field when the fee is applied 255 char max</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Memo { get; set; }
+#nullable restore
+#else
+        public string Memo { get; set; }
+#endif
         /// <summary>Name of the fee.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -82,6 +90,7 @@ namespace Marqeta.Core.Sdk.Models
                 { "created_time", n => { CreatedTime = n.GetDateTimeOffsetValue(); } },
                 { "currency_code", n => { CurrencyCode = n.GetStringValue(); } },
                 { "last_modified_time", n => { LastModifiedTime = n.GetDateTimeOffsetValue(); } },
+                { "memo", n => { Memo = n.GetStringValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "tags", n => { Tags = n.GetStringValue(); } },
                 { "token", n => { Token = n.GetStringValue(); } },
@@ -98,6 +107,7 @@ namespace Marqeta.Core.Sdk.Models
             writer.WriteDateTimeOffsetValue("created_time", CreatedTime);
             writer.WriteStringValue("currency_code", CurrencyCode);
             writer.WriteDateTimeOffsetValue("last_modified_time", LastModifiedTime);
+            writer.WriteStringValue("memo", Memo);
             writer.WriteStringValue("name", Name);
             writer.WriteStringValue("tags", Tags);
             writer.WriteStringValue("token", Token);

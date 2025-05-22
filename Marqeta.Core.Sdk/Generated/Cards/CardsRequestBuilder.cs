@@ -44,14 +44,14 @@ namespace Marqeta.Core.Sdk.Cards
         }
         /// <summary>Gets an item from the Marqeta.Core.Sdk.cards.item collection</summary>
         /// <param name="position">Card token</param>
-        /// <returns>A <see cref="global::Marqeta.Core.Sdk.Cards.Item.Card_hashItemRequestBuilder"/></returns>
-        public global::Marqeta.Core.Sdk.Cards.Item.Card_hashItemRequestBuilder this[string position]
+        /// <returns>A <see cref="global::Marqeta.Core.Sdk.Cards.Item.WithTokenItemRequestBuilder"/></returns>
+        public global::Marqeta.Core.Sdk.Cards.Item.WithTokenItemRequestBuilder this[string position]
         {
             get
             {
                 var urlTplParams = new Dictionary<string, object>(PathParameters);
-                urlTplParams.Add("card_hash%2Did", position);
-                return new global::Marqeta.Core.Sdk.Cards.Item.Card_hashItemRequestBuilder(urlTplParams, RequestAdapter);
+                urlTplParams.Add("token", position);
+                return new global::Marqeta.Core.Sdk.Cards.Item.WithTokenItemRequestBuilder(urlTplParams, RequestAdapter);
             }
         }
         /// <summary>

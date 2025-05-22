@@ -7,19 +7,18 @@ using System.IO;
 using System;
 namespace Marqeta.Core.Sdk.Models
 {
-    /// <summary>
-    /// Contains details about the fee.
-    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
+    #pragma warning disable CS1591
     public partial class Fee_response : IAdditionalDataHolder, IParsable
+    #pragma warning restore CS1591
     {
-        /// <summary>Specifies whether the fee is active.</summary>
+        /// <summary>The active property</summary>
         public bool? Active { get; set; }
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Amount of the fee.</summary>
+        /// <summary>The amount property</summary>
         public double? Amount { get; set; }
-        /// <summary>Specifies if the fee is a standalone fee or a real-time fee.</summary>
+        /// <summary>The category property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Category { get; set; }
@@ -27,9 +26,9 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string Category { get; set; }
 #endif
-        /// <summary>Date and time when the `fees` object was created, in UTC.</summary>
+        /// <summary>yyyy-MM-ddTHH:mm:ssZ</summary>
         public DateTimeOffset? CreatedTime { get; set; }
-        /// <summary>Three-digit ISO 4217 currency code.</summary>
+        /// <summary>The currency_code property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? CurrencyCode { get; set; }
@@ -37,7 +36,7 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string CurrencyCode { get; set; }
 #endif
-        /// <summary>Describes the attributes of a fee.</summary>
+        /// <summary>The fee_attributes property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Marqeta.Core.Sdk.Models.Fee_attributes? FeeAttributes { get; set; }
@@ -45,9 +44,17 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public global::Marqeta.Core.Sdk.Models.Fee_attributes FeeAttributes { get; set; }
 #endif
-        /// <summary>Date and time when the `fees` object was last modified, in UTC.</summary>
+        /// <summary>yyyy-MM-ddTHH:mm:ssZ</summary>
         public DateTimeOffset? LastModifiedTime { get; set; }
-        /// <summary>Name of the fee.</summary>
+        /// <summary>255 char max</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Memo { get; set; }
+#nullable restore
+#else
+        public string Memo { get; set; }
+#endif
+        /// <summary>50 char max</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Name { get; set; }
@@ -55,7 +62,7 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string Name { get; set; }
 #endif
-        /// <summary>Descriptive metadata about the fee.</summary>
+        /// <summary>255 char max</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Tags { get; set; }
@@ -63,7 +70,7 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string Tags { get; set; }
 #endif
-        /// <summary>Unique identifier of the `fees` object.</summary>
+        /// <summary>36 char max</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Token { get; set; }
@@ -71,7 +78,7 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string Token { get; set; }
 #endif
-        /// <summary>Specifies if the fee is a flat fee or a percentage of the transaction amount.</summary>
+        /// <summary>The type property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Type { get; set; }
@@ -111,6 +118,7 @@ namespace Marqeta.Core.Sdk.Models
                 { "currency_code", n => { CurrencyCode = n.GetStringValue(); } },
                 { "fee_attributes", n => { FeeAttributes = n.GetObjectValue<global::Marqeta.Core.Sdk.Models.Fee_attributes>(global::Marqeta.Core.Sdk.Models.Fee_attributes.CreateFromDiscriminatorValue); } },
                 { "last_modified_time", n => { LastModifiedTime = n.GetDateTimeOffsetValue(); } },
+                { "memo", n => { Memo = n.GetStringValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "tags", n => { Tags = n.GetStringValue(); } },
                 { "token", n => { Token = n.GetStringValue(); } },
@@ -131,6 +139,7 @@ namespace Marqeta.Core.Sdk.Models
             writer.WriteStringValue("currency_code", CurrencyCode);
             writer.WriteObjectValue<global::Marqeta.Core.Sdk.Models.Fee_attributes>("fee_attributes", FeeAttributes);
             writer.WriteDateTimeOffsetValue("last_modified_time", LastModifiedTime);
+            writer.WriteStringValue("memo", Memo);
             writer.WriteStringValue("name", Name);
             writer.WriteStringValue("tags", Tags);
             writer.WriteStringValue("token", Token);

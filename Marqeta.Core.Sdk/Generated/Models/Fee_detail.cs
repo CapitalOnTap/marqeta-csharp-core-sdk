@@ -23,7 +23,7 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public global::Marqeta.Core.Sdk.Models.Fee Fee { get; set; }
 #endif
-        /// <summary>Additional text that describes the fee transfer.</summary>
+        /// <summary>Additional text describing the fee.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Memo { get; set; }
@@ -31,6 +31,8 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string Memo { get; set; }
 #endif
+        /// <summary>Dynamic fee amount that overrides the `fee.amount` field value.</summary>
+        public double? OverrideAmount { get; set; }
         /// <summary>Descriptive metadata about the fee.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -82,6 +84,7 @@ namespace Marqeta.Core.Sdk.Models
             {
                 { "fee", n => { Fee = n.GetObjectValue<global::Marqeta.Core.Sdk.Models.Fee>(global::Marqeta.Core.Sdk.Models.Fee.CreateFromDiscriminatorValue); } },
                 { "memo", n => { Memo = n.GetStringValue(); } },
+                { "overrideAmount", n => { OverrideAmount = n.GetDoubleValue(); } },
                 { "tags", n => { Tags = n.GetStringValue(); } },
                 { "token", n => { Token = n.GetStringValue(); } },
                 { "transaction_token", n => { TransactionToken = n.GetStringValue(); } },
@@ -96,6 +99,7 @@ namespace Marqeta.Core.Sdk.Models
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
             writer.WriteObjectValue<global::Marqeta.Core.Sdk.Models.Fee>("fee", Fee);
             writer.WriteStringValue("memo", Memo);
+            writer.WriteDoubleValue("overrideAmount", OverrideAmount);
             writer.WriteStringValue("tags", Tags);
             writer.WriteStringValue("token", Token);
             writer.WriteStringValue("transaction_token", TransactionToken);

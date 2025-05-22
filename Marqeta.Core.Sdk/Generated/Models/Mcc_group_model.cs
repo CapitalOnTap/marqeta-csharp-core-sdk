@@ -12,19 +12,19 @@ namespace Marqeta.Core.Sdk.Models
     public partial class Mcc_group_model : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
     {
-        /// <summary>Indicates if the group is active or inactive.</summary>
+        /// <summary>The active property</summary>
         public bool? Active { get; set; }
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Allows for configuration options for this group, including control over the expiration of authorizations and automatic increases to the authorization amount.</summary>
+        /// <summary>The config property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Marqeta.Core.Sdk.Models.Config? Config { get; set; }
+        public global::Marqeta.Core.Sdk.Models.MCCConfig? Config { get; set; }
 #nullable restore
 #else
-        public global::Marqeta.Core.Sdk.Models.Config Config { get; set; }
+        public global::Marqeta.Core.Sdk.Models.MCCConfig Config { get; set; }
 #endif
-        /// <summary>The set of merchant category codes that you want to include in this group.For each element, valid characters are 0-9, and the length must be 4 digits.You can also specify a range like &quot;9876-9880&quot;.An MCC can belong to more than one group.</summary>
+        /// <summary>The mccs property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<string>? Mccs { get; set; }
@@ -32,7 +32,7 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public List<string> Mccs { get; set; }
 #endif
-        /// <summary>The name of the group.</summary>
+        /// <summary>The name property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Name { get; set; }
@@ -40,7 +40,7 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string Name { get; set; }
 #endif
-        /// <summary>The unique identifier of the group.If you do not include a token, the system will generate one automatically.This token is necessary for use in other API calls, so we recommend that rather than let the system generate one, you use a simple string that is easy to remember.This value cannot be updated.</summary>
+        /// <summary>The token property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Token { get; set; }
@@ -74,7 +74,7 @@ namespace Marqeta.Core.Sdk.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "active", n => { Active = n.GetBoolValue(); } },
-                { "config", n => { Config = n.GetObjectValue<global::Marqeta.Core.Sdk.Models.Config>(global::Marqeta.Core.Sdk.Models.Config.CreateFromDiscriminatorValue); } },
+                { "config", n => { Config = n.GetObjectValue<global::Marqeta.Core.Sdk.Models.MCCConfig>(global::Marqeta.Core.Sdk.Models.MCCConfig.CreateFromDiscriminatorValue); } },
                 { "mccs", n => { Mccs = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "token", n => { Token = n.GetStringValue(); } },
@@ -88,7 +88,7 @@ namespace Marqeta.Core.Sdk.Models
         {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
             writer.WriteBoolValue("active", Active);
-            writer.WriteObjectValue<global::Marqeta.Core.Sdk.Models.Config>("config", Config);
+            writer.WriteObjectValue<global::Marqeta.Core.Sdk.Models.MCCConfig>("config", Config);
             writer.WriteCollectionOfPrimitiveValues<string>("mccs", Mccs);
             writer.WriteStringValue("name", Name);
             writer.WriteStringValue("token", Token);

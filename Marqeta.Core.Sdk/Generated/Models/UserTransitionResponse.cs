@@ -18,6 +18,8 @@ namespace Marqeta.Core.Sdk.Models
         public global::Marqeta.Core.Sdk.Models.UserTransitionResponse_channel? Channel { get; set; }
         /// <summary>Date and time when the resource was created, in UTC.</summary>
         public DateTimeOffset? CreatedTime { get; set; }
+        /// <summary>Date and time when the resource was created.Expressed in UTC, with millisecond precision.</summary>
+        public DateTimeOffset? CreatedTimestamp { get; set; }
         /// <summary>Date and time when the resource was last modified, in UTC.</summary>
         public DateTimeOffset? LastModifiedTime { get; set; }
         /// <summary>Additional information about the status change.</summary>
@@ -28,7 +30,7 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string Reason { get; set; }
 #endif
-        /// <summary>Identifies the standardized reason for the transition:*00:* Object activated for the first time.*01:* Requested by you.*02:* Inactivity over time.*03:* This address cannot accept mail or the addressee is unknown.*04:* Negative account balance.*05:* Account under review.*06:* Suspicious activity was identified.*07:* Activity outside the program parameters was identified.*08:* Confirmed fraud was identified.*09:* Matched with an Office of Foreign Assets Control list.*10:* Card was reported lost.*11:* Card information was cloned.*12:* Account or card information was compromised.*13:* Temporary status change while on hold/leave.*14:* Initiated by Marqeta.*15:* Initiated by issuer.*16:* Card expired.*17:* Failed KYC.*18:* Changed to `ACTIVE` because information was properly validated.*19:* Changed to `ACTIVE` because account activity was properly validated.*20:* Change occurred prior to the normalization of reason codes.*21:* Initiated by a third party, often a digital wallet provider.*22:* PIN retry limit reached.*23:* Card was reported stolen.*24:* Address issue.*25:* Name issue.*26:* SSN issue.*27:* DOB issue.*28:* Email issue.*29:* Phone issue.*30:* Account/fulfillment mismatch.*31:* Other reason.</summary>
+        /// <summary>Identifies the standardized reason for the transition:*00:* Object activated for the first time.*01:* Requested by you.*02:* Inactivity over time.*03:* This address cannot accept mail or the addressee is unknown.*04:* Negative account balance.*05:* Account under review.*06:* Suspicious activity was identified.*07:* Activity outside the program parameters was identified.*08:* Confirmed fraud was identified.*09:* Matched with an Office of Foreign Assets Control list.*10:* Card was reported lost.*11:* Card information was cloned.*12:* Account or card information was compromised.*13:* Temporary status change while on hold/leave.*14:* Initiated by Marqeta.*15:* Initiated by issuer.*16:* Card expired.*17:* Failed KYC.*18:* Changed to `ACTIVE` because information was properly validated.*19:* Changed to `ACTIVE` because account activity was properly validated.*20:* Change occurred prior to the normalization of reason codes.*21:* Initiated by a third party, often a digital wallet provider.*22:* PIN retry limit reached.*23:* Card was reported stolen.*24:* Address issue.*25:* Name issue.*26:* SSN issue.*27:* DOB issue.*28:* Email issue.*29:* Phone issue.*30:* Account/fulfillment mismatch.*31:* Other reason.*86:* Notification of death.</summary>
         public global::Marqeta.Core.Sdk.Models.UserTransitionResponse_reason_code? ReasonCode { get; set; }
         /// <summary>Specifies the new status of the user.</summary>
         public global::Marqeta.Core.Sdk.Models.UserTransitionResponse_status? Status { get; set; }
@@ -75,6 +77,7 @@ namespace Marqeta.Core.Sdk.Models
             {
                 { "channel", n => { Channel = n.GetEnumValue<global::Marqeta.Core.Sdk.Models.UserTransitionResponse_channel>(); } },
                 { "created_time", n => { CreatedTime = n.GetDateTimeOffsetValue(); } },
+                { "created_timestamp", n => { CreatedTimestamp = n.GetDateTimeOffsetValue(); } },
                 { "last_modified_time", n => { LastModifiedTime = n.GetDateTimeOffsetValue(); } },
                 { "reason", n => { Reason = n.GetStringValue(); } },
                 { "reason_code", n => { ReasonCode = n.GetEnumValue<global::Marqeta.Core.Sdk.Models.UserTransitionResponse_reason_code>(); } },
@@ -92,6 +95,7 @@ namespace Marqeta.Core.Sdk.Models
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
             writer.WriteEnumValue<global::Marqeta.Core.Sdk.Models.UserTransitionResponse_channel>("channel", Channel);
             writer.WriteDateTimeOffsetValue("created_time", CreatedTime);
+            writer.WriteDateTimeOffsetValue("created_timestamp", CreatedTimestamp);
             writer.WriteDateTimeOffsetValue("last_modified_time", LastModifiedTime);
             writer.WriteStringValue("reason", Reason);
             writer.WriteEnumValue<global::Marqeta.Core.Sdk.Models.UserTransitionResponse_reason_code>("reason_code", ReasonCode);

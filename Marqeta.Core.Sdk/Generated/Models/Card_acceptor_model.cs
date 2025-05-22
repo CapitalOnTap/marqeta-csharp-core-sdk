@@ -22,6 +22,22 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string Address { get; set; }
 #endif
+        /// <summary>The business_registration_id property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? BusinessRegistrationId { get; set; }
+#nullable restore
+#else
+        public string BusinessRegistrationId { get; set; }
+#endif
+        /// <summary>The business_registration_id_type property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? BusinessRegistrationIdType { get; set; }
+#nullable restore
+#else
+        public string BusinessRegistrationIdType { get; set; }
+#endif
         /// <summary>The city property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -61,6 +77,14 @@ namespace Marqeta.Core.Sdk.Models
 #nullable restore
 #else
         public string GeographicCoordinates { get; set; }
+#endif
+        /// <summary>The legal_business_name property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? LegalBusinessName { get; set; }
+#nullable restore
+#else
+        public string LegalBusinessName { get; set; }
 #endif
         /// <summary>The mcc property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -146,11 +170,14 @@ namespace Marqeta.Core.Sdk.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "address", n => { Address = n.GetStringValue(); } },
+                { "business_registration_id", n => { BusinessRegistrationId = n.GetStringValue(); } },
+                { "business_registration_id_type", n => { BusinessRegistrationIdType = n.GetStringValue(); } },
                 { "city", n => { City = n.GetStringValue(); } },
                 { "country", n => { Country = n.GetStringValue(); } },
                 { "customer_service_phone", n => { CustomerServicePhone = n.GetStringValue(); } },
                 { "ecommerce_security_level_indicator", n => { EcommerceSecurityLevelIndicator = n.GetStringValue(); } },
                 { "geographic_coordinates", n => { GeographicCoordinates = n.GetStringValue(); } },
+                { "legal_business_name", n => { LegalBusinessName = n.GetStringValue(); } },
                 { "mcc", n => { Mcc = n.GetStringValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "partial_approval_capable", n => { PartialApprovalCapable = n.GetBoolValue(); } },
@@ -169,11 +196,14 @@ namespace Marqeta.Core.Sdk.Models
         {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("address", Address);
+            writer.WriteStringValue("business_registration_id", BusinessRegistrationId);
+            writer.WriteStringValue("business_registration_id_type", BusinessRegistrationIdType);
             writer.WriteStringValue("city", City);
             writer.WriteStringValue("country", Country);
             writer.WriteStringValue("customer_service_phone", CustomerServicePhone);
             writer.WriteStringValue("ecommerce_security_level_indicator", EcommerceSecurityLevelIndicator);
             writer.WriteStringValue("geographic_coordinates", GeographicCoordinates);
+            writer.WriteStringValue("legal_business_name", LegalBusinessName);
             writer.WriteStringValue("mcc", Mcc);
             writer.WriteStringValue("name", Name);
             writer.WriteBoolValue("partial_approval_capable", PartialApprovalCapable);

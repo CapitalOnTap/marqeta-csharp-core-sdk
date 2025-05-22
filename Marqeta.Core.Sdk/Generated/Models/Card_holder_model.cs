@@ -221,7 +221,7 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string PostalCode { get; set; }
 #endif
-        /// <summary>Cardholder&apos;s Social Security Number (SSN).</summary>
+        /// <summary>Cardholder&apos;s Social Security Number (SSN) or Individual Taxpayer Identification Number (ITIN).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Ssn { get; set; }

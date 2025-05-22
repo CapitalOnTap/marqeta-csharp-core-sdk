@@ -34,7 +34,7 @@ namespace Marqeta.Core.Sdk.Fundingsources.Programgateway.Customheaders.Item
         {
         }
         /// <summary>
-        /// Adds or updates custom HTTP headers for a specific program gateway funding source.
+        /// Updates a specific gateway program funding source Custom headers
         /// </summary>
         /// <returns>A <see cref="global::Marqeta.Core.Sdk.Models.Gateway_program_funding_source_response"/></returns>
         /// <param name="body">The request body</param>
@@ -59,7 +59,7 @@ namespace Marqeta.Core.Sdk.Fundingsources.Programgateway.Customheaders.Item
             return await RequestAdapter.SendAsync<global::Marqeta.Core.Sdk.Models.Gateway_program_funding_source_response>(requestInfo, global::Marqeta.Core.Sdk.Models.Gateway_program_funding_source_response.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Adds or updates custom HTTP headers for a specific program gateway funding source.
+        /// Updates a specific gateway program funding source Custom headers
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">The request body</param>

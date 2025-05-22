@@ -12,7 +12,7 @@ namespace Marqeta.Core.Sdk.Models
     public partial class Token_request : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
     {
-        /// <summary>Payment card account number.</summary>
+        /// <summary>The account_number property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? AccountNumber { get; set; }
@@ -22,7 +22,7 @@ namespace Marqeta.Core.Sdk.Models
 #endif
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Unique identifier of the business account holder.This token is required if the `user_token` is not included.Send a `GET` request to `/businesses` to retrieve business tokens.</summary>
+        /// <summary>required if &apos;user_token&apos; is null</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? BusinessToken { get; set; }
@@ -30,7 +30,7 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string BusinessToken { get; set; }
 #endif
-        /// <summary>Payment card CVV2 number.</summary>
+        /// <summary>The cvv_number property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? CvvNumber { get; set; }
@@ -38,7 +38,7 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string CvvNumber { get; set; }
 #endif
-        /// <summary>Payment card expiration date.</summary>
+        /// <summary>The exp_date property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? ExpDate { get; set; }
@@ -46,9 +46,9 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string ExpDate { get; set; }
 #endif
-        /// <summary>If there are multiple funding sources, this field specifies which source is used by default in funding calls.If there is only one funding source, the system ignores this field and always uses that source.</summary>
+        /// <summary>The is_default_account property</summary>
         public bool? IsDefaultAccount { get; set; }
-        /// <summary>Postal code of the account holder (user or business).</summary>
+        /// <summary>The postal_code property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? PostalCode { get; set; }
@@ -56,7 +56,7 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string PostalCode { get; set; }
 #endif
-        /// <summary>Unique identifier of the funding account.If you do not include a token, the system will generate one automatically.As this token is necessary for use in other calls, we recommend that you define a simple and easy to remember string rather than letting the system generate a token for you.This value cannot be updated.</summary>
+        /// <summary>The token property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Token { get; set; }
@@ -64,7 +64,7 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string Token { get; set; }
 #endif
-        /// <summary>Unique identifier of the user account holder.This token is required if the `business_token` is not included.Send a `GET` request to `/users` to retrieve user tokens.</summary>
+        /// <summary>required if &apos;business_token&apos; is null</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? UserToken { get; set; }
@@ -72,7 +72,7 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string UserToken { get; set; }
 #endif
-        /// <summary>United States ZIP code of the account holder (user or business).</summary>
+        /// <summary>The zip property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Zip { get; set; }

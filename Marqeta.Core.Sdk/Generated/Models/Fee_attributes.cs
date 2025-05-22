@@ -7,15 +7,14 @@ using System.IO;
 using System;
 namespace Marqeta.Core.Sdk.Models
 {
-    /// <summary>
-    /// Describes the attributes of a fee.
-    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
+    #pragma warning disable CS1591
     public partial class Fee_attributes : IAdditionalDataHolder, IParsable
+    #pragma warning restore CS1591
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Describes the reason for the fee.</summary>
+        /// <summary>The reason property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Reason { get; set; }
@@ -23,7 +22,7 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string Reason { get; set; }
 #endif
-        /// <summary>Describes the region in which the fee is assessed.</summary>
+        /// <summary>The region property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Region { get; set; }
@@ -31,7 +30,7 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string Region { get; set; }
 #endif
-        /// <summary>Describes the status of the fee.</summary>
+        /// <summary>The status property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Status { get; set; }
@@ -39,7 +38,7 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string Status { get; set; }
 #endif
-        /// <summary>Specifies the transaction type in which the fee was assessed.</summary>
+        /// <summary>The transaction_type property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? TransactionType { get; set; }

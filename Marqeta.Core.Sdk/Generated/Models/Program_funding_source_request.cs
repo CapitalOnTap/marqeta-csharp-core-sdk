@@ -12,11 +12,11 @@ namespace Marqeta.Core.Sdk.Models
     public partial class Program_funding_source_request : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
     {
-        /// <summary>Indicates whether the program funding source is active.</summary>
+        /// <summary>The active property</summary>
         public bool? Active { get; set; }
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Name of the program funding source.</summary>
+        /// <summary>The name property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Name { get; set; }
@@ -24,7 +24,7 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string Name { get; set; }
 #endif
-        /// <summary>Unique identifier of the funding source.If you do not include a token, the system will generate one automatically.As this token is necessary for use in other calls, we recommend that you define a simple and easy to remember string rather than letting the system generate a token for you.This value cannot be updated.</summary>
+        /// <summary>The token property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Token { get; set; }

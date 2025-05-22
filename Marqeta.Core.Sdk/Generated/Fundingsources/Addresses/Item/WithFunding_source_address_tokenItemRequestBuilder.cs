@@ -34,7 +34,7 @@ namespace Marqeta.Core.Sdk.Fundingsources.Addresses.Item
         {
         }
         /// <summary>
-        /// Use this endpoint to retrieve a funding source address.
+        /// Returns a user address for a funding source
         /// </summary>
         /// <returns>A <see cref="global::Marqeta.Core.Sdk.Models.CardholderAddressResponse"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -57,7 +57,7 @@ namespace Marqeta.Core.Sdk.Fundingsources.Addresses.Item
             return await RequestAdapter.SendAsync<global::Marqeta.Core.Sdk.Models.CardholderAddressResponse>(requestInfo, global::Marqeta.Core.Sdk.Models.CardholderAddressResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Use this endpoint to update an address.
+        /// Updates the account holder address for a funding source
         /// </summary>
         /// <returns>A <see cref="global::Marqeta.Core.Sdk.Models.CardholderAddressResponse"/></returns>
         /// <param name="body">The request body</param>
@@ -82,7 +82,7 @@ namespace Marqeta.Core.Sdk.Fundingsources.Addresses.Item
             return await RequestAdapter.SendAsync<global::Marqeta.Core.Sdk.Models.CardholderAddressResponse>(requestInfo, global::Marqeta.Core.Sdk.Models.CardholderAddressResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Use this endpoint to retrieve a funding source address.
+        /// Returns a user address for a funding source
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -101,7 +101,7 @@ namespace Marqeta.Core.Sdk.Fundingsources.Addresses.Item
             return requestInfo;
         }
         /// <summary>
-        /// Use this endpoint to update an address.
+        /// Updates the account holder address for a funding source
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">The request body</param>
