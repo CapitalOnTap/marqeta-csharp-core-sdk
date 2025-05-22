@@ -9,32 +9,32 @@ using System.IO;
 using System.Threading.Tasks;
 using System.Threading;
 using System;
-namespace Marqeta.Core.Sdk.Businesses.Item.Ssn
+namespace Marqeta.Core.Sdk.Businesses.Item.Directors.Item.Identifications
 {
     /// <summary>
-    /// Builds and executes requests for operations under \businesses\{business_token-id}\ssn
+    /// Builds and executes requests for operations under \businesses\{business_token-id}\directors\{token}\identifications
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    public partial class SsnRequestBuilder : BaseRequestBuilder
+    public partial class IdentificationsRequestBuilder : BaseRequestBuilder
     {
         /// <summary>
-        /// Instantiates a new <see cref="global::Marqeta.Core.Sdk.Businesses.Item.Ssn.SsnRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Marqeta.Core.Sdk.Businesses.Item.Directors.Item.Identifications.IdentificationsRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public SsnRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/businesses/{business_token%2Did}/ssn{?full_ssn*}", pathParameters)
+        public IdentificationsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/businesses/{business_token%2Did}/directors/{token}/identifications{?full_ssn*}", pathParameters)
         {
         }
         /// <summary>
-        /// Instantiates a new <see cref="global::Marqeta.Core.Sdk.Businesses.Item.Ssn.SsnRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Marqeta.Core.Sdk.Businesses.Item.Directors.Item.Identifications.IdentificationsRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public SsnRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/businesses/{business_token%2Did}/ssn{?full_ssn*}", rawUrl)
+        public IdentificationsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/businesses/{business_token%2Did}/directors/{token}/identifications{?full_ssn*}", rawUrl)
         {
         }
         /// <summary>
-        /// Returns a specific business proprietor&apos;s SSN
+        /// Returns a specific business director&apos;s SSN
         /// </summary>
         /// <returns>A <see cref="global::Marqeta.Core.Sdk.Models.Ssn_response_model"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -42,11 +42,11 @@ namespace Marqeta.Core.Sdk.Businesses.Item.Ssn
         /// <exception cref="global::Marqeta.Core.Sdk.Models.ApiError">When receiving a 4XX or 5XX status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Marqeta.Core.Sdk.Models.Ssn_response_model?> GetAsync(Action<RequestConfiguration<global::Marqeta.Core.Sdk.Businesses.Item.Ssn.SsnRequestBuilder.SsnRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Marqeta.Core.Sdk.Models.Ssn_response_model?> GetAsync(Action<RequestConfiguration<global::Marqeta.Core.Sdk.Businesses.Item.Directors.Item.Identifications.IdentificationsRequestBuilder.IdentificationsRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Marqeta.Core.Sdk.Models.Ssn_response_model> GetAsync(Action<RequestConfiguration<global::Marqeta.Core.Sdk.Businesses.Item.Ssn.SsnRequestBuilder.SsnRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Marqeta.Core.Sdk.Models.Ssn_response_model> GetAsync(Action<RequestConfiguration<global::Marqeta.Core.Sdk.Businesses.Item.Directors.Item.Identifications.IdentificationsRequestBuilder.IdentificationsRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
@@ -57,17 +57,17 @@ namespace Marqeta.Core.Sdk.Businesses.Item.Ssn
             return await RequestAdapter.SendAsync<global::Marqeta.Core.Sdk.Models.Ssn_response_model>(requestInfo, global::Marqeta.Core.Sdk.Models.Ssn_response_model.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Returns a specific business proprietor&apos;s SSN
+        /// Returns a specific business director&apos;s SSN
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<global::Marqeta.Core.Sdk.Businesses.Item.Ssn.SsnRequestBuilder.SsnRequestBuilderGetQueryParameters>>? requestConfiguration = default)
+        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<global::Marqeta.Core.Sdk.Businesses.Item.Directors.Item.Identifications.IdentificationsRequestBuilder.IdentificationsRequestBuilderGetQueryParameters>>? requestConfiguration = default)
         {
 #nullable restore
 #else
-        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<global::Marqeta.Core.Sdk.Businesses.Item.Ssn.SsnRequestBuilder.SsnRequestBuilderGetQueryParameters>> requestConfiguration = default)
+        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<global::Marqeta.Core.Sdk.Businesses.Item.Directors.Item.Identifications.IdentificationsRequestBuilder.IdentificationsRequestBuilderGetQueryParameters>> requestConfiguration = default)
         {
 #endif
             var requestInfo = new RequestInformation(Method.GET, UrlTemplate, PathParameters);
@@ -78,17 +78,17 @@ namespace Marqeta.Core.Sdk.Businesses.Item.Ssn
         /// <summary>
         /// Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
         /// </summary>
-        /// <returns>A <see cref="global::Marqeta.Core.Sdk.Businesses.Item.Ssn.SsnRequestBuilder"/></returns>
+        /// <returns>A <see cref="global::Marqeta.Core.Sdk.Businesses.Item.Directors.Item.Identifications.IdentificationsRequestBuilder"/></returns>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
-        public global::Marqeta.Core.Sdk.Businesses.Item.Ssn.SsnRequestBuilder WithUrl(string rawUrl)
+        public global::Marqeta.Core.Sdk.Businesses.Item.Directors.Item.Identifications.IdentificationsRequestBuilder WithUrl(string rawUrl)
         {
-            return new global::Marqeta.Core.Sdk.Businesses.Item.Ssn.SsnRequestBuilder(rawUrl, RequestAdapter);
+            return new global::Marqeta.Core.Sdk.Businesses.Item.Directors.Item.Identifications.IdentificationsRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
-        /// Returns a specific business proprietor&apos;s SSN
+        /// Returns a specific business director&apos;s SSN
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-        public partial class SsnRequestBuilderGetQueryParameters 
+        public partial class IdentificationsRequestBuilderGetQueryParameters 
         {
             [QueryParameter("full_ssn")]
             public bool? FullSsn { get; set; }

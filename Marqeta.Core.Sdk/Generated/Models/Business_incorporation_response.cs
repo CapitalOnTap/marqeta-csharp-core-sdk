@@ -26,6 +26,8 @@ namespace Marqeta.Core.Sdk.Models
         public global::Marqeta.Core.Sdk.Models.Business_incorporation_response_incorporation_type? IncorporationType { get; set; }
         /// <summary>The is_public property</summary>
         public bool? IsPublic { get; set; }
+        /// <summary>The is_regulated_entity property</summary>
+        public bool? IsRegulatedEntity { get; set; }
         /// <summary>The name_registered_under property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -78,6 +80,7 @@ namespace Marqeta.Core.Sdk.Models
                 { "address_registered_under", n => { AddressRegisteredUnder = n.GetObjectValue<global::Marqeta.Core.Sdk.Models.AddressResponseModel>(global::Marqeta.Core.Sdk.Models.AddressResponseModel.CreateFromDiscriminatorValue); } },
                 { "incorporation_type", n => { IncorporationType = n.GetEnumValue<global::Marqeta.Core.Sdk.Models.Business_incorporation_response_incorporation_type>(); } },
                 { "is_public", n => { IsPublic = n.GetBoolValue(); } },
+                { "is_regulated_entity", n => { IsRegulatedEntity = n.GetBoolValue(); } },
                 { "name_registered_under", n => { NameRegisteredUnder = n.GetStringValue(); } },
                 { "state_of_incorporation", n => { StateOfIncorporation = n.GetStringValue(); } },
                 { "stock_symbol", n => { StockSymbol = n.GetStringValue(); } },
@@ -93,6 +96,7 @@ namespace Marqeta.Core.Sdk.Models
             writer.WriteObjectValue<global::Marqeta.Core.Sdk.Models.AddressResponseModel>("address_registered_under", AddressRegisteredUnder);
             writer.WriteEnumValue<global::Marqeta.Core.Sdk.Models.Business_incorporation_response_incorporation_type>("incorporation_type", IncorporationType);
             writer.WriteBoolValue("is_public", IsPublic);
+            writer.WriteBoolValue("is_regulated_entity", IsRegulatedEntity);
             writer.WriteStringValue("name_registered_under", NameRegisteredUnder);
             writer.WriteStringValue("state_of_incorporation", StateOfIncorporation);
             writer.WriteStringValue("stock_symbol", StockSymbol);

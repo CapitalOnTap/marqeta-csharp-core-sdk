@@ -6,7 +6,7 @@ info:
   contact:
     name: Marqeta
     email: support@marqeta.com
-  version: 3.0.26
+  version: 3.0.29
 servers:
   - url: /v3
 paths:
@@ -1214,6 +1214,155 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/business_cardholder'
+        default:
+          description: Error response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+  '/businesses/{business_token}/directors':
+    post:
+      tags:
+        - businesses
+      summary: Creates a BusinessDirector for a business
+      operationId: postBusinessesTokenDirectors
+      parameters:
+        - name: business_token
+          in: path
+          description: Business token
+          required: true
+          style: simple
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/business_director_request_model'
+      responses:
+        '201':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/cardholder_note_response_model'
+        default:
+          description: Error response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+  '/businesses/{business_token}/directors/{token}':
+    get:
+      tags:
+        - businesses
+      summary: Returns a specific business director
+      operationId: getBusinessDirectorToken
+      parameters:
+        - name: business_token
+          in: path
+          description: Business token
+          required: true
+          style: simple
+          schema:
+            type: string
+        - name: token
+          in: path
+          description: Business Director token
+          required: true
+          style: simple
+          schema:
+            type: string
+        - name: fields
+          in: query
+          description: 'Comma-delimited list of fields to return (e.g. field_1,field_2,..). Leave blank to return all fields.'
+          style: form
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/business_director_request_model'
+        default:
+          description: Error response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+    put:
+      tags:
+        - businesses
+      summary: Updates a specific business director for a business
+      operationId: putBusinessesTokenBusinessDirectorToken
+      parameters:
+        - name: business_token
+          in: path
+          description: Business token
+          required: true
+          style: simple
+          schema:
+            type: string
+        - name: token
+          in: path
+          description: Business Director token
+          required: true
+          style: simple
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/business_director_request_model'
+      responses:
+        '201':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/business_director_response_model'
+        default:
+          description: Error response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+  '/businesses/{business_token}/directors/{token}/identifications':
+    get:
+      tags:
+        - businesses
+      summary: Returns a specific business director's SSN
+      operationId: getBusinessDirectorTokenSsn
+      parameters:
+        - name: business_token
+          in: path
+          description: Business token
+          required: true
+          style: simple
+          schema:
+            type: string
+        - name: token
+          in: path
+          description: Business Director token
+          required: true
+          style: simple
+          schema:
+            type: string
+        - name: full_ssn
+          in: query
+          style: form
+          schema:
+            type: boolean
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ssn_response_model'
         default:
           description: Error response
           content:
@@ -8068,6 +8217,12 @@ paths:
           style: form
           schema:
             type: string
+        - name: account_token
+          in: query
+          description: Account token
+          style: form
+          schema:
+            type: string
         - name: state
           in: query
           description: Comma-delimited list of transaction states to display.
@@ -12550,6 +12705,9 @@ components:
             $ref: '#/components/schemas/CurrencyBalance'
         default_currency_code:
           type: string
+        last_updated_time:
+          type: string
+          format: date-time
     account_balance_response:
       type: object
       properties:
@@ -12646,6 +12804,7 @@ components:
             - REQUEST_TO_PAY
             - LIQUID_ASSET
             - FAST_REFUND
+            - GAMING_PAYMENT
           type: string
           description: Specifies the account funding transaction type.
       description: "Contains details about account funding transactions.\nAccount funding transactions move money into a cardholder's general purpose account (GPA)."
@@ -13019,20 +13178,6 @@ components:
       properties:
         card_name:
           type: string
-          description: Full name of the cardholder as it appears on the card.
-        first_name:
-          type: string
-          description: First or given name of the cardholder.
-        last_name:
-          type: string
-          description: Last or family name of the cardholder.
-        middle_name:
-          type: string
-          description: Middle name of the cardholder.
-      description: Contains the name of the cardholder for account name verification.
-    ani_information_1:
-      type: object
-      properties:
         first_name:
           type: string
           description: First or given name of the cardholder.
@@ -13893,16 +14038,28 @@ components:
     beneficial_owner_request:
       type: object
       properties:
+        birth_place:
+          type: string
         dob:
           type: string
           format: date-time
+        email:
+          type: string
         first_name:
           type: string
         home:
           $ref: '#/components/schemas/AddressRequestModel'
+        identifications:
+          type: array
+          items:
+            $ref: '#/components/schemas/IdentificationRequestModel'
         last_name:
           type: string
         middle_name:
+          type: string
+        nationality:
+          type: string
+        ownership_percentage:
           type: string
         phone:
           type: string
@@ -13913,6 +14070,10 @@ components:
     beneficial_owner_response:
       type: object
       properties:
+        birth_place:
+          type: string
+        email:
+          type: string
         first_name:
           type: string
         getdob:
@@ -13920,11 +14081,21 @@ components:
           format: date-time
         home:
           $ref: '#/components/schemas/AddressResponseModel'
+        identifications:
+          type: array
+          items:
+            $ref: '#/components/schemas/IdentificationResponseModel'
         last_name:
           type: string
         middle_name:
           type: string
+        nationality:
+          type: string
+        ownership_percentage:
+          type: string
         phone:
+          type: string
+        ssn:
           type: string
         title:
           type: string
@@ -14385,6 +14556,97 @@ components:
           maxLength: 255
           minLength: 0
           type: string
+    business_director_request_model:
+      type: object
+      properties:
+        active:
+          type: boolean
+        address:
+          $ref: '#/components/schemas/AddressRequestModel'
+        birth_date:
+          type: string
+        email:
+          maxLength: 255
+          minLength: 1
+          type: string
+        first_name:
+          maxLength: 255
+          minLength: 0
+          type: string
+        identifications:
+          type: array
+          items:
+            $ref: '#/components/schemas/IdentificationRequestModel'
+        last_name:
+          maxLength: 255
+          minLength: 0
+          type: string
+        middle_name:
+          maxLength: 40
+          minLength: 0
+          type: string
+        nationality:
+          maxLength: 255
+          minLength: 0
+          type: string
+        phone:
+          maxLength: 255
+          minLength: 0
+          type: string
+        place_of_birth:
+          maxLength: 255
+          minLength: 0
+          type: string
+        title:
+          maxLength: 255
+          minLength: 1
+          type: string
+        token:
+          maxLength: 36
+          minLength: 1
+          type: string
+    business_director_response_model:
+      required:
+        - created_time
+        - last_modified_time
+      type: object
+      properties:
+        active:
+          type: boolean
+        address:
+          $ref: '#/components/schemas/AddressResponseModel'
+        birth_date:
+          type: string
+        created_time:
+          type: string
+          description: yyyy-MM-ddTHH:mm:ssZ
+          format: date-time
+        email:
+          type: string
+        first_name:
+          type: string
+        identifications:
+          type: array
+          items:
+            $ref: '#/components/schemas/IdentificationResponseModel'
+        last_modified_time:
+          type: string
+          description: yyyy-MM-ddTHH:mm:ssZ
+          format: date-time
+        last_name:
+          type: string
+        middle_name:
+          type: string
+        nationality:
+          type: string
+        phone:
+          type: string
+        place_of_birth:
+          type: string
+        title:
+          type: string
+        token:
+          type: string
     business_incorporation:
       type: object
       properties:
@@ -14400,10 +14662,17 @@ components:
             - PARTNERSHIP
             - COOPERATIVE
             - OTHER
+            - FINANCIAL_OR_CREDIT_INSTITUTION
+            - FOUNDATION
+            - ASSOCIATION
+            - CHARITY
+            - TRUST
           type: string
         is_public:
           type: boolean
           default: false
+        is_regulated_entity:
+          type: boolean
         name_registered_under:
           maxLength: 255
           minLength: 0
@@ -14430,10 +14699,17 @@ components:
             - SOLE_PROPRIETORSHIP
             - PARTNERSHIP
             - OTHER
+            - FINANCIAL_OR_CREDIT_INSTITUTION
+            - FOUNDATION
+            - ASSOCIATION
+            - CHARITY
+            - TRUST
           type: string
         is_public:
           type: boolean
           default: false
+        is_regulated_entity:
+          type: boolean
         name_registered_under:
           maxLength: 255
           minLength: 0
@@ -14463,6 +14739,8 @@ components:
       properties:
         alternative_names:
           type: string
+        birth_place:
+          type: string
         dob:
           type: string
           format: date-time
@@ -14480,6 +14758,8 @@ components:
           type: string
         middle_name:
           type: string
+        nationality:
+          type: string
         phone:
           type: string
         ssn:
@@ -14490,6 +14770,8 @@ components:
       type: object
       properties:
         alternative_names:
+          type: string
+        birth_place:
           type: string
         dob:
           type: string
@@ -14507,6 +14789,8 @@ components:
         last_name:
           type: string
         middle_name:
+          type: string
+        nationality:
           type: string
         phone:
           type: string
@@ -15305,6 +15589,8 @@ components:
         translate_pin_from_card_token:
           type: string
           description: Copies the personal identification number (PIN) from the specified source card to the newly created card.
+        user:
+          $ref: '#/components/schemas/user_card_holder_response'
         user_token:
           type: string
           description: Unique identifier of the cardholder.
@@ -18211,7 +18497,7 @@ components:
         issuer:
           $ref: '#/components/schemas/account_name_verification_source'
         request:
-          $ref: '#/components/schemas/ani_information_1'
+          $ref: '#/components/schemas/ani_information'
       description: "Contains account name verification data used to make JIT Funding decisions from one of the following objects:\n\n* The `gateway` object, which contains account name verification data from your JIT Funding gateway.\n* The `issuer` object, which contains account name verification data from the Marqeta platform.\n* The `request` object, which contains account name verification data as it appears in a JIT Funding request."
     jit_address_verification:
       type: object
@@ -19095,6 +19381,7 @@ components:
             - aft_or_oct_eligibility
             - consumer_bill_payment
             - request_to_pay
+            - gaming_payment
           type: string
           description: Type of original credit transaction.
       description: 'Contains information about an original credit transaction (OCT), which enables the cardholder to receive funds on the specified card from an external source via the card network.'
@@ -21832,6 +22119,10 @@ components:
           type: string
           description: "Date and time when the user initiated the transaction, in UTC.\nFor example, when a merchant performed the original authorization for a refund."
           format: date-time
+        velocity_control_balances:
+          type: object
+          additionalProperties:
+            $ref: '#/components/schemas/available'
       description: "Transactions are represented by the `transaction` object.\nThe Marqeta platform creates a separate `transaction` object for each transaction message received from the card network.\nThe attributes of a given `transaction` object depend on the transaction type.\n\nThis section documents all fields that might be included in a `transaction` object.\n\n// This schema is used by InfoDev to generate API reference documentation.\n// File location in GitHub is: openapi/transactions/schemas/transaction_model.yaml"
     transaction_options:
       type: object
@@ -21870,8 +22161,10 @@ components:
             - REAL_TIME_AUTHORIZED
             - POST_AUTHORIZED_AGGREGATED
             - AUTHORIZED_AGGREGATED_SPLIT_CLEARING
-            - DEBIT_RECOVERY
             - OTHER
+            - DEBIT_RECOVERY
+            - AGGREGATED_TRANSACTION
+            - ACCOUNT_STATUS_INQUIRY
           type: string
           description: Type of transit transaction.
         transportation_mode:

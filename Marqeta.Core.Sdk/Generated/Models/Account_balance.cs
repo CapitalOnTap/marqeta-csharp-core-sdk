@@ -54,6 +54,8 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string DefaultCurrencyCode { get; set; }
 #endif
+        /// <summary>The last_updated_time property</summary>
+        public DateTimeOffset? LastUpdatedTime { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Marqeta.Core.Sdk.Models.Account_balance"/> and sets the default values.
         /// </summary>
@@ -84,6 +86,7 @@ namespace Marqeta.Core.Sdk.Models
                 { "account_type", n => { AccountType = n.GetStringValue(); } },
                 { "balances", n => { Balances = n.GetObjectValue<global::Marqeta.Core.Sdk.Models.Account_balance_balances>(global::Marqeta.Core.Sdk.Models.Account_balance_balances.CreateFromDiscriminatorValue); } },
                 { "default_currency_code", n => { DefaultCurrencyCode = n.GetStringValue(); } },
+                { "last_updated_time", n => { LastUpdatedTime = n.GetDateTimeOffsetValue(); } },
             };
         }
         /// <summary>
@@ -98,6 +101,7 @@ namespace Marqeta.Core.Sdk.Models
             writer.WriteStringValue("account_type", AccountType);
             writer.WriteObjectValue<global::Marqeta.Core.Sdk.Models.Account_balance_balances>("balances", Balances);
             writer.WriteStringValue("default_currency_code", DefaultCurrencyCode);
+            writer.WriteDateTimeOffsetValue("last_updated_time", LastUpdatedTime);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

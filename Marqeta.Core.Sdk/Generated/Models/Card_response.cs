@@ -179,6 +179,14 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string TranslatePinFromCardToken { get; set; }
 #endif
+        /// <summary>Contains information about a cardholder.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Marqeta.Core.Sdk.Models.User_card_holder_response? User { get; set; }
+#nullable restore
+#else
+        public global::Marqeta.Core.Sdk.Models.User_card_holder_response User { get; set; }
+#endif
         /// <summary>Unique identifier of the cardholder.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -240,6 +248,7 @@ namespace Marqeta.Core.Sdk.Models
                 { "3csc", n => { Threecsc = n.GetStringValue(); } },
                 { "token", n => { Token = n.GetStringValue(); } },
                 { "translate_pin_from_card_token", n => { TranslatePinFromCardToken = n.GetStringValue(); } },
+                { "user", n => { User = n.GetObjectValue<global::Marqeta.Core.Sdk.Models.User_card_holder_response>(global::Marqeta.Core.Sdk.Models.User_card_holder_response.CreateFromDiscriminatorValue); } },
                 { "user_token", n => { UserToken = n.GetStringValue(); } },
             };
         }
@@ -278,6 +287,7 @@ namespace Marqeta.Core.Sdk.Models
             writer.WriteStringValue("3csc", Threecsc);
             writer.WriteStringValue("token", Token);
             writer.WriteStringValue("translate_pin_from_card_token", TranslatePinFromCardToken);
+            writer.WriteObjectValue<global::Marqeta.Core.Sdk.Models.User_card_holder_response>("user", User);
             writer.WriteStringValue("user_token", UserToken);
             writer.WriteAdditionalData(AdditionalData);
         }

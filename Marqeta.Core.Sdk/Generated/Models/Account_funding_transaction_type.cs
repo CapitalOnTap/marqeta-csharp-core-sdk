@@ -139,5 +139,9 @@ namespace Marqeta.Core.Sdk.Models
         #pragma warning disable CS1591
         FAST_REFUND,
         #pragma warning restore CS1591
+        [EnumMember(Value = "GAMING_PAYMENT")]
+        #pragma warning disable CS1591
+        GAMING_PAYMENT,
+        #pragma warning restore CS1591
     }
 }

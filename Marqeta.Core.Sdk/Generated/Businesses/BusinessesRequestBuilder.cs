@@ -26,14 +26,14 @@ namespace Marqeta.Core.Sdk.Businesses
         }
         /// <summary>Gets an item from the Marqeta.Core.Sdk.businesses.item collection</summary>
         /// <param name="position">Business token</param>
-        /// <returns>A <see cref="global::Marqeta.Core.Sdk.Businesses.Item.Parent_tokenItemRequestBuilder"/></returns>
-        public global::Marqeta.Core.Sdk.Businesses.Item.Parent_tokenItemRequestBuilder this[string position]
+        /// <returns>A <see cref="global::Marqeta.Core.Sdk.Businesses.Item.Business_tokenItemRequestBuilder"/></returns>
+        public global::Marqeta.Core.Sdk.Businesses.Item.Business_tokenItemRequestBuilder this[string position]
         {
             get
             {
                 var urlTplParams = new Dictionary<string, object>(PathParameters);
-                urlTplParams.Add("parent_token%2Did", position);
-                return new global::Marqeta.Core.Sdk.Businesses.Item.Parent_tokenItemRequestBuilder(urlTplParams, RequestAdapter);
+                urlTplParams.Add("business_token%2Did", position);
+                return new global::Marqeta.Core.Sdk.Businesses.Item.Business_tokenItemRequestBuilder(urlTplParams, RequestAdapter);
             }
         }
         /// <summary>

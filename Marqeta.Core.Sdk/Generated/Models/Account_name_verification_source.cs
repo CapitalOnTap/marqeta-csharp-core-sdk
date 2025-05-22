@@ -39,7 +39,7 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string MiddleName { get; set; }
 #endif
-        /// <summary>Contains the name of the cardholder for account name verification.</summary>
+        /// <summary>Contains account name verification data used to make JIT Funding decisions.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Marqeta.Core.Sdk.Models.Ani_information? OnFile { get; set; }

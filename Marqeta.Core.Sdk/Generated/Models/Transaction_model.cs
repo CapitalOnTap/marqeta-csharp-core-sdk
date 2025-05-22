@@ -735,6 +735,14 @@ namespace Marqeta.Core.Sdk.Models
 #endif
         /// <summary>Date and time when the user initiated the transaction, in UTC.For example, when a merchant performed the original authorization for a refund.</summary>
         public DateTimeOffset? UserTransactionTime { get; set; }
+        /// <summary>The velocity_control_balances property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Marqeta.Core.Sdk.Models.Transaction_model_velocity_control_balances? VelocityControlBalances { get; set; }
+#nullable restore
+#else
+        public global::Marqeta.Core.Sdk.Models.Transaction_model_velocity_control_balances VelocityControlBalances { get; set; }
+#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Marqeta.Core.Sdk.Models.Transaction_model"/> and sets the default values.
         /// </summary>
@@ -865,6 +873,7 @@ namespace Marqeta.Core.Sdk.Models
                 { "user", n => { User = n.GetObjectValue<global::Marqeta.Core.Sdk.Models.Cardholder_metadata>(global::Marqeta.Core.Sdk.Models.Cardholder_metadata.CreateFromDiscriminatorValue); } },
                 { "user_token", n => { UserToken = n.GetStringValue(); } },
                 { "user_transaction_time", n => { UserTransactionTime = n.GetDateTimeOffsetValue(); } },
+                { "velocity_control_balances", n => { VelocityControlBalances = n.GetObjectValue<global::Marqeta.Core.Sdk.Models.Transaction_model_velocity_control_balances>(global::Marqeta.Core.Sdk.Models.Transaction_model_velocity_control_balances.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -979,6 +988,7 @@ namespace Marqeta.Core.Sdk.Models
             writer.WriteObjectValue<global::Marqeta.Core.Sdk.Models.Cardholder_metadata>("user", User);
             writer.WriteStringValue("user_token", UserToken);
             writer.WriteDateTimeOffsetValue("user_transaction_time", UserTransactionTime);
+            writer.WriteObjectValue<global::Marqeta.Core.Sdk.Models.Transaction_model_velocity_control_balances>("velocity_control_balances", VelocityControlBalances);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

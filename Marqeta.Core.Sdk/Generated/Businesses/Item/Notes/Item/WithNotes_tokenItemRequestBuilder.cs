@@ -12,7 +12,7 @@ using System;
 namespace Marqeta.Core.Sdk.Businesses.Item.Notes.Item
 {
     /// <summary>
-    /// Builds and executes requests for operations under \businesses\{parent_token-id}\notes\{notes_token}
+    /// Builds and executes requests for operations under \businesses\{business_token-id}\notes\{notes_token}
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class WithNotes_tokenItemRequestBuilder : BaseRequestBuilder
@@ -22,7 +22,7 @@ namespace Marqeta.Core.Sdk.Businesses.Item.Notes.Item
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public WithNotes_tokenItemRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/businesses/{parent_token%2Did}/notes/{notes_token}", pathParameters)
+        public WithNotes_tokenItemRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/businesses/{business_token%2Did}/notes/{notes_token}", pathParameters)
         {
         }
         /// <summary>
@@ -30,7 +30,7 @@ namespace Marqeta.Core.Sdk.Businesses.Item.Notes.Item
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public WithNotes_tokenItemRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/businesses/{parent_token%2Did}/notes/{notes_token}", rawUrl)
+        public WithNotes_tokenItemRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/businesses/{business_token%2Did}/notes/{notes_token}", rawUrl)
         {
         }
         /// <summary>
