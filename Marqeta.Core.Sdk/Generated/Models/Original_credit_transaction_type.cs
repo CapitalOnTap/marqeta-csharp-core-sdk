@@ -131,5 +131,9 @@ namespace Marqeta.Core.Sdk.Models
         #pragma warning disable CS1591
         Request_to_pay,
         #pragma warning restore CS1591
+        [EnumMember(Value = "gaming_payment")]
+        #pragma warning disable CS1591
+        Gaming_payment,
+        #pragma warning restore CS1591
     }
 }

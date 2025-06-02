@@ -25,7 +25,7 @@ namespace Marqeta.Core.Sdk.Velocitycontrols
             get => new global::Marqeta.Core.Sdk.Velocitycontrols.User.UserRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>Gets an item from the Marqeta.Core.Sdk.velocitycontrols.item collection</summary>
-        /// <param name="position">Unique identifier of the velocity control resource.</param>
+        /// <param name="position">Velocity control token</param>
         /// <returns>A <see cref="global::Marqeta.Core.Sdk.Velocitycontrols.Item.WithTokenItemRequestBuilder"/></returns>
         public global::Marqeta.Core.Sdk.Velocitycontrols.Item.WithTokenItemRequestBuilder this[string position]
         {

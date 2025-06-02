@@ -36,18 +36,18 @@ namespace Marqeta.Core.Sdk.Directdeposits.Accounts.Item
         /// <summary>
         /// Returns an account and routing number which can be used for direct deposit
         /// </summary>
-        /// <returns>A <see cref="global::Marqeta.Core.Sdk.Models.Deposit_account"/></returns>
+        /// <returns>A <see cref="global::Marqeta.Core.Sdk.Models.DepositAccountResponse"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
         /// <exception cref="global::Marqeta.Core.Sdk.Models.ApiError">When receiving a 4XX or 5XX status code</exception>
         [Obsolete("")]
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Marqeta.Core.Sdk.Models.Deposit_account?> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Marqeta.Core.Sdk.Models.DepositAccountResponse?> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Marqeta.Core.Sdk.Models.Deposit_account> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Marqeta.Core.Sdk.Models.DepositAccountResponse> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
@@ -55,12 +55,12 @@ namespace Marqeta.Core.Sdk.Directdeposits.Accounts.Item
             {
                 { "XXX", global::Marqeta.Core.Sdk.Models.ApiError.CreateFromDiscriminatorValue },
             };
-            return await RequestAdapter.SendAsync<global::Marqeta.Core.Sdk.Models.Deposit_account>(requestInfo, global::Marqeta.Core.Sdk.Models.Deposit_account.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Marqeta.Core.Sdk.Models.DepositAccountResponse>(requestInfo, global::Marqeta.Core.Sdk.Models.DepositAccountResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Updates a specific direct deposit account
         /// </summary>
-        /// <returns>A <see cref="global::Marqeta.Core.Sdk.Models.Deposit_account"/></returns>
+        /// <returns>A <see cref="global::Marqeta.Core.Sdk.Models.DepositAccountResponse"/></returns>
         /// <param name="body">The request body</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -68,11 +68,11 @@ namespace Marqeta.Core.Sdk.Directdeposits.Accounts.Item
         [Obsolete("")]
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Marqeta.Core.Sdk.Models.Deposit_account?> PutAsync(global::Marqeta.Core.Sdk.Models.Deposit_account_update_request body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Marqeta.Core.Sdk.Models.DepositAccountResponse?> PutAsync(global::Marqeta.Core.Sdk.Models.DepositAccountUpdateRequest body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Marqeta.Core.Sdk.Models.Deposit_account> PutAsync(global::Marqeta.Core.Sdk.Models.Deposit_account_update_request body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Marqeta.Core.Sdk.Models.DepositAccountResponse> PutAsync(global::Marqeta.Core.Sdk.Models.DepositAccountUpdateRequest body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             _ = body ?? throw new ArgumentNullException(nameof(body));
@@ -81,7 +81,7 @@ namespace Marqeta.Core.Sdk.Directdeposits.Accounts.Item
             {
                 { "XXX", global::Marqeta.Core.Sdk.Models.ApiError.CreateFromDiscriminatorValue },
             };
-            return await RequestAdapter.SendAsync<global::Marqeta.Core.Sdk.Models.Deposit_account>(requestInfo, global::Marqeta.Core.Sdk.Models.Deposit_account.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Marqeta.Core.Sdk.Models.DepositAccountResponse>(requestInfo, global::Marqeta.Core.Sdk.Models.DepositAccountResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Returns an account and routing number which can be used for direct deposit
@@ -112,11 +112,11 @@ namespace Marqeta.Core.Sdk.Directdeposits.Accounts.Item
         [Obsolete("")]
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToPutRequestInformation(global::Marqeta.Core.Sdk.Models.Deposit_account_update_request body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
+        public RequestInformation ToPutRequestInformation(global::Marqeta.Core.Sdk.Models.DepositAccountUpdateRequest body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
         {
 #nullable restore
 #else
-        public RequestInformation ToPutRequestInformation(global::Marqeta.Core.Sdk.Models.Deposit_account_update_request body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
+        public RequestInformation ToPutRequestInformation(global::Marqeta.Core.Sdk.Models.DepositAccountUpdateRequest body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
         {
 #endif
             _ = body ?? throw new ArgumentNullException(nameof(body));

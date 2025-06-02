@@ -34,7 +34,7 @@ namespace Marqeta.Core.Sdk.Merchantgroups.Item
         {
         }
         /// <summary>
-        /// To retrieve a specific merchant group, send a `GET` request to the `/merchantgroups/{token}` endpoint.Include the merchant group `token` path parameter to specify the merchant group to return.
+        /// Returns a Merchant Group
         /// </summary>
         /// <returns>A <see cref="global::Marqeta.Core.Sdk.Models.Merchant_group_response"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -57,7 +57,7 @@ namespace Marqeta.Core.Sdk.Merchantgroups.Item
             return await RequestAdapter.SendAsync<global::Marqeta.Core.Sdk.Models.Merchant_group_response>(requestInfo, global::Marqeta.Core.Sdk.Models.Merchant_group_response.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// To update a merchant group, send a `PUT` request to the `/merchantgroups/{token}` endpoint.Include the merchant group `token` path parameter to specify the merchant group to update.
+        /// Updates an Merchant Group
         /// </summary>
         /// <returns>A <see cref="global::Marqeta.Core.Sdk.Models.Merchant_group_response"/></returns>
         /// <param name="body">The request body</param>
@@ -82,7 +82,7 @@ namespace Marqeta.Core.Sdk.Merchantgroups.Item
             return await RequestAdapter.SendAsync<global::Marqeta.Core.Sdk.Models.Merchant_group_response>(requestInfo, global::Marqeta.Core.Sdk.Models.Merchant_group_response.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// To retrieve a specific merchant group, send a `GET` request to the `/merchantgroups/{token}` endpoint.Include the merchant group `token` path parameter to specify the merchant group to return.
+        /// Returns a Merchant Group
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -101,7 +101,7 @@ namespace Marqeta.Core.Sdk.Merchantgroups.Item
             return requestInfo;
         }
         /// <summary>
-        /// To update a merchant group, send a `PUT` request to the `/merchantgroups/{token}` endpoint.Include the merchant group `token` path parameter to specify the merchant group to update.
+        /// Updates an Merchant Group
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">The request body</param>

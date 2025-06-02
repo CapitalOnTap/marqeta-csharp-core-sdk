@@ -13,6 +13,14 @@ namespace Marqeta.Core.Sdk.Models
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class Auto_reload_association : IAdditionalDataHolder, IParsable
     {
+        /// <summary>The account_template_token property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? AccountTemplateToken { get; set; }
+#nullable restore
+#else
+        public string AccountTemplateToken { get; set; }
+#endif
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Unique identifier of the business for which the auto reload is configured.Send a `GET` request to `/businesses` to retrieve business tokens.</summary>
@@ -64,6 +72,7 @@ namespace Marqeta.Core.Sdk.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "account_template_token", n => { AccountTemplateToken = n.GetStringValue(); } },
                 { "business_token", n => { BusinessToken = n.GetStringValue(); } },
                 { "card_product_token", n => { CardProductToken = n.GetStringValue(); } },
                 { "user_token", n => { UserToken = n.GetStringValue(); } },
@@ -76,6 +85,7 @@ namespace Marqeta.Core.Sdk.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
+            writer.WriteStringValue("account_template_token", AccountTemplateToken);
             writer.WriteStringValue("business_token", BusinessToken);
             writer.WriteStringValue("card_product_token", CardProductToken);
             writer.WriteStringValue("user_token", UserToken);

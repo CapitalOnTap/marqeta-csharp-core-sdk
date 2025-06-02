@@ -34,7 +34,7 @@ namespace Marqeta.Core.Sdk.Peertransfers.Item
         {
         }
         /// <summary>
-        /// Use this endpoint to retrieve a peer transfer request.Include the peer transfer `token` as a path parameter in the URL to identify the peer transfer to return.
+        /// Returns details of a previous transfer
         /// </summary>
         /// <returns>A <see cref="global::Marqeta.Core.Sdk.Models.Peer_transfer_response"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -57,7 +57,7 @@ namespace Marqeta.Core.Sdk.Peertransfers.Item
             return await RequestAdapter.SendAsync<global::Marqeta.Core.Sdk.Models.Peer_transfer_response>(requestInfo, global::Marqeta.Core.Sdk.Models.Peer_transfer_response.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Use this endpoint to retrieve a peer transfer request.Include the peer transfer `token` as a path parameter in the URL to identify the peer transfer to return.
+        /// Returns details of a previous transfer
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>

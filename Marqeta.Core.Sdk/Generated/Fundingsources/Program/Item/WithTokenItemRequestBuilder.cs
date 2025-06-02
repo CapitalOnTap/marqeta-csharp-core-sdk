@@ -34,7 +34,7 @@ namespace Marqeta.Core.Sdk.Fundingsources.Program.Item
         {
         }
         /// <summary>
-        /// Retrieve a specific program funding source, whether active or inactive.
+        /// Returns a specific program funding source
         /// </summary>
         /// <returns>A <see cref="global::Marqeta.Core.Sdk.Models.Program_funding_source_response"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -57,7 +57,7 @@ namespace Marqeta.Core.Sdk.Fundingsources.Program.Item
             return await RequestAdapter.SendAsync<global::Marqeta.Core.Sdk.Models.Program_funding_source_response>(requestInfo, global::Marqeta.Core.Sdk.Models.Program_funding_source_response.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Update a program funding source.
+        /// Updates a specific program funding source
         /// </summary>
         /// <returns>A <see cref="global::Marqeta.Core.Sdk.Models.Program_funding_source_response"/></returns>
         /// <param name="body">The request body</param>
@@ -82,7 +82,7 @@ namespace Marqeta.Core.Sdk.Fundingsources.Program.Item
             return await RequestAdapter.SendAsync<global::Marqeta.Core.Sdk.Models.Program_funding_source_response>(requestInfo, global::Marqeta.Core.Sdk.Models.Program_funding_source_response.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Retrieve a specific program funding source, whether active or inactive.
+        /// Returns a specific program funding source
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -101,7 +101,7 @@ namespace Marqeta.Core.Sdk.Fundingsources.Program.Item
             return requestInfo;
         }
         /// <summary>
-        /// Update a program funding source.
+        /// Updates a specific program funding source
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">The request body</param>

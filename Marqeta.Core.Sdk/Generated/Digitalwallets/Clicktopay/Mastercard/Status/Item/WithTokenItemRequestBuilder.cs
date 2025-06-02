@@ -34,7 +34,7 @@ namespace Marqeta.Core.Sdk.Digitalwallets.Clicktopay.Mastercard.Status.Item
         {
         }
         /// <summary>
-        /// Use this endpoint to return the status of a Click to Pay request with a provided token.
+        /// Use this endpoint to return the status of a specific Click to Pay for Mastercard request.For more information about this ecommerce checkout solution, see &lt;&lt;/developer-guides/digital-wallets-and-tokenization/#_click_to_pay, Click to Pay&gt;&gt;.
         /// </summary>
         /// <returns>A <see cref="global::Marqeta.Core.Sdk.Models.Click_to_pay_status_response"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -57,7 +57,7 @@ namespace Marqeta.Core.Sdk.Digitalwallets.Clicktopay.Mastercard.Status.Item
             return await RequestAdapter.SendAsync<global::Marqeta.Core.Sdk.Models.Click_to_pay_status_response>(requestInfo, global::Marqeta.Core.Sdk.Models.Click_to_pay_status_response.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Use this endpoint to return the status of a Click to Pay request with a provided token.
+        /// Use this endpoint to return the status of a specific Click to Pay for Mastercard request.For more information about this ecommerce checkout solution, see &lt;&lt;/developer-guides/digital-wallets-and-tokenization/#_click_to_pay, Click to Pay&gt;&gt;.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>

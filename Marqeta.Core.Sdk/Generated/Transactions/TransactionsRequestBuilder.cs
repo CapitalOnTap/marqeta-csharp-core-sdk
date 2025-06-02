@@ -47,7 +47,7 @@ namespace Marqeta.Core.Sdk.Transactions
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public TransactionsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/transactions{?acting_user_token*,business_token*,card_token*,count*,end_date*,fields*,sort_by*,start_date*,start_identifier*,start_index*,state*,type*,user_token*,verbose*,version*}", pathParameters)
+        public TransactionsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/transactions{?account_token*,acting_user_token*,business_token*,card_token*,count*,end_date*,fields*,sort_by*,start_date*,start_identifier*,start_index*,state*,type*,user_token*,verbose*,version*}", pathParameters)
         {
         }
         /// <summary>
@@ -55,7 +55,7 @@ namespace Marqeta.Core.Sdk.Transactions
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public TransactionsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/transactions{?acting_user_token*,business_token*,card_token*,count*,end_date*,fields*,sort_by*,start_date*,start_identifier*,start_index*,state*,type*,user_token*,verbose*,version*}", rawUrl)
+        public TransactionsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/transactions{?account_token*,acting_user_token*,business_token*,card_token*,count*,end_date*,fields*,sort_by*,start_date*,start_identifier*,start_index*,state*,type*,user_token*,verbose*,version*}", rawUrl)
         {
         }
         /// <summary>
@@ -115,6 +115,16 @@ namespace Marqeta.Core.Sdk.Transactions
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class TransactionsRequestBuilderGetQueryParameters 
         {
+            /// <summary>Account token</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            [QueryParameter("account_token")]
+            public string? AccountToken { get; set; }
+#nullable restore
+#else
+            [QueryParameter("account_token")]
+            public string AccountToken { get; set; }
+#endif
             /// <summary>The unique identifier of the acting user.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable

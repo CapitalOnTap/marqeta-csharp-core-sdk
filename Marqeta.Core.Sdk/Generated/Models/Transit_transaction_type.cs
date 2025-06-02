@@ -23,13 +23,21 @@ namespace Marqeta.Core.Sdk.Models
         #pragma warning disable CS1591
         AUTHORIZED_AGGREGATED_SPLIT_CLEARING,
         #pragma warning restore CS1591
+        [EnumMember(Value = "OTHER")]
+        #pragma warning disable CS1591
+        OTHER,
+        #pragma warning restore CS1591
         [EnumMember(Value = "DEBIT_RECOVERY")]
         #pragma warning disable CS1591
         DEBIT_RECOVERY,
         #pragma warning restore CS1591
-        [EnumMember(Value = "OTHER")]
+        [EnumMember(Value = "AGGREGATED_TRANSACTION")]
         #pragma warning disable CS1591
-        OTHER,
+        AGGREGATED_TRANSACTION,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "ACCOUNT_STATUS_INQUIRY")]
+        #pragma warning disable CS1591
+        ACCOUNT_STATUS_INQUIRY,
         #pragma warning restore CS1591
     }
 }

@@ -56,11 +56,11 @@ namespace Marqeta.Core.Sdk.Depositaccounts.Transitions
         /// <exception cref="global::Marqeta.Core.Sdk.Models.ApiError">When receiving a 4XX or 5XX status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Marqeta.Core.Sdk.Models.Direct_deposit_account_transition_response?> PostAsync(global::Marqeta.Core.Sdk.Models.Direct_deposit_account_transition_request body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Marqeta.Core.Sdk.Models.Direct_deposit_account_transition_response?> PostAsync(global::Marqeta.Core.Sdk.Models.DirectDepositAccountTransitionRequest body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Marqeta.Core.Sdk.Models.Direct_deposit_account_transition_response> PostAsync(global::Marqeta.Core.Sdk.Models.Direct_deposit_account_transition_request body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Marqeta.Core.Sdk.Models.Direct_deposit_account_transition_response> PostAsync(global::Marqeta.Core.Sdk.Models.DirectDepositAccountTransitionRequest body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             _ = body ?? throw new ArgumentNullException(nameof(body));
@@ -79,11 +79,11 @@ namespace Marqeta.Core.Sdk.Depositaccounts.Transitions
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToPostRequestInformation(global::Marqeta.Core.Sdk.Models.Direct_deposit_account_transition_request body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
+        public RequestInformation ToPostRequestInformation(global::Marqeta.Core.Sdk.Models.DirectDepositAccountTransitionRequest body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
         {
 #nullable restore
 #else
-        public RequestInformation ToPostRequestInformation(global::Marqeta.Core.Sdk.Models.Direct_deposit_account_transition_request body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
+        public RequestInformation ToPostRequestInformation(global::Marqeta.Core.Sdk.Models.DirectDepositAccountTransitionRequest body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
         {
 #endif
             _ = body ?? throw new ArgumentNullException(nameof(body));

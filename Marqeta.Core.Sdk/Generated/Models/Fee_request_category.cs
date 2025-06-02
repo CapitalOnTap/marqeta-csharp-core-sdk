@@ -3,9 +3,10 @@ using System.Runtime.Serialization;
 using System;
 namespace Marqeta.Core.Sdk.Models
 {
-    /// <summary>Specifies if the fee is a standalone fee or a real-time fee.</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
+    #pragma warning disable CS1591
     public enum Fee_request_category
+    #pragma warning restore CS1591
     {
         [EnumMember(Value = "STANDALONE")]
         #pragma warning disable CS1591

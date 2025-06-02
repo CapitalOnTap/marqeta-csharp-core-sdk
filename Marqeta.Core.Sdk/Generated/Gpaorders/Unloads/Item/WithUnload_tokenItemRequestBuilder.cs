@@ -34,7 +34,7 @@ namespace Marqeta.Core.Sdk.Gpaorders.Unloads.Item
         {
         }
         /// <summary>
-        /// Use this endpoint to retrieve a specific GPA unload.
+        /// Returns a specific GPA return
         /// </summary>
         /// <returns>A <see cref="global::Marqeta.Core.Sdk.Models.Gpa_returns"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -57,7 +57,7 @@ namespace Marqeta.Core.Sdk.Gpaorders.Unloads.Item
             return await RequestAdapter.SendAsync<global::Marqeta.Core.Sdk.Models.Gpa_returns>(requestInfo, global::Marqeta.Core.Sdk.Models.Gpa_returns.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Use this endpoint to retrieve a specific GPA unload.
+        /// Returns a specific GPA return
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>

@@ -34,7 +34,7 @@ namespace Marqeta.Core.Sdk.Users.Item.Ssn
         {
         }
         /// <summary>
-        /// To retrieve the government-issued identification number for a user, send a `GET` request to the `/users/{token}/ssn` endpoint.Include the `token` path parameter to specify the user whose identification number (SSN, TIN, NIN, SIN) you wish to return.You can indicate whether to return the full number or the last four digits only.
+        /// To retrieve the government-issued identification number for a user, send a `GET` request to the `/users/{token}/ssn` endpoint.Include the `token` path parameter to specify the user whose identification number (SSN, ITIN, TIN, NIN, SIN) you wish to return.You can indicate whether to return the full number or the last four digits only.
         /// </summary>
         /// <returns>A <see cref="global::Marqeta.Core.Sdk.Models.Ssn_response_model"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -57,7 +57,7 @@ namespace Marqeta.Core.Sdk.Users.Item.Ssn
             return await RequestAdapter.SendAsync<global::Marqeta.Core.Sdk.Models.Ssn_response_model>(requestInfo, global::Marqeta.Core.Sdk.Models.Ssn_response_model.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// To retrieve the government-issued identification number for a user, send a `GET` request to the `/users/{token}/ssn` endpoint.Include the `token` path parameter to specify the user whose identification number (SSN, TIN, NIN, SIN) you wish to return.You can indicate whether to return the full number or the last four digits only.
+        /// To retrieve the government-issued identification number for a user, send a `GET` request to the `/users/{token}/ssn` endpoint.Include the `token` path parameter to specify the user whose identification number (SSN, ITIN, TIN, NIN, SIN) you wish to return.You can indicate whether to return the full number or the last four digits only.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -85,7 +85,7 @@ namespace Marqeta.Core.Sdk.Users.Item.Ssn
             return new global::Marqeta.Core.Sdk.Users.Item.Ssn.SsnRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
-        /// To retrieve the government-issued identification number for a user, send a `GET` request to the `/users/{token}/ssn` endpoint.Include the `token` path parameter to specify the user whose identification number (SSN, TIN, NIN, SIN) you wish to return.You can indicate whether to return the full number or the last four digits only.
+        /// To retrieve the government-issued identification number for a user, send a `GET` request to the `/users/{token}/ssn` endpoint.Include the `token` path parameter to specify the user whose identification number (SSN, ITIN, TIN, NIN, SIN) you wish to return.You can indicate whether to return the full number or the last four digits only.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class SsnRequestBuilderGetQueryParameters 

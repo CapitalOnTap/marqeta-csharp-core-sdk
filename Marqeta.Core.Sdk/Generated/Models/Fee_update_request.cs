@@ -12,15 +12,15 @@ namespace Marqeta.Core.Sdk.Models
     public partial class Fee_update_request : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
     {
-        /// <summary>Indicates whether the fee is active.</summary>
+        /// <summary>The active property</summary>
         public bool? Active { get; set; }
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Amount of the fee.</summary>
+        /// <summary>The amount property</summary>
         public double? Amount { get; set; }
         /// <summary>The category property</summary>
         public global::Marqeta.Core.Sdk.Models.Fee_update_request_category? Category { get; set; }
-        /// <summary>Three-digit ISO 4217 currency code.</summary>
+        /// <summary>The currency_code property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? CurrencyCode { get; set; }
@@ -28,7 +28,7 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string CurrencyCode { get; set; }
 #endif
-        /// <summary>Describes the attributes of a fee.</summary>
+        /// <summary>The fee_attributes property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Marqeta.Core.Sdk.Models.Fee_attributes? FeeAttributes { get; set; }
@@ -36,7 +36,15 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public global::Marqeta.Core.Sdk.Models.Fee_attributes FeeAttributes { get; set; }
 #endif
-        /// <summary>Name of the fee request.</summary>
+        /// <summary>The memo property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Memo { get; set; }
+#nullable restore
+#else
+        public string Memo { get; set; }
+#endif
+        /// <summary>The name property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Name { get; set; }
@@ -44,7 +52,7 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string Name { get; set; }
 #endif
-        /// <summary>Descriptive metadata about the fee.</summary>
+        /// <summary>The tags property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Tags { get; set; }
@@ -52,7 +60,7 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string Tags { get; set; }
 #endif
-        /// <summary>Specifies if this is a flat fee or a percentage of the transaction amount.</summary>
+        /// <summary>The type property</summary>
         public global::Marqeta.Core.Sdk.Models.Fee_update_request_type? Type { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Marqeta.Core.Sdk.Models.Fee_update_request"/> and sets the default values.
@@ -84,6 +92,7 @@ namespace Marqeta.Core.Sdk.Models
                 { "category", n => { Category = n.GetEnumValue<global::Marqeta.Core.Sdk.Models.Fee_update_request_category>(); } },
                 { "currency_code", n => { CurrencyCode = n.GetStringValue(); } },
                 { "fee_attributes", n => { FeeAttributes = n.GetObjectValue<global::Marqeta.Core.Sdk.Models.Fee_attributes>(global::Marqeta.Core.Sdk.Models.Fee_attributes.CreateFromDiscriminatorValue); } },
+                { "memo", n => { Memo = n.GetStringValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "tags", n => { Tags = n.GetStringValue(); } },
                 { "type", n => { Type = n.GetEnumValue<global::Marqeta.Core.Sdk.Models.Fee_update_request_type>(); } },
@@ -101,6 +110,7 @@ namespace Marqeta.Core.Sdk.Models
             writer.WriteEnumValue<global::Marqeta.Core.Sdk.Models.Fee_update_request_category>("category", Category);
             writer.WriteStringValue("currency_code", CurrencyCode);
             writer.WriteObjectValue<global::Marqeta.Core.Sdk.Models.Fee_attributes>("fee_attributes", FeeAttributes);
+            writer.WriteStringValue("memo", Memo);
             writer.WriteStringValue("name", Name);
             writer.WriteStringValue("tags", Tags);
             writer.WriteEnumValue<global::Marqeta.Core.Sdk.Models.Fee_update_request_type>("type", Type);

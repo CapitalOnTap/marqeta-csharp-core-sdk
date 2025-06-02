@@ -25,7 +25,7 @@ namespace Marqeta.Core.Sdk.Fundingsources.Program
             get => new global::Marqeta.Core.Sdk.Fundingsources.Program.Ach.AchRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>Gets an item from the Marqeta.Core.Sdk.fundingsources.program.item collection</summary>
-        /// <param name="position">Unique identifier of the program funding source.</param>
+        /// <param name="position">Program funding source token</param>
         /// <returns>A <see cref="global::Marqeta.Core.Sdk.Fundingsources.Program.Item.WithTokenItemRequestBuilder"/></returns>
         public global::Marqeta.Core.Sdk.Fundingsources.Program.Item.WithTokenItemRequestBuilder this[string position]
         {
@@ -53,7 +53,7 @@ namespace Marqeta.Core.Sdk.Fundingsources.Program
         {
         }
         /// <summary>
-        /// Create a program funding source.
+        /// Creates a program funding source
         /// </summary>
         /// <returns>A <see cref="global::Marqeta.Core.Sdk.Models.Program_funding_source_response"/></returns>
         /// <param name="body">The request body</param>
@@ -78,7 +78,7 @@ namespace Marqeta.Core.Sdk.Fundingsources.Program
             return await RequestAdapter.SendAsync<global::Marqeta.Core.Sdk.Models.Program_funding_source_response>(requestInfo, global::Marqeta.Core.Sdk.Models.Program_funding_source_response.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Create a program funding source.
+        /// Creates a program funding source
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">The request body</param>

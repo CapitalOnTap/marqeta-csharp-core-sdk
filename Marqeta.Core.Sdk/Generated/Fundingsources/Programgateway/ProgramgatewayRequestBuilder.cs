@@ -25,7 +25,7 @@ namespace Marqeta.Core.Sdk.Fundingsources.Programgateway
             get => new global::Marqeta.Core.Sdk.Fundingsources.Programgateway.Customheaders.CustomheadersRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>Gets an item from the Marqeta.Core.Sdk.fundingsources.programgateway.item collection</summary>
-        /// <param name="position">Unique identifier of the program gateway funding source.</param>
+        /// <param name="position">Gateway program funding source token</param>
         /// <returns>A <see cref="global::Marqeta.Core.Sdk.Fundingsources.Programgateway.Item.WithTokenItemRequestBuilder"/></returns>
         public global::Marqeta.Core.Sdk.Fundingsources.Programgateway.Item.WithTokenItemRequestBuilder this[string position]
         {
@@ -53,7 +53,7 @@ namespace Marqeta.Core.Sdk.Fundingsources.Programgateway
         {
         }
         /// <summary>
-        /// Creates a program gateway funding source.A program gateway funding source is a transaction relay that allows you to approve or decline transactions in real time.
+        /// Creates a gateway program funding source
         /// </summary>
         /// <returns>A <see cref="global::Marqeta.Core.Sdk.Models.Gateway_program_funding_source_response"/></returns>
         /// <param name="body">The request body</param>
@@ -78,7 +78,7 @@ namespace Marqeta.Core.Sdk.Fundingsources.Programgateway
             return await RequestAdapter.SendAsync<global::Marqeta.Core.Sdk.Models.Gateway_program_funding_source_response>(requestInfo, global::Marqeta.Core.Sdk.Models.Gateway_program_funding_source_response.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Creates a program gateway funding source.A program gateway funding source is a transaction relay that allows you to approve or decline transactions in real time.
+        /// Creates a gateway program funding source
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">The request body</param>

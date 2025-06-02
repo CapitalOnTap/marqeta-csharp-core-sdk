@@ -14,7 +14,7 @@ namespace Marqeta.Core.Sdk.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>The business account holder on which the identity check was performed.</summary>
+        /// <summary>The business_token property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? BusinessToken { get; set; }
@@ -22,13 +22,13 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string BusinessToken { get; set; }
 #endif
-        /// <summary>Time when the KYC verification was performed.</summary>
+        /// <summary>yyyy-MM-ddTHH:mm:ssZ</summary>
         public DateTimeOffset? CreatedTime { get; set; }
-        /// <summary>Time when the KYC verification was last updated.</summary>
+        /// <summary>yyyy-MM-ddTHH:mm:ssZ</summary>
         public DateTimeOffset? LastModifiedTime { get; set; }
-        /// <summary>If `true`, the user account holder is designated as having passed a verification check without Marqeta performing the check.This override is used when verification is performed through another mechanism, such as an alternative KYC provider or directly with the account holder.</summary>
+        /// <summary>The manual_override property</summary>
         public bool? ManualOverride { get; set; }
-        /// <summary>Notes pertaining to a manual override.This field is included in the response only when the `manual_override` field is set to `true`.</summary>
+        /// <summary>The notes property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Notes { get; set; }
@@ -36,7 +36,7 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string Notes { get; set; }
 #endif
-        /// <summary>If you verified the account holder&apos;s identity by performing a KYC verification outside of the Marqeta platform, you can use the `reference_id` field to store the reference number returned by that KYC provider.This field is included in the response only when the `manual_override` field is set to `true`.*NOTE:* When you submit a KYC verification request with `manual_override=false`, the Marqeta platform performs the verification through one of its KYC providers.If the KYC provider responds with a reference identifier, that identifier is passed to you by way of this field in the response.</summary>
+        /// <summary>The reference_id property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? ReferenceId { get; set; }
@@ -44,7 +44,7 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string ReferenceId { get; set; }
 #endif
-        /// <summary>Contains information about the KYC verification result.</summary>
+        /// <summary>The result property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Marqeta.Core.Sdk.Models.Result? Result { get; set; }
@@ -52,7 +52,7 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public global::Marqeta.Core.Sdk.Models.Result Result { get; set; }
 #endif
-        /// <summary>The unique identifier of the identity check.</summary>
+        /// <summary>The token property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Token { get; set; }
@@ -60,7 +60,7 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string Token { get; set; }
 #endif
-        /// <summary>The user account holder on which the identity check was performed.</summary>
+        /// <summary>The user_token property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? UserToken { get; set; }

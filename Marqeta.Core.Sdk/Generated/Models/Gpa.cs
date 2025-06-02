@@ -7,33 +7,34 @@ using System.IO;
 using System;
 namespace Marqeta.Core.Sdk.Models
 {
+    /// <summary>
+    /// Defines the type of order.
+    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    #pragma warning disable CS1591
-    public partial class GPA : IAdditionalDataHolder, IParsable
-    #pragma warning restore CS1591
+    public partial class Gpa : IAdditionalDataHolder, IParsable
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>The reload_amount property</summary>
+        /// <summary>Available balance on the card after the reload has completed.This value must be greater than or equal to the value of `trigger_amount`.Note that this is not the same as the amount added to the card, which will vary from reload to reload.</summary>
         public double? ReloadAmount { get; set; }
-        /// <summary>The trigger_amount property</summary>
+        /// <summary>Threshold that determines when the reload happens.The reload is triggered when the card balance falls below this amount.</summary>
         public double? TriggerAmount { get; set; }
         /// <summary>
-        /// Instantiates a new <see cref="global::Marqeta.Core.Sdk.Models.GPA"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Marqeta.Core.Sdk.Models.Gpa"/> and sets the default values.
         /// </summary>
-        public GPA()
+        public Gpa()
         {
             AdditionalData = new Dictionary<string, object>();
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="global::Marqeta.Core.Sdk.Models.GPA"/></returns>
+        /// <returns>A <see cref="global::Marqeta.Core.Sdk.Models.Gpa"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static global::Marqeta.Core.Sdk.Models.GPA CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static global::Marqeta.Core.Sdk.Models.Gpa CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-            return new global::Marqeta.Core.Sdk.Models.GPA();
+            return new global::Marqeta.Core.Sdk.Models.Gpa();
         }
         /// <summary>
         /// The deserialization information for the current model

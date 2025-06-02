@@ -58,7 +58,7 @@ namespace Marqeta.Core.Sdk.Fundingsources
             get => new global::Marqeta.Core.Sdk.Fundingsources.User.UserRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>Gets an item from the Marqeta.Core.Sdk.fundingsources.item collection</summary>
-        /// <param name="position">Unique identifier of the funding source.Send a `GET` request to `/fundingsources/user/{user_token}` to retrieve existing funding source tokens for a user or to `/fundingsources/business/{business_token}` to retrieve existing funding source tokens for a business.</param>
+        /// <param name="position">Funding account</param>
         /// <returns>A <see cref="global::Marqeta.Core.Sdk.Fundingsources.Item.WithFunding_source_tokenItemRequestBuilder"/></returns>
         public global::Marqeta.Core.Sdk.Fundingsources.Item.WithFunding_source_tokenItemRequestBuilder this[string position]
         {

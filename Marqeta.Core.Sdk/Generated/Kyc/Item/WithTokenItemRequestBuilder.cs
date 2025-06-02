@@ -34,7 +34,7 @@ namespace Marqeta.Core.Sdk.Kyc.Item
         {
         }
         /// <summary>
-        /// Use this endpoint to retrieve a specific KYC result.
+        /// Returns a specific KYC result
         /// </summary>
         /// <returns>A <see cref="global::Marqeta.Core.Sdk.Models.Kyc_response"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -57,7 +57,7 @@ namespace Marqeta.Core.Sdk.Kyc.Item
             return await RequestAdapter.SendAsync<global::Marqeta.Core.Sdk.Models.Kyc_response>(requestInfo, global::Marqeta.Core.Sdk.Models.Kyc_response.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Use this endpoint to retrieve a specific KYC result.
+        /// Returns a specific KYC result
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>

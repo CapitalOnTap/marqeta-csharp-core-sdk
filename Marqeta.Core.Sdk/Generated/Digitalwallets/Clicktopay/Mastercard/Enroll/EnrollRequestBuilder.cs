@@ -34,7 +34,7 @@ namespace Marqeta.Core.Sdk.Digitalwallets.Clicktopay.Mastercard.Enroll
         {
         }
         /// <summary>
-        /// Use this endpoint to enroll a card asynchronously to Click to Pay.
+        /// Use this endpoint to enroll a card in Click to Pay for Mastercard.For more information about this ecommerce checkout solution, see &lt;&lt;/developer-guides/digital-wallets-and-tokenization/#_click_to_pay, Click to Pay&gt;&gt;.
         /// </summary>
         /// <returns>A <see cref="global::Marqeta.Core.Sdk.Models.Click_to_pay_enroll_response"/></returns>
         /// <param name="body">The request body</param>
@@ -59,7 +59,7 @@ namespace Marqeta.Core.Sdk.Digitalwallets.Clicktopay.Mastercard.Enroll
             return await RequestAdapter.SendAsync<global::Marqeta.Core.Sdk.Models.Click_to_pay_enroll_response>(requestInfo, global::Marqeta.Core.Sdk.Models.Click_to_pay_enroll_response.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Use this endpoint to enroll a card asynchronously to Click to Pay.
+        /// Use this endpoint to enroll a card in Click to Pay for Mastercard.For more information about this ecommerce checkout solution, see &lt;&lt;/developer-guides/digital-wallets-and-tokenization/#_click_to_pay, Click to Pay&gt;&gt;.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">The request body</param>

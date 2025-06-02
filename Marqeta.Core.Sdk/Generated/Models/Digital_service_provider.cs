@@ -38,6 +38,8 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string FirstAuthenticationFactor { get; set; }
 #endif
+        /// <summary>The first_authentication_factor_name property</summary>
+        public global::Marqeta.Core.Sdk.Models.Digital_service_provider_first_authentication_factor_name? FirstAuthenticationFactorName { get; set; }
         /// <summary>The second_authentication_factor property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -46,6 +48,8 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string SecondAuthenticationFactor { get; set; }
 #endif
+        /// <summary>The second_authentication_factor_name property</summary>
+        public global::Marqeta.Core.Sdk.Models.Digital_service_provider_second_authentication_factor_name? SecondAuthenticationFactorName { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Marqeta.Core.Sdk.Models.Digital_service_provider"/> and sets the default values.
         /// </summary>
@@ -74,7 +78,9 @@ namespace Marqeta.Core.Sdk.Models
                 { "cvm_authentication_indicator", n => { CvmAuthenticationIndicator = n.GetStringValue(); } },
                 { "cvm_authentication_method", n => { CvmAuthenticationMethod = n.GetStringValue(); } },
                 { "first_authentication_factor", n => { FirstAuthenticationFactor = n.GetStringValue(); } },
+                { "first_authentication_factor_name", n => { FirstAuthenticationFactorName = n.GetEnumValue<global::Marqeta.Core.Sdk.Models.Digital_service_provider_first_authentication_factor_name>(); } },
                 { "second_authentication_factor", n => { SecondAuthenticationFactor = n.GetStringValue(); } },
+                { "second_authentication_factor_name", n => { SecondAuthenticationFactorName = n.GetEnumValue<global::Marqeta.Core.Sdk.Models.Digital_service_provider_second_authentication_factor_name>(); } },
             };
         }
         /// <summary>
@@ -87,7 +93,9 @@ namespace Marqeta.Core.Sdk.Models
             writer.WriteStringValue("cvm_authentication_indicator", CvmAuthenticationIndicator);
             writer.WriteStringValue("cvm_authentication_method", CvmAuthenticationMethod);
             writer.WriteStringValue("first_authentication_factor", FirstAuthenticationFactor);
+            writer.WriteEnumValue<global::Marqeta.Core.Sdk.Models.Digital_service_provider_first_authentication_factor_name>("first_authentication_factor_name", FirstAuthenticationFactorName);
             writer.WriteStringValue("second_authentication_factor", SecondAuthenticationFactor);
+            writer.WriteEnumValue<global::Marqeta.Core.Sdk.Models.Digital_service_provider_second_authentication_factor_name>("second_authentication_factor_name", SecondAuthenticationFactorName);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

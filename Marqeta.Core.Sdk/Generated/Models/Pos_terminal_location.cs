@@ -11,17 +11,37 @@ namespace Marqeta.Core.Sdk.Models
         #pragma warning disable CS1591
         ON_PREMISE,
         #pragma warning restore CS1591
-        [EnumMember(Value = "OFF_PREMISE_MERCHANT")]
+        [EnumMember(Value = "ON_PREMISE_CARDHOLDER")]
         #pragma warning disable CS1591
-        OFF_PREMISE_MERCHANT,
+        ON_PREMISE_CARDHOLDER,
         #pragma warning restore CS1591
         [EnumMember(Value = "OFF_PREMISE_CARDHOLDER")]
         #pragma warning disable CS1591
         OFF_PREMISE_CARDHOLDER,
         #pragma warning restore CS1591
+        [EnumMember(Value = "ON_PREMISE_MERCHANT")]
+        #pragma warning disable CS1591
+        ON_PREMISE_MERCHANT,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "OFF_PREMISE_MERCHANT")]
+        #pragma warning disable CS1591
+        OFF_PREMISE_MERCHANT,
+        #pragma warning restore CS1591
         [EnumMember(Value = "NO_TERMINAL")]
         #pragma warning disable CS1591
         NO_TERMINAL,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "MOBILE_REMOTE")]
+        #pragma warning disable CS1591
+        MOBILE_REMOTE,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "TRANSIT_ACCESS_TERMINAL")]
+        #pragma warning disable CS1591
+        TRANSIT_ACCESS_TERMINAL,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "UNSPECIFIED")]
+        #pragma warning disable CS1591
+        UNSPECIFIED,
         #pragma warning restore CS1591
     }
 }

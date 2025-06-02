@@ -34,7 +34,7 @@ namespace Marqeta.Core.Sdk.Feecharges.Item
         {
         }
         /// <summary>
-        /// Use this endpoint to retrieve a specific fee charge.Include the fee transfer `token` path parameter to specify the fee charge to return.
+        /// Returns a fee charge
         /// </summary>
         /// <returns>A <see cref="global::Marqeta.Core.Sdk.Models.Fee_transfer_response"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -57,7 +57,7 @@ namespace Marqeta.Core.Sdk.Feecharges.Item
             return await RequestAdapter.SendAsync<global::Marqeta.Core.Sdk.Models.Fee_transfer_response>(requestInfo, global::Marqeta.Core.Sdk.Models.Fee_transfer_response.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Use this endpoint to retrieve a specific fee charge.Include the fee transfer `token` path parameter to specify the fee charge to return.
+        /// Returns a fee charge
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>

@@ -12,7 +12,7 @@ namespace Marqeta.Core.Sdk.Models
     public partial class Payment_card_response_model : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
     {
-        /// <summary>Account identifier appended to the payment card number.</summary>
+        /// <summary>The account_suffix property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? AccountSuffix { get; set; }
@@ -20,7 +20,7 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string AccountSuffix { get; set; }
 #endif
-        /// <summary>Type of payment card account.</summary>
+        /// <summary>The account_type property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? AccountType { get; set; }
@@ -28,11 +28,11 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string AccountType { get; set; }
 #endif
-        /// <summary>Specifies whether the account is active.</summary>
+        /// <summary>The active property</summary>
         public bool? Active { get; set; }
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Unique identifier of the business account holder.This token is returned if a `user_token` is not specified.</summary>
+        /// <summary>Required if &apos;user_token&apos; is not present</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? BusinessToken { get; set; }
@@ -40,9 +40,9 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string BusinessToken { get; set; }
 #endif
-        /// <summary>Date and time when the resource was created, in UTC.</summary>
+        /// <summary>yyyy-MM-ddTHH:mm:ssZ</summary>
         public DateTimeOffset? CreatedTime { get; set; }
-        /// <summary>Payment card expiration date.</summary>
+        /// <summary>The exp_date property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? ExpDate { get; set; }
@@ -50,11 +50,11 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string ExpDate { get; set; }
 #endif
-        /// <summary>If there are multiple funding sources, this field specifies which source is used by default in funding calls.If there is only one funding source, the system ignores this field and always uses that source.</summary>
+        /// <summary>The is_default_account property</summary>
         public bool? IsDefaultAccount { get; set; }
-        /// <summary>Date and time when the resource was last modified, in UTC.</summary>
+        /// <summary>yyyy-MM-ddTHH:mm:ssZ</summary>
         public DateTimeOffset? LastModifiedTime { get; set; }
-        /// <summary>Unique identifier of the funding source.</summary>
+        /// <summary>The token property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Token { get; set; }
@@ -62,7 +62,7 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string Token { get; set; }
 #endif
-        /// <summary>Funding source type.</summary>
+        /// <summary>The type property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Type { get; set; }
@@ -70,7 +70,7 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string Type { get; set; }
 #endif
-        /// <summary>Unique identifier of the user account holder.This token is returned if a `business_token` is not specified.</summary>
+        /// <summary>Required if &apos;business_token&apos; is not present</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? UserToken { get; set; }

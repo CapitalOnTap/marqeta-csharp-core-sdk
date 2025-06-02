@@ -14,6 +14,22 @@ namespace Marqeta.Core.Sdk.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>The birth_place property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? BirthPlace { get; set; }
+#nullable restore
+#else
+        public string BirthPlace { get; set; }
+#endif
+        /// <summary>The email property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Email { get; set; }
+#nullable restore
+#else
+        public string Email { get; set; }
+#endif
         /// <summary>The first_name property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -32,6 +48,14 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public global::Marqeta.Core.Sdk.Models.AddressResponseModel Home { get; set; }
 #endif
+        /// <summary>The identifications property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<global::Marqeta.Core.Sdk.Models.IdentificationResponseModel>? Identifications { get; set; }
+#nullable restore
+#else
+        public List<global::Marqeta.Core.Sdk.Models.IdentificationResponseModel> Identifications { get; set; }
+#endif
         /// <summary>The last_name property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -48,6 +72,22 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string MiddleName { get; set; }
 #endif
+        /// <summary>The nationality property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Nationality { get; set; }
+#nullable restore
+#else
+        public string Nationality { get; set; }
+#endif
+        /// <summary>The ownership_percentage property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? OwnershipPercentage { get; set; }
+#nullable restore
+#else
+        public string OwnershipPercentage { get; set; }
+#endif
         /// <summary>The phone property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -55,6 +95,14 @@ namespace Marqeta.Core.Sdk.Models
 #nullable restore
 #else
         public string Phone { get; set; }
+#endif
+        /// <summary>The ssn property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Ssn { get; set; }
+#nullable restore
+#else
+        public string Ssn { get; set; }
 #endif
         /// <summary>The title property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -89,12 +137,18 @@ namespace Marqeta.Core.Sdk.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "birth_place", n => { BirthPlace = n.GetStringValue(); } },
+                { "email", n => { Email = n.GetStringValue(); } },
                 { "first_name", n => { FirstName = n.GetStringValue(); } },
                 { "getdob", n => { Getdob = n.GetDateTimeOffsetValue(); } },
                 { "home", n => { Home = n.GetObjectValue<global::Marqeta.Core.Sdk.Models.AddressResponseModel>(global::Marqeta.Core.Sdk.Models.AddressResponseModel.CreateFromDiscriminatorValue); } },
+                { "identifications", n => { Identifications = n.GetCollectionOfObjectValues<global::Marqeta.Core.Sdk.Models.IdentificationResponseModel>(global::Marqeta.Core.Sdk.Models.IdentificationResponseModel.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "last_name", n => { LastName = n.GetStringValue(); } },
                 { "middle_name", n => { MiddleName = n.GetStringValue(); } },
+                { "nationality", n => { Nationality = n.GetStringValue(); } },
+                { "ownership_percentage", n => { OwnershipPercentage = n.GetStringValue(); } },
                 { "phone", n => { Phone = n.GetStringValue(); } },
+                { "ssn", n => { Ssn = n.GetStringValue(); } },
                 { "title", n => { Title = n.GetStringValue(); } },
             };
         }
@@ -105,12 +159,18 @@ namespace Marqeta.Core.Sdk.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
+            writer.WriteStringValue("birth_place", BirthPlace);
+            writer.WriteStringValue("email", Email);
             writer.WriteStringValue("first_name", FirstName);
             writer.WriteDateTimeOffsetValue("getdob", Getdob);
             writer.WriteObjectValue<global::Marqeta.Core.Sdk.Models.AddressResponseModel>("home", Home);
+            writer.WriteCollectionOfObjectValues<global::Marqeta.Core.Sdk.Models.IdentificationResponseModel>("identifications", Identifications);
             writer.WriteStringValue("last_name", LastName);
             writer.WriteStringValue("middle_name", MiddleName);
+            writer.WriteStringValue("nationality", Nationality);
+            writer.WriteStringValue("ownership_percentage", OwnershipPercentage);
             writer.WriteStringValue("phone", Phone);
+            writer.WriteStringValue("ssn", Ssn);
             writer.WriteStringValue("title", Title);
             writer.WriteAdditionalData(AdditionalData);
         }

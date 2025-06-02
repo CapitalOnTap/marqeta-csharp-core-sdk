@@ -8,7 +8,7 @@ using System;
 namespace Marqeta.Core.Sdk.Models
 {
     /// <summary>
-    /// Additional custom information included in the HTTP header.
+    /// Custom headers to be passed along with request
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class Gateway_program_funding_source_response_custom_header : IAdditionalDataHolder, IParsable

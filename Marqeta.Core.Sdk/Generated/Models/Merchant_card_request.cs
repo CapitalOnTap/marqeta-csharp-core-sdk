@@ -12,6 +12,14 @@ namespace Marqeta.Core.Sdk.Models
     public partial class Merchant_card_request : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
     {
+        /// <summary>The account_token property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? AccountToken { get; set; }
+#nullable restore
+#else
+        public string AccountToken { get; set; }
+#endif
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The card_product_token property</summary>
@@ -65,6 +73,7 @@ namespace Marqeta.Core.Sdk.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "account_token", n => { AccountToken = n.GetStringValue(); } },
                 { "card_product_token", n => { CardProductToken = n.GetStringValue(); } },
                 { "expedite", n => { Expedite = n.GetBoolValue(); } },
                 { "expiration_offset", n => { ExpirationOffset = n.GetObjectValue<global::Marqeta.Core.Sdk.Models.Expiration_offset>(global::Marqeta.Core.Sdk.Models.Expiration_offset.CreateFromDiscriminatorValue); } },
@@ -78,6 +87,7 @@ namespace Marqeta.Core.Sdk.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
+            writer.WriteStringValue("account_token", AccountToken);
             writer.WriteStringValue("card_product_token", CardProductToken);
             writer.WriteBoolValue("expedite", Expedite);
             writer.WriteObjectValue<global::Marqeta.Core.Sdk.Models.Expiration_offset>("expiration_offset", ExpirationOffset);

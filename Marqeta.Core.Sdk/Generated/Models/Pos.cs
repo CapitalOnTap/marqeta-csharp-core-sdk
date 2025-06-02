@@ -31,6 +31,14 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string CountryCode { get; set; }
 #endif
+        /// <summary>County of the card acceptor or terminal.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? County { get; set; }
+#nullable restore
+#else
+        public string County { get; set; }
+#endif
         /// <summary>Whether the transaction is an installment payment.</summary>
         public bool? IsInstallment { get; set; }
         /// <summary>Whether the transaction is recurring.</summary>
@@ -47,6 +55,14 @@ namespace Marqeta.Core.Sdk.Models
         public bool? PurchaseAmountOnly { get; set; }
         /// <summary>Indicates a higher-risk operation, such as a quasi-cash or cryptocurrency transaction.These transactions typically involve non-financial institutions.</summary>
         public global::Marqeta.Core.Sdk.Models.Pos_special_condition_indicator? SpecialConditionIndicator { get; set; }
+        /// <summary>State, province, or territory of the card acceptor or terminal.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? State { get; set; }
+#nullable restore
+#else
+        public string State { get; set; }
+#endif
         /// <summary>Whether the card acceptor/terminal was attended.</summary>
         public global::Marqeta.Core.Sdk.Models.Pos_terminal_attendance? TerminalAttendance { get; set; }
         /// <summary>Card acceptor or terminal identification number.</summary>
@@ -103,6 +119,7 @@ namespace Marqeta.Core.Sdk.Models
                 { "card_presence", n => { CardPresence = n.GetBoolValue(); } },
                 { "cardholder_authentication_method", n => { CardholderAuthenticationMethod = n.GetEnumValue<global::Marqeta.Core.Sdk.Models.Pos_cardholder_authentication_method>(); } },
                 { "country_code", n => { CountryCode = n.GetStringValue(); } },
+                { "county", n => { County = n.GetStringValue(); } },
                 { "is_installment", n => { IsInstallment = n.GetBoolValue(); } },
                 { "is_recurring", n => { IsRecurring = n.GetBoolValue(); } },
                 { "pan_entry_mode", n => { PanEntryMode = n.GetEnumValue<global::Marqeta.Core.Sdk.Models.Pos_pan_entry_mode>(); } },
@@ -111,6 +128,7 @@ namespace Marqeta.Core.Sdk.Models
                 { "pin_present", n => { PinPresent = n.GetBoolValue(); } },
                 { "purchase_amount_only", n => { PurchaseAmountOnly = n.GetBoolValue(); } },
                 { "special_condition_indicator", n => { SpecialConditionIndicator = n.GetEnumValue<global::Marqeta.Core.Sdk.Models.Pos_special_condition_indicator>(); } },
+                { "state", n => { State = n.GetStringValue(); } },
                 { "terminal_attendance", n => { TerminalAttendance = n.GetEnumValue<global::Marqeta.Core.Sdk.Models.Pos_terminal_attendance>(); } },
                 { "terminal_id", n => { TerminalId = n.GetStringValue(); } },
                 { "terminal_location", n => { TerminalLocation = n.GetEnumValue<global::Marqeta.Core.Sdk.Models.Pos_terminal_location>(); } },
@@ -132,6 +150,7 @@ namespace Marqeta.Core.Sdk.Models
             writer.WriteBoolValue("card_holder_presence", CardHolderPresence);
             writer.WriteBoolValue("card_presence", CardPresence);
             writer.WriteStringValue("country_code", CountryCode);
+            writer.WriteStringValue("county", County);
             writer.WriteBoolValue("is_installment", IsInstallment);
             writer.WriteBoolValue("is_recurring", IsRecurring);
             writer.WriteEnumValue<global::Marqeta.Core.Sdk.Models.Pos_pan_entry_mode>("pan_entry_mode", PanEntryMode);
@@ -140,6 +159,7 @@ namespace Marqeta.Core.Sdk.Models
             writer.WriteBoolValue("pin_present", PinPresent);
             writer.WriteBoolValue("purchase_amount_only", PurchaseAmountOnly);
             writer.WriteEnumValue<global::Marqeta.Core.Sdk.Models.Pos_special_condition_indicator>("special_condition_indicator", SpecialConditionIndicator);
+            writer.WriteStringValue("state", State);
             writer.WriteEnumValue<global::Marqeta.Core.Sdk.Models.Pos_terminal_attendance>("terminal_attendance", TerminalAttendance);
             writer.WriteStringValue("terminal_id", TerminalId);
             writer.WriteEnumValue<global::Marqeta.Core.Sdk.Models.Pos_terminal_location>("terminal_location", TerminalLocation);

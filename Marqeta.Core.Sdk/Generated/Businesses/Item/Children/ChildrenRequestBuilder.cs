@@ -12,7 +12,7 @@ using System;
 namespace Marqeta.Core.Sdk.Businesses.Item.Children
 {
     /// <summary>
-    /// Builds and executes requests for operations under \businesses\{parent_token-id}\children
+    /// Builds and executes requests for operations under \businesses\{business_token-id}\children
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class ChildrenRequestBuilder : BaseRequestBuilder
@@ -22,7 +22,7 @@ namespace Marqeta.Core.Sdk.Businesses.Item.Children
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public ChildrenRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/businesses/{parent_token%2Did}/children{?count*,fields*,sort_by*,start_index*}", pathParameters)
+        public ChildrenRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/businesses/{business_token%2Did}/children{?count*,fields*,sort_by*,start_index*}", pathParameters)
         {
         }
         /// <summary>
@@ -30,7 +30,7 @@ namespace Marqeta.Core.Sdk.Businesses.Item.Children
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public ChildrenRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/businesses/{parent_token%2Did}/children{?count*,fields*,sort_by*,start_index*}", rawUrl)
+        public ChildrenRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/businesses/{business_token%2Did}/children{?count*,fields*,sort_by*,start_index*}", rawUrl)
         {
         }
         /// <summary>

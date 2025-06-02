@@ -30,11 +30,11 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string IdempotentHash { get; set; }
 #endif
-        /// <summary>If there are multiple funding sources, this field specifies which source is used by default in funding calls.If there is only one funding source, the system ignores this field and always uses that source.</summary>
+        /// <summary>The is_default_account property</summary>
         public bool? IsDefaultAccount { get; set; }
-        /// <summary>Name of the partner who validated the account holder.Returned when a third-party partner was used for account validation.</summary>
+        /// <summary>The partner property</summary>
         public global::Marqeta.Core.Sdk.Models.Ach_partner_request_model_partner? Partner { get; set; }
-        /// <summary>Supplied by the account validation partner, this value is a reference to the account holder&apos;s details, such as the account number and routing number.Returned when a third-party partner was used for account validation.</summary>
+        /// <summary>The partner_account_link_reference_token property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? PartnerAccountLinkReferenceToken { get; set; }
@@ -42,7 +42,7 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string PartnerAccountLinkReferenceToken { get; set; }
 #endif
-        /// <summary>Unique identifier of the funding source.If you do not include a token, the system will generate one automatically.This token is necessary for use in other calls, so we recommend that rather than let the system generate one, you use a simple string that is easy to remember.This value cannot be updated.</summary>
+        /// <summary>The token property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Token { get; set; }
@@ -50,7 +50,7 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string Token { get; set; }
 #endif
-        /// <summary>Supplied by the account validation partner, this value is a reference to the account holder&apos;s details, such as the account number and routing number.This token is required if a `business_token` is not specified.Send a `GET` request to `/users` to retrieve user tokens.</summary>
+        /// <summary>Required if &apos;business_token&apos; is null</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? UserToken { get; set; }

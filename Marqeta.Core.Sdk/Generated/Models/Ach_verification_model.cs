@@ -12,13 +12,13 @@ namespace Marqeta.Core.Sdk.Models
     public partial class Ach_verification_model : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
     {
-        /// <summary>Indicates whether the ACH funding source is active.</summary>
+        /// <summary>The active property</summary>
         public bool? Active { get; set; }
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Verification amount.</summary>
+        /// <summary>The verify_amount1 property</summary>
         public double? VerifyAmount1 { get; set; }
-        /// <summary>Verification amount.</summary>
+        /// <summary>The verify_amount2 property</summary>
         public double? VerifyAmount2 { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Marqeta.Core.Sdk.Models.Ach_verification_model"/> and sets the default values.

@@ -79,42 +79,6 @@ namespace Marqeta.Core.Sdk.Models
         #pragma warning disable CS1591
         GpaCreditAuthorizationBillpaymentReversal,
         #pragma warning restore CS1591
-        [EnumMember(Value = "msa.credit.pending")]
-        #pragma warning disable CS1591
-        MsaCreditPending,
-        #pragma warning restore CS1591
-        [EnumMember(Value = "msa.credit.pending.reversal")]
-        #pragma warning disable CS1591
-        MsaCreditPendingReversal,
-        #pragma warning restore CS1591
-        [EnumMember(Value = "msa.credit.reversal")]
-        #pragma warning disable CS1591
-        MsaCreditReversal,
-        #pragma warning restore CS1591
-        [EnumMember(Value = "msa.credit")]
-        #pragma warning disable CS1591
-        MsaCredit,
-        #pragma warning restore CS1591
-        [EnumMember(Value = "msa.debit.pending")]
-        #pragma warning disable CS1591
-        MsaDebitPending,
-        #pragma warning restore CS1591
-        [EnumMember(Value = "msa.debit.pending.reversal")]
-        #pragma warning disable CS1591
-        MsaDebitPendingReversal,
-        #pragma warning restore CS1591
-        [EnumMember(Value = "msa.debit")]
-        #pragma warning disable CS1591
-        MsaDebit,
-        #pragma warning restore CS1591
-        [EnumMember(Value = "msa.credit.chargeback")]
-        #pragma warning disable CS1591
-        MsaCreditChargeback,
-        #pragma warning restore CS1591
-        [EnumMember(Value = "msa.credit.chargeback.reversal")]
-        #pragma warning disable CS1591
-        MsaCreditChargebackReversal,
-        #pragma warning restore CS1591
         [EnumMember(Value = "authorization")]
         #pragma warning disable CS1591
         Authorization,

@@ -12,7 +12,7 @@ namespace Marqeta.Core.Sdk.Models
     public partial class Program_funding_source_response : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
     {
-        /// <summary>Account identifier.</summary>
+        /// <summary>The account property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Account { get; set; }
@@ -20,15 +20,15 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string Account { get; set; }
 #endif
-        /// <summary>Indicates whether the program funding source is active.This field is returned if it exists in the resource.</summary>
+        /// <summary>The active property</summary>
         public bool? Active { get; set; }
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Date and time when the resource was created, in UTC.</summary>
+        /// <summary>The created_time property</summary>
         public DateTimeOffset? CreatedTime { get; set; }
-        /// <summary>Date and time when the resource was last modified, in UTC.</summary>
+        /// <summary>The last_modified_time property</summary>
         public DateTimeOffset? LastModifiedTime { get; set; }
-        /// <summary>Name of the program funding source.</summary>
+        /// <summary>The name property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Name { get; set; }
@@ -36,7 +36,7 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string Name { get; set; }
 #endif
-        /// <summary>Unique identifier of the funding source.</summary>
+        /// <summary>The token property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Token { get; set; }

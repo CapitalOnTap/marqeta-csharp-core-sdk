@@ -3,9 +3,10 @@ using System.Runtime.Serialization;
 using System;
 namespace Marqeta.Core.Sdk.Models
 {
-    /// <summary>Controls whether the `value` field represents a fixed amount or a percentage of the authorization amount.</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
+    #pragma warning disable CS1591
     public enum Hold_increase_type
+    #pragma warning restore CS1591
     {
         [EnumMember(Value = "AMOUNT")]
         #pragma warning disable CS1591

@@ -28,5 +28,25 @@ namespace Marqeta.Core.Sdk.Models
         #pragma warning disable CS1591
         OTHER,
         #pragma warning restore CS1591
+        [EnumMember(Value = "FINANCIAL_OR_CREDIT_INSTITUTION")]
+        #pragma warning disable CS1591
+        FINANCIAL_OR_CREDIT_INSTITUTION,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "FOUNDATION")]
+        #pragma warning disable CS1591
+        FOUNDATION,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "ASSOCIATION")]
+        #pragma warning disable CS1591
+        ASSOCIATION,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "CHARITY")]
+        #pragma warning disable CS1591
+        CHARITY,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "TRUST")]
+        #pragma warning disable CS1591
+        TRUST,
+        #pragma warning restore CS1591
     }
 }

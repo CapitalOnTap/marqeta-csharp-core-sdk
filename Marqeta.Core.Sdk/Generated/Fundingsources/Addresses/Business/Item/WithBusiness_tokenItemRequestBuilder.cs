@@ -34,7 +34,7 @@ namespace Marqeta.Core.Sdk.Fundingsources.Addresses.Business.Item
         {
         }
         /// <summary>
-        /// Use this endpoint to list existing addresses for a business.This endpoint supports &lt;&lt;/core-api/field-filtering, field filtering&gt;&gt;.
+        /// Lists all addresses for a business
         /// </summary>
         /// <returns>A <see cref="global::Marqeta.Core.Sdk.Models.CardholderAddressListResponse"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -57,7 +57,7 @@ namespace Marqeta.Core.Sdk.Fundingsources.Addresses.Business.Item
             return await RequestAdapter.SendAsync<global::Marqeta.Core.Sdk.Models.CardholderAddressListResponse>(requestInfo, global::Marqeta.Core.Sdk.Models.CardholderAddressListResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Use this endpoint to list existing addresses for a business.This endpoint supports &lt;&lt;/core-api/field-filtering, field filtering&gt;&gt;.
+        /// Lists all addresses for a business
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -85,12 +85,12 @@ namespace Marqeta.Core.Sdk.Fundingsources.Addresses.Business.Item
             return new global::Marqeta.Core.Sdk.Fundingsources.Addresses.Business.Item.WithBusiness_tokenItemRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
-        /// Use this endpoint to list existing addresses for a business.This endpoint supports &lt;&lt;/core-api/field-filtering, field filtering&gt;&gt;.
+        /// Lists all addresses for a business
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class WithBusiness_tokenItemRequestBuilderGetQueryParameters 
         {
-            /// <summary>Comma-delimited list of fields to return (`field_1,field_2`, and so on).Leave blank to return all fields.</summary>
+            /// <summary>Comma-delimited list of fields to return (e.g. field_1,field_2,..). Leave blank to return all fields.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
             [QueryParameter("fields")]

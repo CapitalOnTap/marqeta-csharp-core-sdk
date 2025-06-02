@@ -13,7 +13,7 @@ namespace Marqeta.Core.Sdk.Models
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class Jit_funding_api : IAdditionalDataHolder, IParsable
     {
-        /// <summary>Contains account name verification data used to make JIT Funding decisions from one of the following objects:* The `gateway` object contains account name verification data from your JIT Funding gateway.* The `issuer` object contains account name verification data from the Marqeta platform.* The `request` object contains account name verification data as it appears in a JIT Funding request.</summary>
+        /// <summary>Contains account name verification data used to make JIT Funding decisions from one of the following objects:* The `gateway` object, which contains account name verification data from your JIT Funding gateway.* The `issuer` object, which contains account name verification data from the Marqeta platform.* The `request` object, which contains account name verification data as it appears in a JIT Funding request.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Marqeta.Core.Sdk.Models.Jit_account_name_verification? AccountNameVerification { get; set; }
@@ -69,7 +69,7 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public List<string> IncrementalAuthorizationJitFundingTokens { get; set; }
 #endif
-        /// <summary>Contains account name verification data used to make JIT Funding decisions from one of the following objects:* The `gateway` object contains account name verification data from your JIT Funding gateway.* The `issuer` object contains account name verification data from the Marqeta platform.* The `request` object contains account name verification data as it appears in a JIT Funding request.</summary>
+        /// <summary>Contains account name verification data used to make JIT Funding decisions from one of the following objects:* The `gateway` object, which contains account name verification data from your JIT Funding gateway.* The `issuer` object, which contains account name verification data from the Marqeta platform.* The `request` object, which contains account name verification data as it appears in a JIT Funding request.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Marqeta.Core.Sdk.Models.Jit_account_name_verification? JitAccountNameVerification { get; set; }

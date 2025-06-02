@@ -25,7 +25,7 @@ namespace Marqeta.Core.Sdk.Fundingsources.Ach
             get => new global::Marqeta.Core.Sdk.Fundingsources.Ach.Partner.PartnerRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>Gets an item from the Marqeta.Core.Sdk.fundingsources.ach.item collection</summary>
-        /// <param name="position">Unique identifier of the funding source.Send a `GET` request to `/fundingsources/user/{user_token}` to retrieve existing funding source tokens for a user or to `/fundingsources/business/{business_token}` to retrieve existing funding source tokens for a business.</param>
+        /// <param name="position">Funding account token</param>
         /// <returns>A <see cref="global::Marqeta.Core.Sdk.Fundingsources.Ach.Item.WithFunding_source_tokenItemRequestBuilder"/></returns>
         public global::Marqeta.Core.Sdk.Fundingsources.Ach.Item.WithFunding_source_tokenItemRequestBuilder this[string position]
         {
@@ -53,7 +53,7 @@ namespace Marqeta.Core.Sdk.Fundingsources.Ach
         {
         }
         /// <summary>
-        /// Create an ACH funding source for an existing account holder.Specify the account holder of the funding source by passing a user or business token.The response body returns details about the account, including the verification status.Possible ACH verification status values include `ACH_VERIFIED`, `ACH_FAILED`, and `VERIFICATION_PENDING`.
+        /// Registers an ACH funding source
         /// </summary>
         /// <returns>A <see cref="global::Marqeta.Core.Sdk.Models.Ach_response_model"/></returns>
         /// <param name="body">The request body</param>
@@ -78,7 +78,7 @@ namespace Marqeta.Core.Sdk.Fundingsources.Ach
             return await RequestAdapter.SendAsync<global::Marqeta.Core.Sdk.Models.Ach_response_model>(requestInfo, global::Marqeta.Core.Sdk.Models.Ach_response_model.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Create an ACH funding source for an existing account holder.Specify the account holder of the funding source by passing a user or business token.The response body returns details about the account, including the verification status.Possible ACH verification status values include `ACH_VERIFIED`, `ACH_FAILED`, and `VERIFICATION_PENDING`.
+        /// Registers an ACH funding source
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">The request body</param>

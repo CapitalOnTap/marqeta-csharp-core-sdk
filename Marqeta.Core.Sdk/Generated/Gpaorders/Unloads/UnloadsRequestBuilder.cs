@@ -19,7 +19,7 @@ namespace Marqeta.Core.Sdk.Gpaorders.Unloads
     public partial class UnloadsRequestBuilder : BaseRequestBuilder
     {
         /// <summary>Gets an item from the Marqeta.Core.Sdk.gpaorders.unloads.item collection</summary>
-        /// <param name="position">Unique identifier of the GPA unload.</param>
+        /// <param name="position">Unload token</param>
         /// <returns>A <see cref="global::Marqeta.Core.Sdk.Gpaorders.Unloads.Item.WithUnload_tokenItemRequestBuilder"/></returns>
         public global::Marqeta.Core.Sdk.Gpaorders.Unloads.Item.WithUnload_tokenItemRequestBuilder this[string position]
         {
@@ -47,7 +47,7 @@ namespace Marqeta.Core.Sdk.Gpaorders.Unloads
         {
         }
         /// <summary>
-        /// Use this endpoint to list all GPA unloads or GPA unloads associated with a specific user or business.This endpoint supports &lt;&lt;/core-api/field-filtering, field filtering&gt;&gt; and &lt;&lt;/core-api/sorting-and-pagination, pagination&gt;&gt;.
+        /// Lists all GPA returns
         /// </summary>
         /// <returns>A <see cref="global::Marqeta.Core.Sdk.Models.GPAUnloadListResponse"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -70,7 +70,7 @@ namespace Marqeta.Core.Sdk.Gpaorders.Unloads
             return await RequestAdapter.SendAsync<global::Marqeta.Core.Sdk.Models.GPAUnloadListResponse>(requestInfo, global::Marqeta.Core.Sdk.Models.GPAUnloadListResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Use this endpoint to unload a GPA order.Unloading a GPA order returns funds to the funding source.A GPA unload must be tied to an original GPA order and can be used to return the amount of the original order or a lesser amount.
+        /// Returns a GPA order
         /// </summary>
         /// <returns>A <see cref="global::Marqeta.Core.Sdk.Models.Gpa_returns"/></returns>
         /// <param name="body">The request body</param>
@@ -95,7 +95,7 @@ namespace Marqeta.Core.Sdk.Gpaorders.Unloads
             return await RequestAdapter.SendAsync<global::Marqeta.Core.Sdk.Models.Gpa_returns>(requestInfo, global::Marqeta.Core.Sdk.Models.Gpa_returns.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Use this endpoint to list all GPA unloads or GPA unloads associated with a specific user or business.This endpoint supports &lt;&lt;/core-api/field-filtering, field filtering&gt;&gt; and &lt;&lt;/core-api/sorting-and-pagination, pagination&gt;&gt;.
+        /// Lists all GPA returns
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -114,7 +114,7 @@ namespace Marqeta.Core.Sdk.Gpaorders.Unloads
             return requestInfo;
         }
         /// <summary>
-        /// Use this endpoint to unload a GPA order.Unloading a GPA order returns funds to the funding source.A GPA unload must be tied to an original GPA order and can be used to return the amount of the original order or a lesser amount.
+        /// Returns a GPA order
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">The request body</param>
@@ -145,12 +145,12 @@ namespace Marqeta.Core.Sdk.Gpaorders.Unloads
             return new global::Marqeta.Core.Sdk.Gpaorders.Unloads.UnloadsRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
-        /// Use this endpoint to list all GPA unloads or GPA unloads associated with a specific user or business.This endpoint supports &lt;&lt;/core-api/field-filtering, field filtering&gt;&gt; and &lt;&lt;/core-api/sorting-and-pagination, pagination&gt;&gt;.
+        /// Lists all GPA returns
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class UnloadsRequestBuilderGetQueryParameters 
         {
-            /// <summary>Unique identifier of the business resource.Send a `GET` request to `/businesses` to retrieve business tokens.</summary>
+            /// <summary>Business token</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
             [QueryParameter("business_token")]
@@ -160,10 +160,10 @@ namespace Marqeta.Core.Sdk.Gpaorders.Unloads
             [QueryParameter("business_token")]
             public string BusinessToken { get; set; }
 #endif
-            /// <summary>Number of resources to retrieve.</summary>
+            /// <summary>Number of GPA unloads to retrieve</summary>
             [QueryParameter("count")]
             public int? Count { get; set; }
-            /// <summary>Comma-delimited list of fields to return (`field_1,field_2`, and so on).Leave blank to return all fields.</summary>
+            /// <summary>Comma-delimited list of fields to return (e.g. field_1,field_2,..). Leave blank to return all fields.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
             [QueryParameter("fields")]
@@ -173,7 +173,7 @@ namespace Marqeta.Core.Sdk.Gpaorders.Unloads
             [QueryParameter("fields")]
             public string Fields { get; set; }
 #endif
-            /// <summary>Unique identifier of the original GPA order.Send a `GET` request to `/transactions?type=gpa.credit` to retrieve GPA order tokens.</summary>
+            /// <summary>Original order token</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
             [QueryParameter("original_order_token")]
@@ -183,7 +183,7 @@ namespace Marqeta.Core.Sdk.Gpaorders.Unloads
             [QueryParameter("original_order_token")]
             public string OriginalOrderToken { get; set; }
 #endif
-            /// <summary>Field on which to sort.Use any field in the resource model, or one of the system fields `lastModifiedTime` or `createdTime`.Prefix the field name with a hyphen (`-`) to sort in descending order.Omit the hyphen to sort in ascending order.</summary>
+            /// <summary>Sort order</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
             [QueryParameter("sort_by")]
@@ -193,10 +193,10 @@ namespace Marqeta.Core.Sdk.Gpaorders.Unloads
             [QueryParameter("sort_by")]
             public string SortBy { get; set; }
 #endif
-            /// <summary>Sort order index of the first resource in the returned array.</summary>
+            /// <summary>Start index</summary>
             [QueryParameter("start_index")]
             public int? StartIndex { get; set; }
-            /// <summary>Unique identifier of the user resource.Send a `GET` request to `/users` to retrieve user tokens.</summary>
+            /// <summary>User token</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
             [QueryParameter("user_token")]

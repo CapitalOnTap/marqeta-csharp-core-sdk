@@ -34,20 +34,20 @@ namespace Marqeta.Core.Sdk.Feerefunds
         {
         }
         /// <summary>
-        /// Use this endpoint to create a fee refund.Include the fee charge `token` path parameter to specify the fee to return.If there are insufficient funds in your fee account to refund the fee, funds are drawn from your program reserve account.
+        /// Creates a fee refund
         /// </summary>
-        /// <returns>A <see cref="global::Marqeta.Core.Sdk.Models.Fee_transfer_response"/></returns>
-        /// <param name="body">Specifies the fee to refund.</param>
+        /// <returns>A <see cref="global::Marqeta.Core.Sdk.Models.Fee_refund_response"/></returns>
+        /// <param name="body">The request body</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
         /// <exception cref="global::Marqeta.Core.Sdk.Models.ApiError">When receiving a 4XX or 5XX status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Marqeta.Core.Sdk.Models.Fee_transfer_response?> PostAsync(global::Marqeta.Core.Sdk.Models.Fee_refund_request body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Marqeta.Core.Sdk.Models.Fee_refund_response?> PostAsync(global::Marqeta.Core.Sdk.Models.Fee_refund_request body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Marqeta.Core.Sdk.Models.Fee_transfer_response> PostAsync(global::Marqeta.Core.Sdk.Models.Fee_refund_request body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Marqeta.Core.Sdk.Models.Fee_refund_response> PostAsync(global::Marqeta.Core.Sdk.Models.Fee_refund_request body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             _ = body ?? throw new ArgumentNullException(nameof(body));
@@ -56,13 +56,13 @@ namespace Marqeta.Core.Sdk.Feerefunds
             {
                 { "XXX", global::Marqeta.Core.Sdk.Models.ApiError.CreateFromDiscriminatorValue },
             };
-            return await RequestAdapter.SendAsync<global::Marqeta.Core.Sdk.Models.Fee_transfer_response>(requestInfo, global::Marqeta.Core.Sdk.Models.Fee_transfer_response.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Marqeta.Core.Sdk.Models.Fee_refund_response>(requestInfo, global::Marqeta.Core.Sdk.Models.Fee_refund_response.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Use this endpoint to create a fee refund.Include the fee charge `token` path parameter to specify the fee to return.If there are insufficient funds in your fee account to refund the fee, funds are drawn from your program reserve account.
+        /// Creates a fee refund
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
-        /// <param name="body">Specifies the fee to refund.</param>
+        /// <param name="body">The request body</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable

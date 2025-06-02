@@ -12,7 +12,7 @@ using System;
 namespace Marqeta.Core.Sdk.Cards.Item.Showpan
 {
     /// <summary>
-    /// Builds and executes requests for operations under \cards\{card_hash-id}\showpan
+    /// Builds and executes requests for operations under \cards\{token}\showpan
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class ShowpanRequestBuilder : BaseRequestBuilder
@@ -22,7 +22,7 @@ namespace Marqeta.Core.Sdk.Cards.Item.Showpan
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public ShowpanRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/cards/{card_hash%2Did}/showpan{?fields*,show_cvv_number*}", pathParameters)
+        public ShowpanRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/cards/{token}/showpan{?fields*,show_cvv_number*}", pathParameters)
         {
         }
         /// <summary>
@@ -30,7 +30,7 @@ namespace Marqeta.Core.Sdk.Cards.Item.Showpan
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public ShowpanRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/cards/{card_hash%2Did}/showpan{?fields*,show_cvv_number*}", rawUrl)
+        public ShowpanRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/cards/{token}/showpan{?fields*,show_cvv_number*}", rawUrl)
         {
         }
         /// <summary>

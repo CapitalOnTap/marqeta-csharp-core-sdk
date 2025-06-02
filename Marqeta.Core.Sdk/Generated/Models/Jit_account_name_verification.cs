@@ -8,7 +8,7 @@ using System;
 namespace Marqeta.Core.Sdk.Models
 {
     /// <summary>
-    /// Contains account name verification data used to make JIT Funding decisions from one of the following objects:* The `gateway` object contains account name verification data from your JIT Funding gateway.* The `issuer` object contains account name verification data from the Marqeta platform.* The `request` object contains account name verification data as it appears in a JIT Funding request.
+    /// Contains account name verification data used to make JIT Funding decisions from one of the following objects:* The `gateway` object, which contains account name verification data from your JIT Funding gateway.* The `issuer` object, which contains account name verification data from the Marqeta platform.* The `request` object, which contains account name verification data as it appears in a JIT Funding request.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class Jit_account_name_verification : IAdditionalDataHolder, IParsable
@@ -34,10 +34,10 @@ namespace Marqeta.Core.Sdk.Models
         /// <summary>Contains account name verification data used to make JIT Funding decisions.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Marqeta.Core.Sdk.Models.Ani_information_1? Request { get; set; }
+        public global::Marqeta.Core.Sdk.Models.Ani_information? Request { get; set; }
 #nullable restore
 #else
-        public global::Marqeta.Core.Sdk.Models.Ani_information_1 Request { get; set; }
+        public global::Marqeta.Core.Sdk.Models.Ani_information Request { get; set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Marqeta.Core.Sdk.Models.Jit_account_name_verification"/> and sets the default values.
@@ -66,7 +66,7 @@ namespace Marqeta.Core.Sdk.Models
             {
                 { "gateway", n => { Gateway = n.GetObjectValue<global::Marqeta.Core.Sdk.Models.Account_name_verification_source>(global::Marqeta.Core.Sdk.Models.Account_name_verification_source.CreateFromDiscriminatorValue); } },
                 { "issuer", n => { Issuer = n.GetObjectValue<global::Marqeta.Core.Sdk.Models.Account_name_verification_source>(global::Marqeta.Core.Sdk.Models.Account_name_verification_source.CreateFromDiscriminatorValue); } },
-                { "request", n => { Request = n.GetObjectValue<global::Marqeta.Core.Sdk.Models.Ani_information_1>(global::Marqeta.Core.Sdk.Models.Ani_information_1.CreateFromDiscriminatorValue); } },
+                { "request", n => { Request = n.GetObjectValue<global::Marqeta.Core.Sdk.Models.Ani_information>(global::Marqeta.Core.Sdk.Models.Ani_information.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -78,7 +78,7 @@ namespace Marqeta.Core.Sdk.Models
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
             writer.WriteObjectValue<global::Marqeta.Core.Sdk.Models.Account_name_verification_source>("gateway", Gateway);
             writer.WriteObjectValue<global::Marqeta.Core.Sdk.Models.Account_name_verification_source>("issuer", Issuer);
-            writer.WriteObjectValue<global::Marqeta.Core.Sdk.Models.Ani_information_1>("request", Request);
+            writer.WriteObjectValue<global::Marqeta.Core.Sdk.Models.Ani_information>("request", Request);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

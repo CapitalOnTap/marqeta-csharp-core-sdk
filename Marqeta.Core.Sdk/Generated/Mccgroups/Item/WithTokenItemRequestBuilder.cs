@@ -34,7 +34,7 @@ namespace Marqeta.Core.Sdk.Mccgroups.Item
         {
         }
         /// <summary>
-        /// Use this endpoint to retrieve a specific MCC group.
+        /// Returns a specific MCC group
         /// </summary>
         /// <returns>A <see cref="global::Marqeta.Core.Sdk.Models.Mcc_group_model"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -57,7 +57,7 @@ namespace Marqeta.Core.Sdk.Mccgroups.Item
             return await RequestAdapter.SendAsync<global::Marqeta.Core.Sdk.Models.Mcc_group_model>(requestInfo, global::Marqeta.Core.Sdk.Models.Mcc_group_model.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Use this endpoint to update an MCC group.Include the `token` path parameter to identify the MCC group to update.You must pass all the merchant category codes you want included in the group, including existing ones you want to retain.
+        /// Updates an MCC group
         /// </summary>
         /// <returns>A <see cref="global::Marqeta.Core.Sdk.Models.Mcc_group_update_model"/></returns>
         /// <param name="body">The request body</param>
@@ -82,7 +82,7 @@ namespace Marqeta.Core.Sdk.Mccgroups.Item
             return await RequestAdapter.SendAsync<global::Marqeta.Core.Sdk.Models.Mcc_group_update_model>(requestInfo, global::Marqeta.Core.Sdk.Models.Mcc_group_update_model.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Use this endpoint to retrieve a specific MCC group.
+        /// Returns a specific MCC group
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -101,7 +101,7 @@ namespace Marqeta.Core.Sdk.Mccgroups.Item
             return requestInfo;
         }
         /// <summary>
-        /// Use this endpoint to update an MCC group.Include the `token` path parameter to identify the MCC group to update.You must pass all the merchant category codes you want included in the group, including existing ones you want to retain.
+        /// Updates an MCC group
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">The request body</param>

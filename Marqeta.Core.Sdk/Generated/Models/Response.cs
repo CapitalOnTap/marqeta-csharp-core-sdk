@@ -15,7 +15,7 @@ namespace Marqeta.Core.Sdk.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Information about the velocity control applied to the transaction.*NOTE:* This field is returned only in transaction response objects.It is not returned in address verification or card security verification response objects.</summary>
+        /// <summary>Additional information about the transaction, such as velocity control details.This field is returned in transaction response objects only.It is not returned in address verification or card security verification response objects.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? AdditionalInformation { get; set; }

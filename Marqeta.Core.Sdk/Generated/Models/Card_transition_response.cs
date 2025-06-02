@@ -58,6 +58,8 @@ namespace Marqeta.Core.Sdk.Models
         public global::Marqeta.Core.Sdk.Models.Card_transition_response_channel? Channel { get; set; }
         /// <summary>The created_time property</summary>
         public DateTimeOffset? CreatedTime { get; set; }
+        /// <summary>The created_timestamp property</summary>
+        public DateTimeOffset? CreatedTimestamp { get; set; }
         /// <summary>The expedite property</summary>
         public bool? Expedite { get; set; }
         /// <summary>The expiration property</summary>
@@ -198,6 +200,7 @@ namespace Marqeta.Core.Sdk.Models
                 { "card_token", n => { CardToken = n.GetStringValue(); } },
                 { "channel", n => { Channel = n.GetEnumValue<global::Marqeta.Core.Sdk.Models.Card_transition_response_channel>(); } },
                 { "created_time", n => { CreatedTime = n.GetDateTimeOffsetValue(); } },
+                { "created_timestamp", n => { CreatedTimestamp = n.GetDateTimeOffsetValue(); } },
                 { "expedite", n => { Expedite = n.GetBoolValue(); } },
                 { "expiration", n => { Expiration = n.GetStringValue(); } },
                 { "expiration_time", n => { ExpirationTime = n.GetStringValue(); } },
@@ -232,6 +235,7 @@ namespace Marqeta.Core.Sdk.Models
             writer.WriteStringValue("card_token", CardToken);
             writer.WriteEnumValue<global::Marqeta.Core.Sdk.Models.Card_transition_response_channel>("channel", Channel);
             writer.WriteDateTimeOffsetValue("created_time", CreatedTime);
+            writer.WriteDateTimeOffsetValue("created_timestamp", CreatedTimestamp);
             writer.WriteBoolValue("expedite", Expedite);
             writer.WriteStringValue("expiration", Expiration);
             writer.WriteStringValue("expiration_time", ExpirationTime);

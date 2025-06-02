@@ -25,7 +25,7 @@ namespace Marqeta.Core.Sdk.Gpaorders
             get => new global::Marqeta.Core.Sdk.Gpaorders.Unloads.UnloadsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>Gets an item from the Marqeta.Core.Sdk.gpaorders.item collection</summary>
-        /// <param name="position">Unique identifier of the GPA order.Send a `GET` request to `/transactions?type=gpa.credit` to retrieve GPA order tokens.</param>
+        /// <param name="position">Unique identifier of the item</param>
         /// <returns>A <see cref="global::Marqeta.Core.Sdk.Gpaorders.Item.WithTokenItemRequestBuilder"/></returns>
         public global::Marqeta.Core.Sdk.Gpaorders.Item.WithTokenItemRequestBuilder this[string position]
         {
@@ -53,7 +53,7 @@ namespace Marqeta.Core.Sdk.Gpaorders
         {
         }
         /// <summary>
-        /// Use this endpoint to create an order to fund an account holder&apos;s GPA.You can assess a &lt;&lt;/core-api/fees, fee&gt;&gt; while funding a GPA by using the optional `fees` array to attach one or more fee resources to the GPA order.When you create a GPA order, the GPA is first credited for the fees, then debited at funding time.
+        /// Funds a user&apos;s GPA account
         /// </summary>
         /// <returns>A <see cref="global::Marqeta.Core.Sdk.Models.Gpa_response"/></returns>
         /// <param name="body">The request body</param>
@@ -78,7 +78,7 @@ namespace Marqeta.Core.Sdk.Gpaorders
             return await RequestAdapter.SendAsync<global::Marqeta.Core.Sdk.Models.Gpa_response>(requestInfo, global::Marqeta.Core.Sdk.Models.Gpa_response.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Use this endpoint to create an order to fund an account holder&apos;s GPA.You can assess a &lt;&lt;/core-api/fees, fee&gt;&gt; while funding a GPA by using the optional `fees` array to attach one or more fee resources to the GPA order.When you create a GPA order, the GPA is first credited for the fees, then debited at funding time.
+        /// Funds a user&apos;s GPA account
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">The request body</param>

@@ -12,7 +12,7 @@ using System;
 namespace Marqeta.Core.Sdk.Businesses.Item.Ssn
 {
     /// <summary>
-    /// Builds and executes requests for operations under \businesses\{parent_token-id}\ssn
+    /// Builds and executes requests for operations under \businesses\{business_token-id}\ssn
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class SsnRequestBuilder : BaseRequestBuilder
@@ -22,7 +22,7 @@ namespace Marqeta.Core.Sdk.Businesses.Item.Ssn
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public SsnRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/businesses/{parent_token%2Did}/ssn{?full_ssn*}", pathParameters)
+        public SsnRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/businesses/{business_token%2Did}/ssn{?full_ssn*}", pathParameters)
         {
         }
         /// <summary>
@@ -30,7 +30,7 @@ namespace Marqeta.Core.Sdk.Businesses.Item.Ssn
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public SsnRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/businesses/{parent_token%2Did}/ssn{?full_ssn*}", rawUrl)
+        public SsnRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/businesses/{business_token%2Did}/ssn{?full_ssn*}", rawUrl)
         {
         }
         /// <summary>

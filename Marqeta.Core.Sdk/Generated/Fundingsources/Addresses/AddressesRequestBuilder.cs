@@ -31,7 +31,7 @@ namespace Marqeta.Core.Sdk.Fundingsources.Addresses
             get => new global::Marqeta.Core.Sdk.Fundingsources.Addresses.User.UserRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>Gets an item from the Marqeta.Core.Sdk.fundingsources.addresses.item collection</summary>
-        /// <param name="position">Unique identifier of the funding source address.</param>
+        /// <param name="position">Funding source address token</param>
         /// <returns>A <see cref="global::Marqeta.Core.Sdk.Fundingsources.Addresses.Item.WithFunding_source_address_tokenItemRequestBuilder"/></returns>
         public global::Marqeta.Core.Sdk.Fundingsources.Addresses.Item.WithFunding_source_address_tokenItemRequestBuilder this[string position]
         {
@@ -59,7 +59,7 @@ namespace Marqeta.Core.Sdk.Fundingsources.Addresses
         {
         }
         /// <summary>
-        /// Use this endpoint to create an address resource.When creating the address, you must pass the token of either an existing user in the `user_token` field or an existing business in the `business_token` field.Do not pass both.
+        /// Creates an account holder address for a funding source
         /// </summary>
         /// <returns>A <see cref="global::Marqeta.Core.Sdk.Models.CardholderAddressResponse"/></returns>
         /// <param name="body">The request body</param>
@@ -84,7 +84,7 @@ namespace Marqeta.Core.Sdk.Fundingsources.Addresses
             return await RequestAdapter.SendAsync<global::Marqeta.Core.Sdk.Models.CardholderAddressResponse>(requestInfo, global::Marqeta.Core.Sdk.Models.CardholderAddressResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Use this endpoint to create an address resource.When creating the address, you must pass the token of either an existing user in the `user_token` field or an existing business in the `business_token` field.Do not pass both.
+        /// Creates an account holder address for a funding source
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">The request body</param>

@@ -14,9 +14,9 @@ namespace Marqeta.Core.Sdk.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Amount to fund.</summary>
+        /// <summary>The amount property</summary>
         public double? Amount { get; set; }
-        /// <summary>Unique identifier of the business.Pass either a `business_token` or a `user_token`, not both.Send a `GET` request to `/businesses` to retrieve business tokens.</summary>
+        /// <summary>Required if &apos;user_token&apos; is null</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? BusinessToken { get; set; }
@@ -24,7 +24,7 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string BusinessToken { get; set; }
 #endif
-        /// <summary>Three-digit ISO 4217 currency code.</summary>
+        /// <summary>The currency_code property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? CurrencyCode { get; set; }
@@ -32,7 +32,7 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string CurrencyCode { get; set; }
 #endif
-        /// <summary>List of fees associated with the funding transaction.</summary>
+        /// <summary>The fees property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<global::Marqeta.Core.Sdk.Models.Fee_model>? Fees { get; set; }
@@ -40,7 +40,7 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public List<global::Marqeta.Core.Sdk.Models.Fee_model> Fees { get; set; }
 #endif
-        /// <summary>Unique identifier of the funding source address to use for this order.If your funding source is an ACH account, then a funding source address is not required. If your funding source is a payment card, you must have at least one funding source address in order to create a GPA order.Send a `GET` request to `/fundingsources/addresses/user/{token}` to retrieve addresses for a specific user.</summary>
+        /// <summary>The funding_source_address_token property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? FundingSourceAddressToken { get; set; }
@@ -48,7 +48,7 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string FundingSourceAddressToken { get; set; }
 #endif
-        /// <summary>Unique identifier of the funding source to use for this order.You do not have to supply a funding source token value in this call if you have a default funding source set up (verify the funding source&apos;s `is_default_account` field).If you have only one funding source, then this source is used as the default.If you have multiple funding sources and none are configured as the default, then an error is returned.Send a `GET` request to `/fundingsources/user/{user_token}` to retrieve funding source tokens for a user or to `/fundingsources/business/{business_token}` to retrieve funding source tokens for a business.</summary>
+        /// <summary>The funding_source_token property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? FundingSourceToken { get; set; }
@@ -56,7 +56,7 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string FundingSourceToken { get; set; }
 #endif
-        /// <summary>Additional descriptive text.</summary>
+        /// <summary>The memo property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Memo { get; set; }
@@ -64,7 +64,7 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string Memo { get; set; }
 #endif
-        /// <summary>Comma-delimited list of tags describing the GPA order.</summary>
+        /// <summary>The tags property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Tags { get; set; }
@@ -72,7 +72,7 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string Tags { get; set; }
 #endif
-        /// <summary>Unique identifier of the GPA order.If you do not include a token, the system will generate one automatically.This token is necessary for use in other calls, so we recommend that rather than let the system generate one, you use a simple string that is easy to remember.This value cannot be updated.</summary>
+        /// <summary>The token property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Token { get; set; }
@@ -80,7 +80,7 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string Token { get; set; }
 #endif
-        /// <summary>Unique identifier of the user.Pass either a `user_token` or a `business_token`, not both.Send a `GET` request to `/users` to retrieve business tokens.</summary>
+        /// <summary>Required if &apos;business_token&apos; is null</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? UserToken { get; set; }

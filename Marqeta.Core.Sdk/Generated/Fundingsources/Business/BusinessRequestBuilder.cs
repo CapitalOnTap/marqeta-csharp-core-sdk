@@ -16,7 +16,7 @@ namespace Marqeta.Core.Sdk.Fundingsources.Business
     public partial class BusinessRequestBuilder : BaseRequestBuilder
     {
         /// <summary>Gets an item from the Marqeta.Core.Sdk.fundingsources.business.item collection</summary>
-        /// <param name="position">Unique identifier of the business account holder.Send a `GET` request to `/businesses` to retrieve business tokens.</param>
+        /// <param name="position">Business token</param>
         /// <returns>A <see cref="global::Marqeta.Core.Sdk.Fundingsources.Business.Item.WithBusiness_tokenItemRequestBuilder"/></returns>
         public global::Marqeta.Core.Sdk.Fundingsources.Business.Item.WithBusiness_tokenItemRequestBuilder this[string position]
         {

@@ -19,7 +19,7 @@ namespace Marqeta.Core.Sdk.Merchantgroups
     public partial class MerchantgroupsRequestBuilder : BaseRequestBuilder
     {
         /// <summary>Gets an item from the Marqeta.Core.Sdk.merchantgroups.item collection</summary>
-        /// <param name="position">Unique identifier of the merchant group.</param>
+        /// <param name="position">Merchant Group token</param>
         /// <returns>A <see cref="global::Marqeta.Core.Sdk.Merchantgroups.Item.WithTokenItemRequestBuilder"/></returns>
         public global::Marqeta.Core.Sdk.Merchantgroups.Item.WithTokenItemRequestBuilder this[string position]
         {
@@ -47,7 +47,7 @@ namespace Marqeta.Core.Sdk.Merchantgroups
         {
         }
         /// <summary>
-        /// To return an array of all merchant groups, send a `GET` request to the `/merchantgroups` endpoint.To return an array of all merchant groups that include a specific merchant identifier, send a `GET` request to the `/merchantgroups` endpoint that includes the merchant identifier in the query parameters.
+        /// Lists all Merchant Groups
         /// </summary>
         /// <returns>A <see cref="global::Marqeta.Core.Sdk.Models.MerchantGroupListResponse"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -70,7 +70,7 @@ namespace Marqeta.Core.Sdk.Merchantgroups
             return await RequestAdapter.SendAsync<global::Marqeta.Core.Sdk.Models.MerchantGroupListResponse>(requestInfo, global::Marqeta.Core.Sdk.Models.MerchantGroupListResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// To create a merchant group, send a `POST` request to the `/merchantgroups` endpoint.
+        /// Creates a merchant group
         /// </summary>
         /// <returns>A <see cref="global::Marqeta.Core.Sdk.Models.Merchant_group_response"/></returns>
         /// <param name="body">The request body</param>
@@ -95,7 +95,7 @@ namespace Marqeta.Core.Sdk.Merchantgroups
             return await RequestAdapter.SendAsync<global::Marqeta.Core.Sdk.Models.Merchant_group_response>(requestInfo, global::Marqeta.Core.Sdk.Models.Merchant_group_response.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// To return an array of all merchant groups, send a `GET` request to the `/merchantgroups` endpoint.To return an array of all merchant groups that include a specific merchant identifier, send a `GET` request to the `/merchantgroups` endpoint that includes the merchant identifier in the query parameters.
+        /// Lists all Merchant Groups
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -114,7 +114,7 @@ namespace Marqeta.Core.Sdk.Merchantgroups
             return requestInfo;
         }
         /// <summary>
-        /// To create a merchant group, send a `POST` request to the `/merchantgroups` endpoint.
+        /// Creates a merchant group
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">The request body</param>
@@ -145,15 +145,15 @@ namespace Marqeta.Core.Sdk.Merchantgroups
             return new global::Marqeta.Core.Sdk.Merchantgroups.MerchantgroupsRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
-        /// To return an array of all merchant groups, send a `GET` request to the `/merchantgroups` endpoint.To return an array of all merchant groups that include a specific merchant identifier, send a `GET` request to the `/merchantgroups` endpoint that includes the merchant identifier in the query parameters.
+        /// Lists all Merchant Groups
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class MerchantgroupsRequestBuilderGetQueryParameters 
         {
-            /// <summary>Number of resources to retrieve.</summary>
+            /// <summary>Number of items to retrieve. Count can be between 1 - 10 items.</summary>
             [QueryParameter("count")]
             public int? Count { get; set; }
-            /// <summary>Returns all merchant groups that contain the specified merchant identifier.</summary>
+            /// <summary>mid</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
             [QueryParameter("mid")]
@@ -163,7 +163,7 @@ namespace Marqeta.Core.Sdk.Merchantgroups
             [QueryParameter("mid")]
             public string Mid { get; set; }
 #endif
-            /// <summary>Field on which to sort.Use any field in the resource model, or one of the system fields `lastModifiedTime` or `createdTime`.Prefix the field name with a hyphen (`-`) to sort in descending order.Omit the hyphen to sort in ascending order.</summary>
+            /// <summary>Field by which to sort the returned items. Use any field in the model, or system fields lastModifiedTime or createdTime.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
             [QueryParameter("sort_by")]
@@ -173,7 +173,7 @@ namespace Marqeta.Core.Sdk.Merchantgroups
             [QueryParameter("sort_by")]
             public string SortBy { get; set; }
 #endif
-            /// <summary>Sort order index of the first resource in the returned array.</summary>
+            /// <summary>Indicates from what row to start returning data.</summary>
             [QueryParameter("start_index")]
             public int? StartIndex { get; set; }
         }

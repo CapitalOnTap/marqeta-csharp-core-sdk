@@ -34,7 +34,7 @@ namespace Marqeta.Core.Sdk.Fundingsources.Item.Default
         {
         }
         /// <summary>
-        /// Configure either an ACH funding source or a payment card funding source as the default funding source.A default funding source is used when you omit the `funding_source_token` field from funding requests, such as a `POST` request to `/gpaorders`.Note that the first funding source you create is automatically set as the default (`is_default_source=true`).
+        /// Configures a default funding source
         /// </summary>
         /// <returns>A <see cref="global::Marqeta.Core.Sdk.Models.Payment_card_response_model"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -57,7 +57,7 @@ namespace Marqeta.Core.Sdk.Fundingsources.Item.Default
             return await RequestAdapter.SendAsync<global::Marqeta.Core.Sdk.Models.Payment_card_response_model>(requestInfo, global::Marqeta.Core.Sdk.Models.Payment_card_response_model.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Configure either an ACH funding source or a payment card funding source as the default funding source.A default funding source is used when you omit the `funding_source_token` field from funding requests, such as a `POST` request to `/gpaorders`.Note that the first funding source you create is automatically set as the default (`is_default_source=true`).
+        /// Configures a default funding source
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>

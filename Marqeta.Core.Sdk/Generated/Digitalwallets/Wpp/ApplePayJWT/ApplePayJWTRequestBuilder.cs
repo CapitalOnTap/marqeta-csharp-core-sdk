@@ -34,7 +34,7 @@ namespace Marqeta.Core.Sdk.Digitalwallets.Wpp.ApplePayJWT
         {
         }
         /// <summary>
-        /// [NOTE]This endpoint is currently in beta and subject to change.For more information, contact your Marqeta representative.Use this endpoint to add a card to Apple Wallet via a web application.
+        /// Use this endpoint to add a card to Apple Wallet via a web application.
         /// </summary>
         /// <returns>A <see cref="global::Marqeta.Core.Sdk.Models.Web_push_provisioning_apple_pay_JWT_response"/></returns>
         /// <param name="body">The request body</param>
@@ -59,7 +59,7 @@ namespace Marqeta.Core.Sdk.Digitalwallets.Wpp.ApplePayJWT
             return await RequestAdapter.SendAsync<global::Marqeta.Core.Sdk.Models.Web_push_provisioning_apple_pay_JWT_response>(requestInfo, global::Marqeta.Core.Sdk.Models.Web_push_provisioning_apple_pay_JWT_response.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// [NOTE]This endpoint is currently in beta and subject to change.For more information, contact your Marqeta representative.Use this endpoint to add a card to Apple Wallet via a web application.
+        /// Use this endpoint to add a card to Apple Wallet via a web application.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">The request body</param>
