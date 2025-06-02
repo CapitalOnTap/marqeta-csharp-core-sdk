@@ -31,9 +31,5 @@ namespace Marqeta.Core.Sdk.Models
         #pragma warning disable CS1591
         MOTO,
         #pragma warning restore CS1591
-        [EnumMember(Value = "EU_MOTO_NON_SECURE")]
-        #pragma warning disable CS1591
-        EU_MOTO_NON_SECURE,
-        #pragma warning restore CS1591
     }
 }
