@@ -15,6 +15,8 @@ namespace Marqeta.Core.Sdk.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>The entry_device_type property</summary>
+        public global::Marqeta.Core.Sdk.Models.Account_funding_entry_device_type? EntryDeviceType { get; set; }
         /// <summary>Specifies the type of account from which the transaction was funded.</summary>
         public global::Marqeta.Core.Sdk.Models.Account_funding_funding_source? FundingSource { get; set; }
         /// <summary>Specifies the type of account receiving the funding.</summary>
@@ -26,6 +28,14 @@ namespace Marqeta.Core.Sdk.Models
 #nullable restore
 #else
         public string ReceiverName { get; set; }
+#endif
+        /// <summary>The reference_id property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? ReferenceId { get; set; }
+#nullable restore
+#else
+        public string ReferenceId { get; set; }
 #endif
         /// <summary>Sanctions screening score to assist with meeting Anti-Money Laundering (AML) obligations.Higher scores indicate that the sender&apos;s data more closely resembles an entry on the regulatory watchlist.A value of 999 means no score was available.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -67,6 +77,14 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string SenderCountry { get; set; }
 #endif
+        /// <summary>The sender_date_of_birth property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? SenderDateOfBirth { get; set; }
+#nullable restore
+#else
+        public string SenderDateOfBirth { get; set; }
+#endif
         /// <summary>Name of the sender funding the transaction.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -74,6 +92,14 @@ namespace Marqeta.Core.Sdk.Models
 #nullable restore
 #else
         public string SenderName { get; set; }
+#endif
+        /// <summary>The sender_postal_code property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? SenderPostalCode { get; set; }
+#nullable restore
+#else
+        public string SenderPostalCode { get; set; }
 #endif
         /// <summary>State or province of the sender funding the transaction.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -118,15 +144,19 @@ namespace Marqeta.Core.Sdk.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "entry_device_type", n => { EntryDeviceType = n.GetEnumValue<global::Marqeta.Core.Sdk.Models.Account_funding_entry_device_type>(); } },
                 { "funding_source", n => { FundingSource = n.GetEnumValue<global::Marqeta.Core.Sdk.Models.Account_funding_funding_source>(); } },
                 { "receiver_account_type", n => { ReceiverAccountType = n.GetEnumValue<global::Marqeta.Core.Sdk.Models.Account_funding_receiver_account_type>(); } },
                 { "receiver_name", n => { ReceiverName = n.GetStringValue(); } },
+                { "reference_id", n => { ReferenceId = n.GetStringValue(); } },
                 { "screening_score", n => { ScreeningScore = n.GetStringValue(); } },
                 { "sender_account_number", n => { SenderAccountNumber = n.GetStringValue(); } },
                 { "sender_address", n => { SenderAddress = n.GetStringValue(); } },
                 { "sender_city", n => { SenderCity = n.GetStringValue(); } },
                 { "sender_country", n => { SenderCountry = n.GetStringValue(); } },
+                { "sender_date_of_birth", n => { SenderDateOfBirth = n.GetStringValue(); } },
                 { "sender_name", n => { SenderName = n.GetStringValue(); } },
+                { "sender_postal_code", n => { SenderPostalCode = n.GetStringValue(); } },
                 { "sender_state", n => { SenderState = n.GetStringValue(); } },
                 { "transaction_purpose", n => { TransactionPurpose = n.GetStringValue(); } },
                 { "transaction_type", n => { TransactionType = n.GetEnumValue<global::Marqeta.Core.Sdk.Models.Account_funding_transaction_type>(); } },
@@ -139,15 +169,19 @@ namespace Marqeta.Core.Sdk.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
+            writer.WriteEnumValue<global::Marqeta.Core.Sdk.Models.Account_funding_entry_device_type>("entry_device_type", EntryDeviceType);
             writer.WriteEnumValue<global::Marqeta.Core.Sdk.Models.Account_funding_funding_source>("funding_source", FundingSource);
             writer.WriteEnumValue<global::Marqeta.Core.Sdk.Models.Account_funding_receiver_account_type>("receiver_account_type", ReceiverAccountType);
             writer.WriteStringValue("receiver_name", ReceiverName);
+            writer.WriteStringValue("reference_id", ReferenceId);
             writer.WriteStringValue("screening_score", ScreeningScore);
             writer.WriteStringValue("sender_account_number", SenderAccountNumber);
             writer.WriteStringValue("sender_address", SenderAddress);
             writer.WriteStringValue("sender_city", SenderCity);
             writer.WriteStringValue("sender_country", SenderCountry);
+            writer.WriteStringValue("sender_date_of_birth", SenderDateOfBirth);
             writer.WriteStringValue("sender_name", SenderName);
+            writer.WriteStringValue("sender_postal_code", SenderPostalCode);
             writer.WriteStringValue("sender_state", SenderState);
             writer.WriteStringValue("transaction_purpose", TransactionPurpose);
             writer.WriteEnumValue<global::Marqeta.Core.Sdk.Models.Account_funding_transaction_type>("transaction_type", TransactionType);

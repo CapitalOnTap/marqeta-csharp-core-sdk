@@ -41,6 +41,8 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public global::Marqeta.Core.Sdk.Models.Device Device { get; set; }
 #endif
+        /// <summary>The digital_wallet_token_card_network_sync_indicator property</summary>
+        public bool? DigitalWalletTokenCardNetworkSyncIndicator { get; set; }
         /// <summary>Digital wallet token&apos;s provisioning status.For fulfillment status descriptions, see &lt;&lt;/core-api/digital-wallets-management#postDigitalwallettokentransitions, Create digital wallet token transition&gt;&gt;.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -152,6 +154,7 @@ namespace Marqeta.Core.Sdk.Models
                 { "card_token", n => { CardToken = n.GetStringValue(); } },
                 { "created_time", n => { CreatedTime = n.GetDateTimeOffsetValue(); } },
                 { "device", n => { Device = n.GetObjectValue<global::Marqeta.Core.Sdk.Models.Device>(global::Marqeta.Core.Sdk.Models.Device.CreateFromDiscriminatorValue); } },
+                { "digital_wallet_token_card_network_sync_indicator", n => { DigitalWalletTokenCardNetworkSyncIndicator = n.GetBoolValue(); } },
                 { "fulfillment_status", n => { FulfillmentStatus = n.GetStringValue(); } },
                 { "issuer_eligibility_decision", n => { IssuerEligibilityDecision = n.GetStringValue(); } },
                 { "last_modified_time", n => { LastModifiedTime = n.GetDateTimeOffsetValue(); } },
@@ -176,6 +179,7 @@ namespace Marqeta.Core.Sdk.Models
             writer.WriteStringValue("card_token", CardToken);
             writer.WriteDateTimeOffsetValue("created_time", CreatedTime);
             writer.WriteObjectValue<global::Marqeta.Core.Sdk.Models.Device>("device", Device);
+            writer.WriteBoolValue("digital_wallet_token_card_network_sync_indicator", DigitalWalletTokenCardNetworkSyncIndicator);
             writer.WriteStringValue("fulfillment_status", FulfillmentStatus);
             writer.WriteStringValue("issuer_eligibility_decision", IssuerEligibilityDecision);
             writer.WriteDateTimeOffsetValue("last_modified_time", LastModifiedTime);

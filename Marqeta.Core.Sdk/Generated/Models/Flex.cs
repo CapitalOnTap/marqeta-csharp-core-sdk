@@ -17,7 +17,7 @@ namespace Marqeta.Core.Sdk.Models
         public global::Marqeta.Core.Sdk.Models.Flex_action? Action { get; set; }
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Indicates if the transaction is eligible for Flexible Credential transactions or not.</summary>
+        /// <summary>Indicates whether or not the transaction is eligible for Flexible Credential transactions.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Eligible { get; set; }

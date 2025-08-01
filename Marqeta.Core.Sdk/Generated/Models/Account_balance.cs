@@ -12,30 +12,6 @@ namespace Marqeta.Core.Sdk.Models
     public partial class Account_balance : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
     {
-        /// <summary>The account_description property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? AccountDescription { get; set; }
-#nullable restore
-#else
-        public string AccountDescription { get; set; }
-#endif
-        /// <summary>The account_token property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? AccountToken { get; set; }
-#nullable restore
-#else
-        public string AccountToken { get; set; }
-#endif
-        /// <summary>The account_type property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? AccountType { get; set; }
-#nullable restore
-#else
-        public string AccountType { get; set; }
-#endif
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The balances property</summary>
@@ -54,8 +30,34 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string DefaultCurrencyCode { get; set; }
 #endif
+        /// <summary>The description property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Description { get; set; }
+#nullable restore
+#else
+        public string Description { get; set; }
+#endif
+        /// <summary>The impacted_amount property</summary>
+        public double? ImpactedAmount { get; set; }
         /// <summary>The last_updated_time property</summary>
         public DateTimeOffset? LastUpdatedTime { get; set; }
+        /// <summary>The token property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Token { get; set; }
+#nullable restore
+#else
+        public string Token { get; set; }
+#endif
+        /// <summary>The type property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Type { get; set; }
+#nullable restore
+#else
+        public string Type { get; set; }
+#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Marqeta.Core.Sdk.Models.Account_balance"/> and sets the default values.
         /// </summary>
@@ -81,12 +83,13 @@ namespace Marqeta.Core.Sdk.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "account_description", n => { AccountDescription = n.GetStringValue(); } },
-                { "account_token", n => { AccountToken = n.GetStringValue(); } },
-                { "account_type", n => { AccountType = n.GetStringValue(); } },
                 { "balances", n => { Balances = n.GetObjectValue<global::Marqeta.Core.Sdk.Models.Account_balance_balances>(global::Marqeta.Core.Sdk.Models.Account_balance_balances.CreateFromDiscriminatorValue); } },
                 { "default_currency_code", n => { DefaultCurrencyCode = n.GetStringValue(); } },
+                { "description", n => { Description = n.GetStringValue(); } },
+                { "impacted_amount", n => { ImpactedAmount = n.GetDoubleValue(); } },
                 { "last_updated_time", n => { LastUpdatedTime = n.GetDateTimeOffsetValue(); } },
+                { "token", n => { Token = n.GetStringValue(); } },
+                { "type", n => { Type = n.GetStringValue(); } },
             };
         }
         /// <summary>
@@ -96,12 +99,13 @@ namespace Marqeta.Core.Sdk.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
-            writer.WriteStringValue("account_description", AccountDescription);
-            writer.WriteStringValue("account_token", AccountToken);
-            writer.WriteStringValue("account_type", AccountType);
             writer.WriteObjectValue<global::Marqeta.Core.Sdk.Models.Account_balance_balances>("balances", Balances);
             writer.WriteStringValue("default_currency_code", DefaultCurrencyCode);
+            writer.WriteStringValue("description", Description);
+            writer.WriteDoubleValue("impacted_amount", ImpactedAmount);
             writer.WriteDateTimeOffsetValue("last_updated_time", LastUpdatedTime);
+            writer.WriteStringValue("token", Token);
+            writer.WriteStringValue("type", Type);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

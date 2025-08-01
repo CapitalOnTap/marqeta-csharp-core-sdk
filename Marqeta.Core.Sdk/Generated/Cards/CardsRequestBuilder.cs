@@ -3,7 +3,6 @@
 using Marqeta.Core.Sdk.Cards.Barcode;
 using Marqeta.Core.Sdk.Cards.Getbypan;
 using Marqeta.Core.Sdk.Cards.Item;
-using Marqeta.Core.Sdk.Cards.Merchant;
 using Marqeta.Core.Sdk.Cards.User;
 using Marqeta.Core.Sdk.Models;
 using Microsoft.Kiota.Abstractions.Extensions;
@@ -31,11 +30,6 @@ namespace Marqeta.Core.Sdk.Cards
         public global::Marqeta.Core.Sdk.Cards.Getbypan.GetbypanRequestBuilder Getbypan
         {
             get => new global::Marqeta.Core.Sdk.Cards.Getbypan.GetbypanRequestBuilder(PathParameters, RequestAdapter);
-        }
-        /// <summary>The merchant property</summary>
-        public global::Marqeta.Core.Sdk.Cards.Merchant.MerchantRequestBuilder Merchant
-        {
-            get => new global::Marqeta.Core.Sdk.Cards.Merchant.MerchantRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The user property</summary>
         public global::Marqeta.Core.Sdk.Cards.User.UserRequestBuilder User

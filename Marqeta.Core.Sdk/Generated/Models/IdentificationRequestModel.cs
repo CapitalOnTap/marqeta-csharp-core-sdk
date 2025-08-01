@@ -23,7 +23,7 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string ExpirationDate { get; set; }
 #endif
-        /// <summary>Type of identification.*NOTE:* Full Social Security Number (SSN) is required for US-based user cardholder KYC verification, using the `SSN` type.Full Employer Identification Number (EIN) is required for business cardholder KYC verification, using the `BUSINESS_TAX_ID` or `BUSINESS_NUMBER` type.Nine digits only, no delimiters.`123456789`, for example.</summary>
+        /// <summary>Type of identification.*NOTE:* Full Social Security Number (SSN) is required for US-based user cardholder KYC verification, using the `SSN` type.Full Employer Identification Number (EIN) is required for business cardholder KYC verification, using the `BUSINESS_TAX_ID` or `BUSINESS_NUMBER` type.For business directors, use one of SSN, TIN, SIN, or NIN.Nine digits only, no delimiters.`123456789`, for example.</summary>
         public global::Marqeta.Core.Sdk.Models.IdentificationRequestModel_type? Type { get; set; }
         /// <summary>Number associated with the identification.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER

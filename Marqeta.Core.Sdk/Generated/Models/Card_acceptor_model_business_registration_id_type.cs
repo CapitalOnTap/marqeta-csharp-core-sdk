@@ -3,33 +3,34 @@ using System.Runtime.Serialization;
 using System;
 namespace Marqeta.Core.Sdk.Models
 {
-    /// <summary>Network handling the chargeback.</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    public enum Chargeback_response_network
+    #pragma warning disable CS1591
+    public enum Card_acceptor_model_business_registration_id_type
+    #pragma warning restore CS1591
     {
-        [EnumMember(Value = "MARQETA")]
+        [EnumMember(Value = "unspecified")]
         #pragma warning disable CS1591
-        MARQETA,
+        Unspecified,
         #pragma warning restore CS1591
-        [EnumMember(Value = "DISCOVER")]
+        [EnumMember(Value = "tax_registration_identification")]
         #pragma warning disable CS1591
-        DISCOVER,
+        Tax_registration_identification,
         #pragma warning restore CS1591
-        [EnumMember(Value = "MASTERCARD")]
+        [EnumMember(Value = "national_identification")]
         #pragma warning disable CS1591
-        MASTERCARD,
+        National_identification,
         #pragma warning restore CS1591
-        [EnumMember(Value = "PULSE")]
+        [EnumMember(Value = "company_registration_identification")]
         #pragma warning disable CS1591
-        PULSE,
+        Company_registration_identification,
         #pragma warning restore CS1591
-        [EnumMember(Value = "VISA")]
+        [EnumMember(Value = "passport")]
         #pragma warning disable CS1591
-        VISA,
+        Passport,
         #pragma warning restore CS1591
-        [EnumMember(Value = "AMERICANEXPRESS")]
+        [EnumMember(Value = "default_value")]
         #pragma warning disable CS1591
-        AMERICANEXPRESS,
+        Default_value,
         #pragma warning restore CS1591
     }
 }

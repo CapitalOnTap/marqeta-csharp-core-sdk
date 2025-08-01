@@ -22,6 +22,14 @@ namespace Marqeta.Core.Sdk.Models
         public DateTimeOffset? CreatedTimestamp { get; set; }
         /// <summary>Date and time when the resource was last modified, in UTC.</summary>
         public DateTimeOffset? LastModifiedTime { get; set; }
+        /// <summary>Associates customer-injected metadata with the user.Returned if part of the call to `POST /users`.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Marqeta.Core.Sdk.Models.UserTransitionResponse_metadata? Metadata { get; set; }
+#nullable restore
+#else
+        public global::Marqeta.Core.Sdk.Models.UserTransitionResponse_metadata Metadata { get; set; }
+#endif
         /// <summary>Additional information about the status change.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -79,6 +87,7 @@ namespace Marqeta.Core.Sdk.Models
                 { "created_time", n => { CreatedTime = n.GetDateTimeOffsetValue(); } },
                 { "created_timestamp", n => { CreatedTimestamp = n.GetDateTimeOffsetValue(); } },
                 { "last_modified_time", n => { LastModifiedTime = n.GetDateTimeOffsetValue(); } },
+                { "metadata", n => { Metadata = n.GetObjectValue<global::Marqeta.Core.Sdk.Models.UserTransitionResponse_metadata>(global::Marqeta.Core.Sdk.Models.UserTransitionResponse_metadata.CreateFromDiscriminatorValue); } },
                 { "reason", n => { Reason = n.GetStringValue(); } },
                 { "reason_code", n => { ReasonCode = n.GetEnumValue<global::Marqeta.Core.Sdk.Models.UserTransitionResponse_reason_code>(); } },
                 { "status", n => { Status = n.GetEnumValue<global::Marqeta.Core.Sdk.Models.UserTransitionResponse_status>(); } },
@@ -97,6 +106,7 @@ namespace Marqeta.Core.Sdk.Models
             writer.WriteDateTimeOffsetValue("created_time", CreatedTime);
             writer.WriteDateTimeOffsetValue("created_timestamp", CreatedTimestamp);
             writer.WriteDateTimeOffsetValue("last_modified_time", LastModifiedTime);
+            writer.WriteObjectValue<global::Marqeta.Core.Sdk.Models.UserTransitionResponse_metadata>("metadata", Metadata);
             writer.WriteStringValue("reason", Reason);
             writer.WriteEnumValue<global::Marqeta.Core.Sdk.Models.UserTransitionResponse_reason_code>("reason_code", ReasonCode);
             writer.WriteEnumValue<global::Marqeta.Core.Sdk.Models.UserTransitionResponse_status>("status", Status);

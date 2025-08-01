@@ -18,6 +18,14 @@ namespace Marqeta.Core.Sdk.Models
         public bool? AllowCardCreation { get; set; }
         /// <summary>The all_zero_card_security_code property</summary>
         public bool? AllZeroCardSecurityCode { get; set; }
+        /// <summary>The bin_issue_country property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? BinIssueCountry { get; set; }
+#nullable restore
+#else
+        public string BinIssueCountry { get; set; }
+#endif
         /// <summary>The bin_prefix property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -99,6 +107,7 @@ namespace Marqeta.Core.Sdk.Models
             {
                 { "all_zero_card_security_code", n => { AllZeroCardSecurityCode = n.GetBoolValue(); } },
                 { "allow_card_creation", n => { AllowCardCreation = n.GetBoolValue(); } },
+                { "bin_issue_country", n => { BinIssueCountry = n.GetStringValue(); } },
                 { "bin_prefix", n => { BinPrefix = n.GetStringValue(); } },
                 { "bulk_ship", n => { BulkShip = n.GetBoolValue(); } },
                 { "card_personalization", n => { CardPersonalization = n.GetObjectValue<global::Marqeta.Core.Sdk.Models.Card_personalization>(global::Marqeta.Core.Sdk.Models.Card_personalization.CreateFromDiscriminatorValue); } },
@@ -120,6 +129,7 @@ namespace Marqeta.Core.Sdk.Models
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
             writer.WriteBoolValue("allow_card_creation", AllowCardCreation);
             writer.WriteBoolValue("all_zero_card_security_code", AllZeroCardSecurityCode);
+            writer.WriteStringValue("bin_issue_country", BinIssueCountry);
             writer.WriteStringValue("bin_prefix", BinPrefix);
             writer.WriteBoolValue("bulk_ship", BulkShip);
             writer.WriteObjectValue<global::Marqeta.Core.Sdk.Models.Card_personalization>("card_personalization", CardPersonalization);

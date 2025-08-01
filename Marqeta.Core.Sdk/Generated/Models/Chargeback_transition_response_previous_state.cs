@@ -40,5 +40,21 @@ namespace Marqeta.Core.Sdk.Models
         #pragma warning disable CS1591
         WITHDRAWN,
         #pragma warning restore CS1591
+        [EnumMember(Value = "ARBITRATION_RESPONSE")]
+        #pragma warning disable CS1591
+        ARBITRATION_RESPONSE,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "ARBITRATION_DECISION")]
+        #pragma warning disable CS1591
+        ARBITRATION_DECISION,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "RETRIEVAL_REQUEST")]
+        #pragma warning disable CS1591
+        RETRIEVAL_REQUEST,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "RETRIEVAL_RESPONSE")]
+        #pragma warning disable CS1591
+        RETRIEVAL_RESPONSE,
+        #pragma warning restore CS1591
     }
 }

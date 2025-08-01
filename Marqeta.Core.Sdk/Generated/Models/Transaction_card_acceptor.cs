@@ -215,7 +215,7 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string SpecialMerchantId { get; set; }
 #endif
-        /// <summary>Two-character state, province, or territorial abbreviation.For a complete list of valid state and province abbreviations, see &lt;&lt;/core-api/kyc-verification#_valid_state_provincial_and_territorial_abbreviations, Valid state, provincial, and territorial abbreviations&gt;&gt;.*Note*: Non-US merchants may return more than 2 char for this field.</summary>
+        /// <summary>State, provincial, territorial, or federal abbreviation (`CA` for California or `CAN` for Canada, for example).For the complete list, see &lt;&lt;/core-api/kyc-verification#_valid_state_provincial_territorial_and_federal_abbreviations, Valid state, provincial, territorial, and federal abbreviations&gt;&gt;.*Note*: Non-US merchants may return more than 2 char for this field.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? State { get; set; }

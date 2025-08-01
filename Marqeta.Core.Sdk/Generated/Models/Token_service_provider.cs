@@ -95,6 +95,14 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string TokenScore { get; set; }
 #endif
+        /// <summary>The token_service_provider_id property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? TokenServiceProviderId { get; set; }
+#nullable restore
+#else
+        public string TokenServiceProviderId { get; set; }
+#endif
         /// <summary>Type of the digital wallet token.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -138,6 +146,7 @@ namespace Marqeta.Core.Sdk.Models
                 { "token_requestor_id", n => { TokenRequestorId = n.GetStringValue(); } },
                 { "token_requestor_name", n => { TokenRequestorName = n.GetStringValue(); } },
                 { "token_score", n => { TokenScore = n.GetStringValue(); } },
+                { "token_service_provider_id", n => { TokenServiceProviderId = n.GetStringValue(); } },
                 { "token_type", n => { TokenType = n.GetStringValue(); } },
             };
         }
@@ -158,6 +167,7 @@ namespace Marqeta.Core.Sdk.Models
             writer.WriteStringValue("token_requestor_id", TokenRequestorId);
             writer.WriteStringValue("token_requestor_name", TokenRequestorName);
             writer.WriteStringValue("token_score", TokenScore);
+            writer.WriteStringValue("token_service_provider_id", TokenServiceProviderId);
             writer.WriteStringValue("token_type", TokenType);
             writer.WriteAdditionalData(AdditionalData);
         }

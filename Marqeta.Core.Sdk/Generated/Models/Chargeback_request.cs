@@ -20,6 +20,14 @@ namespace Marqeta.Core.Sdk.Models
         public global::Marqeta.Core.Sdk.Models.Chargeback_request_channel? Channel { get; set; }
         /// <summary>The credit_user property</summary>
         public bool? CreditUser { get; set; }
+        /// <summary>The currency_code property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? CurrencyCode { get; set; }
+#nullable restore
+#else
+        public string CurrencyCode { get; set; }
+#endif
         /// <summary>The memo property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -94,6 +102,7 @@ namespace Marqeta.Core.Sdk.Models
                 { "amount", n => { Amount = n.GetDoubleValue(); } },
                 { "channel", n => { Channel = n.GetEnumValue<global::Marqeta.Core.Sdk.Models.Chargeback_request_channel>(); } },
                 { "credit_user", n => { CreditUser = n.GetBoolValue(); } },
+                { "currency_code", n => { CurrencyCode = n.GetStringValue(); } },
                 { "memo", n => { Memo = n.GetStringValue(); } },
                 { "pre_initiated", n => { PreInitiated = n.GetBoolValue(); } },
                 { "reason_code", n => { ReasonCode = n.GetStringValue(); } },
@@ -114,6 +123,7 @@ namespace Marqeta.Core.Sdk.Models
             writer.WriteDoubleValue("amount", Amount);
             writer.WriteEnumValue<global::Marqeta.Core.Sdk.Models.Chargeback_request_channel>("channel", Channel);
             writer.WriteBoolValue("credit_user", CreditUser);
+            writer.WriteStringValue("currency_code", CurrencyCode);
             writer.WriteStringValue("memo", Memo);
             writer.WriteBoolValue("pre_initiated", PreInitiated);
             writer.WriteStringValue("reason_code", ReasonCode);
