@@ -59,5 +59,9 @@ namespace Marqeta.Core.Sdk.Models
         #pragma warning disable CS1591
         REAUTHORIZATION,
         #pragma warning restore CS1591
+        [EnumMember(Value = "UNSCHEDULED_CARD_ON_FILE")]
+        #pragma warning disable CS1591
+        UNSCHEDULED_CARD_ON_FILE,
+        #pragma warning restore CS1591
     }
 }

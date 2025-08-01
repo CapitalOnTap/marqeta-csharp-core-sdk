@@ -19983,6 +19983,7 @@ components:
             - ACCOUNT_INQUIRY
             - INCREMENTAL_AUTHORIZATION
             - REAUTHORIZATION
+            - UNSCHEDULED_CARD_ON_FILE
           type: string
           description: Specifies the category of a point-of-sale transaction.
         zip:
@@ -21329,6 +21330,7 @@ components:
             - ACCOUNT_INQUIRY
             - INCREMENTAL_AUTHORIZATION
             - REAUTHORIZATION
+            - UNSCHEDULED_CARD_ON_FILE
           type: string
           description: Specifies the category of a point-of-sale transaction.
       description: "Contains information about the point of sale, including details on how the card was presented.\n\nReturned if provided by the card network, and the request uses Transaction Model v1 of the Marqeta Core API.\nNot returned for Transaction Model v2 requests."
