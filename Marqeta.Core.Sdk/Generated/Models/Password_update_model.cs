@@ -22,7 +22,7 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string CurrentPassword { get; set; }
 #endif
-        /// <summary>New password to the cardholder&apos;s user account on the Marqeta platform.* Must contain at least one numeral +* Must contain at least one lowercase letter +* Must contain at least one uppercase letter +* Must contain at least one of these symbols: `@ # $ % ! ^ &amp; * ( ) \ _ + ~ ` - = [ ] { } , ; : &apos; &quot; , . / &lt; &gt; ?`</summary>
+        /// <summary>New password to the cardholder&apos;s user account on the Marqeta platform.* Must contain at least one numeral +* Must contain at least one lowercase letter +* Must contain at least one uppercase letter +* Must contain at least one of these symbols:   + `@` `#` `$` `%` `!` `^` `&amp;` `*` `(` `)`   + `\` `_` `+` `~` `-` `=` `[` `]` `{` `}`   + `,` `;` `:` `&apos;` `&quot;` `.` `/` `&lt;` `&gt;` `?` ```</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? NewPassword { get; set; }

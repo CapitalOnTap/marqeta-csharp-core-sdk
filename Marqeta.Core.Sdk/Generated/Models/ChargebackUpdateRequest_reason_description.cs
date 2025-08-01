@@ -83,5 +83,101 @@ namespace Marqeta.Core.Sdk.Models
         #pragma warning disable CS1591
         DUPLICATE_PROCESSING_OR_PAID_BY_OTHER_MEANS,
         #pragma warning restore CS1591
+        [EnumMember(Value = "AMEX_FRAUD_MISSING_IMPRINT")]
+        #pragma warning disable CS1591
+        AMEX_FRAUD_MISSING_IMPRINT,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "AMEX_FRAUD_MULTIPLE_ROCKETS")]
+        #pragma warning disable CS1591
+        AMEX_FRAUD_MULTIPLE_ROCKETS,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "AMEX_FRAUD_CARD_NOT_PRESENT")]
+        #pragma warning disable CS1591
+        AMEX_FRAUD_CARD_NOT_PRESENT,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "AMEX_FRAUD_NO_VALID_AUTHORIZATION")]
+        #pragma warning disable CS1591
+        AMEX_FRAUD_NO_VALID_AUTHORIZATION,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "AMEX_FRAUD_FULL_RECOURSE")]
+        #pragma warning disable CS1591
+        AMEX_FRAUD_FULL_RECOURSE,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "AMEX_FRAUD_LIABILITY_SHIFT_COUNTERFEIT")]
+        #pragma warning disable CS1591
+        AMEX_FRAUD_LIABILITY_SHIFT_COUNTERFEIT,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "AMEX_FRAUD_LIABILITY_SHIFT_LOST_STOLEN_NON_RECEIVED")]
+        #pragma warning disable CS1591
+        AMEX_FRAUD_LIABILITY_SHIFT_LOST_STOLEN_NON_RECEIVED,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "AMEX_INVALID_AUTHORIZATION")]
+        #pragma warning disable CS1591
+        AMEX_INVALID_AUTHORIZATION,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "AMEX_INCORRECT_TRANSACTION_AMOUNT_OR_ACCOUNT_NUMBER")]
+        #pragma warning disable CS1591
+        AMEX_INCORRECT_TRANSACTION_AMOUNT_OR_ACCOUNT_NUMBER,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "AMEX_MULTIPLE_PROCESSING")]
+        #pragma warning disable CS1591
+        AMEX_MULTIPLE_PROCESSING,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "AMEX_UNASSIGNED_ACCOUNT_NUMBER")]
+        #pragma warning disable CS1591
+        AMEX_UNASSIGNED_ACCOUNT_NUMBER,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "AMEX_CURRENCY_DISCREPANCY")]
+        #pragma warning disable CS1591
+        AMEX_CURRENCY_DISCREPANCY,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "AMEX_LATE_PRESENTMENT")]
+        #pragma warning disable CS1591
+        AMEX_LATE_PRESENTMENT,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "AMEX_PRESENTMENT_ERROR")]
+        #pragma warning disable CS1591
+        AMEX_PRESENTMENT_ERROR,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "AMEX_CREDIT_NOT_PRESENTED")]
+        #pragma warning disable CS1591
+        AMEX_CREDIT_NOT_PRESENTED,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "AMEX_PAID_BY_OTHER_MEANS")]
+        #pragma warning disable CS1591
+        AMEX_PAID_BY_OTHER_MEANS,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "AMEX_CANCELLING_RECURRING_GOODS_SERVICES")]
+        #pragma warning disable CS1591
+        AMEX_CANCELLING_RECURRING_GOODS_SERVICES,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "AMEX_NOT_AS_DESCRIBED_OR_DEFECTIVE_MERCHANDISE")]
+        #pragma warning disable CS1591
+        AMEX_NOT_AS_DESCRIBED_OR_DEFECTIVE_MERCHANDISE,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "AMEX_GOODS_SERVICES_NOT_RECEIVED")]
+        #pragma warning disable CS1591
+        AMEX_GOODS_SERVICES_NOT_RECEIVED,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "AMEX_CAR_RENTAL_CHARGE_NON_QUALIFIED_UNSUBSTANTIATED")]
+        #pragma warning disable CS1591
+        AMEX_CAR_RENTAL_CHARGE_NON_QUALIFIED_UNSUBSTANTIATED,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "AMEX_LOCAL_REGULATORY_LEGAL_DISPUTE")]
+        #pragma warning disable CS1591
+        AMEX_LOCAL_REGULATORY_LEGAL_DISPUTE,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "AMEX_REQUEST_FOR_SUPPORT_NOT_FULFILLED")]
+        #pragma warning disable CS1591
+        AMEX_REQUEST_FOR_SUPPORT_NOT_FULFILLED,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "AMEX_REQUEST_FOR_SUPPORT_ILLEGIBLE_INCOMPLETE")]
+        #pragma warning disable CS1591
+        AMEX_REQUEST_FOR_SUPPORT_ILLEGIBLE_INCOMPLETE,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "AMEX_ATM_DISBURSEMENT")]
+        #pragma warning disable CS1591
+        AMEX_ATM_DISBURSEMENT,
+        #pragma warning restore CS1591
     }
 }

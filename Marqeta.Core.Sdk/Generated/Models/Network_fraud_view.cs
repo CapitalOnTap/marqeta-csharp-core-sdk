@@ -31,6 +31,14 @@ namespace Marqeta.Core.Sdk.Models
 #endif
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>The card_not_present_transaction_risk_score property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? CardNotPresentTransactionRiskScore { get; set; }
+#nullable restore
+#else
+        public string CardNotPresentTransactionRiskScore { get; set; }
+#endif
         /// <summary>Mastercard Digital Identity Insights risk score, where `0` indicates the lowest risk and `9` indicates the highest risk.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -100,6 +108,7 @@ namespace Marqeta.Core.Sdk.Models
             {
                 { "account_risk_score", n => { AccountRiskScore = n.GetStringValue(); } },
                 { "account_risk_score_reason_code", n => { AccountRiskScoreReasonCode = n.GetStringValue(); } },
+                { "card_not_present_transaction_risk_score", n => { CardNotPresentTransactionRiskScore = n.GetStringValue(); } },
                 { "dii_score", n => { DiiScore = n.GetStringValue(); } },
                 { "dii_score_reason_code", n => { DiiScoreReasonCode = n.GetStringValue(); } },
                 { "transaction_account_attack_intelligence_score", n => { TransactionAccountAttackIntelligenceScore = n.GetStringValue(); } },
@@ -117,6 +126,7 @@ namespace Marqeta.Core.Sdk.Models
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("account_risk_score", AccountRiskScore);
             writer.WriteStringValue("account_risk_score_reason_code", AccountRiskScoreReasonCode);
+            writer.WriteStringValue("card_not_present_transaction_risk_score", CardNotPresentTransactionRiskScore);
             writer.WriteStringValue("dii_score", DiiScore);
             writer.WriteStringValue("dii_score_reason_code", DiiScoreReasonCode);
             writer.WriteStringValue("transaction_account_attack_intelligence_score", TransactionAccountAttackIntelligenceScore);

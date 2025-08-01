@@ -9,53 +9,27 @@ namespace Marqeta.Core.Sdk.Models
 {
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     #pragma warning disable CS1591
-    public partial class Offer_update_model : IAdditionalDataHolder, IParsable
+    public partial class BusinessTransitionResponse_metadata : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
     {
-        /// <summary>The active property</summary>
-        public bool? Active { get; set; }
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>yyyy-MM-ddThh:mm:ssZ</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? EndDate { get; set; }
-#nullable restore
-#else
-        public string EndDate { get; set; }
-#endif
-        /// <summary>255 char max</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? Name { get; set; }
-#nullable restore
-#else
-        public string Name { get; set; }
-#endif
-        /// <summary>yyyy-MM-ddThh:mm:ssZ</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? StartDate { get; set; }
-#nullable restore
-#else
-        public string StartDate { get; set; }
-#endif
         /// <summary>
-        /// Instantiates a new <see cref="global::Marqeta.Core.Sdk.Models.Offer_update_model"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Marqeta.Core.Sdk.Models.BusinessTransitionResponse_metadata"/> and sets the default values.
         /// </summary>
-        public Offer_update_model()
+        public BusinessTransitionResponse_metadata()
         {
             AdditionalData = new Dictionary<string, object>();
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="global::Marqeta.Core.Sdk.Models.Offer_update_model"/></returns>
+        /// <returns>A <see cref="global::Marqeta.Core.Sdk.Models.BusinessTransitionResponse_metadata"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static global::Marqeta.Core.Sdk.Models.Offer_update_model CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static global::Marqeta.Core.Sdk.Models.BusinessTransitionResponse_metadata CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-            return new global::Marqeta.Core.Sdk.Models.Offer_update_model();
+            return new global::Marqeta.Core.Sdk.Models.BusinessTransitionResponse_metadata();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -65,10 +39,6 @@ namespace Marqeta.Core.Sdk.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "active", n => { Active = n.GetBoolValue(); } },
-                { "end_date", n => { EndDate = n.GetStringValue(); } },
-                { "name", n => { Name = n.GetStringValue(); } },
-                { "start_date", n => { StartDate = n.GetStringValue(); } },
             };
         }
         /// <summary>
@@ -78,10 +48,6 @@ namespace Marqeta.Core.Sdk.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
-            writer.WriteBoolValue("active", Active);
-            writer.WriteStringValue("end_date", EndDate);
-            writer.WriteStringValue("name", Name);
-            writer.WriteStringValue("start_date", StartDate);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

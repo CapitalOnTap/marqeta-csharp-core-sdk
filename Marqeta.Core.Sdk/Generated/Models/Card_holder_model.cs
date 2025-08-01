@@ -49,6 +49,14 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string BirthDate { get; set; }
 #endif
+        /// <summary>Country where the cardholder was born.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? BirthPlace { get; set; }
+#nullable restore
+#else
+        public string BirthPlace { get; set; }
+#endif
         /// <summary>City where the cardholder resides.*NOTE:* Required for KYC verification (US-based cardholders only).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -197,7 +205,7 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string PassportNumber { get; set; }
 #endif
-        /// <summary>Password to the cardholder&apos;s user account on the Marqeta platform.* Must contain at least one numeral +* Must contain at least one lowercase letter +* Must contain at least one uppercase letter +* Must contain at least one of these symbols: `@ # $ % ! ^ &amp; * ( ) \ _ + ~ ` - = [ ] { } , ; : &apos; &quot; , . / &lt; &gt; ?`</summary>
+        /// <summary>Password to the cardholder&apos;s user account on the Marqeta platform.* Must contain at least one numeral +* Must contain at least one lowercase letter +* Must contain at least one uppercase letter +* Must contain at least one of these symbols:   + `@` `#` `$` `%` `!` `^` `&amp;` `*` `(` `)`   + `\` `_` `+` `~` `-` `=` `[` `]` `{` `}`   + `,` `;` `:` `&apos;` `&quot;` `.` `/` `&lt;` `&gt;` `?` ```</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Password { get; set; }
@@ -229,7 +237,7 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string Ssn { get; set; }
 #endif
-        /// <summary>State or province where the cardholder resides.*NOTE:* &lt;&lt;/core-api/kyc-verification#_valid_state_provincial_and_territorial_abbreviations, Valid two-character abbreviation&gt;&gt; required for KYC verification (US-based cardholders only).</summary>
+        /// <summary>State or province where the cardholder resides.*NOTE:* &lt;&lt;/core-api/kyc-verification#_valid_state_provincial_territorial_and_federal_abbreviations, Valid two-character abbreviation&gt;&gt; required for KYC verification (US-based cardholders only).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? State { get; set; }
@@ -239,6 +247,14 @@ namespace Marqeta.Core.Sdk.Models
 #endif
         /// <summary>Specifies the status of the cardholder on the Marqeta platform.</summary>
         public global::Marqeta.Core.Sdk.Models.Card_holder_model_status? Status { get; set; }
+        /// <summary>Professional title of the cardholder, such as Chief Comptroller.*NOTE:* Do not use this field for honorific titles such as Mr., Mrs., Miss, Ms., Mx., Sir, or Dame.Instead, add these to the `honorific` field.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Title { get; set; }
+#nullable restore
+#else
+        public string Title { get; set; }
+#endif
         /// <summary>Unique identifier of the cardholder.If you do not include a token, the system generates one automatically.This token is necessary for use in other API calls, so we recommend that rather than let the system generate one, you use a simple string that is easy to remember.This value cannot be updated.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -279,6 +295,7 @@ namespace Marqeta.Core.Sdk.Models
                 { "address1", n => { Address1 = n.GetStringValue(); } },
                 { "address2", n => { Address2 = n.GetStringValue(); } },
                 { "birth_date", n => { BirthDate = n.GetStringValue(); } },
+                { "birth_place", n => { BirthPlace = n.GetStringValue(); } },
                 { "city", n => { City = n.GetStringValue(); } },
                 { "company", n => { Company = n.GetStringValue(); } },
                 { "corporate_card_holder", n => { CorporateCardHolder = n.GetBoolValue(); } },
@@ -305,6 +322,7 @@ namespace Marqeta.Core.Sdk.Models
                 { "ssn", n => { Ssn = n.GetStringValue(); } },
                 { "state", n => { State = n.GetStringValue(); } },
                 { "status", n => { Status = n.GetEnumValue<global::Marqeta.Core.Sdk.Models.Card_holder_model_status>(); } },
+                { "title", n => { Title = n.GetStringValue(); } },
                 { "token", n => { Token = n.GetStringValue(); } },
                 { "uses_parent_account", n => { UsesParentAccount = n.GetBoolValue(); } },
             };
@@ -321,6 +339,7 @@ namespace Marqeta.Core.Sdk.Models
             writer.WriteStringValue("address1", Address1);
             writer.WriteStringValue("address2", Address2);
             writer.WriteStringValue("birth_date", BirthDate);
+            writer.WriteStringValue("birth_place", BirthPlace);
             writer.WriteStringValue("city", City);
             writer.WriteStringValue("company", Company);
             writer.WriteBoolValue("corporate_card_holder", CorporateCardHolder);
@@ -347,6 +366,7 @@ namespace Marqeta.Core.Sdk.Models
             writer.WriteStringValue("ssn", Ssn);
             writer.WriteStringValue("state", State);
             writer.WriteEnumValue<global::Marqeta.Core.Sdk.Models.Card_holder_model_status>("status", Status);
+            writer.WriteStringValue("title", Title);
             writer.WriteStringValue("token", Token);
             writer.WriteBoolValue("uses_parent_account", UsesParentAccount);
             writer.WriteAdditionalData(AdditionalData);

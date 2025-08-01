@@ -6,7 +6,7 @@ info:
   contact:
     name: Marqeta
     email: support@marqeta.com
-  version: 3.0.29
+  version: 3.0.31
 servers:
   - url: /v3
 paths:
@@ -1754,143 +1754,6 @@ paths:
           description: Cardholder not found
         '500':
           description: Server error
-  /campaigns:
-    get:
-      summary: Get campaigns.
-      operationId: getCampaigns
-      parameters:
-        - name: count
-          in: query
-          style: form
-          schema:
-            type: integer
-            format: int32
-            default: 5
-        - name: start_index
-          in: query
-          style: form
-          schema:
-            type: integer
-            format: int32
-            default: 0
-        - name: fields
-          in: query
-          style: form
-          schema:
-            type: string
-        - name: sort_by
-          in: query
-          style: form
-          schema:
-            type: string
-            default: '-lastModifiedTime'
-      responses:
-        default:
-          description: successful operation
-    post:
-      summary: Create campaigns.
-      operationId: createCampaigns
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/campaign_model'
-      responses:
-        default:
-          description: successful operation
-  '/campaigns/{token}':
-    delete:
-      summary: Delete campaign by token.
-      operationId: deleteCampaignByToken
-      parameters:
-        - name: token
-          in: path
-          description: Campaign token
-          required: true
-          style: simple
-          schema:
-            type: string
-      responses:
-        default:
-          description: successful operation
-    get:
-      summary: Get campaign by token.
-      operationId: getCampaignByToken
-      parameters:
-        - name: token
-          in: path
-          description: Campaign token
-          required: true
-          style: simple
-          schema:
-            type: string
-        - name: fields
-          in: query
-          style: form
-          schema:
-            type: string
-      responses:
-        default:
-          description: successful operation
-    put:
-      summary: Update campaigns by token.
-      operationId: updateCampaignsByToken
-      parameters:
-        - name: token
-          in: path
-          description: Campaign token
-          required: true
-          style: simple
-          schema:
-            type: string
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/campaign_update_model'
-      responses:
-        default:
-          description: successful operation
-  '/campaigns/{token}/stores':
-    get:
-      summary: Get campaigns token stores.
-      operationId: getCampaignsTokenStores
-      parameters:
-        - name: token
-          in: path
-          description: Campaign token
-          required: true
-          style: simple
-          schema:
-            type: string
-        - name: count
-          in: query
-          style: form
-          schema:
-            type: integer
-            format: int32
-            default: 5
-        - name: start_index
-          in: query
-          style: form
-          schema:
-            type: integer
-            format: int32
-            default: 0
-        - name: fields
-          in: query
-          style: form
-          schema:
-            type: string
-        - name: sort_by
-          in: query
-          style: form
-          schema:
-            type: string
-            default: '-lastModifiedTime'
-      responses:
-        default:
-          description: successful operation
   /cardproducts:
     get:
       tags:
@@ -2160,108 +2023,6 @@ paths:
                 $ref: '#/components/schemas/pan_response'
         '400':
           description: User input error/Bad request
-        '500':
-          description: Server error
-  '/cards/merchant/{merchant_token}':
-    get:
-      tags:
-        - cards
-      summary: Returns a merchant onboarding card
-      operationId: getCardsMerchantMerchanttoken
-      parameters:
-        - name: merchant_token
-          in: path
-          description: Merchant token
-          required: true
-          style: simple
-          schema:
-            type: string
-        - name: fields
-          in: query
-          description: 'Comma-delimited list of fields to return (e.g. field_1,field_2,..). Leave blank to return all fields.'
-          style: form
-          schema:
-            type: string
-      responses:
-        '200':
-          description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/card_response'
-        '400':
-          description: User input error/Bad request
-        '404':
-          description: Card does not exist
-        '500':
-          description: Server error
-    post:
-      tags:
-        - cards
-      summary: Creates a merchant onboarding card
-      operationId: postCardsMerchantMerchanttoken
-      parameters:
-        - name: merchant_token
-          in: path
-          description: Merchant token
-          required: true
-          style: simple
-          schema:
-            type: string
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/merchant_card_request'
-      responses:
-        '201':
-          description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/card_response'
-        '400':
-          description: User input error/Bad request
-        '409':
-          description: Token already associated with a different payload
-        '500':
-          description: Server error
-  '/cards/merchant/{merchant_token}/showpan':
-    get:
-      tags:
-        - cards
-      summary: Returns a specific card - PAN visible
-      operationId: getCardsMerchantMerchanttokenShowpan
-      parameters:
-        - name: merchant_token
-          in: path
-          description: Merchant token
-          required: true
-          style: simple
-          schema:
-            type: string
-        - name: fields
-          in: query
-          description: 'Comma-delimited list of fields to return (e.g. field_1,field_2,..). Leave blank to return all fields.'
-          style: form
-          schema:
-            type: string
-        - name: show_cvv_number
-          in: query
-          style: form
-          schema:
-            type: boolean
-      responses:
-        '200':
-          description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/card_response'
-        '400':
-          description: User input error/Bad request
-        '404':
-          description: Card does not exist
         '500':
           description: Server error
   '/cards/user/{token}':
@@ -2581,7 +2342,7 @@ paths:
             type: string
         - name: states
           in: query
-          description: Comma-delimited list of chargeback states to display e.g. INITIATED | REPRESENTMENT | PREARBITRATION | ARBITRATION | CASE_WON | CASE_LOST | NETWORK_REJECTED | WITHDRAWN | WRITTEN_OFF_ISSUER | WRITTEN_OFF_PROGRAM
+          description: Comma-delimited list of chargeback states to display e.g. INITIATED | REPRESENTMENT | PREARBITRATION | ARBITRATION | CASE_WON | CASE_LOST | NETWORK_REJECTED | WITHDRAWN | WRITTEN_OFF_ISSUER | WRITTEN_OFF_PROGRAM | ARBITRATION_RESPONSE| ARBITRATION_DECISION | RETRIEVAL_REQUEST| RETRIEVAL_RESPONSE
           style: form
           schema:
             type: string
@@ -6537,276 +6298,6 @@ paths:
           description: Bad request
         '500':
           description: Server error
-  /merchants:
-    get:
-      summary: Get merchants.
-      operationId: getMerchants
-      parameters:
-        - name: count
-          in: query
-          style: form
-          schema:
-            type: integer
-            format: int32
-            default: 5
-        - name: start_index
-          in: query
-          style: form
-          schema:
-            type: integer
-            format: int32
-            default: 0
-        - name: fields
-          in: query
-          style: form
-          schema:
-            type: string
-        - name: sort_by
-          in: query
-          style: form
-          schema:
-            type: string
-            default: '-lastModifiedTime'
-      responses:
-        default:
-          description: successful operation
-    post:
-      summary: Create merchant.
-      operationId: createMerchant
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/MerchantModel'
-      responses:
-        default:
-          description: successful operation
-  '/merchants/{token}':
-    delete:
-      summary: Delete merchant by token.
-      operationId: deleteMerchantByToken
-      parameters:
-        - name: token
-          in: path
-          description: Merchant token
-          required: true
-          style: simple
-          schema:
-            type: string
-      responses:
-        default:
-          description: successful operation
-    get:
-      summary: Get merchant by token.
-      operationId: getMerchantByToken
-      parameters:
-        - name: token
-          in: path
-          description: Merchant token
-          required: true
-          style: simple
-          schema:
-            type: string
-        - name: fields
-          in: query
-          style: form
-          schema:
-            type: string
-      responses:
-        default:
-          description: successful operation
-    put:
-      summary: Update merchant by token.
-      operationId: updateMerchantByToken
-      parameters:
-        - name: token
-          in: path
-          description: Merchant token
-          required: true
-          style: simple
-          schema:
-            type: string
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/MerchantUpdateModel'
-      responses:
-        default:
-          description: successful operation
-  '/merchants/{token}/stores':
-    get:
-      summary: Get merchant stores.
-      operationId: getMerchantStores
-      parameters:
-        - name: token
-          in: path
-          description: Merchant token
-          required: true
-          style: simple
-          schema:
-            type: string
-        - name: count
-          in: query
-          style: form
-          schema:
-            type: integer
-            format: int32
-            default: 5
-        - name: start_index
-          in: query
-          style: form
-          schema:
-            type: integer
-            format: int32
-            default: 0
-        - name: fields
-          in: query
-          style: form
-          schema:
-            type: string
-        - name: sort_by
-          in: query
-          style: form
-          schema:
-            type: string
-            default: '-lastModifiedTime'
-      responses:
-        default:
-          description: successful operation
-  '/merchants/{token}/transactions':
-    get:
-      summary: Get merchant transactions.
-      operationId: getMerchantTransactions
-      parameters:
-        - name: token
-          in: path
-          description: Merchant token
-          required: true
-          style: simple
-          schema:
-            type: string
-        - name: count
-          in: query
-          style: form
-          schema:
-            type: integer
-            format: int32
-            default: 5
-        - name: start_index
-          in: query
-          style: form
-          schema:
-            type: integer
-            format: int32
-            default: 0
-        - name: sort_by
-          in: query
-          style: form
-          schema:
-            type: string
-            default: '-id'
-      responses:
-        default:
-          description: successful operation
-      deprecated: true
-  /offers:
-    get:
-      summary: Get offers.
-      operationId: getOffers
-      parameters:
-        - name: count
-          in: query
-          style: form
-          schema:
-            type: integer
-            format: int32
-            default: 5
-        - name: start_index
-          in: query
-          style: form
-          schema:
-            type: integer
-            format: int32
-            default: 0
-        - name: fields
-          in: query
-          style: form
-          schema:
-            type: string
-        - name: sort_by
-          in: query
-          style: form
-          schema:
-            type: string
-            default: '-lastModifiedTime'
-      responses:
-        default:
-          description: successful operation
-    post:
-      summary: Create offer.
-      operationId: createOffer
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/offer_model'
-      responses:
-        default:
-          description: successful operation
-  '/offers/{token}':
-    delete:
-      summary: Delete offer.
-      operationId: deleteOffer
-      parameters:
-        - name: token
-          in: path
-          description: Offer token
-          required: true
-          style: simple
-          schema:
-            type: string
-      responses:
-        default:
-          description: successful operation
-    get:
-      summary: Get offer.
-      operationId: getOffer
-      parameters:
-        - name: token
-          in: path
-          description: Offer token
-          required: true
-          style: simple
-          schema:
-            type: string
-        - name: fields
-          in: query
-          style: form
-          schema:
-            type: string
-      responses:
-        default:
-          description: successful operation
-    put:
-      summary: Update offer.
-      operationId: updateOffer
-      parameters:
-        - name: token
-          in: path
-          description: Offer token
-          required: true
-          style: simple
-          schema:
-            type: string
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/offer_update_model'
-      responses:
-        default:
-          description: successful operation
   /peertransfers:
     post:
       tags:
@@ -8309,122 +7800,6 @@ paths:
       responses:
         default:
           description: successful operation
-  /stores:
-    get:
-      summary: Get stores.
-      operationId: getStores
-      parameters:
-        - name: count
-          in: query
-          style: form
-          schema:
-            type: integer
-            format: int32
-            default: 5
-        - name: start_index
-          in: query
-          style: form
-          schema:
-            type: integer
-            format: int32
-            default: 0
-        - name: fields
-          in: query
-          style: form
-          schema:
-            type: string
-        - name: sort_by
-          in: query
-          style: form
-          schema:
-            type: string
-            default: '-lastModifiedTime'
-      responses:
-        default:
-          description: successful operation
-    post:
-      summary: Create store.
-      operationId: createStore
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/store_model'
-      responses:
-        default:
-          description: successful operation
-  '/stores/mid/{mid}':
-    get:
-      summary: Get store by mid.
-      operationId: getStoreByMid
-      parameters:
-        - name: mid
-          in: path
-          description: Mid
-          required: true
-          style: simple
-          schema:
-            type: string
-        - name: fields
-          in: query
-          style: form
-          schema:
-            type: string
-      responses:
-        default:
-          description: successful operation
-  '/stores/{token}':
-    delete:
-      summary: Delete store.
-      operationId: deleteStore
-      parameters:
-        - name: token
-          in: path
-          required: true
-          style: simple
-          schema:
-            type: string
-      responses:
-        default:
-          description: successful operation
-    get:
-      summary: Get store.
-      operationId: getStore
-      parameters:
-        - name: token
-          in: path
-          description: Store token
-          required: true
-          style: simple
-          schema:
-            type: string
-        - name: fields
-          in: query
-          style: form
-          schema:
-            type: string
-      responses:
-        default:
-          description: successful operation
-    put:
-      summary: Update store.
-      operationId: updateStore
-      parameters:
-        - name: token
-          in: path
-          description: Store token
-          required: true
-          style: simple
-          schema:
-            type: string
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/store_update_model'
-      responses:
-        default:
-          description: successful operation
   /transactions:
     get:
       tags:
@@ -8566,7 +7941,7 @@ paths:
                         memo: Card security code match
                       type: CVV1
                     card_token: 02cc766c-24a5-4c3b-adcf-0e5e27b09329
-                    created_time: '2021-08-21T17:26:29.0000000+00:00'
+                    created_time: '2024-08-21T17:26:29.0000000+00:00'
                     currency_code: USD
                     duration: 537
                     fraud:
@@ -8590,7 +7965,7 @@ paths:
                       pending_credits: 0
                     gpa_order:
                       amount: 10
-                      created_time: '2021-08-21T17:26:30.0000000+00:00'
+                      created_time: '2024-08-21T17:26:30.0000000+00:00'
                       currency_code: USD
                       funding:
                         amount: 10
@@ -8619,9 +7994,9 @@ paths:
                           transaction_id: your-jit-funding-token
                         source:
                           active: true
-                          created_time: '2021-08-21T17:25:43.0000000+00:00'
+                          created_time: '2024-08-21T17:25:43.0000000+00:00'
                           is_default_account: false
-                          last_modified_time: '2021-08-21T17:25:43.0000000+00:00'
+                          last_modified_time: '2024-08-21T17:25:43.0000000+00:00'
                           name: PGFS for simulating transactions
                           token: '**********dd5f'
                           type: programgateway
@@ -8632,7 +8007,7 @@ paths:
                         method: pgfs.authorization
                         token: 251bdc52-588a-4291-8c5d-6ded3a67e1a8
                         user_token: 99f323d4-298f-4b0c-93b1-19b2d9921eb8
-                      last_modified_time: '2021-08-21T17:26:30.0000000+00:00'
+                      last_modified_time: '2024-08-21T17:26:30.0000000+00:00'
                       response:
                         code: '0000'
                         memo: Approved or completed successfully
@@ -8641,7 +8016,7 @@ paths:
                       transaction_token: cd22cff7-2845-4508-a916-cf89fd9edae1
                       user_token: 99f323d4-298f-4b0c-93b1-19b2d9921eb8
                     issuer_payment_node: b9a60cd41a2cc1c23090ed3666bdbf1z
-                    issuer_received_time: '2021-08-21T17:26:29.0000000+00:00'
+                    issuer_received_time: '2024-08-21T17:26:29.0000000+00:00'
                     network: MARQETA
                     pos:
                       card_holder_presence: false
@@ -8665,7 +8040,7 @@ paths:
                     user:
                       metadata: 
                     user_token: 99f323d4-298f-4b0c-93b1-19b2d9921eb8
-                    user_transaction_time: '2021-08-21T17:26:29.0000000+00:00'
+                    user_transaction_time: '2024-08-21T17:26:29.0000000+00:00'
                   - acquirer:
                       institution_country: '840'
                       institution_id_code: '428399181'
@@ -8690,7 +8065,7 @@ paths:
                         memo: Card security code match
                       type: CVV1
                     card_token: 02cc766c-24a5-4c3b-adcf-0e5e27b09329
-                    created_time: '2021-08-21T17:26:29.0000000+00:00'
+                    created_time: '2024-08-21T17:26:29.0000000+00:00'
                     currency_code: USD
                     duration: 622
                     fraud:
@@ -8714,7 +8089,7 @@ paths:
                       pending_credits: 0
                     gpa_order:
                       amount: 10
-                      created_time: '2021-08-21T17:26:30.0000000+00:00'
+                      created_time: '2024-08-21T17:26:30.0000000+00:00'
                       funding:
                         amount: 10
                         currency_code: USD
@@ -8750,14 +8125,14 @@ paths:
                           user_token: 99f323d4-298f-4b0c-93b1-19b2d9921eb8
                         source:
                           active: true
-                          created_time: '2021-08-21T17:25:43.0000000+00:00'
+                          created_time: '2024-08-21T17:25:43.0000000+00:00'
                           is_default_account: false
-                          last_modified_time: '2021-08-21T17:25:43.0000000+00:00'
+                          last_modified_time: '2024-08-21T17:25:43.0000000+00:00'
                           name: PGFS for simulating transactions
                           token: '**********dd5f'
                           type: programgateway
                         user_token: 99f323d4-298f-4b0c-93b1-19b2d9921eb8
-                      last_modified_time: '2021-08-21T17:26:30.0000000+00:00'
+                      last_modified_time: '2024-08-21T17:26:30.0000000+00:00'
                       response:
                         code: '0000'
                         memo: Approved or completed successfully
@@ -8765,7 +8140,7 @@ paths:
                       token: 592b8164-a4af-45ee-ab24-13a4bb43e6b2
                       transaction_token: cd22cff7-2845-4508-a916-cf89fd9edae1
                     issuer_payment_node: b9a60cd41a2cc1c23090ed3666bdbf1z
-                    issuer_received_time: '2021-08-21T17:26:29.0000000+00:00'
+                    issuer_received_time: '2024-08-21T17:26:29.0000000+00:00'
                     network: VISA
                     pos:
                       card_holder_presence: false
@@ -8781,7 +8156,7 @@ paths:
                     response:
                       code: '0000'
                       memo: Approved or completed successfully
-                    settlement_date: '2021-08-21T00:00:00.0000000+00:00'
+                    settlement_date: '2024-08-21T00:00:00.0000000+00:00'
                     state: PENDING
                     subnetwork: VISANET
                     token: 06a8fe88-58b1-4682-a8ad-96eb973e1d74
@@ -8791,7 +8166,7 @@ paths:
                     user:
                       metadata: 
                     user_token: 99f323d4-298f-4b0c-93b1-19b2d9921eb8
-                    user_transaction_time: '2021-08-21T17:26:29.0000000+00:00'
+                    user_transaction_time: '2024-08-21T17:26:29.0000000+00:00'
                 end_index: 1
                 is_more: true
                 start_index: 0
@@ -8969,7 +8344,7 @@ paths:
                   electronic_commerce_indicator: authentication_successful
                   verification_result: verified
                   verification_value_created_by: issuer_acs
-                created_time: '2021-08-21T17:26:29.0000000+00:00'
+                created_time: '2024-08-21T17:26:29.0000000+00:00'
                 currency_code: USD
                 currency_conversion:
                   network:
@@ -8999,7 +8374,7 @@ paths:
                   pending_credits: 0
                 gpa_order:
                   amount: 10
-                  created_time: '2021-08-21T17:26:30.0000000+00:00'
+                  created_time: '2024-08-21T17:26:30.0000000+00:00'
                   currency_code: USD
                   funding:
                     amount: 10
@@ -9028,9 +8403,9 @@ paths:
                       transaction_id: your-jit-funding-token
                     source:
                       active: true
-                      created_time: '2021-08-21T17:25:43.0000000+00:00'
+                      created_time: '2024-08-21T17:25:43.0000000+00:00'
                       is_default_account: false
-                      last_modified_time: '2021-08-21T17:25:43.0000000+00:00'
+                      last_modified_time: '2024-08-21T17:25:43.0000000+00:00'
                       name: PGFS for simulating transactions
                       token: '**********dd5f'
                       type: programgateway
@@ -9041,7 +8416,7 @@ paths:
                     method: pgfs.authorization
                     token: 251bdc52-588a-4291-8c5d-6ded3a67e1a8
                     user_token: 99f323d4-298f-4b0c-93b1-19b2d9921eb8
-                  last_modified_time: '2021-08-21T17:26:30.0000000+00:00'
+                  last_modified_time: '2024-08-21T17:26:30.0000000+00:00'
                   response:
                     code: '0000'
                     memo: Approved or completed successfully
@@ -9050,7 +8425,7 @@ paths:
                   transaction_token: cd22cff7-2845-4508-a916-cf89fd9edae1
                   user_token: 99f323d4-298f-4b0c-93b1-19b2d9921eb8
                 issuer_payment_node: b9a60cd41a2cc1c23090ed3666bdbf1z
-                issuer_received_time: '2021-08-21T17:26:29.0000000+00:00'
+                issuer_received_time: '2024-08-21T17:26:29.0000000+00:00'
                 network: VISA
                 pos:
                   card_holder_presence: false
@@ -9066,7 +8441,7 @@ paths:
                 response:
                   code: '0000'
                   memo: Approved or completed successfully
-                settlement_date: '2021-08-21T00:00:00.0000000+00:00'
+                settlement_date: '2024-08-21T00:00:00.0000000+00:00'
                 state: PENDING
                 subnetwork: VISANET
                 token: 06a8fe88-58b1-4682-a8ad-96eb973e1d74
@@ -9076,7 +8451,7 @@ paths:
                 user:
                   metadata: 
                 user_token: 99f323d4-298f-4b0c-93b1-19b2d9921eb8
-                user_transaction_time: '2021-08-21T17:26:29.0000000+00:00'
+                user_transaction_time: '2024-08-21T17:26:29.0000000+00:00'
         '400':
           description: User input error/Bad request
         '404':
@@ -9194,7 +8569,7 @@ paths:
                         memo: Card security code match
                       type: CVV1
                     card_token: 02cc766c-24a5-4c3b-adcf-0e5e27b09329
-                    created_time: '2021-08-21T17:26:29.0000000+00:00'
+                    created_time: '2024-08-21T17:26:29.0000000+00:00'
                     currency_code: USD
                     duration: 537
                     fraud:
@@ -9218,7 +8593,7 @@ paths:
                       pending_credits: 0
                     gpa_order:
                       amount: 10
-                      created_time: '2021-08-21T17:26:30.0000000+00:00'
+                      created_time: '2024-08-21T17:26:30.0000000+00:00'
                       funding:
                         amount: 10
                         currency_code: USD
@@ -9254,14 +8629,14 @@ paths:
                           user_token: 99f323d4-298f-4b0c-93b1-19b2d9921eb8
                         source:
                           active: true
-                          created_time: '2021-08-21T17:25:43.0000000+00:00'
+                          created_time: '2024-08-21T17:25:43.0000000+00:00'
                           is_default_account: false
-                          last_modified_time: '2021-08-21T17:25:43.0000000+00:00'
+                          last_modified_time: '2024-08-21T17:25:43.0000000+00:00'
                           name: PGFS for simulating transactions
                           token: '**********dd5f'
                           type: programgateway
                         user_token: 99f323d4-298f-4b0c-93b1-19b2d9921eb8
-                      last_modified_time: '2021-08-21T17:26:30.0000000+00:00'
+                      last_modified_time: '2024-08-21T17:26:30.0000000+00:00'
                       response:
                         code: '0000'
                         memo: Approved or completed successfully
@@ -9269,7 +8644,7 @@ paths:
                       token: 592b8164-a4af-45ee-ab24-13a4bb43e6b2
                       transaction_token: cd22cff7-2845-4508-a916-cf89fd9edae1
                     issuer_payment_node: b9a60cd41a2cc1c23090ed3666bdbf1z
-                    issuer_received_time: '2021-08-21T17:26:29.0000000+00:00'
+                    issuer_received_time: '2024-08-21T17:26:29.0000000+00:00'
                     network: MARQETA
                     pos:
                       card_holder_presence: false
@@ -9293,7 +8668,7 @@ paths:
                     user:
                       metadata: 
                     user_token: 99f323d4-298f-4b0c-93b1-19b2d9921eb8
-                    user_transaction_time: '2021-08-21T17:26:29.0000000+00:00'
+                    user_transaction_time: '2024-08-21T17:26:29.0000000+00:00'
                 end_index: 0
                 is_more: false
                 start_index: 0
@@ -9431,6 +8806,7 @@ paths:
             example:
               address1: 1234 Grove Street
               birth_date: '1991-01-01T00:00:00.0000000+00:00'
+              birth_place: US
               city: Berkeley
               country: USA
               email: jane.doe@company.com
@@ -9453,6 +8829,7 @@ paths:
               phone: '15105551212'
               postal_code: '94702'
               state: CA
+              title: Chief Comptroller
               token: my_user_01
               uses_parent_account: false
       responses:
@@ -9467,6 +8844,7 @@ paths:
                 active: true
                 address1: 1234 Grove Street
                 birth_date: '1991-01-01T00:00:00.0000000+00:00'
+                birth_place: US
                 city: Berkeley
                 corporate_card_holder: false
                 country: USA
@@ -9490,6 +8868,7 @@ paths:
                 ssn: '5555'
                 state: CA
                 status: ACTIVE
+                title: Chief Comptroller
                 token: my_user_01
                 uses_parent_account: false
                 zip: '94702'
@@ -10056,6 +9435,7 @@ paths:
                 active: true
                 address1: 1234 Grove Street
                 birth_date: '1991-01-01T00:00:00.0000000+00:00'
+                birth_place: US
                 city: Berkeley
                 country: USA
                 created_time: '2022-08-16T19:39:34.0000000+00:00'
@@ -10081,6 +9461,7 @@ paths:
                 postal_code: '94702'
                 state: CA
                 status: ACTIVE
+                title: Chief Comptroller
                 token: my_user_01
                 uses_parent_account: false
         '400':
@@ -10354,7 +9735,10 @@ paths:
                 $ref: '#/components/schemas/UserTransitionResponse'
               example:
                 channel: API
-                created_time: '2023-03-15T00:00:00.0000000+00:00'
+                created_time: '2025-03-15T00:00:00.0000000+00:00'
+                metadata:
+                  my_name_1: my_value_1
+                  my_name_2: my_value_2
                 reason: Activating user
                 reason_code: '00'
                 status: ACTIVE
@@ -10423,7 +9807,10 @@ paths:
                 count: 1
                 data:
                   - channel: API
-                    created_time: '2023-03-15T00:00:00.0000000+00:00'
+                    created_time: '2025-03-15T00:00:00.0000000+00:00'
+                    metadata:
+                      my_name_1: my_value_1
+                      my_name_2: my_value_2
                     reason: Activating user
                     reason_code: '00'
                     status: ACTIVE
@@ -10466,7 +9853,10 @@ paths:
                 $ref: '#/components/schemas/UserTransitionResponse'
               example:
                 channel: API
-                created_time: '2023-03-15T00:00:00.0000000+00:00'
+                created_time: '2025-03-15T00:00:00.0000000+00:00'
+                metadata:
+                  my_name_1: my_value_1
+                  my_name_2: my_value_2
                 reason: Activating user
                 reason_code: '00'
                 status: ACTIVE
@@ -10607,6 +9997,31 @@ paths:
           description: Bad request
         '409':
           description: Token already associated with a different payload
+        '500':
+          description: Server error
+  '/velocitycontrols/account/{account_token}/available':
+    get:
+      tags:
+        - velocity controls
+      summary: Retrieve velocity control available balances for an account token
+      operationId: getVelocitycontrolsAccountAccountTokenAvailable
+      parameters:
+        - name: account_token
+          in: path
+          description: Account token
+          required: true
+          style: simple
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VelocityControlBalanceListResponse'
+        '400':
+          description: Bad request
         '500':
           description: Server error
   '/velocitycontrols/user/{user_token}/available':
@@ -10845,7 +10260,7 @@ paths:
       parameters:
         - name: active
           in: query
-          description: Set to `true` to return only active webhook configurations.
+          description: 'Set to `true` to return only active webhook configurations, otherwise all webhook configurations will be returned.'
           style: form
           schema:
             type: boolean
@@ -11244,7 +10659,7 @@ components:
           minLength: 0
           type: string
         postal_code:
-          maxLength: 20
+          maxLength: 10
           minLength: 0
           type: string
         state:
@@ -11252,7 +10667,7 @@ components:
           minLength: 0
           type: string
         zip:
-          maxLength: 20
+          maxLength: 10
           minLength: 0
           type: string
     AddressResponseModel:
@@ -11312,7 +10727,7 @@ components:
           description: "Postal code of the cardholder, such as a United States ZIP code.\n`94612`, for example."
         state:
           type: string
-          description: "Two-character <</core-api/kyc-verification#_valid_state_provincial_and_territorial_abbreviations, state or province code>>.\n`CA`, for example."
+          description: "Two-character state, provincial, or territorial abbreviation.\n\nFor the complete list, see <</core-api/kyc-verification#_valid_state_provincial_territorial_and_federal_abbreviations, Valid state, provincial, territorial, and federal abbreviations>>."
         zip:
           type: string
       description: Specifies the cardholder address.
@@ -11671,6 +11086,10 @@ components:
         last_modified_time:
           type: string
           format: date-time
+        metadata:
+          type: object
+          additionalProperties:
+            type: string
         reason:
           type: string
         reason_code:
@@ -11947,7 +11366,7 @@ components:
           maxLength: 2
           minLength: 0
           type: string
-          description: "Two-character state, province, or territorial abbreviation.\n\nFor the complete list, see <</core-api/kyc-verification#_valid_state_provincial_and_territorial_abbreviations, Valid state, provincial, and territorial abbreviations>>."
+          description: "Two-character state, provincial, or territorial abbreviation.\n\nFor the complete list, see <</core-api/kyc-verification#_valid_state_provincial_territorial_and_federal_abbreviations, Valid state, provincial, territorial, and federal abbreviations>>."
         token:
           maxLength: 36
           minLength: 1
@@ -12034,6 +11453,30 @@ components:
             - CREDIT_NOT_PROCESSED
             - NON_RECEIPT_OF_CASH_OR_LOAD_TRANSACTION_VALUE_AT_ATM
             - DUPLICATE_PROCESSING_OR_PAID_BY_OTHER_MEANS
+            - AMEX_FRAUD_MISSING_IMPRINT
+            - AMEX_FRAUD_MULTIPLE_ROCKETS
+            - AMEX_FRAUD_CARD_NOT_PRESENT
+            - AMEX_FRAUD_NO_VALID_AUTHORIZATION
+            - AMEX_FRAUD_FULL_RECOURSE
+            - AMEX_FRAUD_LIABILITY_SHIFT_COUNTERFEIT
+            - AMEX_FRAUD_LIABILITY_SHIFT_LOST_STOLEN_NON_RECEIVED
+            - AMEX_INVALID_AUTHORIZATION
+            - AMEX_INCORRECT_TRANSACTION_AMOUNT_OR_ACCOUNT_NUMBER
+            - AMEX_MULTIPLE_PROCESSING
+            - AMEX_UNASSIGNED_ACCOUNT_NUMBER
+            - AMEX_CURRENCY_DISCREPANCY
+            - AMEX_LATE_PRESENTMENT
+            - AMEX_PRESENTMENT_ERROR
+            - AMEX_CREDIT_NOT_PRESENTED
+            - AMEX_PAID_BY_OTHER_MEANS
+            - AMEX_CANCELLING_RECURRING_GOODS_SERVICES
+            - AMEX_NOT_AS_DESCRIBED_OR_DEFECTIVE_MERCHANDISE
+            - AMEX_GOODS_SERVICES_NOT_RECEIVED
+            - AMEX_CAR_RENTAL_CHARGE_NON_QUALIFIED_UNSUBSTANTIATED
+            - AMEX_LOCAL_REGULATORY_LEGAL_DISPUTE
+            - AMEX_REQUEST_FOR_SUPPORT_NOT_FULFILLED
+            - AMEX_REQUEST_FOR_SUPPORT_ILLEGIBLE_INCOMPLETE
+            - AMEX_ATM_DISBURSEMENT
           type: string
           description: Either 'reason_description' or 'reason_code' is required
         status:
@@ -12049,6 +11492,10 @@ components:
             - WITHDRAWN
             - WRITTEN_OFF_ISSUER
             - WRITTEN_OFF_PROGRAM
+            - ARBITRATION_RESPONSE
+            - ARBITRATION_DECISION
+            - RETRIEVAL_REQUEST
+            - RETRIEVAL_RESPONSE
           type: string
     ClearingModel:
       required:
@@ -12815,7 +12262,7 @@ components:
             - BUSINESS_TAX_ID
             - TAXPAYER_REFERENCE
           type: string
-          description: "Type of identification.\n\n*NOTE:* Full Social Security Number (SSN) is required for US-based user cardholder KYC verification, using the `SSN` type.\nFull Employer Identification Number (EIN) is required for business cardholder KYC verification, using the `BUSINESS_TAX_ID` or `BUSINESS_NUMBER` type.\nNine digits only, no delimiters.\n`123456789`, for example."
+          description: "Type of identification.\n\n*NOTE:* Full Social Security Number (SSN) is required for US-based user cardholder KYC verification, using the `SSN` type.\nFull Employer Identification Number (EIN) is required for business cardholder KYC verification, using the `BUSINESS_TAX_ID` or `BUSINESS_NUMBER` type.\nFor business directors, use one of SSN, TIN, SIN, or NIN.\nNine digits only, no delimiters.\n`123456789`, for example."
           readOnly: true
         value:
           type: string
@@ -12827,7 +12274,7 @@ components:
       properties:
         expiration_date:
           type: string
-          description: 'Expiration date for the identification, if applicable.'
+          description: 'Expiration date of the identification, if applicable.'
           readOnly: true
         type:
           enum:
@@ -12949,132 +12396,6 @@ components:
         start_index:
           type: integer
           format: int32
-    MerchantModel:
-      required:
-        - name
-      type: object
-      properties:
-        active:
-          type: boolean
-          default: true
-        address1:
-          maxLength: 255
-          minLength: 0
-          type: string
-        address2:
-          maxLength: 255
-          minLength: 0
-          type: string
-        city:
-          maxLength: 40
-          minLength: 0
-          type: string
-        contact:
-          maxLength: 40
-          minLength: 0
-          type: string
-        contact_email:
-          maxLength: 40
-          minLength: 0
-          type: string
-        country:
-          maxLength: 40
-          minLength: 0
-          type: string
-        latitude:
-          type: number
-          format: float
-        longitude:
-          type: number
-          format: float
-        name:
-          maxLength: 40
-          minLength: 0
-          type: string
-        partial_auth_flag:
-          type: boolean
-          default: true
-        phone:
-          maxLength: 10
-          minLength: 0
-          type: string
-        province:
-          maxLength: 20
-          minLength: 0
-          type: string
-        state:
-          maxLength: 2
-          minLength: 0
-          type: string
-        token:
-          maxLength: 36
-          minLength: 1
-          type: string
-          description: The unique identifier of the merchant
-        zip:
-          maxLength: 10
-          minLength: 0
-          type: string
-    MerchantUpdateModel:
-      type: object
-      properties:
-        active:
-          type: boolean
-          default: true
-        address1:
-          maxLength: 255
-          minLength: 0
-          type: string
-        address2:
-          maxLength: 255
-          minLength: 0
-          type: string
-        city:
-          maxLength: 40
-          minLength: 0
-          type: string
-        contact:
-          maxLength: 40
-          minLength: 0
-          type: string
-        contact_email:
-          maxLength: 40
-          minLength: 0
-          type: string
-        country:
-          maxLength: 40
-          minLength: 0
-          type: string
-        latitude:
-          type: number
-          format: float
-        longitude:
-          type: number
-          format: float
-        name:
-          maxLength: 40
-          minLength: 0
-          type: string
-        partial_auth_flag:
-          type: boolean
-          description: 1 char max
-          default: true
-        phone:
-          maxLength: 40
-          minLength: 0
-          type: string
-        province:
-          maxLength: 20
-          minLength: 0
-          type: string
-        state:
-          maxLength: 255
-          minLength: 0
-          type: string
-        zip:
-          maxLength: 10
-          minLength: 0
-          type: string
     MinOffset:
       type: object
       properties:
@@ -13468,6 +12789,11 @@ components:
         birth_date:
           type: string
           description: "Cardholder date of birth.\n\n*NOTE:* Required for KYC verification (US-based cardholders only)."
+        birth_place:
+          maxLength: 255
+          minLength: 0
+          type: string
+          description: Country where the cardholder was born.
         city:
           maxLength: 40
           minLength: 0
@@ -13572,7 +12898,7 @@ components:
           type: string
           description: Cardholder's user account password on the Marqeta platform.
         phone:
-          maxLength: 255
+          maxLength: 15
           minLength: 0
           type: string
           description: "Cardholder telephone number (including area code), prepended by the `+` symbol and the 1- to 3-digit country calling code.\nDo not include hyphens, spaces, or parentheses."
@@ -13588,7 +12914,12 @@ components:
           maxLength: 32
           minLength: 0
           type: string
-          description: "State where the cardholder resides.\n\n*NOTE:* <</core-api/kyc-verification#_valid_state_provincial_and_territorial_abbreviations, Valid two-character abbreviation>> required for KYC verification (US-based cardholders only)."
+          description: "State where the cardholder resides (`CA` for California, for example).\n\n*NOTE:* <</core-api/kyc-verification#_valid_state_provincial_territorial_and_federal_abbreviations, Two-character abbreviation>> required for KYC verification (US-based cardholders only)."
+        title:
+          maxLength: 255
+          minLength: 0
+          type: string
+          description: 'Professional title of the cardholder, such as Chief Comptroller.'
         token:
           maxLength: 36
           minLength: 1
@@ -13730,6 +13061,11 @@ components:
           type: string
           description: 'Date and time when the resource was last modified, in UTC.'
           format: date-time
+        metadata:
+          type: object
+          additionalProperties:
+            type: string
+          description: "Associates customer-injected metadata with the user.\nReturned if part of the call to `POST /users`."
         reason:
           type: string
           description: Additional information about the status change.
@@ -13998,21 +13334,23 @@ components:
     account_balance:
       type: object
       properties:
-        account_description:
-          type: string
-        account_token:
-          type: string
-        account_type:
-          type: string
         balances:
           type: object
           additionalProperties:
             $ref: '#/components/schemas/CurrencyBalance'
         default_currency_code:
           type: string
+        description:
+          type: string
+        impacted_amount:
+          type: number
         last_updated_time:
           type: string
           format: date-time
+        token:
+          type: string
+        type:
+          type: string
     account_balance_response:
       type: object
       properties:
@@ -14021,6 +13359,10 @@ components:
     account_funding:
       type: object
       properties:
+        entry_device_type:
+          enum:
+            - OFF_THE_SHELF_MOBILE_CONSUMER
+          type: string
         funding_source:
           enum:
             - CREDIT
@@ -14050,6 +13392,8 @@ components:
         receiver_name:
           type: string
           description: Specifies the name of the account holder receiving the funding.
+        reference_id:
+          type: string
         screening_score:
           type: string
           description: "Sanctions screening score to assist with meeting Anti-Money Laundering (AML) obligations.\n\nHigher scores indicate that the sender's data more closely resembles an entry on the regulatory watchlist.\n\nA value of 999 means no score was available."
@@ -14065,9 +13409,13 @@ components:
         sender_country:
           type: string
           description: Country of the sender funding the transaction.
+        sender_date_of_birth:
+          type: string
         sender_name:
           type: string
           description: Name of the sender funding the transaction.
+        sender_postal_code:
+          type: string
         sender_state:
           type: string
           description: State or province of the sender funding the transaction.
@@ -14100,6 +13448,7 @@ components:
             - GOVERNMENT_PAYMENT
             - PAYMENTS_GOODS_SERVICES
             - FUNDS_TRANSFER
+            - VISA_ACCEPT
             - GENERAL_BUSINESS_TO_BUSINESS_TRANSFER
             - BUSINESS_TO_BUSINESS_TRANSFER
             - CASH_DEPOSIT
@@ -15346,11 +14695,15 @@ components:
       type: object
       properties:
         birth_place:
+          maxLength: 255
+          minLength: 0
           type: string
         dob:
           type: string
           format: date-time
         email:
+          maxLength: 255
+          minLength: 0
           type: string
         first_name:
           type: string
@@ -15365,8 +14718,12 @@ components:
         middle_name:
           type: string
         nationality:
+          maxLength: 255
+          minLength: 0
           type: string
         ownership_percentage:
+          maxLength: 40
+          minLength: 0
           type: string
         phone:
           type: string
@@ -15726,7 +15083,7 @@ components:
           minLength: 0
           type: string
         phone:
-          maxLength: 255
+          maxLength: 15
           minLength: 0
           type: string
         primary_contact:
@@ -15841,7 +15198,7 @@ components:
           type: string
           description: Strong password required
         phone:
-          maxLength: 255
+          maxLength: 15
           minLength: 0
           type: string
         primary_contact:
@@ -16048,6 +15405,8 @@ components:
         alternative_names:
           type: string
         birth_place:
+          maxLength: 255
+          minLength: 0
           type: string
         dob:
           type: string
@@ -16067,6 +15426,8 @@ components:
         middle_name:
           type: string
         nationality:
+          maxLength: 255
+          minLength: 0
           type: string
         phone:
           type: string
@@ -16106,60 +15467,6 @@ components:
           type: string
         title:
           type: string
-    campaign_model:
-      required:
-        - active
-        - name
-        - token
-      type: object
-      properties:
-        active:
-          type: boolean
-          default: true
-        end_date:
-          type: string
-          format: date-time
-        name:
-          maxLength: 40
-          minLength: 0
-          type: string
-        start_date:
-          type: string
-          format: date-time
-        store_tokens:
-          maxItems: 36
-          minItems: 0
-          type: array
-          items:
-            type: string
-          description: Enclose tokens in brackets
-        token:
-          maxLength: 36
-          minLength: 1
-          type: string
-    campaign_update_model:
-      type: object
-      properties:
-        active:
-          type: boolean
-          default: false
-        end_date:
-          type: string
-          description: yyyy-MM-dd
-        name:
-          maxLength: 40
-          minLength: 0
-          type: string
-        start_date:
-          type: string
-          description: yyyy-MM-dd
-        store_tokens:
-          maxItems: 36
-          minItems: 0
-          type: array
-          items:
-            type: string
-          description: enclose tokens in brackets
     card_acceptor_model:
       type: object
       properties:
@@ -16170,6 +15477,13 @@ components:
         business_registration_id:
           type: string
         business_registration_id_type:
+          enum:
+            - unspecified
+            - tax_registration_identification
+            - national_identification
+            - company_registration_identification
+            - passport
+            - default_value
           type: string
         city:
           maxLength: 40
@@ -16354,6 +15668,11 @@ components:
         birth_date:
           type: string
           description: "Cardholder's date of birth.\n\n*NOTE:* Required for KYC verification (US-based cardholders only)."
+        birth_place:
+          maxLength: 255
+          minLength: 0
+          type: string
+          description: Country where the cardholder was born.
         city:
           maxLength: 40
           minLength: 0
@@ -16456,9 +15775,9 @@ components:
           maxLength: 255
           minLength: 0
           type: string
-          description: "Password to the cardholder's user account on the Marqeta platform.\n\n* Must contain at least one numeral +\n* Must contain at least one lowercase letter +\n* Must contain at least one uppercase letter +\n* Must contain at least one of these symbols: `@ # $ % ! ^ & * ( ) \\ _ + ~ ` - = [ ] { } , ; : ' \" , . / < > ?`"
+          description: "Password to the cardholder's user account on the Marqeta platform.\n\n* Must contain at least one numeral +\n* Must contain at least one lowercase letter +\n* Must contain at least one uppercase letter +\n* Must contain at least one of these symbols:   +\n `@` `#` `$` `%` `!` `^` `&` `*` `(` `)`   +\n `\\` `_` `+` `~` `-` `=` `[` `]` `{` `}`   +\n `,` `;` `:` `'` `\"` `.` `/` `<` `>` `?` ```"
         phone:
-          maxLength: 255
+          maxLength: 15
           minLength: 0
           type: string
           description: "Telephone number of the cardholder (including area code), prepended by the `+` symbol and the 1- to 3-digit country calling code.\nDo not include hyphens, spaces, or parentheses.\n\n*NOTE:* Required for KYC verification by certain banks (US-based cardholders only).\nTo determine if you must provide a phone number, contact your Marqeta representative."
@@ -16474,7 +15793,12 @@ components:
           maxLength: 32
           minLength: 0
           type: string
-          description: "State or province where the cardholder resides.\n\n*NOTE:* <</core-api/kyc-verification#_valid_state_provincial_and_territorial_abbreviations, Valid two-character abbreviation>> required for KYC verification (US-based cardholders only)."
+          description: "State or province where the cardholder resides.\n\n*NOTE:* <</core-api/kyc-verification#_valid_state_provincial_territorial_and_federal_abbreviations, Valid two-character abbreviation>> required for KYC verification (US-based cardholders only)."
+        title:
+          maxLength: 255
+          minLength: 0
+          type: string
+          description: "Professional title of the cardholder, such as Chief Comptroller.\n\n*NOTE:* Do not use this field for honorific titles such as Mr., Mrs., Miss, Ms., Mx., Sir, or Dame.\nInstead, add these to the `honorific` field."
         token:
           maxLength: 36
           minLength: 1
@@ -16580,6 +15904,8 @@ components:
         allow_card_creation:
           type: boolean
           default: true
+        bin_issue_country:
+          type: string
         bin_prefix:
           type: string
         bulk_ship:
@@ -16781,6 +16107,11 @@ components:
       properties:
         3csc:
           type: string
+        account_tokens:
+          type: array
+          items:
+            type: string
+          description: List of account tokens associated with the card
         activation_actions:
           $ref: '#/components/schemas/activation_actions'
         barcode:
@@ -17222,7 +16553,6 @@ components:
       required:
         - available_balance
         - balances
-        - cached_balance
         - credit_balance
         - currency_code
         - last_updated_time
@@ -17416,6 +16746,8 @@ components:
         credit_user:
           type: boolean
           default: true
+        currency_code:
+          type: string
         memo:
           maxLength: 1024
           minLength: 1
@@ -17446,6 +16778,30 @@ components:
             - CREDIT_NOT_PROCESSED
             - NON_RECEIPT_OF_CASH_OR_LOAD_TRANSACTION_VALUE_AT_ATM
             - DUPLICATE_PROCESSING_OR_PAID_BY_OTHER_MEANS
+            - AMEX_FRAUD_MISSING_IMPRINT
+            - AMEX_FRAUD_MULTIPLE_ROCKETS
+            - AMEX_FRAUD_CARD_NOT_PRESENT
+            - AMEX_FRAUD_NO_VALID_AUTHORIZATION
+            - AMEX_FRAUD_FULL_RECOURSE
+            - AMEX_FRAUD_LIABILITY_SHIFT_COUNTERFEIT
+            - AMEX_FRAUD_LIABILITY_SHIFT_LOST_STOLEN_NON_RECEIVED
+            - AMEX_INVALID_AUTHORIZATION
+            - AMEX_INCORRECT_TRANSACTION_AMOUNT_OR_ACCOUNT_NUMBER
+            - AMEX_MULTIPLE_PROCESSING
+            - AMEX_UNASSIGNED_ACCOUNT_NUMBER
+            - AMEX_CURRENCY_DISCREPANCY
+            - AMEX_LATE_PRESENTMENT
+            - AMEX_PRESENTMENT_ERROR
+            - AMEX_CREDIT_NOT_PRESENTED
+            - AMEX_PAID_BY_OTHER_MEANS
+            - AMEX_CANCELLING_RECURRING_GOODS_SERVICES
+            - AMEX_NOT_AS_DESCRIBED_OR_DEFECTIVE_MERCHANDISE
+            - AMEX_GOODS_SERVICES_NOT_RECEIVED
+            - AMEX_CAR_RENTAL_CHARGE_NON_QUALIFIED_UNSUBSTANTIATED
+            - AMEX_LOCAL_REGULATORY_LEGAL_DISPUTE
+            - AMEX_REQUEST_FOR_SUPPORT_NOT_FULFILLED
+            - AMEX_REQUEST_FOR_SUPPORT_ILLEGIBLE_INCOMPLETE
+            - AMEX_ATM_DISBURSEMENT
           type: string
           description: Either 'reason_description' or 'reason_code' is required
         regulation_type:
@@ -17463,6 +16819,10 @@ components:
             - WITHDRAWN
             - WRITTEN_OFF_ISSUER
             - WRITTEN_OFF_PROGRAM
+            - ARBITRATION_RESPONSE
+            - ARBITRATION_DECISION
+            - RETRIEVAL_REQUEST
+            - RETRIEVAL_RESPONSE
           type: string
         token:
           maxLength: 36
@@ -17506,6 +16866,10 @@ components:
           type: boolean
           description: Whether to credit the user for the chargeback amount.
           default: false
+        currency_code:
+          maxLength: 3
+          minLength: 3
+          type: string
         last_modified_time:
           type: string
           description: "Date and time when the chargeback was last modified.\nNot returned for transactions when the associated chargeback is in the `INITIATED` state."
@@ -17522,6 +16886,7 @@ components:
             - MASTERCARD
             - PULSE
             - VISA
+            - AMERICANEXPRESS
           type: string
           description: Network handling the chargeback.
         network_case_id:
@@ -17542,6 +16907,10 @@ components:
             - CASE_LOST
             - NETWORK_REJECTED
             - WITHDRAWN
+            - ARBITRATION_RESPONSE
+            - ARBITRATION_DECISION
+            - RETRIEVAL_REQUEST
+            - RETRIEVAL_RESPONSE
           type: string
           description: State of the case.
         token:
@@ -17586,6 +16955,10 @@ components:
             - CASE_LOST
             - WRITTEN_OFF_ISSUER
             - WRITTEN_OFF_PROGRAM
+            - ARBITRATION_RESPONSE
+            - ARBITRATION_DECISION
+            - RETRIEVAL_REQUEST
+            - RETRIEVAL_RESPONSE
           type: string
         token:
           maxLength: 36
@@ -17636,6 +17009,10 @@ components:
             - CASE_LOST
             - NETWORK_REJECTED
             - WITHDRAWN
+            - ARBITRATION_RESPONSE
+            - ARBITRATION_DECISION
+            - RETRIEVAL_REQUEST
+            - RETRIEVAL_RESPONSE
           type: string
         reason:
           maxLength: 1024
@@ -17653,6 +17030,10 @@ components:
             - WITHDRAWN
             - WRITTEN_OFF_ISSUER
             - WRITTEN_OFF_PROGRAM
+            - ARBITRATION_RESPONSE
+            - ARBITRATION_DECISION
+            - RETRIEVAL_REQUEST
+            - RETRIEVAL_RESPONSE
           type: string
         token:
           maxLength: 36
@@ -18034,6 +17415,14 @@ components:
           type: string
         cvm_authentication_method:
           type: string
+        digital_service_provider_identifier_1:
+          type: string
+        digital_service_provider_identifier_2:
+          type: string
+        digital_service_provider_type_1:
+          type: string
+        digital_service_provider_type_2:
+          type: string
         first_authentication_factor:
           type: string
         first_authentication_factor_name:
@@ -18075,6 +17464,8 @@ components:
             - OTP_EMAIL
             - OTHER_OTP
             - OTHER
+          type: string
+        token_service_provider_id:
           type: string
     digital_wallet_android_pay_provision_request:
       required:
@@ -18282,6 +17673,8 @@ components:
           format: date-time
         device:
           $ref: '#/components/schemas/device'
+        digital_wallet_token_card_network_sync_indicator:
+          type: boolean
         fulfillment_status:
           type: string
           description: "Digital wallet token's provisioning status.\n\nFor fulfillment status descriptions, see <</core-api/digital-wallets-management#postDigitalwallettokentransitions, Create digital wallet token transition>>."
@@ -18407,7 +17800,7 @@ components:
             - '32'
             - '86'
           type: string
-          description: "Standard code describing the reason for the transition.\n\n*NOTE:* This field is required if your program uses v2 of the `user_card_state_version`, which is a program-specific configuration value that is managed by Marqeta and cannot be accessed via the API.\nTo learn more about the `user_card_state_version` program configuration, contact your Marqeta representative.\n\n* *00:* Object activated for the first time\n* *01:* Requested by you\n* *02:* Inactivity over time\n* *03:* This address cannot accept mail or the addressee is unknown\n* *04:* Negative account balance\n* *05:* Account under review\n* *06:* Suspicious activity was identified\n* *07:* Activity outside the program parameters was identified\n* *08:* Confirmed fraud was identified\n* *09:* Matched with an Office of Foreign Assets Control list\n* *10:* Card was reported lost\n* *11:* Card information was cloned\n* *12:* Account or card information was compromised\n* *13:* Temporary status change while on hold/leave\n* *14:* Initiated by Marqeta\n* *15:* Initiated by issuer\n* *16:* Card expired\n* *17:* Failed KYC\n* *18:* Changed to `ACTIVE` because information was properly validated\n* *19:* Changed to `ACTIVE` because account activity was properly validated\n* *20:* Change occurred prior to the normalization of reason codes\n* *21:* Initiated by a third party, often a digital wallet provider\n* *22:* PIN retry limit reached\n* *23:* Card was reported stolen\n* *24:* Address issue\n* *25:* Name issue\n* *26:* SSN issue\n* *27:* DOB issue\n* *28:* Email issue\n* *29:* Phone issue\n* *30:* Account/fulfillment mismatch\n* *31:* Other reason\n* *86:* Notification of death"
+          description: "Standard code describing the reason for the transition.\n\n*NOTE:* This field is required if your program uses v2 of the `user_card_state_version`, which is a program-specific configuration value that is managed by Marqeta and cannot be accessed via the API.\nTo learn more about the `user_card_state_version` program configuration, contact your Marqeta representative.\n\n* *00:* Object activated for the first time\n* *01:* Requested by you\n* *02:* Inactivity over time\n* *03:* This address cannot accept mail or the addressee is unknown\n* *04:* Negative account balance\n* *05:* Account under review\n* *06:* Suspicious activity was identified\n* *07:* Activity outside the program parameters was identified\n* *08:* Confirmed fraud was identified\n* *09:* Matched with an Office of Foreign Assets Control list\n* *10:* Card was reported lost\n* *11:* Card information was cloned\n* *12:* Account or card information was compromised\n* *13:* Temporary status change while on hold/leave\n* *14:* Initiated by Marqeta\n* *15:* Initiated by issuer\n* *16:* Card expired\n* *17:* Failed KYC\n* *18:* Changed to `ACTIVE` because information was properly validated\n* *19:* Changed to `ACTIVE` because account activity was properly validated\n* *20:* Change occurred prior to the normalization of reason codes\n* *21:* Initiated by a third party, often a digital wallet provider\n* *22:* PIN retry limit reached\n* *23:* Card was reported stolen\n* *24:* Address issue\n* *25:* Name issue\n* *26:* SSN issue\n* *27:* DOB issue\n* *28:* Email issue\n* *29:* Phone issue\n* *30:* Account/fulfillment mismatch\n* *31:* Other reason\n* *32:* Unblock request\n* *86:* Notification of death"
         state:
           enum:
             - ACTIVE
@@ -18504,7 +17897,7 @@ components:
             - '32'
             - '86'
           type: string
-          description: "Standard code describing the reason for the transition:\n\n* *00:* Object activated for the first time\n* *01:* Requested by you\n* *02:* Inactivity over time\n* *03:* This address cannot accept mail or the addressee is unknown\n* *04:* Negative account balance\n* *05:* Account under review\n* *06:* Suspicious activity was identified\n* *07:* Activity outside the program parameters was identified\n* *08:* Confirmed fraud was identified\n* *09:* Matched with an Office of Foreign Assets Control list\n* *10:* Card was reported lost\n* *11:* Card information was cloned\n* *12:* Account or card information was compromised\n* *13:* Temporary status change while on hold/leave\n* *14:* Initiated by Marqeta\n* *15:* Initiated by issuer\n* *16:* Card expired\n* *17:* Failed KYC\n* *18:* Changed to `ACTIVE` because information was properly validated\n* *19:* Changed to `ACTIVE` because account activity was properly validated\n* *20:* Change occurred prior to the normalization of reason codes\n* *21:* Initiated by a third party, often a digital wallet provider\n* *22:* PIN retry limit reached\n* *23:* Card was reported stolen\n* *24:* Address issue\n* *25:* Name issue\n* *26:* SSN issue\n* *27:* DOB issue\n* *28:* Email issue\n* *29:* Phone issue\n* *30:* Account/fulfillment mismatch\n* *31:* Other reason\n* *86:* Notification of death"
+          description: "Standard code describing the reason for the transition:\n\n* *00:* Object activated for the first time\n* *01:* Requested by you\n* *02:* Inactivity over time\n* *03:* This address cannot accept mail or the addressee is unknown\n* *04:* Negative account balance\n* *05:* Account under review\n* *06:* Suspicious activity was identified\n* *07:* Activity outside the program parameters was identified\n* *08:* Confirmed fraud was identified\n* *09:* Matched with an Office of Foreign Assets Control list\n* *10:* Card was reported lost\n* *11:* Card information was cloned\n* *12:* Account or card information was compromised\n* *13:* Temporary status change while on hold/leave\n* *14:* Initiated by Marqeta\n* *15:* Initiated by issuer\n* *16:* Card expired\n* *17:* Failed KYC\n* *18:* Changed to `ACTIVE` because information was properly validated\n* *19:* Changed to `ACTIVE` because account activity was properly validated\n* *20:* Change occurred prior to the normalization of reason codes\n* *21:* Initiated by a third party, often a digital wallet provider\n* *22:* PIN retry limit reached\n* *23:* Card was reported stolen\n* *24:* Address issue\n* *25:* Name issue\n* *26:* SSN issue\n* *27:* DOB issue\n* *28:* Email issue\n* *29:* Phone issue\n* *30:* Account/fulfillment mismatch\n* *31:* Other reason\n* *32:* Unblock request\n* *86:* Notification of death"
         state:
           enum:
             - REQUESTED
@@ -19135,7 +18528,7 @@ components:
           description: Indicates whether the Flexible Credential transaction object is actionable (`inquiry`) or merely informative (`advice`).
         eligible:
           type: string
-          description: Indicates if the transaction is eligible for Flexible Credential transactions or not.
+          description: Indicates whether or not the transaction is eligible for Flexible Credential transactions.
         eligible_products:
           type: array
           items:
@@ -20204,26 +19597,6 @@ components:
         width:
           type: string
           description: "Width of non-SVG image asset.\nSpecified in pixels."
-    merchant_card_request:
-      required:
-        - card_product_token
-      type: object
-      properties:
-        account_token:
-          type: string
-        card_product_token:
-          maxLength: 36
-          minLength: 1
-          type: string
-        expedite:
-          type: boolean
-          default: false
-        expiration_offset:
-          $ref: '#/components/schemas/expiration_offset'
-        metadata:
-          type: object
-          additionalProperties:
-            type: string
     merchant_group_request:
       required:
         - name
@@ -20479,6 +19852,8 @@ components:
         account_risk_score_reason_code:
           type: string
           description: _(Visa only)_ Unique code that describes the main driver of the `account_risk_score`.
+        card_not_present_transaction_risk_score:
+          type: string
         dii_score:
           type: string
           description: 'Mastercard Digital Identity Insights risk score, where `0` indicates the lowest risk and `9` indicates the highest risk.'
@@ -20510,6 +19885,9 @@ components:
         network_funding_txn_type:
           type: string
           description: Transaction type indicator provided by the card network for original credit and account funding transactions.
+        outgoing_response_code:
+          type: string
+          description: "Network response code, as provided by Marqeta.\n\nFor example, Visa response code `59` indicates suspected fraud."
         product_id:
           type: string
           description: "Product identification value assigned by the card network to each card product.\nCan be used to track card-level activity by individual account number for premium card products."
@@ -20523,59 +19901,6 @@ components:
           type: string
           description: Name of the surcharge-free ATM network used to complete the transaction.
       description: "Contains network-related metadata for the transaction, including details about the card program and the card product.\nReturned if provided by the card network"
-    offer_model:
-      required:
-        - campaign_token
-        - currency_code
-        - name
-        - purchase_amount
-        - reward_amount
-      type: object
-      properties:
-        active:
-          type: boolean
-          default: true
-        campaign_token:
-          maxLength: 36
-          minLength: 1
-          type: string
-        currency_code:
-          type: string
-        end_date:
-          type: string
-          format: date-time
-        name:
-          maxLength: 255
-          minLength: 0
-          type: string
-        purchase_amount:
-          type: number
-        reward_amount:
-          type: number
-        reward_trigger_amount:
-          type: number
-        start_date:
-          type: string
-          format: date-time
-        token:
-          maxLength: 36
-          minLength: 1
-          type: string
-    offer_update_model:
-      type: object
-      properties:
-        active:
-          type: boolean
-          default: true
-        end_date:
-          type: string
-          description: yyyy-MM-ddThh:mm:ssZ
-        name:
-          type: string
-          description: 255 char max
-        start_date:
-          type: string
-          description: yyyy-MM-ddThh:mm:ssZ
     one_time_request_model:
       type: object
       properties:
@@ -20610,6 +19935,10 @@ components:
             - originator
             - payment
           type: string
+        entry_device_type:
+          enum:
+            - OFF_THE_SHELF_MOBILE_CONSUMER
+          type: string
         fast_funds_enabled:
           type: boolean
           description: "Indicates that Fast Funds are enabled for dual-message original credit transactions.\nIf the value of this field is `true`, you must make the funds available to your cardholder within 30 minutes of the transaction."
@@ -20626,9 +19955,13 @@ components:
             - ACH
           type: string
           description: Sender's account from which the OCT draws funds.
+        reference_id:
+          type: string
         screening_score:
           type: string
           description: "Sanctions screening score to assist with meeting Anti-Money Laundering (AML) obligations.\n\nHigher scores indicate that the sender's data more closely resembles an entry on the regulatory watchlist.\n\nA value of 999 means that no screening score is available."
+        sender_account_number:
+          type: string
         sender_account_type:
           enum:
             - OTHER
@@ -20651,9 +19984,13 @@ components:
         sender_country:
           type: string
           description: Sender's country.
+        sender_date_of_birth:
+          type: string
         sender_name:
           type: string
           description: Full name of the sender.
+        sender_postal_code:
+          type: string
         sender_state:
           type: string
           description: Sender's state.
@@ -20694,6 +20031,7 @@ components:
             - consumer_bill_payment
             - request_to_pay
             - gaming_payment
+            - visa_accept
           type: string
           description: Type of original credit transaction.
       description: 'Contains information about an original credit transaction (OCT), which enables the cardholder to receive funds on the specified card from an external source via the card network.'
@@ -20823,6 +20161,7 @@ components:
             - government_payment
             - payments_goods_services
             - purchase_repayment
+            - visa_accept
           type: string
         webhook:
           $ref: '#/components/schemas/webhook'
@@ -20895,7 +20234,7 @@ components:
           maxLength: 255
           minLength: 1
           type: string
-          description: "New password to the cardholder's user account on the Marqeta platform.\n\n* Must contain at least one numeral +\n* Must contain at least one lowercase letter +\n* Must contain at least one uppercase letter +\n* Must contain at least one of these symbols: `@ # $ % ! ^ & * ( ) \\ _ + ~ ` - = [ ] { } , ; : ' \" , . / < > ?`"
+          description: "New password to the cardholder's user account on the Marqeta platform.\n\n* Must contain at least one numeral +\n* Must contain at least one lowercase letter +\n* Must contain at least one uppercase letter +\n* Must contain at least one of these symbols:   +\n `@` `#` `$` `%` `!` `^` `&` `*` `(` `)`   +\n `\\` `_` `+` `~` `-` `=` `[` `]` `{` `}`   +\n `,` `;` `:` `'` `\"` `.` `/` `<` `>` `?` ```"
     payment_card_funding_source_model:
       allOf:
         - $ref: '#/components/schemas/funding_source_model'
@@ -21295,6 +20634,7 @@ components:
             - ACCOUNT_INQUIRY
             - INCREMENTAL_AUTHORIZATION
             - REAUTHORIZATION
+            - UNSCHEDULED_CARD_ON_FILE
           type: string
           description: Specifies the category of a point-of-sale transaction.
         zip:
@@ -22039,7 +21379,7 @@ components:
           description: "Additional information about the transaction, such as velocity control details.\n\nThis field is returned in transaction response objects only.\nIt is not returned in address verification or card security verification response objects."
         code:
           type: string
-          description: "Four-digit response code for address verification, card security code verification, or transactions.\n\nFor account name verification, the four digits correspond with assertions that the first, middle, last, and full name of the cardholder on the Marqeta platform match the data provided by the cardholder.\n`0` indicates no validation was performed, `1` indicates the match was unsuccessful (unmatched), `2` indicates the match was partial, and `3` indicates the match was exact.\nFor example:\n\n[cols=\"2,3,3,3,3\"]\n!===\n! Code ! First Name ! Middle Name ! Last Name ! Full Name\n\n! 0000\n! Not validated\n! Not validated\n! Not validated\n! Not validated\n\n! 1111\n! Unmatched\n! Unmatched\n! Unmatched\n! Unmatched\n\n! 3333\n! Exact match\n! Exact match\n! Exact match\n! Exact match\n\n! 1232\n! Unmatched\n! Partial match\n! Exact match\n! Partial match\n!===\n\nFor address verification responses, the code is an assertion by the Marqeta platform as to whether its address verification data matches that provided by the cardholder:\n\n[cols=\"2,3,3\"]\n!===\n! Code ! Address ! Postal Code\n\n! 0000\n! Match\n! Match\n\n! 0001\n! Match\n! Unmatched\n\n! 0100\n! Unmatched\n! Match\n\n! 0101\n! Unmatched\n! Unmatched\n\n! 0200\n! Data not present\n! Match\n\n! 0201\n! Data not present\n! Unmatched\n\n! 0002\n! Match\n! Data not present\n\n! 0102\n! Unmatched\n! Data not present\n\n! 0303\n! Not validated\n! Not validated\n!===\n\nFor card security verification, the code indicates whether the verification check passed and can have these possible values:\n\n* 0000 – passed\n* 0001 – did not pass\n\nFor a transaction, the code describes the outcome of the attempted transaction.\nFor the full list of transaction codes, see <</developer-guides/about-transactions#_transaction_response_codes, Transaction response codes>>."
+          description: "Four-digit response code for address verification, card security code verification, or transactions.\n\nFor account name verification, the four digits correspond with assertions that the first, middle, last, and full name of the cardholder on the Marqeta platform match the data provided by the cardholder.\n\n* `0` indicates no validation was performed\n* `1` indicates the match was unsuccessful (not matched)\n* `2` indicates the match was partial\n* `3` indicates the match was exact\n\nFor example:\n\n[cols=\"2,3,3,3,3\"]\n!===\n! Code ! First Name ! Middle Name ! Last Name ! Full Name\n\n! `0000`\n! Not validated\n! Not validated\n! Not validated\n! Not validated\n\n! `1111`\n! Not matched\n! Not matched\n! Not matched\n! Not matched\n\n! `3333`\n! Exact match\n! Exact match\n! Exact match\n! Exact match\n\n! `1232`\n! Not matched\n! Partial match\n! Exact match\n! Partial match\n!===\n\nFor address verification responses, the code is an assertion by the Marqeta platform as to whether its address verification data matches that provided by the cardholder:\n\n[cols=\"2,3,3\"]\n!===\n! Code ! Address ! Postal Code\n\n! `0000`\n! Match\n! Match\n\n! `0001`\n! Match\n! Not matched\n\n! `0100`\n! Not matched\n! Match\n\n! `0101`\n! Not matched\n! Not matched\n\n! `0200`\n! Data not present\n! Match\n\n! `0201`\n! Data not present\n! Not matched\n\n! `0002`\n! Match\n! Data not present\n\n! `0102`\n! Not matched\n! Data not present\n\n! `0303`\n! Not validated\n! Not validated\n!===\n\nFor card security verification, the code indicates whether the verification check passed and can have these possible values:\n\n* `0000` – Passed\n* `0001` – Did not pass\n\nFor a transaction, the code describes the outcome of the attempted transaction.\nFor the full list of transaction codes, see <</developer-guides/about-transactions#_transaction_response_codes, Transaction response codes>>."
         memo:
           type: string
           description: Additional text that describes the response.
@@ -22267,96 +21607,6 @@ components:
           type: string
           description: Taxpayer Identification Number (TIN).
       description: Contains tax identification information.
-    store_model:
-      required:
-        - address1
-        - city
-        - merchant_token
-        - mid
-        - name
-        - state
-        - zip
-      type: object
-      properties:
-        active:
-          type: boolean
-          default: true
-        address1:
-          maxLength: 255
-          minLength: 0
-          type: string
-        address2:
-          maxLength: 255
-          minLength: 0
-          type: string
-        city:
-          maxLength: 40
-          minLength: 0
-          type: string
-        contact:
-          maxLength: 40
-          minLength: 0
-          type: string
-        contact_email:
-          maxLength: 40
-          minLength: 0
-          type: string
-        country:
-          maxLength: 40
-          minLength: 0
-          type: string
-        keyed_auth_cvv_enforced:
-          type: boolean
-          default: false
-        latitude:
-          type: number
-          format: float
-        longitude:
-          type: number
-          format: float
-        merchant_token:
-          maxLength: 36
-          minLength: 0
-          type: string
-        mid:
-          maxLength: 50
-          minLength: 1
-          type: string
-        name:
-          maxLength: 40
-          minLength: 0
-          type: string
-        network_mid:
-          maxLength: 50
-          minLength: 1
-          type: string
-        partial_approval_capable:
-          type: boolean
-          default: false
-        partial_auth_flag:
-          type: boolean
-          default: true
-        phone:
-          maxLength: 10
-          minLength: 0
-          type: string
-        province:
-          maxLength: 20
-          minLength: 0
-          type: string
-        state:
-          maxLength: 255
-          minLength: 0
-          type: string
-        token:
-          maxLength: 36
-          minLength: 1
-          type: string
-          description: The unique identifier of the merchant
-        zip:
-          maxLength: 10
-          minLength: 0
-          type: string
     store_response_model:
       required:
         - address1
@@ -22441,98 +21691,6 @@ components:
           minLength: 0
           type: string
         postal_code:
-          maxLength: 10
-          minLength: 0
-          type: string
-        province:
-          maxLength: 20
-          minLength: 0
-          type: string
-        state:
-          maxLength: 255
-          minLength: 0
-          type: string
-        token:
-          maxLength: 36
-          minLength: 1
-          type: string
-          description: The unique identifier of the merchant
-        zip:
-          maxLength: 10
-          minLength: 0
-          type: string
-    store_update_model:
-      required:
-        - active
-        - address1
-        - city
-        - merchant_token
-        - mid
-        - name
-        - state
-        - zip
-      type: object
-      properties:
-        active:
-          type: boolean
-          default: true
-        address1:
-          maxLength: 255
-          minLength: 0
-          type: string
-        address2:
-          maxLength: 255
-          minLength: 0
-          type: string
-        city:
-          maxLength: 40
-          minLength: 0
-          type: string
-        contact:
-          maxLength: 40
-          minLength: 0
-          type: string
-        contact_email:
-          maxLength: 40
-          minLength: 0
-          type: string
-        country:
-          maxLength: 40
-          minLength: 0
-          type: string
-        keyed_auth_cvv_enforced:
-          type: boolean
-          default: false
-        latitude:
-          type: number
-          format: float
-        longitude:
-          type: number
-          format: float
-        merchant_token:
-          maxLength: 36
-          minLength: 0
-          type: string
-        mid:
-          maxLength: 50
-          minLength: 1
-          type: string
-        name:
-          maxLength: 40
-          minLength: 0
-          type: string
-        network_mid:
-          maxLength: 50
-          minLength: 1
-          type: string
-        partial_approval_capable:
-          type: boolean
-          default: false
-        partial_auth_flag:
-          type: boolean
-          description: 1 char max
-          default: true
-        phone:
           maxLength: 10
           minLength: 0
           type: string
@@ -22660,6 +21818,7 @@ components:
             - ACCOUNT_INQUIRY
             - INCREMENTAL_AUTHORIZATION
             - REAUTHORIZATION
+            - UNSCHEDULED_CARD_ON_FILE
           type: string
           description: Specifies the category of a point-of-sale transaction.
       description: "Contains information about the point of sale, including details on how the card was presented.\n\nReturned if provided by the card network, and the request uses Transaction Model v1 of the Marqeta Core API.\nNot returned for Transaction Model v2 requests."
@@ -22752,6 +21911,8 @@ components:
         token_score:
           type: string
           description: Token score assigned by the digital wallet.
+        token_service_provider_id:
+          type: string
         token_type:
           type: string
           description: Type of the digital wallet token.
@@ -22844,7 +22005,7 @@ components:
           type: string
         state:
           type: string
-          description: "Two-character state, province, or territorial abbreviation.\n\nFor a complete list of valid state and province abbreviations, see <</core-api/kyc-verification#_valid_state_provincial_and_territorial_abbreviations, Valid state, provincial, and territorial abbreviations>>.\n\n*Note*: Non-US merchants may return more than 2 char for this field."
+          description: "State, provincial, territorial, or federal abbreviation (`CA` for California or `CAN` for Canada, for example).\n\nFor the complete list, see <</core-api/kyc-verification#_valid_state_provincial_territorial_and_federal_abbreviations, Valid state, provincial, territorial, and federal abbreviations>>.\n\n*Note*: Non-US merchants may return more than 2 char for this field."
         sub_merchant_id:
           type: string
         transfer_service_provider_name:
@@ -23018,6 +22179,10 @@ components:
           $ref: '#/components/schemas/account_name_verification_model'
         account_owner:
           $ref: '#/components/schemas/account_owner_model'
+        accounts:
+          type: array
+          items:
+            $ref: '#/components/schemas/account_balance'
         acquirer:
           $ref: '#/components/schemas/acquirer'
         acquirer_fee_amount:
@@ -23038,10 +22203,10 @@ components:
           $ref: '#/components/schemas/address_verification_model'
         advice_reason_code:
           type: string
-          description: 'Extended stand-in processing (STIP) reason code, as provided by the Visa card network.'
+          description: 'Extended stand-in processing (STIP) reason code, as provided by the card network.'
         advice_reason_details:
           type: string
-          description: 'Extended stand-in processing (STIP) reason details, as provided by the Visa card network.'
+          description: 'Extended stand-in processing (STIP) reason details, as provided by the card network.'
         amount:
           type: number
           description: Amount of the transaction.
@@ -23153,6 +22318,8 @@ components:
         from_account:
           type: string
           description: Specifies the funding account type.
+        from_account_token:
+          type: string
         gpa:
           $ref: '#/components/schemas/cardholder_balance'
         gpa_order:
@@ -23292,6 +22459,8 @@ components:
         subnetwork:
           type: string
           description: "Indicates which subnetwork was used to complete the transaction.\nPossible values include the following:\n\n* *VISANET* – Used for VisaNet signature-based transactions.\n* *VISANETDEBIT* – Used for VisaNet Debit PIN-based transaction.\n* *VISAINTERLINK* – Used for Visa Interlink PIN-based transactions.\n* *VISAPLUS* – Used for ATM withdrawals on Visa.\n* *MAESTRO* – Used for PIN-based transactions on Mastercard.\n* *CIRRUS* – Used for ATM withdrawals on Mastercard.\n* *MASTERCARDDEBIT* – Used for signature-based transactions on Mastercard.\n* *GATEWAY_JIT* – Used for Gateway JIT Funding transactions.\n* *MANAGED_JIT* – Used for Managed JIT Funding transactions or for transactions that occur while Commando Mode is enabled."
+        terminal_verification_results:
+          type: string
         to_account:
           type: string
           description: Specifies the receiving account type.
@@ -23429,6 +22598,25 @@ components:
             - pin.change.via.api
             - product.inquiry
             - transit.offer
+            - transfer.from.checking.hold
+            - transfer.from.checking.clear
+            - transfer.to.checking.open
+            - transfer.to.checking.clear
+            - transfer.to.savings.open
+            - transfer.to.savings.clear
+            - transfer.from.savings.hold
+            - transfer.from.savings.clear
+            - fps.debit.hold
+            - fps.debit.clear
+            - fps.debit.hold.reverse
+            - fps.debit.clear.reverse
+            - fps.credit.open
+            - fps.credit.clear
+            - fps.credit.open.reverse
+            - fps.credit.clear.reverse
+            - interest.posting.clear
+            - interest.posting.clear.reverse
+            - interest.posting.adjustment
             - unknown
           type: string
           description: "Transaction event type.\nFor more information about the `type` field, see <</core-api/event-types#_transaction_events, Transaction events>>."
@@ -23611,6 +22799,11 @@ components:
         birth_date:
           type: string
           description: Cardholder's date of birth.
+        birth_place:
+          maxLength: 255
+          minLength: 0
+          type: string
+          description: Country where the cardholder was born.
         business_token:
           type: string
           description: Unique identifier of the business resource.
@@ -23754,6 +22947,11 @@ components:
             - CLOSED
           type: string
           description: Specifies the status of the cardholder on the Marqeta platform.
+        title:
+          maxLength: 255
+          minLength: 0
+          type: string
+          description: 'Professional title of the cardholder, such as Chief Comptroller.'
         token:
           maxLength: 36
           minLength: 1

@@ -7,29 +7,30 @@ using System.IO;
 using System;
 namespace Marqeta.Core.Sdk.Models
 {
+    /// <summary>
+    /// Associates customer-injected metadata with the user.Returned if part of the call to `POST /users`.
+    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    #pragma warning disable CS1591
-    public partial class Merchant_card_request_metadata : IAdditionalDataHolder, IParsable
-    #pragma warning restore CS1591
+    public partial class UserTransitionResponse_metadata : IAdditionalDataHolder, IParsable
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>
-        /// Instantiates a new <see cref="global::Marqeta.Core.Sdk.Models.Merchant_card_request_metadata"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Marqeta.Core.Sdk.Models.UserTransitionResponse_metadata"/> and sets the default values.
         /// </summary>
-        public Merchant_card_request_metadata()
+        public UserTransitionResponse_metadata()
         {
             AdditionalData = new Dictionary<string, object>();
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="global::Marqeta.Core.Sdk.Models.Merchant_card_request_metadata"/></returns>
+        /// <returns>A <see cref="global::Marqeta.Core.Sdk.Models.UserTransitionResponse_metadata"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static global::Marqeta.Core.Sdk.Models.Merchant_card_request_metadata CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static global::Marqeta.Core.Sdk.Models.UserTransitionResponse_metadata CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-            return new global::Marqeta.Core.Sdk.Models.Merchant_card_request_metadata();
+            return new global::Marqeta.Core.Sdk.Models.UserTransitionResponse_metadata();
         }
         /// <summary>
         /// The deserialization information for the current model

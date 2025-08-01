@@ -156,7 +156,7 @@ namespace Marqeta.Core.Sdk.Webhooks
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class WebhooksRequestBuilderGetQueryParameters 
         {
-            /// <summary>Set to `true` to return only active webhook configurations.</summary>
+            /// <summary>Set to `true` to return only active webhook configurations, otherwise all webhook configurations will be returned.</summary>
             [QueryParameter("active")]
             public bool? Active { get; set; }
             /// <summary>Number of resources to retrieve.</summary>

@@ -13,6 +13,14 @@ namespace Marqeta.Core.Sdk.Models
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class Card_response : IAdditionalDataHolder, IParsable
     {
+        /// <summary>List of account tokens associated with the card</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<string>? AccountTokens { get; set; }
+#nullable restore
+#else
+        public List<string> AccountTokens { get; set; }
+#endif
         /// <summary>Defines actions to execute when the card is activated.The fields in this object are mutually exclusive.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -220,6 +228,7 @@ namespace Marqeta.Core.Sdk.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "account_tokens", n => { AccountTokens = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "activation_actions", n => { ActivationActions = n.GetObjectValue<global::Marqeta.Core.Sdk.Models.Activation_actions>(global::Marqeta.Core.Sdk.Models.Activation_actions.CreateFromDiscriminatorValue); } },
                 { "barcode", n => { Barcode = n.GetStringValue(); } },
                 { "bulk_issuance_token", n => { BulkIssuanceToken = n.GetStringValue(); } },
@@ -259,6 +268,7 @@ namespace Marqeta.Core.Sdk.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
+            writer.WriteCollectionOfPrimitiveValues<string>("account_tokens", AccountTokens);
             writer.WriteObjectValue<global::Marqeta.Core.Sdk.Models.Activation_actions>("activation_actions", ActivationActions);
             writer.WriteStringValue("barcode", Barcode);
             writer.WriteStringValue("bulk_issuance_token", BulkIssuanceToken);

@@ -37,6 +37,14 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public global::Marqeta.Core.Sdk.Models.Account_owner_model AccountOwner { get; set; }
 #endif
+        /// <summary>The accounts property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<global::Marqeta.Core.Sdk.Models.Account_balance>? Accounts { get; set; }
+#nullable restore
+#else
+        public List<global::Marqeta.Core.Sdk.Models.Account_balance> Accounts { get; set; }
+#endif
         /// <summary>Contains information about the merchant&apos;s financial institution.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -81,7 +89,7 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public global::Marqeta.Core.Sdk.Models.Address_verification_model AddressVerification { get; set; }
 #endif
-        /// <summary>Extended stand-in processing (STIP) reason code, as provided by the Visa card network.</summary>
+        /// <summary>Extended stand-in processing (STIP) reason code, as provided by the card network.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? AdviceReasonCode { get; set; }
@@ -89,7 +97,7 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string AdviceReasonCode { get; set; }
 #endif
-        /// <summary>Extended stand-in processing (STIP) reason details, as provided by the Visa card network.</summary>
+        /// <summary>Extended stand-in processing (STIP) reason details, as provided by the card network.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? AdviceReasonDetails { get; set; }
@@ -376,6 +384,14 @@ namespace Marqeta.Core.Sdk.Models
 #nullable restore
 #else
         public string FromAccount { get; set; }
+#endif
+        /// <summary>The from_account_token property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? FromAccountToken { get; set; }
+#nullable restore
+#else
+        public string FromAccountToken { get; set; }
 #endif
         /// <summary>Returns general purpose account (GPA) balances for a user or business.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -683,6 +699,14 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string Subnetwork { get; set; }
 #endif
+        /// <summary>The terminal_verification_results property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? TerminalVerificationResults { get; set; }
+#nullable restore
+#else
+        public string TerminalVerificationResults { get; set; }
+#endif
         /// <summary>Specifies the receiving account type.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -771,6 +795,7 @@ namespace Marqeta.Core.Sdk.Models
                 { "account_funding", n => { AccountFunding = n.GetObjectValue<global::Marqeta.Core.Sdk.Models.Account_funding>(global::Marqeta.Core.Sdk.Models.Account_funding.CreateFromDiscriminatorValue); } },
                 { "account_name_verification", n => { AccountNameVerification = n.GetObjectValue<global::Marqeta.Core.Sdk.Models.Account_name_verification_model>(global::Marqeta.Core.Sdk.Models.Account_name_verification_model.CreateFromDiscriminatorValue); } },
                 { "account_owner", n => { AccountOwner = n.GetObjectValue<global::Marqeta.Core.Sdk.Models.Account_owner_model>(global::Marqeta.Core.Sdk.Models.Account_owner_model.CreateFromDiscriminatorValue); } },
+                { "accounts", n => { Accounts = n.GetCollectionOfObjectValues<global::Marqeta.Core.Sdk.Models.Account_balance>(global::Marqeta.Core.Sdk.Models.Account_balance.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "acquirer", n => { Acquirer = n.GetObjectValue<global::Marqeta.Core.Sdk.Models.Acquirer>(global::Marqeta.Core.Sdk.Models.Acquirer.CreateFromDiscriminatorValue); } },
                 { "acquirer_fee_amount", n => { AcquirerFeeAmount = n.GetDoubleValue(); } },
                 { "acquirer_reference_data", n => { AcquirerReferenceData = n.GetStringValue(); } },
@@ -820,6 +845,7 @@ namespace Marqeta.Core.Sdk.Models
                 { "flex", n => { Flex = n.GetObjectValue<global::Marqeta.Core.Sdk.Models.Flex>(global::Marqeta.Core.Sdk.Models.Flex.CreateFromDiscriminatorValue); } },
                 { "fraud", n => { Fraud = n.GetObjectValue<global::Marqeta.Core.Sdk.Models.Fraud_view>(global::Marqeta.Core.Sdk.Models.Fraud_view.CreateFromDiscriminatorValue); } },
                 { "from_account", n => { FromAccount = n.GetStringValue(); } },
+                { "from_account_token", n => { FromAccountToken = n.GetStringValue(); } },
                 { "gpa", n => { Gpa = n.GetObjectValue<global::Marqeta.Core.Sdk.Models.Cardholder_balance>(global::Marqeta.Core.Sdk.Models.Cardholder_balance.CreateFromDiscriminatorValue); } },
                 { "gpa_order", n => { GpaOrder = n.GetObjectValue<global::Marqeta.Core.Sdk.Models.Gpa_response>(global::Marqeta.Core.Sdk.Models.Gpa_response.CreateFromDiscriminatorValue); } },
                 { "gpa_order_unload", n => { GpaOrderUnload = n.GetObjectValue<global::Marqeta.Core.Sdk.Models.Gpa_returns>(global::Marqeta.Core.Sdk.Models.Gpa_returns.CreateFromDiscriminatorValue); } },
@@ -865,6 +891,7 @@ namespace Marqeta.Core.Sdk.Models
                 { "state", n => { State = n.GetEnumValue<global::Marqeta.Core.Sdk.Models.Transaction_model_state>(); } },
                 { "store", n => { Store = n.GetObjectValue<global::Marqeta.Core.Sdk.Models.Store_response_model>(global::Marqeta.Core.Sdk.Models.Store_response_model.CreateFromDiscriminatorValue); } },
                 { "subnetwork", n => { Subnetwork = n.GetStringValue(); } },
+                { "terminal_verification_results", n => { TerminalVerificationResults = n.GetStringValue(); } },
                 { "to_account", n => { ToAccount = n.GetStringValue(); } },
                 { "token", n => { Token = n.GetStringValue(); } },
                 { "transaction_attributes", n => { TransactionAttributes = n.GetObjectValue<global::Marqeta.Core.Sdk.Models.Transaction_model_transaction_attributes>(global::Marqeta.Core.Sdk.Models.Transaction_model_transaction_attributes.CreateFromDiscriminatorValue); } },
@@ -886,6 +913,7 @@ namespace Marqeta.Core.Sdk.Models
             writer.WriteObjectValue<global::Marqeta.Core.Sdk.Models.Account_funding>("account_funding", AccountFunding);
             writer.WriteObjectValue<global::Marqeta.Core.Sdk.Models.Account_name_verification_model>("account_name_verification", AccountNameVerification);
             writer.WriteObjectValue<global::Marqeta.Core.Sdk.Models.Account_owner_model>("account_owner", AccountOwner);
+            writer.WriteCollectionOfObjectValues<global::Marqeta.Core.Sdk.Models.Account_balance>("accounts", Accounts);
             writer.WriteObjectValue<global::Marqeta.Core.Sdk.Models.Acquirer>("acquirer", Acquirer);
             writer.WriteDoubleValue("acquirer_fee_amount", AcquirerFeeAmount);
             writer.WriteStringValue("acquirer_reference_data", AcquirerReferenceData);
@@ -935,6 +963,7 @@ namespace Marqeta.Core.Sdk.Models
             writer.WriteObjectValue<global::Marqeta.Core.Sdk.Models.Flex>("flex", Flex);
             writer.WriteObjectValue<global::Marqeta.Core.Sdk.Models.Fraud_view>("fraud", Fraud);
             writer.WriteStringValue("from_account", FromAccount);
+            writer.WriteStringValue("from_account_token", FromAccountToken);
             writer.WriteObjectValue<global::Marqeta.Core.Sdk.Models.Cardholder_balance>("gpa", Gpa);
             writer.WriteObjectValue<global::Marqeta.Core.Sdk.Models.Gpa_response>("gpa_order", GpaOrder);
             writer.WriteObjectValue<global::Marqeta.Core.Sdk.Models.Gpa_returns>("gpa_order_unload", GpaOrderUnload);
@@ -980,6 +1009,7 @@ namespace Marqeta.Core.Sdk.Models
             writer.WriteEnumValue<global::Marqeta.Core.Sdk.Models.Transaction_model_state>("state", State);
             writer.WriteObjectValue<global::Marqeta.Core.Sdk.Models.Store_response_model>("store", Store);
             writer.WriteStringValue("subnetwork", Subnetwork);
+            writer.WriteStringValue("terminal_verification_results", TerminalVerificationResults);
             writer.WriteStringValue("to_account", ToAccount);
             writer.WriteStringValue("token", Token);
             writer.WriteObjectValue<global::Marqeta.Core.Sdk.Models.Transaction_model_transaction_attributes>("transaction_attributes", TransactionAttributes);
