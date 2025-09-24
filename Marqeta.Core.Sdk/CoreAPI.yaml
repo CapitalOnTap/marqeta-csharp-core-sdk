@@ -32322,6 +32322,7 @@ components:
             - ACCOUNT_INQUIRY
             - INCREMENTAL_AUTHORIZATION
             - REAUTHORIZATION
+            - UNSCHEDULED_CARD_ON_FILE
           type: string
           description: Specifies the category of a point-of-sale transaction.
         zip:
