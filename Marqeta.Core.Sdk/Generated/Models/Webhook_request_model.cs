@@ -19,10 +19,10 @@ namespace Marqeta.Core.Sdk.Models
         /// <summary>Contains the configuration information for the webhook.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Marqeta.Core.Sdk.Models.Webhook_config_model? Config { get; set; }
+        public global::Marqeta.Core.Sdk.Models.Webhook_config_request_model? Config { get; set; }
 #nullable restore
 #else
-        public global::Marqeta.Core.Sdk.Models.Webhook_config_model Config { get; set; }
+        public global::Marqeta.Core.Sdk.Models.Webhook_config_request_model Config { get; set; }
 #endif
         /// <summary>Specifies the types of events for which notifications are sent.The wildcard character `\*` indicates that you receive all webhook notifications, or all notifications of a specified category.For example, `*` indicates that you receive all webhook notifications; `transaction.*` indicates that you receive all `transaction` webhook notifications.*NOTE:* You can only use the wildcard character with the _base_ type events, not subcategories.For example, you cannot subscribe to `cardtransition.fulfillment.\*` events, but you can subscribe to `cardtransition.*`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -74,7 +74,7 @@ namespace Marqeta.Core.Sdk.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "active", n => { Active = n.GetBoolValue(); } },
-                { "config", n => { Config = n.GetObjectValue<global::Marqeta.Core.Sdk.Models.Webhook_config_model>(global::Marqeta.Core.Sdk.Models.Webhook_config_model.CreateFromDiscriminatorValue); } },
+                { "config", n => { Config = n.GetObjectValue<global::Marqeta.Core.Sdk.Models.Webhook_config_request_model>(global::Marqeta.Core.Sdk.Models.Webhook_config_request_model.CreateFromDiscriminatorValue); } },
                 { "events", n => { Events = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "token", n => { Token = n.GetStringValue(); } },
@@ -88,7 +88,7 @@ namespace Marqeta.Core.Sdk.Models
         {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
             writer.WriteBoolValue("active", Active);
-            writer.WriteObjectValue<global::Marqeta.Core.Sdk.Models.Webhook_config_model>("config", Config);
+            writer.WriteObjectValue<global::Marqeta.Core.Sdk.Models.Webhook_config_request_model>("config", Config);
             writer.WriteCollectionOfPrimitiveValues<string>("events", Events);
             writer.WriteStringValue("name", Name);
             writer.WriteStringValue("token", Token);

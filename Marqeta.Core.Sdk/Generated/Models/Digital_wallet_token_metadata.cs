@@ -15,7 +15,7 @@ namespace Marqeta.Core.Sdk.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Language specified in the `config.transaction_controls.notification_language` field of the card product:* *ces* – Czech* *deu* – German* *eng* – English* *fra* – French* *grc* – Greek* *ita* – Italian* *nld* – Dutch* *pol* – Polish* *prt* – Portuguese* *rou* – Romanian* *spa* – Spanish* *swe* – SwedishBy default, notifications are sent in English.The ISO maintains the link:https://www.iso.org/iso-3166-country-codes.html[full list of ISO 3166 two- and three-digit numeric country codes, window=&quot;_blank&quot;].</summary>
+        /// <summary>Language specified in the `config.transaction_controls.notification_language` field of the card product:* *ces* – Czech* *deu* – German* *eng* – English* *fra* – French* *grc* – Greek* *ita* – Italian* *nld* – Dutch* *pol* – Polish* *por* – Portuguese* *rou* – Romanian* *spa* – Spanish* *swe* – SwedishBy default, notifications are sent in English.The ISO maintains the link:https://www.iso.org/iso-3166-country-codes.html[full list of ISO 3166 two- and three-digit numeric country codes, window=&quot;_blank&quot;].</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? CardproductPreferredNotificationLanguage { get; set; }

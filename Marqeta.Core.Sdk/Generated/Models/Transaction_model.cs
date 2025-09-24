@@ -37,6 +37,14 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public global::Marqeta.Core.Sdk.Models.Account_owner_model AccountOwner { get; set; }
 #endif
+        /// <summary>The accounts property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<global::Marqeta.Core.Sdk.Models.Account_balance>? Accounts { get; set; }
+#nullable restore
+#else
+        public List<global::Marqeta.Core.Sdk.Models.Account_balance> Accounts { get; set; }
+#endif
         /// <summary>Contains information about the merchant&apos;s financial institution.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -81,7 +89,7 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public global::Marqeta.Core.Sdk.Models.Address_verification_model AddressVerification { get; set; }
 #endif
-        /// <summary>Extended stand-in processing (STIP) reason code, as provided by the Visa card network.</summary>
+        /// <summary>Extended stand-in processing (STIP) reason code, as provided by the card network.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? AdviceReasonCode { get; set; }
@@ -89,7 +97,7 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string AdviceReasonCode { get; set; }
 #endif
-        /// <summary>Extended stand-in processing (STIP) reason details, as provided by the Visa card network.</summary>
+        /// <summary>Extended stand-in processing (STIP) reason details, as provided by the card network.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? AdviceReasonDetails { get; set; }
@@ -377,6 +385,14 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string FromAccount { get; set; }
 #endif
+        /// <summary>The from_account_token property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? FromAccountToken { get; set; }
+#nullable restore
+#else
+        public string FromAccountToken { get; set; }
+#endif
         /// <summary>Returns general purpose account (GPA) balances for a user or business.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -621,6 +637,14 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public global::Marqeta.Core.Sdk.Models.Real_time_fee_group RealTimeFeeGroup { get; set; }
 #endif
+        /// <summary>The relay_resistance_protocol_result property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? RelayResistanceProtocolResult { get; set; }
+#nullable restore
+#else
+        public string RelayResistanceProtocolResult { get; set; }
+#endif
         /// <summary>Merchant-requested amount, including any fees.</summary>
         public double? RequestAmount { get; set; }
         /// <summary>Response codes and memos for account name verification, address verification, card security verification, and transactions.</summary>
@@ -735,6 +759,8 @@ namespace Marqeta.Core.Sdk.Models
 #endif
         /// <summary>Date and time when the user initiated the transaction, in UTC.For example, when a merchant performed the original authorization for a refund.</summary>
         public DateTimeOffset? UserTransactionTime { get; set; }
+        /// <summary>The vdcap_qualified property</summary>
+        public bool? VdcapQualified { get; set; }
         /// <summary>The velocity_control_balances property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -742,6 +768,14 @@ namespace Marqeta.Core.Sdk.Models
 #nullable restore
 #else
         public global::Marqeta.Core.Sdk.Models.Transaction_model_velocity_control_balances VelocityControlBalances { get; set; }
+#endif
+        /// <summary>Visa Purpose of Payment code for AFT/OCT transactions</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? VisaPopCode { get; set; }
+#nullable restore
+#else
+        public string VisaPopCode { get; set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Marqeta.Core.Sdk.Models.Transaction_model"/> and sets the default values.
@@ -771,6 +805,7 @@ namespace Marqeta.Core.Sdk.Models
                 { "account_funding", n => { AccountFunding = n.GetObjectValue<global::Marqeta.Core.Sdk.Models.Account_funding>(global::Marqeta.Core.Sdk.Models.Account_funding.CreateFromDiscriminatorValue); } },
                 { "account_name_verification", n => { AccountNameVerification = n.GetObjectValue<global::Marqeta.Core.Sdk.Models.Account_name_verification_model>(global::Marqeta.Core.Sdk.Models.Account_name_verification_model.CreateFromDiscriminatorValue); } },
                 { "account_owner", n => { AccountOwner = n.GetObjectValue<global::Marqeta.Core.Sdk.Models.Account_owner_model>(global::Marqeta.Core.Sdk.Models.Account_owner_model.CreateFromDiscriminatorValue); } },
+                { "accounts", n => { Accounts = n.GetCollectionOfObjectValues<global::Marqeta.Core.Sdk.Models.Account_balance>(global::Marqeta.Core.Sdk.Models.Account_balance.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "acquirer", n => { Acquirer = n.GetObjectValue<global::Marqeta.Core.Sdk.Models.Acquirer>(global::Marqeta.Core.Sdk.Models.Acquirer.CreateFromDiscriminatorValue); } },
                 { "acquirer_fee_amount", n => { AcquirerFeeAmount = n.GetDoubleValue(); } },
                 { "acquirer_reference_data", n => { AcquirerReferenceData = n.GetStringValue(); } },
@@ -820,6 +855,7 @@ namespace Marqeta.Core.Sdk.Models
                 { "flex", n => { Flex = n.GetObjectValue<global::Marqeta.Core.Sdk.Models.Flex>(global::Marqeta.Core.Sdk.Models.Flex.CreateFromDiscriminatorValue); } },
                 { "fraud", n => { Fraud = n.GetObjectValue<global::Marqeta.Core.Sdk.Models.Fraud_view>(global::Marqeta.Core.Sdk.Models.Fraud_view.CreateFromDiscriminatorValue); } },
                 { "from_account", n => { FromAccount = n.GetStringValue(); } },
+                { "from_account_token", n => { FromAccountToken = n.GetStringValue(); } },
                 { "gpa", n => { Gpa = n.GetObjectValue<global::Marqeta.Core.Sdk.Models.Cardholder_balance>(global::Marqeta.Core.Sdk.Models.Cardholder_balance.CreateFromDiscriminatorValue); } },
                 { "gpa_order", n => { GpaOrder = n.GetObjectValue<global::Marqeta.Core.Sdk.Models.Gpa_response>(global::Marqeta.Core.Sdk.Models.Gpa_response.CreateFromDiscriminatorValue); } },
                 { "gpa_order_unload", n => { GpaOrderUnload = n.GetObjectValue<global::Marqeta.Core.Sdk.Models.Gpa_returns>(global::Marqeta.Core.Sdk.Models.Gpa_returns.CreateFromDiscriminatorValue); } },
@@ -855,6 +891,7 @@ namespace Marqeta.Core.Sdk.Models
                 { "program_reserve_deposit_info", n => { ProgramReserveDepositInfo = n.GetObjectValue<global::Marqeta.Core.Sdk.Models.Program_reserve_transaction_response>(global::Marqeta.Core.Sdk.Models.Program_reserve_transaction_response.CreateFromDiscriminatorValue); } },
                 { "program_transfer", n => { ProgramTransfer = n.GetObjectValue<global::Marqeta.Core.Sdk.Models.Program_transfer_response>(global::Marqeta.Core.Sdk.Models.Program_transfer_response.CreateFromDiscriminatorValue); } },
                 { "real_time_fee_group", n => { RealTimeFeeGroup = n.GetObjectValue<global::Marqeta.Core.Sdk.Models.Real_time_fee_group>(global::Marqeta.Core.Sdk.Models.Real_time_fee_group.CreateFromDiscriminatorValue); } },
+                { "relay_resistance_protocol_result", n => { RelayResistanceProtocolResult = n.GetStringValue(); } },
                 { "request_amount", n => { RequestAmount = n.GetDoubleValue(); } },
                 { "response", n => { Response = n.GetObjectValue<global::Marqeta.Core.Sdk.Models.Response>(global::Marqeta.Core.Sdk.Models.Response.CreateFromDiscriminatorValue); } },
                 { "settlement_date", n => { SettlementDate = n.GetDateTimeOffsetValue(); } },
@@ -873,7 +910,9 @@ namespace Marqeta.Core.Sdk.Models
                 { "user", n => { User = n.GetObjectValue<global::Marqeta.Core.Sdk.Models.Cardholder_metadata>(global::Marqeta.Core.Sdk.Models.Cardholder_metadata.CreateFromDiscriminatorValue); } },
                 { "user_token", n => { UserToken = n.GetStringValue(); } },
                 { "user_transaction_time", n => { UserTransactionTime = n.GetDateTimeOffsetValue(); } },
+                { "vdcap_qualified", n => { VdcapQualified = n.GetBoolValue(); } },
                 { "velocity_control_balances", n => { VelocityControlBalances = n.GetObjectValue<global::Marqeta.Core.Sdk.Models.Transaction_model_velocity_control_balances>(global::Marqeta.Core.Sdk.Models.Transaction_model_velocity_control_balances.CreateFromDiscriminatorValue); } },
+                { "visa_pop_code", n => { VisaPopCode = n.GetStringValue(); } },
             };
         }
         /// <summary>
@@ -886,6 +925,7 @@ namespace Marqeta.Core.Sdk.Models
             writer.WriteObjectValue<global::Marqeta.Core.Sdk.Models.Account_funding>("account_funding", AccountFunding);
             writer.WriteObjectValue<global::Marqeta.Core.Sdk.Models.Account_name_verification_model>("account_name_verification", AccountNameVerification);
             writer.WriteObjectValue<global::Marqeta.Core.Sdk.Models.Account_owner_model>("account_owner", AccountOwner);
+            writer.WriteCollectionOfObjectValues<global::Marqeta.Core.Sdk.Models.Account_balance>("accounts", Accounts);
             writer.WriteObjectValue<global::Marqeta.Core.Sdk.Models.Acquirer>("acquirer", Acquirer);
             writer.WriteDoubleValue("acquirer_fee_amount", AcquirerFeeAmount);
             writer.WriteStringValue("acquirer_reference_data", AcquirerReferenceData);
@@ -935,6 +975,7 @@ namespace Marqeta.Core.Sdk.Models
             writer.WriteObjectValue<global::Marqeta.Core.Sdk.Models.Flex>("flex", Flex);
             writer.WriteObjectValue<global::Marqeta.Core.Sdk.Models.Fraud_view>("fraud", Fraud);
             writer.WriteStringValue("from_account", FromAccount);
+            writer.WriteStringValue("from_account_token", FromAccountToken);
             writer.WriteObjectValue<global::Marqeta.Core.Sdk.Models.Cardholder_balance>("gpa", Gpa);
             writer.WriteObjectValue<global::Marqeta.Core.Sdk.Models.Gpa_response>("gpa_order", GpaOrder);
             writer.WriteObjectValue<global::Marqeta.Core.Sdk.Models.Gpa_returns>("gpa_order_unload", GpaOrderUnload);
@@ -970,6 +1011,7 @@ namespace Marqeta.Core.Sdk.Models
             writer.WriteObjectValue<global::Marqeta.Core.Sdk.Models.Program_reserve_transaction_response>("program_reserve_deposit_info", ProgramReserveDepositInfo);
             writer.WriteObjectValue<global::Marqeta.Core.Sdk.Models.Program_transfer_response>("program_transfer", ProgramTransfer);
             writer.WriteObjectValue<global::Marqeta.Core.Sdk.Models.Real_time_fee_group>("real_time_fee_group", RealTimeFeeGroup);
+            writer.WriteStringValue("relay_resistance_protocol_result", RelayResistanceProtocolResult);
             writer.WriteDoubleValue("request_amount", RequestAmount);
             writer.WriteObjectValue<global::Marqeta.Core.Sdk.Models.Response>("response", Response);
             writer.WriteDateTimeOffsetValue("settlement_date", SettlementDate);
@@ -988,7 +1030,9 @@ namespace Marqeta.Core.Sdk.Models
             writer.WriteObjectValue<global::Marqeta.Core.Sdk.Models.Cardholder_metadata>("user", User);
             writer.WriteStringValue("user_token", UserToken);
             writer.WriteDateTimeOffsetValue("user_transaction_time", UserTransactionTime);
+            writer.WriteBoolValue("vdcap_qualified", VdcapQualified);
             writer.WriteObjectValue<global::Marqeta.Core.Sdk.Models.Transaction_model_velocity_control_balances>("velocity_control_balances", VelocityControlBalances);
+            writer.WriteStringValue("visa_pop_code", VisaPopCode);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

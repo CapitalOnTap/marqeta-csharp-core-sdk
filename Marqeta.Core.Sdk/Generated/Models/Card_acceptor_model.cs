@@ -31,13 +31,7 @@ namespace Marqeta.Core.Sdk.Models
         public string BusinessRegistrationId { get; set; }
 #endif
         /// <summary>The business_registration_id_type property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? BusinessRegistrationIdType { get; set; }
-#nullable restore
-#else
-        public string BusinessRegistrationIdType { get; set; }
-#endif
+        public global::Marqeta.Core.Sdk.Models.Card_acceptor_model_business_registration_id_type? BusinessRegistrationIdType { get; set; }
         /// <summary>The city property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -171,7 +165,7 @@ namespace Marqeta.Core.Sdk.Models
             {
                 { "address", n => { Address = n.GetStringValue(); } },
                 { "business_registration_id", n => { BusinessRegistrationId = n.GetStringValue(); } },
-                { "business_registration_id_type", n => { BusinessRegistrationIdType = n.GetStringValue(); } },
+                { "business_registration_id_type", n => { BusinessRegistrationIdType = n.GetEnumValue<global::Marqeta.Core.Sdk.Models.Card_acceptor_model_business_registration_id_type>(); } },
                 { "city", n => { City = n.GetStringValue(); } },
                 { "country", n => { Country = n.GetStringValue(); } },
                 { "customer_service_phone", n => { CustomerServicePhone = n.GetStringValue(); } },
@@ -197,7 +191,7 @@ namespace Marqeta.Core.Sdk.Models
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("address", Address);
             writer.WriteStringValue("business_registration_id", BusinessRegistrationId);
-            writer.WriteStringValue("business_registration_id_type", BusinessRegistrationIdType);
+            writer.WriteEnumValue<global::Marqeta.Core.Sdk.Models.Card_acceptor_model_business_registration_id_type>("business_registration_id_type", BusinessRegistrationIdType);
             writer.WriteStringValue("city", City);
             writer.WriteStringValue("country", Country);
             writer.WriteStringValue("customer_service_phone", CustomerServicePhone);

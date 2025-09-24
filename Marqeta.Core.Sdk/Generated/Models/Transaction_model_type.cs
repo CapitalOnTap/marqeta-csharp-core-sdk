@@ -479,6 +479,82 @@ namespace Marqeta.Core.Sdk.Models
         #pragma warning disable CS1591
         TransitOffer,
         #pragma warning restore CS1591
+        [EnumMember(Value = "transfer.from.checking.hold")]
+        #pragma warning disable CS1591
+        TransferFromCheckingHold,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "transfer.from.checking.clear")]
+        #pragma warning disable CS1591
+        TransferFromCheckingClear,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "transfer.to.checking.open")]
+        #pragma warning disable CS1591
+        TransferToCheckingOpen,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "transfer.to.checking.clear")]
+        #pragma warning disable CS1591
+        TransferToCheckingClear,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "transfer.to.savings.open")]
+        #pragma warning disable CS1591
+        TransferToSavingsOpen,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "transfer.to.savings.clear")]
+        #pragma warning disable CS1591
+        TransferToSavingsClear,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "transfer.from.savings.hold")]
+        #pragma warning disable CS1591
+        TransferFromSavingsHold,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "transfer.from.savings.clear")]
+        #pragma warning disable CS1591
+        TransferFromSavingsClear,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "fps.debit.hold")]
+        #pragma warning disable CS1591
+        FpsDebitHold,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "fps.debit.clear")]
+        #pragma warning disable CS1591
+        FpsDebitClear,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "fps.debit.hold.reverse")]
+        #pragma warning disable CS1591
+        FpsDebitHoldReverse,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "fps.debit.clear.reverse")]
+        #pragma warning disable CS1591
+        FpsDebitClearReverse,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "fps.credit.open")]
+        #pragma warning disable CS1591
+        FpsCreditOpen,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "fps.credit.clear")]
+        #pragma warning disable CS1591
+        FpsCreditClear,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "fps.credit.open.reverse")]
+        #pragma warning disable CS1591
+        FpsCreditOpenReverse,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "fps.credit.clear.reverse")]
+        #pragma warning disable CS1591
+        FpsCreditClearReverse,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "interest.posting.clear")]
+        #pragma warning disable CS1591
+        InterestPostingClear,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "interest.posting.clear.reverse")]
+        #pragma warning disable CS1591
+        InterestPostingClearReverse,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "interest.posting.adjustment")]
+        #pragma warning disable CS1591
+        InterestPostingAdjustment,
+        #pragma warning restore CS1591
         [EnumMember(Value = "unknown")]
         #pragma warning disable CS1591
         Unknown,

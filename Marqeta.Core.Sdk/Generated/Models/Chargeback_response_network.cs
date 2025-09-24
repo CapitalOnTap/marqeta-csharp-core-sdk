@@ -27,5 +27,9 @@ namespace Marqeta.Core.Sdk.Models
         #pragma warning disable CS1591
         VISA,
         #pragma warning restore CS1591
+        [EnumMember(Value = "AMERICANEXPRESS")]
+        #pragma warning disable CS1591
+        AMERICANEXPRESS,
+        #pragma warning restore CS1591
     }
 }

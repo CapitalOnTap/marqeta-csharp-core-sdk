@@ -57,6 +57,14 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string BirthDate { get; set; }
 #endif
+        /// <summary>Country where the cardholder was born.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? BirthPlace { get; set; }
+#nullable restore
+#else
+        public string BirthPlace { get; set; }
+#endif
         /// <summary>Unique identifier of the business resource.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -259,6 +267,14 @@ namespace Marqeta.Core.Sdk.Models
 #endif
         /// <summary>Specifies the status of the cardholder on the Marqeta platform.</summary>
         public global::Marqeta.Core.Sdk.Models.User_card_holder_response_status? Status { get; set; }
+        /// <summary>Professional title of the cardholder, such as Chief Comptroller.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Title { get; set; }
+#nullable restore
+#else
+        public string Title { get; set; }
+#endif
         /// <summary>Unique identifier of the cardholder.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -308,6 +324,7 @@ namespace Marqeta.Core.Sdk.Models
                 { "address2", n => { Address2 = n.GetStringValue(); } },
                 { "authentication", n => { Authentication = n.GetObjectValue<global::Marqeta.Core.Sdk.Models.Authentication>(global::Marqeta.Core.Sdk.Models.Authentication.CreateFromDiscriminatorValue); } },
                 { "birth_date", n => { BirthDate = n.GetStringValue(); } },
+                { "birth_place", n => { BirthPlace = n.GetStringValue(); } },
                 { "business_token", n => { BusinessToken = n.GetStringValue(); } },
                 { "city", n => { City = n.GetStringValue(); } },
                 { "company", n => { Company = n.GetStringValue(); } },
@@ -337,6 +354,7 @@ namespace Marqeta.Core.Sdk.Models
                 { "ssn", n => { Ssn = n.GetStringValue(); } },
                 { "state", n => { State = n.GetStringValue(); } },
                 { "status", n => { Status = n.GetEnumValue<global::Marqeta.Core.Sdk.Models.User_card_holder_response_status>(); } },
+                { "title", n => { Title = n.GetStringValue(); } },
                 { "token", n => { Token = n.GetStringValue(); } },
                 { "uses_parent_account", n => { UsesParentAccount = n.GetBoolValue(); } },
                 { "zip", n => { Zip = n.GetStringValue(); } },
@@ -355,6 +373,7 @@ namespace Marqeta.Core.Sdk.Models
             writer.WriteStringValue("address2", Address2);
             writer.WriteObjectValue<global::Marqeta.Core.Sdk.Models.Authentication>("authentication", Authentication);
             writer.WriteStringValue("birth_date", BirthDate);
+            writer.WriteStringValue("birth_place", BirthPlace);
             writer.WriteStringValue("business_token", BusinessToken);
             writer.WriteStringValue("city", City);
             writer.WriteStringValue("company", Company);
@@ -384,6 +403,7 @@ namespace Marqeta.Core.Sdk.Models
             writer.WriteStringValue("ssn", Ssn);
             writer.WriteStringValue("state", State);
             writer.WriteEnumValue<global::Marqeta.Core.Sdk.Models.User_card_holder_response_status>("status", Status);
+            writer.WriteStringValue("title", Title);
             writer.WriteStringValue("token", Token);
             writer.WriteBoolValue("uses_parent_account", UsesParentAccount);
             writer.WriteStringValue("zip", Zip);

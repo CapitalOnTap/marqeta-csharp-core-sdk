@@ -53,7 +53,7 @@ namespace Marqeta.Core.Sdk.Webhooks
         {
         }
         /// <summary>
-        /// Returns an array of all webhooks.This endpoint supports &lt;&lt;/core-api/field-filtering, field filtering&gt;&gt;, &lt;&lt;/core-api/sorting-and-pagination, sorting&gt;&gt;, and &lt;&lt;/core-api/sorting-and-pagination, pagination&gt;&gt;.
+        /// Returns an array of all webhooks.This endpoint supports &lt;&lt;/core-api/field-filtering, field filtering&gt;&gt;, &lt;&lt;/core-api/sorting-and-pagination, sorting&gt;&gt;, and &lt;&lt;/core-api/sorting-and-pagination, pagination&gt;&gt;.[NOTE]As shown in the example, `config.secret`, `config.basic_auth_username`, and `config.basic_auth_password` are masked in responses to this and all other requests. To ensure you can access these values as needed, update them on your endpoint, store them securely, and then &lt;&lt;/core-api/webhooks#put, update the webhook subscription&gt;&gt;.
         /// </summary>
         /// <returns>A <see cref="global::Marqeta.Core.Sdk.Models.WebhookResponseModelListResponse"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -76,7 +76,7 @@ namespace Marqeta.Core.Sdk.Webhooks
             return await RequestAdapter.SendAsync<global::Marqeta.Core.Sdk.Models.WebhookResponseModelListResponse>(requestInfo, global::Marqeta.Core.Sdk.Models.WebhookResponseModelListResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Creates a webhook.
+        /// Creates a webhook.[NOTE]As shown in the example, `config.secret`, `config.basic_auth_username`, and `config.basic_auth_password` are masked in responses to this and all other requests. To access these values later, store them securely before making the request.
         /// </summary>
         /// <returns>A <see cref="global::Marqeta.Core.Sdk.Models.Webhook_response_model"/></returns>
         /// <param name="body">The request body</param>
@@ -101,7 +101,7 @@ namespace Marqeta.Core.Sdk.Webhooks
             return await RequestAdapter.SendAsync<global::Marqeta.Core.Sdk.Models.Webhook_response_model>(requestInfo, global::Marqeta.Core.Sdk.Models.Webhook_response_model.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Returns an array of all webhooks.This endpoint supports &lt;&lt;/core-api/field-filtering, field filtering&gt;&gt;, &lt;&lt;/core-api/sorting-and-pagination, sorting&gt;&gt;, and &lt;&lt;/core-api/sorting-and-pagination, pagination&gt;&gt;.
+        /// Returns an array of all webhooks.This endpoint supports &lt;&lt;/core-api/field-filtering, field filtering&gt;&gt;, &lt;&lt;/core-api/sorting-and-pagination, sorting&gt;&gt;, and &lt;&lt;/core-api/sorting-and-pagination, pagination&gt;&gt;.[NOTE]As shown in the example, `config.secret`, `config.basic_auth_username`, and `config.basic_auth_password` are masked in responses to this and all other requests. To ensure you can access these values as needed, update them on your endpoint, store them securely, and then &lt;&lt;/core-api/webhooks#put, update the webhook subscription&gt;&gt;.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -120,7 +120,7 @@ namespace Marqeta.Core.Sdk.Webhooks
             return requestInfo;
         }
         /// <summary>
-        /// Creates a webhook.
+        /// Creates a webhook.[NOTE]As shown in the example, `config.secret`, `config.basic_auth_username`, and `config.basic_auth_password` are masked in responses to this and all other requests. To access these values later, store them securely before making the request.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">The request body</param>
@@ -151,12 +151,12 @@ namespace Marqeta.Core.Sdk.Webhooks
             return new global::Marqeta.Core.Sdk.Webhooks.WebhooksRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
-        /// Returns an array of all webhooks.This endpoint supports &lt;&lt;/core-api/field-filtering, field filtering&gt;&gt;, &lt;&lt;/core-api/sorting-and-pagination, sorting&gt;&gt;, and &lt;&lt;/core-api/sorting-and-pagination, pagination&gt;&gt;.
+        /// Returns an array of all webhooks.This endpoint supports &lt;&lt;/core-api/field-filtering, field filtering&gt;&gt;, &lt;&lt;/core-api/sorting-and-pagination, sorting&gt;&gt;, and &lt;&lt;/core-api/sorting-and-pagination, pagination&gt;&gt;.[NOTE]As shown in the example, `config.secret`, `config.basic_auth_username`, and `config.basic_auth_password` are masked in responses to this and all other requests. To ensure you can access these values as needed, update them on your endpoint, store them securely, and then &lt;&lt;/core-api/webhooks#put, update the webhook subscription&gt;&gt;.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class WebhooksRequestBuilderGetQueryParameters 
         {
-            /// <summary>Set to `true` to return only active webhook configurations.</summary>
+            /// <summary>Set to `true` to return only active webhook configurations, otherwise all webhook configurations will be returned.</summary>
             [QueryParameter("active")]
             public bool? Active { get; set; }
             /// <summary>Number of resources to retrieve.</summary>
