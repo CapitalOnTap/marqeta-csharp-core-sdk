@@ -142,6 +142,9 @@ Execute the `dotnet fsi GenerateSdkFromSourceUrl.fsx` command in the root source
 - `#/components/schemas/pos` [docs](https://www.marqeta.com/docs/core-api/transactions/#:~:text=pos.transaction_initiated_category)
   - Add the `UNSCHEDULED_CARD_ON_FILE` missing enum value to the `transaction_initiated_category` property. This value is sent via webhooks, and causes deserialization errors if absent (note: this value is not documented as of writing).
   - Done in the `applyPosModelModifications` function.
+- `#/components/schemas/Terminal_model`
+    - Add the `UNSCHEDULED_CARD_ON_FILE` missing enum value to the `transaction_initiated_category` property. This value is sent via webhooks, and causes deserialization errors if absent (note: this value is not documented as of writing).
+    - Done in the `applyTerminalModelModifications` function.
 
 ### Changes to the Paths (e.g. `/api/customer`) and Operations (`GET`, `POST`, `PUT`, etc...)
 - Adds/replace default response on all operations for all paths to be `ApiError`.
