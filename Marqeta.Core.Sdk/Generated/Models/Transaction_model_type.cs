@@ -543,6 +543,22 @@ namespace Marqeta.Core.Sdk.Models
         #pragma warning disable CS1591
         FpsCreditClearReverse,
         #pragma warning restore CS1591
+        [EnumMember(Value = "open.banking.fps.debit.hold")]
+        #pragma warning disable CS1591
+        OpenBankingFpsDebitHold,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "open.banking.fps.debit.clear")]
+        #pragma warning disable CS1591
+        OpenBankingFpsDebitClear,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "open.banking.fps.debit.hold.reverse")]
+        #pragma warning disable CS1591
+        OpenBankingFpsDebitHoldReverse,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "open.banking.fps.debit.clear.reverse")]
+        #pragma warning disable CS1591
+        OpenBankingFpsDebitClearReverse,
+        #pragma warning restore CS1591
         [EnumMember(Value = "interest.posting.clear")]
         #pragma warning disable CS1591
         InterestPostingClear,

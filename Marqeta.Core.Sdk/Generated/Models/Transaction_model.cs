@@ -769,7 +769,7 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public global::Marqeta.Core.Sdk.Models.Transaction_model_velocity_control_balances VelocityControlBalances { get; set; }
 #endif
-        /// <summary>Visa Purpose of Payment code for AFT/OCT transactions</summary>
+        /// <summary>The visa_pop_code property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? VisaPopCode { get; set; }

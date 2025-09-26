@@ -32,13 +32,7 @@ namespace Marqeta.Core.Sdk.Models
         public string BusinessRegistrationId { get; set; }
 #endif
         /// <summary>Business registration identifier type, as provided by the Visa card network.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? BusinessRegistrationIdType { get; set; }
-#nullable restore
-#else
-        public string BusinessRegistrationIdType { get; set; }
-#endif
+        public global::Marqeta.Core.Sdk.Models.Transaction_card_acceptor_business_registration_id_type? BusinessRegistrationIdType { get; set; }
         /// <summary>Card acceptor&apos;s city.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -274,7 +268,7 @@ namespace Marqeta.Core.Sdk.Models
             {
                 { "address", n => { Address = n.GetStringValue(); } },
                 { "business_registration_id", n => { BusinessRegistrationId = n.GetStringValue(); } },
-                { "business_registration_id_type", n => { BusinessRegistrationIdType = n.GetStringValue(); } },
+                { "business_registration_id_type", n => { BusinessRegistrationIdType = n.GetEnumValue<global::Marqeta.Core.Sdk.Models.Transaction_card_acceptor_business_registration_id_type>(); } },
                 { "city", n => { City = n.GetStringValue(); } },
                 { "country_code", n => { CountryCode = n.GetStringValue(); } },
                 { "country_of_origin", n => { CountryOfOrigin = n.GetStringValue(); } },
@@ -312,7 +306,7 @@ namespace Marqeta.Core.Sdk.Models
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("address", Address);
             writer.WriteStringValue("business_registration_id", BusinessRegistrationId);
-            writer.WriteStringValue("business_registration_id_type", BusinessRegistrationIdType);
+            writer.WriteEnumValue<global::Marqeta.Core.Sdk.Models.Transaction_card_acceptor_business_registration_id_type>("business_registration_id_type", BusinessRegistrationIdType);
             writer.WriteStringValue("city", City);
             writer.WriteStringValue("country_code", CountryCode);
             writer.WriteStringValue("country_of_origin", CountryOfOrigin);

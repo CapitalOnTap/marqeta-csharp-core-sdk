@@ -6,7 +6,7 @@ info:
   contact:
     name: Marqeta
     email: support@marqeta.com
-  version: 3.0.34
+  version: 3.0.35
 servers:
   - url: /v3
 paths:
@@ -27195,13 +27195,6 @@ components:
         business_registration_id:
           type: string
         business_registration_id_type:
-          enum:
-            - unspecified
-            - tax_registration_identification
-            - national_identification
-            - company_registration_identification
-            - passport
-            - default_value
           type: string
         city:
           maxLength: 40
@@ -30965,6 +30958,9 @@ components:
             - SOFT_DECLINE_PIN_REQUIRED
             - CARD_NOT_ACTIVE
             - CARDHOLDER_NOT_ACTIVE
+            - BLOCKED_BY_ISSUER
+            - BLOCKED_BY_CARDHOLDER
+            - BLOCKED_MERCHANT_BY_CARDHOLDER
           type: string
           description: Reason why the transaction was declined.
         incremental_authorization_jit_funding_tokens:
@@ -31906,7 +31902,7 @@ components:
           format: date-time
         user_token:
           type: string
-          description: The unique identifier of the card user
+          description: The unique identifier of the cardholder
     password_update_model:
       required:
         - current_password
@@ -33487,6 +33483,7 @@ components:
             - ACCOUNT_INQUIRY
             - INCREMENTAL_AUTHORIZATION
             - REAUTHORIZATION
+            - UNSCHEDULED_CARD_ON_FILE
           type: string
           description: Specifies the category of a point-of-sale transaction.
       description: "Contains information about the point of sale, including details on how the card was presented.\n\nReturned if provided by the card network, and the request uses Transaction Model v1 of the Marqeta Core API.\nNot returned for Transaction Model v2 requests."
@@ -33608,6 +33605,13 @@ components:
           type: string
           description: 'Business registration identifier, as provided by the Visa card network.'
         business_registration_id_type:
+          enum:
+            - unspecified
+            - tax_registration_identification
+            - national_identification
+            - company_registration_identification
+            - passport
+            - default_value
           type: string
           description: 'Business registration identifier type, as provided by the Visa card network.'
         city:
@@ -34281,6 +34285,10 @@ components:
             - fps.credit.clear
             - fps.credit.open.reverse
             - fps.credit.clear.reverse
+            - open.banking.fps.debit.hold
+            - open.banking.fps.debit.clear
+            - open.banking.fps.debit.hold.reverse
+            - open.banking.fps.debit.clear.reverse
             - interest.posting.clear
             - interest.posting.clear.reverse
             - interest.posting.adjustment
@@ -34313,7 +34321,6 @@ components:
             $ref: '#/components/schemas/available'
         visa_pop_code:
           type: string
-          description: Visa Purpose of Payment code for AFT/OCT transactions
       description: "Transactions are represented by the `transaction` object.\nThe Marqeta platform creates a separate `transaction` object for each transaction message received from the card network.\nThe attributes of a given `transaction` object depend on the transaction type.\n\nThis section documents all fields that might be included in a `transaction` object.\n\n// This schema is used by InfoDev to generate API reference documentation.\n// File location in GitHub is: openapi/transactions/schemas/transaction_model.yaml"
     transaction_options:
       type: object

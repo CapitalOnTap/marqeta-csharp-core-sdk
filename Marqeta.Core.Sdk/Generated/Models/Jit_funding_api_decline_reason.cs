@@ -91,5 +91,17 @@ namespace Marqeta.Core.Sdk.Models
         #pragma warning disable CS1591
         CARDHOLDER_NOT_ACTIVE,
         #pragma warning restore CS1591
+        [EnumMember(Value = "BLOCKED_BY_ISSUER")]
+        #pragma warning disable CS1591
+        BLOCKED_BY_ISSUER,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "BLOCKED_BY_CARDHOLDER")]
+        #pragma warning disable CS1591
+        BLOCKED_BY_CARDHOLDER,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "BLOCKED_MERCHANT_BY_CARDHOLDER")]
+        #pragma warning disable CS1591
+        BLOCKED_MERCHANT_BY_CARDHOLDER,
+        #pragma warning restore CS1591
     }
 }
