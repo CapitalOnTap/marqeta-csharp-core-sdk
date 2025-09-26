@@ -233,6 +233,38 @@ module OpenApiHelpers =
         applyTransactionModelTypeModifications(openApiSchema)
 
     /// <summary>
+    ///     Applies modifications to the Point of sale schema.
+    /// </summary>
+    /// <param name="openApiSchema">The OpenApiSchema object representing pos.</param>
+    let private applyPosModelModifications (openApiSchema: OpenApiSchema) =
+        let propertyKey = "transaction_initiated_category"
+        let enumToAdd = "UNSCHEDULED_CARD_ON_FILE"
+
+        // If the transaction_initiated_category property enum exists, add the new value
+        if openApiSchema.Properties.ContainsKey(propertyKey) then
+            let propertyEnum = openApiSchema.Properties[propertyKey].Enum
+            let enumString = OpenApiString(enumToAdd) 
+
+            if not(propertyEnum.Contains(enumString)) then
+                propertyEnum.Add(enumString)
+
+    /// <summary>
+    ///     Applies modifications to the terminal_model schema.
+    /// </summary>
+    /// <param name="openApiSchema">The OpenApiSchema object representing terminal_model.</param>
+    let private applyTerminalModelModifications (openApiSchema: OpenApiSchema) =
+        let propertyKey = "transaction_initiated_category"
+        let enumToAdd = "UNSCHEDULED_CARD_ON_FILE"
+
+        // If the transaction_initiated_category property enum exists, add the new value
+        if openApiSchema.Properties.ContainsKey(propertyKey) then
+            let propertyEnum = openApiSchema.Properties[propertyKey].Enum
+            let enumString = OpenApiString(enumToAdd) 
+
+            if not(propertyEnum.Contains(enumString)) then
+                propertyEnum.Add(enumString)
+                
+    /// <summary>
     ///     Takes a schema and applies relevant modifications.
     /// </summary>
     /// <param name="openApiSchema">The OpenApiSchema to apply modifications to.</param>
@@ -309,6 +341,12 @@ module OpenApiHelpers =
             
         if openApiSchemas.ContainsKey("transaction_model") then
             applyTransactionModelModifications(openApiSchemas["transaction_model"])
+
+        if openApiSchemas.ContainsKey("pos") then
+            applyPosModelModifications(openApiSchemas["pos"])
+
+        if openApiSchemas.ContainsKey("terminal_model") then
+            applyPosModelModifications(openApiSchemas["terminal_model"])
         
     /// <summary>
     ///     Applies modifications to the Components on an OpenAPI spec.

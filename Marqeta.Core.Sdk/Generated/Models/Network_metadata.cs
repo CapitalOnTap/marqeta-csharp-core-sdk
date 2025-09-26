@@ -39,6 +39,14 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string NetworkFundingTxnType { get; set; }
 #endif
+        /// <summary>Network response code, as provided by Marqeta.For example, Visa response code `59` indicates suspected fraud.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? OutgoingResponseCode { get; set; }
+#nullable restore
+#else
+        public string OutgoingResponseCode { get; set; }
+#endif
         /// <summary>Product identification value assigned by the card network to each card product.Can be used to track card-level activity by individual account number for premium card products.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -71,6 +79,14 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string SurchargeFreeAtmNetwork { get; set; }
 #endif
+        /// <summary>The terminal_verification_results property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? TerminalVerificationResults { get; set; }
+#nullable restore
+#else
+        public string TerminalVerificationResults { get; set; }
+#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Marqeta.Core.Sdk.Models.Network_metadata"/> and sets the default values.
         /// </summary>
@@ -99,10 +115,12 @@ namespace Marqeta.Core.Sdk.Models
                 { "account_identification_1", n => { AccountIdentification1 = n.GetStringValue(); } },
                 { "incoming_response_code", n => { IncomingResponseCode = n.GetStringValue(); } },
                 { "network_funding_txn_type", n => { NetworkFundingTxnType = n.GetStringValue(); } },
+                { "outgoing_response_code", n => { OutgoingResponseCode = n.GetStringValue(); } },
                 { "product_id", n => { ProductId = n.GetStringValue(); } },
                 { "program_id", n => { ProgramId = n.GetStringValue(); } },
                 { "spend_qualifier", n => { SpendQualifier = n.GetStringValue(); } },
                 { "surcharge_free_atm_network", n => { SurchargeFreeAtmNetwork = n.GetStringValue(); } },
+                { "terminal_verification_results", n => { TerminalVerificationResults = n.GetStringValue(); } },
             };
         }
         /// <summary>
@@ -115,10 +133,12 @@ namespace Marqeta.Core.Sdk.Models
             writer.WriteStringValue("account_identification_1", AccountIdentification1);
             writer.WriteStringValue("incoming_response_code", IncomingResponseCode);
             writer.WriteStringValue("network_funding_txn_type", NetworkFundingTxnType);
+            writer.WriteStringValue("outgoing_response_code", OutgoingResponseCode);
             writer.WriteStringValue("product_id", ProductId);
             writer.WriteStringValue("program_id", ProgramId);
             writer.WriteStringValue("spend_qualifier", SpendQualifier);
             writer.WriteStringValue("surcharge_free_atm_network", SurchargeFreeAtmNetwork);
+            writer.WriteStringValue("terminal_verification_results", TerminalVerificationResults);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

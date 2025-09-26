@@ -71,7 +71,7 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string PostalCode { get; set; }
 #endif
-        /// <summary>Two-character &lt;&lt;/core-api/kyc-verification#_valid_state_provincial_and_territorial_abbreviations, state or province code&gt;&gt;.`CA`, for example.</summary>
+        /// <summary>Two-character state, provincial, or territorial abbreviation.For the complete list, see &lt;&lt;/core-api/kyc-verification#_valid_state_provincial_territorial_and_federal_abbreviations, Valid state, provincial, territorial, and federal abbreviations&gt;&gt;.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? State { get; set; }

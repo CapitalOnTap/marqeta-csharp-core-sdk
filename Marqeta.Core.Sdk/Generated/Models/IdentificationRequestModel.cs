@@ -23,7 +23,15 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string ExpirationDate { get; set; }
 #endif
-        /// <summary>Type of identification.*NOTE:* Full Social Security Number (SSN) is required for US-based user cardholder KYC verification, using the `SSN` type.Full Employer Identification Number (EIN) is required for business cardholder KYC verification, using the `BUSINESS_TAX_ID` or `BUSINESS_NUMBER` type.Nine digits only, no delimiters.`123456789`, for example.</summary>
+        /// <summary>The issuing_country property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? IssuingCountry { get; set; }
+#nullable restore
+#else
+        public string IssuingCountry { get; set; }
+#endif
+        /// <summary>Type of identification.*NOTE:* Full Social Security Number (SSN) is required for US-based user cardholder KYC verification, using the `SSN` type.Full Employer Identification Number (EIN) is required for business cardholder KYC verification, using the `BUSINESS_TAX_ID` or `BUSINESS_NUMBER` type.For business directors, use one of SSN, TIN, SIN, or NIN.Nine digits only, no delimiters.`123456789`, for example.</summary>
         public global::Marqeta.Core.Sdk.Models.IdentificationRequestModel_type? Type { get; set; }
         /// <summary>Number associated with the identification.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -59,6 +67,7 @@ namespace Marqeta.Core.Sdk.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "expiration_date", n => { ExpirationDate = n.GetStringValue(); } },
+                { "issuing_country", n => { IssuingCountry = n.GetStringValue(); } },
                 { "type", n => { Type = n.GetEnumValue<global::Marqeta.Core.Sdk.Models.IdentificationRequestModel_type>(); } },
                 { "value", n => { Value = n.GetStringValue(); } },
             };
@@ -71,6 +80,7 @@ namespace Marqeta.Core.Sdk.Models
         {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("expiration_date", ExpirationDate);
+            writer.WriteStringValue("issuing_country", IssuingCountry);
             writer.WriteEnumValue<global::Marqeta.Core.Sdk.Models.IdentificationRequestModel_type>("type", Type);
             writer.WriteStringValue("value", Value);
             writer.WriteAdditionalData(AdditionalData);

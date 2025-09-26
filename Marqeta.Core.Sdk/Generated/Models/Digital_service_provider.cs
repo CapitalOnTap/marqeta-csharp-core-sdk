@@ -30,6 +30,46 @@ namespace Marqeta.Core.Sdk.Models
 #else
         public string CvmAuthenticationMethod { get; set; }
 #endif
+        /// <summary>The digital_service_indicator property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? DigitalServiceIndicator { get; set; }
+#nullable restore
+#else
+        public string DigitalServiceIndicator { get; set; }
+#endif
+        /// <summary>The digital_service_provider_identifier_1 property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? DigitalServiceProviderIdentifier1 { get; set; }
+#nullable restore
+#else
+        public string DigitalServiceProviderIdentifier1 { get; set; }
+#endif
+        /// <summary>The digital_service_provider_identifier_2 property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? DigitalServiceProviderIdentifier2 { get; set; }
+#nullable restore
+#else
+        public string DigitalServiceProviderIdentifier2 { get; set; }
+#endif
+        /// <summary>The digital_service_provider_type_1 property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? DigitalServiceProviderType1 { get; set; }
+#nullable restore
+#else
+        public string DigitalServiceProviderType1 { get; set; }
+#endif
+        /// <summary>The digital_service_provider_type_2 property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? DigitalServiceProviderType2 { get; set; }
+#nullable restore
+#else
+        public string DigitalServiceProviderType2 { get; set; }
+#endif
         /// <summary>The first_authentication_factor property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -50,6 +90,14 @@ namespace Marqeta.Core.Sdk.Models
 #endif
         /// <summary>The second_authentication_factor_name property</summary>
         public global::Marqeta.Core.Sdk.Models.Digital_service_provider_second_authentication_factor_name? SecondAuthenticationFactorName { get; set; }
+        /// <summary>The token_service_provider_id property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? TokenServiceProviderId { get; set; }
+#nullable restore
+#else
+        public string TokenServiceProviderId { get; set; }
+#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Marqeta.Core.Sdk.Models.Digital_service_provider"/> and sets the default values.
         /// </summary>
@@ -77,10 +125,16 @@ namespace Marqeta.Core.Sdk.Models
             {
                 { "cvm_authentication_indicator", n => { CvmAuthenticationIndicator = n.GetStringValue(); } },
                 { "cvm_authentication_method", n => { CvmAuthenticationMethod = n.GetStringValue(); } },
+                { "digital_service_indicator", n => { DigitalServiceIndicator = n.GetStringValue(); } },
+                { "digital_service_provider_identifier_1", n => { DigitalServiceProviderIdentifier1 = n.GetStringValue(); } },
+                { "digital_service_provider_identifier_2", n => { DigitalServiceProviderIdentifier2 = n.GetStringValue(); } },
+                { "digital_service_provider_type_1", n => { DigitalServiceProviderType1 = n.GetStringValue(); } },
+                { "digital_service_provider_type_2", n => { DigitalServiceProviderType2 = n.GetStringValue(); } },
                 { "first_authentication_factor", n => { FirstAuthenticationFactor = n.GetStringValue(); } },
                 { "first_authentication_factor_name", n => { FirstAuthenticationFactorName = n.GetEnumValue<global::Marqeta.Core.Sdk.Models.Digital_service_provider_first_authentication_factor_name>(); } },
                 { "second_authentication_factor", n => { SecondAuthenticationFactor = n.GetStringValue(); } },
                 { "second_authentication_factor_name", n => { SecondAuthenticationFactorName = n.GetEnumValue<global::Marqeta.Core.Sdk.Models.Digital_service_provider_second_authentication_factor_name>(); } },
+                { "token_service_provider_id", n => { TokenServiceProviderId = n.GetStringValue(); } },
             };
         }
         /// <summary>
@@ -92,10 +146,16 @@ namespace Marqeta.Core.Sdk.Models
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("cvm_authentication_indicator", CvmAuthenticationIndicator);
             writer.WriteStringValue("cvm_authentication_method", CvmAuthenticationMethod);
+            writer.WriteStringValue("digital_service_indicator", DigitalServiceIndicator);
+            writer.WriteStringValue("digital_service_provider_identifier_1", DigitalServiceProviderIdentifier1);
+            writer.WriteStringValue("digital_service_provider_identifier_2", DigitalServiceProviderIdentifier2);
+            writer.WriteStringValue("digital_service_provider_type_1", DigitalServiceProviderType1);
+            writer.WriteStringValue("digital_service_provider_type_2", DigitalServiceProviderType2);
             writer.WriteStringValue("first_authentication_factor", FirstAuthenticationFactor);
             writer.WriteEnumValue<global::Marqeta.Core.Sdk.Models.Digital_service_provider_first_authentication_factor_name>("first_authentication_factor_name", FirstAuthenticationFactorName);
             writer.WriteStringValue("second_authentication_factor", SecondAuthenticationFactor);
             writer.WriteEnumValue<global::Marqeta.Core.Sdk.Models.Digital_service_provider_second_authentication_factor_name>("second_authentication_factor_name", SecondAuthenticationFactorName);
+            writer.WriteStringValue("token_service_provider_id", TokenServiceProviderId);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

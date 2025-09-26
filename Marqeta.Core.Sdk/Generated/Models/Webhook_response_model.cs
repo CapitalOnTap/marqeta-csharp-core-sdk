@@ -19,10 +19,10 @@ namespace Marqeta.Core.Sdk.Models
         /// <summary>Contains the configuration information for the webhook.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Marqeta.Core.Sdk.Models.Webhook_config_model? Config { get; set; }
+        public global::Marqeta.Core.Sdk.Models.Webhook_config_response_model? Config { get; set; }
 #nullable restore
 #else
-        public global::Marqeta.Core.Sdk.Models.Webhook_config_model Config { get; set; }
+        public global::Marqeta.Core.Sdk.Models.Webhook_config_response_model Config { get; set; }
 #endif
         /// <summary>Date and time when the webhook event was created, in UTC.</summary>
         public DateTimeOffset? CreatedTime { get; set; }
@@ -78,7 +78,7 @@ namespace Marqeta.Core.Sdk.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "active", n => { Active = n.GetBoolValue(); } },
-                { "config", n => { Config = n.GetObjectValue<global::Marqeta.Core.Sdk.Models.Webhook_config_model>(global::Marqeta.Core.Sdk.Models.Webhook_config_model.CreateFromDiscriminatorValue); } },
+                { "config", n => { Config = n.GetObjectValue<global::Marqeta.Core.Sdk.Models.Webhook_config_response_model>(global::Marqeta.Core.Sdk.Models.Webhook_config_response_model.CreateFromDiscriminatorValue); } },
                 { "created_time", n => { CreatedTime = n.GetDateTimeOffsetValue(); } },
                 { "events", n => { Events = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "last_modified_time", n => { LastModifiedTime = n.GetDateTimeOffsetValue(); } },
@@ -94,7 +94,7 @@ namespace Marqeta.Core.Sdk.Models
         {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
             writer.WriteBoolValue("active", Active);
-            writer.WriteObjectValue<global::Marqeta.Core.Sdk.Models.Webhook_config_model>("config", Config);
+            writer.WriteObjectValue<global::Marqeta.Core.Sdk.Models.Webhook_config_response_model>("config", Config);
             writer.WriteDateTimeOffsetValue("created_time", CreatedTime);
             writer.WriteCollectionOfPrimitiveValues<string>("events", Events);
             writer.WriteDateTimeOffsetValue("last_modified_time", LastModifiedTime);

@@ -53,7 +53,7 @@ namespace Marqeta.Core.Sdk.Webhooks.Item
         {
         }
         /// <summary>
-        /// Retrieves a webhook.
+        /// Retrieves a webhook.[NOTE]As shown in the example, `config.secret`, `config.basic_auth_username`, and `config.basic_auth_password` are masked in responses to this and all other requests. To ensure you can access these values as needed, update them on your endpoint, store them securely, and then &lt;&lt;/core-api/webhooks#put, update the webhook subscription&gt;&gt;.
         /// </summary>
         /// <returns>A <see cref="global::Marqeta.Core.Sdk.Models.Webhook_response_model"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -76,7 +76,7 @@ namespace Marqeta.Core.Sdk.Webhooks.Item
             return await RequestAdapter.SendAsync<global::Marqeta.Core.Sdk.Models.Webhook_response_model>(requestInfo, global::Marqeta.Core.Sdk.Models.Webhook_response_model.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Updates a webhook.You can also use this endpoint to disable webhooks you no longer want to receive—there is no `DELETE` method available to remove unneeded webhooks.To disable a webhook, use this endpoint to set its `active` field to `false`.For instructions on managing your webhooks via the Developer Dashboard, see the &lt;&lt;/developer-guides/developer-tools/#_to_disable_a_webhook, Developer Tools&gt;&gt; guide.
+        /// Updates a webhook.You can also use this endpoint to disable webhooks you no longer want to receive—there is no `DELETE` method available to remove unneeded webhooks.To disable a webhook, use this endpoint to set its `active` field to `false`.[NOTE]As shown in the example, `config.secret`, `config.basic_auth_username`, and `config.basic_auth_password` are masked in responses to this and all other requests. To access these values later, store them securely before making the request. When modifying authentication credentials, update the endpoint configuration before updating your webhook subscription to avoid missing any important event notifications.For instructions on managing your webhooks via the Developer Dashboard, see the &lt;&lt;/developer-guides/developer-tools/#_to_disable_a_webhook, Developer Tools&gt;&gt; guide.
         /// </summary>
         /// <returns>A <see cref="global::Marqeta.Core.Sdk.Models.Webhook_response_model"/></returns>
         /// <param name="body">The request body</param>
@@ -101,7 +101,7 @@ namespace Marqeta.Core.Sdk.Webhooks.Item
             return await RequestAdapter.SendAsync<global::Marqeta.Core.Sdk.Models.Webhook_response_model>(requestInfo, global::Marqeta.Core.Sdk.Models.Webhook_response_model.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Retrieves a webhook.
+        /// Retrieves a webhook.[NOTE]As shown in the example, `config.secret`, `config.basic_auth_username`, and `config.basic_auth_password` are masked in responses to this and all other requests. To ensure you can access these values as needed, update them on your endpoint, store them securely, and then &lt;&lt;/core-api/webhooks#put, update the webhook subscription&gt;&gt;.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -120,7 +120,7 @@ namespace Marqeta.Core.Sdk.Webhooks.Item
             return requestInfo;
         }
         /// <summary>
-        /// Updates a webhook.You can also use this endpoint to disable webhooks you no longer want to receive—there is no `DELETE` method available to remove unneeded webhooks.To disable a webhook, use this endpoint to set its `active` field to `false`.For instructions on managing your webhooks via the Developer Dashboard, see the &lt;&lt;/developer-guides/developer-tools/#_to_disable_a_webhook, Developer Tools&gt;&gt; guide.
+        /// Updates a webhook.You can also use this endpoint to disable webhooks you no longer want to receive—there is no `DELETE` method available to remove unneeded webhooks.To disable a webhook, use this endpoint to set its `active` field to `false`.[NOTE]As shown in the example, `config.secret`, `config.basic_auth_username`, and `config.basic_auth_password` are masked in responses to this and all other requests. To access these values later, store them securely before making the request. When modifying authentication credentials, update the endpoint configuration before updating your webhook subscription to avoid missing any important event notifications.For instructions on managing your webhooks via the Developer Dashboard, see the &lt;&lt;/developer-guides/developer-tools/#_to_disable_a_webhook, Developer Tools&gt;&gt; guide.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">The request body</param>

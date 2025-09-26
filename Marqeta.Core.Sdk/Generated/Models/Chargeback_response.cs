@@ -23,6 +23,14 @@ namespace Marqeta.Core.Sdk.Models
         public DateTimeOffset? CreatedTime { get; set; }
         /// <summary>Whether to credit the user for the chargeback amount.</summary>
         public bool? CreditUser { get; set; }
+        /// <summary>The currency_code property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? CurrencyCode { get; set; }
+#nullable restore
+#else
+        public string CurrencyCode { get; set; }
+#endif
         /// <summary>Date and time when the chargeback was last modified.Not returned for transactions when the associated chargeback is in the `INITIATED` state.</summary>
         public DateTimeOffset? LastModifiedTime { get; set; }
         /// <summary>Additional comments about the chargeback.</summary>
@@ -98,6 +106,7 @@ namespace Marqeta.Core.Sdk.Models
                 { "channel", n => { Channel = n.GetEnumValue<global::Marqeta.Core.Sdk.Models.Chargeback_response_channel>(); } },
                 { "created_time", n => { CreatedTime = n.GetDateTimeOffsetValue(); } },
                 { "credit_user", n => { CreditUser = n.GetBoolValue(); } },
+                { "currency_code", n => { CurrencyCode = n.GetStringValue(); } },
                 { "last_modified_time", n => { LastModifiedTime = n.GetDateTimeOffsetValue(); } },
                 { "memo", n => { Memo = n.GetStringValue(); } },
                 { "network", n => { Network = n.GetEnumValue<global::Marqeta.Core.Sdk.Models.Chargeback_response_network>(); } },
@@ -119,6 +128,7 @@ namespace Marqeta.Core.Sdk.Models
             writer.WriteEnumValue<global::Marqeta.Core.Sdk.Models.Chargeback_response_channel>("channel", Channel);
             writer.WriteDateTimeOffsetValue("created_time", CreatedTime);
             writer.WriteBoolValue("credit_user", CreditUser);
+            writer.WriteStringValue("currency_code", CurrencyCode);
             writer.WriteDateTimeOffsetValue("last_modified_time", LastModifiedTime);
             writer.WriteStringValue("memo", Memo);
             writer.WriteEnumValue<global::Marqeta.Core.Sdk.Models.Chargeback_response_network>("network", Network);

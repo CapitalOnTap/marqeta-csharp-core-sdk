@@ -108,5 +108,9 @@ namespace Marqeta.Core.Sdk.Models
         #pragma warning disable CS1591
         Purchase_repayment,
         #pragma warning restore CS1591
+        [EnumMember(Value = "visa_accept")]
+        #pragma warning disable CS1591
+        Visa_accept,
+        #pragma warning restore CS1591
     }
 }

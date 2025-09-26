@@ -26,7 +26,7 @@ namespace Marqeta.Core.Sdk.Models
         public DateTimeOffset? CreatedTime { get; set; }
         /// <summary>yyyy-MM-ddTHH:mm:ssZ</summary>
         public DateTimeOffset? LastModifiedTime { get; set; }
-        /// <summary>The unique identifier of the card user</summary>
+        /// <summary>The unique identifier of the cardholder</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? UserToken { get; set; }

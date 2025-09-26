@@ -103,6 +103,10 @@ namespace Marqeta.Core.Sdk.Models
         #pragma warning disable CS1591
         FUNDS_TRANSFER,
         #pragma warning restore CS1591
+        [EnumMember(Value = "VISA_ACCEPT")]
+        #pragma warning disable CS1591
+        VISA_ACCEPT,
+        #pragma warning restore CS1591
         [EnumMember(Value = "GENERAL_BUSINESS_TO_BUSINESS_TRANSFER")]
         #pragma warning disable CS1591
         GENERAL_BUSINESS_TO_BUSINESS_TRANSFER,
