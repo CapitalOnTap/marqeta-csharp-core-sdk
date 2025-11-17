@@ -42,15 +42,10 @@ public static class MarqetaSdkServiceCollectionExtensions
                 })
                 .AddTypedClient((httpClient, serviceProvider) =>
                 {
-                    // Allow override of the IAuthenticationProvider
                     var authenticationProvider = authenticationProviderFactory?.Invoke(configuration) 
                                                  ?? new BasicAuthenticationProvider(configuration.Username, configuration.Password);
                     
-                    //hook for adapter to add the logging handler or other custom handlers
-                    var adapter = adapterFactory?.Invoke(serviceProvider, httpClient, authenticationProvider)
-                                  ?? new HttpClientRequestAdapter(authenticationProvider, httpClient: httpClient);
-                    
-                    return new MarqetaClient(adapter);
+                    return new MarqetaClientFactory(httpClient).GetClient(authenticationProvider, serviceProvider, adapterFactory);
                 })
                 .ConfigurePrimaryHttpMessageHandler(_ =>
                 {
