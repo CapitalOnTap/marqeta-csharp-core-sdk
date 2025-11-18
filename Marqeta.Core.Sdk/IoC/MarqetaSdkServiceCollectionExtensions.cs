@@ -22,13 +22,15 @@ public static class MarqetaSdkServiceCollectionExtensions
     /// <param name="configureClient">Configure <see cref="HttpClient"/>.</param>
     /// <param name="httpMessageHandlerFactory">Provide a factory to create a <see cref="HttpMessageHandler"/>.</param>
     /// <param name="authenticationProviderFactory">Provide a factory to create an <see cref="IAuthenticationProvider"/>.</param>
+    /// <param name="adapterFactory">Provide a factory to create an custom adapter</param>
     /// <returns>The <paramref name="services"/>.</returns>
     public static IHttpClientBuilder AddMarqetaSdk(
         this IServiceCollection services, 
         MarqetaSdkConfiguration configuration, 
         Action<HttpClient>? configureClient, 
         Func<HttpMessageHandler>? httpMessageHandlerFactory = null, 
-        Func<MarqetaSdkConfiguration, IAuthenticationProvider>? authenticationProviderFactory = null) =>
+        Func<MarqetaSdkConfiguration, IAuthenticationProvider>? authenticationProviderFactory = null,
+        Func<IServiceProvider, HttpClient, IAuthenticationProvider, IRequestAdapter>? adapterFactory = null) =>
             // based on https://github.com/microsoft/kiota-samples/blob/main/get-started/dotnet-dependency-injection
             // and https://nikiforovall.github.io/dotnet/aspnetcore/2024/03/24/kiota-guide-deep-dive.html
             // and https://learn.microsoft.com/en-us/openapi/kiota/tutorials/dotnet-dependency-injection
@@ -38,11 +40,12 @@ public static class MarqetaSdkServiceCollectionExtensions
                     httpClient.BaseAddress = new Uri(configuration.BaseAddress); 
                     configureClient?.Invoke(httpClient);
                 })
-                .AddTypedClient((httpClient, _) =>
+                .AddTypedClient((httpClient, serviceProvider) =>
                 {
-                    // Allow override of the IAuthenticationProvider
-                    var authenticationProvider = authenticationProviderFactory?.Invoke(configuration) ?? new BasicAuthenticationProvider(configuration.Username, configuration.Password);
-                    return new MarqetaClientFactory(httpClient).GetClient(authenticationProvider);
+                    var authenticationProvider = authenticationProviderFactory?.Invoke(configuration) 
+                                                 ?? new BasicAuthenticationProvider(configuration.Username, configuration.Password);
+                    
+                    return new MarqetaClientFactory(httpClient).GetClient(authenticationProvider, serviceProvider, adapterFactory);
                 })
                 .ConfigurePrimaryHttpMessageHandler(_ =>
                 {
