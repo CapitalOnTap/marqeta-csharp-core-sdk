@@ -104,7 +104,7 @@ namespace Marqeta.Core.Sdk.Cards
         public async Task<global::Marqeta.Core.Sdk.Models.Card_response> PostAsync(global::Marqeta.Core.Sdk.Models.Card_request body, Action<RequestConfiguration<global::Marqeta.Core.Sdk.Cards.CardsRequestBuilder.CardsRequestBuilderPostQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
-            _ = body ?? throw new ArgumentNullException(nameof(body));
+            if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPostRequestInformation(body, requestConfiguration);
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
@@ -146,7 +146,7 @@ namespace Marqeta.Core.Sdk.Cards
         public RequestInformation ToPostRequestInformation(global::Marqeta.Core.Sdk.Models.Card_request body, Action<RequestConfiguration<global::Marqeta.Core.Sdk.Cards.CardsRequestBuilder.CardsRequestBuilderPostQueryParameters>> requestConfiguration = default)
         {
 #endif
-            _ = body ?? throw new ArgumentNullException(nameof(body));
+            if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
             var requestInfo = new RequestInformation(Method.POST, "{+baseurl}/cards{?show_cvv_number*,show_pan*}", PathParameters);
             requestInfo.Configure(requestConfiguration);
             requestInfo.Headers.TryAdd("Accept", "application/json");

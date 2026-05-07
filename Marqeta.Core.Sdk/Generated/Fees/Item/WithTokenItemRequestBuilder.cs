@@ -73,7 +73,7 @@ namespace Marqeta.Core.Sdk.Fees.Item
         public async Task<global::Marqeta.Core.Sdk.Models.Fee_response> PutAsync(global::Marqeta.Core.Sdk.Models.Fee_update_request body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
-            _ = body ?? throw new ArgumentNullException(nameof(body));
+            if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPutRequestInformation(body, requestConfiguration);
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
@@ -115,7 +115,7 @@ namespace Marqeta.Core.Sdk.Fees.Item
         public RequestInformation ToPutRequestInformation(global::Marqeta.Core.Sdk.Models.Fee_update_request body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
         {
 #endif
-            _ = body ?? throw new ArgumentNullException(nameof(body));
+            if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
             var requestInfo = new RequestInformation(Method.PUT, UrlTemplate, PathParameters);
             requestInfo.Configure(requestConfiguration);
             requestInfo.Headers.TryAdd("Accept", "application/json");
