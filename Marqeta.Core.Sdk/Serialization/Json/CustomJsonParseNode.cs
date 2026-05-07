@@ -3,6 +3,7 @@ using System.Globalization;
 using System.Reflection;
 using System.Runtime.Serialization;
 using System.Text.Json;
+using System.Text.Json.Serialization;
 using System.Text.Json.Serialization.Metadata;
 using System.Xml;
 using Microsoft.Kiota.Abstractions;
@@ -47,145 +48,104 @@ public class CustomJsonParseNode : IParseNode
     /// Get the string value from the json node
     /// </summary>
     /// <returns>A string value</returns>
-    public string? GetStringValue() => _jsonNode.Deserialize(_jsonSerializerContext.String);
+    public string? GetStringValue() => GetStringValue(_jsonNode);
 
     /// <summary>
     /// Get the boolean value from the json node
     /// </summary>
     /// <returns>A boolean value</returns>
-    public bool? GetBoolValue() => _jsonNode.Deserialize(_jsonSerializerContext.Boolean);
+    public bool? GetBoolValue() => GetBoolValue(_jsonNode);
 
     /// <summary>
     /// Get the byte value from the json node
     /// </summary>
     /// <returns>A byte value</returns>
-    public byte? GetByteValue() => _jsonNode.Deserialize(_jsonSerializerContext.Byte);
+    public byte? GetByteValue() => GetByteValue(_jsonNode);
 
     /// <summary>
     /// Get the sbyte value from the json node
     /// </summary>
     /// <returns>A sbyte value</returns>
-    public sbyte? GetSbyteValue() => _jsonNode.Deserialize(_jsonSerializerContext.SByte);
+    [CLSCompliant(false)]
+    public sbyte? GetSbyteValue() => GetSbyteValue(_jsonNode);
 
     /// <summary>
     /// Get the int value from the json node
     /// </summary>
     /// <returns>A int value</returns>
-    public int? GetIntValue() => _jsonNode.Deserialize(_jsonSerializerContext.Int32);
+    public int? GetIntValue() => GetIntValue(_jsonNode);
 
     /// <summary>
     /// Get the float value from the json node
     /// </summary>
     /// <returns>A float value</returns>
-    public float? GetFloatValue() => _jsonNode.Deserialize(_jsonSerializerContext.Single);
+    public float? GetFloatValue() => GetFloatValue(_jsonNode);
 
     /// <summary>
     /// Get the Long value from the json node
     /// </summary>
     /// <returns>A Long value</returns>
-    public long? GetLongValue() => _jsonNode.Deserialize(_jsonSerializerContext.Int64);
+    public long? GetLongValue() => GetLongValue(_jsonNode);
 
     /// <summary>
     /// Get the double value from the json node
     /// </summary>
     /// <returns>A double value</returns>
-    public double? GetDoubleValue() => _jsonNode.Deserialize(_jsonSerializerContext.Double);
+    public double? GetDoubleValue() => GetDoubleValue(_jsonNode);
 
     /// <summary>
     /// Get the decimal value from the json node
     /// </summary>
     /// <returns>A decimal value</returns>
-    public decimal? GetDecimalValue() => _jsonNode.Deserialize(_jsonSerializerContext.Decimal);
+    public decimal? GetDecimalValue() => GetDecimalValue(_jsonNode);
+    
+    private static bool ShouldBeDeserializableNumber(JsonValueKind valueKind, JsonNumberHandling numberHandling) => valueKind switch
+    {
+        JsonValueKind.Number => true,
+        JsonValueKind.String when numberHandling.HasFlag(JsonNumberHandling.AllowReadingFromString) => true,
+        _ => false
+    };
 
     /// <summary>
     /// Get the guid value from the json node
     /// </summary>
     /// <returns>A guid value</returns>
-    public Guid? GetGuidValue() => _jsonNode.TryGetGuid(out var guid) ? 
-        guid : _jsonNode.Deserialize(_jsonSerializerContext.Guid);
+    public Guid? GetGuidValue() => GetGuidValue(_jsonNode);
 
     /// <summary>
     /// Get the <see cref="DateTimeOffset"/> value from the json node
     /// </summary>
     /// <returns>A <see cref="DateTimeOffset"/> value</returns>
-    public DateTimeOffset? GetDateTimeOffsetValue()
-    {
-        if(_jsonNode.ValueKind != JsonValueKind.String)
-            return null;
-
-        if(TryGetUsingTypeInfo(_jsonNode, _jsonSerializerContext.DateTimeOffset, out var dateTimeOffset))
-            return dateTimeOffset;
-        else if(DateTimeOffset.TryParse(_jsonNode.GetString(), CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind, out var dto))
-            return dto;
-        else return null;
-    }
+    public DateTimeOffset? GetDateTimeOffsetValue() => GetDateTimeOffsetValue(_jsonNode);
 
     /// <summary>
     /// Get the <see cref="TimeSpan"/> value from the json node
     /// </summary>
     /// <returns>A <see cref="TimeSpan"/> value</returns>
-    public TimeSpan? GetTimeSpanValue()
-    {
-        var jsonString = _jsonNode.GetString();
-        if(string.IsNullOrEmpty(jsonString))
-            return null;
-
-        // Parse an ISO8601 duration.http://en.wikipedia.org/wiki/ISO_8601#Durations to a TimeSpan
-        return XmlConvert.ToTimeSpan(jsonString);
-    }
+    public TimeSpan? GetTimeSpanValue() => GetTimeSpanValue(_jsonNode);
 
     /// <summary>
     /// Get the <see cref="Date"/> value from the json node
     /// </summary>
     /// <returns>A <see cref="Date"/> value</returns>
-    public Date? GetDateValue()
-    {
-        if(_jsonNode.ValueKind != JsonValueKind.String)
-            return null;
-
-        if(TryGetUsingTypeInfo(_jsonNode, _jsonSerializerContext.Date, out var date))
-            return date;
-        else if(DateTime.TryParse(_jsonNode.GetString(), CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind, out var dt))
-            return new Date(dt);
-        else return null;
-    }
+    public Date? GetDateValue() => GetDateValue(_jsonNode);
 
     /// <summary>
     /// Get the <see cref="Time"/> value from the json node
     /// </summary>
     /// <returns>A <see cref="Time"/> value</returns>
-    public Time? GetTimeValue()
-    {
-        if(_jsonNode.ValueKind != JsonValueKind.String)
-            return null;
-
-        if(TryGetUsingTypeInfo(_jsonNode, _jsonSerializerContext.Time, out var time))
-            return time;
-        if(DateTime.TryParse(_jsonNode.GetString(), CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind, out var result))
-            return new Time(result);
-        else return null;
-    }
+    public Time? GetTimeValue() => GetTimeValue(_jsonNode);
 
     /// <summary>
     /// Get the enumeration value of type <typeparam name="T"/>from the json node
     /// </summary>
     /// <returns>An enumeration value or null</returns>
 #if NET5_0_OR_GREATER
-    public T? GetEnumValue<[DynamicallyAccessedMembers(DynamicallyAccessedMemberTypes.PublicFields)] T>() where T : struct, Enum
+    public T? GetEnumValue<[DynamicallyAccessedMembers(DynamicallyAccessedMemberTypes.PublicFields)] T>() where T : struct, Enum =>
 #else
-        public T? GetEnumValue<T>() where T : struct, Enum
+        public T? GetEnumValue<T>() where T : struct, Enum =>
 #endif
-    {
-        var rawValue = _jsonNode.GetString();
-        
-        // MODIFIED: Don't try to parse if we don't have a value to parse as we don't want an exception here.
-        if(string.IsNullOrEmpty(rawValue)) return null;
-        
-        var type = typeof(T);
-        return EnumHelpers.GetEnumValue<T>(rawValue!)
-               // MODIFICATION: We want to throw an exception rather than return null
-            ?? throw new ArgumentOutOfRangeException(type.FullName, rawValue, "Unable to parse enum value");
-    }
+            GetEnumValue<T>(_jsonNode);
 
     /// <summary>
     /// Get the collection of type <typeparam name="T"/>from the json node
@@ -216,15 +176,18 @@ public class CustomJsonParseNode : IParseNode
         public IEnumerable<T?> GetCollectionOfEnumValues<T>() where T : struct, Enum
 #endif
     {
-        var enumerator = _jsonNode.EnumerateArray();
-        while(enumerator.MoveNext())
+        if (_jsonNode.ValueKind == JsonValueKind.Array)
         {
-            var currentParseNode = new CustomJsonParseNode(enumerator.Current, _jsonSerializerContext)
+            var enumerator = _jsonNode.EnumerateArray();
+            while (enumerator.MoveNext())
             {
-                OnAfterAssignFieldValues = OnAfterAssignFieldValues,
-                OnBeforeAssignFieldValues = OnBeforeAssignFieldValues
-            };
-            yield return currentParseNode.GetEnumValue<T>();
+                var currentParseNode = new CustomJsonParseNode(enumerator.Current, _jsonSerializerContext)
+                {
+                    OnAfterAssignFieldValues = OnAfterAssignFieldValues,
+                    OnBeforeAssignFieldValues = OnBeforeAssignFieldValues
+                };
+                yield return GetEnumValue<T>(enumerator.Current);
+            }
         }
     }
     /// <summary>
@@ -296,6 +259,97 @@ public class CustomJsonParseNode : IParseNode
                 throw new InvalidOperationException($"unknown type for deserialization {genericType.FullName}");
         }
     }
+    
+    private string? GetStringValue(JsonElement jsonElement) => jsonElement.Deserialize(_jsonSerializerContext.String);
+
+    private bool? GetBoolValue(JsonElement jsonElement) => jsonElement.Deserialize(_jsonSerializerContext.Boolean);
+    private byte? GetByteValue(JsonElement jsonElement) => jsonElement.Deserialize(_jsonSerializerContext.Byte);
+
+    private sbyte? GetSbyteValue(JsonElement jsonElement) => jsonElement.Deserialize(_jsonSerializerContext.SByte);
+
+    private int? GetIntValue(JsonElement jsonElement) => jsonElement.Deserialize(_jsonSerializerContext.Int32);
+
+    private float? GetFloatValue(JsonElement jsonElement) => jsonElement.Deserialize(_jsonSerializerContext.Single);
+
+    private long? GetLongValue(JsonElement jsonElement) => jsonElement.Deserialize(_jsonSerializerContext.Int64);
+
+    private double? GetDoubleValue(JsonElement jsonElement) => jsonElement.Deserialize(_jsonSerializerContext.Double);
+
+    private decimal? GetDecimalValue(JsonElement jsonElement) => jsonElement.Deserialize(_jsonSerializerContext.Decimal);
+
+    private Guid? GetGuidValue(JsonElement jsonElement) => jsonElement.TryGetGuid(out var guid)
+        ? guid
+        : jsonElement.Deserialize(_jsonSerializerContext.Guid);
+
+    private DateTimeOffset? GetDateTimeOffsetValue(JsonElement jsonElement)
+    {
+        if(jsonElement.ValueKind != JsonValueKind.String)
+            return null;
+
+        if(jsonElement.TryGetDateTimeOffset(out var dateTimeOffset))
+            return dateTimeOffset;
+
+        if(TryGetUsingTypeInfo(jsonElement, _jsonSerializerContext.DateTimeOffset, out var convertedDateTimeOffset))
+            return convertedDateTimeOffset;
+
+        if(DateTimeOffset.TryParse(jsonElement.GetString(), CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind, out var dto))
+            return dto;
+
+        return null;
+    }
+
+    private static TimeSpan? GetTimeSpanValue(JsonElement jsonElement)
+    {
+        var jsonString = jsonElement.GetString();
+        if(string.IsNullOrEmpty(jsonString))
+            return null;
+
+        // Parse an ISO8601 duration.http://en.wikipedia.org/wiki/ISO_8601#Durations to a TimeSpan
+        return XmlConvert.ToTimeSpan(jsonString);
+    }
+
+    private Date? GetDateValue(JsonElement jsonElement)
+    {
+        if(jsonElement.ValueKind != JsonValueKind.String)
+            return null;
+
+        if(TryGetUsingTypeInfo(jsonElement, _jsonSerializerContext.Date, out var date))
+            return date;
+        if(DateTime.TryParse(jsonElement.GetString(), CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind, out var dt))
+            return new Date(dt);
+
+        return null;
+    }
+
+    private Time? GetTimeValue(JsonElement jsonElement)
+    {
+        if(jsonElement.ValueKind != JsonValueKind.String)
+            return null;
+
+        if(TryGetUsingTypeInfo(jsonElement, _jsonSerializerContext.Time, out var time))
+            return time;
+        if(DateTime.TryParse(jsonElement.GetString(), CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind, out var result))
+            return new Time(result);
+
+        return null;
+    }
+
+#if NET5_0_OR_GREATER
+    private static T? GetEnumValue<[DynamicallyAccessedMembers(DynamicallyAccessedMemberTypes.PublicFields)] T>(JsonElement jsonElement) where T : struct, Enum
+#else
+    private static T? GetEnumValue<T>(JsonElement jsonElement) where T : struct, Enum
+#endif
+    {
+        var rawValue = jsonElement.GetString();
+        
+        // MODIFIED: Don't try to parse if we don't have a value to parse as we don't want an exception here.
+        if(string.IsNullOrEmpty(rawValue)) return null;
+        
+        var type = typeof(T);
+        return EnumHelpers.GetEnumValue<T>(rawValue!)
+               // MODIFICATION: We want to throw an exception rather than return null
+               ?? throw new ArgumentOutOfRangeException(type.FullName, rawValue, "Unable to parse enum value");
+    }
 
     /// <summary>
     /// Gets the collection of untyped values of the node.
@@ -310,10 +364,14 @@ public class CustomJsonParseNode : IParseNode
                 OnBeforeAssignFieldValues = OnBeforeAssignFieldValues,
                 OnAfterAssignFieldValues = OnAfterAssignFieldValues
             };
-            yield return currentParseNode.GetUntypedValue();
+            yield return GetUntypedValue(collectionValue);
         }
     }
 
+    /// <summary>
+    /// Gets the collection of properties in the untyped object.
+    /// </summary>
+    /// <returns>The collection of properties in the untyped object.</returns>
     /// <summary>
     /// Gets the collection of properties in the untyped object.
     /// </summary>
@@ -325,21 +383,7 @@ public class CustomJsonParseNode : IParseNode
         {
             foreach(var objectValue in jsonNode.EnumerateObject())
             {
-                JsonElement property = objectValue.Value;
-                if(objectValue.Value.ValueKind == JsonValueKind.Object)
-                {
-                    var childNode = new CustomJsonParseNode(objectValue.Value, _jsonSerializerContext)
-                    {
-                        OnBeforeAssignFieldValues = OnBeforeAssignFieldValues,
-                        OnAfterAssignFieldValues = OnAfterAssignFieldValues
-                    };
-                    var objectVal = childNode.GetPropertiesOfUntypedObject(childNode._jsonNode);
-                    properties[objectValue.Name] = new UntypedObject(objectVal);
-                }
-                else
-                {
-                    properties[objectValue.Name] = GetUntypedValue(property);
-                }
+                properties[objectValue.Name] = GetUntypedValue(objectValue.Value);
             }
         }
         return properties;
@@ -403,12 +447,11 @@ public class CustomJsonParseNode : IParseNode
 
         foreach(var fieldValue in _jsonNode.EnumerateObject())
         {
-            if(fieldDeserializers.ContainsKey(fieldValue.Name))
+            if(fieldDeserializers.TryGetValue(fieldValue.Name, out var fieldDeserializer))
             {
                 if(fieldValue.Value.ValueKind == JsonValueKind.Null)
                     continue;// If the property is already null just continue. As calling functions like GetDouble,GetBoolValue do not process JsonValueKind.Null.
 
-                var fieldDeserializer = fieldDeserializers[fieldValue.Name];
                 Debug.WriteLine($"found property {fieldValue.Name} to deserialize");
                 
                 // MODIFIED: Wrap fieldDeserializer.Invoke() in a try catch to catch json parsing exceptions and rethrow with a more useful error.
