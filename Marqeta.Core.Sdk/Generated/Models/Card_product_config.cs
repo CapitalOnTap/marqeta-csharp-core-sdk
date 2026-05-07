@@ -100,7 +100,7 @@ namespace Marqeta.Core.Sdk.Models
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
         public static global::Marqeta.Core.Sdk.Models.Card_product_config CreateFromDiscriminatorValue(IParseNode parseNode)
         {
-            _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
+            if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
             return new global::Marqeta.Core.Sdk.Models.Card_product_config();
         }
         /// <summary>
@@ -128,7 +128,7 @@ namespace Marqeta.Core.Sdk.Models
         /// <param name="writer">Serialization writer to use to serialize this model</param>
         public virtual void Serialize(ISerializationWriter writer)
         {
-            _ = writer ?? throw new ArgumentNullException(nameof(writer));
+            if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteObjectValue<global::Marqeta.Core.Sdk.Models.Card_life_cycle>("card_life_cycle", CardLifeCycle);
             writer.WriteObjectValue<global::Marqeta.Core.Sdk.Models.Clearing_and_settlement>("clearing_and_settlement", ClearingAndSettlement);
             writer.WriteObjectValue<global::Marqeta.Core.Sdk.Models.DigitalWalletTokenization>("digital_wallet_tokenization", DigitalWalletTokenization);

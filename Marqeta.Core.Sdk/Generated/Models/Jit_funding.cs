@@ -52,7 +52,7 @@ namespace Marqeta.Core.Sdk.Models
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
         public static global::Marqeta.Core.Sdk.Models.Jit_funding CreateFromDiscriminatorValue(IParseNode parseNode)
         {
-            _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
+            if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
             return new global::Marqeta.Core.Sdk.Models.Jit_funding();
         }
         /// <summary>
@@ -74,7 +74,7 @@ namespace Marqeta.Core.Sdk.Models
         /// <param name="writer">Serialization writer to use to serialize this model</param>
         public virtual void Serialize(ISerializationWriter writer)
         {
-            _ = writer ?? throw new ArgumentNullException(nameof(writer));
+            if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteObjectValue<global::Marqeta.Core.Sdk.Models.Jit_funding_paymentcard_funding_source>("paymentcard_funding_source", PaymentcardFundingSource);
             writer.WriteObjectValue<global::Marqeta.Core.Sdk.Models.Jit_funding_program_funding_source>("program_funding_source", ProgramFundingSource);
             writer.WriteObjectValue<global::Marqeta.Core.Sdk.Models.Jit_funding_programgateway_funding_source>("programgateway_funding_source", ProgramgatewayFundingSource);

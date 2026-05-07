@@ -73,7 +73,7 @@ namespace Marqeta.Core.Sdk.Models
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
         public static global::Marqeta.Core.Sdk.Models.Transaction_metadata CreateFromDiscriminatorValue(IParseNode parseNode)
         {
-            _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
+            if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
             return new global::Marqeta.Core.Sdk.Models.Transaction_metadata();
         }
         /// <summary>
@@ -105,7 +105,7 @@ namespace Marqeta.Core.Sdk.Models
         /// <param name="writer">Serialization writer to use to serialize this model</param>
         public virtual void Serialize(ISerializationWriter writer)
         {
-            _ = writer ?? throw new ArgumentNullException(nameof(writer));
+            if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteObjectValue<global::Marqeta.Core.Sdk.Models.Airline>("airline", Airline);
             writer.WriteIntValue("authorization_life_cycle", AuthorizationLifeCycle);
             writer.WriteBoolValue("cross_border_transaction", CrossBorderTransaction);

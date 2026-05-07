@@ -109,7 +109,7 @@ namespace Marqeta.Core.Sdk.Models
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
         public static global::Marqeta.Core.Sdk.Models.PolicyProductResponse CreateFromDiscriminatorValue(IParseNode parseNode)
         {
-            _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
+            if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
             return new global::Marqeta.Core.Sdk.Models.PolicyProductResponse();
         }
         /// <summary>
@@ -142,7 +142,7 @@ namespace Marqeta.Core.Sdk.Models
         /// <param name="writer">Serialization writer to use to serialize this model</param>
         public virtual void Serialize(ISerializationWriter writer)
         {
-            _ = writer ?? throw new ArgumentNullException(nameof(writer));
+            if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteCollectionOfObjectValues<global::Marqeta.Core.Sdk.Models.PolicyProductCardProductResponse>("card_products", CardProducts);
             writer.WriteEnumValue<global::Marqeta.Core.Sdk.Models.ProductClassification>("classification", Classification);
             writer.WriteDateTimeOffsetValue("created_time", CreatedTime);

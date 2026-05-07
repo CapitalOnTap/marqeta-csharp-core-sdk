@@ -2,7 +2,9 @@
 using System.Net.Http;
 using Marqeta.Core.Sdk.IoC;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Kiota.Abstractions;
 using Microsoft.Kiota.Abstractions.Authentication;
+using Microsoft.Kiota.Http.HttpClientLibrary.Middleware.Options;
 
 namespace Marqeta.Core.Sdk.Tests.MarqetaClientTests.Factories
 {
@@ -20,7 +22,14 @@ namespace Marqeta.Core.Sdk.Tests.MarqetaClientTests.Factories
                 new MarqetaSdkConfiguration{
                     Username = config["Marqeta:UserName"]!,
                     Password = config["Marqeta:Password"]!,
-                    BaseAddress = config["Marqeta:BaseUrl"]!
+                    BaseAddress = config["Marqeta:BaseUrl"]!,
+                    OptionsForHandlers =
+                    [
+                        new RetryHandlerOption
+                        {
+                            ShouldRetry = (_, _, _) => false
+                        }
+                    ]
                 },
                 configureClient, 
                 httpMessageHandlerFactory,

@@ -50,7 +50,7 @@ namespace Marqeta.Core.Sdk.Users.Lookup
         public async Task<global::Marqeta.Core.Sdk.Models.UserCardHolderListResponse> PostAsync(global::Marqeta.Core.Sdk.Models.User_card_holder_search_model body, Action<RequestConfiguration<global::Marqeta.Core.Sdk.Users.Lookup.LookupRequestBuilder.LookupRequestBuilderPostQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
-            _ = body ?? throw new ArgumentNullException(nameof(body));
+            if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPostRequestInformation(body, requestConfiguration);
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
@@ -73,7 +73,7 @@ namespace Marqeta.Core.Sdk.Users.Lookup
         public RequestInformation ToPostRequestInformation(global::Marqeta.Core.Sdk.Models.User_card_holder_search_model body, Action<RequestConfiguration<global::Marqeta.Core.Sdk.Users.Lookup.LookupRequestBuilder.LookupRequestBuilderPostQueryParameters>> requestConfiguration = default)
         {
 #endif
-            _ = body ?? throw new ArgumentNullException(nameof(body));
+            if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
             var requestInfo = new RequestInformation(Method.POST, UrlTemplate, PathParameters);
             requestInfo.Configure(requestConfiguration);
             requestInfo.Headers.TryAdd("Accept", "application/json");

@@ -86,7 +86,7 @@ namespace Marqeta.Core.Sdk.Pushtocards.Paymentcard
         public async Task<global::Marqeta.Core.Sdk.Models.Push_to_card_response> PostAsync(global::Marqeta.Core.Sdk.Models.Push_to_card_request body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
-            _ = body ?? throw new ArgumentNullException(nameof(body));
+            if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPostRequestInformation(body, requestConfiguration);
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
@@ -128,7 +128,7 @@ namespace Marqeta.Core.Sdk.Pushtocards.Paymentcard
         public RequestInformation ToPostRequestInformation(global::Marqeta.Core.Sdk.Models.Push_to_card_request body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
         {
 #endif
-            _ = body ?? throw new ArgumentNullException(nameof(body));
+            if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
             var requestInfo = new RequestInformation(Method.POST, "{+baseurl}/pushtocards/paymentcard", PathParameters);
             requestInfo.Configure(requestConfiguration);
             requestInfo.Headers.TryAdd("Accept", "application/json");

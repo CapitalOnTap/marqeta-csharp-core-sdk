@@ -50,7 +50,7 @@ namespace Marqeta.Core.Sdk.Digitalwallets.Aliasdirectory.Visa.Aliases.Item.Addit
         public async Task<global::Marqeta.Core.Sdk.Models.Ads_create_additional_alias_response> PostAsync(global::Marqeta.Core.Sdk.Models.Ads_create_additional_aliases_request body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
-            _ = body ?? throw new ArgumentNullException(nameof(body));
+            if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPostRequestInformation(body, requestConfiguration);
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
@@ -73,7 +73,7 @@ namespace Marqeta.Core.Sdk.Digitalwallets.Aliasdirectory.Visa.Aliases.Item.Addit
         public RequestInformation ToPostRequestInformation(global::Marqeta.Core.Sdk.Models.Ads_create_additional_aliases_request body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
         {
 #endif
-            _ = body ?? throw new ArgumentNullException(nameof(body));
+            if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
             var requestInfo = new RequestInformation(Method.POST, UrlTemplate, PathParameters);
             requestInfo.Configure(requestConfiguration);
             requestInfo.Headers.TryAdd("Accept", "application/json");

@@ -49,7 +49,7 @@ namespace Marqeta.Core.Sdk.Digitalwallets.Wpp.GooglePayPushProvisioningNotificat
         public async Task PostAsync(global::Marqeta.Core.Sdk.Models.Sending_provisioning_data_to_google_pay_backend_request body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
-            _ = body ?? throw new ArgumentNullException(nameof(body));
+            if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPostRequestInformation(body, requestConfiguration);
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
@@ -72,7 +72,7 @@ namespace Marqeta.Core.Sdk.Digitalwallets.Wpp.GooglePayPushProvisioningNotificat
         public RequestInformation ToPostRequestInformation(global::Marqeta.Core.Sdk.Models.Sending_provisioning_data_to_google_pay_backend_request body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
         {
 #endif
-            _ = body ?? throw new ArgumentNullException(nameof(body));
+            if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
             var requestInfo = new RequestInformation(Method.POST, UrlTemplate, PathParameters);
             requestInfo.Configure(requestConfiguration);
             requestInfo.Headers.TryAdd("Accept", "application/json");

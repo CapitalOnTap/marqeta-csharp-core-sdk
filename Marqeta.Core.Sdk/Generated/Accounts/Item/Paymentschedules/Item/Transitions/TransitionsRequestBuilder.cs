@@ -86,7 +86,7 @@ namespace Marqeta.Core.Sdk.Accounts.Item.Paymentschedules.Item.Transitions
         public async Task<global::Marqeta.Core.Sdk.Models.PaymentScheduleTransitionResponse> PostAsync(global::Marqeta.Core.Sdk.Models.PaymentScheduleTransitionCreateReq body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
-            _ = body ?? throw new ArgumentNullException(nameof(body));
+            if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPostRequestInformation(body, requestConfiguration);
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
@@ -128,7 +128,7 @@ namespace Marqeta.Core.Sdk.Accounts.Item.Paymentschedules.Item.Transitions
         public RequestInformation ToPostRequestInformation(global::Marqeta.Core.Sdk.Models.PaymentScheduleTransitionCreateReq body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
         {
 #endif
-            _ = body ?? throw new ArgumentNullException(nameof(body));
+            if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
             var requestInfo = new RequestInformation(Method.POST, UrlTemplate, PathParameters);
             requestInfo.Configure(requestConfiguration);
             requestInfo.Headers.TryAdd("Accept", "application/json");

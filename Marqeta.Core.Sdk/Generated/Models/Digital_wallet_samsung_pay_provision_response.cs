@@ -48,7 +48,7 @@ namespace Marqeta.Core.Sdk.Models
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
         public static global::Marqeta.Core.Sdk.Models.Digital_wallet_samsung_pay_provision_response CreateFromDiscriminatorValue(IParseNode parseNode)
         {
-            _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
+            if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
             return new global::Marqeta.Core.Sdk.Models.Digital_wallet_samsung_pay_provision_response();
         }
         /// <summary>
@@ -71,7 +71,7 @@ namespace Marqeta.Core.Sdk.Models
         /// <param name="writer">Serialization writer to use to serialize this model</param>
         public virtual void Serialize(ISerializationWriter writer)
         {
-            _ = writer ?? throw new ArgumentNullException(nameof(writer));
+            if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("card_token", CardToken);
             writer.WriteDateTimeOffsetValue("created_time", CreatedTime);
             writer.WriteDateTimeOffsetValue("last_modified_time", LastModifiedTime);

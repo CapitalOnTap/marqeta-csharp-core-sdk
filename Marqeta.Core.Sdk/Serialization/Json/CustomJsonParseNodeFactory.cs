@@ -10,7 +10,7 @@ namespace Marqeta.Core.Sdk.Serialization.Json
     ///     Copied from  <see href="https://github.com/microsoft/kiota-dotnet/blob/main/src/serialization/json/JsonParseNodeFactory.cs"/>
     ///     <see cref="JsonParseNodeFactory"/>
     /// </summary>
-    public class CustomJsonParseNodeFactory : IAsyncParseNodeFactory
+    public class CustomJsonParseNodeFactory : IParseNodeFactory
     {
         private readonly KiotaJsonSerializationContext _jsonJsonSerializationContext;
         
@@ -26,27 +26,6 @@ namespace Marqeta.Core.Sdk.Serialization.Json
         /// The valid content type for json
         /// </summary>
         public string ValidContentType { get; } = "application/json";
-        
-        /// <summary>
-        /// Gets the root <see cref="IParseNode"/> of the json to be read.
-        /// </summary>
-        /// <param name="contentType">The content type of the stream to be parsed</param>
-        /// <param name="content">The <see cref="Stream"/> containing json to parse.</param>
-        /// <returns>An instance of <see cref="IParseNode"/> for json manipulation</returns>
-        [Obsolete("Use GetRootParseNodeAsync instead")]
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public IParseNode GetRootParseNode(string contentType, Stream content)
-        {
-            if(string.IsNullOrEmpty(contentType))
-                throw new ArgumentNullException(nameof(contentType));
-            else if(!ValidContentType.Equals(contentType, StringComparison.OrdinalIgnoreCase))
-                throw new ArgumentOutOfRangeException($"expected a {ValidContentType} content type");
-
-            _ = content ?? throw new ArgumentNullException(nameof(content));
-
-            using var jsonDocument = JsonDocument.Parse(content);
-            return new CustomJsonParseNode(jsonDocument.RootElement.Clone(), _jsonJsonSerializationContext);
-        }
         
         /// <summary>
         /// Asynchronously gets the root <see cref="IParseNode"/> of the json to be read.
